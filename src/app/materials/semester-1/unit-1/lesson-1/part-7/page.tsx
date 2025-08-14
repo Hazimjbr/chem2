@@ -99,7 +99,7 @@ export default function LessonPartPage() {
                   </p>
               </div>
             </FlippableCard>
-
+            
             <Card>
                 <CardHeader>
                     <CardTitle>مثال محلول</CardTitle>
@@ -155,7 +155,7 @@ export default function LessonPartPage() {
                         </ol>
                     </div>
                   </div>
-                    </CardContent>
+                  </div>
             </Card>
 
             <div className="grid md:grid-cols-2 gap-6 items-start">
@@ -282,3 +282,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    
