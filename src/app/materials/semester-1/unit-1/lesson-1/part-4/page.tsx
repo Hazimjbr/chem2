@@ -129,16 +129,16 @@ export default function LessonPartPage() {
                 cardTitle="العلاقة الرياضية"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
-                <div className="text-center space-y-4">
-                    <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي</p>
-                    <BlockMath math="V \propto T" />
-                    <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة</p>
-                    <BlockMath math="\frac{V}{T} = k" />
-                    <p>وهذا يعني أن حاصل قسمة الحجم على درجة الحرارة المطلقة لكمية معينة من الغاز عند ضغط ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز</p>
-                    <BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" />
-                    <p className="text-sm text-muted-foreground" dir="rtl">
-                        حيث <InlineMath math="V_1, T_1" /> هما الحجم والحرارة الابتدائيان، و <InlineMath math="V_2, T_2" /> هما الحجم والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن (K)**.
-                    </p>
+                <div className="space-y-4">
+                  <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="V \propto T" /></div>
+                  <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{V}{T} = k" /></div>
+                  <p>وهذا يعني أن حاصل قسمة الحجم على درجة الحرارة المطلقة لكمية معينة من الغاز عند ضغط ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
+                  <p className="text-sm text-muted-foreground" dir="rtl">
+                      حيث <span dir="ltr">(<InlineMath math="V_1, T_1" />)</span> هما الحجم والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="V_2, T_2" />)</span> هما الحجم والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>**.
+                  </p>
                 </div>
             </FlippableCard>
 
