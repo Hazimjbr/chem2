@@ -107,7 +107,15 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                       <p className="mb-4">
-                          عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span> من الغاز عند نفس الظروف من الحرارة والضغط؟
+                        <span>عينة من غاز النيتروجين (</span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>
+                        <span>) حجمها </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span>
+                        <span> تحتوي على </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
+                        <span>. ما حجم العينة إذا أضيف إليها </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
+                        <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
                       </p>
                       <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <div>
@@ -123,7 +131,7 @@ export default function LessonPartPage() {
                             <p><strong className="text-accent">الحل:</strong></p>
                             <ol className="list-decimal mr-6 text-sm space-y-2">
                                 <li>
-                                  <span>نحسب عدد المولات النهائي (<InlineMath math="n_2" />).</span>
+                                  <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>).</span>
                                   <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
                                 </li>
                                 <li>
@@ -131,7 +139,7 @@ export default function LessonPartPage() {
                                   <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
                                 </li>
                                 <li>
-                                  <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.</span>
+                                  <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span><span>.</span>
                                   <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
                                 </li>
                                 <li>
@@ -218,7 +226,15 @@ export default function LessonPartPage() {
                   explanation="باستخدام قانون أفوجادرو (V₁/n₁ = V₂/n₂)، فإن عدد المولات النهائي n₂ = (V₂ * n₁) / V₁ = (4 L * 0.2 mol) / 3.2 L = 0.25 mol."
               />
                <InteractiveQuestionCard 
-                  question="عينة من الغاز A حجمها 3.2 L تحتوي على 0.2 mol أضيف لها كمية من الغاز B ليصبح حجمها 4 L بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي:"
+                  question={<>
+                    <span>عينة من الغاز A حجمها</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
+                    <span>تحتوي على</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
+                    <span>أضيف لها كمية من الغاز B ليصبح حجمها</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
+                    <span>بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي:</span>
+                  </>}
                   options={[
                       "0.25",
                       "0.5",
