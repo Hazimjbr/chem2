@@ -107,7 +107,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                       <p className="mb-4">
-                        عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5" /></span> مول. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25" /></span> مول من الغاز عند نفس الظروف من الحرارة والضغط؟
+                        عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span> من الغاز عند نفس الظروف من الحرارة والضغط؟
                       </p>
                       <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                           <p><strong className="text-accent">المعطيات</strong></p>
