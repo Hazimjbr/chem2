@@ -219,7 +219,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   question={(
                     <>
-                    عينة من غاز محصور في وعاء حجمه ثابت <span dir="ltr">(<InlineMath math="4L" />)</span> وضغطها <span dir="ltr">(<InlineMath math="2\text{atm}" />)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="200^\circ\text{C}" />)</span> فإذا ارتفعت درجة حرارتها بمقدار <span dir="ltr">(<InlineMath math="100" />)</span> درجة فإن ضغطها بوحدة <span dir="ltr">(<InlineMath math="\text{atm}" />)</span> يساوي
+                     عينة من غاز محصور في وعاء حجمه ثابت <span dir="ltr">(<InlineMath math="4\text{L}"/>)</span> وضغطها <span dir="ltr">(<InlineMath math="2\text{atm}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="200^\circ\text{C}"/>)</span> فإذا ارتفعت درجة حرارتها بمقدار <span dir="ltr">(<InlineMath math="100"/>)</span> درجة فإن ضغطها بوحدة <span dir="ltr">(<InlineMath math="\text{atm}"/>)</span> يساوي
                     </>
                   )}
                   options={[
@@ -234,7 +234,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   question={(
                     <>
-                     عينة من غاز محصور ضغطها <span dir="ltr">(<InlineMath math="900\text{mmHg}" />)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="273\text{K}" />)</span> فإذا أصبح ضغطها <span dir="ltr">(<InlineMath math="200\text{kPa}" />)</span> فإن درجة حرارتها بوحدة <span dir="ltr">(<InlineMath math="^\circ\text{C}" />)</span> تساوي
+                     عينة من غاز محصور ضغطها <span dir="ltr">(<InlineMath math="900\text{mmHg}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="273\text{K}"/>)</span> فإذا أصبح ضغطها <span dir="ltr">(<InlineMath math="200\text{kPa}"/>)</span> فإن درجة حرارتها بوحدة <span dir="ltr">(<InlineMath math="^\circ\text{C}"/>)</span> تساوي
                     </>
                   )}
                   options={[
