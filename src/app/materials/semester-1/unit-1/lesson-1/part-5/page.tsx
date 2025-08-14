@@ -5,7 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, X, BookCopy, Thermometer, Cpu, Lightbulb, LineChart, ArrowRight, GitCompare, Box } from 'lucide-react';
+import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, LineChart, ArrowRight, GitCompare, Cpu } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import Quiz from './quiz';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
@@ -118,11 +118,11 @@ export default function LessonPartPage() {
             >
                <div className="space-y-4">
                   <p>يمكن التعبير عن العلاقة الطردية بين الضغط (P) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
-                  <div className="text-left" dir="ltr"><BlockMath math="P \propto T" /></div>
+                  <div className="text-center" dir="ltr"><BlockMath math="P \propto T" /></div>
                   <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
-                  <div className="text-left" dir="ltr"><BlockMath math="\frac{P}{T} = k" /></div>
+                  <div className="text-center" dir="ltr"><BlockMath math="\frac{P}{T} = k" /></div>
                   <p>وهذا يعني أن حاصل قسمة الضغط على درجة الحرارة المطلقة لكمية معينة من الغاز عند حجم ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
-                  <div className="text-left" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
+                  <div className="text-center" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
                    <p className="text-sm text-muted-foreground">
                       حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان. <strong>يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span></strong>.
                   </p>
@@ -135,17 +135,17 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        علبة من بخاخ الشعر ضغطها <span dir="ltr">1.5 atm</span> عند درجة حرارة <span dir="ltr">25°C</span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارته إلى <span dir="ltr">400°C</span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
+                        علبة من بخاخ الشعر ضغطها <span style={{display: 'inline-block'}} dir="ltr">1.5 atm</span> عند درجة حرارة <span style={{display: 'inline-block'}} dir="ltr">25°C</span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارته إلى <span style={{display: 'inline-block'}} dir="ltr">400°C</span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                        <p><strong className="text-accent">المعطيات:</strong></p>
+                        <p className="font-bold text-accent">المعطيات:</p>
                         <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
                             <span><InlineMath math="P_1 = 1.5\text{ atm}" /></span>
                             <span><InlineMath math="P_2 = ?" /></span>
                             <span><InlineMath math="T_1 = 25^\circ\text{C}" /></span>
                             <span><InlineMath math="T_2 = 400^\circ\text{C}" /></span>
                         </div>
-                        <p><strong className="text-accent">الحل:</strong></p>
+                        <p className="font-bold text-accent">الحل:</p>
                         <ol className="list-decimal mr-6 text-sm space-y-2">
                             <li>
                                 <span>نحول درجات الحرارة إلى كلفن.</span>
@@ -171,7 +171,7 @@ export default function LessonPartPage() {
                         </ol>
                         <div className="border-t pt-3">
                             <p className="text-sm font-semibold">
-                            الجواب: الضغط الجديد داخل العلبة هو<span dir="ltr"> ~3.39 atm</span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
+                            الجواب: الضغط الجديد داخل العلبة هو<span style={{display: 'inline-block'}} dir="ltr"> ~3.39 atm</span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
                             </p>
                         </div>
                     </div>
