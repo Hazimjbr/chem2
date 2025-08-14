@@ -85,7 +85,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                وعاء يحتوي على غاز عند ضغط <span dir="ltr"><InlineMath math="3\text{atm}" /></span> ودرجة حرارة <span dir="ltr"><InlineMath math="200\text{K}" /></span>. إذا تم تبريد الوعاء إلى <span dir="ltr"><InlineMath math="100\text{K}" /></span>، فما هو الضغط الجديد؟
+                وعاء يحتوي على غاز عند ضغط <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="3\text{atm}" /></span> ودرجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200\text{K}" /></span>. إذا تم تبريد الوعاء إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="100\text{K}" /></span>، فما هو الضغط الجديد؟
             </>
         ),
         "options": [
@@ -111,7 +111,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                عينة من غاز ضغطها <span dir="ltr"><InlineMath math="W" /></span> عند درجة حرارة <span dir="ltr"><InlineMath math="35^\circ\text{C}" /></span> فإن درجة حرارتها بوحدة <span dir="ltr"><InlineMath math="^\circ\text{C}" /></span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي:
+                عينة من غاز ضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="W" /></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="35^\circ\text{C}" /></span> فإن درجة حرارتها بوحدة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="^\circ\text{C}" /></span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي:
             </>
         ),
         "options": [
@@ -126,7 +126,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                غاز ضغطه <span dir="ltr"><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة. تم تسخينه إلى <span dir="ltr"><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr"><InlineMath math="900\text{mmHg}" /></span>. ما كانت درجة الحرارة الابتدائية بالسيليزيوس؟
+                غاز ضغطه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة. تم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="900\text{mmHg}" /></span>. ما كانت درجة الحرارة الابتدائية بالسيليزيوس؟
             </>
         ),
         "options": [
@@ -181,7 +181,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr"><InlineMath math="298\text{K}" /></span> وضغط <span dir="ltr"><InlineMath math="101.3\text{kPa}" /></span>. إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr"><InlineMath math="596\text{K}" /></span>، فما هو الضغط الجديد؟
+                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="298\text{K}" /></span> وضغط <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="101.3\text{kPa}" /></span>. إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="596\text{K}" /></span>، فما هو الضغط الجديد؟
             </>
         ),
         "options": [
@@ -196,7 +196,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من <span dir="ltr"><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr"><InlineMath math="546\text{K}" /></span>، ماذا تلاحظ على قيمة الضغط؟
+                في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="546\text{K}" /></span>، ماذا تلاحظ على قيمة الضغط؟
             </>
         ),
         "options": [
@@ -209,3 +209,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "زيادة درجة الحرارة المطلقة من 273K إلى 546K تعني مضاعفة درجة الحرارة. وفقًا للعلاقة الطردية في قانون جاي-لوساك (P∝T)، فإن الضغط يجب أن يتضاعف أيضًا."
     }
 ];
+
+    
