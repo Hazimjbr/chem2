@@ -9,7 +9,7 @@ import { CheckCircle, HelpCircle, XCircle } from 'lucide-react';
 import { cn } from '@/lib/utils.tsx';
 
 interface InteractiveQuestionCardProps {
-  question: string;
+  question: React.ReactNode; // Changed from string to React.ReactNode
   options: string[];
   correctAnswerIndex: number;
   explanation: string;

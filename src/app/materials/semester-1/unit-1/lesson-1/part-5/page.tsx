@@ -217,7 +217,11 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
-                  question="عينة من غاز محصور في وعاء حجمه ثابت 4 L وضغطها 2 atm عند درجة حرارة 200 °C فإذا ارتفعت درجة حرارتها بمقدار 100 درجة فإن ضغطها بوحدة atm يساوي"
+                  question={(
+                    <>
+                    عينة من غاز محصور في وعاء حجمه ثابت <InlineMath math="4L" /> وضغطها <InlineMath math="2\text{atm}" /> عند درجة حرارة <InlineMath math="200^\circ\text{C}" /> فإذا ارتفعت درجة حرارتها بمقدار <InlineMath math="100" /> درجة فإن ضغطها بوحدة <InlineMath math="\text{atm}" /> يساوي
+                    </>
+                  )}
                   options={[
                       "1.3",
                       "1.6",
@@ -228,7 +232,11 @@ export default function LessonPartPage() {
                   explanation="T₁=200+273=473K. T₂= (200+100)+273=573K. P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm."
               />
                <InteractiveQuestionCard 
-                  question="عينة من غاز محصور ضغطها 900 mmHg عند درجة حرارة 273 K فإذا أصبح ضغطها 200 kPa فإن درجة حرارتها بوحدة °C تساوي"
+                  question={(
+                    <>
+                     عينة من غاز محصور ضغطها <InlineMath math="900\text{mmHg}" /> عند درجة حرارة <InlineMath math="273\text{K}" /> فإذا أصبح ضغطها <InlineMath math="200\text{kPa}" /> فإن درجة حرارتها بوحدة <InlineMath math="^\circ\text{C}" /> تساوي
+                    </>
+                  )}
                   options={[
                       "60.6",
                       "182",
@@ -240,6 +248,7 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+
 
         <Card>
           <CardHeader>
