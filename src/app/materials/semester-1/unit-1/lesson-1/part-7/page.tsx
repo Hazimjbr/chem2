@@ -110,31 +110,40 @@ export default function LessonPartPage() {
                         عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span> من الغاز عند نفس الظروف من الحرارة والضغط؟
                       </p>
                       <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                          <p><strong className="text-accent">المعطيات</strong></p>
-                           <div className='grid grid-cols-2 gap-x-4' dir="ltr">
-                              <p><InlineMath math="V_1 = 5.0\text{L}" /></p>
-                              <p><InlineMath math="V_2 = ?" /></p>
-                              <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
-                              <p><InlineMath math="n_2 = ?" /></p>
+                        <div>
+                          <p><strong className="text-accent">المعطيات:</strong></p>
+                          <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
+                            <p><InlineMath math="V_1 = 5.0L" /></p>
+                            <p><InlineMath math="V_2 = ?" /></p>
+                            <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
+                            <p><InlineMath math="n_2 = ?" /></p>
                           </div>
-                          <p><strong className="text-accent">الحل</strong></p>
-                          <ol className="list-decimal mr-6 text-sm space-y-2">
-                              <li>نحسب عدد المولات النهائي (<InlineMath math="n_2" />).
-                                  <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5 + 0.25 = 0.75\text{mol}" /></div>
-                              </li>
-                              <li>نكتب قانون أفوجادرو.
+                        </div>
+                        <div>
+                            <p><strong className="text-accent">الحل:</strong></p>
+                            <ol className="list-decimal mr-6 text-sm space-y-2">
+                                <li>
+                                  <span>نحسب عدد المولات النهائي (<InlineMath math="n_2" />).</span>
+                                  <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
+                                </li>
+                                <li>
+                                  <span>نكتب قانون أفوجادرو.</span>
                                   <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
-                              </li>
-                              <li>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.
+                                </li>
+                                <li>
+                                  <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.</span>
                                   <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
-                              </li>
-                              <li>نعوض القيم.
+                                </li>
+                                <li>
+                                  <span>نعوض القيم.</span>
                                   <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
-                              </li>
-                              <li>نحسب الناتج.
+                                </li>
+                                <li>
+                                  <span>نحسب الناتج.</span>
                                   <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
-                              </li>
-                          </ol>
+                                </li>
+                            </ol>
+                        </div>
                       </div>
                     </CardContent>
                 </Card>
@@ -145,10 +154,10 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <p className="text-sm">
-                            من أهم تطبيقات قانون أفوجادرو هو مفهوم **الحجم المولي**، وهو الحجم الذي يشغله مول واحد من أي غاز في الظروف المعيارية (STP: 0°C و 1 atm).
+                            من أهم تطبيقات قانون أفوجادرو هو مفهوم **الحجم المولي**، وهو الحجم الذي يشغله <span dir="ltr">1 mol</span> من أي غاز في الظروف المعيارية (STP: 0°C و 1 atm).
                             </p>
                             <div className="text-center bg-primary/10 p-4 rounded-lg">
-                                <p className="font-bold text-lg">حجم 1 مول من أي غاز عند STP</p>
+                                <p className="font-bold text-lg">حجم <span dir="ltr">1 mol</span> من أي غاز عند STP</p>
                                 <p className="text-4xl font-mono font-bold text-primary my-2">22.4 L</p>
                             </div>
                         </CardContent>
