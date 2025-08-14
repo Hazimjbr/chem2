@@ -78,11 +78,11 @@ export default function LessonPartPage() {
                 cardTitle="العلاقة الرياضية"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
-               <div className="text-center space-y-4">
+               <div className="space-y-4">
                   <p>يمكن اشتقاق القانون الجامع من دمج القوانين الثلاثة السابقة، وتكون العلاقة الرياضية له كالتالي:</p>
-                  <BlockMath math="\frac{P \cdot V}{T} = k" />
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{P \cdot V}{T} = k" /></div>
                   <p>هذه العلاقة تسمح لنا بمقارنة حالة الغاز الابتدائية (1) بحالته النهائية (2) عندما تتغير الظروف:</p>
-                  <BlockMath math="\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}" />
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}" /></div>
                   <p className="text-sm text-muted-foreground" dir="rtl">
                       حيث <InlineMath math="P, V, T" /> هي الضغط والحجم ودرجة الحرارة المطلقة (بالكلفن) على التوالي.
                   </p>
