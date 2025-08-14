@@ -86,13 +86,13 @@ export default function LessonPartPage() {
                 cardTitle="العلاقة الرياضية"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
-               <div className="text-center space-y-4">
+               <div className="space-y-4">
                   <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي:</p>
-                  <BlockMath math="V \propto n" />
+                  <div dir="ltr" className="text-left"><BlockMath math="V \propto n" /></div>
                   <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
-                  <BlockMath math="\frac{V}{n} = k" />
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{V}{n} = k" /></div>
                    <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
-                  <BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" />
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
                   <p className="text-sm text-muted-foreground" dir="rtl">
                       حيث <InlineMath math="V_1, n_1" /> هما الحجم وعدد المولات الابتدائيان، و <InlineMath math="V_2, n_2" /> هما الحجم وعدد المولات النهائيان.
                   </p>
@@ -222,3 +222,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    
