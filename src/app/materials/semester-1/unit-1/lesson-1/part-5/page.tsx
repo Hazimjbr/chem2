@@ -135,7 +135,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        علبة من بخاخ الشعر ضغطها <span style={{display: 'inline-block'}} dir="ltr">1.5 atm</span> عند درجة حرارة <span style={{display: 'inline-block'}} dir="ltr">25°C</span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارته إلى <span style={{display: 'inline-block'}} dir="ltr">400°C</span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
+                        علبة من بخاخ الشعر ضغطها <span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span> عند درجة حرارة <span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى <span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <p className="font-bold text-accent">المعطيات:</p>
@@ -171,7 +171,7 @@ export default function LessonPartPage() {
                         </ol>
                         <div className="border-t pt-3">
                             <p className="text-sm font-semibold">
-                            الجواب: الضغط الجديد داخل العلبة هو<span style={{display: 'inline-block'}} dir="ltr"> ~3.39 atm</span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
+                            الجواب: الضغط الجديد داخل العلبة هو<span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
                             </p>
                         </div>
                     </div>
@@ -219,7 +219,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   question={(
                     <>
-                    عينة من غاز محصور في وعاء حجمه ثابت <InlineMath math="4L" /> وضغطها <InlineMath math="2\text{atm}" /> عند درجة حرارة <InlineMath math="200^\circ\text{C}" /> فإذا ارتفعت درجة حرارتها بمقدار <InlineMath math="100" /> درجة فإن ضغطها بوحدة <InlineMath math="\text{atm}" /> يساوي
+                    عينة من غاز محصور في وعاء حجمه ثابت <span dir="ltr">(<InlineMath math="4L" />)</span> وضغطها <span dir="ltr">(<InlineMath math="2\text{atm}" />)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="200^\circ\text{C}" />)</span> فإذا ارتفعت درجة حرارتها بمقدار <span dir="ltr">(<InlineMath math="100" />)</span> درجة فإن ضغطها بوحدة <span dir="ltr">(<InlineMath math="\text{atm}" />)</span> يساوي
                     </>
                   )}
                   options={[
@@ -234,7 +234,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   question={(
                     <>
-                     عينة من غاز محصور ضغطها <InlineMath math="900\text{mmHg}" /> عند درجة حرارة <InlineMath math="273\text{K}" /> فإذا أصبح ضغطها <InlineMath math="200\text{kPa}" /> فإن درجة حرارتها بوحدة <InlineMath math="^\circ\text{C}" /> تساوي
+                     عينة من غاز محصور ضغطها <span dir="ltr">(<InlineMath math="900\text{mmHg}" />)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="273\text{K}" />)</span> فإذا أصبح ضغطها <span dir="ltr">(<InlineMath math="200\text{kPa}" />)</span> فإن درجة حرارتها بوحدة <span dir="ltr">(<InlineMath math="^\circ\text{C}" />)</span> تساوي
                     </>
                   )}
                   options={[

@@ -22,13 +22,18 @@ type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     const correctAnswerValue = question.options[question.correctAnswerIndex];
     
-    const indices = [0, 1, 2, 3];
+    // Create an array of indices to shuffle
+    const indices = Array.from(Array(question.options.length).keys());
+    // Shuffle the indices
     for (let i = indices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [indices[i], indices[j]] = [indices[j], indices[i]];
     }
 
+    // Create the new shuffled options array
     const shuffledOptions = indices.map(i => question.options[i]);
+    
+    // Find the new index of the correct answer
     const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
 
     return {
@@ -69,8 +74,15 @@ export default function Quiz({ lessonContent }: QuizProps) {
             if (level === 3) staticQuestions = staticQuizLvl3;
             generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
         } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz;
+            // AI generation returns a different format, so we need to adapt it.
+            // For now, let's assume it also returns React.ReactNode questions.
+            // In a real scenario, you'd handle the string-to-JSX conversion here or in the flow.
+            const result: any = await generateQuiz(lessonContent, level);
+             if (result.quiz.every((q: any) => typeof q.question === 'string')) {
+                 generatedQuestions = result.quiz.map((q: any) => ({...q, question: <p>{q.question}</p>}));
+            } else {
+                 generatedQuestions = result.quiz;
+            }
         }
 
         setQuiz(generatedQuestions);
@@ -252,4 +264,3 @@ export default function Quiz({ lessonContent }: QuizProps) {
     </Card>
   );
 }
-

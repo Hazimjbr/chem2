@@ -1,6 +1,8 @@
 
+import { InlineMath } from 'react-katex';
+
 export interface QuizQuestion {
-    question: string;
+    question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
     explanation: string;
@@ -41,7 +43,11 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الصيغة الصحيحة لقانون جاي-لوساك هي P₁/T₁ = P₂/T₂، حيث يجب أن تكون درجة الحرارة بوحدة الكلفن."
     },
     {
-        "question": "غاز ضغطه 100kPa عند 27 درجة مئوية. ما هو ضغطه إذا تم تسخينه إلى 127 درجة مئوية مع ثبات الحجم؟",
+        question: (
+            <>
+                غاز ضغطه <span dir="ltr"><InlineMath math="100\text{kPa}" /></span> عند <span dir="ltr"><InlineMath math="27^\circ\text{C}" /></span>. ما هو ضغطه إذا تم تسخينه إلى <span dir="ltr"><InlineMath math="127^\circ\text{C}" /></span> مع ثبات الحجم؟
+            </>
+        ),
         "options": [
             "133.3kPa",
             "75kPa",
@@ -77,7 +83,11 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "بما أن العلاقة بين الضغط ودرجة الحرارة المطلقة طردية (P ∝ T)، فإن مضاعفة درجة الحرارة المطلقة تؤدي إلى مضاعفة الضغط."
     },
     {
-        "question": "وعاء يحتوي على غاز عند ضغط 3atm ودرجة حرارة 200K. إذا تم تبريد الوعاء إلى 100K، فما هو الضغط الجديد؟",
+        question: (
+            <>
+                وعاء يحتوي على غاز عند ضغط <span dir="ltr"><InlineMath math="3\text{atm}" /></span> ودرجة حرارة <span dir="ltr"><InlineMath math="200\text{K}" /></span>. إذا تم تبريد الوعاء إلى <span dir="ltr"><InlineMath math="100\text{K}" /></span>، فما هو الضغط الجديد؟
+            </>
+        ),
         "options": [
             "6atm",
             "1.5atm",
@@ -99,7 +109,11 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "علبة الرذاذ لها حجم ثابت. تسخينها يزيد درجة حرارة الغاز بداخلها بشكل هائل، مما يؤدي إلى زيادة هائلة في الضغط (وفقًا لقانون جاي-لوساك) قد تتجاوز قدرة تحمل العلبة فتنفجر."
     },
     {
-        "question": "عينة من غاز ضغطها W عند درجة حرارة 35°C فإن درجة حرارتها بوحدة °C عندما يصبح ضغطها مثلي الضغط الأصلي تساوي:",
+        question: (
+            <>
+                عينة من غاز ضغطها <span dir="ltr">W</span> عند درجة حرارة <span dir="ltr">35°C</span> فإن درجة حرارتها بوحدة <span dir="ltr">°C</span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي:
+            </>
+        ),
         "options": [
             "308",
             "70",
@@ -110,7 +124,11 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "P₁=W, P₂=2W. T₁=35+273=308K. T₂=T₁P₂/P₁ = (308 * 2W) / W = 616K. نحول إلى سيليزيوس: T₂(°C) = 616 - 273 = 343°C."
     },
     {
-        "question": "غاز ضغطه 700mmHg عند درجة حرارة غير معروفة. تم تسخينه إلى 150°C فأصبح ضغطه 900mmHg. ما كانت درجة الحرارة الابتدائية بالسيليزيوس؟",
+        question: (
+            <>
+                غاز ضغطه <span dir="ltr">700mmHg</span> عند درجة حرارة غير معروفة. تم تسخينه إلى <span dir="ltr">150°C</span> فأصبح ضغطه <span dir="ltr">900mmHg</span>. ما كانت درجة الحرارة الابتدائية بالسيليزيوس؟
+            </>
+        ),
         "options": [
             "56.1°C",
             "329.1°C",
@@ -124,7 +142,11 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        "question": "إذا كان الرسم البياني للضغط (P) مقابل درجة الحرارة بالسيليزيوس (T°C) لغاز مثالي هو خط مستقيم، فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة؟",
+        question: (
+            <>
+                إذا كان الرسم البياني للضغط (<InlineMath math="P" />) مقابل درجة الحرارة بالسيليزيوس (<InlineMath math="T^\circ C" />) لغاز مثالي هو خط مستقيم، فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة؟
+            </>
+        ),
         "options": [
             "0°C",
             "100°C",
@@ -157,7 +179,11 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الشرط الأساسي لتطبيق قانون جاي-لوساك هو ثبات الحجم. بما أن الحجم الكلي للوعاء لا يتغير، فإن متوسط المسافة بين الجسيمات يبقى ثابتًا أيضًا."
     },
     {
-        "question": "وعاء يحتوي على غاز النيتروجين عند 298K وضغط 101.3kPa. إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى 596K، فما هو الضغط الجديد؟",
+        question: (
+            <>
+                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr">298K</span> وضغط <span dir="ltr">101.3kPa</span>. إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr">596K</span>، فما هو الضغط الجديد؟
+            </>
+        ),
         "options": [
             "101.3kPa",
             "202.6kPa",
@@ -168,7 +194,11 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "هذا السؤال يتطلب القانون الجامع للغازات (P₁V₁/T₁ = P₂V₂/T₂). P₁=101.3, V₁=V, T₁=298. V₂=V/2, T₂=596. P₂ = (P₁V₁T₂)/(T₁V₂) = (101.3 * V * 596) / (298 * V/2). يتم اختصار V. P₂ = (101.3 * 596) / 149 = 405.2kPa."
     },
     {
-        "question": "في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من 273K إلى 546K، ماذا تلاحظ على قيمة الضغط؟",
+        question: (
+            <>
+                في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من <span dir="ltr">273K</span> إلى <span dir="ltr">546K</span>، ماذا تلاحظ على قيمة الضغط؟
+            </>
+        ),
         "options": [
             "تزداد بشكل طفيف",
             "تتضاعف تقريبًا",
