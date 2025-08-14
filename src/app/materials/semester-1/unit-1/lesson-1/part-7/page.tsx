@@ -106,36 +106,36 @@ export default function LessonPartPage() {
                         <CardTitle>مثال محلول</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="mb-4">
-                          عينة من غاز النيتروجين (<InlineMath math="N_2" />) حجمها <InlineMath math="5.0L" /> تحتوي على <InlineMath math="0.5" /> مول. ما حجم العينة إذا أضيف إليها <InlineMath math="0.25" /> مول من الغاز عند نفس الظروف من الحرارة والضغط؟
-                        </p>
-                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                            <p><strong className="text-accent">المعطيات</strong></p>
-                             <div className='grid grid-cols-2 gap-x-4' dir="ltr">
-                                <p><InlineMath math="V_1 = 5.0\text{L}" /></p>
-                                <p><InlineMath math="V_2 = ?" /></p>
-                                <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
-                                <p><InlineMath math="n_2 = ?" /></p>
-                            </div>
-                            <p><strong className="text-accent">الحل</strong></p>
-                            <ol className="list-decimal mr-6 text-sm space-y-2">
-                                <li>نحسب عدد المولات النهائي (<InlineMath math="n_2" />).
-                                    <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5 + 0.25 = 0.75\text{mol}" /></div>
-                                </li>
-                                <li>نكتب قانون أفوجادرو.
-                                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
-                                </li>
-                                <li>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.
-                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
-                                </li>
-                                <li>نعوض القيم.
-                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
-                                </li>
-                                <li>نحسب الناتج.
-                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
-                                </li>
-                            </ol>
-                        </div>
+                      <p className="mb-4">
+                        عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5" /></span> مول. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25" /></span> مول من الغاز عند نفس الظروف من الحرارة والضغط؟
+                      </p>
+                      <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                          <p><strong className="text-accent">المعطيات</strong></p>
+                           <div className='grid grid-cols-2 gap-x-4' dir="ltr">
+                              <p><InlineMath math="V_1 = 5.0\text{L}" /></p>
+                              <p><InlineMath math="V_2 = ?" /></p>
+                              <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
+                              <p><InlineMath math="n_2 = ?" /></p>
+                          </div>
+                          <p><strong className="text-accent">الحل</strong></p>
+                          <ol className="list-decimal mr-6 text-sm space-y-2">
+                              <li>نحسب عدد المولات النهائي (<InlineMath math="n_2" />).
+                                  <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5 + 0.25 = 0.75\text{mol}" /></div>
+                              </li>
+                              <li>نكتب قانون أفوجادرو.
+                                  <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
+                              </li>
+                              <li>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.
+                                  <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
+                              </li>
+                              <li>نعوض القيم.
+                                  <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
+                              </li>
+                              <li>نحسب الناتج.
+                                  <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
+                              </li>
+                          </ol>
+                      </div>
                     </CardContent>
                 </Card>
                 <div className="space-y-6">
