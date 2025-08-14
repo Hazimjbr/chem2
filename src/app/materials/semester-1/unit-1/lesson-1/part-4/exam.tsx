@@ -1,6 +1,8 @@
 
+import { InlineMath } from 'react-katex';
+
 export interface QuizQuestion {
-    question: string;
+    question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
     explanation: string;
@@ -30,7 +32,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "العلاقة بين الحجم ودرجة الحرارة المطلقة هي علاقة طردية. عندما تزداد درجة الحرارة، تزداد الطاقة الحركية للجسيمات مما يؤدي إلى زيادة الحجم."
     },
     {
-        "question": "أي من الصيغ الرياضية التالية تمثل قانون شارل؟",
+        question: <>أي من الصيغ الرياضية التالية تمثل قانون شارل؟</>,
         "options": [
             "P₁V₁ = P₂V₂",
             "V₁T₁ = V₂T₂",
@@ -41,7 +43,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الصيغة الصحيحة لقانون شارل هي V₁/T₁ = V₂/T₂، حيث يجب أن تكون درجة الحرارة بوحدة الكلفن."
     },
     {
-        "question": "بالون حجمه 1 لتر عند 27 درجة مئوية. ما هو حجمه إذا تم تبريده إلى 0 درجة مئوية مع ثبات الضغط؟",
+        question: <>بالون حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="1" /> لتر</span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="27" /> درجة مئوية</span>. ما هو حجمه إذا تم تبريده إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="0" /> درجة مئوية</span> مع ثبات الضغط؟</>,
         "options": [
             "0.91 لتر",
             "1.09 لتر",
@@ -66,7 +68,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": "عينة من غاز النيون تشغل حجمًا قدره 752 مل عند 25 درجة مئوية. ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم 940 مل؟",
+        question: <>عينة من غاز النيون تشغل حجمًا قدره <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="752\text{مل}" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25" /> درجة مئوية</span>. ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="940\text{مل}" /></span>؟</>,
         "options": [
             "31.25 درجة مئوية",
             "99.3 درجة مئوية",
@@ -88,7 +90,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "العلاقة V ∝ T هي علاقة خطية مباشرة. عندما يتم رسم الحجم مقابل درجة الحرارة المطلقة (بالكلفن)، يكون الناتج خطًا مستقيمًا يمر من نقطة الأصل (صفر كلفن)."
     },
     {
-        "question": "إذا تم تسخين غاز في وعاء مرن (مثل بالون) من 100 كلفن إلى 200 كلفن، ماذا يحدث لحجمه؟",
+        question: <>إذا تم تسخين غاز في وعاء مرن (مثل بالون) من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="100\text{كلفن}" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200\text{كلفن}" /></span>، ماذا يحدث لحجمه؟</>,
         "options": [
             "يقل إلى النصف",
             "يزداد بمقدار 100 لتر",
@@ -99,7 +101,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "بما أن درجة الحرارة المطلقة تضاعفت (من 100 إلى 200 كلفن)، فإن الحجم سيتضاعف أيضًا للحفاظ على النسبة V/T ثابتة."
     },
     {
-        "question": "ماذا يمثل الصفر المطلق (-273.15 درجة مئوية) نظريًا بالنسبة للغاز المثالي؟",
+        question: <>ماذا يمثل الصفر المطلق (<span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="-273.15" /> درجة مئوية</span>) نظريًا بالنسبة للغاز المثالي؟</>,
         "options": [
             "درجة حرارة تجمد الغاز",
             "درجة الحرارة التي يتوقف عندها الغاز عن الحركة",
@@ -110,7 +112,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "نظريًا، إذا قمنا بتمديد الخط البياني لقانون شارل إلى درجة حرارة منخفضة جدًا، فإنه سيصل إلى حجم صفر عند -273.15 درجة مئوية (0 كلفن). في الواقع، تتكاثف الغازات إلى سوائل قبل الوصول لهذه النقطة."
     },
     {
-        "question": "غاز حجمه 5.0 لتر عند ضغط ودرجة حرارة معينين. إذا تم الحفاظ على الضغط ثابتًا وتم خفض درجة الحرارة المطلقة إلى النصف، فما هو الحجم الجديد؟",
+        question: <>غاز حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="5.0" /> لتر</span> عند ضغط ودرجة حرارة معينين. إذا تم الحفاظ على الضغط ثابتًا وتم خفض درجة الحرارة المطلقة إلى النصف، فما هو الحجم الجديد؟</>,
         "options": [
             "2.5 لتر",
             "5.0 لتر",
@@ -124,7 +126,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        "question": "وعاء مرن يحتوي على غاز حجمه V. إذا زادت درجة الحرارة من 27 درجة مئوية إلى 127 درجة مئوية، فما هو معامل الزيادة في الحجم؟",
+        question: <>وعاء مرن يحتوي على غاز حجمه <InlineMath math="V" />. إذا زادت درجة الحرارة من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="27" /> درجة مئوية</span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="127" /> درجة مئوية</span>، فما هو معامل الزيادة في الحجم؟</>,
         "options": [
             "يزداد الحجم بمقدار 4/3 (حوالي 1.33 مرة)",
             "يزداد الحجم بمقدار 127/27 (حوالي 4.7 مرات)",
@@ -157,7 +159,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "قانون شارل هو نموذج مثالي. في الواقع، كل الخيارات صحيحة. قبل الوصول إلى 0 كلفن، ستكون قوى التجاذب بين الجسيمات قوية بما يكفي لتحويل الغاز إلى سائل ثم صلب. بالإضافة إلى ذلك، فإن الجسيمات نفسها لها حجم مادي، لذلك لا يمكن أن يكون الحجم الكلي صفرًا."
     },
     {
-        "question": "تم قياس حجم عينة من الهواء فكان 280 مل عند 30 درجة مئوية. ثم تم تبريد العينة عند ضغط ثابت حتى أصبح حجمها 250 مل. ما هي درجة الحرارة النهائية بالسيليزيوس؟",
+        question: <>تم قياس حجم عينة من الهواء فكان <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="280\text{مل}" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="30" /> درجة مئوية</span>. ثم تم تبريد العينة عند ضغط ثابت حتى أصبح حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250\text{مل}" /></span>. ما هي درجة الحرارة النهائية بالسيليزيوس؟</>,
         "options": [
             "-2.5 درجة مئوية",
             "26.7 درجة مئوية",
@@ -168,7 +170,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "T₁=30+273=303K. V₁=280mL. V₂=250mL. نجد T₂ بالكلفن: T₂ = V₂T₁/V₁ = (250*303)/280 ≈ 270.5K. ثم نحول إلى سيليزيوس: 270.5 - 273 ≈ -2.5 درجة مئوية."
     },
     {
-        "question": "إذا كان الرسم البياني للحجم (V) مقابل درجة الحرارة بالسيليزيوس (T°C) لغاز مثالي هو خط مستقيم، فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة؟",
+        question: <>إذا كان الرسم البياني للحجم (<InlineMath math="V" />) مقابل درجة الحرارة بالسيليزيوس (<InlineMath math="T^\circ C" />) لغاز مثالي هو خط مستقيم، فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة؟</>,
         "options": [
             "0 درجة مئوية",
             "100 درجة مئوية",
@@ -179,5 +181,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "إذا تم رسم الحجم مقابل درجة الحرارة بالسيليزيوس، فإن امتداد الخط المستقيم سيصل إلى حجم صفر عند درجة حرارة -273.15 درجة مئوية، وهي قيمة الصفر المطلق على مقياس كلفن."
     }
 ];
-
-    

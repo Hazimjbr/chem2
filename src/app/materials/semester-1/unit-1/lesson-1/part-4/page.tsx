@@ -150,7 +150,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="mb-4">
-                        إذا كان حجم بالون <InlineMath math="2.5L" /> عند درجة حرارة <InlineMath math="25^\circ\text{C}" />، فما هو حجمه الجديد إذا سخن إلى <InlineMath math="55^\circ\text{C}" /> مع بقاء الضغط ثابتًا؟
+                        إذا كان حجم بالون <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2.5\text{L}" /></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span>، فما هو حجمه الجديد إذا سخن إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="55^\circ\text{C}" /></span> مع بقاء الضغط ثابتًا؟
                         </p>
                         <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                             <p><strong className="text-accent">المعطيات</strong></p>
@@ -173,7 +173,7 @@ export default function LessonPartPage() {
                             </ol>
                             <div className="border-t pt-3">
                                 <p className="text-sm font-semibold">
-                                الجواب: الحجم الجديد للبالون هو <InlineMath math="2.75\text{L}" />. وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم.
+                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2.75\text{L}" /></span>. وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم.
                                 </p>
                             </div>
                         </div>
@@ -224,7 +224,7 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
-                  question="عينة من غاز محصور حجمها 4L وضغطها 2atm عند درجة حرارة 200°C فإن حجمها عندما تصبح درجة حرارتها 250°C وضغطها 2atm يساوي"
+                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span> فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي</>}
                   options={[
                       "5",
                       "3.6",
@@ -235,7 +235,7 @@ export default function LessonPartPage() {
                   explanation="أولاً، نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K. الضغط ثابت، لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L."
               />
                <InteractiveQuestionCard 
-                  question="عينة من غاز محصور حجمها 4L درجة حرارتها 400K عند مضاعفة حرارتها وثبات ضغطها فإن حجمها"
+                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span> عند مضاعفة حرارتها وثبات ضغطها فإن حجمها</>}
                   options={[
                       "يصبح 5L",
                       "يزداد إلى الضعف",

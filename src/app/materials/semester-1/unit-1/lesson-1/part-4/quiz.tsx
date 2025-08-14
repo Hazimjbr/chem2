@@ -23,7 +23,7 @@ const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     const correctAnswerValue = question.options[question.correctAnswerIndex];
     
     // Create an array of indices to shuffle
-    const indices = [0, 1, 2, 3];
+    const indices = Array.from(Array(question.options.length).keys());
     // Shuffle the indices
     for (let i = indices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -259,5 +259,3 @@ export default function Quiz({ lessonContent }: QuizProps) {
     </Card>
   );
 }
-
-    
