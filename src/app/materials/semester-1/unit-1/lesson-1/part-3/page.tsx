@@ -113,8 +113,12 @@ export default function LessonPartPage() {
                   <div dir="ltr" className="text-center"><BlockMath math="P \cdot V = k" /></div>
                   <p>وهذا يعني أن حاصل ضرب الضغط في الحجم لكمية معينة من الغاز عند درجة حرارة ثابتة هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
                   <div dir="ltr" className="text-center"><BlockMath math="P_1V_1 = P_2V_2" /></div>
-                   <p className="text-sm text-muted-foreground" dir="rtl">
-                      حيث <InlineMath math="P_1, V_1" /> هما الضغط والحجم الابتدائيان، و <InlineMath math="P_2, V_2" /> هما الضغط والحجم النهائيان.
+                   <p className="text-sm text-muted-foreground">
+                      <span>حيث </span>
+                      <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="P_1, V_1" /></span>
+                      <span> هما الضغط والحجم الابتدائيان، و </span>
+                      <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="P_2, V_2" /></span>
+                      <span> هما الضغط والحجم النهائيان.</span>
                   </p>
               </div>
             </FlippableCard>
