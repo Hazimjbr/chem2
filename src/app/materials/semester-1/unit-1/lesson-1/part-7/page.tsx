@@ -154,11 +154,24 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <p className="text-sm">
-                            من أهم تطبيقات قانون أفوجادرو هو مفهوم **الحجم المولي**، وهو الحجم الذي يشغله <span dir="ltr">1 mol</span> من أي غاز في الظروف المعيارية (STP: 0°C و 1 atm).
+                                <span>من أهم تطبيقات قانون أفوجادرو هو مفهوم </span>
+                                <strong className="font-bold">الحجم المولي</strong>
+                                <span>، وهو الحجم الذي يشغله </span>
+                                <span dir="ltr" style={{display: "inline-block"}}>1 mol</span>
+                                <span> من أي غاز في الظروف المعيارية (</span>
+                                <span dir="ltr" style={{display: "inline-block"}}>STP: 0°C</span>
+                                <span> و </span>
+                                <span dir="ltr" style={{display: "inline-block"}}>1 atm</span>
+                                <span>).</span>
                             </p>
                             <div className="text-center bg-primary/10 p-4 rounded-lg">
-                                <p className="font-bold text-lg">حجم <span dir="ltr">1 mol</span> من أي غاز عند STP</p>
-                                <p className="text-4xl font-mono font-bold text-primary my-2">22.4 L</p>
+                                <p className="font-bold text-lg">
+                                    <span>حجم </span>
+                                    <span dir="ltr" style={{display: "inline-block"}}>1 mol</span>
+                                    <span> من أي غاز عند </span>
+                                    <span dir="ltr" style={{display: "inline-block"}}>STP</span>
+                                </p>
+                                <p className="text-4xl font-mono font-bold text-primary my-2" dir="ltr">22.4 L</p>
                             </div>
                         </CardContent>
                     </Card>
