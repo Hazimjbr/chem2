@@ -2,14 +2,15 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu, Pipette } from 'lucide-react';
+import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu, Pipette, LineChart } from 'lucide-react';
 import Quiz from './quiz';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
+import Diagram from './diagram';
 
 const lessonContent = `<p>يُعَدُّ هذا القانون من أهم قوانين الغازات، حيث يربط بين كمية الغاز (التي يصعب قياسها مباشرة) وحجمه (الذي يسهل قياسه). اكتشف هذا المبدأ العالم الإيطالي أميديو أفوجادرو.</p>`;
 
@@ -149,24 +150,16 @@ export default function LessonPartPage() {
                             <p className="font-bold text-lg">حجم 1 مول من أي غاز عند STP</p>
                             <p className="text-4xl font-mono font-bold text-primary my-2">22.4 L</p>
                         </div>
-                        <div className="flex justify-center items-center p-4">
-                            <svg width="250" height="200" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
-                                <defs>
-                                    <marker id="arrowhead-avogadro" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto">
-                                        <polygon points="0 0, 5 1.75, 0 3.5" fill="hsl(var(--muted-foreground))" />
-                                    </marker>
-                                </defs>
-                                <g transform="translate(0, -9)">
-                                    <line x1="20" y1="110" x2="20" y2="10" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowhead-avogadro)" />
-                                    <text x="10" y="15" dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">V</text>
-                                    
-                                    <line x1="20" y1="110" x2="140" y2="110" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowhead-avogadro)" />
-                                    <text x="140" y="120" dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">n</text>
-                                    
-                                    <line x1="20" y1="110" x2="120" y2="20" stroke="hsl(var(--primary))" strokeWidth="2.5" />
-                                </g>
-                            </svg>
-                        </div>
+                         <Card>
+                            <CardHeader>
+                                <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
+                                    <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل n)
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <Diagram />
+                            </CardContent>
+                        </Card>
                     </CardContent>
                 </Card>
             </div>
@@ -239,7 +232,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    
-
-    
