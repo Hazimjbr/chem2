@@ -107,7 +107,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                       <p className="mb-4">
-                        عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span> من الغاز عند نفس الظروف من الحرارة والضغط؟
+                          عينة من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span> تحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>. ما حجم العينة إذا أضيف إليها <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span> من الغاز عند نفس الظروف من الحرارة والضغط؟
                       </p>
                       <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <div>
@@ -153,11 +153,11 @@ export default function LessonPartPage() {
                             <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <p className="text-sm">
+                             <p className="text-sm">
                                 <span>من أهم تطبيقات قانون أفوجادرو هو مفهوم </span>
                                 <strong className="font-bold">الحجم المولي</strong>
                                 <span>، وهو الحجم الذي يشغله </span>
-                                <span dir="ltr" style={{display: "inline-block"}}>1 mol</span>
+                                <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{mol}" /></span>
                                 <span> من أي غاز في الظروف المعيارية (</span>
                                 <span dir="ltr" style={{display: "inline-block"}}>STP: 0°C</span>
                                 <span> و </span>
@@ -167,7 +167,7 @@ export default function LessonPartPage() {
                             <div className="text-center bg-primary/10 p-4 rounded-lg">
                                 <p className="font-bold text-lg">
                                     <span>حجم </span>
-                                    <span dir="ltr" style={{display: "inline-block"}}>1 mol</span>
+                                    <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{mol}" /></span>
                                     <span> من أي غاز عند </span>
                                     <span dir="ltr" style={{display: "inline-block"}}>STP</span>
                                 </p>
@@ -199,7 +199,15 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
-                  question="عينة من الغاز A حجمها 3.2 L تحتوي على 0.2 mol أضيف لها كمية من الغاز B ليصبح حجمها 4 L بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح:"
+                  question={<>
+                    <span>عينة من الغاز A حجمها</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
+                    <span>تحتوي على</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
+                    <span>أضيف لها كمية من الغاز B ليصبح حجمها</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
+                    <span>بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح:</span>
+                  </>}
                   options={[
                       "0.25",
                       "0.5",
