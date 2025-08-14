@@ -116,15 +116,15 @@ export default function LessonPartPage() {
                 cardTitle="العلاقة الرياضية"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
-               <div className="space-y-4" dir="ltr">
-                  <p className="text-right">يمكن التعبير عن العلاقة الطردية بين الضغط (P) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
-                  <div className="text-left"><BlockMath math="P \propto T" /></div>
-                  <p className="text-right">لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
-                  <div className="text-left"><BlockMath math="\frac{P}{T} = k" /></div>
-                  <p className="text-right">وهذا يعني أن حاصل قسمة الضغط على درجة الحرارة المطلقة لكمية معينة من الغاز عند حجم ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
-                  <div className="text-left"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
-                  <p className="text-sm text-muted-foreground" dir="rtl">
-                      حيث <InlineMath math="P_1, T_1" /> هما الضغط والحرارة الابتدائيان، و <InlineMath math="P_2, T_2" /> هما الضغط والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن (K)**.
+               <div className="space-y-4">
+                  <p>يمكن التعبير عن العلاقة الطردية بين الضغط (P) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="P \propto T" /></div>
+                  <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{P}{T} = k" /></div>
+                  <p>وهذا يعني أن حاصل قسمة الضغط على درجة الحرارة المطلقة لكمية معينة من الغاز عند حجم ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
+                  <p className="text-sm text-muted-foreground">
+                      حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>**.
                   </p>
               </div>
             </FlippableCard>
