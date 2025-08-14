@@ -102,60 +102,56 @@ export default function LessonPartPage() {
                 </FlippableCard>
             </div>
             
-            <Card>
+             <Card>
                 <CardHeader>
                     <CardTitle>مثال محلول</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="flex flex-col md:flex-row gap-6">
-                        <div className="w-full md:w-1/2">
-                            <p className="mb-4">
-                                <span>عينة من غاز النيتروجين (</span>
-                                <span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>
-                                <span>) حجمها </span>
-                                <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span>
-                                <span> تحتوي على </span>
-                                <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
-                                <span>. ما حجم العينة إذا أضيف إليها </span>
-                                <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
-                                <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
-                            </p>
+                    <p className="mb-4">
+                        <span>عينة من غاز النيتروجين (</span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>
+                        <span>) حجمها </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span>
+                        <span> تحتوي على </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
+                        <span>. ما حجم العينة إذا أضيف إليها </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
+                        <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
+                    </p>
+                    <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                        <div>
+                            <p><strong className="text-accent">المعطيات:</strong></p>
+                            <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
+                                <p><InlineMath math="V_1 = 5.0L" /></p>
+                                <p><InlineMath math="V_2 = ?" /></p>
+                                <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
+                                <p><InlineMath math="n_2 = ?" /></p>
+                            </div>
                         </div>
-                        <div className="w-full md:w-1/2 bg-muted/50 p-4 rounded-lg space-y-3">
-                            <div>
-                                <p><strong className="text-accent">المعطيات:</strong></p>
-                                <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
-                                    <p><InlineMath math="V_1 = 5.0L" /></p>
-                                    <p><InlineMath math="V_2 = ?" /></p>
-                                    <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
-                                    <p><InlineMath math="n_2 = ?" /></p>
-                                </div>
-                            </div>
-                            <div>
-                                <p><strong className="text-accent">الحل:</strong></p>
-                                <ol className="list-decimal mr-6 text-sm space-y-2">
-                                    <li>
-                                        <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>).</span>
-                                        <div className="overflow-x-auto text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
-                                    </li>
-                                    <li>
-                                        <span>نكتب قانون أفوجادرو.</span>
-                                        <div className="overflow-x-auto text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
-                                    </li>
-                                    <li>
-                                        <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span><span>.</span>
-                                        <div className="overflow-x-auto text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
-                                    </li>
-                                    <li>
-                                        <span>نعوض القيم.</span>
-                                        <div className="overflow-x-auto text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
-                                    </li>
-                                    <li>
-                                        <span>نحسب الناتج.</span>
-                                        <div className="overflow-x-auto text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
-                                    </li>
-                                </ol>
-                            </div>
+                        <div>
+                            <p><strong className="text-accent">الحل:</strong></p>
+                            <ol className="list-decimal mr-6 text-sm space-y-2">
+                                <li>
+                                    <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>).</span>
+                                    <BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" />
+                                </li>
+                                <li>
+                                    <span>نكتب قانون أفوجادرو.</span>
+                                    <BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" />
+                                </li>
+                                <li>
+                                    <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span><span>.</span>
+                                    <BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" />
+                                </li>
+                                <li>
+                                    <span>نعوض القيم.</span>
+                                    <BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" />
+                                </li>
+                                <li>
+                                    <span>نحسب الناتج.</span>
+                                    <BlockMath math="V_2 = 7.5\text{L}" />
+                                </li>
+                            </ol>
                         </div>
                     </div>
                 </CardContent>
@@ -167,7 +163,7 @@ export default function LessonPartPage() {
                         <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        <p className="text-sm">
+                       <p className="text-sm">
                             <span>من أهم تطبيقات قانون أفوجادرو هو مفهوم </span>
                             <strong className="font-bold">الحجم المولي</strong>
                             <span>، وهو الحجم الذي يشغله </span>
