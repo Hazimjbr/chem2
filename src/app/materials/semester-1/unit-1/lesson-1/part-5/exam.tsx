@@ -111,7 +111,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                عينة من غاز ضغطها <span dir="ltr">W</span> عند درجة حرارة <span dir="ltr">35°C</span> فإن درجة حرارتها بوحدة <span dir="ltr">°C</span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي:
+                عينة من غاز ضغطها <span dir="ltr"><InlineMath math="W" /></span> عند درجة حرارة <span dir="ltr"><InlineMath math="35^\circ\text{C}" /></span> فإن درجة حرارتها بوحدة <span dir="ltr"><InlineMath math="^\circ\text{C}" /></span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي:
             </>
         ),
         "options": [
@@ -126,7 +126,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                غاز ضغطه <span dir="ltr">700mmHg</span> عند درجة حرارة غير معروفة. تم تسخينه إلى <span dir="ltr">150°C</span> فأصبح ضغطه <span dir="ltr">900mmHg</span>. ما كانت درجة الحرارة الابتدائية بالسيليزيوس؟
+                غاز ضغطه <span dir="ltr"><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة. تم تسخينه إلى <span dir="ltr"><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr"><InlineMath math="900\text{mmHg}" /></span>. ما كانت درجة الحرارة الابتدائية بالسيليزيوس؟
             </>
         ),
         "options": [
@@ -181,7 +181,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr">298K</span> وضغط <span dir="ltr">101.3kPa</span>. إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr">596K</span>، فما هو الضغط الجديد؟
+                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr"><InlineMath math="298\text{K}" /></span> وضغط <span dir="ltr"><InlineMath math="101.3\text{kPa}" /></span>. إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr"><InlineMath math="596\text{K}" /></span>، فما هو الضغط الجديد؟
             </>
         ),
         "options": [
@@ -196,7 +196,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من <span dir="ltr">273K</span> إلى <span dir="ltr">546K</span>، ماذا تلاحظ على قيمة الضغط؟
+                في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من <span dir="ltr"><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr"><InlineMath math="546\text{K}" /></span>، ماذا تلاحظ على قيمة الضغط؟
             </>
         ),
         "options": [
