@@ -129,41 +129,43 @@ export default function LessonPartPage() {
               </div>
             </FlippableCard>
             
-            <div className="grid md:grid-cols-2 gap-6 items-start">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>مثال محلول</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="mb-4">
-                        علبة من بخاخ الشعر ضغطها <InlineMath math="1.5\text{atm}" /> عند درجة حرارة <InlineMath math="25^\circ\text{C}" />. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى <InlineMath math="400^\circ\text{C}" />، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
-                        </p>
-                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                            <p><strong className="text-accent">المعطيات</strong></p>
-                            <div className="flex justify-between items-center"><span className="font-semibold">الضغط الابتدائي</span> <span dir="ltr"><InlineMath math="P_1 = 1.5\text{atm}" /></span></div>
-                            <div className="flex justify-between items-center"><span className="font-semibold">الحرارة الابتدائية</span> <span dir="ltr"><InlineMath math="T_1 = 25^\circ\text{C}" /></span></div>
-                            <div className="flex justify-between items-center"><span className="font-semibold">الحرارة النهائية</span> <span dir="ltr"><InlineMath math="T_2 = 400^\circ\text{C}" /></span></div>
-                           
-                            <p><strong className="text-accent">المطلوب</strong> الضغط الجديد <InlineMath math="P_2" /></p>
-                            <p><strong className="text-accent">الحل</strong></p>
-                            <ol className="list-decimal mr-6 text-sm space-y-2">
-                                <li>نحول درجات الحرارة إلى كلفن.
-                                    <div className="text-left" dir="ltr"><BlockMath math="T_1(K) = 25 + 273 = 298\text{K}" /></div>
-                                    <div className="text-left" dir="ltr"><BlockMath math="T_2(K) = 400 + 273 = 673\text{K}" /></div>
-                                </li>
-                                <li>نكتب قانون جاي-لوساك<div className="text-left" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div></li>
-                                <li>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" /><div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{P_1 T_2}{T_1}" /></div></li>
-                                <li>نعوض القيم <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{(1.5\text{atm}) \cdot (673\text{K})}{298\text{K}}" /></div></li>
-                                <li>نحسب الناتج <div className="text-left" dir="ltr"><BlockMath math="P_2 \approx 3.39\text{atm}" /></div></li>
-                            </ol>
-                            <div className="border-t pt-3">
-                                <p className="text-sm font-semibold">
-                                الجواب: الضغط الجديد داخل العلبة هو <InlineMath math="3.39\text{atm}" />. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
-                                </p>
-                            </div>
+            <Card>
+                <CardHeader>
+                    <CardTitle>مثال محلول</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="mb-4">
+                        علبة من بخاخ الشعر ضغطها <span dir="ltr"><InlineMath math="1.5\\, \text{atm}" /></span> عند درجة حرارة <span dir="ltr"><InlineMath math="25^\circ\text{C}" /></span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى <span dir="ltr"><InlineMath math="400^\circ\text{C}" /></span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
+                    </p>
+                    <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                        <p><strong className="text-accent">المعطيات</strong></p>
+                        <div className='grid grid-cols-2 gap-x-4' dir="ltr">
+                            <p><InlineMath math="P_1 = 1.5\\, \text{atm}" /></p>
+                            <p><InlineMath math="P_2 = ?" /></p>
+                            <p><InlineMath math="V_1 = 2.0\text{L}" /></p>
+                            <p><InlineMath math="V_2 = 1.0\text{L}" /></p>
+                            <p><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                             <p><InlineMath math="T_2 = 400^\circ\text{C}" /></p>
                         </div>
-                    </CardContent>
-                </Card>
+                        <p><strong className="text-accent">الحل</strong></p>
+                        <ol className="list-decimal mr-6 text-sm space-y-2">
+                            <li>نحول درجات الحرارة إلى كلفن.
+                                <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\\, \text{K}" /></div>
+                                <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 400 + 273 = 673\\, \text{K}" /></div>
+                            </li>
+                            <li>نكتب قانون جاي-لوساك<div className="text-left" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div></li>
+                            <li>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" /><div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{P_1 T_2}{T_1}" /></div></li>
+                            <li>نعوض القيم <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{(1.5\\, \text{atm}) \cdot (673\\, \text{K})}{298\\, \text{K}}" /></div></li>
+                            <li>نحسب الناتج <div className="text-left" dir="ltr"><BlockMath math="P_2 \approx 3.39\\, \text{atm}" /></div></li>
+                        </ol>
+                        <div className="border-t pt-3">
+                            <p className="text-sm font-semibold">
+                            الجواب: الضغط الجديد داخل العلبة هو <span dir="ltr"><InlineMath math="3.39\\, \text{atm}" /></span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
+                            </p>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
                  <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (P مقابل T)</CardTitle>
@@ -191,7 +193,7 @@ export default function LessonPartPage() {
                         </div>
                     </CardContent>
                 </Card>
-            </div>
+            
         </div>
         
         <div className="space-y-4">
@@ -260,3 +262,4 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
