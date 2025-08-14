@@ -149,31 +149,47 @@ export default function LessonPartPage() {
                         <CardTitle>مثال محلول</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="mb-4">
-                        إذا كان حجم بالون <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2.5\text{L}" /></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span>، فما هو حجمه الجديد إذا سخن إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="55^\circ\text{C}" /></span> مع بقاء الضغط ثابتًا؟
-                        </p>
+                        <div className="mb-4">
+                            <p>
+                                إذا كان حجم بالون <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="2.5\text{L}" /></span> عند درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="25^\circ\text{C}" /></span>، فما هو حجمه الجديد إذا سخن إلى <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="55^\circ\text{C}" /></span> مع بقاء الضغط ثابتًا؟
+                            </p>
+                        </div>
                         <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                             <p><strong className="text-accent">المعطيات</strong></p>
-                            <div className="space-y-1">
-                                <div className="flex justify-between items-center"><span className="font-semibold">الحجم الابتدائي</span> <span dir="ltr"><InlineMath math="V_1 = 2.5\text{L}" /></span></div>
-                                <div className="flex justify-between items-center"><span className="font-semibold">الحرارة الابتدائية</span> <span dir="ltr"><InlineMath math="T_1 = 25^\circ\text{C}" /></span></div>
-                                <div className="flex justify-between items-center"><span className="font-semibold">الحرارة النهائية</span> <span dir="ltr"><InlineMath math="T_2 = 55^\circ\text{C}" /></span></div>
+                            <div className='grid grid-cols-2 gap-x-4' dir="ltr">
+                                <p><InlineMath math="V_1 = 2.5\text{L}" /></p>
+                                <p><InlineMath math="V_2 = ?" /></p>
+                                <p><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                                <p><InlineMath math="T_2 = 55^\circ\text{C}" /></p>
                             </div>
-                            <p><strong className="text-accent">المطلوب</strong> الحجم الجديد <InlineMath math="V_2" /></p>
+                            <p><strong className="text-accent">المطلوب:</strong> حساب الحجم الجديد <span dir="ltr">(<InlineMath math="V_2" />)</span>.</p>
                             <p><strong className="text-accent">الحل</strong></p>
                             <ol className="list-decimal mr-6 text-sm space-y-2">
-                                <li>**الخطوة الأولى والأهم** نحول درجات الحرارة إلى كلفن.
+                                <li>
+                                    <span>**الخطوة الأولى والأهم:** نحول درجات الحرارة إلى كلفن.</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{K}" /></div>
                                     <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 55 + 273 = 328\text{K}" /></div>
                                 </li>
-                                <li>نكتب قانون شارل <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div></li>
-                                <li>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" /> <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 T_2}{T_1}" /></div></li>
-                                <li>نعوض القيم <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(2.5\text{L}) \cdot (328\text{K})}{298\text{K}}" /></div></li>
-                                <li>نحسب الناتج <div className="text-left" dir="ltr"><BlockMath math="V_2 \approx 2.75\text{L}" /></div></li>
+                                <li>
+                                    <span>نكتب قانون شارل.</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
+                                </li>
+                                <li>
+                                    <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 T_2}{T_1}" /></div>
+                                </li>
+                                <li>
+                                    <span>نعوض القيم.</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(2.5\text{L}) \cdot (328\text{K})}{298\text{K}}" /></div>
+                                </li>
+                                <li>
+                                    <span>نحسب الناتج.</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 \approx 2.75\text{L}" /></div>
+                                </li>
                             </ol>
                             <div className="border-t pt-3">
                                 <p className="text-sm font-semibold">
-                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2.75\text{L}" /></span>. وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم.
+                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="\approx 2.75\text{L}" /></span>. وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم.
                                 </p>
                             </div>
                         </div>
