@@ -138,30 +138,32 @@ export default function LessonPartPage() {
                         </div>
                     </CardContent>
                 </Card>
-                 <Card>
-                    <CardHeader>
-                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                        <p className="text-sm">
-                        من أهم تطبيقات قانون أفوجادرو هو مفهوم **الحجم المولي**، وهو الحجم الذي يشغله مول واحد من أي غاز في الظروف المعيارية (STP: 0°C و 1 atm).
-                        </p>
-                        <div className="text-center bg-primary/10 p-4 rounded-lg">
-                            <p className="font-bold text-lg">حجم 1 مول من أي غاز عند STP</p>
-                            <p className="text-4xl font-mono font-bold text-primary my-2">22.4 L</p>
-                        </div>
-                         <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
-                                    <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل n)
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Diagram />
-                            </CardContent>
-                        </Card>
-                    </CardContent>
-                </Card>
+                <div className="space-y-6">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <p className="text-sm">
+                            من أهم تطبيقات قانون أفوجادرو هو مفهوم **الحجم المولي**، وهو الحجم الذي يشغله مول واحد من أي غاز في الظروف المعيارية (STP: 0°C و 1 atm).
+                            </p>
+                            <div className="text-center bg-primary/10 p-4 rounded-lg">
+                                <p className="font-bold text-lg">حجم 1 مول من أي غاز عند STP</p>
+                                <p className="text-4xl font-mono font-bold text-primary my-2">22.4 L</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
+                                <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل n)
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <Diagram />
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
         </div>
         
