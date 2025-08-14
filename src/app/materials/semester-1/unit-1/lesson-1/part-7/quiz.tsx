@@ -75,7 +75,7 @@ export default function Quiz({ lessonContent }: QuizProps) {
             generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
         } else {
             const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz;
+            generatedQuestions = result.quiz.map(q => ({...q, question: q.question}));
         }
 
         setQuiz(generatedQuestions);
@@ -201,7 +201,7 @@ export default function Quiz({ lessonContent }: QuizProps) {
         <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
       </CardHeader>
       <CardContent className="space-y-6">
-        <p className="text-lg font-semibold pt-2">{currentQuestion.question}</p>
+        <div className="text-lg font-semibold pt-2">{currentQuestion.question}</div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {currentQuestion.options.map((option, index) => {
