@@ -69,7 +69,7 @@ export default function LessonPartPage() {
 
         <div className="space-y-8">
 
-            <div className="grid md:grid-cols-2 gap-6">
+             <div className="grid md:grid-cols-2 gap-6">
                 <FlippableCard
                     cardTitle="نص قانون أفوجادرو"
                     cardIcon={<BookCopy className="h-6 w-6" />}
@@ -90,17 +90,17 @@ export default function LessonPartPage() {
                 >
                 <div className="space-y-4">
                     <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي:</p>
-                    <div dir="ltr" className="text-left"><BlockMath math="V \propto n" /></div>
+                    <div className="text-left" dir="ltr"><BlockMath math="V \propto n" /></div>
                     <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
-                    <div dir="ltr" className="text-left"><BlockMath math="\frac{V}{n} = k" /></div>
+                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V}{n} = k" /></div>
                     <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
-                    <div dir="ltr" className="text-left"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
+                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
                     <p className="text-sm text-muted-foreground">
                         <span>حيث </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="V_1, n_1" /></span>
                         <span> هما الحجم وعدد المولات الابتدائيان، و </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="V_2, n_2" /></span>
-                        <span> هما الحجم وعدد المولات النهائيان.</span>
+                        <span> هما الحجم وعدد المولات النهائيان</span>
                     </p>
                 </div>
                 </FlippableCard>
@@ -136,23 +136,23 @@ export default function LessonPartPage() {
                             <p><strong className="text-accent">الحل:</strong></p>
                             <ol className="list-decimal mr-6 text-sm space-y-2">
                                 <li>
-                                    <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>).</span>
+                                    <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>)</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
                                 </li>
                                 <li>
-                                    <span>نكتب قانون أفوجادرو.</span>
+                                    <span>نكتب قانون أفوجادرو</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
                                 </li>
                                 <li>
-                                    <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span><span>.</span>
+                                    <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
                                 </li>
                                 <li>
-                                    <span>نعوض القيم.</span>
+                                    <span>نعوض القيم</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
                                 </li>
                                 <li>
-                                    <span>نحسب الناتج.</span>
+                                    <span>نحسب الناتج</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
                                 </li>
                             </ol>
@@ -176,7 +176,7 @@ export default function LessonPartPage() {
                             <span dir="ltr" style={{display: "inline-block"}}>STP: 0°C</span>
                             <span> و </span>
                             <span dir="ltr" style={{display: "inline-block"}}>1 atm</span>
-                            <span>).</span>
+                            <span>)</span>
                         </p>
                         <div className="text-center bg-primary/10 p-4 rounded-lg">
                             <p className="font-bold text-lg">
@@ -215,11 +215,11 @@ export default function LessonPartPage() {
                   question={<>
                     <span>عينة من الغاز A حجمها</span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
-                    <span>تحتوي على</span>
+                    <span> تحتوي على </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
-                    <span>أضيف لها كمية من الغاز B ليصبح حجمها</span>
+                    <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
-                    <span>بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح:</span>
+                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح:</span>
                   </>}
                   options={[
                       "0.25",
@@ -234,11 +234,11 @@ export default function LessonPartPage() {
                   question={<>
                     <span>عينة من الغاز A حجمها</span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
-                    <span>تحتوي على</span>
+                    <span> تحتوي على </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
-                    <span>أضيف لها كمية من الغاز B ليصبح حجمها</span>
+                    <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
-                    <span>بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي:</span>
+                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي:</span>
                   </>}
                   options={[
                       "0.25",
@@ -285,3 +285,4 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
