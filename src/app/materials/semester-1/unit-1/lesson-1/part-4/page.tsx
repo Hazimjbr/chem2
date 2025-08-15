@@ -119,9 +119,9 @@ export default function LessonPartPage() {
             >
                  <div className="space-y-3">
                     <blockquote className="border-r-4 border-primary pr-4">
-                        "يتناسب حجم كمية محددة من الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات ضغطه."
+                        "يتناسب حجم كمية محددة من الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات ضغطه"
                     </blockquote>
-                    <p className="text-sm text-muted-foreground mt-2">بعبارة أخرى: كلما زادت درجة حرارة الغاز، زاد حجمه، والعكس صحيح.</p>
+                    <p className="text-sm text-muted-foreground mt-2">بعبارة أخرى: كلما زادت درجة حرارة الغاز، زاد حجمه، والعكس صحيح</p>
                 </div>
             </FlippableCard>
 
@@ -137,7 +137,7 @@ export default function LessonPartPage() {
                   <p>وهذا يعني أن حاصل قسمة الحجم على درجة الحرارة المطلقة لكمية معينة من الغاز عند ضغط ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
                   <div dir="ltr" className="text-left"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
                   <p className="text-sm text-muted-foreground" dir="rtl">
-                      حيث <span dir="ltr">(<InlineMath math="V_1, T_1" />)</span> هما الحجم والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="V_2, T_2" />)</span> هما الحجم والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>**.
+                      حيث <span dir="ltr">(<InlineMath math="V_1, T_1" />)</span> هما الحجم والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="V_2, T_2" />)</span> هما الحجم والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>**
                   </p>
                 </div>
             </FlippableCard>
@@ -157,39 +157,39 @@ export default function LessonPartPage() {
                         <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                             <p><strong className="text-accent">المعطيات</strong></p>
                             <div className='grid grid-cols-2 gap-x-4' dir="ltr">
-                                <p><InlineMath math="V_1 = 2.5\text{L}" /></p>
-                                <p><InlineMath math="V_2 = ?" /></p>
-                                <p><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
-                                <p><InlineMath math="T_2 = 55^\circ\text{C}" /></p>
+                                <p className="text-left"><InlineMath math="V_1 = 2.5\text{L}" /></p>
+                                <p className="text-left"><InlineMath math="V_2 = ?" /></p>
+                                <p className="text-left"><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                                <p className="text-left"><InlineMath math="T_2 = 55^\circ\text{C}" /></p>
                             </div>
-                            <p><strong className="text-accent">المطلوب:</strong> حساب الحجم الجديد <span dir="ltr">(<InlineMath math="V_2" />)</span>.</p>
+                            <p><span className="font-bold text-accent">المطلوب:</span> حساب الحجم الجديد <span dir="ltr">(<InlineMath math="V_2" />)</span></p>
                             <p><strong className="text-accent">الحل</strong></p>
                             <ol className="list-decimal mr-6 text-sm space-y-2">
                                 <li>
-                                    <span>**الخطوة الأولى والأهم:** نحول درجات الحرارة إلى كلفن.</span>
+                                    <span>**الخطوة الأولى والأهم:** نحول درجات الحرارة إلى كلفن</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{K}" /></div>
                                     <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 55 + 273 = 328\text{K}" /></div>
                                 </li>
                                 <li>
-                                    <span>نكتب قانون شارل.</span>
+                                    <span>نكتب قانون شارل</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
                                 </li>
                                 <li>
-                                    <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.</span>
+                                    <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" /></span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 T_2}{T_1}" /></div>
                                 </li>
                                 <li>
-                                    <span>نعوض القيم.</span>
+                                    <span>نعوض القيم</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(2.5\text{L}) \cdot (328\text{K})}{298\text{K}}" /></div>
                                 </li>
                                 <li>
-                                    <span>نحسب الناتج.</span>
+                                    <span>نحسب الناتج</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 \approx 2.75\text{L}" /></div>
                                 </li>
                             </ol>
                             <div className="border-t pt-3">
                                 <p className="text-sm font-semibold">
-                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="\approx 2.75\text{L}" /></span>. وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم.
+                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="\approx 2.75\text{L}" /></span> وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم
                                 </p>
                             </div>
                         </div>
@@ -204,7 +204,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                     <p className="text-xs text-muted-foreground text-center mb-2">
-                        يمثل الخط المستقيم العلاقة الطردية بين الحجم ودرجة الحرارة المطلقة.
+                        يمثل الخط المستقيم العلاقة الطردية بين الحجم ودرجة الحرارة المطلقة
                     </p>
                     <div className="flex justify-center items-center p-4">
                         <svg width="250" height="200" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
