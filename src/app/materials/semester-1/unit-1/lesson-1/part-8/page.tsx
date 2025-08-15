@@ -63,6 +63,17 @@ export default function LessonPartPage() {
         />
 
         <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        بعد أن درسنا كل متغير من متغيرات الغازات على حدة، يجمع قانون الغاز المثالي بين القوانين السابقة في علاقة واحدة شاملة، تربط بين الحجم (V) والضغط (P) ودرجة الحرارة (T) وعدد المولات (n). هذا القانون هو حجر الزاوية في كيمياء الغازات، حيث يسمح بحساب أي متغير من المتغيرات الأربعة إذا عُرفت المتغيرات الثلاثة الأخرى.
+                    </p>
+                </CardContent>
+            </Card>
+
              <FlippableCard
                 cardTitle="قانون الغاز المثالي"
                 cardIcon={<BookCopy className="h-6 w-6" />}
