@@ -97,7 +97,7 @@ export default function LessonPartPage() {
                     >
                         <div className="space-y-3">
                             <blockquote className="border-r-4 border-primary pr-4">
-                                "يتناسب ضغط الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات الحجم."
+                                "يتناسب ضغط الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات الحجم"
                             </blockquote>
                         </div>
                     </FlippableCard>
@@ -108,7 +108,7 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent>
                             <p>
-                            عند زيادة درجة حرارة جسيمات الغاز المحصور في وعاء ثابت الحجم، يزداد متوسط الطاقة الحركية للجزيئات، فتزداد سرعتها وقوة تصادماتها مع جدران الوعاء، مما يؤدي إلى زيادة الضغط.
+                            عند زيادة درجة حرارة جسيمات الغاز المحصور في وعاء ثابت الحجم، يزداد متوسط الطاقة الحركية للجزيئات، فتزداد سرعتها وقوة تصادماتها مع جدران الوعاء، مما يؤدي إلى زيادة الضغط
                             </p>
                         </CardContent>
                     </Card>
@@ -116,7 +116,7 @@ export default function LessonPartPage() {
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2"><Box className="h-6 w-6 text-primary" /> محاكاة التجربة</CardTitle>
-                        <CardDescription>تحكم في درجة الحرارة ولاحظ تأثيرها على الضغط داخل الوعاء.</CardDescription>
+                        <CardDescription>تحكم في درجة الحرارة ولاحظ تأثيرها على الضغط داخل الوعاء</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Diagram />
@@ -135,7 +135,7 @@ export default function LessonPartPage() {
                   <p>وهذا يعني أن حاصل قسمة الضغط على درجة الحرارة المطلقة لكمية معينة من الغاز عند حجم ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
                   <div className="text-center" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
                    <p className="text-sm text-muted-foreground">
-                      حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان. <strong>يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span></strong>
+                      حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان <strong>يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span></strong>
                   </p>
               </div>
             </FlippableCard>
@@ -146,7 +146,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!)</span>
+                        <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span> إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا)</span>
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <p><strong className="text-accent">المعطيات</strong></p>
@@ -194,7 +194,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-xs text-muted-foreground text-center mb-2">
-                            يمثل الخط المستقيم العلاقة الطردية بين الضغط ودرجة الحرارة المطلقة.
+                            يمثل الخط المستقيم العلاقة الطردية بين الضغط ودرجة الحرارة المطلقة
                         </p>
                         <div className="flex justify-center items-center p-4">
                            <svg width="250" height="200" viewBox="0 0 150 125" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
@@ -223,7 +223,7 @@ export default function LessonPartPage() {
             <Lightbulb className="h-7 w-7 text-yellow-400" />
             <div>
               <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -265,7 +265,7 @@ export default function LessonPartPage() {
           <CardHeader>
               <CardTitle>اختبر فهمك</CardTitle>
               <CardDescription>
-                  بعد أن تعرفت على قانون جاي-لوساك، اختبر فهمك له من خلال هذا الاختبار القصير.
+                  بعد أن تعرفت على قانون جاي-لوساك، اختبر فهمك له من خلال هذا الاختبار القصير
               </CardDescription>
           </CardHeader>
           <CardContent>
