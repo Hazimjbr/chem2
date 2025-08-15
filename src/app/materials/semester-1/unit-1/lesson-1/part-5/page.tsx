@@ -80,6 +80,17 @@ export default function LessonPartPage() {
         <div className="space-y-8">
              <div className="grid md:grid-cols-2 gap-8 items-start">
                 <div className="space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                            بنى العالم جاي-لوساك على أعمال شارل، لكنه ركز على ما يحدث للضغط عندما لا يُسمح للحجم بالتغير. لاحظ أن تسخين غاز في وعاء مغلق (صلب) يزيد من ضغطه بشكل ملحوظ، وهذا ما نراه في إطارات السيارات التي يزداد ضغطها في الأيام الحارة.
+                            </p>
+                        </CardContent>
+                    </Card>
+
                      <FlippableCard
                         cardTitle="نص قانون جاي-لوساك"
                         cardIcon={<GitCompare className="h-6 w-6" />}
@@ -138,14 +149,14 @@ export default function LessonPartPage() {
                         <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!)</span>
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                        <p className="font-bold text-accent">المعطيات:</p>
+                        <p><strong className="text-accent">المعطيات</strong></p>
                         <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
-                            <p><InlineMath math="P_1 = 1.5\text{ atm}" /></p>
-                            <p><InlineMath math="P_2 = ?" /></p>
-                            <p><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
-                            <p><InlineMath math="T_2 = 400^\circ\text{C}" /></p>
+                            <p className="text-left"><InlineMath math="P_1 = 1.5\text{ atm}" /></p>
+                            <p className="text-left"><InlineMath math="P_2 = ?" /></p>
+                            <p className="text-left"><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                            <p className="text-left"><InlineMath math="T_2 = 400^\circ\text{C}" /></p>
                         </div>
-                        <p className="font-bold text-accent">الحل:</p>
+                        <p><strong className="text-accent">الحل</strong></p>
                         <ol className="list-decimal mr-6 text-sm space-y-2">
                             <li>
                                 <span>نحول درجات الحرارة إلى كلفن</span>
@@ -171,7 +182,7 @@ export default function LessonPartPage() {
                         </ol>
                         <div className="border-t pt-3">
                             <p className="text-sm font-semibold">
-                            <span>الجواب: الضغط الجديد داخل العلبة هو</span><span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span><span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.</span>
+                            <span>الجواب: الضغط الجديد داخل العلبة هو</span><span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span><span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة</span>
                             </p>
                         </div>
                     </div>
@@ -229,7 +240,7 @@ export default function LessonPartPage() {
                       "2.4"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="T₁=200+273=473K. T₂= (200+100)+273=573K. P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm."
+                  explanation="T₁=200+273=473K. T₂= (200+100)+273=573K. P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm"
               />
                <InteractiveQuestionCard 
                   question={(
@@ -244,7 +255,7 @@ export default function LessonPartPage() {
                       "455"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="أولاً نوحد الضغط. P₁(atm) = 900/760 ≈ 1.184atm. P₂(atm) = 200/101.3 ≈ 1.974atm. T₁=273K. T₂ = T₁P₂/P₁ = (273*1.974)/1.184 ≈ 455K. نحول إلى سيليزيوس: 455-273 = 182°C."
+                  explanation="أولاً نوحد الضغط. P₁(atm) = 900/760 ≈ 1.184atm. P₂(atm) = 200/101.3 ≈ 1.974atm. T₁=273K. T₂ = T₁P₂/P₁ = (273*1.974)/1.184 ≈ 455K. نحول إلى سيليزيوس: 455-273 = 182°C"
               />
           </div>
         </div>
