@@ -182,7 +182,7 @@ export default function LessonPartPage() {
                         </ol>
                         <div className="border-t pt-3">
                             <p className="text-sm font-semibold">
-                            <span>الجواب: الضغط الجديد داخل العلبة هو</span><span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span><span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة</span>
+                            <span>الجواب: الضغط الجديد داخل العلبة هو</span><span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span><span> الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة</span>
                             </p>
                         </div>
                     </div>
