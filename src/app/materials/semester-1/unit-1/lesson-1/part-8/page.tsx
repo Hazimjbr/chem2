@@ -111,24 +111,24 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   question={<><span>عينة من غاز تحتوي </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2\text{mol}"/></span><span> حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2000\text{ml}"/></span><span> حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20^\circ\text{C}"/></span><span> فإن ضغطها يساوي:</span></>}
                   options={[
-                      "24 atm",
-                      "96 atm",
-                      "2433 atm",
-                      "1.62 atm"
+                      "24atm",
+                      "96atm",
+                      "2433atm",
+                      "1.62atm"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="V=2L, T=293K, n=2mol. P = nRT/V = (2 * 0.082 * 293) / 2 ≈ 24 atm"
+                  explanation="V=2L, T=293K, n=2mol. P = nRT/V = (2 * 0.082 * 293) / 2 ≈ 24atm"
               />
                <InteractiveQuestionCard 
                   question={<><span>عينة من غاز الهيليوم كتلتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20\text{g}"/></span><span> حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="3\text{L}"/></span><span> حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ\text{C}"/></span><span> فإن ضغطها يساوي:</span></>}
                   options={[
-                      "41 atm",
-                      "20.5 atm",
-                      "3.7 atm",
-                      "82 atm"
+                      "41atm",
+                      "20.5atm",
+                      "3.7atm",
+                      "82atm"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="Mr(He)=4g/mol. n=m/Mr=20/4=5mol. V=3L, T=300K. P = nRT/V = (5 * 0.082 * 300) / 3 = 41 atm"
+                  explanation="Mr(He)=4g/mol. n=m/Mr=20/4=5mol. V=3L, T=300K. P = nRT/V = (5 * 0.082 * 300) / 3 = 41atm"
               />
           </div>
         </div>
