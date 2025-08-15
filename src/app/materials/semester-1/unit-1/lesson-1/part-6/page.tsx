@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -109,26 +110,26 @@ export default function LessonPartPage() {
                         </div>
                         <p><strong className="text-accent">الحل</strong></p>
                         <ol className="list-decimal mr-6 text-sm space-y-2">
-                            <li>نحول درجات الحرارة إلى كلفن.
+                            <li>نحول درجات الحرارة إلى كلفن
                                 <div className="text-left" dir="ltr"><BlockMath math="T_1(K) = 27 + 273 = 300\text{K}" /></div>
                                 <div className="text-left" dir="ltr"><BlockMath math="T_2(K) = 127 + 273 = 400\text{K}" /></div>
                             </li>
-                            <li>نكتب القانون الجامع للغازات.
+                            <li>نكتب القانون الجامع للغازات
                                 <div className="text-left" dir="ltr"><BlockMath math="\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}" /></div>
                             </li>
-                            <li>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" />.
+                            <li>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" />
                                 <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{P_1V_1T_2}{T_1V_2}" /></div>
                             </li>
-                            <li>نعوض القيم.
+                            <li>نعوض القيم
                                 <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{(1.5\text{atm}) \cdot (2.0\text{L}) \cdot (400\text{K})}{(300\text{K}) \cdot (1.0\text{L})}" /></div>
                             </li>
-                            <li>نحسب الناتج.
+                            <li>نحسب الناتج
                                 <div className="text-left" dir="ltr"><BlockMath math="P_2 = 4.0\text{atm}" /></div>
                             </li>
                         </ol>
                         <div className="border-t pt-3">
                             <p className="text-sm font-semibold">
-                            الجواب: الضغط الجديد للغاز هو <InlineMath math="4.0\text{atm}" />.
+                            الجواب: الضغط الجديد للغاز هو <InlineMath math="4.0\text{atm}" />
                             </p>
                         </div>
                     </div>
