@@ -60,6 +60,19 @@ export default function LessonPartPage() {
         />
 
         <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        في الدروس السابقة، درسنا تأثير كل متغيرين على بعضهما مع تثبيت المتغيرات الأخرى: قانون بويل (العلاقة بين الضغط والحجم)، قانون شارل (العلاقة بين الحجم والحرارة)، وقانون جاي-لوساك (العلاقة بين الضغط والحرارة)
+                    </p>
+                    <p className="mt-2">
+                        لكن في الواقع، نادرًا ما يبقى متغير واحد فقط ثابتًا فالقانون الجامع للغازات هو الأداة العملية التي تسمح لنا بوصف ما يحدث للغاز عندما يتغير الضغط والحجم ودرجة الحرارة معًا في نفس الوقت، مما يعكس بشكل أفضل الظروف في العالم الحقيقي
+                    </p>
+                </CardContent>
+            </Card>
 
              <FlippableCard
                 cardTitle="نص القانون الجامع للغازات"
@@ -96,7 +109,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        عينة من غاز الهيليوم حجمها <InlineMath math="2.0L" /> عند ضغط <InlineMath math="1.5atm" /> ودرجة حرارة <InlineMath math="27^\circ\text{C}" /> إذا تم ضغط الغاز إلى حجم <InlineMath math="1.0L" /> وارتفعت درجة حرارته إلى <InlineMath math="127^\circ\text{C}" /> فما هو الضغط الجديد؟
+                        عينة من غاز الهيليوم حجمها <InlineMath math="2.0L" /> عند ضغط <InlineMath math="1.5atm" /> ودرجة حرارة <InlineMath math="27^\circ\text{C}" /> إذا تم ضغط الغاز إلى حجم <InlineMath math="1.0L" /> وارتفعت درجة حرارته إلى <InlineMath math="127^\circ\text{C}" /> فما هو الضغط الجديد
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <p><strong className="text-accent">المعطيات</strong></p>
