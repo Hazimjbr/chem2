@@ -118,7 +118,7 @@ export default function LessonPartPage() {
                       <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="P_1, V_1" /></span>
                       <span> هما الضغط والحجم الابتدائيان، و </span>
                       <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="P_2, V_2" /></span>
-                      <span> هما الضغط والحجم النهائيان.</span>
+                      <span> هما الضغط والحجم النهائيان</span>
                   </p>
               </div>
             </FlippableCard>
@@ -211,7 +211,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="mb-4">
-                            عينة من غاز النيتروجين حجمها <InlineMath math="150\text{mL}" /> عند ضغط مقداره <InlineMath math="98.8\text{kPa}" />. ما الحجم الجديد للعينة إذا انخفض الضغط إلى <InlineMath math="96.1\text{kPa}" /> مع بقاء درجة الحرارة ثابتة؟
+                            عينة من غاز النيتروجين حجمها <InlineMath math="150\text{mL}" /> عند ضغط مقداره <InlineMath math="98.8\text{kPa}" /> ما الحجم الجديد للعينة إذا انخفض الضغط إلى <InlineMath math="96.1\text{kPa}" /> مع بقاء درجة الحرارة ثابتة؟
                         </p>
                         <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                             <p className="font-bold text-accent">المعطيات</p>
@@ -241,7 +241,7 @@ export default function LessonPartPage() {
                             </div>
                             <div className="border-t pt-3">
                                 <p className="text-sm font-semibold">
-                                الجواب: الحجم الجديد للغاز هو <InlineMath math="154.2\text{mL}" />. وهذا منطقي، لأن الضغط انخفض، فمن المتوقع أن يزداد الحجم.
+                                الجواب: الحجم الجديد للغاز هو <InlineMath math="154.2\text{mL}" /> وهذا منطقي، لأن الضغط انخفض، فمن المتوقع أن يزداد الحجم
                                 </p>
                             </div>
                         </div>
