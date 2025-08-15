@@ -33,7 +33,7 @@ export default function LessonPartPage() {
             </CardHeader>
             <CardContent>
                 <p className="text-lg">
-                يصف القانون الجامع للغازات العلاقة بين ضغط كمية محددة من الغاز المحصور وحجمها ودرجة حرارتها المطلقة، ويوحد قوانين بويل وشارل وجاي-لوساك.
+                يصف القانون الجامع للغازات العلاقة بين ضغط كمية محددة من الغاز المحصور وحجمها ودرجة حرارتها المطلقة، ويوحد قوانين بويل وشارل وجاي-لوساك
                 </p>
             </CardContent>
         </Card>
@@ -47,7 +47,7 @@ export default function LessonPartPage() {
                 <li className="flex items-start">
                     <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
                     <span>
-                    أستخدم القانون الجامع للغازات في حل المسائل الحسابية التي تربط بين الضغط والحجم ودرجة الحرارة.
+                    أستخدم القانون الجامع للغازات في حل المسائل الحسابية التي تربط بين الضغط والحجم ودرجة الحرارة
                     </span>
                 </li>
                 </ul>
@@ -67,10 +67,10 @@ export default function LessonPartPage() {
             >
                  <div className="space-y-3">
                     <blockquote className="border-r-4 border-primary pr-4">
-                        "لكمية ثابتة من الغاز، فإن حاصل ضرب ضغط الغاز في حجمه مقسومًا على درجة حرارته المطلقة يساوي قيمة ثابتة."
+                        "لكمية ثابتة من الغاز، فإن حاصل ضرب ضغط الغاز في حجمه مقسومًا على درجة حرارته المطلقة يساوي قيمة ثابتة"
                     </blockquote>
                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2'>
-                        هذا القانون مفيد للغاية لأنه لا يتطلب ثبات أي من المتغيرات الثلاثة، مما يجعله قابلًا للتطبيق في العديد من السيناريوهات الواقعية.
+                        هذا القانون مفيد للغاية لأنه لا يتطلب ثبات أي من المتغيرات الثلاثة، مما يجعله قابلًا للتطبيق في العديد من السيناريوهات الواقعية
                     </p>
                 </div>
             </FlippableCard>
@@ -85,7 +85,7 @@ export default function LessonPartPage() {
                   <p>هذه العلاقة تسمح لنا بمقارنة حالة الغاز الابتدائية (1) بحالته النهائية (2) عندما تتغير الظروف:</p>
                   <div dir="ltr" className="text-left"><BlockMath math="\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}" /></div>
                   <p className="text-sm text-muted-foreground" dir="rtl">
-                      حيث <InlineMath math="P, V, T" /> هي الضغط والحجم ودرجة الحرارة المطلقة (بالكلفن) على التوالي.
+                      حيث <InlineMath math="P, V, T" /> هي الضغط والحجم ودرجة الحرارة المطلقة (بالكلفن) على التوالي
                   </p>
               </div>
             </FlippableCard>
@@ -96,7 +96,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        عينة من غاز الهيليوم حجمها <InlineMath math="2.0L" /> عند ضغط <InlineMath math="1.5atm" /> ودرجة حرارة <InlineMath math="27^\circ\text{C}" />. إذا تم ضغط الغاز إلى حجم <InlineMath math="1.0L" /> وارتفعت درجة حرارته إلى <InlineMath math="127^\circ\text{C}" />، فما هو الضغط الجديد؟
+                        عينة من غاز الهيليوم حجمها <InlineMath math="2.0L" /> عند ضغط <InlineMath math="1.5atm" /> ودرجة حرارة <InlineMath math="27^\circ\text{C}" /> إذا تم ضغط الغاز إلى حجم <InlineMath math="1.0L" /> وارتفعت درجة حرارته إلى <InlineMath math="127^\circ\text{C}" /> فما هو الضغط الجديد؟
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <p><strong className="text-accent">المعطيات</strong></p>
@@ -143,7 +143,7 @@ export default function LessonPartPage() {
             <Lightbulb className="h-7 w-7 text-yellow-400" />
             <div>
               <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -156,7 +156,7 @@ export default function LessonPartPage() {
                       "4.5"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="T₁=25+273=298K, T₂=(25-10)+273=288K, P₁=1.8atm, V₁=5L, P₂=0.8atm. نطبق القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1.8 * 5 * 288) / (0.8 * 298) ≈ 10.9L."
+                  explanation="T₁=25+273=298K, T₂=(25-10)+273=288K, P₁=1.8atm, V₁=5L, P₂=0.8atm. نطبق القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1.8 * 5 * 288) / (0.8 * 298) ≈ 10.9L"
               />
                <InteractiveQuestionCard 
                   question="عينة من الهواء حجمها 4L وضغطها 202.6kPa عند درجة حرارة 20°C فإذا أصبحت حرارتها 278K وحجمها 2500ml فإن ضغطها بوحدة atm يساوي"
@@ -167,7 +167,7 @@ export default function LessonPartPage() {
                       "4"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="نوحد الوحدات: V₁=4L, P₁=202.6/101.3=2atm, T₁=20+273=293K. V₂=2.5L, T₂=278K. نطبق القانون الجامع: P₂=(P₁V₁T₂)/(T₁V₂) = (2*4*278)/(293*2.5) ≈ 3.03atm. أقرب إجابة هي 3atm."
+                  explanation="نوحد الوحدات: V₁=4L, P₁=202.6/101.3=2atm, T₁=20+273=293K. V₂=2.5L, T₂=278K. نطبق القانون الجامع: P₂=(P₁V₁T₂)/(T₁V₂) = (2*4*278)/(293*2.5) ≈ 3.03atm. أقرب إجابة هي 3atm"
               />
           </div>
         </div>
@@ -177,7 +177,7 @@ export default function LessonPartPage() {
           <CardHeader>
               <CardTitle>اختبر فهمك</CardTitle>
               <CardDescription>
-                  بعد أن تعرفت على القانون الجامع للغازات، اختبر فهمك له من خلال هذا الاختبار القصير.
+                  بعد أن تعرفت على القانون الجامع للغازات، اختبر فهمك له من خلال هذا الاختبار القصير
               </CardDescription>
           </CardHeader>
           <CardContent>
