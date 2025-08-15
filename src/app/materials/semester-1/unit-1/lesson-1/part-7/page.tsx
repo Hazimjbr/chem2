@@ -68,6 +68,16 @@ export default function LessonPartPage() {
         />
 
         <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        القوانين السابقة (بويل، شارل، جاي-لوساك) تعاملت مع كمية ثابتة من الغاز. لكن ماذا يحدث إذا تغيرت كمية الغاز نفسها، كما في حالة نفخ بالون أو تسرب الهواء من إطار السيارة؟ هنا يأتي دور قانون أفوجادرو الذي يربط بين حجم الغاز وكميته.
+                    </p>
+                </CardContent>
+            </Card>
 
              <div className="grid md:grid-cols-2 gap-6">
                 <FlippableCard
@@ -285,4 +295,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
