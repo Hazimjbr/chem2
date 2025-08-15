@@ -124,7 +124,7 @@ export default function LessonPartPage() {
                   <p>وهذا يعني أن حاصل قسمة الضغط على درجة الحرارة المطلقة لكمية معينة من الغاز عند حجم ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
                   <div className="text-center" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
                    <p className="text-sm text-muted-foreground">
-                      حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان. <strong>يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span></strong>.
+                      حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان. <strong>يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span></strong>
                   </p>
               </div>
             </FlippableCard>
@@ -135,43 +135,43 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        علبة من بخاخ الشعر ضغطها <span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span> عند درجة حرارة <span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى <span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!).
+                        <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span>. إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span>، فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا!)</span>
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <p className="font-bold text-accent">المعطيات:</p>
                         <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
-                            <span><InlineMath math="P_1 = 1.5\text{ atm}" /></span>
-                            <span><InlineMath math="P_2 = ?" /></span>
-                            <span><InlineMath math="T_1 = 25^\circ\text{C}" /></span>
-                            <span><InlineMath math="T_2 = 400^\circ\text{C}" /></span>
+                            <p><InlineMath math="P_1 = 1.5\text{ atm}" /></p>
+                            <p><InlineMath math="P_2 = ?" /></p>
+                            <p><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                            <p><InlineMath math="T_2 = 400^\circ\text{C}" /></p>
                         </div>
                         <p className="font-bold text-accent">الحل:</p>
                         <ol className="list-decimal mr-6 text-sm space-y-2">
                             <li>
-                                <span>نحول درجات الحرارة إلى كلفن.</span>
+                                <span>نحول درجات الحرارة إلى كلفن</span>
                                 <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{ K}" /></div>
                                 <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 400 + 273 = 673\text{ K}" /></div>
                             </li>
                             <li>
-                                <span>نكتب قانون جاي-لوساك.</span>
+                                <span>نكتب قانون جاي-لوساك</span>
                                 <div className="text-left" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
                             </li>
                             <li>
-                                <span>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" />.</span>
+                                <span>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" /></span>
                                 <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{P_1 T_2}{T_1}" /></div>
                             </li>
                             <li>
-                                <span>نعوض القيم.</span>
+                                <span>نعوض القيم</span>
                                 <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{(1.5\text{ atm}) \cdot (673\text{ K})}{(298\text{ K})}" /></div>
                                 </li>
                             <li>
-                                <span>نحسب الناتج.</span>
+                                <span>نحسب الناتج</span>
                                 <div className="text-left" dir="ltr"><BlockMath math="P_2 \approx 3.39\text{ atm}" /></div>
                             </li>
                         </ol>
                         <div className="border-t pt-3">
                             <p className="text-sm font-semibold">
-                            الجواب: الضغط الجديد داخل العلبة هو<span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.
+                            <span>الجواب: الضغط الجديد داخل العلبة هو</span><span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span><span>. الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة.</span>
                             </p>
                         </div>
                     </div>
