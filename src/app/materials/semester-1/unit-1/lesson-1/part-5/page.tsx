@@ -5,7 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu } from 'lucide-react';
+import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu, LineChart } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import Quiz from './quiz';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
@@ -86,7 +86,7 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent>
                             <p>
-                            بنى العالم جاي-لوساك على أعمال شارل، لكنه ركز على ما يحدث للضغط عندما لا يُسمح للحجم بالتغير. لاحظ أن تسخين غاز في وعاء مغلق (صلب) يزيد من ضغطه بشكل ملحوظ، وهذا ما نراه في إطارات السيارات التي يزداد ضغطها في الأيام الحارة.
+                            بنى العالم جاي-لوساك على أعمال شارل، لكنه ركز على ما يحدث للضغط عندما لا يُسمح للحجم بالتغير. لاحظ أن تسخين غاز في وعاء مغلق (صلب) يزيد من ضغطه بشكل ملحوظ، وهذا ما نراه في إطارات السيارات التي يزداد ضغطها في الأيام الحارة
                             </p>
                         </CardContent>
                     </Card>
@@ -146,7 +146,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="mb-4">
-                        <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span> إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span> فما هو الضغط الجديد داخل العلبة؟ (تحذير: لا تجرب هذا فعليًا)</span>
+                        <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span> إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span> فما هو الضغط الجديد داخل العلبة (تحذير: لا تجرب هذا فعليًا)</span>
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <p><strong className="text-accent">المعطيات</strong></p>
@@ -293,3 +293,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    
