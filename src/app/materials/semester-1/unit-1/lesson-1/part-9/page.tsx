@@ -63,6 +63,17 @@ export default function LessonPartPage() {
         />
 
         <div className="space-y-8">
+             <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        لاحظ العالم جون دالتون أن الغازات تختلط ببعضها البعض بسبب الحركة العشوائية لجسيماتها. واستنتج أن كل غاز في الخليط يمارس ضغطًا كما لو كان موجودًا بمفرده، وأن الضغط الكلي هو ببساطة مجموع هذه الضغوط الفردية.
+                    </p>
+                </CardContent>
+            </Card>
+
              <FlippableCard
                 cardTitle="نص قانون دالتون"
                 cardIcon={<Layers className="h-6 w-6" />}
@@ -100,7 +111,7 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
-                  question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L"/></span><span> ثلاث غازات A, B, C عدد مولاتها على التوالي 2, 3, 1 mol عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ C"/></span><span> فإن قيمة الضغط في الوعاء تساوي:</span></>}
+                  question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2L"/></span><span> ثلاث غازات A, B, C عدد مولاتها على التوالي 2, 3, 1 mol عند حرارة </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ C"/></span><span> فإن قيمة الضغط في الوعاء تساوي:</span></>}
                   options={[
                       "295.2atm",
                       "73.8atm",
@@ -108,10 +119,10 @@ export default function LessonPartPage() {
                       "6.6atm"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="أولاً، نجمع المولات: n_total = 2+3+1 = 6mol. ثم نستخدم قانون الغاز المثالي: P = nRT/V. الحرارة T = 27+273 = 300K. إذن P = (6 * 0.082 * 300) / 2 = 73.8 atm."
+                  explanation="أولاً، نجمع المولات: n_total = 2+3+1 = 6mol. ثم نستخدم قانون الغاز المثالي: P = nRT/V. الحرارة T = 27+273 = 300K. إذن P = (6 * 0.082 * 300) / 2 = 73.8atm."
               />
                <InteractiveQuestionCard 
-                  question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1L"/></span><span> غازين A, B في الظروف المعيارية حيث يشكل الغاز B 70% فإن قيمة ضغط الغاز A تساوي:</span></>}
+                  question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="1L"/></span><span> غازين A, B في الظروف المعيارية حيث يشكل الغاز B 70% فإن قيمة ضغط الغاز A تساوي:</span></>}
                   options={[
                       "0.7atm",
                       "0.3atm",
@@ -119,7 +130,7 @@ export default function LessonPartPage() {
                       "6.7atm"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="في الظروف المعيارية، الضغط الكلي P_total = 1atm. إذا كان الغاز B يشكل 70%، فإن الغاز A يشكل 30%. الكسر المولي للغاز A هو X_A = 0.3. الضغط الجزئي لـ A هو P_A = X_A * P_total = 0.3atm = 0.3atm."
+                  explanation="في الظروف المعيارية، الضغط الكلي P_total = 1atm. إذا كان الغاز B يشكل 70%، فإن الغاز A يشكل 30%. الكسر المولي للغاز A هو X_A = 0.3. الضغط الجزئي لـ A هو P_A = X_A * P_total = 0.3 * 1atm = 0.3atm."
               />
           </div>
         </div>
