@@ -11,7 +11,6 @@ export interface QuizQuestion {
 }
 
 const gasSamplesQuestionText = "ادرس الرسم المجاور والذي يمثل أربع عينات من الغازات متساوية الحجم عند نفس درجة الحرارة ثم أجب عن الأسئلة الثلاثة الآتية:";
-const ammoniumChlorideQuestionText = <span>ادرس الرسم المجاور والذي يمثل التفاعل <span dir="ltr" className='inline-block'>(<InlineMath math="HCl(g) + NH_3(g) \rightarrow NH_4Cl(s)" />)</span> علما بأن الكتل الذرية <span dir="ltr" className='inline-block'>(<InlineMath math="H=1, N=14, Cl=35" />)</span> ثم أجب عن السؤالين الآتيين:</span>;
 
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -49,24 +48,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "التفسير الأساسي لظاهرة الانتشار هو الحركة العشوائية المستمرة لجسيمات الغازات، والتي تؤدي إلى اختلاطها بمرور الوقت بغض النظر عن كثافتها."
-    },
-    {
-        question: <div><p>{ammoniumChlorideQuestionText}</p><AmmoniumChlorideDiagram /><strong className="mt-2 block text-accent">1) حدد موقع تكون الغاز الأبيض من كلوريد الأمونيوم:</strong></div>,
-        options: ["A", "B", "C"],
-        correctAnswerIndex: 2,
-        explanation: "الكتلة المولية لـ NH₃ ≈ 17g/mol. الكتلة المولية لـ HCl ≈ 36.5g/mol. غاز NH₃ أخف، لذا ينتشر أسرع ويقطع مسافة أطول. غاز HCl أثقل، لذا ينتشر أبطأ ويقطع مسافة أقصر. سيلتقيان عند النقطة C الأقرب إلى مصدر HCl."
-    },
-    {
-        question: <div><p>{ammoniumChlorideQuestionText}</p><AmmoniumChlorideDiagram /><strong className="mt-2 block text-accent">2) إذا تم استبدال الحمض HCl بالحمض HBr فإن العبارة الصحيحة فإن موقع الغاز الأبيض:</strong></div>,
-        options: [
-            "لا يتغير",
-            "على يسار C",
-            "على يمين C",
-            "عند النقطة A"
-        ],
-        correctAnswerIndex: 2,
-        explanation: "الكتلة المولية لـ HBr (81g/mol) أكبر بكثير من HCl (36.5g/mol). هذا يعني أن HBr سيكون أبطأ بكثير من HCl. وبما أن سرعة NH₃ لم تتغير، فإنه سيقطع مسافة أكبر بكثير قبل أن يلتقي بـ HBr البطيء. لذا، سيتكون الغاز الأبيض في منطقة أقرب إلى مصدر HBr، أي على يمين النقطة C."
-    },
+    }
 ];
 
 export const staticQuizLvl2: QuizQuestion[] = [];
