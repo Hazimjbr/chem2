@@ -35,7 +35,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لغاز (P_A) يساوي حاصل ضرب الكسر المولي له (X_A) في الضغط الكلي للخليط (P_Total). P_A = X_A * P_Total."
     },
     {
-        "question": <span>في خليط من غازي النيتروجين والأكسجين، إذا كان الضغط الجزئي للنيتروجين 0.8atm والضغط الجزئي للأكسجين 0.2atm، فما هو الضغط الكلي للخليط؟</span>,
+        "question": <span>في خليط من غازي النيتروجين والأكسجين، إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" />، فما هو الضغط الكلي للخليط؟</span>,
         "options": [
             "0.6atm",
             "1.0atm",
@@ -70,7 +70,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C" /> حيث يشكل الغاز B 70%. إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي:</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C" /> حيث يشكل الغاز B 70%. إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي:</span>,
         "options": [
             "1.4",
             "0.11",
@@ -81,7 +81,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لـ A هو P_A = (1-0.7) * 2.5 = 0.75atm. الحرارة T = 10+273=283K. عدد مولات A هو n_A = (P_A*V)/(R*T) = (0.75*1.5)/(0.082*283) ≈ 0.05mol."
     },
     {
-        question: <span>من السؤال السابق، إذا كانت كتلة الغاز B تساوي <InlineMath math="3.4g" /> فإن الكتلة المولية للغاز B تساوي:</span>,
+        question": <span>من السؤال السابق، إذا كانت كتلة الغاز B تساوي <InlineMath math="3.4g" /> فإن الكتلة المولية للغاز B تساوي:</span>,
         "options": [
             "70",
             "30",
@@ -114,7 +114,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "يتفاعل 1mol من A مع 1mol من B لإنتاج 3mol من C. بما أن الضغط يتناسب طرديًا مع عدد المولات، والعدد الكلي للمولات أصبح 3، فإن الضغط الكلي سيصبح 3atm."
     },
     {
-        question: <span>إذا خلط <InlineMath math="1mol" /> من الغاز A ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> مع <InlineMath math="1mol" /> من الغاز B ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> في وعاء حجمه <InlineMath math="1L" /> فحدث التفاعل <InlineMath math="A(g) + 2B(g) \rightarrow 3C(g)" /> فإن الضغط الكلي بعد انتهاء التفاعل:</span>,
+        question": <span>إذا خلط <InlineMath math="1mol" /> من الغاز A ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> مع <InlineMath math="1mol" /> من الغاز B ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> في وعاء حجمه <InlineMath math="1L" /> فحدث التفاعل <InlineMath math="A(g) + 2B(g) \rightarrow 3C(g)" /> فإن الضغط الكلي بعد انتهاء التفاعل:</span>,
         "options": [
             "2",
             "4",
@@ -139,7 +139,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_A = 300/760 atm. n_A = PV/RT = ((300/760) * 0.5) / (0.082 * 300) ≈ 0.008mol."
     },
     {
-        question: "2) عدد مولات الغاز B:",
+        question": "2) عدد مولات الغاز B:",
         "options": [
             "0.016",
             "0.008",
@@ -150,7 +150,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_B = 350/760 atm. n_B = PV/RT = ((350/760) * 0.43) / (0.082 * 300) ≈ 0.008 mol. هناك خطأ في الخيارات، أقرب قيمة هي 0.016 إذا افترضنا أن هناك خطأ في نص السؤال أو الحساب. لكن بناء على الحساب الدقيق، الجواب هو 0.008."
     },
     {
-        question: "3) حجم الوعاء W بوحدة L:",
+        question": "3) حجم الوعاء W بوحدة L:",
         "options": [
             "0.004",
             "0.1",
@@ -161,7 +161,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "n_total = n_A + n_B = 0.008 + 0.008 = 0.016mol. P_total = 500/760 atm. V = nRT/P = (0.016 * 0.082 * 300) / (500/760) ≈ 0.6L."
     },
      {
-        question: "4) ضغط الغاز B في الوعاء W بوحدة mmHg:",
+        question": "4) ضغط الغاز B في الوعاء W بوحدة mmHg:",
         "options": [
             "500",
             "350",
@@ -172,7 +172,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الكسر المولي لـ B هو X_B = n_B / n_total = 0.008 / 0.016 = 0.5. الضغط الجزئي لـ B هو P_B = X_B * P_total = 0.5 * 500mmHg = 250mmHg."
     },
      {
-        question: "5) الضغط الكلي للخليط عند درجة حرارة 100°C بوحدة atm:",
+        question": "5) الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm:",
         "options": [
             "620",
             "0.82",
