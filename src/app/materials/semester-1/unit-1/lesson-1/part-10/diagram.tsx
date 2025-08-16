@@ -136,14 +136,14 @@ export const BromineDiffusionDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <title>انتشار البروم في الهواء</title>
         {/* Left Beaker (Before) */}
         <rect x="10" y="20" width="80" height="100" stroke="black" strokeWidth="1" fill="none" />
-        <rect x="10" y="70" width="80" height="50" fill="hsl(var(--destructive), 0.5)" />
+        <rect x="10" y="70" width="80" height="50" fill="rgba(165, 42, 42, 0.7)" />
         <line x1="10" y1="70" x2="90" y2="70" stroke="black" strokeWidth="1.5" />
         <text x="50" y="135" textAnchor="middle" fontSize="12">قبل (A)</text>
         <text x="50" y="50" textAnchor="middle" fontSize="10">هواء</text>
         <text x="50" y="100" textAnchor="middle" fontSize="10">غاز البروم</text>
 
         {/* Right Beaker (After) */}
-        <rect x="110" y="20" width="80" height="100" stroke="black" strokeWidth="1" fill="hsl(var(--destructive), 0.2)" />
+        <rect x="110" y="20" width="80" height="100" stroke="black" strokeWidth="1" fill="rgba(165, 42, 42, 0.25)" />
         <text x="150" y="135" textAnchor="middle" fontSize="12">بعد (B)</text>
         <text x="150" y="70" textAnchor="middle" fontSize="10">خليط متجانس</text>
     </SvgDiagram>
