@@ -109,9 +109,9 @@ export default function LessonPartPage() {
             >
                <div className="space-y-4 text-center">
                   <p>يمكن التعبير عن العلاقة بين معدل سرعة الانتشار (<span dir="ltr"><InlineMath math="r"/></span>) والكتلة المولية (<span dir="ltr"><InlineMath math="Mr"/></span>) كالتالي:</p>
-                  <div dir="ltr"><BlockMath String.raw`r \propto \frac{1}{\sqrt{Mr}}` /></div>
+                  <div dir="ltr"><BlockMath math="r \\propto \\frac{1}{\\sqrt{Mr}}" /></div>
                   <p>لمقارنة معدل انتشار غازين (A و B)، نستخدم النسبة التالية:</p>
-                   <div dir="ltr"><BlockMath String.raw`\frac{r_A}{r_B} = \sqrt{\frac{Mr_B}{Mr_A}}` /></div>
+                   <div dir="ltr"><BlockMath math="\\frac{r_A}{r_B} = \\sqrt{\\frac{Mr_B}{Mr_A}}" /></div>
                     <p className="text-sm text-muted-foreground">لاحظ أن النسبة مقلوبة تحت الجذر بسبب العلاقة العكسية.</p>
               </div>
             </FlippableCard>
@@ -130,19 +130,19 @@ export default function LessonPartPage() {
                             <ol className="list-decimal mr-6 text-sm space-y-2">
                                 <li>
                                     <span>نحسب الكتل المولية للغازين:</span>
-                                    <div className="text-left" dir="ltr"><BlockMath String.raw`Mr(H_2) = 2 \times 1 = 2 \, g/mol` /></div>
-                                    <div className="text-left" dir="ltr"><BlockMath String.raw`Mr(O_2) = 2 \times 16 = 32 \, g/mol` /></div>
+                                    <div className="text-left" dir="ltr"><BlockMath math="Mr(H_2) = 2 \\times 1 = 2 \\, g/mol" /></div>
+                                    <div className="text-left" dir="ltr"><BlockMath math="Mr(O_2) = 2 \\times 16 = 32 \\, g/mol" /></div>
                                 </li>
                                 <li>
                                     <span>نكتب قانون جراهام للمقارنة:</span>
-                                    <div className="text-left" dir="ltr"><BlockMath String.raw`\frac{r_{H_2}}{r_{O_2}} = \sqrt{\frac{Mr_{O_2}}{Mr_{H_2}}}` /></div>
+                                    <div className="text-left" dir="ltr"><BlockMath math="\\frac{r_{H_2}}{r_{O_2}} = \\sqrt{\\frac{Mr_{O_2}}{Mr_{H_2}}}" /></div>
                                 </li>
                                 <li>
                                     <span>نعوض القيم:</span>
-                                    <div className="text-left" dir="ltr"><BlockMath String.raw`\frac{r_{H_2}}{r_{O_2}} = \sqrt{\frac{32}{2}} = \sqrt{16} = 4` /></div>
+                                    <div className="text-left" dir="ltr"><BlockMath math="\\frac{r_{H_2}}{r_{O_2}} = \\sqrt{\\frac{32}{2}} = \\sqrt{16} = 4" /></div>
                                 </li>
                                 <li>
-                                    <span>الاستنتاج: <BlockMath String.raw`r_{H_2} = 4 \times r_{O_2}` /></span></li>
+                                    <span>الاستنتاج: <BlockMath math="r_{H_2} = 4 \\times r_{O_2}" /></span></li>
                             </ol>
                         </div>
                          <div className="border-t pt-3">
@@ -223,3 +223,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    
