@@ -25,19 +25,19 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
         {/* Sample A Box */}
         <rect x="20" y="10" width="80" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
         <g fill="hsl(var(--primary))">
-            <g transform="translate(40, 30)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
-            <g transform="translate(60, 50)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
-            <g transform="translate(35, 65)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
-            <g transform="translate(65, 25)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
+            <g transform="translate(40, 30)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(60, 50)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(35, 65)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(65, 25)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
         </g>
         <text x="60" y="105" textAnchor="middle" fontSize="12">A</text>
 
         {/* Sample B Box */}
         <rect x="110" y="10" width="80" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
          <g fill="hsl(var(--accent))">
-            <g transform="translate(130, 30)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-10" cy="0" r="4" /><circle cx="10" cy="0" r="4" /></g>
-            <g transform="translate(160, 60)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-10" cy="0" r="4" /><circle cx="10" cy="0" r="4" /></g>
-            <g transform="translate(140, 70)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-10" cy="0" r="4" /><circle cx="10" cy="0" r="4" /></g>
+            <g transform="translate(130, 30)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-8" cy="0" r="4" /><circle cx="8" cy="0" r="4" /></g>
+            <g transform="translate(160, 60)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-8" cy="0" r="4" /><circle cx="8" cy="0" r="4" /></g>
+            <g transform="translate(140, 70)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-8" cy="0" r="4" /><circle cx="8" cy="0" r="4" /></g>
         </g>
         <text x="150" y="105" textAnchor="middle" fontSize="12">B</text>
 
@@ -137,3 +137,5 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <text x="330" y="20" textAnchor="middle" fontSize="10">حلقة بيضاء</text>
     </SvgDiagram>
 );
+
+    
