@@ -19,19 +19,19 @@ export const staticQuizLvl1: QuizQuestion[] = [
         question: <div><p>{gasSamplesQuestionText}</p><GasSamplesDiagram /><strong className="mt-2 block text-accent">1) عينة الغاز الأكبر ضغطًا:</strong></div>,
         options: ["A", "B", "C", "D"],
         correctAnswerIndex: 3,
-        explanation: "الضغط يتناسب طرديًا مع عدد الجسيمات (المولات) عند ثبات الحجم والحرارة. العينة D تحتوي على أكبر عدد من الجسيمات (8 جسيمات)، لذا ضغطها هو الأكبر."
+        explanation: "الضغط يتناسب طرديًا مع عدد الجسيمات (المولات) عند ثبات الحجم والحرارة. العينة D تحتوي على أكبر عدد من الجسيمات (5 جسيمات)، لذا ضغطها هو الأكبر."
     },
     {
         question: <div><p>{gasSamplesQuestionText}</p><GasSamplesDiagram /><strong className="mt-2 block text-accent">2) عينة الغاز الأسرع تدفقًا:</strong></div>,
         options: ["A", "B", "C", "D"],
-        correctAnswerIndex: 0,
-        explanation: "سرعة التدفق تتناسب عكسيًا مع الكتلة المولية. الغاز الأسرع هو الذي له أقل كتلة مولية. بالنظر إلى الأشكال، الجسيمات في A هي الأصغر (ذرات منفردة)، مما يوحي بأنها الأخف والأسرع تدفقًا."
+        correctAnswerIndex: 3,
+        explanation: "سرعة التدفق تتناسب عكسيًا مع الكتلة المولية. الغاز الأسرع هو الذي له أقل كتلة مولية. بالنظر إلى الأشكال، الجسيمات في D هي الأصغر (ذرات منفردة)، مما يوحي بأنها الأخف والأسرع تدفقًا."
     },
     {
         question: <div><p>{gasSamplesQuestionText}</p><GasSamplesDiagram /><strong className="mt-2 block text-accent">3) إذا كانت الكتل المولية للغازات (A:20, B:18, C:46, D:32)g/mol، فإن عينة الغاز الأكثر كثافة هي:</strong></div>,
         options: ["A", "B", "C", "D"],
-        correctAnswerIndex: 3,
-        explanation: "الكثافة = الكتلة/الحجم. بما أن الحجم ثابت، فالأعلى كثافة هو صاحب الكتلة الأكبر. الكتلة تتناسب مع عدد الجسيمات والكتلة المولية. بحساب كتلة نسبية (عدد الجسيمات × الكتلة المولية): A=4×20=80, B=3×18=54, C=4×46=184, D=8×32=256. العينة D لها الكتلة الأعلى وبالتالي هي الأعلى كثافة."
+        correctAnswerIndex: 2,
+        explanation: "الكثافة = الكتلة/الحجم. بما أن الحجم ثابت، فالأعلى كثافة هو صاحب الكتلة الأكبر. الكتلة تتناسب مع عدد الجسيمات والكتلة المولية. بحساب كتلة نسبية (عدد الجسيمات × الكتلة المولية): A=4×20=80, B=3×18=54, C=2×46=92, D=5×32=160. العينة D لها الكتلة الأعلى وبالتالي هي الأعلى كثافة."
     },
     {
         question: <div><p>أي من الأشكال التالية يوضح عملية الانتشار بشكل صحيح؟</p><DiffusionProcessDiagram /></div>,
@@ -52,7 +52,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
     },
     {
         question: <div><p>{ammoniumChlorideQuestionText}</p><AmmoniumChlorideDiagram /><strong className="mt-2 block text-accent">1) حدد موقع تكون الغاز الأبيض من كلوريد الأمونيوم:</strong></div>,
-        options: ["A", "B", "C", "D"],
+        options: ["A", "B", "C"],
         correctAnswerIndex: 2,
         explanation: "الكتلة المولية لـ NH₃ ≈ 17g/mol. الكتلة المولية لـ HCl ≈ 36.5g/mol. غاز NH₃ أخف، لذا ينتشر أسرع ويقطع مسافة أطول. غاز HCl أثقل، لذا ينتشر أبطأ ويقطع مسافة أقصر. سيلتقيان عند النقطة C الأقرب إلى مصدر HCl."
     },
@@ -60,12 +60,12 @@ export const staticQuizLvl1: QuizQuestion[] = [
         question: <div><p>{ammoniumChlorideQuestionText}</p><AmmoniumChlorideDiagram /><strong className="mt-2 block text-accent">2) إذا تم استبدال الحمض HCl بالحمض HBr فإن العبارة الصحيحة فإن موقع الغاز الأبيض:</strong></div>,
         options: [
             "لا يتغير",
-            "على يسار A",
-            "بين C و D",
-            "على يمين D"
+            "على يسار C",
+            "على يمين C",
+            "عند النقطة A"
         ],
         correctAnswerIndex: 2,
-        explanation: "الكتلة المولية لـ HBr (81g/mol) أكبر بكثير من HCl (36.5g/mol). هذا يعني أن HBr سيكون أبطأ بكثير من HCl. وبما أن سرعة NH₃ لم تتغير، فإنه سيقطع مسافة أكبر بكثير قبل أن يلتقي بـ HBr البطيء. لذا، سيتكون الغاز الأبيض في منطقة أقرب إلى مصدر HBr، أي بين C و D."
+        explanation: "الكتلة المولية لـ HBr (81g/mol) أكبر بكثير من HCl (36.5g/mol). هذا يعني أن HBr سيكون أبطأ بكثير من HCl. وبما أن سرعة NH₃ لم تتغير، فإنه سيقطع مسافة أكبر بكثير قبل أن يلتقي بـ HBr البطيء. لذا، سيتكون الغاز الأبيض في منطقة أقرب إلى مصدر HBr، أي على يمين النقطة C."
     },
 ];
 
