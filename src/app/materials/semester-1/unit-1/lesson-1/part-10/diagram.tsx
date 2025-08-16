@@ -66,16 +66,19 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
 
 
 export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
-    <SvgDiagram viewBox="0 0 450 180" {...props}>
+    <SvgDiagram viewBox="0 0 450 360" {...props}>
         <title>أربعة عمليات غازية</title>
         
-        {/* Helper function for a diatomic molecule */}
+        {/* Helper definitions */}
         <defs>
             <g id="white-diatomic"><circle cx="-3" cy="0" r="3" fill="white" stroke="black" strokeWidth="0.5"/><circle cx="3" cy="0" r="3" fill="white" stroke="black" strokeWidth="0.5"/></g>
             <g id="black-diatomic"><circle cx="-3" cy="0" r="3" fill="black" /><circle cx="3" cy="0" r="3" fill="black" /></g>
+             <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+            </marker>
         </defs>
 
-        {/* Row 1, Process A (Correct Diffusion) */}
+        {/* --- Row 1, Process A (Correct Diffusion) --- */}
         <text x="430" y="45" textAnchor="middle" fontSize="16">أ</text>
         <rect x="10" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <rect x="230" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
@@ -87,20 +90,43 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <use href="#white-diatomic" x="250" y="65" /> <use href="#white-diatomic" x="290" y="20" /> <use href="#white-diatomic" x="330" y="50" /> <use href="#white-diatomic" x="380" y="30" />
         <use href="#black-diatomic" x="270" y="40" /> <use href="#black-diatomic" x="310" y="70" /> <use href="#black-diatomic" x="350" y="25" /> <use href="#black-diatomic" x="400" y="60" />
 
-        {/* Row 2, Process B (Separation - incorrect) */}
+        {/* --- Row 2, Process B (Separation) --- */}
         <text x="430" y="135" textAnchor="middle" fontSize="16">ب</text>
         <rect x="10" y="100" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <rect x="230" y="100" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <path d="M195,135 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
         {/* Initial State B */}
-        <use href="#white-diatomic" x="30" y="120" /> <use href="#white-diatomic" x="70" y="150" /> <use href="#white-diatomic" x="110" y="115" />
-        <use href="#black-diatomic" x="50" y="135" /> <use href="#black-diatomic" x="90" y="125" /> <use href="#black-diatomic" x="130" y="160" /> <use href="#black-diatomic" x="170" y="110" />
-        {/* Final State B */}
+        <use href="#white-diatomic" x="30" y="120" /> <use href="#white-diatomic" x="70" y="150" />
+        <use href="#black-diatomic" x="130" y="160" /> <use href="#black-diatomic" x="170" y="110" />
+        {/* Final State B (White on left, Black on right) */}
         <use href="#white-diatomic" x="250" y="115" /> <use href="#white-diatomic" x="280" y="155" /> <use href="#white-diatomic" x="310" y="125" />
-        <use href="#black-diatomic" x="350" y="110" /> <use href="#black-diatomic" x="380" y="160" /> <use href="#black-diatomic" x="390" y="130" /> <use href="#black-diatomic" x="360" y="140" />
+        <use href="#black-diatomic" x="350" y="110" /> <use href="#black-diatomic" x="380" y="160" /> <use href="#black-diatomic" x="390" y="130" />
+        
+        {/* --- Row 3, Process C (Reversed Separation) --- */}
+        <text x="430" y="225" textAnchor="middle" fontSize="16">ج</text>
+        <rect x="10" y="190" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <rect x="230" y="190" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <path d="M195,225 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
+        {/* Initial State C */}
+        <use href="#white-diatomic" x="30" y="210" /> <use href="#white-diatomic" x="70" y="240" />
+        <use href="#black-diatomic" x="130" y="250" /> <use href="#black-diatomic" x="170" y="200" />
+        {/* Final State C (Black on left, White on right) */}
+        <use href="#black-diatomic" x="250" y="205" /> <use href="#black-diatomic" x="280" y="245" /> <use href="#black-diatomic" x="310" y="215" />
+        <use href="#white-diatomic" x="350" y="200" /> <use href="#white-diatomic" x="380" y="250" /> <use href="#white-diatomic" x="390" y="220" />
 
-
-        {/* This is a placeholder for diagrams C and D from the user image, which are not implemented as they represent reaction/bonding not simple diffusion */}
+        {/* --- Row 4, Process D (Reaction/Bonding) --- */}
+        <text x="430" y="315" textAnchor="middle" fontSize="16">د</text>
+        <rect x="10" y="280" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <rect x="230" y="280" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <path d="M195,315 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
+        {/* Initial State D */}
+        <use href="#white-diatomic" x="30" y="300" /> <use href="#white-diatomic" x="70" y="330" />
+        <use href="#black-diatomic" x="130" y="340" /> <use href="#black-diatomic" x="170" y="290" />
+        {/* Final State D (Bonded pairs) */}
+        <use href="#white-diatomic" x="260" y="315" />
+        <use href="#black-diatomic" x="272" y="315" />
+        <use href="#white-diatomic" x="340" y="300" />
+        <use href="#black-diatomic" x="352" y="300" />
     </SvgDiagram>
 );
 
