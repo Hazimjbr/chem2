@@ -191,6 +191,15 @@ export default function Quiz({ lessonContent }: QuizProps) {
 
   const currentQuestion = quiz[currentQuestionIndex];
 
+  if (!currentQuestion) {
+    return (
+        <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p className="mt-2">جاري تحميل السؤال...</p>
+        </div>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>
