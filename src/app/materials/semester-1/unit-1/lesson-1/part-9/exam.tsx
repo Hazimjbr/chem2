@@ -1,6 +1,7 @@
 
 import { InlineMath } from 'react-katex';
 import React from 'react';
+import Image from 'next/image';
 
 
 export interface QuizQuestion {
@@ -12,7 +13,7 @@ export interface QuizQuestion {
 
 const TireInfoTable = () => (
     <div className="my-4 mx-auto p-2 border rounded-lg max-w-md">
-        <img src="https://storage.googleapis.com/studiopaas-84b8.appspot.com/1122a27a-8068-450f-a496-0fa93297a70a.png" alt="جدول معلومات إطار السيارة" className="w-full h-auto" />
+        <Image src="https://storage.googleapis.com/studiopaas-84b8.appspot.com/1122a27a-8068-450f-a496-0fa93297a70a.png" alt="جدول معلومات إطار السيارة" className="w-full h-auto" width={400} height={200}/>
     </div>
 );
 
@@ -189,3 +190,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "نستخدم القانون الجامع. P₁=500mmHg, T₁=300K, T₂=100+273=373K. P₂ = P₁T₂/T₁ = (500 * 373) / 300 ≈ 621.7 mmHg. نحول إلى atm: 621.7 / 760 ≈ 0.82 atm."
     }
 ];
+
+    
