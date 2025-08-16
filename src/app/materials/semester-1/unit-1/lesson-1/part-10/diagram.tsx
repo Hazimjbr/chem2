@@ -21,36 +21,45 @@ const SvgDiagram = ({ children, className, ...props }: { children: React.ReactNo
 export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
     <SvgDiagram viewBox="0 0 400 100" {...props}>
         <title>أربع عينات من الغازات</title>
-        {/* Sample A */}
-        <circle cx="50" cy="50" r="5" fill="hsl(var(--primary))" />
-        <circle cx="30" cy="30" r="5" fill="hsl(var(--primary))" />
-        <circle cx="70" cy="70" r="5" fill="hsl(var(--primary))" />
-        <circle cx="40" cy="80" r="5" fill="hsl(var(--primary))" />
+        
+        {/* Sample A: Diatomic Element */}
+        <g fill="hsl(var(--primary))">
+            <circle cx="45" cy="30" r="4" /><circle cx="53" cy="30" r="4" />
+            <circle cx="25" cy="50" r="4" /><circle cx="33" cy="50" r="4" />
+            <circle cx="65" cy="60" r="4" /><circle cx="73" cy="60" r="4" />
+            <circle cx="35" cy="75" r="4" /><circle cx="43" cy="75" r="4" />
+        </g>
         <text x="50" y="95" textAnchor="middle" fontSize="12">A (4 جسيمات)</text>
 
-        {/* Sample B */}
-        <rect x="120" y="30" width="10" height="10" fill="hsl(var(--accent))" />
-        <rect x="140" y="50" width="10" height="10" fill="hsl(var(--accent))" />
-        <rect x="160" y="20" width="10" height="10" fill="hsl(var(--accent))" />
-        <rect x="130" y="70" width="10" height="10" fill="hsl(var(--accent))" />
+        {/* Sample B: Compound 1 */}
+        <g fill="hsl(var(--accent))">
+            <rect x="120" y="30" width="8" height="8" /><rect x="128" y="38" width="8" height="8" />
+            <rect x="145" y="55" width="8" height="8" /><rect x="153" y="63" width="8" height="8" />
+            <rect x="165" y="25" width="8" height="8" /><rect x="173" y="33" width="8" height="8" />
+            <rect x="135" y="70" width="8" height="8" /><rect x="143" y="78" width="8" height="8" />
+        </g>
         <text x="150" y="95" textAnchor="middle" fontSize="12">B (4 جسيمات)</text>
 
-        {/* Sample C */}
-        <polygon points="230,20 220,40 240,40" fill="hsl(var(--destructive))" />
-        <polygon points="250,50 240,70 260,70" fill="hsl(var(--destructive))" />
-        <polygon points="220,60 210,80 230,80" fill="hsl(var(--destructive))" />
-        <polygon points="260,30 250,50 270,50" fill="hsl(var(--destructive))" />
+        {/* Sample C: Compound 2 */}
+        <g fill="hsl(var(--destructive))">
+            <polygon points="230,20 220,40 240,40" /><circle cx="230" cy="45" r="5" />
+            <polygon points="255,50 245,70 265,70" /><circle cx="255" cy="75" r="5" />
+            <polygon points="215,60 205,80 225,80" /><circle cx="215" cy="85" r="5" />
+            <polygon points="265,30 255,50 275,50" /><circle cx="265" cy="55" r="5" />
+        </g>
         <text x="240" y="95" textAnchor="middle" fontSize="12">C (4 جسيمات)</text>
 
-        {/* Sample D */}
-        <circle cx="320" cy="25" r="3" fill="black" />
-        <circle cx="340" cy="35" r="3" fill="black" />
-        <circle cx="360" cy="45" r="3" fill="black" />
-        <circle cx="310" cy="55" r="3" fill="black" />
-        <circle cx="330" cy="65" r="3" fill="black" />
-        <circle cx="350" cy="75" r="3" fill="black" />
-        <circle cx="370" y="50" r="3" fill="black" />
-        <circle cx="300" y="40" r="3" fill="black" />
+        {/* Sample D: More clustered particles */}
+        <g fill="black">
+            <circle cx="320" cy="35" r="3" />
+            <circle cx="340" cy="30" r="3" />
+            <circle cx="360" y="40" r="3" />
+            <circle cx="315" cy="55" r="3" />
+            <circle cx="335" cy="60" r="3" />
+            <circle cx="355" y="70" r="3" />
+            <circle cx="370" y="55" r="3" />
+            <circle cx="305" y="45" r="3" />
+        </g>
         <text x="340" y="95" textAnchor="middle" fontSize="12">D (8 جسيمات)</text>
     </SvgDiagram>
 );
