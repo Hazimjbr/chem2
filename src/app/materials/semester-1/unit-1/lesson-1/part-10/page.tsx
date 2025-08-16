@@ -63,6 +63,17 @@ export default function LessonPartPage() {
         />
 
         <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        لاحظ العالم توماس جراهام أن الغازات الخفيفة مثل الهيدروجين والأمونيا تنتشر أسرع بكثير من الغازات الثقيلة مثل ثاني أكسيد الكربون. قاده ذلك إلى إجراء تجارب دقيقة لقياس سرعة تدفق الغازات المختلفة عبر ثقوب صغيرة، واستنتج من ذلك العلاقة الرياضية التي تربط بين سرعة التدفق والكتلة المولية.
+                    </p>
+                </CardContent>
+            </Card>
+
              <div className="grid md:grid-cols-2 gap-6">
                 <FlippableCard
                     cardTitle="الانتشار (Diffusion)"
@@ -100,60 +111,9 @@ export default function LessonPartPage() {
                     <blockquote className="border-r-4 border-primary pr-4">
                         "يتناسب معدل سرعة انتشار (أو تدفق) الغاز عكسيًا مع الجذر التربيعي لكتلته المولية عند ثبات درجة الحرارة والضغط."
                     </blockquote>
+                     <div dir="ltr" className="text-center pt-2 border-t mt-2"><BlockMath math="r \propto \frac{1}{\sqrt{Mr}}" /></div>
                 </div>
             </FlippableCard>
-
-             <FlippableCard
-                cardTitle="العلاقة الرياضية"
-                cardIcon={<Cpu className="h-6 w-6" />}
-            >
-               <div className="space-y-4 text-center">
-                  <p>يمكن التعبير عن العلاقة بين معدل سرعة الانتشار (<span dir="ltr"><InlineMath math="r"/></span>) والكتلة المولية (<span dir="ltr"><InlineMath math="Mr"/></span>) كالتالي:</p>
-                  <div dir="ltr"><BlockMath math="r \\propto \\frac{1}{\\sqrt{Mr}}" /></div>
-                  <p>لمقارنة معدل انتشار غازين (A و B)، نستخدم النسبة التالية:</p>
-                   <div dir="ltr"><BlockMath math="\\frac{r_A}{r_B} = \\sqrt{\\frac{Mr_B}{Mr_A}}" /></div>
-                    <p className="text-sm text-muted-foreground">لاحظ أن النسبة مقلوبة تحت الجذر بسبب العلاقة العكسية.</p>
-              </div>
-            </FlippableCard>
-
-             <Card>
-                <CardHeader>
-                    <CardTitle>مثال محلول</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="mb-4">
-                        <span>قارن بين معدل سرعة انتشار غازي الهيدروجين (<span dir="ltr" className="inline-block"><InlineMath math="H_2"/></span>) والأكسجين (<span dir="ltr" className="inline-block"><InlineMath math="O_2"/></span>) عند نفس الظروف. (الكتل المولية: H=1, O=16)</span>
-                    </p>
-                    <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                         <div>
-                            <p><strong className="text-accent">الحل:</strong></p>
-                            <ol className="list-decimal mr-6 text-sm space-y-2">
-                                <li>
-                                    <span>نحسب الكتل المولية للغازين:</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="Mr(H_2) = 2 \\times 1 = 2 \\, g/mol" /></div>
-                                    <div className="text-left" dir="ltr"><BlockMath math="Mr(O_2) = 2 \\times 16 = 32 \\, g/mol" /></div>
-                                </li>
-                                <li>
-                                    <span>نكتب قانون جراهام للمقارنة:</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="\\frac{r_{H_2}}{r_{O_2}} = \\sqrt{\\frac{Mr_{O_2}}{Mr_{H_2}}}" /></div>
-                                </li>
-                                <li>
-                                    <span>نعوض القيم:</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="\\frac{r_{H_2}}{r_{O_2}} = \\sqrt{\\frac{32}{2}} = \\sqrt{16} = 4" /></div>
-                                </li>
-                                <li>
-                                    <span>الاستنتاج: <BlockMath math="r_{H_2} = 4 \\times r_{O_2}" /></span></li>
-                            </ol>
-                        </div>
-                         <div className="border-t pt-3">
-                            <p className="text-sm font-semibold">
-                            الجواب: معدل سرعة انتشار غاز الهيدروجين أسرع بـ 4 مرات من معدل سرعة انتشار غاز الأكسجين لأنه أخف بكثير.
-                            </p>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-
         </div>
         
         <div className="space-y-4">
@@ -166,7 +126,7 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
-                  question={<><span>أي الغازين أسرع انتشارًا: الأمونيا (<span dir="ltr"><InlineMath math="NH_3"/></span>) أم كلوريد الهيدروجين (<span dir="ltr"><InlineMath math="HCl"/></span>)؟ (الكتل المولية: N=14, H=1, Cl=35.5)</span></>}
+                  question={<><span>أي الغازين أسرع انتشارًا: الأمونيا (<span dir="ltr" className="inline-block"><InlineMath math="NH_3"/></span>) أم كلوريد الهيدروجين (<span dir="ltr" className="inline-block"><InlineMath math="HCl"/></span>)؟ (الكتل المولية: N=14, H=1, Cl=35.5)</span></>}
                   options={[
                       "الأمونيا أسرع",
                       "كلوريد الهيدروجين أسرع",
@@ -177,7 +137,7 @@ export default function LessonPartPage() {
                   explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol، بينما لـ HCl ≈ 36.5g/mol. بما أن الأمونيا أخف (كتلتها المولية أقل)، فهي الأسرع انتشارًا وفقًا لقانون جراهام."
               />
                <InteractiveQuestionCard 
-                  question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
+                  question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
                   options={[
                       "8g/mol",
                       "32g/mol",
@@ -223,5 +183,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    
