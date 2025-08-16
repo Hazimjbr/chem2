@@ -19,52 +19,48 @@ const SvgDiagram = ({ children, className, ...props }: { children: React.ReactNo
 
 
 export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
-    <SvgDiagram viewBox="0 0 400 100" {...props}>
+    <SvgDiagram viewBox="0 0 400 120" {...props}>
         <title>أربع عينات من الغازات</title>
         
-        {/* Sample A: Diatomic Element (4 particles) */}
-        <g fill="hsl(var(--primary))">
-            <circle cx="45" cy="30" r="4" /><circle cx="53" cy="30" r="4" />
-            <circle cx="25" cy="50" r="4" /><circle cx="33" cy="50" r="4" />
-            <circle cx="65" cy="60" r="4" /><circle cx="73" cy="60" r="4" />
-            <circle cx="35" cy="75" r="4" /><circle cx="43" cy="75" r="4" />
+        {/* Sample A Box */}
+        <rect x="30" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g transform="translate(50, 45) scale(0.8)">
+            <g fill="hsl(var(--primary))">
+                <circle cx="-5" cy="0" r="4" /><circle cx="3" cy="0" r="4" />
+            </g>
         </g>
-        <text x="50" y="95" textAnchor="middle" fontSize="12">A (4 جسيمات)</text>
+        <text x="50" y="105" textAnchor="middle" fontSize="12">A</text>
 
-        {/* Sample B: Compound (3 particles) */}
-        <g fill="hsl(var(--accent))">
-            {/* Particle 1 */}
-            <rect x="130" y="30" width="8" height="8" /><circle cx="126" cy="34" r="4" /><circle cx="142" cy="34" r="4" />
-            {/* Particle 2 */}
-            <rect x="160" y="55" width="8" height="8" /><circle cx="156" cy="59" r="4" /><circle cx="172" cy="59" r="4" />
-            {/* Particle 3 */}
-            <rect x="135" y="70" width="8" height="8" /><circle cx="131" cy="74" r="4" /><circle cx="147" cy="74" r="4" />
+        {/* Sample B Box */}
+        <rect x="110" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g transform="translate(130, 45) scale(0.8)">
+            <g fill="hsl(var(--accent))">
+                <rect x="-4" y="-4" width="8" height="8" /><circle cx="-8" cy="0" r="4" /><circle cx="8" cy="0" r="4" />
+            </g>
         </g>
-        <text x="150" y="95" textAnchor="middle" fontSize="12">B (3 جسيمات)</text>
+        <text x="130" y="105" textAnchor="middle" fontSize="12">B</text>
 
-        {/* Sample C: Compound 2 (4 particles) */}
-        <g fill="hsl(var(--destructive))">
-            <polygon points="230,20 220,40 240,40" /><circle cx="230" cy="45" r="5" />
-            <polygon points="255,50 245,70 265,70" /><circle cx="255" cy="75" r="5" />
-            <polygon points="215,60 205,80 225,80" /><circle cx="215" cy="85" r="5" />
-            <polygon points="265,30 255,50 275,50" /><circle cx="265" cy="55" r="5" />
+        {/* Sample C Box */}
+        <rect x="190" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g transform="translate(210, 45) scale(0.8)">
+             <g fill="hsl(var(--destructive))">
+                <polygon points="0,-10 -10,10 10,10" /><circle cx="0" cy="15" r="5" />
+            </g>
         </g>
-        <text x="240" y="95" textAnchor="middle" fontSize="12">C (4 جسيمات)</text>
+        <text x="210" y="105" textAnchor="middle" fontSize="12">C</text>
 
-        {/* Sample D: More clustered particles (8 particles) */}
-        <g fill="black">
-            <circle cx="325" cy="38" r="3" />
-            <circle cx="340" cy="35" r="3" />
-            <circle cx="355" y="42" r="3" />
-            <circle cx="320" cy="55" r="3" />
-            <circle cx="335" cy="60" r="3" />
-            <circle cx="350" cy="68" r="3" />
-            <circle cx="365" cy="58" r="3" />
-            <circle cx="310" y="48" r="3" />
+        {/* Sample D Box */}
+        <rect x="270" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g transform="translate(290, 45) scale(0.8)">
+            <g fill="black">
+                <circle cx="0" cy="0" r="3" />
+            </g>
         </g>
-        <text x="340" y="95" textAnchor="middle" fontSize="12">D (8 جسيمات)</text>
+        <text x="290" y="105" textAnchor="middle" fontSize="12">D</text>
+
     </SvgDiagram>
 );
+
 
 
 export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
