@@ -30,17 +30,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
     {
         question: <div><p>{gasSamplesQuestionText}</p><GasSamplesDiagram /><strong className="mt-2 block text-accent">3) إذا كانت الكتل المولية للغازات (A:20, B:18, C:46, D:32)g/mol، فإن عينة الغاز الأكثر كثافة هي:</strong></div>,
         options: ["A", "B", "C", "D"],
-        correctAnswerIndex: 2,
+        correctAnswerIndex: 3,
         explanation: "الكثافة = الكتلة/الحجم. بما أن الحجم ثابت، فالأعلى كثافة هو صاحب الكتلة الأكبر. الكتلة تتناسب مع عدد الجسيمات والكتلة المولية. بحساب كتلة نسبية (عدد الجسيمات × الكتلة المولية): A=4×20=80, B=4×18=72, C=4×46=184, D=8×32=256. العينة D لها الكتلة الأعلى وبالتالي هي الأعلى كثافة."
     },
     {
-        question: <div><p>الشكل الذي يوضح عملية الانتشار:</p><img src="/images/graham-law-q2.png" alt="Diffusion process of two gases" className="mx-auto my-2" /></div>,
+        question: <div><p>أي من الأشكال التالية يوضح عملية الانتشار بشكل صحيح؟</p><DiffusionProcessDiagram /></div>,
         options: ["أ", "ب", "ج", "د"],
         correctAnswerIndex: 0,
-        explanation: "الانتشار هو الاختلاط التدريجي للغازات. الشكل (أ) يوضح بشكل صحيح كيف تنتشر الجسيمات البيضاء والسوداء من مناطق تركيزها العالي لتختلط وتتوزع بشكل متجانس في النهاية."
+        explanation: "الانتشار هو الاختلاط التدريجي للغازات. الشكل (أ) يوضح بشكل صحيح كيف تنتشر الجسيمات من مناطق تركيزها العالي لتختلط وتتوزع بشكل متجانس في النهاية."
     },
     {
-        question: <div><p>ادرس الرسم المجاور والذي يمثل وعاءين مفصولين بشريحة زجاجية في الشكل A ثم اختر العبارة الصحيحة التي تفسر ما حدث بعد إزالة الشريحة الزجاجية في الشكل B:</p><img src="/images/graham-law-q3.png" alt="Bromine and air diffusion experiment" className="mx-auto my-2" /></div>,
+        question: <div><p>ادرس الرسم المجاور والذي يمثل وعاءين مفصولين بشريحة زجاجية في الشكل A ثم اختر العبارة الصحيحة التي تفسر ما حدث بعد إزالة الشريحة الزجاجية في الشكل B:</p><BromineDiffusionDiagram /></div>,
         options: [
             "جسيمات البروم والهواء تحركت بعشوائية",
             "جسيمات البروم تحركت للأعلى والهواء للأسفل",
@@ -51,13 +51,13 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "التفسير الأساسي لظاهرة الانتشار هو الحركة العشوائية المستمرة لجسيمات الغازات، والتي تؤدي إلى اختلاطها بمرور الوقت بغض النظر عن كثافتها."
     },
     {
-        question: <div><p>{ammoniumChlorideQuestionText}</p><img src="/images/graham-law-q4.png" alt="Ammonia and HCl reaction in a tube" className="mx-auto my-2" /><strong className="mt-2 block text-accent">1) حدد موقع تكون الغاز الأبيض من كلوريد الأمونيوم:</strong></div>,
+        question: <div><p>{ammoniumChlorideQuestionText}</p><AmmoniumChlorideDiagram /><strong className="mt-2 block text-accent">1) حدد موقع تكون الغاز الأبيض من كلوريد الأمونيوم:</strong></div>,
         options: ["A", "B", "C", "D"],
         correctAnswerIndex: 2,
-        explanation: "الكتلة المولية لـ NH₃ ≈ 17g/mol. الكتلة المولية لـ HCl ≈ 36g/mol. غاز NH₃ أخف، لذا ينتشر أسرع ويقطع مسافة أطول. غاز HCl أثقل، لذا ينتشر أبطأ ويقطع مسافة أقصر. سيلتقيان عند النقطة C الأقرب إلى مصدر HCl."
+        explanation: "الكتلة المولية لـ NH₃ ≈ 17g/mol. الكتلة المولية لـ HCl ≈ 36.5g/mol. غاز NH₃ أخف، لذا ينتشر أسرع ويقطع مسافة أطول. غاز HCl أثقل، لذا ينتشر أبطأ ويقطع مسافة أقصر. سيلتقيان عند النقطة C الأقرب إلى مصدر HCl."
     },
     {
-        question: <div><p>{ammoniumChlorideQuestionText}</p><img src="/images/graham-law-q4.png" alt="Ammonia and HCl reaction in a tube" className="mx-auto my-2" /><strong className="mt-2 block text-accent">2) إذا تم استبدال الحمض HCl بالحمض HBr فإن العبارة الصحيحة فإن موقع الغاز الأبيض:</strong></div>,
+        question: <div><p>{ammoniumChlorideQuestionText}</p><AmmoniumChlorideDiagram /><strong className="mt-2 block text-accent">2) إذا تم استبدال الحمض HCl بالحمض HBr فإن العبارة الصحيحة فإن موقع الغاز الأبيض:</strong></div>,
         options: [
             "لا يتغير",
             "على يسار A",
@@ -65,7 +65,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "على يمين D"
         ],
         correctAnswerIndex: 2,
-        explanation: "الكتلة المولية لـ HBr (81g/mol) أكبر بكثير من HCl (36g/mol). هذا يعني أن HBr سيكون أبطأ بكثير من HCl. وبما أن سرعة NH₃ لم تتغير، فإنه سيقطع مسافة أكبر بكثير قبل أن يلتقي بـ HBr البطيء. لذا، سيتكون الغاز الأبيض في منطقة أقرب إلى مصدر HBr، أي بين C و D."
+        explanation: "الكتلة المولية لـ HBr (81g/mol) أكبر بكثير من HCl (36.5g/mol). هذا يعني أن HBr سيكون أبطأ بكثير من HCl. وبما أن سرعة NH₃ لم تتغير، فإنه سيقطع مسافة أكبر بكثير قبل أن يلتقي بـ HBr البطيء. لذا، سيتكون الغاز الأبيض في منطقة أقرب إلى مصدر HBr، أي بين C و D."
     },
 ];
 
