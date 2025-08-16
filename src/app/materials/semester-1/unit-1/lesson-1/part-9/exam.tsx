@@ -138,7 +138,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_A = 300/760 atm. n_A = PV/RT = ((300/760) * 0.5) / (0.082 * 300) ≈ 0.008mol."
     },
     {
-        "question": "2) عدد مولات الغاز B:",
+        question: <span>إذا خلط <InlineMath math="0.5\text{L}" /> من غاز A ضغطه <InlineMath math="300\text{mmHg}" /> درجة حرارته <InlineMath math="300\text{K}" /> مع <InlineMath math="0.43\text{L}" /> من غاز B له نفس الحرارة ضغطه <InlineMath math="350\text{mmHg}" /> فكان الضغط الكلي للخليط داخل الوعاء W يساوي <InlineMath math="500\text{mmHg}" /> عند نفس درجة الحرارة. <br/> 2) عدد مولات الغاز B:</span>,
         "options": [
             "0.008mol",
             "0.016mol",
@@ -149,7 +149,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_B = 350/760 atm. n_B = PV/RT = ((350/760) * 0.43) / (0.082 * 300) ≈ 0.008mol."
     },
     {
-        "question": "3) حجم الوعاء W بوحدة L:",
+        question: <span>إذا خلط <InlineMath math="0.5\text{L}" /> من غاز A ضغطه <InlineMath math="300\text{mmHg}" /> درجة حرارته <InlineMath math="300\text{K}" /> مع <InlineMath math="0.43\text{L}" /> من غاز B له نفس الحرارة ضغطه <InlineMath math="350\text{mmHg}" /> فكان الضغط الكلي للخليط داخل الوعاء W يساوي <InlineMath math="500\text{mmHg}" /> عند نفس درجة الحرارة. <br/> 3) حجم الوعاء W بوحدة L:</span>,
         "options": [
             "0.004L",
             "0.1L",
@@ -160,7 +160,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "n_total = n_A + n_B = 0.008 + 0.008 = 0.016mol. P_total = 500/760 atm. V = nRT/P = (0.016 * 0.082 * 300) / (500/760) ≈ 0.6L."
     },
      {
-        "question": "4) ضغط الغاز B في الوعاء W بوحدة mmHg:",
+        question: <span>إذا خلط <InlineMath math="0.5\text{L}" /> من غاز A ضغطه <InlineMath math="300\text{mmHg}" /> درجة حرارته <InlineMath math="300\text{K}" /> مع <InlineMath math="0.43\text{L}" /> من غاز B له نفس الحرارة ضغطه <InlineMath math="350\text{mmHg}" /> فكان الضغط الكلي للخليط داخل الوعاء W يساوي <InlineMath math="500\text{mmHg}" /> عند نفس درجة الحرارة. <br/> 4) ضغط الغاز B في الوعاء W بوحدة mmHg:</span>,
         "options": [
             "500mmHg",
             "350mmHg",
@@ -171,7 +171,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الكسر المولي لـ B هو X_B = n_B / n_total = 0.008 / 0.016 = 0.5. الضغط الجزئي لـ B هو P_B = X_B * P_total = 0.5 * 500mmHg = 250mmHg."
     },
      {
-        question: <span>5) الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm:</span>,
+        question: <span>إذا خلط <InlineMath math="0.5\text{L}" /> من غاز A ضغطه <InlineMath math="300\text{mmHg}" /> درجة حرارته <InlineMath math="300\text{K}" /> مع <InlineMath math="0.43\text{L}" /> من غاز B له نفس الحرارة ضغطه <InlineMath math="350\text{mmHg}" /> فكان الضغط الكلي للخليط داخل الوعاء W يساوي <InlineMath math="500\text{mmHg}" /> عند نفس درجة الحرارة. <br/> 5) الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm:</span>,
         "options": [
             "620atm",
             "0.82atm",
