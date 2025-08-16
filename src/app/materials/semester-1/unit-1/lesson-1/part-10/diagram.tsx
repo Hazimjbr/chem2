@@ -22,7 +22,7 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
     <SvgDiagram viewBox="0 0 400 100" {...props}>
         <title>أربع عينات من الغازات</title>
         
-        {/* Sample A: Diatomic Element */}
+        {/* Sample A: Diatomic Element (4 particles) */}
         <g fill="hsl(var(--primary))">
             <circle cx="45" cy="30" r="4" /><circle cx="53" cy="30" r="4" />
             <circle cx="25" cy="50" r="4" /><circle cx="33" cy="50" r="4" />
@@ -31,16 +31,18 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
         </g>
         <text x="50" y="95" textAnchor="middle" fontSize="12">A (4 جسيمات)</text>
 
-        {/* Sample B: Compound 1 */}
+        {/* Sample B: Compound (3 particles) */}
         <g fill="hsl(var(--accent))">
-            <rect x="120" y="30" width="8" height="8" /><rect x="128" y="38" width="8" height="8" />
-            <rect x="145" y="55" width="8" height="8" /><rect x="153" y="63" width="8" height="8" />
-            <rect x="165" y="25" width="8" height="8" /><rect x="173" y="33" width="8" height="8" />
-            <rect x="135" y="70" width="8" height="8" /><rect x="143" y="78" width="8" height="8" />
+            {/* Particle 1 */}
+            <rect x="130" y="30" width="8" height="8" /><circle cx="126" cy="34" r="4" /><circle cx="142" cy="34" r="4" />
+            {/* Particle 2 */}
+            <rect x="160" y="55" width="8" height="8" /><circle cx="156" cy="59" r="4" /><circle cx="172" cy="59" r="4" />
+            {/* Particle 3 */}
+            <rect x="135" y="70" width="8" height="8" /><circle cx="131" cy="74" r="4" /><circle cx="147" cy="74" r="4" />
         </g>
-        <text x="150" y="95" textAnchor="middle" fontSize="12">B (4 جسيمات)</text>
+        <text x="150" y="95" textAnchor="middle" fontSize="12">B (3 جسيمات)</text>
 
-        {/* Sample C: Compound 2 */}
+        {/* Sample C: Compound 2 (4 particles) */}
         <g fill="hsl(var(--destructive))">
             <polygon points="230,20 220,40 240,40" /><circle cx="230" cy="45" r="5" />
             <polygon points="255,50 245,70 265,70" /><circle cx="255" cy="75" r="5" />
@@ -49,16 +51,16 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
         </g>
         <text x="240" y="95" textAnchor="middle" fontSize="12">C (4 جسيمات)</text>
 
-        {/* Sample D: More clustered particles */}
+        {/* Sample D: More clustered particles (8 particles) */}
         <g fill="black">
-            <circle cx="320" cy="35" r="3" />
-            <circle cx="340" cy="30" r="3" />
-            <circle cx="360" y="40" r="3" />
-            <circle cx="315" cy="55" r="3" />
+            <circle cx="325" cy="38" r="3" />
+            <circle cx="340" cy="35" r="3" />
+            <circle cx="355" y="42" r="3" />
+            <circle cx="320" cy="55" r="3" />
             <circle cx="335" cy="60" r="3" />
-            <circle cx="355" y="70" r="3" />
-            <circle cx="370" y="55" r="3" />
-            <circle cx="305" y="45" r="3" />
+            <circle cx="350" cy="68" r="3" />
+            <circle cx="365" cy="58" r="3" />
+            <circle cx="310" y="48" r="3" />
         </g>
         <text x="340" y="95" textAnchor="middle" fontSize="12">D (8 جسيمات)</text>
     </SvgDiagram>
