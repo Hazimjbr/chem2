@@ -23,40 +23,42 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
         <title>أربع عينات من الغازات</title>
         
         {/* Sample A Box */}
-        <rect x="30" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
-        <g transform="translate(50, 45) scale(0.8)">
-            <g fill="hsl(var(--primary))">
-                <circle cx="-5" cy="0" r="4" /><circle cx="3" cy="0" r="4" />
-            </g>
+        <rect x="20" y="10" width="80" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g fill="hsl(var(--primary))">
+            <g transform="translate(40, 30)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
+            <g transform="translate(60, 50)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
+            <g transform="translate(35, 65)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
+            <g transform="translate(65, 25)"><circle cx="-5" cy="0" r="4" /><circle cx="5" cy="0" r="4" /></g>
         </g>
-        <text x="50" y="105" textAnchor="middle" fontSize="12">A</text>
+        <text x="60" y="105" textAnchor="middle" fontSize="12">A</text>
 
         {/* Sample B Box */}
-        <rect x="110" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
-        <g transform="translate(130, 45) scale(0.8)">
-            <g fill="hsl(var(--accent))">
-                <rect x="-4" y="-4" width="8" height="8" /><circle cx="-8" cy="0" r="4" /><circle cx="8" cy="0" r="4" />
-            </g>
+        <rect x="110" y="10" width="80" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+         <g fill="hsl(var(--accent))">
+            <g transform="translate(130, 30)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-10" cy="0" r="4" /><circle cx="10" cy="0" r="4" /></g>
+            <g transform="translate(160, 60)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-10" cy="0" r="4" /><circle cx="10" cy="0" r="4" /></g>
+            <g transform="translate(140, 70)"><rect x="-4" y="-4" width="8" height="8" /><circle cx="-10" cy="0" r="4" /><circle cx="10" cy="0" r="4" /></g>
         </g>
-        <text x="130" y="105" textAnchor="middle" fontSize="12">B</text>
+        <text x="150" y="105" textAnchor="middle" fontSize="12">B</text>
 
         {/* Sample C Box */}
-        <rect x="190" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
-        <g transform="translate(210, 45) scale(0.8)">
-             <g fill="hsl(var(--destructive))">
-                <polygon points="0,-10 -10,10 10,10" /><circle cx="0" cy="15" r="5" />
-            </g>
+        <rect x="200" y="10" width="80" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g fill="hsl(var(--destructive))">
+            <g transform="translate(225, 40)"><polygon points="0,-8 -8,8 8,8" /><circle cx="0" cy="12" r="4" /></g>
+            <g transform="translate(255, 65)"><polygon points="0,-8 -8,8 8,8" /><circle cx="0" cy="12" r="4" /></g>
         </g>
-        <text x="210" y="105" textAnchor="middle" fontSize="12">C</text>
+        <text x="240" y="105" textAnchor="middle" fontSize="12">C</text>
 
         {/* Sample D Box */}
-        <rect x="270" y="10" width="40" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
-        <g transform="translate(290, 45) scale(0.8)">
-            <g fill="black">
-                <circle cx="0" cy="0" r="3" />
-            </g>
+        <rect x="290" y="10" width="80" height="80" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1"/>
+        <g fill="black">
+            <circle cx="310" cy="30" r="3" />
+            <circle cx="340" cy="25" r="3" />
+            <circle cx="320" cy="50" r="3" />
+            <circle cx="350" cy="60" r="3" />
+            <circle cx="315" cy="70" r="3" />
         </g>
-        <text x="290" y="105" textAnchor="middle" fontSize="12">D</text>
+        <text x="330" y="105" textAnchor="middle" fontSize="12">D</text>
 
     </SvgDiagram>
 );
