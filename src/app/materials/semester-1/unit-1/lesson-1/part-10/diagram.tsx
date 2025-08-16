@@ -178,5 +178,3 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <text x="330" y="20" textAnchor="middle" fontSize="10">حلقة بيضاء</text>
     </SvgDiagram>
 );
-
-    
