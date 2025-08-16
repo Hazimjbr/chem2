@@ -66,29 +66,44 @@ export const GasSamplesDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
 
 
 export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
-    <SvgDiagram viewBox="0 0 450 80" {...props}>
-         <title>عملية الانتشار</title>
-         <text x="225" y="15" textAnchor="middle" fontSize="12">الانتشار هو الاختلاط التدريجي للغازات</text>
-        {/* Left side initial */}
-        <rect x="10" y="30" width="200" height="40" stroke="black" strokeWidth="1" fill="none" />
-        <circle cx="40" cy="50" r="5" fill="hsl(var(--primary))"/>
-        <circle cx="60" cy="40" r="5" fill="hsl(var(--primary))"/>
-        <circle cx="80" cy="60" r="5" fill="hsl(var(--primary))"/>
+    <SvgDiagram viewBox="0 0 450 180" {...props}>
+        <title>أربعة عمليات غازية</title>
         
-        <path d="M215 30 L 235 70" stroke="hsl(var(--accent))" strokeWidth="2" />
-        <path d="M218 25 L 228 35" stroke="hsl(var(--accent))" strokeWidth="2" />
+        {/* Helper function for a diatomic molecule */}
+        <defs>
+            <g id="white-diatomic"><circle cx="-3" cy="0" r="3" fill="white" stroke="black" strokeWidth="0.5"/><circle cx="3" cy="0" r="3" fill="white" stroke="black" strokeWidth="0.5"/></g>
+            <g id="black-diatomic"><circle cx="-3" cy="0" r="3" fill="black" /><circle cx="3" cy="0" r="3" fill="black" /></g>
+        </defs>
+
+        {/* Row 1, Process A (Correct Diffusion) */}
+        <text x="430" y="45" textAnchor="middle" fontSize="16">أ</text>
+        <rect x="10" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <rect x="230" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <path d="M195,45 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
+        {/* Initial State A */}
+        <use href="#white-diatomic" x="30" y="30" /> <use href="#white-diatomic" x="70" y="60" /> <use href="#white-diatomic" x="110" y="25" /> <use href="#white-diatomic" x="150" y="55" />
+        <use href="#black-diatomic" x="50" y="45" /> <use href="#black-diatomic" x="90" y="35" /> <use href="#black-diatomic" x="130" y="70" /> <use href="#black-diatomic" x="170" y="20" />
+        {/* Final State A */}
+        <use href="#white-diatomic" x="250" y="65" /> <use href="#white-diatomic" x="290" y="20" /> <use href="#white-diatomic" x="330" y="50" /> <use href="#white-diatomic" x="380" y="30" />
+        <use href="#black-diatomic" x="270" y="40" /> <use href="#black-diatomic" x="310" y="70" /> <use href="#black-diatomic" x="350" y="25" /> <use href="#black-diatomic" x="400" y="60" />
+
+        {/* Row 2, Process B (Separation - incorrect) */}
+        <text x="430" y="135" textAnchor="middle" fontSize="16">ب</text>
+        <rect x="10" y="100" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <rect x="230" y="100" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
+        <path d="M195,135 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
+        {/* Initial State B */}
+        <use href="#white-diatomic" x="30" y="120" /> <use href="#white-diatomic" x="70" y="150" /> <use href="#white-diatomic" x="110" y="115" />
+        <use href="#black-diatomic" x="50" y="135" /> <use href="#black-diatomic" x="90" y="125" /> <use href="#black-diatomic" x="130" y="160" /> <use href="#black-diatomic" x="170" y="110" />
+        {/* Final State B */}
+        <use href="#white-diatomic" x="250" y="115" /> <use href="#white-diatomic" x="280" y="155" /> <use href="#white-diatomic" x="310" y="125" />
+        <use href="#black-diatomic" x="350" y="110" /> <use href="#black-diatomic" x="380" y="160" /> <use href="#black-diatomic" x="390" y="130" /> <use href="#black-diatomic" x="360" y="140" />
 
 
-        {/* Right side final */}
-        <rect x="240" y="30" width="200" height="40" stroke="black" strokeWidth="1" fill="none" />
-        <circle cx="270" cy="50" r="5" fill="hsl(var(--primary))"/>
-        <circle cx="350" cy="40" r="5" fill="hsl(var(--primary))"/>
-        <circle cx="400" cy="60" r="5" fill="hsl(var(--primary))"/>
-        <rect x="290" y="40" width="10" height="10" fill="hsl(var(--destructive))" />
-        <rect x="320" y="60" width="10" height="10" fill="hsl(var(--destructive))" />
-        <rect x="380" y="45" width="10" height="10" fill="hsl(var(--destructive))" />
+        {/* This is a placeholder for diagrams C and D from the user image, which are not implemented as they represent reaction/bonding not simple diffusion */}
     </SvgDiagram>
 );
+
 
 export const BromineDiffusionDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
     <SvgDiagram viewBox="0 0 200 150" {...props}>
