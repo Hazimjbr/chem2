@@ -21,7 +21,7 @@ type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 // Helper function to shuffle an array and return the new index of the correct answer
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     // This function is disabled for questions with image-based options (A,B,C,D labels)
-    if (question.options.every(o => o.length === 1)) {
+    if (question.options.every(o => o.length === 1 || o.startsWith("أقرب") || o.startsWith("في منتصف"))) {
         return question;
     }
 
