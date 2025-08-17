@@ -190,8 +190,7 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <text x="330" y="30" textAnchor="middle">C</text>
         <line x1="330" y1="35" x2="330" y2="40" stroke="black" />
         
-        {/* NH4Cl ring */}
-        <rect x="325" y="42" width="10" height="16" fill="white" stroke="black" strokeDasharray="2" />
-        <text x="330" y="20" textAnchor="middle" fontSize="10">حلقة بيضاء</text>
     </SvgDiagram>
 );
+
+    
