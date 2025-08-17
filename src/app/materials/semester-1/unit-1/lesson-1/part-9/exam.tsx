@@ -162,7 +162,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "n_total = n_A + n_B = 0.008 + 0.008 = 0.016mol. P_total = 500/760 atm. V = nRT/P = (0.016 * 0.082 * 300) / (500/760) ≈ 0.6L."
     },
      {
-        question: <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">4) ضغط الغاز B في الوعاء W بوحدة mmHg:</strong></div>,
+        "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">4) ضغط الغاز B في الوعاء W بوحدة mmHg:</strong></div>,
         "options": [
             "500mmHg",
             "350mmHg",
@@ -173,7 +173,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الكسر المولي لـ B هو X_B = n_B / n_total = 0.008 / 0.016 = 0.5. الضغط الجزئي لـ B هو P_B = X_B * P_total = 0.5 * 500mmHg = 250mmHg."
     },
      {
-        question: <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">5) الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm:</strong></div>,
+        "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">5) الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm:</strong></div>,
         "options": [
             "620atm",
             "0.82atm",
