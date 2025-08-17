@@ -186,9 +186,6 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         
         <text x="225" y="30" textAnchor="middle">B</text>
         <line x1="225" y1="35" x2="225" y2="40" stroke="black" />
-
-        <text x="330" y="30" textAnchor="middle">C</text>
-        <line x1="330" y1="35" x2="330" y2="40" stroke="black" />
         
     </SvgDiagram>
 );
