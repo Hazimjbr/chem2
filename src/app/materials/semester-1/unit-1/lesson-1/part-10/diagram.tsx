@@ -77,27 +77,40 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
             </marker>
         </defs>
+        
+        {/* Shared initial state for all */}
+        <g id="initial-state">
+            <use href="#white-diatomic" x="30" y="120" /> 
+            <use href="#white-diatomic" x="70" y="150" />
+            <use href="#black-diatomic" x="130" y="160" /> 
+            <use href="#black-diatomic" x="170" y="110" />
+        </g>
+
 
         {/* --- Row 1, Process A (Correct Diffusion) --- */}
         <text x="430" y="45" textAnchor="middle" fontSize="16">أ</text>
         <rect x="10" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <rect x="230" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <path d="M195,45 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
-        {/* Initial State A */}
-        <use href="#white-diatomic" x="30" y="30" /> <use href="#white-diatomic" x="70" y="60" /> <use href="#white-diatomic" x="110" y="25" /> <use href="#white-diatomic" x="150" y="55" />
-        <use href="#black-diatomic" x="50" y="45" /> <use href="#black-diatomic" x="90" y="35" /> <use href="#black-diatomic" x="130" y="70" /> <use href="#black-diatomic" x="170" y="20" />
+        {/* Initial State A - Unified */}
+        <use href="#white-diatomic" x="30" y="30" /> 
+        <use href="#white-diatomic" x="70" y="60" /> 
+        <use href="#black-diatomic" x="130" y="20" /> 
+        <use href="#black-diatomic" x="170" y="50" /> 
         {/* Final State A */}
-        <use href="#white-diatomic" x="250" y="65" /> <use href="#white-diatomic" x="290" y="20" /> <use href="#white-diatomic" x="330" y="50" /> <use href="#white-diatomic" x="380" y="30" />
-        <use href="#black-diatomic" x="270" y="40" /> <use href="#black-diatomic" x="310" y="70" /> <use href="#black-diatomic" x="350" y="25" /> <use href="#black-diatomic" x="400" y="60" />
+        <use href="#white-diatomic" x="250" y="65" /> <use href="#white-diatomic" x="290" y="20" /> <use href="#white-diatomic" x="330" y="50" /> 
+        <use href="#black-diatomic" x="270" y="40" /> <use href="#black-diatomic" x="310" y="70" /> <use href="#black-diatomic" x="350" y="25" /> 
 
         {/* --- Row 2, Process B (Separation) --- */}
         <text x="430" y="135" textAnchor="middle" fontSize="16">ب</text>
         <rect x="10" y="100" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <rect x="230" y="100" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <path d="M195,135 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
-        {/* Initial State B */}
-        <use href="#white-diatomic" x="30" y="120" /> <use href="#white-diatomic" x="70" y="150" />
-        <use href="#black-diatomic" x="130" y="160" /> <use href="#black-diatomic" x="170" y="110" />
+        {/* Initial State B - Unified */}
+        <use href="#white-diatomic" x="30" y="120" /> 
+        <use href="#white-diatomic" x="70" y="150" /> 
+        <use href="#black-diatomic" x="130" y="110" /> 
+        <use href="#black-diatomic" x="170" y="140" /> 
         {/* Final State B (White on left, Black on right) */}
         <use href="#white-diatomic" x="250" y="115" /> <use href="#white-diatomic" x="280" y="155" /> <use href="#white-diatomic" x="310" y="125" />
         <use href="#black-diatomic" x="350" y="110" /> <use href="#black-diatomic" x="380" y="160" /> <use href="#black-diatomic" x="390" y="130" />
@@ -107,9 +120,11 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <rect x="10" y="190" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <rect x="230" y="190" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <path d="M195,225 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
-        {/* Initial State C */}
-        <use href="#white-diatomic" x="30" y="210" /> <use href="#white-diatomic" x="70" y="240" />
-        <use href="#black-diatomic" x="130" y="250" /> <use href="#black-diatomic" x="170" y="200" />
+        {/* Initial State C - Unified */}
+        <use href="#white-diatomic" x="30" y="210" /> 
+        <use href="#white-diatomic" x="70" y="240" />
+        <use href="#black-diatomic" x="130" y="200" /> 
+        <use href="#black-diatomic" x="170" y="230" />
         {/* Final State C (Black on left, White on right) */}
         <use href="#black-diatomic" x="250" y="205" /> <use href="#black-diatomic" x="280" y="245" /> <use href="#black-diatomic" x="310" y="215" />
         <use href="#white-diatomic" x="350" y="200" /> <use href="#white-diatomic" x="380" y="250" /> <use href="#white-diatomic" x="390" y="220" />
@@ -119,9 +134,11 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <rect x="10" y="280" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <rect x="230" y="280" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <path d="M195,315 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
-        {/* Initial State D */}
-        <use href="#white-diatomic" x="30" y="300" /> <use href="#white-diatomic" x="70" y="330" />
-        <use href="#black-diatomic" x="130" y="340" /> <use href="#black-diatomic" x="170" y="290" />
+        {/* Initial State D - Unified */}
+        <use href="#white-diatomic" x="30" y="300" /> 
+        <use href="#white-diatomic" x="70" y="330" />
+        <use href="#black-diatomic" x="130" y="290" /> 
+        <use href="#black-diatomic" x="170" y="320" />
         {/* Final State D (Bonded pairs) */}
         <use href="#white-diatomic" x="260" y="315" />
         <use href="#black-diatomic" x="272" y="315" />
@@ -132,7 +149,7 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
 
 
 export const BromineDiffusionDiagram = (props: Partial<SVGProps<SVGSVGElement>>) => (
-    <SvgDiagram viewBox="0 0 200 150" {...props}>
+     <SvgDiagram viewBox="0 0 200 150" {...props}>
         <title>انتشار البروم في الهواء</title>
         {/* Left Beaker (Before) */}
         <rect x="10" y="20" width="80" height="100" stroke="black" strokeWidth="1" fill="none" />
@@ -178,5 +195,3 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <text x="330" y="20" textAnchor="middle" fontSize="10">حلقة بيضاء</text>
     </SvgDiagram>
 );
-
-    
