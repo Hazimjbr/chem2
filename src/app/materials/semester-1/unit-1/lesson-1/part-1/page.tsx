@@ -7,9 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Check, Dot, ArrowLeft, X, Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
-import Quiz from './quiz';
+import Quiz from '@/components/quiz'; // Use the central quiz component
 import FlippableCard from './flippable-card';
 import InteractiveQuestionCard from './interactive-question-card';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -29,6 +30,8 @@ const lessonContent = `<p>هل تساءلت يومًا كيف يملأ الهو�
 
 
 export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
   return (
     <div className="container mx-auto p-8 relative">
        <Link href="/materials/semester-1" passHref>
@@ -296,7 +299,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
           </CardContent>
         </Card>
       </main>

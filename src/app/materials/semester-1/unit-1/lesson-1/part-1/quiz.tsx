@@ -1,262 +1,318 @@
-
 'use client';
 
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils.tsx';
-import { useToast } from '@/hooks/use-toast';
-import { QuizQuestion, staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, Dot, ArrowLeft, X, Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
+import Quiz from '@/components/quiz'; // Use the central quiz component
+import FlippableCard from './flippable-card';
+import InteractiveQuestionCard from './interactive-question-card';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
-
-interface QuizProps {
-  lessonContent: string;
-}
-
-type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
-
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    // Create an array of indices to shuffle
-    const indices = [0, 1, 2, 3];
-    // Shuffle the indices
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    // Create the new shuffled options array
-    const shuffledOptions = indices.map(i => question.options[i]);
-    
-    // Find the new index of the correct answer
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
-};
-
-
-export default function Quiz({ lessonContent }: QuizProps) {
-  const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
-  const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-  const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const { toast } = useToast();
-
-  const handleGenerateQuiz = async (level: number) => {
-    setIsLoading(true);
-    setQuiz(null);
-    setIsFinished(false);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-    setAnswerStatus('unanswered');
-    setSelectedAnswer(null);
-
-    try {
-        let generatedQuestions: QuizQuestion[] = [];
-
-        if (level <= 3) {
-            let staticQuestions: QuizQuestion[] = [];
-            if (level === 1) staticQuestions = staticQuizLvl1;
-            if (level === 2) staticQuestions = staticQuizLvl2;
-            if (level === 3) staticQuestions = staticQuizLvl3;
-            // Shuffle options for each static question
-            generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
-        } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz;
-        }
-
-        setQuiz(generatedQuestions);
-
-    } catch (error) {
-        console.error('Failed to generate quiz:', error);
-        toast({
-            variant: 'destructive',
-            title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
-        });
-    } finally {
-        setIsLoading(false);
-    }
-  };
-
-  const handleAnswerSelect = (answerIndex: number) => {
-    if (answerStatus !== 'unanswered') return;
-
-    setSelectedAnswer(answerIndex);
-    const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
-    if (isCorrect) {
-      setAnswerStatus('correct');
-      setScore((prev) => prev + 1);
-    } else {
-      setAnswerStatus('incorrect');
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        // Quiz is finished
-        const finalScore = score / quiz!.length;
-        if(finalScore >= 0.8 && difficultyLevel < 5) { // Cap difficulty at 5
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
-       setIsFinished(true);
-    }
-  };
-  
-  const handleRestartQuiz = () => {
-    // We restart the quiz at the current difficulty level
-    handleGenerateQuiz(difficultyLevel);
-  }
-
-
-  if (isFinished) {
-    return (
-      <Card className="text-center">
-        <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
-            </div>
-        </CardContent>
-        <CardFooter className="justify-center">
-             <Button onClick={handleRestartQuiz}>
-                 <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
-            </Button>
-        </CardFooter>
-      </Card>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
+const Diagram = dynamic(() => import('./diagram'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-col items-center gap-4">
+      <Skeleton className="h-[250px] w-full rounded-lg" />
+       <div className="w-full grid grid-cols-2 gap-4">
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
       </div>
-    );
-  }
+      <Skeleton className="h-24 w-full" />
+    </div>
+  ),
+});
 
-  if (!quiz) {
-    return (
-      <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
-         <div className='flex justify-center items-center gap-1 font-bold text-accent'>
-            <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
-        </div>
-        <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
-          <Sparkles className="ml-2 h-4 w-4" />
-          أنشئ اختباري
-        </Button>
-        <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-        </p>
-      </div>
-    );
-  }
+const lessonContent = `<p>هل تساءلت يومًا كيف يملأ الهواء إطار السيارة أو كيف تنتشر رائحة العطر في أرجاء الغرفة؟ كل هذا يمكن تفسيره من خلال فهم سلوك الجزيئات في الحالة الغازية. في هذا الدرس، سنغوص في أعماق نظرية الحركة الجزيئية لنكتشف أسرار عالم الغازات.</p>`;
 
-  const currentQuestion = quiz[currentQuestionIndex];
+
+export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
-          <CardTitle className="text-lg">
-            السؤال {currentQuestionIndex + 1} من {quiz.length}
-          </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
+    <div className="container mx-auto p-8 relative">
+       <Link href="/materials/semester-1" passHref>
+          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+            <X className="h-6 w-6" />
+            <span className="sr-only">إغلاق</span>
+          </Button>
+        </Link>
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
+        <p className="text-lg text-muted-foreground">نظرية الحركة الجزيئية</p>
+      </header>
+
+      <main className="space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>الفكرة الرئيسة</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-lg">
+              تصف نظرية الحركة الجزيئية سلوك المادة بالاعتماد على حركة جسيماتها، وتفسر الخصائص الفيزيائية للمواد في حالاتها المختلفة.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>نتاجات التعلم</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                <span>
+                  أصف الخصائص الفيزيائية للغازات وأفسرها باستخدام نظرية الحركة الجزيئية.
+                </span>
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+        
+         <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2"><BookOpen className="h-6 w-6 text-primary" /> مصطلحات أساسية</CardTitle>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+                <h4 className="font-bold text-accent">نظرية الحركة الجزيئية</h4>
+                <p className="text-muted-foreground">نموذج علمي يصف سلوك المادة (صلبة، سائلة، غازية) بناءً على حركة جسيماتها المستمرة.</p>
+            </div>
+             <div>
+                <h4 className="font-bold text-accent">الغاز المثالي</h4>
+                <p className="text-muted-foreground">غاز افتراضي تنطبق عليه تمامًا جميع افتراضات نظرية الحركة الجزيئية.</p>
+            </div>
+              <div>
+                <h4 className="font-bold text-accent">الغاز الحقيقي</h4>
+                <p className="text-muted-foreground">الغازات الموجودة فعليًا في الطبيعة، والتي تحيد عن السلوك المثالي في ظروف معينة.</p>
+            </div>
+             <div>
+                <h4 className="font-bold text-accent">الحركة البراونية</h4>
+                <p className="text-muted-foreground">الحركة العشوائية للجسيمات المعلقة في مائع (سائل أو غاز) نتيجة اصطدامها بجزيئات ذلك المائع.</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <article 
+          className="prose prose-lg max-w-none text-foreground"
+          dangerouslySetInnerHTML={{ __html: lessonContent }}
+        />
+        
+        <div className="grid md:grid-cols-2 gap-6">
+            <FlippableCard
+              cardTitle="نظرية الحركة الجزيئية"
+              cardIcon={<HelpCircle className="h-6 w-6" />}
+            >
+               <ul className="space-y-4 text-sm">
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                    <div>
+                      <p className='font-semibold'>تصف سلوك جسيمات المادة وتفترض حركتها الدائمة المستمرة:</p>
+                       <ul className="mt-2 space-y-1 mr-4 text-xs">
+                          <li><strong className="font-semibold text-accent/80">أ) الصلبة:</strong> حركة اهتزازية في مكانها.</li>
+                          <li><strong className="font-semibold text-accent/80">ب) السائلة والغازية:</strong> تتحرك عشوائيا في جميع الاتجاهات.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                     <div>
+                      <p className='font-semibold'>تفسر الخصائص الفيزيائية والسلوك الفيزيائي للمواد اعتمادا على:</p>
+                       <ul className="mt-2 space-y-1 mr-4 text-xs">
+                          <li><strong className="font-semibold text-accent/80">أ) الطاقة الحركية للجسيمات</strong></li>
+                          <li><strong className="font-semibold text-accent/80">ب) قوى التجاذب بين الجسيمات</strong></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                    <p className='font-semibold'>تستخدم قوانين الغازات في وصف العلاقة بين العوامل المؤثرة في سلوك الغاز الفيزيائي.</p>
+                  </li>
+               </ul>
+            </FlippableCard>
+
+            <FlippableCard
+              cardTitle="بنود نظرية الحركة الجزيئية للغازات"
+              cardIcon={<Info className="h-6 w-6" />}
+            >
+               <ul className="space-y-4 text-sm">
+                   <li className="flex items-start gap-3">
+                    <Boxes className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p><strong className="font-semibold">تكوين الغاز:</strong> يتكون من جسيمات صغيرة جدا (مهملة الحجم) ومتباعدة، وقوى التجاذب بينها شبه معدومة، لذلك معظم حجمه فراغ.</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Move className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p><strong className="font-semibold">حركة الجسيمات:</strong> مستمرة، عشوائية، وسريعة في خطوط مستقيمة، مما يكسبها طاقة حركية عالية.</p>
+                  </li>
+                   <li className="flex items-start gap-3">
+                    <RefreshCw className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p><strong className="font-semibold">التصادمات المرنة:</strong> تصادمات لا تفقد فيها الطاقة الحركية الكلية للنظام، وتسبب ضغط الغاز عند اصطدامها بجدار الوعاء.</p>
+                  </li>
+                   <li className="flex items-start gap-3">
+                    <Thermometer className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p><strong className="font-semibold">الطاقة والحرارة:</strong> متوسط الطاقة الحركية للجسيمات يتناسب طرديًا مع درجة الحرارة المطلقة (بالكلفن).</p>
+                  </li>
+               </ul>
+            </FlippableCard>
+            
+            <FlippableCard
+              cardTitle="الغاز المثالي (Ideal Gas)"
+              cardIcon={<Beaker className="h-6 w-6" />}
+            >
+                <p className="mb-4 font-semibold">هو غاز افتراضي يتميز بالخصائص التالية:</p>
+                <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                        <p>حجم جسيماته يساوي صفر.</p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                        <p>قوى التجاذب بين جسيماته تساوي صفر (معدومة).</p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                        <p>تنطبق عليه فرضيات نظرية الحركة الجزيئية وقوانين الغازات عند كل الظروف.</p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">4.</span>
+                        <p>لا يمكن إسالته مهما انخفضت درجة حرارته أو زاد الضغط عليه.</p>
+                    </li>
+                </ul>
+                <p className='text-xs mt-4 text-muted-foreground italic border-t pt-3'>
+                  يستخدم العلماء نموذج الغاز المثالي لتبسيط الحسابات وفهم سلوك الغازات الحقيقية في ظروف معينة (مثل الضغط المنخفض والحرارة المرتفعة).
+                </p>
+            </FlippableCard>
+
+             <FlippableCard
+              cardTitle="الغاز الحقيقي (Real Gas)"
+              cardIcon={<Cloud className="h-6 w-6" />}
+            >
+                <p className="mb-4 font-semibold">هو الغاز الموجود فعليًا في الطبيعة، وتتشابه معظم الغازات في سلوكها الفيزيائي.</p>
+                <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                        <p>حجم جسيماته صغير جدًا ولكنه ليس صفرًا (لا يمكن إهماله في الحسابات الدقيقة).</p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                        <p>توجد قوى تجاذب بين جسيماته، وإن كانت ضعيفة جدًا.</p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                        <p>يسلك سلوكًا قريبًا جدًا من الغاز المثالي في الظروف العادية (الضغط الجوي ودرجة حرارة الغرفة).</p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">4.</span>
+                        <p>يمكن تحويله إلى سائل (إسالته) عن طريق زيادة الضغط وخفض درجة الحرارة.</p>
+                    </li>
+                </ul>
+            </FlippableCard>
+
+             <FlippableCard
+              cardTitle="انحراف الغازات الحقيقية"
+              cardIcon={<GitCommitHorizontal className="h-6 w-6" />}
+            >
+                <p className="mb-4 text-sm">تتشابه الغازات الحقيقية مع الغاز المثالي في الظروف الطبيعية إلى حد كبير.</p>
+                <p className="mb-4 font-semibold">يزداد انحراف الغازات الحقيقية عن سلوك الغاز المثالي كلما:</p>
+                <ul className="space-y-4 text-sm">
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                        <div>
+                            <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
+                            <ul className="mt-2 space-y-2 mr-4 text-xs">
+                                <li><span className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</span> (هيدروجيني مثل HF > ثنائي قطب مثل NH3 > قوى لندن مثل Ne)</li>
+                                <li><span className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</span> (مثلًا Cl2 > F2) لأن زيادة الكتلة المولية تزيد من قوى لندن.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                        <p className='font-semibold'>ازداد الضغط على الغاز أو قل حجمه.</p>
+                    </li>
+                     <li className="flex items-start gap-3">
+                        <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                        <p className='font-semibold'>انخفضت درجة الحرارة.</p>
+                    </li>
+                </ul>
+                <p className='text-xs mt-3 text-muted-foreground'>
+                    (ملاحظة: زيادة الحرارة تقلل من قوة الترابط بين الجسيمات وتزيد من طاقتها الحركية، مما يجعلها تسلك سلوكًا أقرب للمثالي).
+                </p>
+            </FlippableCard>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>محاكاة سلوك الغاز</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Diagram />
+                    <p className="text-sm text-muted-foreground mt-4 text-center">
+                    تحكم في درجة الحرارة والضغط ولاحظ كيف يتغير سلوك الغاز بين المثالي والحقيقي.
+                    </p>
+                </CardContent>
+            </Card>
+        </div>
+        
+         <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  question="الغاز A محصور في وعاء عند درجة حرارة ثابتة فإن العبارة الخاطئة:"
+                  options={[
+                      "حركة جسيمات الغاز مستمرة وعشوائية وفي خط مستقيم",
+                      "تتحرك جسيمات الغاز جميعها بنفس السرعة عند نفس درجة الحرارة",
+                      "متوسط الطاقة الحركية لجسيمات الغاز ثابت عند نفس درجة الحرارة",
+                      "تتصادم جسيمات الغاز تصادمات مرنة مع بعضها ومع جدار الوعاء"
+                  ]}
+                  correctAnswerIndex={1}
+                  explanation="عند درجة حرارة ثابتة، يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت، ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة."
+              />
+               <InteractiveQuestionCard 
+                  question="أحد الغازات الآتية لا يمكن إسالته على جميع قيم الضغط ودرجات الحرارة:"
+                  options={[
+                      "الغاز المثالي",
+                      "غاز النيتروجين",
+                      "غاز الأكسجين",
+                      "غاز الهيدروجين"
+                  ]}
+                  correctAnswerIndex={0}
+                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا، ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة."
+              />
           </div>
         </div>
-        <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <p className="text-lg font-semibold pt-2">{currentQuestion.question}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentQuestion.options.map((option, index) => {
-            const isCorrect = index === currentQuestion.correctAnswerIndex;
-            const isSelected = selectedAnswer === index;
-            
-            let buttonClass = 'border-input hover:bg-accent/50';
-            if (answerStatus === 'correct' && isSelected) {
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-            } else if (answerStatus === 'incorrect' && isSelected) {
-              buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-            } else if (answerStatus !== 'unanswered' && isCorrect) {
-              // Highlight the correct answer if a wrong one was chosen
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-            }
 
-            return (
-              <Button
-                key={index}
-                variant="outline"
-                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answerStatus !== 'unanswered'}
-              >
-                  <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
-              </Button>
-            );
-          })}
-        </div>
-      </CardContent>
+        <Card>
+          <CardHeader>
+              <CardTitle>اختبر فهمك</CardTitle>
+              <CardDescription>
+                  بعد أن تعرفت على نظرية الحركة الجزيئية، اختبر فهمك لها من خلال هذا الاختبار القصير.
+              </CardDescription>
+          </CardHeader>
+          <CardContent>
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+          </CardContent>
+        </Card>
+      </main>
 
-      {answerStatus !== 'unanswered' && (
-         <CardFooter className="flex-col items-stretch gap-4 pt-4">
-            <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-              answerStatus === 'correct' 
-                ? 'border-green-500 bg-green-100/30' 
-                : 'border-red-500 bg-red-100/30'
-            )}>
-                {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
-                </AlertTitle>
-                <AlertDescription>
-                    {currentQuestion.explanation}
-                </AlertDescription>
-            </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
+      <footer className="mt-12 border-t pt-6">
+        <div className="flex justify-end">
+          <Link href="/materials/semester-1/unit-1/lesson-1/part-2" passHref>
+            <Button size="lg">
+              الجزء التالي
+              <ArrowLeft className="mr-2 h-5 w-5" />
             </Button>
-         </CardFooter>
-      )}
-    </Card>
+          </Link>
+        </div>
+      </footer>
+    </div>
   );
 }
