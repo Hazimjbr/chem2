@@ -1,80 +1,34 @@
 
 'use client';
 
-import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, X, BookOpen, Thermometer, Box, Beaker, GitCompare, Pipette, Scale, Lightbulb, HelpCircle, ArrowRight, Triangle } from 'lucide-react';
-import Quiz from '@/components/quiz';
-import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card'; // Re-using the same component
+import { Pipette, Scale, Triangle, GitCompare, Thermometer, Box, Lightbulb } from 'lucide-react';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { useEffect } from 'react';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import { CalculationTriangles } from '@/components/illustrations/calculation-triangles';
+import LessonLayout from '@/components/lesson-layout';
 
-
-const lessonContent = `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`;
-const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-2";
+const lessonInfo = {
+    lessonTitle: "الدرس الأول: الحالة الغازية",
+    lessonSubtitle: "مقدمة قوانين الغازات",
+    mainIdea: "يمكن وصف سلوك الغازات من خلال أربع متغيرات أساسية قابلة للقياس: الضغط (P)، الحجم (V)، درجة الحرارة (T)، وكمية الغاز (n). فهم هذه المتغيرات هو مفتاح فهم قوانين الغازات.",
+    learningOutcomes: [
+        "أحدد المتغيرات الأربعة (الضغط، الحجم، الحرارة، كمية الغاز) التي تصف سلوك الغاز.",
+        "أصف المقصود بكل متغير وأذكر وحدات القياس الشائعة له."
+    ],
+    lessonContent: `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`,
+    lessonId: "/materials/semester-1/unit-1/lesson-1/part-2",
+    staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
+    previousLesson: "/materials/semester-1/unit-1/lesson-1/part-1",
+    nextLesson: "/materials/semester-1/unit-1/lesson-1/part-3",
+    nextLessonTitle: "الجزء التالي: قانون بويل"
+}
 
 export default function LessonPartPage() {
-  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
-  
-  useEffect(() => {
-    localStorage.setItem('lastVisitedLesson', lessonPath);
-  }, []);
-  
   return (
-    <div className="container mx-auto p-8 relative">
-       <Link href="/materials/semester-1" passHref>
-          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-            <X className="h-6 w-6" />
-            <span className="sr-only">إغلاق</span>
-          </Button>
-        </Link>
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
-        <p className="text-lg text-muted-foreground">مقدمة قوانين الغازات</p>
-      </header>
-
-      <main className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>الفكرة الرئيسة</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-lg">
-                يمكن وصف سلوك الغازات من خلال أربع متغيرات أساسية قابلة للقياس: الضغط (P)، الحجم (V)، درجة الحرارة (T)، وكمية الغاز (n). فهم هذه المتغيرات هو مفتاح فهم قوانين الغازات.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>نتاجات التعلم</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                  <span>
-                    أحدد المتغيرات الأربعة (الضغط، الحجم، الحرارة، كمية الغاز) التي تصف سلوك الغاز.
-                  </span>
-                </li>
-                 <li className="flex items-start">
-                  <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                  <span>
-                    أصف المقصود بكل متغير وأذكر وحدات القياس الشائعة له.
-                  </span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          <article 
-            className="prose prose-lg max-w-none text-foreground"
-            dangerouslySetInnerHTML={{ __html: lessonContent }}
-          />
-        
+    <LessonLayout {...lessonInfo}>
           <h3 className="text-2xl font-bold text-center">المتغيرات الأربعة لوصف الغاز المحصور</h3>
           <div className="grid md:grid-cols-2 gap-6">
               <FlippableCard
@@ -184,66 +138,7 @@ export default function LessonPartPage() {
               </ul>
           </FlippableCard>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Triangle className="h-6 w-6 text-primary" />
-                علاقات رياضية مساعدة
-              </CardTitle>
-              <CardDescription>
-                هذه المثلثات تساعدك على تذكر وحساب الكميات الأساسية بسهولة.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center" dir="ltr">
-              {/* Triangle 1: Moles, Concentration, Volume */}
-              <div className="flex flex-col items-center">
-                <svg viewBox="0 0 120 100" className="w-48 h-auto">
-                  <polygon points="60,5 115,95 5,95" className="fill-muted stroke-foreground" strokeWidth="1" />
-                  <line x1="32.5" y1="50" x2="87.5" y2="50" className="stroke-foreground" strokeWidth="1" />
-                  <line x1="60" y1="50" x2="60" y2="95" className="stroke-foreground" strokeWidth="1" />
-                  <text x="60" y="32" textAnchor="middle" className="font-bold text-lg fill-foreground">n</text>
-                  <text x="60" y="45" textAnchor="middle" className="text-xs fill-muted-foreground">(mole)</text>
-                  <text x="40" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">C</text>
-                  <text x="37" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(mole/L)</text>
-                  <text x="83" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">V</text>
-                  <text x="83" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(L)</text>
-                </svg>
-                <p className="mt-2 text-sm font-semibold"><InlineMath math="n = C \times V" /></p>
-              </div>
-
-              {/* Triangle 2: Mass, Molar Mass, Moles */}
-              <div className="flex flex-col items-center">
-                <svg viewBox="0 0 120 100" className="w-48 h-auto">
-                  <polygon points="60,5 115,95 5,95" className="fill-muted stroke-foreground" strokeWidth="1" />
-                  <line x1="32.5" y1="50" x2="87.5" y2="50" className="stroke-foreground" strokeWidth="1" />
-                  <line x1="60" y1="50" x2="60" y2="95" className="stroke-foreground" strokeWidth="1" />
-                  <text x="60" y="32" textAnchor="middle" className="font-bold text-lg fill-foreground">m</text>
-                  <text x="60" y="45" textAnchor="middle" className="text-xs fill-muted-foreground">(g)</text>
-                  <text x="40" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">Mr</text>
-                  <text x="37" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(g/mole)</text>
-                  <text x="83" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">n</text>
-                  <text x="83" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(mole)</text>
-                </svg>
-                <p className="mt-2 text-sm font-semibold"><InlineMath math="n = \frac{m}{Mr}" /></p>
-              </div>
-
-              {/* Triangle 3: Mass, Density, Volume */}
-              <div className="flex flex-col items-center">
-                 <svg viewBox="0 0 120 100" className="w-48 h-auto">
-                  <polygon points="60,5 115,95 5,95" className="fill-muted stroke-foreground" strokeWidth="1" />
-                  <line x1="32.5" y1="50" x2="87.5" y2="50" className="stroke-foreground" strokeWidth="1" />
-                  <line x1="60" y1="50" x2="60" y2="95" className="stroke-foreground" strokeWidth="1" />
-                  <text x="60" y="32" textAnchor="middle" className="font-bold text-lg fill-foreground">m</text>
-                  <text x="60" y="45" textAnchor="middle" className="text-xs fill-muted-foreground">(g)</text>
-                  <text x="40" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">d</text>
-                  <text x="35" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(g/L)</text>
-                  <text x="83" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">V</text>
-                  <text x="85" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(L)</text>
-                </svg>
-                <p className="mt-2 text-sm font-semibold"><InlineMath math="d = \frac{m}{V}" /></p>
-              </div>
-            </CardContent>
-          </Card>
+          <CalculationTriangles />
 
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -255,6 +150,8 @@ export default function LessonPartPage() {
             </div>
             <div className="grid md:grid-cols-2 gap-6">
                 <InteractiveQuestionCard 
+                    questionId="q1"
+                    onCorrect={() => {}}
                     question="بالون يحتوي على غاز الهيليوم ضغطه 900mmHg فإن قيمة ضغطه بوحدة atm تساوي"
                     options={[
                         "1.18",
@@ -266,6 +163,8 @@ export default function LessonPartPage() {
                     explanation="للتحويل من mmHg إلى atm، نقوم بالقسمة على 760. المعادلة هي: 900 mmHg / 760 ≈ 1.18 atm."
                 />
                  <InteractiveQuestionCard 
+                    questionId="q2"
+                    onCorrect={() => {}}
                     question="بالون درجة حرارته 20°C فإن حرارته المطلقة تساوي"
                     options={[
                         "13.75",
@@ -278,37 +177,6 @@ export default function LessonPartPage() {
                 />
             </div>
           </div>
-
-          <Card>
-            <CardHeader>
-                <CardTitle>اختبر فهمك</CardTitle>
-                 <CardDescription>
-                    بعد أن تعرفت على المتغيرات الأربعة، اختبر فهمك لها من خلال هذا الاختبار القصير.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
-            </CardContent>
-          </Card>
-
-      </main>
-
-      <footer className="mt-12 border-t pt-6">
-        <div className="flex justify-between">
-            <Link href="/materials/semester-1/unit-1/lesson-1/part-1" passHref>
-                <Button size="lg" variant="outline">
-                <ArrowRight className="ml-2 h-5 w-5" />
-                الجزء السابق
-                </Button>
-            </Link>
-            <Link href="/materials/semester-1/unit-1/lesson-1/part-3" passHref>
-                <Button size="lg">
-                الجزء التالي: قانون بويل
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                </Button>
-            </Link>
-        </div>
-      </footer>
-    </div>
+    </LessonLayout>
   );
 }

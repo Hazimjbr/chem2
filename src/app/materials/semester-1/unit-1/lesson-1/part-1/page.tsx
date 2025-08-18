@@ -2,16 +2,14 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Check, Dot, ArrowLeft, X, Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import Quiz from '@/components/quiz'; // Use the central quiz component
+import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import FlippableCard from './flippable-card';
 import InteractiveQuestionCard from './interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import { useEffect, useState } from 'react';
+import LessonLayout from '@/components/lesson-layout';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -27,77 +25,44 @@ const Diagram = dynamic(() => import('./diagram'), {
   ),
 });
 
-const lessonContent = `<p>هل تساءلت يومًا كيف يملأ الهواء إطار السيارة أو كيف تنتشر رائحة العطر في أرجاء الغرفة؟ كل هذا يمكن تفسيره من خلال فهم سلوك الجزيئات في الحالة الغازية. في هذا الدرس، سنغوص في أعماق نظرية الحركة الجزيئية لنكتشف أسرار عالم الغازات.</p>`;
-const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-1";
+const lessonInfo = {
+  lessonTitle: "الدرس الأول: الحالة الغازية",
+  lessonSubtitle: "نظرية الحركة الجزيئية",
+  mainIdea: "تصف نظرية الحركة الجزيئية سلوك المادة بالاعتماد على حركة جسيماتها، وتفسر الخصائص الفيزيائية للمواد في حالاتها المختلفة.",
+  learningOutcomes: [
+    "أصف الخصائص الفيزيائية للغازات وأفسرها باستخدام نظرية الحركة الجزيئية."
+  ],
+  lessonContent: `<p>هل تساءلت يومًا كيف يملأ الهواء إطار السيارة أو كيف تنتشر رائحة العطر في أرجاء الغرفة؟ كل هذا يمكن تفسيره من خلال فهم سلوك الجزيئات في الحالة الغازية. في هذا الدرس، سنغوص في أعماق نظرية الحركة الجزيئية لنكتشف أسرار عالم الغازات.</p>`,
+  lessonId: "/materials/semester-1/unit-1/lesson-1/part-1",
+  staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
+  previousLesson: null,
+  nextLesson: "/materials/semester-1/unit-1/lesson-1/part-2",
+  nextLessonTitle: "الجزء التالي: مقدمة قوانين الغازات"
+}
 
 export default function LessonPartPage() {
-  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
   const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    localStorage.setItem('lastVisitedLesson', lessonPath);
-  }, []);
+    try {
+      const savedProgress = localStorage.getItem('completedLessons') || '[]';
+      const completedLessons = new Set(JSON.parse(savedProgress));
+      if (completedInteractive.size >= 2) {
+        completedLessons.add(lessonInfo.lessonId);
+        localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
+      }
+    } catch (error) {
+      console.error("Failed to save lesson progress:", error);
+    }
+  }, [completedInteractive]);
 
   const handleCorrectAnswer = (questionId: string) => {
     setCompletedInteractive(prev => new Set(prev.add(questionId)));
   };
 
-  useEffect(() => {
-    if (completedInteractive.size >= 2) {
-      try {
-        const savedProgress = localStorage.getItem('completedLessons') || '[]';
-        const completedLessons = new Set(JSON.parse(savedProgress));
-        completedLessons.add(lessonPath);
-        localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-      } catch (error) {
-        console.error("Failed to save lesson progress:", error);
-      }
-    }
-  }, [completedInteractive]);
-
-
   return (
-    <div className="container mx-auto p-8 relative">
-       <Link href="/materials/semester-1" passHref>
-          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-            <X className="h-6 w-6" />
-            <span className="sr-only">إغلاق</span>
-          </Button>
-        </Link>
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
-        <p className="text-lg text-muted-foreground">نظرية الحركة الجزيئية</p>
-      </header>
-
-      <main className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>الفكرة الرئيسة</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-lg">
-              تصف نظرية الحركة الجزيئية سلوك المادة بالاعتماد على حركة جسيماتها، وتفسر الخصائص الفيزيائية للمواد في حالاتها المختلفة.
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>نتاجات التعلم</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                <span>
-                  أصف الخصائص الفيزيائية للغازات وأفسرها باستخدام نظرية الحركة الجزيئية.
-                </span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-        
-         <Card>
+    <LessonLayout {...lessonInfo}>
+      <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><BookOpen className="h-6 w-6 text-primary" /> مصطلحات أساسية</CardTitle>
           </CardHeader>
@@ -120,13 +85,8 @@ export default function LessonPartPage() {
             </div>
           </CardContent>
         </Card>
-
-        <article 
-          className="prose prose-lg max-w-none text-foreground"
-          dangerouslySetInnerHTML={{ __html: lessonContent }}
-        />
-        
-        <div className="grid md:grid-cols-2 gap-6">
+      
+      <div className="grid md:grid-cols-2 gap-6">
             <FlippableCard
               cardTitle="نظرية الحركة الجزيئية"
               cardIcon={<HelpCircle className="h-6 w-6" />}
@@ -317,31 +277,6 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
-
-
-        <Card>
-          <CardHeader>
-              <CardTitle>اختبر فهمك</CardTitle>
-              <CardDescription>
-                  بعد أن تعرفت على نظرية الحركة الجزيئية، اختبر فهمك لها من خلال هذا الاختبار القصير.
-              </CardDescription>
-          </CardHeader>
-          <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
-          </CardContent>
-        </Card>
-      </main>
-
-      <footer className="mt-12 border-t pt-6">
-        <div className="flex justify-end">
-          <Link href="/materials/semester-1/unit-1/lesson-1/part-2" passHref>
-            <Button size="lg">
-              الجزء التالي
-              <ArrowLeft className="mr-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
-      </footer>
-    </div>
+    </LessonLayout>
   );
 }
