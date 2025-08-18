@@ -17,7 +17,7 @@ function PeriodicTableIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
       {/* Main block */}
       <rect x="2" y="6" width="20" height="14" rx="1" />
       
-      {/* Top row */}
+      {/* Top row lines */}
       <line x1="2" y1="10" x2="22" y2="10" />
       <line x1="2" y1="13" x2="22" y2="13" />
       <line x1="2" y1="17" x2="22" y2="17" />
@@ -30,6 +30,9 @@ function PeriodicTableIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
 
       {/* Top left element (Hydrogen) */}
       <rect x="2" y="2" width="4" height="4" rx="0.5" />
+      
+      {/* Top right element (Helium) */}
+      <rect x="18" y="2" width="4" height="4" rx="0.5" />
     </svg>
   );
 }
