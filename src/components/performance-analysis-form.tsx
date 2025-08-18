@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, BookCheck } from 'lucide-react';
 import { useState } from 'react';
 import { analyzeStudentPerformance } from '@/ai/flows/analyze-student-performance';
+import type { QuizResult } from '@/components/quiz';
 
 export default function PerformanceAnalysisForm() {
   const [analysis, setAnalysis] = useState('');
@@ -17,12 +18,24 @@ export default function PerformanceAnalysisForm() {
     setIsLoading(true);
     setAnalysis('');
     try {
-      // In a real app, you'd fetch the student's actual quiz data.
-      // For now, we'll use mock data as defined in the flow.
+      const historyJSON = localStorage.getItem('quizHistory');
+      const quizResults: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
+
+      if (quizResults.length === 0) {
+        toast({
+            title: 'لا توجد بيانات كافية',
+            description: 'يجب عليك إكمال بعض الاختبارات أولاً قبل أن نتمكن من تحليل أدائك.',
+            variant: 'default',
+        });
+        setIsLoading(false);
+        return;
+      }
+
       const studentData = {
         studentName: 'أحمد', // Example name
-        quizResults: [], // This would be populated with real data
+        quizResults: quizResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty })),
       };
+
       const result = await analyzeStudentPerformance(studentData);
       setAnalysis(result);
     } catch (error) {
@@ -60,7 +73,7 @@ export default function PerformanceAnalysisForm() {
             <Textarea
                 value={analysis}
                 readOnly
-                className="w-full h-64 bg-muted/50"
+                className="w-full h-96 bg-muted/50"
                 placeholder="نتائج التحليل..."
             />
         </div>
@@ -68,3 +81,5 @@ export default function PerformanceAnalysisForm() {
     </div>
   );
 }
+
+    

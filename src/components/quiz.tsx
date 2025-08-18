@@ -20,6 +20,14 @@ export interface QuizQuestion {
     explanation: string;
 }
 
+// Interface for a single quiz result to be stored
+export interface QuizResult {
+  lessonId: string;
+  score: number; // 0 to 1
+  difficulty: number;
+  timestamp: number;
+}
+
 // The props for our new central quiz component
 interface QuizProps {
   lessonContent: string;
@@ -48,6 +56,22 @@ const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
     return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
 };
+
+const saveQuizResult = (result: QuizResult) => {
+  try {
+    const historyJSON = localStorage.getItem('quizHistory');
+    const history: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
+    // Add the new result and keep the history to a reasonable size, e.g., last 50 quizzes
+    history.push(result);
+    if (history.length > 50) {
+      history.shift();
+    }
+    localStorage.setItem('quizHistory', JSON.stringify(history));
+  } catch (error) {
+    console.error("Failed to save quiz result:", error);
+  }
+};
+
 
 export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizProps) {
   const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
@@ -140,12 +164,18 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   };
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        const finalScore = (score + (answerStatus === 'correct' ? 1 : 0)) / quiz!.length;
+    const isLastQuestion = currentQuestionIndex >= quiz!.length - 1;
+
+    if (isLastQuestion) {
+        const finalScore = score / quiz!.length;
+         // Save the final result
+        saveQuizResult({
+            lessonId: lessonId,
+            score: finalScore,
+            difficulty: difficultyLevel,
+            timestamp: Date.now(),
+        });
+
         if(finalScore >= 0.8 && difficultyLevel < 5) {
             setDifficultyLevel(prev => prev + 1);
              toast({
@@ -155,6 +185,10 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             });
         }
        setIsFinished(true);
+    } else {
+       setAnswerStatus('unanswered');
+       setSelectedAnswer(null);
+       setCurrentQuestionIndex((prev) => prev + 1);
     }
   };
   
@@ -296,3 +330,5 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
+
+    
