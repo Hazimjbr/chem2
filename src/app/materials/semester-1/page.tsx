@@ -14,6 +14,7 @@ import { Progress } from '@/components/ui/progress';
 import { CheckCircle, Atom, FlaskConical, Beaker, FileText } from 'lucide-react';
 import { units } from '@/data/materials';
 import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils.tsx';
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
