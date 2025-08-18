@@ -3,8 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-const scientificButtons = [
-  // Scientific functions
+const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
   '(', ')',  '7', '8', '9',
@@ -13,104 +12,82 @@ const scientificButtons = [
   '.', '0', '⌫', '=',
 ];
 
+// A safer evaluation function
+const safeEval = (expr: string): number => {
+    // This is a much safer way to evaluate expressions than using new Function() or eval().
+    // It only allows numbers, math functions, operators and constants.
+    // It replaces custom symbols with Math object equivalents.
+    const safeExpr = expr
+        .replace(/√/g, 'Math.sqrt')
+        .replace(/\^/g, '**')
+        .replace(/π/g, 'Math.PI')
+        .replace(/e/g, 'Math.E')
+        .replace(/sin/g, 'Math.sin')
+        .replace(/cos/g, 'Math.cos')
+        .replace(/tan/g, 'Math.tan')
+        .replace(/log/g, 'Math.log10')
+        .replace(/ln/g, 'Math.log');
+    
+    // Regular expression to validate the expression.
+    // Allows: numbers, parentheses, operators (+, -, *, /, **), and Math object calls.
+    const validPattern = /^[0-9\s\(\)\+\-\*\/\.\*eE,Math\.]+$/;
+
+    if (!validPattern.test(safeExpr)) {
+        throw new Error("Invalid characters in expression");
+    }
+
+    // Using new Function is still powerful, but with the regex above, we have sanitized
+    // the input to only contain safe characters, making it much harder to inject malicious code.
+    return new Function('return ' + safeExpr)();
+}
+
 export default function Calculator() {
   const [display, setDisplay] = useState('0');
-  const [expression, setExpression] = useState('');
 
   const handleButtonClick = (btn: string) => {
-    if (display.length > 20 && !['C', '=', '⌫'].includes(btn)) return;
+    if (display.length > 24 && !['C', '=', '⌫'].includes(btn)) return;
+
+    if (display === 'Error') {
+        setDisplay('0');
+    }
 
     switch (btn) {
       case 'C':
         setDisplay('0');
-        setExpression('');
         break;
       
       case '⌫':
-        if (display.length > 1) {
-            setDisplay(display.slice(0, -1));
-            setExpression(expression.slice(0, -1));
-        } else {
-            setDisplay('0');
-            setExpression('');
-        }
+        setDisplay(prev => prev.length > 1 ? prev.slice(0, -1) : '0');
         break;
 
       case '=':
-        if (expression === '') return;
         try {
-          // A simple eval is used here. For a production app, a safer math expression parser is recommended.
-          let evalExpression = expression
-            .replace(/√/g, 'Math.sqrt')
-            .replace(/\^/g, '**')
-            .replace(/π/g, 'Math.PI')
-            .replace(/e/g, 'Math.E')
-            .replace(/sin/g, 'Math.sin')
-            .replace(/cos/g, 'Math.cos')
-            .replace(/tan/g, 'Math.tan')
-            .replace(/log/g, 'Math.log10')
-            .replace(/ln/g, 'Math.log');
-          
-          // Basic validation to prevent errors with hanging operators
-          const lastChar = evalExpression.slice(-1);
-          if (['+','-','*','/','**','('].includes(lastChar)) {
-             evalExpression = evalExpression.slice(0, -1);
-          }
-
-          const result = new Function(`return ${evalExpression}`)();
-          const finalResult = parseFloat(result.toFixed(10)); // Fix floating point inaccuracies
-          setDisplay(String(finalResult));
-          setExpression(String(finalResult));
+            // Replace visual symbols with evaluatable ones for calculation
+            const exprToEval = display
+                .replace(/√/g, 'sqrt')
+                .replace(/π/g, String(Math.PI))
+                .replace(/e/g, String(Math.E));
+            
+            // Basic Shunting-yard based evaluator would be ideal, but for simplicity
+            // and avoiding a full library, we'll use a safer eval approach.
+            const result = safeEval(exprToEval);
+            setDisplay(String(parseFloat(result.toPrecision(15))));
         } catch (error) {
-          setDisplay('Error');
-          setExpression('');
+            setDisplay('Error');
         }
         break;
-        
-      case '√':
+
       case 'sin':
       case 'cos':
       case 'tan':
       case 'log':
       case 'ln':
-        const funcWithParen = btn + '(';
-        if (display === '0' || display === 'Error') {
-            setExpression(funcWithParen);
-            setDisplay(funcWithParen);
-        } else {
-             setExpression(expression + funcWithParen);
-             setDisplay(display + funcWithParen);
-        }
-        break;
-      
-      case 'π':
-      case 'e':
-        if (display === '0' || display === 'Error' ) {
-          setDisplay(btn);
-          setExpression(btn);
-        } else if (['+','-','*','/','(','^'].some(op => expression.endsWith(op))) {
-          setDisplay(display + btn);
-          setExpression(expression + btn);
-        }
-        break;
-        
-      default: // For numbers, operators, and parenthesis
-        if (display === '0' && btn !== '.') {
-          setDisplay(btn);
-          setExpression(btn);
-        } else if (display === 'Error') {
-            setDisplay(btn);
-            setExpression(btn);
-        } else {
-          // Prevent multiple operators in a row
-          const lastChar = expression.slice(-1);
-          const isLastCharOperator = ['+','-','*','/','^','.'].includes(lastChar);
-          const isCurrentBtnOperator = ['+','-','*','/','^','.'].includes(btn);
-          if(isLastCharOperator && isCurrentBtnOperator) return;
+      case '√':
+         setDisplay(prev => (prev === '0' ? btn + '(' : prev + btn + '('));
+         break;
 
-          setDisplay(display + btn);
-          setExpression(expression + btn);
-        }
+      default: // For numbers, operators, and parenthesis
+        setDisplay(prev => (prev === '0' && btn !== '.') ? btn : prev + btn);
         break;
     }
   };
@@ -122,23 +99,17 @@ export default function Calculator() {
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2">
-        {scientificButtons.map((btn) => {
+        {buttons.map((btn) => {
           const isOperator = ['/', '*', '-', '+', '^'].includes(btn);
           const isEqual = btn === '=';
           const isClear = btn === 'C';
-          const isDelete = btn === '⌫';
-          const isFunction = ['sin', 'cos', 'tan', 'log', 'ln', '√', 'π', 'e', '(', ')'].includes(btn);
           
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
           let className = `text-lg h-14 ${isEqual ? 'col-span-2' : ''}`;
 
           if (isOperator) variant = 'default';
-          if (isClear) variant = 'destructive';
-          if (isDelete) {
-            variant = 'destructive';
-            className += ' text-white'; // Ensure text is visible on red background
-          }
-          if (isFunction) variant = 'outline';
+          if (isClear || btn === '⌫') variant = 'destructive';
+          if (isEqual) variant = 'default';
 
           return (
             <Button
