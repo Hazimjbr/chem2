@@ -1,273 +1,187 @@
-
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils.tsx';
-import { useToast } from '@/hooks/use-toast';
-import { QuizQuestion, staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, ArrowLeft, X, BookCopy, Cpu, Lightbulb, ArrowRight, Wind, Waves } from 'lucide-react';
+import Quiz from '@/components/quiz';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import { InlineMath, BlockMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
-interface QuizProps {
-  lessonContent: string;
-}
+const lessonContent = `<p>آخر قانون في رحلتنا مع الغازات هو قانون جراهام، الذي يصف ظاهرة مهمة جدًا وهي سرعة حركة الغازات. هل تساءلت يومًا لماذا نشم رائحة عطر في أحد أركان الغرفة بعد فترة قصيرة من رشه في الركن الآخر؟ قانون جراهام يجيب على هذا السؤال.</p>`;
 
-type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
-
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    // This function is disabled for questions with image-based options (A,B,C,D labels)
-    if (question.options.every(o => o.length === 1 || o.startsWith("أقرب") || o.startsWith("في منتصف"))) {
-        return question;
-    }
-
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    // Create an array of indices to shuffle
-    const indices = Array.from(Array(question.options.length).keys());
-    // Shuffle the indices
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    // Create the new shuffled options array
-    const shuffledOptions = indices.map(i => question.options[i]);
-    
-    // Find the new index of the correct answer
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
-};
-
-
-export default function Quiz({ lessonContent }: QuizProps) {
-  const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
-  const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-  const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const { toast } = useToast();
-
- const handleGenerateQuiz = async (level: number) => {
-    setIsLoading(true);
-    setQuiz(null);
-    setIsFinished(false);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-    setAnswerStatus('unanswered');
-    setSelectedAnswer(null);
-
-    try {
-        let generatedQuestions: QuizQuestion[] = [];
-
-        if (level <= 3 && staticQuizLvl1.length > 0) { // Check if static quizzes are available
-            let staticQuestions: QuizQuestion[] = [];
-            if (level === 1) staticQuestions = staticQuizLvl1;
-            if (level === 2) staticQuestions = staticQuizLvl2;
-            if (level === 3) staticQuestions = staticQuizLvl3;
-            generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
-        } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz.map(q => ({...q, question: q.question}));
-        }
-
-        setQuiz(generatedQuestions.filter(q => q && q.options && q.options.length > 0)); // Filter out malformed questions
-
-    } catch (error) {
-        console.error('Failed to generate quiz:', error);
-        toast({
-            variant: 'destructive',
-            title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
-        });
-    } finally {
-        setIsLoading(false);
-    }
-  };
-
-  const handleAnswerSelect = (answerIndex: number) => {
-    if (answerStatus !== 'unanswered') return;
-
-    setSelectedAnswer(answerIndex);
-    const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
-    if (isCorrect) {
-      setAnswerStatus('correct');
-      setScore((prev) => prev + 1);
-    } else {
-      setAnswerStatus('incorrect');
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        // Quiz is finished
-        const finalScore = score / quiz!.length;
-        if(finalScore >= 0.8 && difficultyLevel < 5) {
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
-       setIsFinished(true);
-    }
-  };
-  
-  const handleRestartQuiz = () => {
-    handleGenerateQuiz(difficultyLevel);
-  }
-
-
-  if (isFinished) {
-    return (
-      <Card className="text-center">
-        <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
-            </div>
-        </CardContent>
-        <CardFooter className="justify-center">
-             <Button onClick={handleRestartQuiz}>
-                 <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
-            </Button>
-        </CardFooter>
-      </Card>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
-      </div>
-    );
-  }
-
-  if (!quiz) {
-    return (
-      <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
-         <div className='flex justify-center items-center gap-1 font-bold text-accent'>
-            <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
-        </div>
-        <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
-          <Sparkles className="ml-2 h-4 w-4" />
-          أنشئ اختباري
-        </Button>
-        <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-        </p>
-      </div>
-    );
-  }
-
-  const currentQuestion = quiz[currentQuestionIndex];
-
-  if (!currentQuestion) {
-    return (
-        <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p className="mt-2">جاري تحميل السؤال...</p>
-        </div>
-    );
-  }
+export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
-          <CardTitle className="text-lg">
-            السؤال {currentQuestionIndex + 1} من {quiz.length}
-          </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
+    <div className="container mx-auto p-8 relative">
+       <Link href="/materials/semester-1" passHref>
+          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+            <X className="h-6 w-6" />
+            <span className="sr-only">إغلاق</span>
+          </Button>
+        </Link>
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
+        <p className="text-lg text-muted-foreground">قانون جراهام للانتشار والتدفق</p>
+      </header>
+
+      <main className="space-y-8">
+        <Card>
+            <CardHeader>
+                <CardTitle>الفكرة الرئيسة</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-lg">
+                عند نفس الظروف من الحرارة والضغط، يتناسب معدل سرعة انتشار أو تدفق الغاز تناسبًا عكسيًا مع الجذر التربيعي لكتلته المولية. ببساطة: الغازات الأخف هي الأسرع.
+                </p>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>نتاجات التعلم</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <ul className="space-y-3">
+                    <li className="flex items-start">
+                        <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                        <span>أقارن بين معدل سرعة تدفق غازين مختلفين.</span>
+                    </li>
+                     <li className="flex items-start">
+                        <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                        <span>أحل مسائل حسابية على قانون جراهام.</span>
+                    </li>
+                </ul>
+            </CardContent>
+        </Card>
+
+        <article 
+          className="prose prose-lg max-w-none text-foreground"
+          dangerouslySetInnerHTML={{ __html: lessonContent }}
+        />
+
+        <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        لاحظ العالم توماس جراهام أن الغازات الخفيفة مثل الهيدروجين والأمونيا تنتشر أسرع بكثير من الغازات الثقيلة مثل ثاني أكسيد الكربون. قاده ذلك إلى إجراء تجارب دقيقة لقياس سرعة تدفق الغازات المختلفة عبر ثقوب صغيرة، واستنتج من ذلك العلاقة الرياضية التي تربط بين سرعة التدفق والكتلة المولية.
+                    </p>
+                </CardContent>
+            </Card>
+
+             <div className="grid md:grid-cols-2 gap-6">
+                <FlippableCard
+                    cardTitle="الانتشار (Diffusion)"
+                    cardIcon={<Waves className="h-6 w-6" />}
+                >
+                    <div className="space-y-3 text-sm">
+                        <p className="font-semibold">هو الاختلاط التدريجي لجسيمات غاز مع جسيمات غاز آخر.</p>
+                        <ul className="list-disc mr-4 space-y-2">
+                            <li>تنتقل الجسيمات من منطقة التركيز المرتفع إلى منطقة التركيز المنخفض.</li>
+                            <li>تستمر الحركة حتى يتوزع الغاز بشكل متساوٍ في الوعاء.</li>
+                            <li>مثال: انتشار رائحة الطعام في المنزل.</li>
+                        </ul>
+                    </div>
+                </FlippableCard>
+
+                <FlippableCard
+                    cardTitle="التدفق (Effusion)"
+                    cardIcon={<Wind className="h-6 w-6" />}
+                >
+                    <div className="space-y-3 text-sm">
+                        <p className="font-semibold">هو عملية تسرب غاز مضغوط من خلال فتحة صغيرة جدًا.</p>
+                         <ul className="list-disc mr-4 space-y-2">
+                            <li>يحدث عندما يكون ضغط الغاز داخل الوعاء أعلى من الضغط خارجه.</li>
+                            <li>مثال: تسرب الهواء من ثقب صغير في إطار سيارة.</li>
+                        </ul>
+                    </div>
+                </FlippableCard>
+            </div>
+            
+            <FlippableCard
+                cardTitle="نص قانون جراهام"
+                cardIcon={<BookCopy className="h-6 w-6" />}
+            >
+                 <div className="space-y-3">
+                    <blockquote className="border-r-4 border-primary pr-4">
+                        "يتناسب معدل سرعة انتشار (أو تدفق) الغاز عكسيًا مع الجذر التربيعي لكتلته المولية عند ثبات درجة الحرارة والضغط."
+                    </blockquote>
+                     <div dir="ltr" className="text-center pt-2 border-t mt-2"><BlockMath math="r \propto \frac{1}{\sqrt{Mr}}" /></div>
+                </div>
+            </FlippableCard>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  question={<><span>أي الغازين أسرع انتشارًا: الأمونيا (<span dir="ltr" className="inline-block"><InlineMath math="NH_3"/></span>) أم كلوريد الهيدروجين (<span dir="ltr" className="inline-block"><InlineMath math="HCl"/></span>)؟ (الكتل المولية: N=14, H=1, Cl=35.5)</span></>}
+                  options={[
+                      "الأمونيا أسرع",
+                      "كلوريد الهيدروجين أسرع",
+                      "لهما نفس السرعة",
+                      "لا يمكن التحديد"
+                  ]}
+                  correctAnswerIndex={0}
+                  explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol، بينما لـ HCl ≈ 36.5g/mol. بما أن الأمونيا أخف (كتلتها المولية أقل)، فهي الأسرع انتشارًا وفقًا لقانون جراهام."
+              />
+               <InteractiveQuestionCard 
+                  question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
+                  options={[
+                      "8g/mol",
+                      "32g/mol",
+                      "64g/mol",
+                      "4g/mol"
+                  ]}
+                  correctAnswerIndex={2}
+                  explanation="(r_X / r_CH4)² = Mr_CH4 / Mr_X. لدينا r_X = 0.5 * r_CH4. إذن (0.5)² = 16 / Mr_X. ومنها 0.25 = 16 / Mr_X. وبالتالي Mr_X = 16 / 0.25 = 64g/mol."
+              />
           </div>
         </div>
-        <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="text-lg font-semibold pt-2">{currentQuestion.question}</div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentQuestion.options.map((option, index) => {
-            const isCorrect = index === currentQuestion.correctAnswerIndex;
-            const isSelected = selectedAnswer === index;
-            
-            let buttonClass = 'border-input hover:bg-accent/50';
-            if (answerStatus === 'correct' && isSelected) {
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-            } else if (answerStatus === 'incorrect' && isSelected) {
-              buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-            } else if (answerStatus !== 'unanswered' && isCorrect) {
-              // Highlight the correct answer if a wrong one was chosen
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-            }
 
-            return (
-              <Button
-                key={index}
-                variant="outline"
-                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answerStatus !== 'unanswered'}
-              >
-                  <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
-              </Button>
-            );
-          })}
+        <Card>
+          <CardHeader>
+              <CardTitle>اختبر فهمك</CardTitle>
+              <CardDescription>
+                  بعد أن تعرفت على قانون جراهام، اختبر فهمك له من خلال هذا الاختبار القصير.
+              </CardDescription>
+          </CardHeader>
+          <CardContent>
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+          </CardContent>
+        </Card>
+      </main>
+
+      <footer className="mt-12 border-t pt-6">
+        <div className="flex justify-between">
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-9" passHref>
+                <Button size="lg" variant="outline">
+                <ArrowRight className="ml-2 h-5 w-5" />
+                الجزء السابق
+                </Button>
+            </Link>
+            <Link href="/materials/semester-1/unit-1/lesson-2/part-1" passHref>
+                <Button size="lg">
+                الدرس التالي: الحالة السائلة
+                <ArrowLeft className="mr-2 h-5 w-5" />
+                </Button>
+            </Link>
         </div>
-      </CardContent>
-
-      {answerStatus !== 'unanswered' && (
-         <CardFooter className="flex-col items-stretch gap-4 pt-4">
-            <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-              answerStatus === 'correct' 
-                ? 'border-green-500 bg-green-100/30' 
-                : 'border-red-500 bg-red-100/30'
-            )}>
-                {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
-                </AlertTitle>
-                <AlertDescription>
-                    {currentQuestion.explanation}
-                </AlertDescription>
-            </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-            </Button>
-         </CardFooter>
-      )}
-    </Card>
+      </footer>
+    </div>
   );
 }

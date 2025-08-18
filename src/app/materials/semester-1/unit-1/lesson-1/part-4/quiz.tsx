@@ -1,261 +1,301 @@
-
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils.tsx';
-import { useToast } from '@/hooks/use-toast';
-import { QuizQuestion, staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Cpu, Lightbulb, LineChart, ArrowRight, GitCompare } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
+import Quiz from '@/components/quiz';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import { InlineMath, BlockMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
-interface QuizProps {
-  lessonContent: string;
-}
+const Diagram = dynamic(() => import('./diagram'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-col items-center gap-4">
+      <Skeleton className="h-[300px] w-full rounded-lg" />
+      <Skeleton className="h-12 w-full" />
+    </div>
+  ),
+});
 
-type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
+const lessonContent = `<p>بعد أن درسنا العلاقة بين الضغط والحجم، ننتقل الآن إلى علاقة مهمة أخرى اكتشفها العالم الفرنسي جاك شارل، الذي كان مهتمًا بالمناطيد. درس شارل العلاقة بين حجم الغاز ودرجة حرارته.</p>`;
 
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    // Create an array of indices to shuffle
-    const indices = Array.from(Array(question.options.length).keys());
-    // Shuffle the indices
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    // Create the new shuffled options array
-    const shuffledOptions = indices.map(i => question.options[i]);
-    
-    // Find the new index of the correct answer
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
-};
-
-
-export default function Quiz({ lessonContent }: QuizProps) {
-  const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
-  const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-  const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const { toast } = useToast();
-
-  const handleGenerateQuiz = async (level: number) => {
-    setIsLoading(true);
-    setQuiz(null);
-    setIsFinished(false);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-    setAnswerStatus('unanswered');
-    setSelectedAnswer(null);
-
-    try {
-        let generatedQuestions: QuizQuestion[] = [];
-
-        if (level <= 3) {
-            let staticQuestions: QuizQuestion[] = [];
-            if (level === 1) staticQuestions = staticQuizLvl1;
-            if (level === 2) staticQuestions = staticQuizLvl2;
-            if (level === 3) staticQuestions = staticQuizLvl3;
-            // Shuffle options for each static question
-            generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
-        } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz;
-        }
-
-        setQuiz(generatedQuestions);
-
-    } catch (error) {
-        console.error('Failed to generate quiz:', error);
-        toast({
-            variant: 'destructive',
-            title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
-        });
-    } finally {
-        setIsLoading(false);
-    }
-  };
-
-  const handleAnswerSelect = (answerIndex: number) => {
-    if (answerStatus !== 'unanswered') return;
-
-    setSelectedAnswer(answerIndex);
-    const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
-    if (isCorrect) {
-      setAnswerStatus('correct');
-      setScore((prev) => prev + 1);
-    } else {
-      setAnswerStatus('incorrect');
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        // Quiz is finished
-        const finalScore = score / quiz!.length;
-        if(finalScore >= 0.8 && difficultyLevel < 5) { // Cap difficulty at 5
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
-       setIsFinished(true);
-    }
-  };
-  
-  const handleRestartQuiz = () => {
-    // We restart the quiz at the current difficulty level
-    handleGenerateQuiz(difficultyLevel);
-  }
-
-
-  if (isFinished) {
-    return (
-      <Card className="text-center">
-        <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
-            </div>
-        </CardContent>
-        <CardFooter className="justify-center">
-             <Button onClick={handleRestartQuiz}>
-                 <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
-            </Button>
-        </CardFooter>
-      </Card>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
-      </div>
-    );
-  }
-
-  if (!quiz) {
-    return (
-      <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
-         <div className='flex justify-center items-center gap-1 font-bold text-accent'>
-            <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
-        </div>
-        <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
-          <Sparkles className="ml-2 h-4 w-4" />
-          أنشئ اختباري
-        </Button>
-        <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-        </p>
-      </div>
-    );
-  }
-
-  const currentQuestion = quiz[currentQuestionIndex];
+export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
-          <CardTitle className="text-lg">
-            السؤال {currentQuestionIndex + 1} من {quiz.length}
-          </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
+    <div className="container mx-auto p-8 relative">
+       <Link href="/materials/semester-1" passHref>
+          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+            <X className="h-6 w-6" />
+            <span className="sr-only">إغلاق</span>
+          </Button>
+        </Link>
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
+        <p className="text-lg text-muted-foreground">قانون شارل</p>
+      </header>
+
+      <main className="space-y-8">
+        <Card>
+            <CardHeader>
+                <CardTitle>الفكرة الرئيسة</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-lg">
+                عند ثبات الضغط وكمية الغاز، يتناسب حجم الغاز تناسبًا طرديًا مع درجة حرارته المطلقة.
+                </p>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>نتاجات التعلم</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <ul className="space-y-3">
+                <li className="flex items-start">
+                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                    <span>
+                    أصف العلاقة بين الحجم ودرجة الحرارة لغاز محصور عند ثبات ضغطه.
+                    </span>
+                </li>
+                <li className="flex items-start">
+                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                    <span>
+                    أحل مسائل حسابية على قانون شارل.
+                    </span>
+                </li>
+                </ul>
+            </CardContent>
+        </Card>
+
+        <article 
+          className="prose prose-lg max-w-none text-foreground"
+          dangerouslySetInnerHTML={{ __html: lessonContent }}
+        />
+
+        <div className="space-y-8">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+                <div className="space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                            لاحظ العالم شارل أن حجم الهواء في البالونات يتغير بتغير درجة حرارته. عند تسخين الهواء يتمدد ويزداد حجمه، وعند تبريده يتقلص وينقص حجمه. قاده هذا الاكتشاف إلى دراسة العلاقة بشكل منهجي.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><Cpu className="h-6 w-6 text-primary" /> التفسير العلمي</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                            عند زيادة درجة حرارة الغاز يزداد متوسط الطاقة الحركية للجزيئات وتزداد سرعتها وعدد تصادماتها مع جدار الوعاء وبالتالي يزداد حجم الغاز.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2"><Box className="h-6 w-6 text-primary" /> محاكاة التجربة</CardTitle>
+                        <CardDescription>اختر بين الحمام الثلجي والحمام الساخن ولاحظ تأثير درجة الحرارة على حجم البالون.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Diagram />
+                    </CardContent>
+                </Card>
+            </div>
+            
+             <FlippableCard
+                cardTitle="نص قانون شارل"
+                cardIcon={<Thermometer className="h-6 w-6" />}
+            >
+                 <div className="space-y-3">
+                    <blockquote className="border-r-4 border-primary pr-4">
+                        "يتناسب حجم كمية محددة من الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات ضغطه"
+                    </blockquote>
+                    <p className="text-sm text-muted-foreground mt-2">بعبارة أخرى: كلما زادت درجة حرارة الغاز، زاد حجمه، والعكس صحيح</p>
+                </div>
+            </FlippableCard>
+
+             <FlippableCard
+                cardTitle="العلاقة الرياضية"
+                cardIcon={<Cpu className="h-6 w-6" />}
+            >
+                <div className="space-y-4">
+                  <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="V \propto T" /></div>
+                  <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{V}{T} = k" /></div>
+                  <p>وهذا يعني أن حاصل قسمة الحجم على درجة الحرارة المطلقة لكمية معينة من الغاز عند ضغط ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                  <div dir="ltr" className="text-left"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
+                  <p className="text-sm text-muted-foreground" dir="rtl">
+                      حيث <span dir="ltr">(<InlineMath math="V_1, T_1" />)</span> هما الحجم والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="V_2, T_2" />)</span> هما الحجم والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>**
+                  </p>
+                </div>
+            </FlippableCard>
+
+
+            <div className="grid md:grid-cols-2 gap-6 items-start">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>مثال محلول</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="mb-4">
+                            <p>
+                                إذا كان حجم بالون <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="2.5\text{L}" /></span> عند درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="25^\circ\text{C}" /></span>، فما هو حجمه الجديد إذا سخن إلى <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="55^\circ\text{C}" /></span> مع بقاء الضغط ثابتًا؟
+                            </p>
+                        </div>
+                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                            <p><strong className="text-accent">المعطيات</strong></p>
+                            <div className='grid grid-cols-2 gap-x-4' dir="ltr">
+                                <p className="text-left"><InlineMath math="V_1 = 2.5\text{L}" /></p>
+                                <p className="text-left"><InlineMath math="V_2 = ?" /></p>
+                                <p className="text-left"><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                                <p className="text-left"><InlineMath math="T_2 = 55^\circ\text{C}" /></p>
+                            </div>
+                            <p><span className="font-bold text-accent">المطلوب:</span> حساب الحجم الجديد <span dir="ltr">(<InlineMath math="V_2" />)</span></p>
+                            <p><strong className="text-accent">الحل</strong></p>
+                            <ol className="list-decimal mr-6 text-sm space-y-2">
+                                <li>
+                                    <span>**الخطوة الأولى والأهم:** نحول درجات الحرارة إلى كلفن</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{K}" /></div>
+                                    <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 55 + 273 = 328\text{K}" /></div>
+                                </li>
+                                <li>
+                                    <span>نكتب قانون شارل</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
+                                </li>
+                                <li>
+                                    <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" /></span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 T_2}{T_1}" /></div>
+                                </li>
+                                <li>
+                                    <span>نعوض القيم</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(2.5\text{L}) \cdot (328\text{K})}{298\text{K}}" /></div>
+                                </li>
+                                <li>
+                                    <span>نحسب الناتج</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 \approx 2.75\text{L}" /></div>
+                                </li>
+                            </ol>
+                            <div className="border-t pt-3">
+                                <p className="text-sm font-semibold">
+                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="\approx 2.75\text{L}" /></span> وهذا منطقي، لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم
+                                </p>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
+                            <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل T)
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                    <p className="text-xs text-muted-foreground text-center mb-2">
+                        يمثل الخط المستقيم العلاقة الطردية بين الحجم ودرجة الحرارة المطلقة
+                    </p>
+                    <div className="flex justify-center items-center p-4">
+                        <svg width="250" height="200" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
+                            <defs>
+                                <marker id="arrowhead-charles" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto">
+                                    <polygon points="0 0, 5 1.75, 0 3.5" fill="hsl(var(--muted-foreground))" />
+                                </marker>
+                            </defs>
+                            
+                            <g transform="translate(0, -9)">
+                                <line x1="20" y1="110" x2="20" y2="10" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowhead-charles)" />
+                                <text x="10" y="15" dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">V</text>
+                                
+                                <line x1="20" y1="110" x2="140" y2="110" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowhead-charles)" />
+                                <text x="140" y="120" dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">T</text>
+                                
+                                <line x1="20" y1="110" x2="120" y2="20" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+                            </g>
+                        </svg>
+                    </div>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span> فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي</>}
+                  options={[
+                      "5",
+                      "3.6",
+                      "4.4",
+                      "3.2"
+                  ]}
+                  correctAnswerIndex={2}
+                  explanation="أولاً، نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K. الضغط ثابت، لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L."
+              />
+               <InteractiveQuestionCard 
+                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span> عند مضاعفة حرارتها وثبات ضغطها فإن حجمها</>}
+                  options={[
+                      "يصبح 5L",
+                      "يزداد إلى الضعف",
+                      "يقل إلى النصف",
+                      "لا يتغير"
+                  ]}
+                  correctAnswerIndex={1}
+                  explanation="قانون شارل ينص على علاقة طردية بين الحجم ودرجة الحرارة المطلقة. عند مضاعفة درجة الحرارة (من 400K إلى 800K)، يجب أن يتضاعف الحجم أيضًا للحفاظ على النسبة ثابتة، فيصبح 8L."
+              />
           </div>
         </div>
-        <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <p className="text-lg font-semibold pt-2">{currentQuestion.question}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentQuestion.options.map((option, index) => {
-            const isCorrect = index === currentQuestion.correctAnswerIndex;
-            const isSelected = selectedAnswer === index;
-            
-            let buttonClass = 'border-input hover:bg-accent/50';
-            if (answerStatus === 'correct' && isSelected) {
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-            } else if (answerStatus === 'incorrect' && isSelected) {
-              buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-            } else if (answerStatus !== 'unanswered' && isCorrect) {
-              // Highlight the correct answer if a wrong one was chosen
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-            }
 
-            return (
-              <Button
-                key={index}
-                variant="outline"
-                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answerStatus !== 'unanswered'}
-              >
-                  <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
-              </Button>
-            );
-          })}
+        <Card>
+          <CardHeader>
+              <CardTitle>اختبر فهمك</CardTitle>
+              <CardDescription>
+                  بعد أن تعرفت على قانون شارل، اختبر فهمك له من خلال هذا الاختبار القصير.
+              </CardDescription>
+          </CardHeader>
+          <CardContent>
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+          </CardContent>
+        </Card>
+      </main>
+
+      <footer className="mt-12 border-t pt-6">
+        <div className="flex justify-between">
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-3" passHref>
+                <Button size="lg" variant="outline">
+                <ArrowRight className="ml-2 h-5 w-5" />
+                الجزء السابق
+                </Button>
+            </Link>
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-5" passHref>
+                <Button size="lg">
+                الجزء التالي: قانون جاي لوساك
+                <ArrowLeft className="mr-2 h-5 w-5" />
+                </Button>
+            </Link>
         </div>
-      </CardContent>
-
-      {answerStatus !== 'unanswered' && (
-         <CardFooter className="flex-col items-stretch gap-4 pt-4">
-            <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-              answerStatus === 'correct' 
-                ? 'border-green-500 bg-green-100/30' 
-                : 'border-red-500 bg-red-100/30'
-            )}>
-                {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
-                </AlertTitle>
-                <AlertDescription>
-                    {currentQuestion.explanation}
-                </AlertDescription>
-            </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-            </Button>
-         </CardFooter>
-      )}
-    </Card>
+      </footer>
+    </div>
   );
 }

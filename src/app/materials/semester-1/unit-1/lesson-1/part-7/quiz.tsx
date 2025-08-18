@@ -1,259 +1,299 @@
-
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils.tsx';
-import { useToast } from '@/hooks/use-toast';
-import { QuizQuestion, staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu, Pipette, LineChart } from 'lucide-react';
+import Quiz from '@/components/quiz';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import { InlineMath, BlockMath } from 'react-katex';
+import Diagram from './diagram';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
-interface QuizProps {
-  lessonContent: string;
-}
+const lessonContent = `<p>يُعَدُّ هذا القانون من أهم قوانين الغازات، حيث يربط بين كمية الغاز (التي يصعب قياسها مباشرة) وحجمه (الذي يسهل قياسه). اكتشف هذا المبدأ العالم الإيطالي أميديو أفوجادرو.</p>`;
 
-type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
-
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    // Create an array of indices to shuffle
-    const indices = Array.from(Array(question.options.length).keys());
-    // Shuffle the indices
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    // Create the new shuffled options array
-    const shuffledOptions = indices.map(i => question.options[i]);
-    
-    // Find the new index of the correct answer
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
-};
-
-
-export default function Quiz({ lessonContent }: QuizProps) {
-  const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
-  const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-  const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const { toast } = useToast();
-
- const handleGenerateQuiz = async (level: number) => {
-    setIsLoading(true);
-    setQuiz(null);
-    setIsFinished(false);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-    setAnswerStatus('unanswered');
-    setSelectedAnswer(null);
-
-    try {
-        let generatedQuestions: QuizQuestion[] = [];
-
-        if (level <= 3) {
-            let staticQuestions: QuizQuestion[] = [];
-            if (level === 1) staticQuestions = staticQuizLvl1;
-            if (level === 2) staticQuestions = staticQuizLvl2;
-            if (level === 3) staticQuestions = staticQuizLvl3;
-            generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
-        } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz.map(q => ({...q, question: q.question}));
-        }
-
-        setQuiz(generatedQuestions);
-
-    } catch (error) {
-        console.error('Failed to generate quiz:', error);
-        toast({
-            variant: 'destructive',
-            title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
-        });
-    } finally {
-        setIsLoading(false);
-    }
-  };
-
-  const handleAnswerSelect = (answerIndex: number) => {
-    if (answerStatus !== 'unanswered') return;
-
-    setSelectedAnswer(answerIndex);
-    const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
-    if (isCorrect) {
-      setAnswerStatus('correct');
-      setScore((prev) => prev + 1);
-    } else {
-      setAnswerStatus('incorrect');
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        // Quiz is finished
-        const finalScore = score / quiz!.length;
-        if(finalScore >= 0.8 && difficultyLevel < 5) {
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
-       setIsFinished(true);
-    }
-  };
-  
-  const handleRestartQuiz = () => {
-    handleGenerateQuiz(difficultyLevel);
-  }
-
-
-  if (isFinished) {
-    return (
-      <Card className="text-center">
-        <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
-            </div>
-        </CardContent>
-        <CardFooter className="justify-center">
-             <Button onClick={handleRestartQuiz}>
-                 <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
-            </Button>
-        </CardFooter>
-      </Card>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
-      </div>
-    );
-  }
-
-  if (!quiz) {
-    return (
-      <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
-         <div className='flex justify-center items-center gap-1 font-bold text-accent'>
-            <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
-        </div>
-        <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
-          <Sparkles className="ml-2 h-4 w-4" />
-          أنشئ اختباري
-        </Button>
-        <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-        </p>
-      </div>
-    );
-  }
-
-  const currentQuestion = quiz[currentQuestionIndex];
+export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
-          <CardTitle className="text-lg">
-            السؤال {currentQuestionIndex + 1} من {quiz.length}
-          </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
+    <div className="container mx-auto p-8 relative">
+       <Link href="/materials/semester-1" passHref>
+          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+            <X className="h-6 w-6" />
+            <span className="sr-only">إغلاق</span>
+          </Button>
+        </Link>
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
+        <p className="text-lg text-muted-foreground">قانون أفوجادرو</p>
+      </header>
+
+      <main className="space-y-8">
+        <Card>
+            <CardHeader>
+                <CardTitle>الفكرة الرئيسة</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-lg">
+                لكمية ثابتة من الغاز عند ضغط وحرارة ثابتين، يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته. أي أن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجسيمات.
+                </p>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>نتاجات التعلم</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <ul className="space-y-3">
+                <li className="flex items-start">
+                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                    <span>
+                    أصف العلاقة بين حجم الغاز وعدد مولاته.
+                    </span>
+                </li>
+                 <li className="flex items-start">
+                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                    <span>
+                    أستخدم مبدأ أفوجادرو في الحسابات الكيميائية المتعلقة بالغازات.
+                    </span>
+                </li>
+                </ul>
+            </CardContent>
+        </Card>
+
+        <article 
+          className="prose prose-lg max-w-none text-foreground"
+          dangerouslySetInnerHTML={{ __html: lessonContent }}
+        />
+
+        <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        القوانين السابقة (بويل، شارل، جاي-لوساك) تعاملت مع كمية ثابتة من الغاز. لكن ماذا يحدث إذا تغيرت كمية الغاز نفسها، كما في حالة نفخ بالون أو تسرب الهواء من إطار السيارة؟ هنا يأتي دور قانون أفوجادرو الذي يربط بين حجم الغاز وكميته.
+                    </p>
+                </CardContent>
+            </Card>
+
+             <div className="grid md:grid-cols-2 gap-6">
+                <FlippableCard
+                    cardTitle="نص قانون أفوجادرو"
+                    cardIcon={<BookCopy className="h-6 w-6" />}
+                >
+                    <div className="space-y-3 text-sm">
+                        <p>يمكن التعبير عن قانون أفوجادرو بعدة طرق مترابطة:</p>
+                        <ul className="list-disc mr-4 space-y-2">
+                        <li>"تحتوي الحجوم المتساوية من الغازات المختلفة على نفس العدد من الجزيئات عند نفس الظروف من الضغط ودرجة الحرارة."</li>
+                        <li>"يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الضغط والحرارة."</li>
+                        <li>"يتناسب ضغط الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الحجم والحرارة."</li>
+                        </ul>
+                    </div>
+                </FlippableCard>
+
+                <FlippableCard
+                    cardTitle="العلاقة الرياضية"
+                    cardIcon={<Cpu className="h-6 w-6" />}
+                >
+                <div className="space-y-4">
+                    <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي:</p>
+                    <div className="text-left" dir="ltr"><BlockMath math="V \propto n" /></div>
+                    <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
+                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V}{n} = k" /></div>
+                    <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
+                    <p className="text-sm text-muted-foreground">
+                        <span>حيث </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="V_1, n_1" /></span>
+                        <span> هما الحجم وعدد المولات الابتدائيان، و </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="V_2, n_2" /></span>
+                        <span> هما الحجم وعدد المولات النهائيان</span>
+                    </p>
+                </div>
+                </FlippableCard>
+            </div>
+            
+             <Card>
+                <CardHeader>
+                    <CardTitle>مثال محلول</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="mb-4">
+                        <span>عينة من غاز النيتروجين (</span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>
+                        <span>) حجمها </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span>
+                        <span> تحتوي على </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
+                        <span>. ما حجم العينة إذا أضيف إليها </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
+                        <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
+                    </p>
+                    <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                        <div>
+                            <p><strong className="text-accent">المعطيات:</strong></p>
+                            <div className='grid grid-cols-2 gap-x-4 text-sm text-left' dir="ltr">
+                                <p><InlineMath math="V_1 = 5.0L" /></p>
+                                <p><InlineMath math="V_2 = ?" /></p>
+                                <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
+                                <p><InlineMath math="n_2 = ?" /></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong className="text-accent">الحل:</strong></p>
+                            <ol className="list-decimal mr-6 text-sm space-y-2">
+                                <li>
+                                    <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>)</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
+                                </li>
+                                <li>
+                                    <span>نكتب قانون أفوجادرو</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
+                                </li>
+                                <li>
+                                    <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
+                                </li>
+                                <li>
+                                    <span>نعوض القيم</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
+                                </li>
+                                <li>
+                                    <span>نحسب الناتج</span>
+                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <div className="grid md:grid-cols-2 gap-6 items-start">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                       <p className="text-sm">
+                            <span>من أهم تطبيقات قانون أفوجادرو هو مفهوم </span>
+                            <strong className="font-bold">الحجم المولي</strong>
+                            <span>، وهو الحجم الذي يشغله </span>
+                            <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{ mol}" /></span>
+                            <span> من أي غاز في الظروف المعيارية (</span>
+                            <span dir="ltr" style={{display: "inline-block"}}>STP: 0°C</span>
+                            <span> و </span>
+                            <span dir="ltr" style={{display: "inline-block"}}>1 atm</span>
+                            <span>)</span>
+                        </p>
+                        <div className="text-center bg-primary/10 p-4 rounded-lg">
+                            <p className="font-bold text-lg">
+                                <span>حجم </span>
+                                <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{ mol}" /></span>
+                                <span> من أي غاز عند </span>
+                                <span dir="ltr" style={{display: "inline-block"}}>STP</span>
+                            </p>
+                            <p className="text-4xl font-mono font-bold text-primary my-2" dir="ltr">22.4 L</p>
+                        </div>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
+                            <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل n)
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <Diagram />
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  question={<>
+                    <span>عينة من الغاز A حجمها</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
+                    <span> تحتوي على </span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
+                    <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
+                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح:</span>
+                  </>}
+                  options={[
+                      "0.25",
+                      "0.5",
+                      "0.05",
+                      "0.16"
+                  ]}
+                  correctAnswerIndex={0}
+                  explanation="باستخدام قانون أفوجادرو (V₁/n₁ = V₂/n₂)، فإن عدد المولات النهائي n₂ = (V₂ * n₁) / V₁ = (4 L * 0.2 mol) / 3.2 L = 0.25 mol."
+              />
+               <InteractiveQuestionCard 
+                  question={<>
+                    <span>عينة من الغاز A حجمها</span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
+                    <span> تحتوي على </span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
+                    <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
+                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
+                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي:</span>
+                  </>}
+                  options={[
+                      "0.25",
+                      "0.5",
+                      "0.05",
+                      "0.16"
+                  ]}
+                  correctAnswerIndex={2}
+                  explanation="أولاً نجد عدد المولات الكلي بعد الإضافة (n₂) = 0.25 mol (من السؤال السابق). عدد مولات B المضافة = n₂ - n₁ = 0.25 - 0.2 = 0.05 mol."
+              />
           </div>
         </div>
-        <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="text-lg font-semibold pt-2">{currentQuestion.question}</div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentQuestion.options.map((option, index) => {
-            const isCorrect = index === currentQuestion.correctAnswerIndex;
-            const isSelected = selectedAnswer === index;
-            
-            let buttonClass = 'border-input hover:bg-accent/50';
-            if (answerStatus === 'correct' && isSelected) {
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-            } else if (answerStatus === 'incorrect' && isSelected) {
-              buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-            } else if (answerStatus !== 'unanswered' && isCorrect) {
-              // Highlight the correct answer if a wrong one was chosen
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-            }
 
-            return (
-              <Button
-                key={index}
-                variant="outline"
-                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answerStatus !== 'unanswered'}
-              >
-                  <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
-              </Button>
-            );
-          })}
+        <Card>
+          <CardHeader>
+              <CardTitle>اختبر فهمك</CardTitle>
+              <CardDescription>
+                  بعد أن تعرفت على قانون أفوجادرو، اختبر فهمك له من خلال هذا الاختبار القصير.
+              </CardDescription>
+          </CardHeader>
+          <CardContent>
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+          </CardContent>
+        </Card>
+      </main>
+
+      <footer className="mt-12 border-t pt-6">
+        <div className="flex justify-between">
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-6" passHref>
+                <Button size="lg" variant="outline">
+                <ArrowRight className="ml-2 h-5 w-5" />
+                الجزء السابق
+                </Button>
+            </Link>
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-8" passHref>
+                <Button size="lg">
+                الجزء التالي: قانون الغاز المثالي
+                <ArrowLeft className="mr-2 h-5 w-5" />
+                </Button>
+            </Link>
         </div>
-      </CardContent>
-
-      {answerStatus !== 'unanswered' && (
-         <CardFooter className="flex-col items-stretch gap-4 pt-4">
-            <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-              answerStatus === 'correct' 
-                ? 'border-green-500 bg-green-100/30' 
-                : 'border-red-500 bg-red-100/30'
-            )}>
-                {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
-                </AlertTitle>
-                <AlertDescription>
-                    {currentQuestion.explanation}
-                </AlertDescription>
-            </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-            </Button>
-         </CardFooter>
-      )}
-    </Card>
+      </footer>
+    </div>
   );
 }

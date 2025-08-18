@@ -6,14 +6,17 @@ import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, BookCopy, Cpu, Lightbulb, ArrowRight, Layers } from 'lucide-react';
-import Quiz from './quiz';
+import Quiz from '@/components/quiz';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 const lessonContent = `<p>حتى الآن، تعاملنا مع غاز واحد في كل مرة. لكن الهواء الذي نتنفسه هو خليط من غازات متعددة. قانون دالتون للضغوط الجزئية يشرح كيف يتصرف خليط من الغازات وكيف يساهم كل غاز في الضغط الكلي.</p>`;
 
 export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
   return (
     <div className="container mx-auto p-8 relative">
        <Link href="/materials/semester-1" passHref>
@@ -143,7 +146,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
           </CardContent>
         </Card>
       </main>
@@ -167,3 +170,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    

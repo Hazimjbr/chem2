@@ -1,256 +1,307 @@
-
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils.tsx';
-import { useToast } from '@/hooks/use-toast';
-import { QuizQuestion } from './exam'; // Import from a local exam file if it exists
+import { Check, ArrowLeft, X, BookOpen, Thermometer, Box, Beaker, GitCompare, Pipette, Scale, Lightbulb, HelpCircle, ArrowRight, Triangle } from 'lucide-react';
+import Quiz from '@/components/quiz';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card'; // Re-using the same component
+import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-
-interface QuizProps {
-  lessonContent: string;
-}
-
-type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
-
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    const indices = [0, 1, 2, 3];
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    const shuffledOptions = indices.map(i => question.options[i]);
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
-};
 
 
-export default function Quiz({ lessonContent }: QuizProps) {
-  const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
-  const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-  const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const { toast } = useToast();
+const lessonContent = `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`;
 
- const handleGenerateQuiz = async (level: number) => {
-    setIsLoading(true);
-    setQuiz(null);
-    setIsFinished(false);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-    setAnswerStatus('unanswered');
-    setSelectedAnswer(null);
-
-    try {
-        let generatedQuestions: QuizQuestion[] = [];
-
-        if (level <= 3) {
-            let staticQuestions: QuizQuestion[] = [];
-            if (level === 1) staticQuestions = staticQuizLvl1;
-            if (level === 2) staticQuestions = staticQuizLvl2;
-            if (level === 3) staticQuestions = staticQuizLvl3;
-            generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
-        } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz;
-        }
-
-        setQuiz(generatedQuestions);
-
-    } catch (error) {
-        console.error('Failed to generate quiz:', error);
-        toast({
-            variant: 'destructive',
-            title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
-        });
-    } finally {
-        setIsLoading(false);
-    }
-  };
-
-  const handleAnswerSelect = (answerIndex: number) => {
-    if (answerStatus !== 'unanswered') return;
-
-    setSelectedAnswer(answerIndex);
-    const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
-    if (isCorrect) {
-      setAnswerStatus('correct');
-      setScore((prev) => prev + 1);
-    } else {
-      setAnswerStatus('incorrect');
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        // Quiz is finished
-        const finalScore = score / quiz!.length;
-        if(finalScore >= 0.8 && difficultyLevel < 5) {
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
-       setIsFinished(true);
-    }
-  };
+export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
   
-  const handleRestartQuiz = () => {
-    handleGenerateQuiz(difficultyLevel);
-  }
-
-
-  if (isFinished) {
-    return (
-      <Card className="text-center">
-        <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
-            </div>
-        </CardContent>
-        <CardFooter className="justify-center">
-             <Button onClick={handleRestartQuiz}>
-                 <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
-            </Button>
-        </CardFooter>
-      </Card>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
-      </div>
-    );
-  }
-
-  if (!quiz) {
-    return (
-      <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
-         <div className='flex justify-center items-center gap-1 font-bold text-accent'>
-            <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
-        </div>
-        <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
-          <Sparkles className="ml-2 h-4 w-4" />
-          أنشئ اختباري
-        </Button>
-        <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-        </p>
-      </div>
-    );
-  }
-
-  const currentQuestion = quiz[currentQuestionIndex];
-
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
-          <CardTitle className="text-lg">
-            السؤال {currentQuestionIndex + 1} من {quiz.length}
-          </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
-          </div>
-        </div>
-        <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <p className="text-lg font-semibold pt-2">{currentQuestion.question}</p>
+    <div className="container mx-auto p-8 relative">
+       <Link href="/materials/semester-1" passHref>
+          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+            <X className="h-6 w-6" />
+            <span className="sr-only">إغلاق</span>
+          </Button>
+        </Link>
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
+        <p className="text-lg text-muted-foreground">مقدمة قوانين الغازات</p>
+      </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentQuestion.options.map((option, index) => {
-            const isCorrect = index === currentQuestion.correctAnswerIndex;
-            const isSelected = selectedAnswer === index;
-            
-            let buttonClass = 'border-input hover:bg-accent/50';
-            if (answerStatus === 'correct' && isSelected) {
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-            } else if (answerStatus === 'incorrect' && isSelected) {
-              buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-            } else if (answerStatus !== 'unanswered' && isCorrect) {
-              // Highlight the correct answer if a wrong one was chosen
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-            }
+      <main className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>الفكرة الرئيسة</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg">
+                يمكن وصف سلوك الغازات من خلال أربع متغيرات أساسية قابلة للقياس: الضغط (P)، الحجم (V)، درجة الحرارة (T)، وكمية الغاز (n). فهم هذه المتغيرات هو مفتاح فهم قوانين الغازات.
+              </p>
+            </CardContent>
+          </Card>
 
-            return (
-              <Button
-                key={index}
-                variant="outline"
-                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answerStatus !== 'unanswered'}
+          <Card>
+            <CardHeader>
+              <CardTitle>نتاجات التعلم</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                  <span>
+                    أحدد المتغيرات الأربعة (الضغط، الحجم، الحرارة، كمية الغاز) التي تصف سلوك الغاز.
+                  </span>
+                </li>
+                 <li className="flex items-start">
+                  <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                  <span>
+                    أصف المقصود بكل متغير وأذكر وحدات القياس الشائعة له.
+                  </span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+          
+          <article 
+            className="prose prose-lg max-w-none text-foreground"
+            dangerouslySetInnerHTML={{ __html: lessonContent }}
+          />
+        
+          <h3 className="text-2xl font-bold text-center">المتغيرات الأربعة لوصف الغاز المحصور</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+              <FlippableCard
+                cardTitle="1. الضغط (P)"
+                cardIcon={<GitCompare className="h-6 w-6" />}
               >
-                  <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
-              </Button>
-            );
-          })}
-        </div>
-      </CardContent>
+                 <div className="space-y-3">
+                    <p className="font-semibold text-sm">هو القوة المؤثرة عموديًا على وحدة المساحة</p>
+                    <p className="text-xs text-muted-foreground">ينشأ ضغط الغاز عن تصادم جسيماته بجدار الوعاء الذي يحتويه. كلما زادت التصادمات، زاد الضغط</p>
+                    <div>
+                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-xs space-y-1">
+                            <li>باسكال (Pa) وهي الوحدة الدولية (SI)</li>
+                            <li>كيلوباسكال (kPa)</li>
+                            <li>ضغظ جوي (atm)</li>
+                            <li>مليمتر زئبق (mmHg)</li>
+                        </ul>
+                    </div>
+                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
+                        1 atm = 760 mmHg = 101.3 kPa
+                    </p>
+                 </div>
+              </FlippableCard>
 
-      {answerStatus !== 'unanswered' && (
-         <CardFooter className="flex-col items-stretch gap-4 pt-4">
-            <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-              answerStatus === 'correct' 
-                ? 'border-green-500 bg-green-100/30' 
-                : 'border-red-500 bg-red-100/30'
-            )}>
-                {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
-                </AlertTitle>
-                <AlertDescription>
-                    {currentQuestion.explanation}
-                </AlertDescription>
-            </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-            </Button>
-         </CardFooter>
-      )}
-    </Card>
+              <FlippableCard
+                cardTitle="2. الحجم (V)"
+                cardIcon={<Box className="h-6 w-6" />}
+              >
+                 <div className="space-y-3">
+                    <p className="font-semibold text-sm">هو مقدار الحيز الذي تشغله جسيمات الغاز</p>
+                    <p className="text-xs text-muted-foreground">حجم الغاز يساوي حجم الوعاء الذي يوجد فيه</p>
+                    <div>
+                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-xs space-y-1">
+                            <li>متر مكعب (m³)</li>
+                            <li>لتر (L)</li>
+                            <li>مليلتر (mL)</li>
+                        </ul>
+                    </div>
+                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
+                        1 L = 1000 mL
+                    </p>
+                 </div>
+              </FlippableCard>
+
+               <FlippableCard
+                cardTitle="3. درجة الحرارة (T)"
+                cardIcon={<Thermometer className="h-6 w-6" />}
+              >
+                 <div className="space-y-3">
+                    <p className="font-semibold text-sm">هي مقياس لمتوسط الطاقة الحركية لجسيمات الغاز</p>
+                    <p className="text-xs text-muted-foreground">يجب استخدام درجة الحرارة المطلقة (بالكلفن) في جميع قوانين الغازات</p>
+                    <div>
+                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-xs space-y-1">
+                            <li>كلفن (K) وهي الوحدة المعتمدة</li>
+                            <li>درجة مئوية (سيليزية) (°C)</li>
+                        </ul>
+                    </div>
+                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
+                        T(K) = T(°C) + 273
+                    </p>
+                 </div>
+              </FlippableCard>
+
+               <FlippableCard
+                cardTitle="4. كمية الغاز (n)"
+                cardIcon={<Pipette className="h-6 w-6" />}
+              >
+                 <div className="space-y-3">
+                    <p className="font-semibold text-sm">هي عدد جسيمات الغاز الموجودة في حجم معين</p>
+                     <p className="text-xs text-muted-foreground">غالبًا ما يتم التعبير عن كمية الغاز بعدد المولات</p>
+                    <div>
+                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-xs space-y-1">
+                            <li>مول (mol) ويرمز له بالرمز n</li>
+                        </ul>
+                    </div>
+                     <div className='text-xs mt-2 text-muted-foreground italic border-t pt-2'>
+                        <p>المول الواحد يحتوي على عدد أفوجادرو من الجسيمات</p>
+                        <p dir="ltr" className="text-center font-mono mt-1">6.022 × 10²³</p>
+                    </div>
+                 </div>
+              </FlippableCard>
+          </div>
+          
+           <FlippableCard
+            cardTitle="الظروف المعيارية (STP)"
+            cardIcon={<Scale className="h-6 w-6" />}
+          >
+             <p className="mb-4 font-semibold text-sm">هي ظروف مرجعية متفق عليها عالميًا لتسهيل مقارنة البيانات التجريبية للغازات</p>
+              <ul className="space-y-4 text-sm">
+                  <li className="flex items-start gap-3">
+                      <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                      <div>
+                          <p className='font-semibold'>الضغط المعياري (Standard Pressure)</p>
+                          <p className='text-muted-foreground mt-1' dir="ltr">P = 1 atm = 760 mmHg = 101.3 kPa</p>
+                      </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                      <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                       <div>
+                          <p className='font-semibold'>درجة الحرارة المعيارية (Standard Temperature)</p>
+                          <p className='text-muted-foreground mt-1' dir="ltr">T = 0 °C = 273 K</p>
+                      </div>
+                  </li>
+              </ul>
+          </FlippableCard>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Triangle className="h-6 w-6 text-primary" />
+                علاقات رياضية مساعدة
+              </CardTitle>
+              <CardDescription>
+                هذه المثلثات تساعدك على تذكر وحساب الكميات الأساسية بسهولة.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center" dir="ltr">
+              {/* Triangle 1: Moles, Concentration, Volume */}
+              <div className="flex flex-col items-center">
+                <svg viewBox="0 0 120 100" className="w-48 h-auto">
+                  <polygon points="60,5 115,95 5,95" className="fill-muted stroke-foreground" strokeWidth="1" />
+                  <line x1="32.5" y1="50" x2="87.5" y2="50" className="stroke-foreground" strokeWidth="1" />
+                  <line x1="60" y1="50" x2="60" y2="95" className="stroke-foreground" strokeWidth="1" />
+                  <text x="60" y="32" textAnchor="middle" className="font-bold text-lg fill-foreground">n</text>
+                  <text x="60" y="45" textAnchor="middle" className="text-xs fill-muted-foreground">(mole)</text>
+                  <text x="40" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">C</text>
+                  <text x="37" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(mole/L)</text>
+                  <text x="83" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">V</text>
+                  <text x="83" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(L)</text>
+                </svg>
+                <p className="mt-2 text-sm font-semibold"><InlineMath math="n = C \times V" /></p>
+              </div>
+
+              {/* Triangle 2: Mass, Molar Mass, Moles */}
+              <div className="flex flex-col items-center">
+                <svg viewBox="0 0 120 100" className="w-48 h-auto">
+                  <polygon points="60,5 115,95 5,95" className="fill-muted stroke-foreground" strokeWidth="1" />
+                  <line x1="32.5" y1="50" x2="87.5" y2="50" className="stroke-foreground" strokeWidth="1" />
+                  <line x1="60" y1="50" x2="60" y2="95" className="stroke-foreground" strokeWidth="1" />
+                  <text x="60" y="32" textAnchor="middle" className="font-bold text-lg fill-foreground">m</text>
+                  <text x="60" y="45" textAnchor="middle" className="text-xs fill-muted-foreground">(g)</text>
+                  <text x="40" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">Mr</text>
+                  <text x="37" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(g/mole)</text>
+                  <text x="83" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">n</text>
+                  <text x="83" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(mole)</text>
+                </svg>
+                <p className="mt-2 text-sm font-semibold"><InlineMath math="n = \frac{m}{Mr}" /></p>
+              </div>
+
+              {/* Triangle 3: Mass, Density, Volume */}
+              <div className="flex flex-col items-center">
+                 <svg viewBox="0 0 120 100" className="w-48 h-auto">
+                  <polygon points="60,5 115,95 5,95" className="fill-muted stroke-foreground" strokeWidth="1" />
+                  <line x1="32.5" y1="50" x2="87.5" y2="50" className="stroke-foreground" strokeWidth="1" />
+                  <line x1="60" y1="50" x2="60" y2="95" className="stroke-foreground" strokeWidth="1" />
+                  <text x="60" y="32" textAnchor="middle" className="font-bold text-lg fill-foreground">m</text>
+                  <text x="60" y="45" textAnchor="middle" className="text-xs fill-muted-foreground">(g)</text>
+                  <text x="40" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">d</text>
+                  <text x="35" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(g/L)</text>
+                  <text x="83" y="75" textAnchor="middle" className="font-bold text-lg fill-foreground">V</text>
+                  <text x="85" y="90" textAnchor="middle" className="text-xs fill-muted-foreground">(L)</text>
+                </svg>
+                <p className="mt-2 text-sm font-semibold"><InlineMath math="d = \frac{m}{V}" /></p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Lightbulb className="h-7 w-7 text-yellow-400" />
+              <div>
+                <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+                <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+                <InteractiveQuestionCard 
+                    question="بالون يحتوي على غاز الهيليوم ضغطه 900mmHg فإن قيمة ضغطه بوحدة atm تساوي"
+                    options={[
+                        "1.18",
+                        "0.84",
+                        "1660",
+                        "140"
+                    ]}
+                    correctAnswerIndex={0}
+                    explanation="للتحويل من mmHg إلى atm، نقوم بالقسمة على 760. المعادلة هي: 900 mmHg / 760 ≈ 1.18 atm."
+                />
+                 <InteractiveQuestionCard 
+                    question="بالون درجة حرارته 20°C فإن حرارته المطلقة تساوي"
+                    options={[
+                        "13.75",
+                        "253",
+                        "293",
+                        "0.073"
+                    ]}
+                    correctAnswerIndex={2}
+                    explanation="للتحويل من درجة سيليزية (°C) إلى كلفن (K)، نستخدم المعادلة: T(K) = T(°C) + 273. إذن، 20 + 273 = 293 K."
+                />
+            </div>
+          </div>
+
+          <Card>
+            <CardHeader>
+                <CardTitle>اختبر فهمك</CardTitle>
+                 <CardDescription>
+                    بعد أن تعرفت على المتغيرات الأربعة، اختبر فهمك لها من خلال هذا الاختبار القصير.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+            </CardContent>
+          </Card>
+
+      </main>
+
+      <footer className="mt-12 border-t pt-6">
+        <div className="flex justify-between">
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-1" passHref>
+                <Button size="lg" variant="outline">
+                <ArrowRight className="ml-2 h-5 w-5" />
+                الجزء السابق
+                </Button>
+            </Link>
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-3" passHref>
+                <Button size="lg">
+                الجزء التالي: قانون بويل
+                <ArrowLeft className="mr-2 h-5 w-5" />
+                </Button>
+            </Link>
+        </div>
+      </footer>
+    </div>
   );
 }
-

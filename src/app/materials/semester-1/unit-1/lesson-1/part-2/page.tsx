@@ -5,15 +5,18 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, BookOpen, Thermometer, Box, Beaker, GitCompare, Pipette, Scale, Lightbulb, HelpCircle, ArrowRight, Triangle } from 'lucide-react';
-import Quiz from './quiz';
+import Quiz from '@/components/quiz';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card'; // Re-using the same component
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 
 const lessonContent = `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`;
 
 export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+  
   return (
     <div className="container mx-auto p-8 relative">
        <Link href="/materials/semester-1" passHref>
@@ -278,7 +281,7 @@ export default function LessonPartPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <Quiz lessonContent={lessonContent} />
+                <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
             </CardContent>
           </Card>
 
@@ -303,3 +306,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    

@@ -1,266 +1,297 @@
-
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils.tsx';
-import { useToast } from '@/hooks/use-toast';
-import { QuizQuestion, staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu, LineChart } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
+import Quiz from '@/components/quiz';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import { InlineMath, BlockMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
-interface QuizProps {
-  lessonContent: string;
-}
+const Diagram = dynamic(() => import('./diagram'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-col items-center gap-4">
+      <Skeleton className="h-[300px] w-full rounded-lg" />
+      <Skeleton className="h-12 w-full" />
+    </div>
+  ),
+});
 
-type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
+const lessonContent = `<p>نستمر في رحلتنا مع قوانين الغازات، وهذه المرة مع العالم الفرنسي جوزيف جاي-لوساك، الذي درس العلاقة بين ضغط الغاز ودرجة حرارته عندما يكون الحجم ثابتًا، وهو سيناريو شائع جدًا في أوعية الضغط المغلقة.</p>`;
 
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    // Create an array of indices to shuffle
-    const indices = Array.from(Array(question.options.length).keys());
-    // Shuffle the indices
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    // Create the new shuffled options array
-    const shuffledOptions = indices.map(i => question.options[i]);
-    
-    // Find the new index of the correct answer
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
-};
-
-
-export default function Quiz({ lessonContent }: QuizProps) {
-  const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
-  const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-  const [difficultyLevel, setDifficultyLevel] = useState(1);
-  const { toast } = useToast();
-
- const handleGenerateQuiz = async (level: number) => {
-    setIsLoading(true);
-    setQuiz(null);
-    setIsFinished(false);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-    setAnswerStatus('unanswered');
-    setSelectedAnswer(null);
-
-    try {
-        let generatedQuestions: QuizQuestion[] = [];
-
-        if (level <= 3) {
-            let staticQuestions: QuizQuestion[] = [];
-            if (level === 1) staticQuestions = staticQuizLvl1;
-            if (level === 2) staticQuestions = staticQuizLvl2;
-            if (level === 3) staticQuestions = staticQuizLvl3;
-            generatedQuestions = staticQuestions.map(q => shuffleOptions(q));
-        } else {
-            // AI generation returns a different format, so we need to adapt it.
-            // For now, let's assume it also returns React.ReactNode questions.
-            // In a real scenario, you'd handle the string-to-JSX conversion here or in the flow.
-            const result: any = await generateQuiz(lessonContent, level);
-             if (result.quiz.every((q: any) => typeof q.question === 'string')) {
-                 generatedQuestions = result.quiz.map((q: any) => ({...q, question: <p>{q.question}</p>}));
-            } else {
-                 generatedQuestions = result.quiz;
-            }
-        }
-
-        setQuiz(generatedQuestions);
-
-    } catch (error) {
-        console.error('Failed to generate quiz:', error);
-        toast({
-            variant: 'destructive',
-            title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
-        });
-    } finally {
-        setIsLoading(false);
-    }
-  };
-
-  const handleAnswerSelect = (answerIndex: number) => {
-    if (answerStatus !== 'unanswered') return;
-
-    setSelectedAnswer(answerIndex);
-    const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
-    if (isCorrect) {
-      setAnswerStatus('correct');
-      setScore((prev) => prev + 1);
-    } else {
-      setAnswerStatus('incorrect');
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < quiz!.length - 1) {
-       setAnswerStatus('unanswered');
-       setSelectedAnswer(null);
-       setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-        // Quiz is finished
-        const finalScore = score / quiz!.length;
-        if(finalScore >= 0.8 && difficultyLevel < 5) {
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
-       setIsFinished(true);
-    }
-  };
-  
-  const handleRestartQuiz = () => {
-    handleGenerateQuiz(difficultyLevel);
-  }
-
-
-  if (isFinished) {
-    return (
-      <Card className="text-center">
-        <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
-            </div>
-        </CardContent>
-        <CardFooter className="justify-center">
-             <Button onClick={handleRestartQuiz}>
-                 <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
-            </Button>
-        </CardFooter>
-      </Card>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
-      </div>
-    );
-  }
-
-  if (!quiz) {
-    return (
-      <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
-         <div className='flex justify-center items-center gap-1 font-bold text-accent'>
-            <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
-        </div>
-        <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
-          <Sparkles className="ml-2 h-4 w-4" />
-          أنشئ اختباري
-        </Button>
-        <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-        </p>
-      </div>
-    );
-  }
-
-  const currentQuestion = quiz[currentQuestionIndex];
+export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
-          <CardTitle className="text-lg">
-            السؤال {currentQuestionIndex + 1} من {quiz.length}
-          </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
+    <div className="container mx-auto p-8 relative">
+       <Link href="/materials/semester-1" passHref>
+          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+            <X className="h-6 w-6" />
+            <span className="sr-only">إغلاق</span>
+          </Button>
+        </Link>
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
+        <p className="text-lg text-muted-foreground">قانون جاي-لوساك</p>
+      </header>
+
+      <main className="space-y-8">
+        <Card>
+            <CardHeader>
+                <CardTitle>الفكرة الرئيسة</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-lg">
+                عند ثبات الحجم وكمية الغاز، يتناسب ضغط الغاز تناسبًا طرديًا مع درجة حرارته المطلقة.
+                </p>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>نتاجات التعلم</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <ul className="space-y-3">
+                <li className="flex items-start">
+                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                    <span>
+                    أصف العلاقة بين الضغط ودرجة الحرارة لغاز محصور عند ثبات حجمه.
+                    </span>
+                </li>
+                <li className="flex items-start">
+                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                    <span>
+                    أحل مسائل حسابية على قانون جاي-لوساك.
+                    </span>
+                </li>
+                </ul>
+            </CardContent>
+        </Card>
+
+        <article 
+          className="prose prose-lg max-w-none text-foreground"
+          dangerouslySetInnerHTML={{ __html: lessonContent }}
+        />
+
+        <div className="space-y-8">
+             <div className="grid md:grid-cols-2 gap-8 items-start">
+                <div className="space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                            بنى العالم جاي-لوساك على أعمال شارل، لكنه ركز على ما يحدث للضغط عندما لا يُسمح للحجم بالتغير. لاحظ أن تسخين غاز في وعاء مغلق (صلب) يزيد من ضغطه بشكل ملحوظ، وهذا ما نراه في إطارات السيارات التي يزداد ضغطها في الأيام الحارة
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                     <FlippableCard
+                        cardTitle="نص قانون جاي-لوساك"
+                        cardIcon={<GitCompare className="h-6 w-6" />}
+                    >
+                        <div className="space-y-3">
+                            <blockquote className="border-r-4 border-primary pr-4">
+                                "يتناسب ضغط الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات الحجم"
+                            </blockquote>
+                        </div>
+                    </FlippableCard>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><Cpu className="h-6 w-6 text-primary" /> التفسير العلمي</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                            عند زيادة درجة حرارة جسيمات الغاز المحصور في وعاء ثابت الحجم، يزداد متوسط الطاقة الحركية للجزيئات، فتزداد سرعتها وقوة تصادماتها مع جدران الوعاء، مما يؤدي إلى زيادة الضغط
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2"><Box className="h-6 w-6 text-primary" /> محاكاة التجربة</CardTitle>
+                        <CardDescription>تحكم في درجة الحرارة ولاحظ تأثيرها على الضغط داخل الوعاء</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Diagram />
+                    </CardContent>
+                </Card>
+            </div>
+             <FlippableCard
+                cardTitle="العلاقة الرياضية"
+                cardIcon={<Cpu className="h-6 w-6" />}
+            >
+               <div className="space-y-4">
+                  <p>يمكن التعبير عن العلاقة الطردية بين الضغط (P) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
+                  <div className="text-center" dir="ltr"><BlockMath math="P \propto T" /></div>
+                  <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
+                  <div className="text-center" dir="ltr"><BlockMath math="\frac{P}{T} = k" /></div>
+                  <p>وهذا يعني أن حاصل قسمة الضغط على درجة الحرارة المطلقة لكمية معينة من الغاز عند حجم ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                  <div className="text-center" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
+                   <p className="text-sm text-muted-foreground">
+                      حيث <span dir="ltr">(<InlineMath math="P_1, T_1" />)</span> هما الضغط والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="P_2, T_2" />)</span> هما الضغط والحرارة النهائيان <strong>يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span></strong>
+                  </p>
+              </div>
+            </FlippableCard>
+            
+            <Card>
+                <CardHeader>
+                    <CardTitle>مثال محلول</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="mb-4">
+                        <span>علبة من بخاخ الشعر ضغطها </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="1.5\text{ atm}" /></span><span> عند درجة حرارة </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="25^\circ\text{C}" /></span><span> إذا ألقيت العلبة في النار وارتفعت درجة حرارتها إلى </span><span style={{display: 'inline-block'}} dir="ltr"><InlineMath math="400^\circ\text{C}" /></span><span> فما هو الضغط الجديد داخل العلبة (تحذير: لا تجرب هذا فعليًا)</span>
+                    </p>
+                    <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                        <p><strong className="text-accent">المعطيات</strong></p>
+                        <div className='grid grid-cols-2 gap-x-4 text-sm' dir="ltr">
+                            <p className="text-left"><InlineMath math="P_1 = 1.5\text{ atm}" /></p>
+                            <p className="text-left"><InlineMath math="P_2 = ?" /></p>
+                            <p className="text-left"><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
+                            <p className="text-left"><InlineMath math="T_2 = 400^\circ\text{C}" /></p>
+                        </div>
+                        <p><strong className="text-accent">الحل</strong></p>
+                        <ol className="list-decimal mr-6 text-sm space-y-2">
+                            <li>
+                                <span>نحول درجات الحرارة إلى كلفن</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{ K}" /></div>
+                                <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 400 + 273 = 673\text{ K}" /></div>
+                            </li>
+                            <li>
+                                <span>نكتب قانون جاي-لوساك</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="\frac{P_1}{T_1} = \frac{P_2}{T_2}" /></div>
+                            </li>
+                            <li>
+                                <span>نعيد ترتيب المعادلة لحل <InlineMath math="P_2" /></span>
+                                <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{P_1 T_2}{T_1}" /></div>
+                            </li>
+                            <li>
+                                <span>نعوض القيم</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="P_2 = \frac{(1.5\text{ atm}) \cdot (673\text{ K})}{(298\text{ K})}" /></div>
+                                </li>
+                            <li>
+                                <span>نحسب الناتج</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="P_2 \approx 3.39\text{ atm}" /></div>
+                            </li>
+                        </ol>
+                        <div className="border-t pt-3">
+                            <p className="text-sm font-semibold">
+                            <span>الجواب: الضغط الجديد داخل العلبة هو</span><span style={{display: 'inline-block'}} dir="ltr"> ~<InlineMath math="3.39\text{ atm}" /></span><span> الزيادة الكبيرة في الضغط توضح لماذا من الخطر تسخين الأوعية المضغوطة</span>
+                            </p>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+                 <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (P مقابل T)</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-xs text-muted-foreground text-center mb-2">
+                            يمثل الخط المستقيم العلاقة الطردية بين الضغط ودرجة الحرارة المطلقة
+                        </p>
+                        <div className="flex justify-center items-center p-4">
+                           <svg width="250" height="200" viewBox="0 0 150 125" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
+                                <defs>
+                                    <marker id="arrowhead-gay-lussac" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto">
+                                        <polygon points="0 0, 5 1.75, 0 3.5" fill="hsl(var(--muted-foreground))" />
+                                    </marker>
+                                </defs>
+                                
+                                <line x1="20" y1="110" x2="20" y2="10" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowhead-gay-lussac)" />
+                                <text x="10" y="15" dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">P</text>
+                                
+                                <line x1="20" y1="110" x2="140" y2="110" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowhead-gay-lussac)" />
+                                <text x="140" y="120" dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">T</text>
+                                
+                                <line x1="20" y1="110" x2="120" y2="20" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+                            </svg>
+                        </div>
+                    </CardContent>
+                </Card>
+            
+        </div>
+        
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  question={(
+                    <>
+                     عينة من غاز محصور في وعاء حجمه ثابت <span dir="ltr">(<InlineMath math="4\text{L}"/>)</span> وضغطها <span dir="ltr">(<InlineMath math="2\text{atm}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="200^\circ\text{C}"/>)</span> فإذا ارتفعت درجة حرارتها بمقدار <span dir="ltr">(<InlineMath math="100"/>)</span> درجة فإن ضغطها بوحدة <span dir="ltr">(<InlineMath math="\text{atm}"/>)</span> يساوي
+                    </>
+                  )}
+                  options={[
+                      "1.3",
+                      "1.6",
+                      "3",
+                      "2.4"
+                  ]}
+                  correctAnswerIndex={3}
+                  explanation="T₁=200+273=473K. T₂= (200+100)+273=573K. P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm"
+              />
+               <InteractiveQuestionCard 
+                  question={(
+                    <>
+                     عينة من غاز محصور ضغطها <span dir="ltr">(<InlineMath math="900\text{mmHg}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="273\text{K}"/>)</span> فإذا أصبح ضغطها <span dir="ltr">(<InlineMath math="200\text{kPa}"/>)</span> فإن درجة حرارتها بوحدة <span dir="ltr">(<InlineMath math="^\circ\text{C}"/>)</span> تساوي
+                    </>
+                  )}
+                  options={[
+                      "60.6",
+                      "182",
+                      "-212.3",
+                      "455"
+                  ]}
+                  correctAnswerIndex={1}
+                  explanation="أولاً نوحد الضغط. P₁(atm) = 900/760 ≈ 1.184atm. P₂(atm) = 200/101.3 ≈ 1.974atm. T₁=273K. T₂ = T₁P₂/P₁ = (273*1.974)/1.184 ≈ 455K. نحول إلى سيليزيوس: 455-273 = 182°C"
+              />
           </div>
         </div>
-        <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <p className="text-lg font-semibold pt-2">{currentQuestion.question}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentQuestion.options.map((option, index) => {
-            const isCorrect = index === currentQuestion.correctAnswerIndex;
-            const isSelected = selectedAnswer === index;
-            
-            let buttonClass = 'border-input hover:bg-accent/50';
-            if (answerStatus === 'correct' && isSelected) {
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-            } else if (answerStatus === 'incorrect' && isSelected) {
-              buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-            } else if (answerStatus !== 'unanswered' && isCorrect) {
-              // Highlight the correct answer if a wrong one was chosen
-              buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-            }
 
-            return (
-              <Button
-                key={index}
-                variant="outline"
-                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answerStatus !== 'unanswered'}
-              >
-                  <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
-              </Button>
-            );
-          })}
+        <Card>
+          <CardHeader>
+              <CardTitle>اختبر فهمك</CardTitle>
+              <CardDescription>
+                  بعد أن تعرفت على قانون جاي-لوساك، اختبر فهمك له من خلال هذا الاختبار القصير
+              </CardDescription>
+          </CardHeader>
+          <CardContent>
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+          </CardContent>
+        </Card>
+      </main>
+
+      <footer className="mt-12 border-t pt-6">
+        <div className="flex justify-between">
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-4" passHref>
+                <Button size="lg" variant="outline">
+                <ArrowRight className="ml-2 h-5 w-5" />
+                الجزء السابق
+                </Button>
+            </Link>
+            <Link href="/materials/semester-1/unit-1/lesson-1/part-6" passHref>
+                <Button size="lg">
+                الجزء التالي: القانون الجامع
+                <ArrowLeft className="mr-2 h-5 w-5" />
+                </Button>
+            </Link>
         </div>
-      </CardContent>
-
-      {answerStatus !== 'unanswered' && (
-         <CardFooter className="flex-col items-stretch gap-4 pt-4">
-            <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-              answerStatus === 'correct' 
-                ? 'border-green-500 bg-green-100/30' 
-                : 'border-red-500 bg-red-100/30'
-            )}>
-                {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
-                </AlertTitle>
-                <AlertDescription>
-                    {currentQuestion.explanation}
-                </AlertDescription>
-            </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-            </Button>
-         </CardFooter>
-      )}
-    </Card>
+      </footer>
+    </div>
   );
 }

@@ -6,15 +6,18 @@ import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Lightbulb, HelpCircle, ArrowRight, GitCompare, Cpu, Pipette, LineChart } from 'lucide-react';
-import Quiz from './quiz';
+import Quiz from '@/components/quiz';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import Diagram from './diagram';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 const lessonContent = `<p>يُعَدُّ هذا القانون من أهم قوانين الغازات، حيث يربط بين كمية الغاز (التي يصعب قياسها مباشرة) وحجمه (الذي يسهل قياسه). اكتشف هذا المبدأ العالم الإيطالي أميديو أفوجادرو.</p>`;
 
 export default function LessonPartPage() {
+  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
   return (
     <div className="container mx-auto p-8 relative">
        <Link href="/materials/semester-1" passHref>
@@ -271,7 +274,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
           </CardContent>
         </Card>
       </main>
@@ -295,3 +298,5 @@ export default function LessonPartPage() {
     </div>
   );
 }
+
+    
