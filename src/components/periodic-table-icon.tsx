@@ -8,20 +8,28 @@ function PeriodicTableIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={cn("w-full h-auto", className)}
       {...props}
     >
-      <path d="M2 4V20H22V12H12V8H8V4H2Z" />
-      <path d="M8 8H12" />
-      <path d="M2 8H8" />
-      <path d="M2 12H12" />
-      <path d="M2 16H22" />
-      <path d="M8 12V8" />
-      <path d="M12 12V4" />
-      <path d="M17 12V4" />
+      {/* Main block */}
+      <rect x="2" y="6" width="20" height="14" rx="1" />
+      
+      {/* Top row */}
+      <line x1="2" y1="10" x2="22" y2="10" />
+      <line x1="2" y1="13" x2="22" y2="13" />
+      <line x1="2" y1="17" x2="22" y2="17" />
+
+      {/* Vertical lines */}
+      <line x1="6" y1="6" x2="6" y2="20" />
+      <line x1="10" y1="6" x2="10" y2="20" />
+      <line x1="14" y1="6" x2="14" y2="20" />
+      <line x1="18" y1="6" x2="18" y2="20" />
+
+      {/* Top left element (Hydrogen) */}
+      <rect x="2" y="2" width="4" height="4" rx="0.5" />
     </svg>
   );
 }
