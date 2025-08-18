@@ -9,15 +9,17 @@ import { CheckCircle, HelpCircle, XCircle } from 'lucide-react';
 import { cn } from '@/lib/utils.tsx';
 
 interface InteractiveQuestionCardProps {
-  question: React.ReactNode; // Changed from string to React.ReactNode
+  question: React.ReactNode; 
   options: string[];
   correctAnswerIndex: number;
   explanation: string;
+  questionId: string;
+  onCorrect: (questionId: string) => void;
 }
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
-export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation }: InteractiveQuestionCardProps) {
+export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation, questionId, onCorrect }: InteractiveQuestionCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -28,6 +30,7 @@ export default function InteractiveQuestionCard({ question, options, correctAnsw
     setSelectedAnswer(index);
     if (index === correctAnswerIndex) {
       setAnswerStatus('correct');
+      onCorrect(questionId); // Notify parent component on correct answer
     } else {
       setAnswerStatus('incorrect');
     }

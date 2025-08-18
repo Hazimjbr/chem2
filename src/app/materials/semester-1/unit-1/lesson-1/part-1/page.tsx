@@ -11,7 +11,7 @@ import Quiz from '@/components/quiz'; // Use the central quiz component
 import FlippableCard from './flippable-card';
 import InteractiveQuestionCard from './interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -32,11 +32,29 @@ const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-1";
 
 export default function LessonPartPage() {
   const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+  const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    // Save the current lesson path to localStorage
     localStorage.setItem('lastVisitedLesson', lessonPath);
   }, []);
+
+  const handleCorrectAnswer = (questionId: string) => {
+    setCompletedInteractive(prev => new Set(prev.add(questionId)));
+  };
+
+  useEffect(() => {
+    if (completedInteractive.size >= 2) {
+      try {
+        const savedProgress = localStorage.getItem('completedLessons') || '[]';
+        const completedLessons = new Set(JSON.parse(savedProgress));
+        completedLessons.add(lessonPath);
+        localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
+      } catch (error) {
+        console.error("Failed to save lesson progress:", error);
+      }
+    }
+  }, [completedInteractive]);
+
 
   return (
     <div className="container mx-auto p-8 relative">
@@ -272,6 +290,8 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
+                  questionId="q1"
+                  onCorrect={handleCorrectAnswer}
                   question="الغاز A محصور في وعاء عند درجة حرارة ثابتة فإن العبارة الخاطئة:"
                   options={[
                       "حركة جسيمات الغاز مستمرة وعشوائية وفي خط مستقيم",
@@ -283,6 +303,8 @@ export default function LessonPartPage() {
                   explanation="عند درجة حرارة ثابتة، يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت، ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة."
               />
                <InteractiveQuestionCard 
+                  questionId="q2"
+                  onCorrect={handleCorrectAnswer}
                   question="أحد الغازات الآتية لا يمكن إسالته على جميع قيم الضغط ودرجات الحرارة:"
                   options={[
                       "الغاز المثالي",
