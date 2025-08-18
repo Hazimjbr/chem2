@@ -103,12 +103,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
      {
         "question": "أي من أزواج الغازات التالية لهما تقريبًا نفس معدل الانتشار؟",
         "options": [
+            "H₂ و O₂",
             "CO₂ و N₂O",
-            "CO و N₂",
             "SO₂ و O₂",
             "CO₂ و CO"
         ],
-        "correctAnswerIndex": 0,
+        "correctAnswerIndex": 1,
         "explanation": "يكون للغازات نفس معدل الانتشار تقريبًا إذا كانت كتلها المولية متساوية. CO₂ (44 g/mol) و N₂O (44 g/mol) لهما نفس الكتلة المولية، وبالتالي نفس معدل الانتشار."
     },
     {
