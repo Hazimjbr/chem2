@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
 import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
@@ -28,41 +28,28 @@ interface QuizProps {
     lvl2: QuizQuestion[];
     lvl3: QuizQuestion[];
   };
+  lessonId: string; // Unique ID for the lesson to manage localStorage
 }
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
 // Helper function to shuffle an array and return the new index of the correct answer
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    // This function is disabled for questions with image-based options (A,B,C,D labels)
     if (question.options.every(o => o.length === 1 || o.startsWith("أقرب") || o.startsWith("في منتصف"))) {
         return question;
     }
     const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    // Create an array of indices to shuffle
     const indices = Array.from(Array(question.options.length).keys());
-    // Shuffle the indices
     for (let i = indices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [indices[i], indices[j]] = [indices[j], indices[i]];
     }
-
-    // Create the new shuffled options array
     const shuffledOptions = indices.map(i => question.options[i]);
-    
-    // Find the new index of the correct answer
     const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
+    return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
 };
 
-
-export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
+export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizProps) {
   const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -72,8 +59,37 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
   const [isFinished, setIsFinished] = useState(false);
   const [difficultyLevel, setDifficultyLevel] = useState(1);
   const { toast } = useToast();
+  
+  const storageKey = `quizState_${lessonId}`;
 
- const handleGenerateQuiz = async (level: number) => {
+  // Load state from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished } = JSON.parse(savedState);
+        setQuiz(quiz);
+        setCurrentQuestionIndex(currentQuestionIndex);
+        setScore(score);
+        setDifficultyLevel(difficultyLevel);
+        setIsFinished(isFinished);
+      }
+    } catch (error) {
+      console.error("Failed to load quiz state:", error);
+    }
+  }, [storageKey]);
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Failed to save quiz state:", error);
+    }
+  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey]);
+
+  const handleGenerateQuiz = async (level: number) => {
     setIsLoading(true);
     setQuiz(null);
     setIsFinished(false);
@@ -81,10 +97,10 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
     setScore(0);
     setAnswerStatus('unanswered');
     setSelectedAnswer(null);
+    setDifficultyLevel(level);
 
     try {
         let generatedQuestions: QuizQuestion[] = [];
-
         if (level <= 3 && staticQuizzes) {
             let staticQuestionsForLevel: QuizQuestion[] = [];
             if (level === 1) staticQuestionsForLevel = staticQuizzes.lvl1;
@@ -95,9 +111,7 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
             const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
             generatedQuestions = result.quiz.map(q => ({...q, question: q.question}));
         }
-
         setQuiz(generatedQuestions.filter(q => q && q.options && q.options.length > 0));
-
     } catch (error) {
         console.error('Failed to generate quiz:', error);
         toast({
@@ -105,6 +119,9 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
             title: 'حدث خطأ',
             description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
         });
+        // Reset to initial state on failure
+        setQuiz(null);
+        localStorage.removeItem(storageKey);
     } finally {
         setIsLoading(false);
     }
@@ -112,10 +129,8 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (answerStatus !== 'unanswered') return;
-
     setSelectedAnswer(answerIndex);
     const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
-
     if (isCorrect) {
       setAnswerStatus('correct');
       setScore((prev) => prev + 1);
@@ -130,7 +145,7 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
        setSelectedAnswer(null);
        setCurrentQuestionIndex((prev) => prev + 1);
     } else {
-        const finalScore = score / quiz!.length;
+        const finalScore = (score + (answerStatus === 'correct' ? 1 : 0)) / quiz!.length;
         if(finalScore >= 0.8 && difficultyLevel < 5) {
             setDifficultyLevel(prev => prev + 1);
              toast({
@@ -146,7 +161,6 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
   const handleRestartQuiz = () => {
     handleGenerateQuiz(difficultyLevel);
   }
-
 
   if (isFinished) {
     return (
@@ -206,8 +220,8 @@ export default function Quiz({ lessonContent, staticQuizzes }: QuizProps) {
   if (!currentQuestion) {
     return (
         <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p className="mt-2">جاري تحميل السؤال...</p>
+            <p>حدث خطأ في تحميل السؤال.</p>
+            <Button onClick={handleRestartQuiz}>أعد المحاولة</Button>
         </div>
     );
   }

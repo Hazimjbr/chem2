@@ -12,6 +12,7 @@ import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/fli
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import { useEffect } from 'react';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -24,9 +25,14 @@ const Diagram = dynamic(() => import('./diagram'), {
 });
 
 const lessonContent = `<p>نستمر في رحلتنا مع قوانين الغازات، وهذه المرة مع العالم الفرنسي جوزيف جاي-لوساك، الذي درس العلاقة بين ضغط الغاز ودرجة حرارته عندما يكون الحجم ثابتًا، وهو سيناريو شائع جدًا في أوعية الضغط المغلقة.</p>`;
+const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-5";
 
 export default function LessonPartPage() {
   const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
+  useEffect(() => {
+    localStorage.setItem('lastVisitedLesson', lessonPath);
+  }, []);
 
   return (
     <div className="container mx-auto p-8 relative">
@@ -272,7 +278,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
           </CardContent>
         </Card>
       </main>
@@ -296,5 +302,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    

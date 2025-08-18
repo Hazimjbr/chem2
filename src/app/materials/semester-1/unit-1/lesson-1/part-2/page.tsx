@@ -10,12 +10,18 @@ import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/fli
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import { useEffect } from 'react';
 
 
 const lessonContent = `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`;
+const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-2";
 
 export default function LessonPartPage() {
   const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+  
+  useEffect(() => {
+    localStorage.setItem('lastVisitedLesson', lessonPath);
+  }, []);
   
   return (
     <div className="container mx-auto p-8 relative">
@@ -281,7 +287,7 @@ export default function LessonPartPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+                <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
             </CardContent>
           </Card>
 
@@ -306,5 +312,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    

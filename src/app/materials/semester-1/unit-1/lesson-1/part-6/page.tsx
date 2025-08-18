@@ -10,11 +10,17 @@ import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/fli
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import { useEffect } from 'react';
 
 const lessonContent = `<p>بعد أن درسنا كيف تتغير متغيرات الغاز كل على حدة، يجمع القانون الجامع للغازات قوانين بويل وشارل وجاي-لوساك في علاقة واحدة قوية تصف سلوك الغاز عندما تتغير جميع المتغيرات الثلاثة (الضغط، الحجم، والحرارة) في آن واحد.</p>`;
+const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-6";
 
 export default function LessonPartPage() {
   const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
+  useEffect(() => {
+    localStorage.setItem('lastVisitedLesson', lessonPath);
+  }, []);
 
   return (
     <div className="container mx-auto p-8 relative">
@@ -197,7 +203,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
           </CardContent>
         </Card>
       </main>
@@ -221,5 +227,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    

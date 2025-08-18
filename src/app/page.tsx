@@ -1,9 +1,22 @@
+
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen, CheckSquare, Clock } from 'lucide-react';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
+
+  useEffect(() => {
+    const savedLesson = localStorage.getItem('lastVisitedLesson');
+    if (savedLesson) {
+      setLastVisitedLesson(savedLesson);
+    }
+  }, []);
+
   return (
     <div className="container mx-auto p-8">
       <section className="text-center py-16">
@@ -43,7 +56,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-4">
                 الحالة الغازية: نظرية الحركة الجزيئية
               </p>
-              <Link href="/materials/semester-1/unit-1/lesson-1/part-1" passHref>
+              <Link href={lastVisitedLesson} passHref>
                 <Button>متابعة الدرس</Button>
               </Link>
             </CardContent>

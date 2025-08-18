@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, BookCopy, Cpu, Lightbulb, ArrowRight, Wind, Waves } from 'lucide-react';
@@ -13,9 +13,14 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 const lessonContent = `<p>آخر قانون في رحلتنا مع الغازات هو قانون جراهام، الذي يصف ظاهرة مهمة جدًا وهي سرعة حركة الغازات. هل تساءلت يومًا لماذا نشم رائحة عطر في أحد أركان الغرفة بعد فترة قصيرة من رشه في الركن الآخر؟ قانون جراهام يجيب على هذا السؤال.</p>`;
+const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-10";
 
 export default function LessonPartPage() {
   const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
+  useEffect(() => {
+    localStorage.setItem('lastVisitedLesson', lessonPath);
+  }, []);
 
   return (
     <div className="container mx-auto p-8 relative">
@@ -162,7 +167,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
           </CardContent>
         </Card>
       </main>
@@ -186,5 +191,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    

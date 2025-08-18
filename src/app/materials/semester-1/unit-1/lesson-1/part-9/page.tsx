@@ -11,11 +11,17 @@ import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/fli
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import { useEffect } from 'react';
 
 const lessonContent = `<p>حتى الآن، تعاملنا مع غاز واحد في كل مرة. لكن الهواء الذي نتنفسه هو خليط من غازات متعددة. قانون دالتون للضغوط الجزئية يشرح كيف يتصرف خليط من الغازات وكيف يساهم كل غاز في الضغط الكلي.</p>`;
+const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-9";
 
 export default function LessonPartPage() {
   const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+
+  useEffect(() => {
+    localStorage.setItem('lastVisitedLesson', lessonPath);
+  }, []);
 
   return (
     <div className="container mx-auto p-8 relative">
@@ -146,7 +152,7 @@ export default function LessonPartPage() {
               </CardDescription>
           </CardHeader>
           <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} />
+              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
           </CardContent>
         </Card>
       </main>
@@ -170,5 +176,3 @@ export default function LessonPartPage() {
     </div>
   );
 }
-
-    

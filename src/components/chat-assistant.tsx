@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -59,6 +59,33 @@ export default function ChatAssistant() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Load messages from sessionStorage on mount
+    try {
+      const savedMessages = sessionStorage.getItem('chatMessages');
+      if (savedMessages) {
+        setMessages(JSON.parse(savedMessages));
+      }
+    } catch (error) {
+      console.error("Failed to load chat messages from session storage:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save messages to sessionStorage whenever they change
+    try {
+      sessionStorage.setItem('chatMessages', JSON.stringify(messages));
+    } catch (error) {
+        console.error("Failed to save chat messages to session storage:", error);
+    }
+     if (scrollAreaRef.current) {
+      // @ts-ignore
+      scrollAreaRef.current.children[1].scrollTop = scrollAreaRef.current.children[1].scrollHeight;
+    }
+  }, [messages]);
+
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,7 +131,7 @@ export default function ChatAssistant() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden">
-        <ScrollArea className="h-full">
+        <ScrollArea className="h-full" ref={scrollAreaRef}>
           <div className="space-y-4 pr-4">
             {messages.map((message, index) => (
               <div
