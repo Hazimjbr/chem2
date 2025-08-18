@@ -25,7 +25,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "قانون دالتون والغاز المثالي يوضحان أن الضغط الكلي يعتمد على العدد الكلي للمولات (P_total = n_total * RT/V)، بغض النظر عن أنواع الغازات."
     },
     {
-        "question": <span>الضغط الجزئي لغاز في خليط يعتمد على:</span>,
+        "question": "الضغط الجزئي لغاز في خليط يعتمد على:",
         "options": [
             "حجمه فقط",
             "الكسر المولي له والضغط الكلي",
@@ -58,7 +58,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "أولاً، نحسب الضغط الجزئي لكل غاز في الوعاء الجديد (1L) باستخدام قانون بويل. P_A = (0.5*1.5)/1 = 0.75atm. P_B = (0.25*3)/1 = 0.75atm. الضغط الكلي P_total = P_A + P_B = 0.75 + 0.75 = 1.5atm."
     },
     {
-        "question": <span>من السؤال السابق، فإن الضغط الكلي للخليط عند نفس درجة الحرارة يساوي:</span>,
+        "question": "من السؤال السابق، فإن الضغط الكلي للخليط عند نفس درجة الحرارة يساوي:",
         "options": [
             "1.5kPa",
             "1atm",
@@ -129,7 +129,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">1) عدد مولات الغاز A:</strong></div>,
+        "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">1) عدد مولات الغاز A:</strong></div>,
         "options": [
             "0.016mol",
             "0.008mol",
@@ -140,7 +140,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_A = 300/760 atm. n_A = PV/RT = ((300/760) * 0.5) / (0.082 * 300) ≈ 0.008mol."
     },
     {
-        question: <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">2) عدد مولات الغاز B:</strong></div>,
+        "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">2) عدد مولات الغاز B:</strong></div>,
         "options": [
             "0.008mol",
             "0.016mol",
@@ -151,7 +151,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_B = 350/760 atm. n_B = PV/RT = ((350/760) * 0.43) / (0.082 * 300) ≈ 0.008mol."
     },
     {
-        question: <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">3) حجم الوعاء W بوحدة L:</strong></div>,
+        "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">3) حجم الوعاء W بوحدة L:</strong></div>,
         "options": [
             "0.004L",
             "0.1L",

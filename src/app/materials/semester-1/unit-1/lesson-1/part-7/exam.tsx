@@ -23,7 +23,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "قانون أفوجادرو ينص على أن حجم الغاز يتناسب طرديًا مع عدد مولاته (كميته) بشرط ثبات الضغط ودرجة الحرارة."
     },
     {
-        question: <>ما هو حجم <InlineMath math="1\text{mol}" /> من أي غاز مثالي في الظروف المعيارية (STP)؟</>,
+        "question": <>ما هو حجم <InlineMath math="1\text{mol}" /> من أي غاز مثالي في الظروف المعيارية (STP)؟</>,
         "options": [
             "1L",
             "22.4L",
@@ -34,7 +34,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الحجم المولي لأي غاز مثالي في الظروف المعيارية (0°C و 1 atm) هو قيمة ثابتة وتساوي 22.4 لتر."
     },
     {
-        question: <>وعاء حجمه <InlineMath math="2\text{L}" /> يحتوي على <InlineMath math="0.5\text{mol}" /> من غاز الأكسجين. إذا أفرغنا نصف كمية الغاز، فما هو الحجم الجديد الذي سيشغله الغاز المتبقي عند نفس الظروف؟</>,
+        "question": <>وعاء حجمه <InlineMath math="2\text{L}" /> يحتوي على <InlineMath math="0.5\text{mol}" /> من غاز الأكسجين. إذا أفرغنا نصف كمية الغاز، فما هو الحجم الجديد الذي سيشغله الغاز المتبقي عند نفس الظروف؟</>,
         "options": [
             "2L",
             "1L",
@@ -56,7 +56,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لمبدأ أفوجادرو، فإن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجزيئات (أو المولات)."
     },
     {
-        question: <>عينة من غاز الميثان في الظروف المعيارية تحتوي <InlineMath math="0.1\text{mol}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي:</>,
+        "question": <>عينة من غاز الميثان في الظروف المعيارية تحتوي <InlineMath math="0.1\text{mol}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي:</>,
         "options": [
             "4.48L",
             "2.24L",
@@ -70,7 +70,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <>عينة من غاز الميثان في الظروف المعيارية كتلتها <InlineMath math="3.2\text{g}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي:</>,
+        "question": <>عينة من غاز الميثان في الظروف المعيارية كتلتها <InlineMath math="3.2\text{g}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي:</>,
         "options": [
             "4.48L",
             "2.24L",
@@ -81,7 +81,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "أولاً، نحسب عدد المولات: n = الكتلة / الكتلة المولية = 3.2g / 16g/mol = 0.2mol. ثم نحسب الحجم في الظروف المعيارية: الحجم = 0.2mol × 22.4L/mol = 4.48L."
     },
     {
-        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد مولات الميثان يساوي:</>,
+        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد مولات الميثان يساوي:</>,
         "options": [
             "1.34",
             "7.47",
@@ -92,7 +92,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "في الظروف المعيارية، عدد المولات = الحجم / 22.4. إذن، n = 3L / 22.4L/mol ≈ 0.13mol."
     },
     {
-        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن كتلتها بوحدة <InlineMath math="\text{g}" /> تساوي:</>,
+        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن كتلتها بوحدة <InlineMath math="\text{g}" /> تساوي:</>,
         "options": [
             "1.34",
             "2.1",
@@ -103,7 +103,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "أولاً، نجد عدد المولات: n = 3L / 22.4L/mol ≈ 0.134mol. ثم نحسب الكتلة: الكتلة = n × الكتلة المولية = 0.134mol × 16g/mol ≈ 2.1g."
     },
     {
-        question: <>كمية من غاز النيتروجين (<InlineMath math="N_2" />) حجمها <InlineMath math="10\text{L}" />. كمية أخرى من غاز الهيليوم (<InlineMath math="He" />) تشغل حجم <InlineMath math="20\text{L}" /> عند نفس الظروف. ما هي نسبة عدد مولات الهيليوم إلى النيتروجين؟</>,
+        "question": <>كمية من غاز النيتروجين (<InlineMath math="N_2" />) حجمها <InlineMath math="10\text{L}" />. كمية أخرى من غاز الهيليوم (<InlineMath math="He" />) تشغل حجم <InlineMath math="20\text{L}" /> عند نفس الظروف. ما هي نسبة عدد مولات الهيليوم إلى النيتروجين؟</>,
         "options": [
             "1:2",
             "2:1",
@@ -114,7 +114,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "بما أن V ∝ n، فإن نسبة الأحجام تساوي نسبة عدد المولات. V(He)/V(N₂) = n(He)/n(N₂). إذن، 20/10 = 2/1. نسبة الهيليوم إلى النيتروجين هي 2:1."
     },
     {
-        question: <>عينة من غاز كتلة <InlineMath math="44.8\text{L}" /> منها في الظروف المعيارية يساوي <InlineMath math="4\text{g}" /> فإن الكتلة المولية للغاز بوحدة <InlineMath math="\text{g/mol}" /> تساوي:</>,
+        "question": <>عينة من غاز كتلة <InlineMath math="44.8\text{L}" /> منها في الظروف المعيارية يساوي <InlineMath math="4\text{g}" /> فإن الكتلة المولية للغاز بوحدة <InlineMath math="\text{g/mol}" /> تساوي:</>,
         "options": [
             "2",
             "0.5",
@@ -129,7 +129,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <>إذا علمت أن الكتلة المولية الذرية للأكسجين تساوي <InlineMath math="16\text{g/mol}" /> فإن حجم الأكسجين الذي تشغله <InlineMath math="50\text{g}" /> من غاز الأكسجين (<InlineMath math="O_2" />) يساوي:</>,
+        "question": <>إذا علمت أن الكتلة المولية الذرية للأكسجين تساوي <InlineMath math="16\text{g/mol}" /> فإن حجم الأكسجين الذي تشغله <InlineMath math="50\text{g}" /> من غاز الأكسجين (<InlineMath math="O_2" />) يساوي:</>,
         "options": [
             "70L",
             "14mL",
@@ -140,7 +140,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الكتلة المولية لغاز الأكسجين O₂ هي 2 * 16 = 32g/mol. عدد المولات n = 50g / 32g/mol ≈ 1.56mol. الحجم = 1.56mol * 22.4L/mol ≈ 35L."
     },
     {
-        question: <>حجم الغاز الذي يشغله <InlineMath math="6.02 \times 10^{23}" /> ذرة من الهيليوم (<InlineMath math="He" />) في الظروف المعيارية يساوي:</>,
+        "question": <>حجم الغاز الذي يشغله <InlineMath math="6.02 \times 10^{23}" /> ذرة من الهيليوم (<InlineMath math="He" />) في الظروف المعيارية يساوي:</>,
         "options": [
             "2.2L",
             "22400mL",
@@ -151,7 +151,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "عدد أفوجادرو (6.02x10²³) من الذرات يساوي 1mol. حجم 1mol في الظروف المعيارية هو 22.4 لتر. بالمليلتر: 22.4L * 1000mL/L = 22400mL."
     },
     {
-        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد جزيئات الميثان يساوي:</>,
+        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد جزيئات الميثان يساوي:</>,
         "options": [
             "8.06x10²²",
             "6.02x10²³",
@@ -162,7 +162,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً نجد عدد المولات: n = 3L / 22.4L/mol ≈ 0.134mol. عدد الجزيئات = n × عدد أفوجادرو = 0.134 × (6.022 × 10²³) ≈ 8.06 × 10²² جزيء."
     },
     {
-        question: <>عينة من غاز ثنائي الذرة كتلته المولية <InlineMath math="4\text{g/mol}" />. ما هي الكتلة المولية للذرة الواحدة من هذا العنصر؟</>,
+        "question": <>عينة من غاز ثنائي الذرة كتلته المولية <InlineMath math="4\text{g/mol}" />. ما هي الكتلة المولية للذرة الواحدة من هذا العنصر؟</>,
         "options": [
             "2g/mol",
             "0.5g/mol",
