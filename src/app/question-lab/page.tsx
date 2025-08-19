@@ -34,7 +34,7 @@ const sampleQuestion = {
     "question": "أي رسم بياني يمثل العلاقة بين حجم الغاز (V) ومقلوب الضغط (1/P) عند درجة حرارة ثابتة؟",
     "options": [
         <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />,
-        <GraphVisual path="M 30 70 L 80 20" />,
+        <GraphVisual path="M 30 20 L 80 70" />,
         <GraphVisual path="M 20 80 L 85 15" />,
         <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />
     ],
@@ -102,3 +102,5 @@ export default function QuestionLabPage() {
         </div>
     );
 }
+
+    
