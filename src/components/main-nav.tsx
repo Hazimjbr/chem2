@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Beaker, ChevronDown } from 'lucide-react';
+import { Beaker, ChevronDown, FlaskConical } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -55,6 +55,14 @@ export default function MainNav() {
           className="font-medium text-muted-foreground transition-colors hover:text-primary"
         >
           تحليل الأداء
+        </Link>
+         {/* Temporary link for development */}
+        <Link
+          href="/question-lab"
+          className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
+        >
+          <FlaskConical className="h-4 w-4" />
+          مختبر الأسئلة
         </Link>
       </nav>
     </div>
