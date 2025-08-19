@@ -83,6 +83,10 @@ export default function LessonPartPage() {
                 <h4 className="font-bold text-accent">الحركة البراونية</h4>
                 <p className="text-muted-foreground">الحركة العشوائية للجسيمات المعلقة في مائع (سائل أو غاز) نتيجة اصطدامها بجزيئات ذلك المائع.</p>
             </div>
+            <div>
+                <h4 className="font-bold text-accent">ضغط الغاز</h4>
+                <p className="text-muted-foreground">القوة المؤثرة على وحدة المساحة والناتجة من تصادم جسيمات الغاز مع جدار الوعاء باستمرار.</p>
+            </div>
           </CardContent>
         </Card>
       
