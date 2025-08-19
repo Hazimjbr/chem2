@@ -1,16 +1,6 @@
 
 import React from 'react';
-
-// This is a placeholder for a component that will render a graph.
-// We'll define it properly inside the question lab for visualization.
-const GraphVisual = ({ path, className }: { path: string, className?: string }) => (
-    <svg viewBox="0 0 100 100" className={`w-28 h-28 inline-block mx-auto ${className}`}>
-        <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
-        <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
-        <path d={path} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
-    </svg>
-);
-
+import { GraphCurveDown, GraphLineDown, GraphLineUp, GraphCurveUp } from '@/components/illustrations/graphs';
 
 export interface QuizQuestion {
     question: React.ReactNode;
@@ -103,12 +93,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": "أي من الرسوم البيانية التالية يمثل العلاقة بين الحجم (V) والضغط (P) لغاز مثالي عند درجة حرارة ثابتة؟",
         "options": [
-            "خط مستقيم يتزايد يمر بنقطة الأصل",
-            "خط مستقيم ذو ميل موجب",
-            "منحنى يتناقص بشكل غير خطي",
-            "خط أفقي ثابت"
+            <GraphLineUp />,
+            <GraphCurveDown />,
+            <GraphCurveUp />,
+            <GraphLineDown />
         ],
-        "correctAnswerIndex": 2,
+        "correctAnswerIndex": 1,
         "explanation": "العلاقة بين الضغط والحجم هي علاقة عكسية غير خطية (V ∝ 1/P)، والتي تُمثل بيانيًا على شكل منحنى يتناقص كلما زاد الضغط."
     },
     {
@@ -132,17 +122,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 0,
         "explanation": "باستخدام قانون بويل P₁V₁ = P₂V₂، فإن V₂ = (P₁V₁) / P₂ = (3 * 2) / 1 = 6cm³."
-    },
-    {
-        question: "الرسم الصحيح الذي يمثل العلاقة بين حجم الغاز (V) والضغط (P) عند ثبات الحرارة هو:",
-        options: [
-            <GraphVisual path="M 30 20 L 80 70" />,
-            <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />,
-            <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />,
-            <GraphVisual path="M 30 70 L 80 20" />
-        ],
-        correctAnswerIndex: 1,
-        explanation: "العلاقة بين حجم الغاز وضغطه عند ثبات الحرارة هي علاقة عكسية غير خطية، ويمثلها المنحنى المتناقص."
     }
 ];
 
@@ -150,13 +129,13 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         "question": "أي رسم بياني يمثل العلاقة بين حجم الغاز (V) ومقلوب الضغط (1/P) عند درجة حرارة ثابتة؟",
         "options": [
-            "منحنى يتناقص",
-            "خط مستقيم يمر بنقطة الأصل",
-            "منحنى يتزايد",
-            "خط أفقي"
+            <GraphCurveUp />,
+            <GraphLineDown />,
+            <GraphLineUp />,
+            <GraphCurveDown />
         ],
-        "correctAnswerIndex": 1,
-        "explanation": "قانون بويل هو P·V=k. يمكن إعادة ترتيبه إلى V = k * (1/P). هذه هي معادلة خط مستقيم (y = mx + c حيث c=0) بين V (المحور y) و 1/P (المحور x)، وميله هو الثابت k. لذلك، الرسم البياني هو خط مستقيم يمر بنقطة الأصل."
+        "correctAnswerIndex": 2,
+        "explanation": "قانون بويل هو P·V=k. يمكن إعادة ترتيبه إلى V = k * (1/P). هذه هي معادلة خط مستقيم (y = mx) بين V (المحور الصادي) و 1/P (المحور السيني). بما أن الميل (k) موجب، فإن العلاقة طردية خطية تمر بنقطة الأصل."
     },
     {
         "question": "وعاءان متصلان بصمام. الوعاء الأول حجمه 2 لتر ويحتوي على غاز عند ضغط 3atm. الوعاء الثاني حجمه 3 لترات وهو مفرغ. إذا تم فتح الصمام، فما هو الضغط النهائي في الوعاءين (بافتراض ثبات الحرارة)؟",
@@ -201,18 +180,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 3,
         "explanation": "عندما تضاعف الضغط، قل الحجم إلى النصف. هذا يوضح علاقة عكسية بسيطة (غير خطية)، حيث إذا زاد أحد المتغيرات بمعامل معين، يقل الآخر بنفس المعامل، وهذا هو جوهر قانون بويل."
-    },
-    {
-        question: "أي رسم بياني يمثل العلاقة بين حجم الغاز (V) ومقلوب الضغط (1/P) عند درجة حرارة ثابتة؟",
-        options: [
-            <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />,
-            <GraphVisual path="M 30 70 L 80 20" />,
-            <GraphVisual path="M 20 80 L 85 15" />,
-            <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />
-        ],
-        correctAnswerIndex: 2,
-        explanation: "قانون بويل هو P·V=k. يمكن إعادة ترتيبه إلى V = k * (1/P). هذه هي معادلة خط مستقيم (y = mx) بين V (المحور الصادي) و 1/P (المحور السيني). بما أن الميل (k) موجب، فإن العلاقة طردية خطية تمر بنقطة الأصل."
     }
 ];
-
-    
