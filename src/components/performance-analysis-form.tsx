@@ -27,14 +27,14 @@ export default function PerformanceAnalysisForm() {
             description: 'يجب عليك إكمال بعض الاختبارات أولاً قبل أن نتمكن من تحليل أدائك.',
             variant: 'default',
         });
+        // Generate analysis with mock data if no real data is available
+        const result = await analyzeStudentPerformance([]);
+        setAnalysis(result);
         setIsLoading(false);
         return;
       }
 
-      const studentData = {
-        studentName: 'أحمد', // Example name
-        quizResults: quizResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty })),
-      };
+      const studentData = quizResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty }));
 
       const result = await analyzeStudentPerformance(studentData);
       setAnalysis(result);
@@ -81,5 +81,3 @@ export default function PerformanceAnalysisForm() {
     </div>
   );
 }
-
-    

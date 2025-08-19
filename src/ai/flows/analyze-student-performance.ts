@@ -30,8 +30,15 @@ const QuizResultSchema = z.object({
 
 const StudentPerformanceInputSchema = z.object({
   studentName: z.string().describe("The name of the student."),
-  quizResults: z.array(QuizResultSchema).describe("An array of the student's quiz results."),
+  quizResults: z.array(z.object({
+    lessonId: z.string(),
+    score: z.number(),
+    difficulty: z.number(),
+    lessonTitle: z.string(),
+    scorePercentage: z.string(),
+  })).describe("An array of the student's processed quiz results."),
 });
+
 
 const analysisPrompt = ai.definePrompt({
     name: 'studentPerformanceAnalysisPrompt',
@@ -47,7 +54,7 @@ const analysisPrompt = ai.definePrompt({
 {{#if quizResults.length}}
     {{#each quizResults}}
 *   **الدرس:** {{this.lessonTitle}}
-    *   النتيجة: {{multiply this.score 100}}%
+    *   النتيجة: {{this.scorePercentage}}%
     *   مستوى الصعوبة: {{this.difficulty}}
     {{/each}}
 {{else}}
@@ -69,31 +76,28 @@ const analysisPrompt = ai.definePrompt({
 *   اجعل التقرير منظمًا وسهل القراءة باستخدام العناوين والنقاط.`,
 });
 
-export async function analyzeStudentPerformance(input: z.infer<typeof StudentPerformanceInputSchema>): Promise<string> {
-  // Add human-readable titles to the quiz results
-  const processedInput = {
-    ...input,
-    quizResults: input.quizResults.map(r => ({
-      ...r,
-      lessonTitle: getLessonTitle(r.lessonId),
-    })),
-    // For demonstration, if no real data is passed, use mock data.
-    // In a real application, you would remove this mock data logic.
-    ...(input.quizResults.length === 0 && {
-        quizResults: [
-            { lessonId: 'unit-1-lesson-1-part-1', score: 0.95, difficulty: 1, lessonTitle: getLessonTitle('unit-1-lesson-1-part-1') },
-            { lessonId: 'unit-1-lesson-1-part-3', score: 0.55, difficulty: 2, lessonTitle: getLessonTitle('unit-1-lesson-1-part-3')},
-            { lessonId: 'unit-1-lesson-1-part-4', score: 0.88, difficulty: 2, lessonTitle: getLessonTitle('unit-1-lesson-1-part-4')},
-            { lessonId: 'unit-2-lesson-1-part-2', score: 0.65, difficulty: 1, lessonTitle: getLessonTitle('unit-2-lesson-1-part-2')},
-        ]
-    })
-  };
+export async function analyzeStudentPerformance(input: z.infer<typeof QuizResultSchema>[]): Promise<string> {
+  const processedResults = input.map(r => ({
+    ...r,
+    lessonTitle: getLessonTitle(r.lessonId),
+    scorePercentage: (r.score * 100).toFixed(0),
+  }));
 
-  const { output } = await analysisPrompt(processedInput, {
-    helpers: {
-      multiply: (a: number, b: number) => (a * b).toFixed(0),
-    }
-  });
+  // For demonstration, if no real data is passed, use mock data.
+  // In a real application, you would remove this mock data logic.
+  const finalResults = processedResults.length > 0 ? processedResults : [
+      { lessonId: 'unit-1-lesson-1-part-1', score: 0.95, difficulty: 1, lessonTitle: getLessonTitle('unit-1-lesson-1-part-1'), scorePercentage: '95' },
+      { lessonId: 'unit-1-lesson-1-part-3', score: 0.55, difficulty: 2, lessonTitle: getLessonTitle('unit-1-lesson-1-part-3'), scorePercentage: '55' },
+      { lessonId: 'unit-1-lesson-1-part-4', score: 0.88, difficulty: 2, lessonTitle: getLessonTitle('unit-1-lesson-1-part-4'), scorePercentage: '88' },
+      { lessonId: 'unit-2-lesson-1-part-2', score: 0.65, difficulty: 1, lessonTitle: getLessonTitle('unit-2-lesson-1-part-2'), scorePercentage: '65' },
+  ];
+  
+  const studentData = {
+    studentName: 'أحمد', // Example name
+    quizResults: finalResults,
+  }
+
+  const { output } = await analysisPrompt(studentData);
 
   return output || 'عذرًا، لم أتمكن من إنشاء التحليل. يرجى المحاولة مرة أخرى.';
 }
