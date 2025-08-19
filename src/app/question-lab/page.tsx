@@ -20,19 +20,26 @@ import { InlineMath } from 'react-katex';
  * 4.  عندما توافق على السؤال، سأقوم بنقله من هنا إلى ملف `exam.tsx` النهائي الخاص بالدرس.
  */
 
+const GraphVisual = ({ path, className }: { path: string, className?: string }) => (
+    <svg viewBox="0 0 100 100" className={cn("w-28 h-28 inline-block mx-auto", className)}>
+        <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
+        <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
+        <path d={path} stroke="black" strokeWidth="2.5" fill="none" />
+    </svg>
+);
 // ====================================================================================
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: "العبارة الصحيحة فيما يلي:",
+    question: "الرسم الصحيح الذي يمثل العلاقة بين حجم الغاز (V) والضغط (P) عند ثبات الحرارة هو:",
     options: [
-        "طاقة حركة جسيمات الغاز ثابتة",
-        "يزداد حجم الغاز بزيادة الضغط",
-        "يتناسب ضغط الغاز تناسبًا طرديًا مع درجة الحرارة المطلقة عند ثبات الحجم",
-        "تزداد قوى التجاذب بين جزيئات الغاز بزيادة درجة الحرارة"
+        <GraphVisual path="M 30 70 L 80 20" />, // a
+        <GraphVisual path="M 30 20 C 60 70, 70 75, 80 75" />, // b (inverted, incorrect curve)
+        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />, // c (correct curve)
+        <GraphVisual path="M 30 20 L 80 70" />  // d (straight increasing line)
     ],
     correctAnswerIndex: 2,
-    explanation: "العبارة (ج) تمثل قانون جاي-لوساك وهي صحيحة. العبارات الأخرى خاطئة: (أ) متوسط الطاقة الحركية هو الذي يثبت عند ثبات الحرارة، وليس طاقة كل جسيم. (ب) حجم الغاز يقل بزيادة الضغط (قانون بويل). (د) قوى التجاذب يقل تأثيرها بزيادة درجة الحرارة."
+    explanation: "قانون بويل يصف علاقة عكسية غير خطية بين الحجم والضغط (V ∝ 1/P). هذا يعني أنه كلما زاد الضغط، قل الحجم، ويمثل ذلك بمنحنى يتناقص بشكل غير خطي كما في الخيار (ج)."
 };
 // ====================================================================================
 // ====================================================================================
@@ -58,7 +65,7 @@ export default function QuestionLabPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                        <div className="text-lg font-semibold pt-2">{sampleQuestion.question}</div>
+                        <div className="text-lg font-semibold pt-2">{typeof sampleQuestion.question === 'string' ? sampleQuestion.question : <>{sampleQuestion.question}</>}</div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                             {sampleQuestion.options.map((option, index) => {
@@ -68,12 +75,12 @@ export default function QuestionLabPage() {
                                         key={index}
                                         variant="outline"
                                         className={cn(
-                                            "w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start",
+                                            "w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-center",
                                             isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
                                         )}
                                     >
                                         <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                                        <span className="flex-1 whitespace-normal">{option}</span>
+                                        <div className="flex-1 whitespace-normal">{option}</div>
                                     </Button>
                                 );
                             })}
