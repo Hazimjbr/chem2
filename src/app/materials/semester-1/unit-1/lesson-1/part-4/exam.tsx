@@ -1,9 +1,11 @@
 
 import { InlineMath } from 'react-katex';
+import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp } from '@/components/illustrations/graphs';
+import React from 'react';
 
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: React.ReactNode[] | string[];
     correctAnswerIndex: number;
     explanation: string;
 }
@@ -121,6 +123,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 0,
         "explanation": "العلاقة طردية. إذا انخفضت درجة الحرارة المطلقة إلى النصف، فإن الحجم يجب أن ينخفض أيضًا إلى النصف للحفاظ على النسبة V/T ثابتة. الحجم الجديد هو 5.0 / 2 = 2.5 لتر."
+    },
+    {
+        "question": "الرسم الصحيح للعلاقة بين حجم الغاز ودرجة حرارته عند ثبات الضغط لنفس العينة هو:",
+        "options": [
+            <GraphCurveDown />,
+            <GraphLineUp />,
+            <GraphLineDown />,
+            <GraphCurveUp />
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "وفقًا لقانون شارل، العلاقة بين حجم الغاز ودرجة حرارته المطلقة هي علاقة طردية خطية (V ∝ T)، والتي تُمثل بيانيًا على شكل خط مستقيم متزايد يمر بنقطة الأصل."
     }
 ];
 
@@ -181,3 +194,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "إذا تم رسم الحجم مقابل درجة الحرارة بالسيليزيوس، فإن امتداد الخط المستقيم سيصل إلى حجم صفر عند درجة حرارة -273.15 درجة مئوية، وهي قيمة الصفر المطلق على مقياس كلفن."
     }
 ];
+
+    
