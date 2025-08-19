@@ -24,15 +24,15 @@ import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp, GraphLineHori
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": "ما هو السؤال الذي تود العمل عليه الآن؟",
+    "question": "الرسم الصحيح للعلاقة بين حجم الغاز ودرجة حرارته عند ثبات الضغط لنفس العينة هو:",
     "options": [
-        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">أ</div>,
-        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">ب</div>,
-        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">ج</div>,
-        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">د</div>,
+        <GraphCurveDown />,
+        <GraphLineUp />,
+        <GraphLineDown />,
+        <GraphCurveUp />
     ],
-    "correctAnswerIndex": 0,
-    "explanation": "هذا هو شرح الإجابة الصحيحة. يمكننا تعديله حسب الحاجة."
+    "correctAnswerIndex": 1,
+    "explanation": "وفقًا لقانون شارل، العلاقة بين حجم الغاز ودرجة حرارته المطلقة هي علاقة طردية خطية (V ∝ T)، والتي تُمثل بيانيًا على شكل خط مستقيم متزايد يمر بنقطة الأصل."
 };
 // ====================================================================================
 // ====================================================================================
