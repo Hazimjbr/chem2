@@ -36,5 +36,9 @@ export const GraphCurveUp = (props: Partial<SVGProps<SVGSVGElement>>) => (
 );
 
 export const GraphCurveDown = (props: Partial<SVGProps<SVGSVGElement>>) => (
-  <SvgWrapper path="M 30 20 C 40 70, 70 70, 85 75" {...props} />
+  <SvgWrapper path="M 30 20 C 50 60, 65 70, 85 75" {...props} />
+);
+
+export const GraphLineHorizontal = (props: Partial<SVGProps<SVGSVGElement>>) => (
+  <SvgWrapper path="M 25 50 L 85 50" {...props} />
 );
