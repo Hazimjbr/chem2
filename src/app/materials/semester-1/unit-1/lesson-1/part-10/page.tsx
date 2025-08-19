@@ -114,6 +114,7 @@ export default function LessonPartPage() {
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
                   questionId="q1"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<><span>أي الغازين أسرع انتشارًا: الأمونيا (<span dir="ltr" className="inline-block"><InlineMath math="NH_3"/></span>) أم كلوريد الهيدروجين (<span dir="ltr" className="inline-block"><InlineMath math="HCl"/></span>)؟ (الكتل المولية: N=14, H=1, Cl=35.5)</span></>}
                   options={[
@@ -127,6 +128,7 @@ export default function LessonPartPage() {
               />
                <InteractiveQuestionCard 
                   questionId="q2"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
                   options={[

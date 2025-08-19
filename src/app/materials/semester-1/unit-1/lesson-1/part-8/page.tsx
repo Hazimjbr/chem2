@@ -108,6 +108,7 @@ export default function LessonPartPage() {
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
                   questionId="q1"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<><span>عينة من غاز تحتوي </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2\text{mol}"/></span><span> حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2000\text{ml}"/></span><span> حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20^\circ\text{C}"/></span><span> فإن ضغطها يساوي:</span></>}
                   options={[
@@ -121,6 +122,7 @@ export default function LessonPartPage() {
               />
                <InteractiveQuestionCard 
                   questionId="q2"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<><span>عينة من غاز الهيليوم كتلتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20\text{g}"/></span><span> حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="3\text{L}"/></span><span> حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ\text{C}"/></span><span> فإن ضغطها يساوي:</span></>}
                   options={[

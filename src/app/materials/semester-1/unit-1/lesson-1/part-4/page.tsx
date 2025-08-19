@@ -225,6 +225,7 @@ export default function LessonPartPage() {
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
                   questionId="q1"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span> فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي</>}
                   options={[
@@ -238,6 +239,7 @@ export default function LessonPartPage() {
               />
                <InteractiveQuestionCard 
                   questionId="q2"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span> عند مضاعفة حرارتها وثبات ضغطها فإن حجمها</>}
                   options={[

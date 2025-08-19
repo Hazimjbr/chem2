@@ -19,12 +19,15 @@ export default function PerformanceAnalysisForm() {
     setAnalysis('');
     try {
       const historyJSON = localStorage.getItem('quizHistory');
-      const quizResults: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
+      const allResults: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
+      
+      // Filter results: include all interactive questions (diff 0.5) and quizzes up to level 3
+      const relevantResults = allResults.filter(r => r.difficulty === 0.5 || r.difficulty <= 3);
 
-      if (quizResults.length === 0) {
+      if (relevantResults.length === 0) {
         toast({
             title: 'لا توجد بيانات كافية',
-            description: 'يجب عليك إكمال بعض الاختبارات أولاً قبل أن نتمكن من تحليل أدائك.',
+            description: 'يجب عليك إكمال بعض الاختبارات وأسئلة التحقق من الفهم أولاً.',
             variant: 'default',
         });
         // Generate analysis with mock data if no real data is available
@@ -34,7 +37,7 @@ export default function PerformanceAnalysisForm() {
         return;
       }
 
-      const studentData = quizResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty }));
+      const studentData = relevantResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty }));
 
       const result = await analyzeStudentPerformance(studentData);
       setAnalysis(result);
@@ -63,7 +66,7 @@ export default function PerformanceAnalysisForm() {
           {isLoading ? 'جاري التحليل...' : 'ابدأ تحليل أدائي'}
         </Button>
         <p className="text-xs text-muted-foreground">
-            سيقوم الذكاء الاصطناعي بتحليل جميع نتائج اختباراتك السابقة.
+            سيقوم الذكاء الاصطناعي بتحليل جميع نتائج اختباراتك وأسئلة التحقق من الفهم.
         </p>
       </div>
 

@@ -244,6 +244,7 @@ export default function LessonPartPage() {
               <div className="grid md:grid-cols-2 gap-6">
                   <InteractiveQuestionCard 
                       questionId="q1"
+                      lessonId={lessonInfo.lessonId}
                       onCorrect={handleCorrectAnswer}
                       question="أي من المتغيرات التالية يجب أن تبقى ثابتة عند تطبيق قانون بويل؟"
                       options={[
@@ -257,6 +258,7 @@ export default function LessonPartPage() {
                   />
                    <InteractiveQuestionCard 
                       questionId="q2"
+                      lessonId={lessonInfo.lessonId}
                       onCorrect={handleCorrectAnswer}
                       question="إذا ضغطنا مكبسًا يحتوي على غاز إلى نصف حجمه الأصلي (مع ثبات الحرارة)، ماذا يحدث للضغط؟"
                       options={[

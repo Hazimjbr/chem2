@@ -150,6 +150,7 @@ export default function LessonPartPage() {
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
                   questionId="q1"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question="عينة من غاز حجمها 5L وضغطها 1.8atm عند درجة حرارة 25°C فإذا انخفضت درجة حرارتها بمقدار 10 درجات وأصبح ضغطها 0.8atm فإن حجمها بوحدة L يساوي"
                   options={[
@@ -163,6 +164,7 @@ export default function LessonPartPage() {
               />
                <InteractiveQuestionCard 
                   questionId="q2"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question="عينة من الهواء حجمها 4L وضغطها 202.6kPa عند درجة حرارة 20°C فإذا أصبحت حرارتها 278K وحجمها 2500ml فإن ضغطها بوحدة atm يساوي"
                   options={[

@@ -172,6 +172,7 @@ export default function LessonPartPage() {
             <div className="grid md:grid-cols-2 gap-6">
                 <InteractiveQuestionCard 
                     questionId="q1"
+                    lessonId={lessonInfo.lessonId}
                     onCorrect={handleCorrectAnswer}
                     question="بالون يحتوي على غاز الهيليوم ضغطه 900mmHg فإن قيمة ضغطه بوحدة atm تساوي"
                     options={[
@@ -185,6 +186,7 @@ export default function LessonPartPage() {
                 />
                  <InteractiveQuestionCard 
                     questionId="q2"
+                    lessonId={lessonInfo.lessonId}
                     onCorrect={handleCorrectAnswer}
                     question="بالون درجة حرارته 20°C فإن حرارته المطلقة تساوي"
                     options={[

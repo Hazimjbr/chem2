@@ -214,6 +214,7 @@ export default function LessonPartPage() {
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
                   questionId="q1"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={(
                     <>
@@ -231,6 +232,7 @@ export default function LessonPartPage() {
               />
                <InteractiveQuestionCard 
                   questionId="q2"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={(
                     <>

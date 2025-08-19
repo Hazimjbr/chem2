@@ -99,6 +99,7 @@ export default function LessonPartPage() {
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
                   questionId="q1"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2L"/></span><span> ثلاث غازات A, B, C عدد مولاتها على التوالي 2, 3, 1 mol عند حرارة </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ C"/></span><span> فإن قيمة الضغط في الوعاء تساوي:</span></>}
                   options={[
@@ -112,6 +113,7 @@ export default function LessonPartPage() {
               />
                <InteractiveQuestionCard 
                   questionId="q2"
+                  lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
                   question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="1L"/></span><span> غازين A, B في الظروف المعيارية حيث يشكل الغاز B 70% فإن قيمة ضغط الغاز A تساوي:</span></>}
                   options={[

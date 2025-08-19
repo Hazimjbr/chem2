@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { CheckCircle, HelpCircle, XCircle } from 'lucide-react';
 import { cn } from '@/lib/utils.tsx';
+import type { QuizResult } from '@/components/quiz';
 
 interface InteractiveQuestionCardProps {
   question: React.ReactNode; 
@@ -14,12 +15,37 @@ interface InteractiveQuestionCardProps {
   correctAnswerIndex: number;
   explanation: string;
   questionId: string;
+  lessonId: string;
   onCorrect: (questionId: string) => void;
 }
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
-export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation, questionId, onCorrect }: InteractiveQuestionCardProps) {
+const saveInteractiveResult = (lessonId: string) => {
+    const result: QuizResult = {
+        lessonId: lessonId,
+        score: 1, // Correct answer is always a full score
+        difficulty: 0.5, // Special difficulty to distinguish it
+        timestamp: Date.now(),
+    };
+    try {
+        const historyJSON = localStorage.getItem('quizHistory');
+        const history: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
+        // Optional: prevent duplicate entries for the same question in a session
+        const alreadyExists = history.some(r => r.lessonId === lessonId && r.difficulty === 0.5);
+        if (!alreadyExists) {
+            history.push(result);
+            if (history.length > 100) { // Limit total history size
+                history.shift();
+            }
+            localStorage.setItem('quizHistory', JSON.stringify(history));
+        }
+    } catch (error) {
+        console.error("Failed to save interactive question result:", error);
+    }
+};
+
+export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation, questionId, lessonId, onCorrect }: InteractiveQuestionCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -31,6 +57,7 @@ export default function InteractiveQuestionCard({ question, options, correctAnsw
     if (index === correctAnswerIndex) {
       setAnswerStatus('correct');
       onCorrect(questionId); // Notify parent component on correct answer
+      saveInteractiveResult(lessonId); // Save the result to localStorage
     } else {
       setAnswerStatus('incorrect');
     }
@@ -115,3 +142,4 @@ export default function InteractiveQuestionCard({ question, options, correctAnsw
     </div>
   );
 }
+
