@@ -1,6 +1,9 @@
 
+import { InlineMath } from 'react-katex';
+import React from 'react';
+
 export interface QuizQuestion {
-    question: string;
+    question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
     explanation: string;
@@ -130,6 +133,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 1,
         "explanation": "متوسط الطاقة الحركية لجسيمات الغاز يتناسب طرديًا مع درجة الحرارة المطلقة (بالكلفن). عندما تنخفض درجة الحرارة إلى النصف، فإن متوسط الطاقة الحركية يقل أيضًا إلى النصف."
+    },
+    {
+        question: <span>أسطوانة تحتوي على غاز الهيليوم ضغطه <span dir="ltr" className="inline-block"><InlineMath math="1.2 \times 10^5 \text{Pa}"/></span> فإن قيمة ضغطه بوحدة mmHg تساوي:</span>,
+        "options": [
+            "900",
+            "1.18",
+            "1660",
+            "0.84"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "للتحويل من باسكال (Pa) إلى mmHg، نحول أولاً إلى atm ثم إلى mmHg. العلاقة هي: 1 atm = 101325 Pa = 760 mmHg. إذن، الضغط بـ atm = (1.2 × 10⁵) / 101325 ≈ 1.184 atm. ثم الضغط بـ mmHg = 1.184 × 760 ≈ 900 mmHg."
     }
 ];
 
