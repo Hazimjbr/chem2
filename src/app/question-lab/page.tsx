@@ -25,6 +25,7 @@ const GraphVisual = ({ path, className }: { path: string, className?: string }) 
         <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
         <text x="10" y="15" fill="black" fontSize="12" fontWeight="bold">V</text>
         <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
+        <text x="90" y="95" fill="black" fontSize="12" fontWeight="bold">1/P</text>
         <path d={path} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
     </svg>
 );
