@@ -41,18 +41,25 @@ interface QuizProps {
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
+// Helper function to shuffle an array (Fisher-Yates shuffle)
+const shuffleArray = <T,>(array: T[]): T[] => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+};
+
+
 // Helper function to shuffle an array and return the new index of the correct answer
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    if (question.options.every(o => o.length === 1 || o.startsWith("أقرب") || o.startsWith("في منتصف"))) {
+    // Avoid shuffling for specific simple option types
+    if (question.options.every(o => typeof o === 'string' && (o.length === 1 || o.startsWith("أقرب") || o.startsWith("في منتصف")))) {
         return question;
     }
     const correctAnswerValue = question.options[question.correctAnswerIndex];
-    const indices = Array.from(Array(question.options.length).keys());
-    for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-    const shuffledOptions = indices.map(i => question.options[i]);
+    const shuffledOptions = shuffleArray(question.options);
     const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
     return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
 };
@@ -137,11 +144,18 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     try {
         let generatedQuestions: QuizQuestion[] = [];
         if (level <= 3 && staticQuizzes) {
-            let staticQuestionsForLevel: QuizQuestion[] = [];
-            if (level === 1) staticQuestionsForLevel = staticQuizzes.lvl1;
-            if (level === 2) staticQuestionsForLevel = staticQuizzes.lvl2;
-            if (level === 3) staticQuestionsForLevel = staticQuizzes.lvl3;
-            generatedQuestions = staticQuestionsForLevel.map(q => shuffleOptions(q));
+            let questionPool: QuizQuestion[] = [];
+            if (level === 1) questionPool = staticQuizzes.lvl1;
+            if (level === 2) questionPool = staticQuizzes.lvl2;
+            if (level === 3) questionPool = staticQuizzes.lvl3;
+            
+            // Shuffle the pool and take the first 5 questions
+            const shuffledPool = shuffleArray(questionPool);
+            const selectedQuestions = shuffledPool.slice(0, 5);
+
+            // Shuffle options for each selected question
+            generatedQuestions = selectedQuestions.map(q => shuffleOptions(q));
+
         } else {
             const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
             generatedQuestions = result.quiz.map(q => ({...q, question: q.question}));
@@ -364,3 +378,5 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
+
+    
