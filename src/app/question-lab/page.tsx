@@ -23,9 +23,7 @@ import { InlineMath } from 'react-katex';
 const GraphVisual = ({ path, className }: { path: string, className?: string }) => (
     <svg viewBox="0 0 100 100" className={cn("w-28 h-28 inline-block mx-auto", className)}>
         <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
-        <text x="10" y="15" fill="black">V</text>
         <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
-        <text x="90" y="95" fill="black">P</text>
         <path d={path} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
     </svg>
 );
@@ -33,15 +31,15 @@ const GraphVisual = ({ path, className }: { path: string, className?: string }) 
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": "سؤال جديد جاهز للمراجعة",
+    "question": "الرسم الصحيح للعلاقة بين حجم الغاز ومقلوب الضغط عند ثبات الحرارة لنفس العينة هو:",
     "options": [
-        "خيار أ",
-        "خيار ب",
-        "خيار ج",
-        "خيار د"
+        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />,
+        <GraphVisual path="M 25 20 L 85 75" />,
+        <GraphVisual path="M 25 75 L 85 20" />,
+        <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />
     ],
-    "correctAnswerIndex": 0,
-    "explanation": "هنا يتم وضع شرح مفصل للإجابة الصحيحة."
+    "correctAnswerIndex": 1,
+    "explanation": "قانون بويل هو P·V=k. يمكن إعادة ترتيبه إلى V = k * (1/P). هذه هي معادلة خط مستقيم (y = mx) بين الحجم (V) على المحور الصادي، ومقلوب الضغط (1/P) على المحور السيني. لذلك، الرسم البياني هو خط مستقيم يمر من نقطة الأصل."
 };
 // ====================================================================================
 // ====================================================================================
