@@ -23,8 +23,10 @@ import { InlineMath } from 'react-katex';
 const GraphVisual = ({ path, className }: { path: string, className?: string }) => (
     <svg viewBox="0 0 100 100" className={cn("w-28 h-28 inline-block mx-auto", className)}>
         <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
+        <text x="5" y="15">V</text>
         <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
-        <path d={path} stroke="black" strokeWidth="2.5" fill="none" />
+        <text x="90" y="95">P</text>
+        <path d={path} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
     </svg>
 );
 // ====================================================================================
@@ -33,13 +35,13 @@ const GraphVisual = ({ path, className }: { path: string, className?: string }) 
 const sampleQuestion = {
     question: "الرسم الصحيح الذي يمثل العلاقة بين حجم الغاز (V) والضغط (P) عند ثبات الحرارة هو:",
     options: [
-        <GraphVisual path="M 30 70 L 80 20" />, // a
-        <GraphVisual path="M 30 20 C 60 70, 70 75, 80 75" />, // b (inverted, incorrect curve)
-        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />, // c (correct curve)
-        <GraphVisual path="M 30 20 L 80 70" />  // d (straight increasing line)
+        <GraphVisual path="M 30 70 L 80 20" />,
+        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />,
+        <GraphVisual path="M 30 20 C 60 70, 70 75, 80 75" />,
+        <GraphVisual path="M 30 20 L 80 70" />
     ],
-    correctAnswerIndex: 2,
-    explanation: "قانون بويل يصف علاقة عكسية غير خطية بين الحجم والضغط (V ∝ 1/P). هذا يعني أنه كلما زاد الضغط، قل الحجم، ويمثل ذلك بمنحنى يتناقص بشكل غير خطي كما في الخيار (ج)."
+    correctAnswerIndex: 1,
+    explanation: "قانون بويل يصف علاقة عكسية غير خطية بين الحجم والضغط (V ∝ 1/P). هذا يعني أنه كلما زاد الضغط، قل الحجم، ويمثل ذلك بمنحنى يتناقص بشكل غير خطي كما في الخيار (ب)."
 };
 // ====================================================================================
 // ====================================================================================
