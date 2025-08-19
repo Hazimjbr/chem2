@@ -1,75 +1,54 @@
 
 'use client';
 
-import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, X, BookCopy, Cpu, Lightbulb, ArrowRight, Wind, Waves } from 'lucide-react';
-import Quiz from '@/components/quiz';
+import { BookCopy, Cpu, Lightbulb, Wind, Waves } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import LessonLayout from '@/components/lesson-layout';
 
-const lessonContent = `<p>آخر قانون في رحلتنا مع الغازات هو قانون جراهام، الذي يصف ظاهرة مهمة جدًا وهي سرعة حركة الغازات. هل تساءلت يومًا لماذا نشم رائحة عطر في أحد أركان الغرفة بعد فترة قصيرة من رشه في الركن الآخر؟ قانون جراهام يجيب على هذا السؤال.</p>`;
-const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-10";
+const lessonInfo = {
+    lessonTitle: "الدرس الأول: الحالة الغازية",
+    lessonSubtitle: "قانون جراهام للانتشار والتدفق",
+    mainIdea: "عند نفس الظروف من الحرارة والضغط، يتناسب معدل سرعة انتشار أو تدفق الغاز تناسبًا عكسيًا مع الجذر التربيعي لكتلته المولية. ببساطة: الغازات الأخف هي الأسرع.",
+    learningOutcomes: [
+        "أقارن بين معدل سرعة تدفق غازين مختلفين.",
+        "أحل مسائل حسابية على قانون جراهام."
+    ],
+    lessonContent: `<p>آخر قانون في رحلتنا مع الغازات هو قانون جراهام، الذي يصف ظاهرة مهمة جدًا وهي سرعة حركة الغازات. هل تساءلت يومًا لماذا نشم رائحة عطر في أحد أركان الغرفة بعد فترة قصيرة من رشه في الركن الآخر؟ قانون جراهام يجيب على هذا السؤال.</p>`,
+    lessonId: "/materials/semester-1/unit-1/lesson-1/part-10",
+    staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
+    previousLesson: "/materials/semester-1/unit-1/lesson-1/part-9",
+    nextLesson: "/materials/semester-1/unit-1/lesson-2/part-1",
+    previousLessonTitle: "الجزء السابق: قانون دالتون",
+    nextLessonTitle: "الدرس التالي: الحالة السائلة"
+};
 
 export default function LessonPartPage() {
-  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    localStorage.setItem('lastVisitedLesson', lessonPath);
-  }, []);
+    useEffect(() => {
+        try {
+            const savedProgress = localStorage.getItem('completedLessons') || '[]';
+            const completedLessons = new Set(JSON.parse(savedProgress));
+            if (completedInteractive.size >= 2) {
+                completedLessons.add(lessonInfo.lessonId);
+                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
+            }
+        } catch (error) {
+            console.error("Failed to save lesson progress:", error);
+        }
+    }, [completedInteractive]);
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev.add(questionId)));
+    };
 
   return (
-    <div className="container mx-auto p-8 relative">
-       <Link href="/materials/semester-1" passHref>
-          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-            <X className="h-6 w-6" />
-            <span className="sr-only">إغلاق</span>
-          </Button>
-        </Link>
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
-        <p className="text-lg text-muted-foreground">قانون جراهام للانتشار والتدفق</p>
-      </header>
-
-      <main className="space-y-8">
-        <Card>
-            <CardHeader>
-                <CardTitle>الفكرة الرئيسة</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <p className="text-lg">
-                عند نفس الظروف من الحرارة والضغط، يتناسب معدل سرعة انتشار أو تدفق الغاز تناسبًا عكسيًا مع الجذر التربيعي لكتلته المولية. ببساطة: الغازات الأخف هي الأسرع.
-                </p>
-            </CardContent>
-        </Card>
-
-        <Card>
-            <CardHeader>
-                <CardTitle>نتاجات التعلم</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <ul className="space-y-3">
-                    <li className="flex items-start">
-                        <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                        <span>أقارن بين معدل سرعة تدفق غازين مختلفين.</span>
-                    </li>
-                     <li className="flex items-start">
-                        <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                        <span>أحل مسائل حسابية على قانون جراهام.</span>
-                    </li>
-                </ul>
-            </CardContent>
-        </Card>
-
-        <article 
-          className="prose prose-lg max-w-none text-foreground"
-          dangerouslySetInnerHTML={{ __html: lessonContent }}
-        />
-
+    <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
             <Card>
                 <CardHeader>
@@ -134,6 +113,8 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
+                  questionId="q1"
+                  onCorrect={handleCorrectAnswer}
                   question={<><span>أي الغازين أسرع انتشارًا: الأمونيا (<span dir="ltr" className="inline-block"><InlineMath math="NH_3"/></span>) أم كلوريد الهيدروجين (<span dir="ltr" className="inline-block"><InlineMath math="HCl"/></span>)؟ (الكتل المولية: N=14, H=1, Cl=35.5)</span></>}
                   options={[
                       "الأمونيا أسرع",
@@ -145,6 +126,8 @@ export default function LessonPartPage() {
                   explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol، بينما لـ HCl ≈ 36.5g/mol. بما أن الأمونيا أخف (كتلتها المولية أقل)، فهي الأسرع انتشارًا وفقًا لقانون جراهام."
               />
                <InteractiveQuestionCard 
+                  questionId="q2"
+                  onCorrect={handleCorrectAnswer}
                   question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
                   options={[
                       "8g/mol",
@@ -157,37 +140,6 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
-
-
-        <Card>
-          <CardHeader>
-              <CardTitle>اختبر فهمك</CardTitle>
-              <CardDescription>
-                  بعد أن تعرفت على قانون جراهام، اختبر فهمك له من خلال هذا الاختبار القصير.
-              </CardDescription>
-          </CardHeader>
-          <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
-          </CardContent>
-        </Card>
-      </main>
-
-      <footer className="mt-12 border-t pt-6">
-        <div className="flex justify-between">
-            <Link href="/materials/semester-1/unit-1/lesson-1/part-9" passHref>
-                <Button size="lg" variant="outline">
-                <ArrowRight className="ml-2 h-5 w-5" />
-                الجزء السابق
-                </Button>
-            </Link>
-            <Link href="/materials/semester-1/unit-1/lesson-2/part-1" passHref>
-                <Button size="lg">
-                الدرس التالي: الحالة السائلة
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                </Button>
-            </Link>
-        </div>
-      </footer>
-    </div>
+    </LessonLayout>
   );
 }

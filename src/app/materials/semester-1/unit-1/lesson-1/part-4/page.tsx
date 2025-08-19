@@ -1,18 +1,16 @@
 
 'use client';
 
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, X, BookCopy, Thermometer, Box, Cpu, Lightbulb, LineChart, ArrowRight, GitCompare } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
-import Quiz from '@/components/quiz';
+import { BookCopy, Thermometer, Box, Cpu, Lightbulb, LineChart } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { useEffect } from 'react';
+import LessonLayout from '@/components/lesson-layout';
+import React, { useState, useEffect } from 'react';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -24,68 +22,45 @@ const Diagram = dynamic(() => import('./diagram'), {
   ),
 });
 
-const lessonContent = `<p>بعد أن درسنا العلاقة بين الضغط والحجم، ننتقل الآن إلى علاقة مهمة أخرى اكتشفها العالم الفرنسي جاك شارل، الذي كان مهتمًا بالمناطيد. درس شارل العلاقة بين حجم الغاز ودرجة حرارته.</p>`;
-const lessonPath = "/materials/semester-1/unit-1/lesson-1/part-4";
+const lessonInfo = {
+    lessonTitle: "الدرس الأول: الحالة الغازية",
+    lessonSubtitle: "قانون شارل",
+    mainIdea: "عند ثبات الضغط وكمية الغاز، يتناسب حجم الغاز تناسبًا طرديًا مع درجة حرارته المطلقة.",
+    learningOutcomes: [
+        "أصف العلاقة بين الحجم ودرجة الحرارة لغاز محصور عند ثبات ضغطه.",
+        "أحل مسائل حسابية على قانون شارل."
+    ],
+    lessonContent: `<p>بعد أن درسنا العلاقة بين الضغط والحجم، ننتقل الآن إلى علاقة مهمة أخرى اكتشفها العالم الفرنسي جاك شارل، الذي كان مهتمًا بالمناطيد. درس شارل العلاقة بين حجم الغاز ودرجة حرارته.</p>`,
+    lessonId: "/materials/semester-1/unit-1/lesson-1/part-4",
+    staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
+    previousLesson: "/materials/semester-1/unit-1/lesson-1/part-3",
+    nextLesson: "/materials/semester-1/unit-1/lesson-1/part-5",
+    previousLessonTitle: "الجزء السابق: قانون بويل",
+    nextLessonTitle: "الجزء التالي: قانون جاي لوساك"
+};
 
 export default function LessonPartPage() {
-  const staticQuizzes = { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 };
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    localStorage.setItem('lastVisitedLesson', lessonPath);
-  }, []);
+    useEffect(() => {
+        try {
+            const savedProgress = localStorage.getItem('completedLessons') || '[]';
+            const completedLessons = new Set(JSON.parse(savedProgress));
+            if (completedInteractive.size >= 2) {
+                completedLessons.add(lessonInfo.lessonId);
+                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
+            }
+        } catch (error) {
+            console.error("Failed to save lesson progress:", error);
+        }
+    }, [completedInteractive]);
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev.add(questionId)));
+    };
 
   return (
-    <div className="container mx-auto p-8 relative">
-       <Link href="/materials/semester-1" passHref>
-          <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-            <X className="h-6 w-6" />
-            <span className="sr-only">إغلاق</span>
-          </Button>
-        </Link>
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-primary mb-2">الدرس الأول: الحالة الغازية</h1>
-        <p className="text-lg text-muted-foreground">قانون شارل</p>
-      </header>
-
-      <main className="space-y-8">
-        <Card>
-            <CardHeader>
-                <CardTitle>الفكرة الرئيسة</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <p className="text-lg">
-                عند ثبات الضغط وكمية الغاز، يتناسب حجم الغاز تناسبًا طرديًا مع درجة حرارته المطلقة.
-                </p>
-            </CardContent>
-        </Card>
-
-        <Card>
-            <CardHeader>
-                <CardTitle>نتاجات التعلم</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <ul className="space-y-3">
-                <li className="flex items-start">
-                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                    <span>
-                    أصف العلاقة بين الحجم ودرجة الحرارة لغاز محصور عند ثبات ضغطه.
-                    </span>
-                </li>
-                <li className="flex items-start">
-                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                    <span>
-                    أحل مسائل حسابية على قانون شارل.
-                    </span>
-                </li>
-                </ul>
-            </CardContent>
-        </Card>
-
-        <article 
-          className="prose prose-lg max-w-none text-foreground"
-          dangerouslySetInnerHTML={{ __html: lessonContent }}
-        />
-
+    <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
             <div className="grid md:grid-cols-2 gap-8 items-start">
                 <div className="space-y-8">
@@ -249,6 +224,8 @@ export default function LessonPartPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
               <InteractiveQuestionCard 
+                  questionId="q1"
+                  onCorrect={handleCorrectAnswer}
                   question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span> فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي</>}
                   options={[
                       "5",
@@ -260,6 +237,8 @@ export default function LessonPartPage() {
                   explanation="أولاً، نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K. الضغط ثابت، لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L."
               />
                <InteractiveQuestionCard 
+                  questionId="q2"
+                  onCorrect={handleCorrectAnswer}
                   question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span> عند مضاعفة حرارتها وثبات ضغطها فإن حجمها</>}
                   options={[
                       "يصبح 5L",
@@ -272,37 +251,6 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
-
-
-        <Card>
-          <CardHeader>
-              <CardTitle>اختبر فهمك</CardTitle>
-              <CardDescription>
-                  بعد أن تعرفت على قانون شارل، اختبر فهمك له من خلال هذا الاختبار القصير.
-              </CardDescription>
-          </CardHeader>
-          <CardContent>
-              <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonPath} />
-          </CardContent>
-        </Card>
-      </main>
-
-      <footer className="mt-12 border-t pt-6">
-        <div className="flex justify-between">
-            <Link href="/materials/semester-1/unit-1/lesson-1/part-3" passHref>
-                <Button size="lg" variant="outline">
-                <ArrowRight className="ml-2 h-5 w-5" />
-                الجزء السابق
-                </Button>
-            </Link>
-            <Link href="/materials/semester-1/unit-1/lesson-1/part-5" passHref>
-                <Button size="lg">
-                الجزء التالي: قانون جاي لوساك
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                </Button>
-            </Link>
-        </div>
-      </footer>
-    </div>
+    </LessonLayout>
   );
 }

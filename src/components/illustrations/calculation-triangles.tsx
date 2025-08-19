@@ -2,6 +2,8 @@
 'use client';
 
 import { InlineMath } from 'react-katex';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import React from 'react';
 
 interface TriangleProps {
     top: string;
@@ -64,6 +66,3 @@ export function CalculationTriangles() {
         </Card>
     );
 }
-
-// Re-exporting Card components for use within this component without extra imports.
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";

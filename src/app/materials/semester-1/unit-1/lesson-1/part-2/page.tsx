@@ -2,13 +2,15 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Pipette, Scale, Triangle, GitCompare, Thermometer, Box, Lightbulb } from 'lucide-react';
+import { Pipette, Scale, GitCompare, Thermometer, Box, Lightbulb } from 'lucide-react';
 import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import { CalculationTriangles } from '@/components/illustrations/calculation-triangles';
 import LessonLayout from '@/components/lesson-layout';
+import React, { useState, useEffect } from 'react';
+
 
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
@@ -23,10 +25,29 @@ const lessonInfo = {
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-1",
     nextLesson: "/materials/semester-1/unit-1/lesson-1/part-3",
+    previousLessonTitle: "الجزء السابق: نظرية الحركة الجزيئية",
     nextLessonTitle: "الجزء التالي: قانون بويل"
 }
 
 export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    useEffect(() => {
+        try {
+            const savedProgress = localStorage.getItem('completedLessons') || '[]';
+            const completedLessons = new Set(JSON.parse(savedProgress));
+            if (completedInteractive.size >= 2) {
+                completedLessons.add(lessonInfo.lessonId);
+                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
+            }
+        } catch (error) {
+            console.error("Failed to save lesson progress:", error);
+        }
+    }, [completedInteractive]);
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev.add(questionId)));
+    };
   return (
     <LessonLayout {...lessonInfo}>
           <h3 className="text-2xl font-bold text-center">المتغيرات الأربعة لوصف الغاز المحصور</h3>
@@ -151,7 +172,7 @@ export default function LessonPartPage() {
             <div className="grid md:grid-cols-2 gap-6">
                 <InteractiveQuestionCard 
                     questionId="q1"
-                    onCorrect={() => {}}
+                    onCorrect={handleCorrectAnswer}
                     question="بالون يحتوي على غاز الهيليوم ضغطه 900mmHg فإن قيمة ضغطه بوحدة atm تساوي"
                     options={[
                         "1.18",
@@ -164,7 +185,7 @@ export default function LessonPartPage() {
                 />
                  <InteractiveQuestionCard 
                     questionId="q2"
-                    onCorrect={() => {}}
+                    onCorrect={handleCorrectAnswer}
                     question="بالون درجة حرارته 20°C فإن حرارته المطلقة تساوي"
                     options={[
                         "13.75",
