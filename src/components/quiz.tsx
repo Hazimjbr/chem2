@@ -177,7 +177,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     const isLastQuestion = currentQuestionIndex >= quiz!.length - 1;
 
     if (isLastQuestion) {
-        const finalScore = (score + (quiz![currentQuestionIndex].correctAnswerIndex === selectedAnswer ? 1 : 0)) / quiz!.length;
+        // Calculate the score at the very end
+        const finalScore = score / quiz!.length;
          // Save the final result
         saveQuizResult({
             lessonId: lessonId,
@@ -185,15 +186,6 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             difficulty: difficultyLevel,
             timestamp: Date.now(),
         });
-
-        if(finalScore >= 0.8 && difficultyLevel < 5) {
-            setDifficultyLevel(prev => prev + 1);
-             toast({
-                title: 'مستوى الصعوبة ارتفع!',
-                description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${difficultyLevel + 1}`,
-                className: 'bg-green-100 border-green-400 text-green-800'
-            });
-        }
        setIsFinished(true);
     } else {
        setAnswerStatus('unanswered');
@@ -205,8 +197,19 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   const handleRestartQuiz = () => {
     // Determine the level for the new quiz
     const finalScore = score / (quiz?.length || 1);
-    const nextLevel = finalScore >= 0.8 ? difficultyLevel + 1 : difficultyLevel;
-    handleGenerateQuiz(Math.min(nextLevel, 5)); // Cap difficulty at 5
+    const passed = finalScore >= 0.8;
+    
+    let nextLevel = difficultyLevel;
+    if (passed && difficultyLevel < 5) {
+      nextLevel = difficultyLevel + 1;
+      toast({
+          title: 'مستوى الصعوبة ارتفع!',
+          description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${nextLevel}`,
+          className: 'bg-green-100 border-green-400 text-green-800'
+      });
+    }
+
+    handleGenerateQuiz(nextLevel);
   }
   
   const handleStartOver = () => {
@@ -222,6 +225,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   }
 
   if (isFinished) {
+    const finalScoreRatio = score / (quiz?.length || 1);
+    const passed = finalScoreRatio >= 0.8;
     return (
       <Card className="text-center">
         <CardHeader>
@@ -232,14 +237,14 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                 نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
             </p>
             <div className="flex items-center justify-center gap-2">
-                <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
-                <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
+                <Progress value={finalScoreRatio * 100} className="w-1/2" />
+                <span>{Math.round(finalScoreRatio * 100)}%</span>
             </div>
         </CardContent>
         <CardFooter className="justify-center flex-wrap gap-2">
              <Button onClick={handleRestartQuiz}>
                  <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel + 1})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
+                {passed && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel + 1})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
             </Button>
             <Button onClick={handleStartOver} variant="outline">
                 البدء من جديد
@@ -316,6 +321,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             } else if (answerStatus === 'incorrect' && isSelected) {
               buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
             } else if (answerStatus !== 'unanswered' && isCorrect) {
+              // Highlight the correct answer if a wrong one was chosen
               buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
             }
 
