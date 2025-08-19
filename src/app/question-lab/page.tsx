@@ -23,7 +23,7 @@ import { InlineMath } from 'react-katex';
 const GraphVisual = ({ path, className }: { path: string, className?: string }) => (
     <svg viewBox="0 0 100 100" className={cn("w-28 h-28 inline-block mx-auto", className)}>
         <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
-        <text x="5" y="20" fill="black" fontSize="12" fontWeight="bold">V</text>
+        <text x="10" y="15" fill="black" fontSize="12" fontWeight="bold">V</text>
         <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
         <path d={path} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
     </svg>
@@ -32,15 +32,15 @@ const GraphVisual = ({ path, className }: { path: string, className?: string }) 
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": "الرسم الصحيح الذي يمثل العلاقة بين حجم الغاز (V) والضغط (P) عند ثبات الحرارة هو:",
+    "question": "أي رسم بياني يمثل العلاقة بين حجم الغاز (V) ومقلوب الضغط (1/P) عند درجة حرارة ثابتة؟",
     "options": [
-        <GraphVisual path="M 30 20 L 80 70" />,
-        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />,
         <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />,
-        <GraphVisual path="M 30 70 L 80 20" />
+        <GraphVisual path="M 30 70 L 80 20" />,
+        <GraphVisual path="M 20 80 L 85 15" />,
+        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />
     ],
-    "correctAnswerIndex": 1,
-    "explanation": "العلاقة بين حجم الغاز وضغطه عند ثبات الحرارة هي علاقة عكسية غير خطية، ويمثلها المنحنى المتناقص."
+    "correctAnswerIndex": 2,
+    "explanation": "قانون بويل هو P·V=k. يمكن إعادة ترتيبه إلى V = k * (1/P). هذه هي معادلة خط مستقيم (y = mx) بين V (المحور الصادي) و 1/P (المحور السيني). بما أن الميل (k) موجب، فإن العلاقة طردية خطية تمر بنقطة الأصل."
 };
 // ====================================================================================
 // ====================================================================================
