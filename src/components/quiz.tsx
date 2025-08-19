@@ -91,30 +91,38 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
-        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished } = JSON.parse(savedState);
+        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer } = JSON.parse(savedState);
         setQuiz(quiz);
         setCurrentQuestionIndex(currentQuestionIndex);
         setScore(score);
         setDifficultyLevel(difficultyLevel);
         setIsFinished(isFinished);
+        setAnswerStatus(answerStatus || 'unanswered');
+        setSelectedAnswer(selectedAnswer || null);
       }
     } catch (error) {
       console.error("Failed to load quiz state:", error);
+      // If loading fails, clear the broken state
+      localStorage.removeItem(storageKey);
     }
   }, [storageKey]);
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
     try {
-      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished };
+      // Don't save if there's no quiz active, to allow starting fresh.
+      if (!quiz || isLoading) return;
+      
+      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Failed to save quiz state:", error);
     }
-  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey]);
+  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey, answerStatus, selectedAnswer, isLoading]);
 
   const handleGenerateQuiz = async (level: number) => {
     setIsLoading(true);
+    // Clear all state before generating a new one
     setQuiz(null);
     setIsFinished(false);
     setCurrentQuestionIndex(0);
@@ -122,6 +130,9 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     setAnswerStatus('unanswered');
     setSelectedAnswer(null);
     setDifficultyLevel(level);
+
+    // Immediately clear localStorage for the new quiz
+    localStorage.removeItem(storageKey);
 
     try {
         let generatedQuestions: QuizQuestion[] = [];
@@ -145,7 +156,6 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
         });
         // Reset to initial state on failure
         setQuiz(null);
-        localStorage.removeItem(storageKey);
     } finally {
         setIsLoading(false);
     }
@@ -167,7 +177,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     const isLastQuestion = currentQuestionIndex >= quiz!.length - 1;
 
     if (isLastQuestion) {
-        const finalScore = score / quiz!.length;
+        const finalScore = (score + (quiz![currentQuestionIndex].correctAnswerIndex === selectedAnswer ? 1 : 0)) / quiz!.length;
          // Save the final result
         saveQuizResult({
             lessonId: lessonId,
@@ -193,7 +203,22 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   };
   
   const handleRestartQuiz = () => {
-    handleGenerateQuiz(difficultyLevel);
+    // Determine the level for the new quiz
+    const finalScore = score / (quiz?.length || 1);
+    const nextLevel = finalScore >= 0.8 ? difficultyLevel + 1 : difficultyLevel;
+    handleGenerateQuiz(Math.min(nextLevel, 5)); // Cap difficulty at 5
+  }
+  
+  const handleStartOver = () => {
+      // Completely reset state and clear storage
+      localStorage.removeItem(storageKey);
+      setQuiz(null);
+      setIsFinished(false);
+      setCurrentQuestionIndex(0);
+      setScore(0);
+      setAnswerStatus('unanswered');
+      setSelectedAnswer(null);
+      setDifficultyLevel(1);
   }
 
   if (isFinished) {
@@ -211,10 +236,13 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                 <span>{Math.round((score / (quiz?.length || 1)) * 100)}%</span>
             </div>
         </CardContent>
-        <CardFooter className="justify-center">
+        <CardFooter className="justify-center flex-wrap gap-2">
              <Button onClick={handleRestartQuiz}>
                  <RefreshCw className="ml-2 h-4 w-4" />
-                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
+                {score / (quiz?.length || 1) >= 0.8 && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel + 1})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
+            </Button>
+            <Button onClick={handleStartOver} variant="outline">
+                البدء من جديد
             </Button>
         </CardFooter>
       </Card>
@@ -330,5 +358,3 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
-
-    
