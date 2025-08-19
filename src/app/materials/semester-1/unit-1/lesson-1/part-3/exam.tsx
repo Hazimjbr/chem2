@@ -1,7 +1,22 @@
 
+import React from 'react';
+
+// This is a placeholder for a component that will render a graph.
+// We'll define it properly inside the question lab for visualization.
+const GraphVisual = ({ path, className }: { path: string, className?: string }) => (
+    <svg viewBox="0 0 100 100" className={`w-28 h-28 inline-block mx-auto ${className}`}>
+        <path d="M 20 80 L 20 10 L 15 15 M 20 10 L 25 15" stroke="black" strokeWidth="2" fill="none" />
+        <text x="5" y="20" fill="black" fontSize="12" fontWeight="bold">V</text>
+        <path d="M 20 80 L 90 80 L 85 75 M 90 80 L 85 85" stroke="black" strokeWidth="2" fill="none" />
+        <text x="90" y="95" fill="black" fontSize="12" fontWeight="bold">P</text>
+        <path d={path} stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
+    </svg>
+);
+
+
 export interface QuizQuestion {
-    question: string;
-    options: string[];
+    question: React.ReactNode;
+    options: React.ReactNode[];
     correctAnswerIndex: number;
     explanation: string;
 }
@@ -16,7 +31,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "P + V = k"
         ],
         "correctAnswerIndex": 2,
-        "explanation": "قانون بويل ينص على أن حاصل ضرب الضغط (P) في الحجم (V) لكمية ثابتة من الغاز عند درجة حرارة ثابتة يساوي قيمة ثابتة (k). لذلك، المعادلة الصحيحة هي P * V = k أو P₁V₁ = P₂V₂."
+        "explanation": "قانون بويل ينص على أن حاصل ضرب الضغط (P) في الحجم (V) لكمية ثابتة من الغاز عند درجة حرارة ثابتة يساوي قيمة ثابتة (k). لذلك، المعادلة الصحيحة هي P₁V₁ = P₂V₂."
     },
     {
         "question": "وفقًا لقانون بويل، إذا تضاعف الضغط على كمية معينة من الغاز عند درجة حرارة ثابتة، فماذا يحدث لحجمه؟",
@@ -119,6 +134,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 0,
         "explanation": "باستخدام قانون بويل P₁V₁ = P₂V₂، فإن V₂ = (P₁V₁) / P₂ = (3 * 2) / 1 = 6cm³."
+    },
+    {
+        question: "الرسم الصحيح الذي يمثل العلاقة بين حجم الغاز (V) والضغط (P) عند ثبات الحرارة هو:",
+        options: [
+            <GraphVisual path="M 30 70 L 80 20" />,
+            <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />,
+            <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />,
+            <GraphVisual path="M 30 20 L 80 70" />
+        ],
+        correctAnswerIndex: 2,
+        explanation: "العلاقة بين حجم الغاز وضغطه عند ثبات الحرارة هي علاقة عكسية غير خطية."
     }
 ];
 
