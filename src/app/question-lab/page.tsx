@@ -33,10 +33,10 @@ const GraphVisual = ({ path, className }: { path: string, className?: string }) 
 const sampleQuestion = {
     "question": "أي رسم بياني يمثل العلاقة بين حجم الغاز (V) ومقلوب الضغط (1/P) عند درجة حرارة ثابتة؟",
     "options": [
-        <GraphVisual path="M 20 80 C 40 70, 60 40, 85 15" />, //  منحنى متزايد
-        <GraphVisual path="M 20 15 L 85 80" />, //  خطي متناقص
-        <GraphVisual path="M 20 80 L 85 15" />, //  خطي متزايد (يمر بالأصل) - الإجابة الصحيحة
-        <GraphVisual path="M 20 15 C 40 30, 60 60, 85 75" />  // منحنى متناقص
+        <GraphVisual path="M 30 70 C 40 40, 60 25, 80 20" />, //  منحنى متزايد
+        <GraphVisual path="M 20 15 L 85 80" />,             //  خطي متناقص
+        <GraphVisual path="M 20 80 L 85 15" />,             //  خطي متزايد (يمر بالأصل) - الإجابة الصحيحة
+        <GraphVisual path="M 30 20 C 40 30, 50 50, 80 75" />  // منحنى متناقص
     ],
     "correctAnswerIndex": 2,
     "explanation": "قانون بويل هو P·V=k. يمكن إعادة ترتيبه إلى V = k * (1/P). هذه هي معادلة خط مستقيم (y = mx) بين V (المحور الصادي) و 1/P (المحور السيني). بما أن الميل (k) موجب، فإن العلاقة طردية خطية تمر بنقطة الأصل."
