@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
-import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp } from '@/components/illustrations/graphs';
+import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp, GraphLineHorizontal, GraphLineVertical } from '@/components/illustrations/graphs';
 
 /**
  * منطقة الاختبار المؤقتة - معمل الأسئلة
@@ -24,15 +24,15 @@ import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp } from '@/comp
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": "أي رسم بياني يمثل العلاقة بين حجم الغاز (V) والضغط (P) عند درجة حرارة ثابتة؟",
+    "question": "ما هو السؤال الذي تود العمل عليه الآن؟",
     "options": [
-        <GraphLineUp />,
-        <GraphCurveDown />,
-        <GraphCurveUp />,
-        <GraphLineDown />
+        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">أ</div>,
+        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">ب</div>,
+        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">ج</div>,
+        <div className="h-28 w-28 bg-muted rounded-lg flex items-center justify-center">د</div>,
     ],
-    "correctAnswerIndex": 1,
-    "explanation": "العلاقة بين الضغط والحجم هي علاقة عكسية غير خطية (V ∝ 1/P)، والتي تُمثل بيانيًا على شكل منحنى يتناقص كلما زاد الضغط."
+    "correctAnswerIndex": 0,
+    "explanation": "هذا هو شرح الإجابة الصحيحة. يمكننا تعديله حسب الحاجة."
 };
 // ====================================================================================
 // ====================================================================================

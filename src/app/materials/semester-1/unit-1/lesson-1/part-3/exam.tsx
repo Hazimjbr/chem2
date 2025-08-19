@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { GraphCurveDown, GraphLineDown, GraphLineUp, GraphCurveUp } from '@/components/illustrations/graphs';
+import { GraphCurveDown, GraphLineDown, GraphLineUp, GraphCurveUp, GraphLineHorizontal, GraphLineVertical } from '@/components/illustrations/graphs';
 
 export interface QuizQuestion {
     question: React.ReactNode;
@@ -69,6 +69,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
+        "question": "أي من الرسوم البيانية التالية يمثل العلاقة بين الحجم (V) والضغط (P) لغاز مثالي عند درجة حرارة ثابتة؟",
+        "options": [
+            <GraphLineUp />,
+            <GraphCurveDown />,
+            <GraphCurveUp />,
+            <GraphLineDown />
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "العلاقة بين الضغط والحجم هي علاقة عكسية غير خطية (V ∝ 1/P)، والتي تُمثل بيانيًا على شكل منحنى يتناقص كلما زاد الضغط."
+    },
+    {
         "question": "إذا كان حاصل ضرب الضغط في الحجم (P·V) لغاز يساوي 50atm·L، فما قيمة الحجم (V) عندما يكون الضغط (P) يساوي 2.5atm؟",
         "options": [
             "125L",
@@ -89,17 +100,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 2,
         "explanation": "باستخدام قانون بويل P₁V₁ = P₂V₂، فإن P₂ = (P₁V₁) / V₂ = (760 * 4.5) / 9 = 380mmHg. تضاعف الحجم، لذا قل الضغط إلى النصف."
-    },
-    {
-        "question": "أي من الرسوم البيانية التالية يمثل العلاقة بين الحجم (V) والضغط (P) لغاز مثالي عند درجة حرارة ثابتة؟",
-        "options": [
-            <GraphLineUp />,
-            <GraphCurveDown />,
-            <GraphCurveUp />,
-            <GraphLineDown />
-        ],
-        "correctAnswerIndex": 1,
-        "explanation": "العلاقة بين الضغط والحجم هي علاقة عكسية غير خطية (V ∝ 1/P)، والتي تُمثل بيانيًا على شكل منحنى يتناقص كلما زاد الضغط."
     },
     {
         "question": "إذا تم ضغط 10 لترات من غاز النيون من 1atm إلى 4atm، فإن نسبة الحجم النهائي إلى الحجم الابتدائي هي:",
