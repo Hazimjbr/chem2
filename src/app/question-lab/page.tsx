@@ -21,19 +21,71 @@ import { InlineMath } from 'react-katex';
  * 4.  عندما توافق على السؤال، سأقوم بنقله من هنا إلى ملف `exam.tsx` النهائي الخاص بالدرس.
  */
 
+const PistonDiagram = () => (
+    <div className="flex justify-center items-center gap-8 my-4">
+        {/* Container B */}
+        <div className="text-center">
+            <svg width="100" height="150" viewBox="0 0 100 150">
+                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
+                <rect x="5" y="80" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
+                <rect x="45" y="70" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
+                {/* Particles */}
+                <circle cx="30" cy="100" r="3" fill="hsl(var(--primary))" />
+                <circle cx="50" cy="120" r="3" fill="hsl(var(--primary))" />
+                <circle cx="70" cy="95" r="3" fill="hsl(var(--primary))" />
+                <circle cx="40" cy="130" r="3" fill="hsl(var(--primary))" />
+                <circle cx="60" cy="110" r="3" fill="hsl(var(--primary))" />
+                <circle cx="25" cy="115" r="3" fill="hsl(var(--primary))" />
+                <circle cx="75" cy="125" r="3" fill="hsl(var(--primary))" />
+                 <circle cx="45" cy="105" r="3" fill="hsl(var(--primary))" />
+                <circle cx="65" cy="135" r="3" fill="hsl(var(--primary))" />
+                <circle cx="35" cy="138" r="3" fill="hsl(var(--primary))" />
+            </svg>
+            <p className="font-bold">الحالة B</p>
+        </div>
+        {/* Arrow */}
+        <svg width="40" height="40" viewBox="0 0 40 40">
+            <line x1="5" y1="20" x2="35" y2="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+            </defs>
+        </svg>
+        {/* Container A */}
+        <div className="text-center">
+            <svg width="100" height="150" viewBox="0 0 100 150">
+                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
+                <rect x="5" y="40" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
+                <rect x="45" y="30" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
+                 {/* Particles */}
+                <circle cx="30" cy="60" r="3" fill="hsl(var(--primary))" />
+                <circle cx="50" cy="90" r="3" fill="hsl(var(--primary))" />
+                <circle cx="70" cy="75" r="3" fill="hsl(var(--primary))" />
+                <circle cx="40" cy="110" r="3" fill="hsl(var(--primary))" />
+                <circle cx="60" cy="130" r="3" fill="hsl(var(--primary))" />
+                <circle cx="25" cy="100" r="3" fill="hsl(var(--primary))" />
+                <circle cx="75" cy="120" r="3" fill="hsl(var(--primary))" />
+            </svg>
+             <p className="font-bold">الحالة A</p>
+        </div>
+    </div>
+);
+
+
 // ====================================================================================
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <span>عينة غاز نسبة ضغطها إلى درجة حرارتها المطلقة تساوي <span dir="ltr" className="inline-block">0.003atm/K</span>. ما هي درجة الحرارة بالسيليزيوس (°C) لهذه العينة عندما يكون ضغطها <span dir="ltr" className="inline-block">0.9atm</span>؟</span>,
+    question: <div><p>ادرس الشكل المجاور الذي يمثل تغيرات على غاز محصور، أي العبارات الآتية تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح؟</p><PistonDiagram /></div>,
     options: [
-        "300",
-        "27",
-        "-27",
-        "0.0027"
+        "يزداد الضغط ويقل الحجم",
+        "يقل عدد المولات ويزداد الحجم",
+        "يزداد عدد المولات ويزداد الحجم",
+        "يقل عدد المولات ويقل الحجم"
     ],
     correctAnswerIndex: 1,
-    explanation: "بما أن نسبة الضغط إلى الحرارة المطلقة (P/T) ثابتة، يمكن حساب الحرارة بالكلفن: T(K) = P / (P/T) = 0.9atm / 0.003atm/K = 300K. ثم نحول إلى سيليزيوس: T(°C) = 300 - 273 = 27°C."
+    explanation: "عند الانتقال من الحالة B إلى A، نلاحظ أن عدد الجسيمات (المولات) قد قل، وفي نفس الوقت ارتفع المكبس، مما يعني أن حجم الغاز قد ازداد."
 };
 // ====================================================================================
 // ====================================================================================
