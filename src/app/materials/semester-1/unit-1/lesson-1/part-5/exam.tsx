@@ -220,5 +220,16 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 1,
         "explanation": "زيادة درجة الحرارة المطلقة من 273K إلى 546K تعني مضاعفة درجة الحرارة. وفقًا للعلاقة الطردية في قانون جاي-لوساك (P∝T)، فإن الضغط يجب أن يتضاعف أيضًا."
+    },
+    {
+        "question": <span>عينة غاز نسبة ضغطها إلى درجة حرارتها المطلقة تساوي <span dir="ltr" className="inline-block">0.003atm/K</span>. ما هي درجة الحرارة بالسيليزيوس (°C) لهذه العينة عندما يكون ضغطها <span dir="ltr" className="inline-block">0.9atm</span>؟</span>,
+        "options": [
+            "300",
+            "27",
+            "-27",
+            "0.0027"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "بما أن نسبة الضغط إلى الحرارة المطلقة (P/T) ثابتة، يمكن حساب الحرارة بالكلفن: T(K) = P / (P/T) = 0.9atm / 0.003atm/K = 300K. ثم نحول إلى سيليزيوس: T(°C) = 300 - 273 = 27°C."
     }
 ];
