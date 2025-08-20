@@ -49,7 +49,7 @@ const PistonDiagram = () => (
                 </marker>
             </defs>
             {/* Arrow pointing right (B -> A) */}
-            <line x1="5" y1="20" x2="35" y2="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
+            <line x2="5" y2="20" x1="35" y1="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
         </svg>
         {/* Container A (End) */}
         <div className="text-center">
