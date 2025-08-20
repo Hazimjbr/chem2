@@ -23,6 +23,32 @@ import { InlineMath } from 'react-katex';
 
 const PistonDiagram = () => (
     <div className="flex justify-center items-center gap-8 my-4">
+        {/* Container A */}
+        <div className="text-center">
+            <svg width="100" height="150" viewBox="0 0 100 150">
+                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
+                <rect x="5" y="40" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
+                <rect x="45" y="30" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
+                 {/* Particles */}
+                <circle cx="30" cy="60" r="3" fill="hsl(var(--primary))" />
+                <circle cx="50" cy="90" r="3" fill="hsl(var(--primary))" />
+                <circle cx="70" cy="75" r="3" fill="hsl(var(--primary))" />
+                <circle cx="40" cy="110" r="3" fill="hsl(var(--primary))" />
+                <circle cx="60" cy="130" r="3" fill="hsl(var(--primary))" />
+                <circle cx="25" cy="100" r="3" fill="hsl(var(--primary))" />
+                <circle cx="75" cy="120" r="3" fill="hsl(var(--primary))" />
+            </svg>
+             <p className="font-bold">الحالة A</p>
+        </div>
+        {/* Arrow */}
+        <svg width="40" height="40" viewBox="0 0 40 40">
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+            </defs>
+            <line x1="5" y1="20" x2="35" y2="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
+        </svg>
         {/* Container B */}
         <div className="text-center">
             <svg width="100" height="150" viewBox="0 0 100 150">
@@ -43,32 +69,6 @@ const PistonDiagram = () => (
             </svg>
             <p className="font-bold">الحالة B</p>
         </div>
-        {/* Arrow */}
-        <svg width="40" height="40" viewBox="0 0 40 40">
-            <line x1="5" y1="20" x2="35" y2="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
-            <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" />
-                </marker>
-            </defs>
-        </svg>
-        {/* Container A */}
-        <div className="text-center">
-            <svg width="100" height="150" viewBox="0 0 100 150">
-                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
-                <rect x="5" y="40" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                <rect x="45" y="30" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                 {/* Particles */}
-                <circle cx="30" cy="60" r="3" fill="hsl(var(--primary))" />
-                <circle cx="50" cy="90" r="3" fill="hsl(var(--primary))" />
-                <circle cx="70" cy="75" r="3" fill="hsl(var(--primary))" />
-                <circle cx="40" cy="110" r="3" fill="hsl(var(--primary))" />
-                <circle cx="60" cy="130" r="3" fill="hsl(var(--primary))" />
-                <circle cx="25" cy="100" r="3" fill="hsl(var(--primary))" />
-                <circle cx="75" cy="120" r="3" fill="hsl(var(--primary))" />
-            </svg>
-             <p className="font-bold">الحالة A</p>
-        </div>
     </div>
 );
 
@@ -77,15 +77,15 @@ const PistonDiagram = () => (
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <div><p>ادرس الشكل المجاور الذي يمثل تغيرات على غاز محصور، أي العبارات الآتية تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح؟</p><PistonDiagram /></div>,
+    question: <div><p>ادرس الشكل المجاور الذي يمثل تغيرات على غاز محصور، أي العبارات الآتية تصف التغير الحاصل من الحالة A إلى الحالة B بشكل صحيح؟</p><PistonDiagram /></div>,
     options: [
         "يزداد الضغط ويقل الحجم",
         "يقل عدد المولات ويزداد الحجم",
         "يزداد عدد المولات ويزداد الحجم",
         "يقل عدد المولات ويقل الحجم"
     ],
-    correctAnswerIndex: 1,
-    explanation: "عند الانتقال من الحالة B إلى A، نلاحظ أن عدد الجسيمات (المولات) قد قل، وفي نفس الوقت ارتفع المكبس، مما يعني أن حجم الغاز قد ازداد."
+    correctAnswerIndex: 0,
+    explanation: "عند الانتقال من الحالة A إلى B، نلاحظ أن عدد الجسيمات (المولات) قد زاد، وفي نفس الوقت انخفض المكبس، مما يعني أن حجم الغاز قد قل. زيادة عدد الجسيمات في حجم أقل تؤدي إلى زيادة الضغط."
 };
 // ====================================================================================
 // ====================================================================================
