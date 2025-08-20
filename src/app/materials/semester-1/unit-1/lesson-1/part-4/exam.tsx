@@ -1,4 +1,3 @@
-
 import { InlineMath } from 'react-katex';
 import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp } from '@/components/illustrations/graphs';
 import React from 'react';
@@ -127,13 +126,13 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": "عينة من غاز محصور في وعاء حرارته 25°C وحجمه 1500ml، إذا تقلص حجم الوعاء إلى 1L فإن درجة حرارة الغاز بفرض ثبات الضغط تساوي:",
         "options": [
-            "16.6°C",
+            "-74°C",
             "0.2K",
             "198K",
-            "-74°C"
+            "16.6°C"
         ],
         "correctAnswerIndex": 2,
-        "explanation": "أولاً نوحد الوحدات ونحول الحرارة لكلفن: V₁=1.5L, T₁=25+273=298K, V₂=1L. نطبق قانون شارل: T₂ = (V₂ * T₁) / V₁ = (1L * 298K) / 1.5L ≈ 198.7K. أقرب إجابة هي 198K."
+        "explanation": "أولاً نوحد الوحدات ونحول الحرارة لكلفن: V₁=1.5L, T₁=25+273=298K, V₂=1L. نطبق قانون شارل: T₂ = (V₂ * T₁) / V₁ = (1L * 298K) / 1.5L ≈ 198.7K. وهو المطلوب"
     }
 ];
 
@@ -192,6 +191,17 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 2,
         "explanation": "إذا تم رسم الحجم مقابل درجة الحرارة بالسيليزيوس، فإن امتداد الخط المستقيم سيصل إلى حجم صفر عند درجة حرارة -273.15 درجة مئوية، وهي قيمة الصفر المطلق على مقياس كلفن."
+    },
+    {
+        "question": <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها <span dir="ltr" className="inline-block">5L</span> يساوي:</span>,
+        "options": [
+            "500",
+            "773",
+            "227",
+            "273"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل. T(K) = V / (V/T) = 5L / 0.01 = 500K. بالسيليزيوس: T(°C) = 500 - 273 = 227°C."
     }
 ];
 
