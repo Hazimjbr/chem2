@@ -8,6 +8,7 @@ import { CheckCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp, GraphLineHorizontal, GraphLineVertical } from '@/components/illustrations/graphs';
+import { InlineMath } from 'react-katex';
 
 /**
  * منطقة الاختبار المؤقتة - معمل الأسئلة
@@ -24,15 +25,15 @@ import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp, GraphLineHori
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": "سؤال افتراضي للمعاينة. اطلب سؤالاً جديداً ليتم عرضه هنا.",
-    "options": [
-        "الخيار أ",
-        "الخيار ب",
-        "الخيار ج",
-        "الخيار د"
+    question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها <span dir="ltr" className="inline-block">5L</span> يساوي:</span>,
+    options: [
+        "500",
+        "773",
+        "227",
+        "273"
     ],
-    "correctAnswerIndex": 0,
-    "explanation": "هذا هو شرح الإجابة الصحيحة. سيتم تحديثه مع كل سؤال جديد."
+    correctAnswerIndex: 2,
+    explanation: "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل. T(K) = V / (V/T) = 5L / 0.01 = 500K. بالسيليزيوس: T(°C) = 500 - 273 = 227°C."
 };
 // ====================================================================================
 // ====================================================================================
