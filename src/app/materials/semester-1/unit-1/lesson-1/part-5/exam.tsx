@@ -1,9 +1,11 @@
 
 import { InlineMath } from 'react-katex';
+import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp } from '@/components/illustrations/graphs';
+import React from 'react';
 
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: React.ReactNode[] | string[];
     correctAnswerIndex: number;
     explanation: string;
 }
@@ -71,6 +73,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 
 export const staticQuizLvl2: QuizQuestion[] = [
+    {
+        "question": "أي من الرسوم البيانية التالية يمثل العلاقة بين ضغط الغاز (P) ودرجة حرارته المطلقة (T) عند ثبات الحجم؟",
+        "options": [
+            <GraphLineUp />,
+            <GraphCurveDown />,
+            <GraphLineDown />,
+            <GraphCurveUp />
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "وفقًا لقانون جاي-لوساك، العلاقة بين ضغط الغاز ودرجة حرارته المطلقة هي علاقة طردية خطية (P ∝ T)، والتي تُمثل بيانيًا على شكل خط مستقيم متزايد يمر بنقطة الأصل."
+    },
     {
         "question": "إذا تضاعفت درجة الحرارة المطلقة لغاز في وعاء ثابت الحجم، فإن ضغطه:",
         "options": [
