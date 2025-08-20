@@ -36,7 +36,6 @@ const PistonDiagram = () => (
                 <circle cx="40" cy="110" r="3" fill="hsl(var(--primary))" />
                 <circle cx="60" cy="130" r="3" fill="hsl(var(--primary))" />
                 <circle cx="25" cy="100" r="3" fill="hsl(var(--primary))" />
-                <circle cx="75" cy="120" r="3" fill="hsl(var(--primary))" />
             </svg>
              <p className="font-bold">الحالة A</p>
         </div>
@@ -47,6 +46,7 @@ const PistonDiagram = () => (
                     <path d="M 0 0 L 10 5 L 0 10 z" />
                 </marker>
             </defs>
+            {/* Arrow pointing right (A -> B) */}
             <line x1="5" y1="20" x2="35" y2="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
         </svg>
         {/* Container B */}
@@ -63,9 +63,8 @@ const PistonDiagram = () => (
                 <circle cx="60" cy="110" r="3" fill="hsl(var(--primary))" />
                 <circle cx="25" cy="115" r="3" fill="hsl(var(--primary))" />
                 <circle cx="75" cy="125" r="3" fill="hsl(var(--primary))" />
-                 <circle cx="45" cy="105" r="3" fill="hsl(var(--primary))" />
+                <circle cx="45" cy="105" r="3" fill="hsl(var(--primary))" />
                 <circle cx="65" cy="135" r="3" fill="hsl(var(--primary))" />
-                <circle cx="35" cy="138" r="3" fill="hsl(var(--primary))" />
             </svg>
             <p className="font-bold">الحالة B</p>
         </div>
