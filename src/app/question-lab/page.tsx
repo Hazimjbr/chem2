@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -28,16 +27,42 @@ const GasSamplesGraph = () => (
         <rect x="120" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
         <rect x="210" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
         <rect x="300" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
+        
         {/* Labels */}
         <text x="60" y="220" textAnchor="middle">A</text>
         <text x="150" y="220" textAnchor="middle">B</text>
         <text x="240" y="220" textAnchor="middle">C</text>
         <text x="330" y="220" textAnchor="middle">D</text>
-        {/* Moles info */}
-        <text x="60" y="90" textAnchor="middle" fontSize="14">0.2mol</text>
-        <text x="150" y="90" textAnchor="middle" fontSize="14">0.8mol</text>
-        <text x="240" y="90" textAnchor="middle" fontSize="14">0.4mol</text>
-        <text x="330" y="90" textAnchor="middle" fontSize="14">0.6mol</text>
+
+        {/* Particles A (2 circles) */}
+        <g fill="hsl(var(--primary))">
+            <circle cx="50" cy="130" r="5" />
+            <circle cx="70" cy="160" r="5" />
+        </g>
+        
+        {/* Particles B (5 squares) */}
+        <g fill="hsl(var(--destructive))">
+            <rect x="135" y="120" width="10" height="10" />
+            <rect x="155" y="140" width="10" height="10" />
+            <rect x="130" y="160" width="10" height="10" />
+            <rect x="160" y="110" width="10" height="10" />
+            <rect x="145" y="175" width="10" height="10" />
+        </g>
+        
+        {/* Particles C (3 triangles) */}
+        <g fill="hsl(var(--accent))">
+            <polygon points="230,120 225,130 235,130" />
+            <polygon points="250,150 245,160 255,160" />
+            <polygon points="225,170 220,180 230,180" />
+        </g>
+        
+        {/* Particles D (4 stars) */}
+        <g fill="#facc15">
+            <polygon points="320,110 322,115 327,115 323,118 325,123 320,120 315,123 317,118 313,115 318,115" />
+            <polygon points="340,130 342,135 347,135 343,138 345,143 340,140 335,143 337,138 333,135 338,135" />
+            <polygon points="325,155 327,160 332,160 328,163 330,168 325,165 320,168 322,163 318,160 323,160" />
+            <polygon points="345,175 347,180 352,180 348,183 350,188 345,185 340,188 342,183 338,180 343,180" />
+        </g>
     </svg>
 );
 
@@ -46,15 +71,15 @@ const GasSamplesGraph = () => (
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <div><p>ادرس الرسم البياني الذي يمثل أربع عينات من الغازات متساوية الحجم عند نفس درجة الحرارة ثم أجب:</p><GasSamplesGraph /><strong className="text-accent mt-2 block">أي عينة غاز لها الضغط الأكبر؟</strong></div>,
+    question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة، ثم أجب:</p><GasSamplesGraph /><strong className="text-accent mt-2 block">أي وعاء يحتوي على غاز له الضغط الأعلى؟</strong></div>,
     options: [
-        "D",
+        "A",
         "B",
         "C",
-        "A"
+        "D"
     ],
     correctAnswerIndex: 1,
-    explanation: "وفقًا لقانون الغاز المثالي (PV=nRT)، عند ثبات الحجم (V) والحرارة (T)، فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n). العينة B تحتوي على أكبر عدد من المولات (0.8mol)، لذا فهي الأعلى ضغطًا."
+    explanation: "وفقًا لقانون أفوجادرو، عند ثبات الحجم ودرجة الحرارة، يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته). الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات)، لذا فإن ضغط الغاز فيه هو الأعلى."
 };
 // ====================================================================================
 // ====================================================================================
