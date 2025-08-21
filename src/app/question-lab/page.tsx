@@ -23,26 +23,26 @@ import { InlineMath } from 'react-katex';
 
 const GasSamplesGraph = () => (
      <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-background p-4 rounded-lg border">
-        {/* Beakers */}
-        <rect x="30" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        <rect x="120" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        <rect x="210" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        <rect x="300" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
+        {/* Beakers - Larger size */}
+        <rect x="20" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
+        <rect x="110" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
+        <rect x="200" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
+        <rect x="290" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
         
         {/* Labels */}
-        <text x="60" y="220" textAnchor="middle">A</text>
-        <text x="150" y="220" textAnchor="middle">B</text>
-        <text x="240" y="220" textAnchor="middle">C</text>
-        <text x="330" y="220" textAnchor="middle">D</text>
+        <text x="55" y="215" textAnchor="middle">A</text>
+        <text x="145" y="215" textAnchor="middle">B</text>
+        <text x="235" y="215" textAnchor="middle">C</text>
+        <text x="325" y="215" textAnchor="middle">D</text>
 
-        {/* Particles A (2 complex particles) */}
+        {/* Particles A (2 complex particles: square + 2 circles) */}
         <g fill="hsl(var(--primary))">
-            <g transform="translate(50, 130)">
+            <g transform="translate(45, 110)">
                 <rect x="-5" y="-5" width="10" height="10" />
                 <circle cx="-10" cy="0" r="4" />
                 <circle cx="10" cy="0" r="4" />
             </g>
-            <g transform="translate(70, 160)">
+            <g transform="translate(65, 160)">
                  <rect x="-5" y="-5" width="10" height="10" />
                 <circle cx="-10" cy="0" r="4" />
                 <circle cx="10" cy="0" r="4" />
@@ -51,26 +51,35 @@ const GasSamplesGraph = () => (
         
         {/* Particles B (5 squares) */}
         <g fill="hsl(var(--destructive))">
-            <rect x="135" y="120" width="10" height="10" />
-            <rect x="155" y="140" width="10" height="10" />
-            <rect x="130" y="160" width="10" height="10" />
-            <rect x="160" y="110" width="10" height="10" />
-            <rect x="145" y="175" width="10" height="10" />
+            <rect x="125" y="100" width="10" height="10" />
+            <rect x="145" y="130" width="10" height="10" />
+            <rect x="120" y="150" width="10" height="10" />
+            <rect x="150" y="170" width="10" height="10" />
+            <rect x="135" y="185" width="10" height="10" />
         </g>
         
-        {/* Particles C (3 triangles) */}
+        {/* Particles C (2 complex particles: square + 3 triangles) */}
         <g fill="hsl(var(--accent))">
-            <polygon points="230,120 225,130 235,130" />
-            <polygon points="250,150 245,160 255,160" />
-            <polygon points="225,170 220,180 230,180" />
+             <g transform="translate(225, 120)">
+                <rect x="-5" y="-5" width="10" height="10" />
+                <polygon points="0,-12 -5,-7 5,-7" />
+                <polygon points="-12,5 -7,0 -7,10" />
+                <polygon points="12,5 7,0 7,10" />
+            </g>
+            <g transform="translate(245, 170)">
+                <rect x="-5" y="-5" width="10" height="10" />
+                <polygon points="0,-12 -5,-7 5,-7" />
+                <polygon points="-12,5 -7,0 -7,10" />
+                <polygon points="12,5 7,0 7,10" />
+            </g>
         </g>
         
         {/* Particles D (4 stars) */}
         <g fill="#facc15">
-            <polygon points="320,110 322,115 327,115 323,118 325,123 320,120 315,123 317,118 313,115 318,115" />
-            <polygon points="340,130 342,135 347,135 343,138 345,143 340,140 335,143 337,138 333,135 338,135" />
-            <polygon points="325,155 327,160 332,160 328,163 330,168 325,165 320,168 322,163 318,160 323,160" />
-            <polygon points="345,175 347,180 352,180 348,183 350,188 345,185 340,188 342,183 338,180 343,180" />
+            <polygon points="310,100 312,105 317,105 313,108 315,113 310,110 305,113 307,108 303,105 308,105" />
+            <polygon points="330,120 332,125 337,125 333,128 335,133 330,130 325,133 327,128 323,125 328,125" />
+            <polygon points="315,145 317,150 322,150 318,153 320,158 315,155 310,158 312,153 308,150 313,150" />
+            <polygon points="335,165 337,170 342,170 338,173 340,178 335,175 330,178 332,173 328,170 333,170" />
         </g>
     </svg>
 );
