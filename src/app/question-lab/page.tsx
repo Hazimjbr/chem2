@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
-import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp, GraphLineHorizontal, GraphLineVertical } from '@/components/illustrations/graphs';
-import { InlineMath } from 'react-katex';
 import { GasSamplesGraph } from '@/app/materials/semester-1/unit-1/section-5/exam';
 
 /**
