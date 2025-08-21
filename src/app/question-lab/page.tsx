@@ -9,6 +9,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp, GraphLineHorizontal, GraphLineVertical } from '@/components/illustrations/graphs';
 import { InlineMath } from 'react-katex';
+import { GasSamplesGraph } from '@/app/materials/semester-1/unit-1/section-5/exam';
 
 /**
  * منطقة الاختبار المؤقتة - معمل الأسئلة
@@ -25,15 +26,15 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: "السؤال قيد الإنشاء...",
+    question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 , C : 46 , B : 18 , A : 20 ) فإن عينة الغاز الأكثر كثافة هو:</p><GasSamplesGraph /></div>,
     options: [
-        "الخيار أ",
-        "الخيار ب",
-        "الخيار ج",
-        "الخيار د"
+        "C",
+        "B",
+        "A",
+        "D"
     ],
-    correctAnswerIndex: 0,
-    explanation: "الشرح هنا."
+    correctAnswerIndex: 3,
+    explanation: "الكثافة d = m/V. بما أن الحجم (V) ثابت لجميع العينات، فإن الأعلى كثافة هي صاحبة الكتلة (m) الأكبر. نحسب كتلة كل عينة (بشكل نسبي): m = (عدد الجسيمات) × (الكتلة المولية). A = 3×20=60. B = 5×18=90. C = 2×46=92. D = 4×32=128. العينة D لها الكتلة الأكبر، وبالتالي هي الأعلى كثافة."
 };
 // ====================================================================================
 // ====================================================================================
