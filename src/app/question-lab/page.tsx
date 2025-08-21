@@ -23,7 +23,7 @@ const GasLawsGraph = () => (
         <text x="380" y="130" fill="hsl(var(--primary))" fontSize="12">1000 K</text>
 
         <path d="M50,175 C150,150 250,160 400,170" stroke="hsl(var(--accent))" strokeWidth="2" fill="none"/>
-        <text x="380" y="180" fill="hsl(var(--accent))" fontSize="12">500 K</text>
+        <text x="380" y="160" fill="hsl(var(--accent))" fontSize="12">500 K</text>
 
         <path d="M50,175 C150,220 250,230 400,220" stroke="hsl(var(--destructive))" strokeWidth="2" fill="none"/>
         <text x="380" y="230" fill="hsl(var(--destructive))" fontSize="12">200 K</text>
