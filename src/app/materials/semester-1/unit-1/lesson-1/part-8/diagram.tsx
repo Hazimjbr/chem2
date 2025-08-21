@@ -13,7 +13,7 @@ const GasLawsGraph = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <line x1="50" y1="300" x2="400" y2="300" stroke="black" strokeWidth="2" />
-    <text x="410" y="300" dominantBaseline="middle">
+    <text x="410" y="305" dominantBaseline="middle">
       P(atm)
     </text>
 
