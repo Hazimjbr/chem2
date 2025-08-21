@@ -22,21 +22,22 @@ import { InlineMath } from 'react-katex';
  */
 
 const GasSamplesGraph = () => (
-     <svg width="450" height="250" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
+     <svg width="300" height="200" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
         {/* Container A */}
         <rect x="10" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g>
-            <g transform="translate(40, 90) scale(1.5)">
+            {/* Adjusted positions for A */}
+            <g transform="translate(35, 80) scale(1.5)">
                  <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
                 <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
                 <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
             </g>
-            <g transform="translate(60, 130) scale(1.5)">
+            <g transform="translate(65, 140) scale(1.5)">
                  <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
                 <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
                 <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
             </g>
-             <g transform="translate(50, 60) scale(1.5)">
+             <g transform="translate(50, 110) scale(1.5)">
                  <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
                 <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
                 <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
@@ -47,24 +48,26 @@ const GasSamplesGraph = () => (
         {/* Container B */}
         <rect x="120" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g fill="hsl(var(--destructive))">
-            <rect x="135" y="70" width="10" height="10" />
-            <rect x="165" y="90" width="10" height="10" />
-            <rect x="130" y="120" width="10" height="10" />
-            <rect x="170" y="75" width="10" height="10" />
-            <rect x="150" y="140" width="10" height="10" />
+            {/* Adjusted positions for B */}
+            <rect x="130" y="70" width="10" height="10" />
+            <rect x="170" y="140" width="10" height="10" />
+            <rect x="160" y="95" width="10" height="10" />
+            <rect x="140" y="125" width="10" height="10" />
+            <rect x="150" y="60" width="10" height="10" />
         </g>
         <text x="160" y="190" textAnchor="middle" fontSize="16">B</text>
 
         {/* Container C */}
         <rect x="230" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g>
-             <g transform="translate(260, 95) scale(1.5)">
+             {/* Adjusted positions for C */}
+             <g transform="translate(260, 85) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--accent))"/>
                 <polygon points="0,-12 -5,-7 5,-7" fill="hsl(var(--destructive))"/>
                 <polygon points="-12,5 -7,0 -7,10" fill="hsl(var(--destructive))"/>
                 <polygon points="12,5 7,0 7,10" fill="hsl(var(--destructive))"/>
             </g>
-            <g transform="translate(280, 135) scale(1.5)">
+            <g transform="translate(280, 130) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--accent))"/>
                 <polygon points="0,-12 -5,-7 5,-7" fill="hsl(var(--destructive))"/>
                 <polygon points="-12,5 -7,0 -7,10" fill="hsl(var(--destructive))"/>
@@ -76,10 +79,11 @@ const GasSamplesGraph = () => (
         {/* Container D */}
         <rect x="340" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g fill="#facc15">
-            <g transform="translate(370, 80) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(390, 130) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(360, 110) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(380, 60) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            {/* Adjusted positions for D */}
+            <g transform="translate(365, 75) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(395, 145) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(360, 120) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(390, 95) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
         </g>
         <text x="380" y="190" textAnchor="middle" fontSize="16">D</text>
     </svg>
