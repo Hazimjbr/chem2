@@ -21,50 +21,24 @@ import { InlineMath } from 'react-katex';
  * 4.  عندما توافق على السؤال، سأقوم بنقله من هنا إلى ملف `exam.tsx` النهائي الخاص بالدرس.
  */
 
-const PistonDiagram = () => (
-    <div className="flex justify-center items-center gap-8 my-4">
-        {/* Container A (Start) */}
-        <div className="text-center">
-            <svg width="100" height="150" viewBox="0 0 100 150">
-                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
-                <rect x="5" y="40" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                <rect x="45" y="30" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                 {/* Fewer blue particles */}
-                <circle cx="30" cy="60" r="3" fill="hsl(var(--primary))" />
-                <circle cx="50" cy="90" r="3" fill="hsl(var(--primary))" />
-                <circle cx="70" cy="75" r="3" fill="hsl(var(--primary))" />
-                <circle cx="40" cy="110" r="3" fill="hsl(var(--primary))" />
-            </svg>
-             <p className="font-bold">الحالة A</p>
-        </div>
-        {/* Arrow */}
-        <svg width="40" height="40" viewBox="0 0 40 40">
-            <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" />
-                </marker>
-            </defs>
-            <line x2="5" y2="20" x1="35" y1="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
-        </svg>
-        {/* Container B (End) */}
-        <div className="text-center">
-            <svg width="100" height="150" viewBox="0 0 100 150">
-                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
-                <rect x="5" y="80" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                <rect x="45" y="70" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                {/* More red particles */}
-                <circle cx="30" cy="100" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="50" cy="120" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="70" cy="95" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="40" cy="130" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="60" cy="110" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="25" cy="115" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="80" cy="125" r="3" fill="hsl(var(--destructive))" />
-                <circle cx="55" cy="105" r="3" fill="hsl(var(--destructive))" />
-            </svg>
-            <p className="font-bold">الحالة B</p>
-        </div>
-    </div>
+const GasSamplesGraph = () => (
+     <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-background p-4 rounded-lg border">
+        {/* Beakers */}
+        <rect x="30" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
+        <rect x="120" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
+        <rect x="210" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
+        <rect x="300" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
+        {/* Labels */}
+        <text x="60" y="220" textAnchor="middle">A</text>
+        <text x="150" y="220" textAnchor="middle">B</text>
+        <text x="240" y="220" textAnchor="middle">C</text>
+        <text x="330" y="220" textAnchor="middle">D</text>
+        {/* Moles info */}
+        <text x="60" y="90" textAnchor="middle" fontSize="14">0.2mol</text>
+        <text x="150" y="90" textAnchor="middle" fontSize="14">0.8mol</text>
+        <text x="240" y="90" textAnchor="middle" fontSize="14">0.4mol</text>
+        <text x="330" y="90" textAnchor="middle" fontSize="14">0.6mol</text>
+    </svg>
 );
 
 
@@ -72,15 +46,15 @@ const PistonDiagram = () => (
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <div>عينة من غاز ثنائي الذرة كتلة <span dir="ltr" className="inline-block"><InlineMath math="44.8\text{L}"/></span> منها في الظروف المعيارية يساوي <span dir="ltr" className="inline-block"><InlineMath math="4\text{g}"/></span> فإن الكتلة المولية للعنصر تساوي:</div>,
+    question: <div><p>ادرس الرسم البياني الذي يمثل أربع عينات من الغازات متساوية الحجم عند نفس درجة الحرارة ثم أجب:</p><GasSamplesGraph /><strong className="text-accent mt-2 block">أي عينة غاز لها الضغط الأكبر؟</strong></div>,
     options: [
-        "1",
-        "2",
-        "3",
-        "4"
+        "D",
+        "B",
+        "C",
+        "A"
     ],
-    correctAnswerIndex: 0,
-    explanation: "أولاً، نجد عدد مولات الغاز (n) في الظروف المعيارية: n = الحجم / 22.4 = 44.8L / 22.4L/mol = 2mol. ثانياً، نحسب الكتلة المولية للغاز (Mr): Mr = الكتلة / n = 4g / 2mol = 2g/mol. بما أن الغاز ثنائي الذرة، فإن هذه هي كتلة الجزيء (مثلاً X₂). إذن، الكتلة المولية للعنصر الواحد هي نصف هذه القيمة: 2g/mol / 2 = 1g/mol."
+    correctAnswerIndex: 1,
+    explanation: "وفقًا لقانون الغاز المثالي (PV=nRT)، عند ثبات الحجم (V) والحرارة (T)، فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n). العينة B تحتوي على أكبر عدد من المولات (0.8mol)، لذا فهي الأعلى ضغطًا."
 };
 // ====================================================================================
 // ====================================================================================
