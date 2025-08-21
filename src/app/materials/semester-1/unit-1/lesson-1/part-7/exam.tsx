@@ -160,6 +160,17 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 0,
         "explanation": "أولاً نجد عدد المولات: n = 3L / 22.4L/mol ≈ 0.134mol. عدد الجزيئات = n × عدد أفوجادرو = 0.134 × (6.022 × 10²³) ≈ 8.06 × 10²² جزيء."
+    },
+    {
+        "question": <div>عينة من غاز ثنائي الذرة كتلة <span dir="ltr" className="inline-block"><InlineMath math="44.8\text{L}"/></span> منها في الظروف المعيارية يساوي <span dir="ltr" className="inline-block"><InlineMath math="4\text{g}"/></span> فإن الكتلة المولية للعنصر تساوي:</div>,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "أولاً، نجد عدد مولات الغاز (n) في الظروف المعيارية: n = الحجم / 22.4 = 44.8L / 22.4L/mol = 2mol. ثانياً، نحسب الكتلة المولية للغاز (Mr): Mr = الكتلة / n = 4g / 2mol = 2g/mol. بما أن الغاز ثنائي الذرة، فإن هذه هي كتلة الجزيء (مثلاً X₂). إذن، الكتلة المولية للعنصر الواحد هي نصف هذه القيمة: 2g/mol / 2 = 1g/mol."
     }
 ];
 
