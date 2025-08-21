@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
-import { GasSamplesGraph } from '@/app/materials/semester-1/unit-1/section-5/exam';
+import GasLawsGraph from '@/app/materials/semester-1/unit-1/lesson-1/part-8/diagram';
 
 /**
  * منطقة الاختبار المؤقتة - معمل الأسئلة
@@ -23,10 +23,10 @@ import { GasSamplesGraph } from '@/app/materials/semester-1/unit-1/section-5/exa
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: "السؤال جاهز للنقل. اطلب سؤالاً جديداً لوضعه هنا.",
-    options: ["", "", "", ""],
-    correctAnswerIndex: 0,
-    explanation: ""
+    question: <div><p>ادرس الرسم المجاور والذي يمثل العلاقة بين الضغط المؤثر على غاز النيتروجين وقيمة PV/nRT التي قيمتها تساوي 1 للغاز المثالي ثم أجب عن السؤال التالي:</p><GasLawsGraph /><strong className="text-accent mt-2 block">درجة الحرارة التي يكون انحراف غاز النيتروجين عن الغاز المثالي أقل ما يمكن:</strong></div>,
+    options: ["200 K", "273 K", "500 K", "1000 K"],
+    correctAnswerIndex: 3,
+    explanation: "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي. المنحنى الأقرب لهذا الخط يمثل أقل انحراف. منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي، مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة."
 };
 // ====================================================================================
 // ====================================================================================
