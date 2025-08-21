@@ -11,7 +11,7 @@ export interface QuizQuestion {
 }
 
 export const GasSamplesGraph = () => (
-     <svg width="300" height="200" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
+     <svg width="300" height="200" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
         {/* Container A */}
         <rect x="10" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g>
@@ -147,6 +147,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "وفقًا لقانون أفوجادرو، عند ثبات الحجم ودرجة الحرارة، يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته). الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات)، لذا فإن ضغط الغاز فيه هو الأعلى."
+    },
+    {
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 , C : 46 , B : 20, A : 18) فإن عينة الغاز الأكثر كثافة هي:</p><GasSamplesGraph /></div>,
+        options: [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "الكثافة (d) تساوي الكتلة (m) مقسومة على الحجم (V). بما أن الحجم ثابت لجميع العينات، فإن الأعلى كثافة هي صاحبة الكتلة الأكبر. الكتلة = عدد المولات × الكتلة المولية. A=0.2×18=3.6g, B=0.8×20=16g, C=0.4×46=18.4g, D=0.6×32=19.2g. العينة D لها الكتلة الأكبر، وبالتالي هي الأعلى كثافة."
     }
 ];
 
