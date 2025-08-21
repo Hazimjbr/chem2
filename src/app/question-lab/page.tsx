@@ -24,7 +24,7 @@ import { GasSamplesGraph } from '@/app/materials/semester-1/unit-1/section-5/exa
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <div><p>2) إذا كانت الكتل المولية للغازات (D : 32 , C : 46 , B : 20, A : 18) فإن عينة الغاز الأكثر كثافة هي</p><GasSamplesGraph /></div>,
+    question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 , C : 46 , B : 20, A : 18) فإن عينة الغاز الأكثر كثافة هي:</p><GasSamplesGraph /></div>,
     options: [
         "A",
         "B",
