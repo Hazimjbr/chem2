@@ -22,7 +22,7 @@ import { InlineMath } from 'react-katex';
  */
 
 const GasSamplesGraph = () => (
-     <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-background p-4 rounded-lg border">
+     <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
         {/* Beakers - Larger size */}
         <rect x="20" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
         <rect x="110" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
@@ -74,12 +74,11 @@ const GasSamplesGraph = () => (
             </g>
         </g>
         
-        {/* Particles D (4 stars) */}
+        {/* Particles D (3 diatomic molecules) */}
         <g fill="#facc15">
-            <polygon points="310,100 312,105 317,105 313,108 315,113 310,110 305,113 307,108 303,105 308,105" />
-            <polygon points="330,120 332,125 337,125 333,128 335,133 330,130 325,133 327,128 323,125 328,125" />
-            <polygon points="315,145 317,150 322,150 318,153 320,158 315,155 310,158 312,153 308,150 313,150" />
-            <polygon points="335,165 337,170 342,170 338,173 340,178 335,175 330,178 332,173 328,170 333,170" />
+            <g transform="translate(315, 110)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(335, 150)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(310, 180)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
         </g>
     </svg>
 );
