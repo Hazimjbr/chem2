@@ -36,6 +36,11 @@ const GasSamplesGraph = () => (
                 <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
                 <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
             </g>
+             <g transform="translate(50, 60) scale(1.5)">
+                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
+                <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
+                <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
+            </g>
         </g>
         <text x="50" y="190" textAnchor="middle" fontSize="16">A</text>
         
@@ -74,6 +79,7 @@ const GasSamplesGraph = () => (
             <g transform="translate(370, 80) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
             <g transform="translate(390, 130) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
             <g transform="translate(360, 110) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(380, 60) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
         </g>
         <text x="380" y="190" textAnchor="middle" fontSize="16">D</text>
     </svg>
