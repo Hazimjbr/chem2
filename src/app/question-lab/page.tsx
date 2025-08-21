@@ -22,60 +22,60 @@ import { InlineMath } from 'react-katex';
  */
 
 const GasSamplesGraph = () => (
-     <svg width="800" height="600" viewBox="0 0 1600 1200" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
+     <svg width="450" height="250" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
         {/* Container A */}
-        <rect x="80" y="400" width="280" height="400" fill="white" stroke="black" strokeWidth="2"/>
+        <rect x="10" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g>
-            <g transform="translate(180, 560) scale(3)">
+            <g transform="translate(40, 90) scale(1.5)">
                  <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
                 <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
                 <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
             </g>
-            <g transform="translate(240, 660) scale(3)">
+            <g transform="translate(60, 130) scale(1.5)">
                  <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
                 <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
                 <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
             </g>
         </g>
-        <text x="220" y="860" textAnchor="middle" fontSize="48">A</text>
+        <text x="50" y="190" textAnchor="middle" fontSize="16">A</text>
         
         {/* Container B */}
-        <rect x="480" y="400" width="280" height="400" fill="white" stroke="black" strokeWidth="2"/>
+        <rect x="120" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g fill="hsl(var(--destructive))">
-            <rect x="540" y="480" width="30" height="30" />
-            <rect x="620" y="580" width="30" height="30" />
-            <rect x="520" y="680" width="30" height="30" />
-            <rect x="640" y="500" width="30" height="30" />
-            <rect x="580" y="720" width="30" height="30" />
+            <rect x="135" y="70" width="10" height="10" />
+            <rect x="165" y="90" width="10" height="10" />
+            <rect x="130" y="120" width="10" height="10" />
+            <rect x="170" y="75" width="10" height="10" />
+            <rect x="150" y="140" width="10" height="10" />
         </g>
-        <text x="620" y="860" textAnchor="middle" fontSize="48">B</text>
+        <text x="160" y="190" textAnchor="middle" fontSize="16">B</text>
 
         {/* Container C */}
-        <rect x="880" y="400" width="280" height="400" fill="white" stroke="black" strokeWidth="2"/>
+        <rect x="230" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g>
-             <g transform="translate(980, 580) scale(3)">
+             <g transform="translate(260, 95) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--accent))"/>
                 <polygon points="0,-12 -5,-7 5,-7" fill="hsl(var(--destructive))"/>
                 <polygon points="-12,5 -7,0 -7,10" fill="hsl(var(--destructive))"/>
                 <polygon points="12,5 7,0 7,10" fill="hsl(var(--destructive))"/>
             </g>
-            <g transform="translate(1060, 680) scale(3)">
+            <g transform="translate(280, 135) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--accent))"/>
                 <polygon points="0,-12 -5,-7 5,-7" fill="hsl(var(--destructive))"/>
                 <polygon points="-12,5 -7,0 -7,10" fill="hsl(var(--destructive))"/>
                 <polygon points="12,5 7,0 7,10" fill="hsl(var(--destructive))"/>
             </g>
         </g>
-        <text x="1020" y="860" textAnchor="middle" fontSize="48">C</text>
+        <text x="270" y="190" textAnchor="middle" fontSize="16">C</text>
         
         {/* Container D */}
-        <rect x="1280" y="400" width="280" height="400" fill="white" stroke="black" strokeWidth="2"/>
+        <rect x="340" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
         <g fill="#facc15">
-            <g transform="translate(1360, 540) scale(3)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(1440, 680) scale(3)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(1340, 600) scale(3)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(370, 80) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(390, 130) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(360, 110) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
         </g>
-        <text x="1420" y="860" textAnchor="middle" fontSize="48">D</text>
+        <text x="380" y="190" textAnchor="middle" fontSize="16">D</text>
     </svg>
 );
 
@@ -155,4 +155,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
