@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -34,10 +35,18 @@ const GasSamplesGraph = () => (
         <text x="240" y="220" textAnchor="middle">C</text>
         <text x="330" y="220" textAnchor="middle">D</text>
 
-        {/* Particles A (2 circles) */}
+        {/* Particles A (2 complex particles) */}
         <g fill="hsl(var(--primary))">
-            <circle cx="50" cy="130" r="5" />
-            <circle cx="70" cy="160" r="5" />
+            <g transform="translate(50, 130)">
+                <rect x="-5" y="-5" width="10" height="10" />
+                <circle cx="-10" cy="0" r="4" />
+                <circle cx="10" cy="0" r="4" />
+            </g>
+            <g transform="translate(70, 160)">
+                 <rect x="-5" y="-5" width="10" height="10" />
+                <circle cx="-10" cy="0" r="4" />
+                <circle cx="10" cy="0" r="4" />
+            </g>
         </g>
         
         {/* Particles B (5 squares) */}
