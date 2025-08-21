@@ -24,7 +24,7 @@ import { GasSamplesGraph } from '@/app/materials/semester-1/unit-1/section-5/exa
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة، ثم أجب</p><GasSamplesGraph /><strong className="text-accent mt-2 block">أي وعاء يحتوي على غاز له الضغط الأعلى؟</strong></div>,
+    question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة، ثم أجب:</p><GasSamplesGraph /><strong className="text-accent mt-2 block">أي وعاء يحتوي على غاز له الضغط الأعلى؟</strong></div>,
     options: [
         "A",
         "B",
