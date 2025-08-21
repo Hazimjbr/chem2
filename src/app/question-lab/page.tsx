@@ -24,10 +24,10 @@ import { InlineMath } from 'react-katex';
 const GasSamplesGraph = () => (
      <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
         {/* Beakers - Larger size */}
-        <rect x="20" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
-        <rect x="110" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
-        <rect x="200" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
-        <rect x="290" y="80" width="70" height="120" fill="hsl(var(--muted))" stroke="black" strokeWidth="1.5"/>
+        <rect x="20" y="80" width="70" height="120" fill="white" stroke="black" strokeWidth="1.5"/>
+        <rect x="110" y="80" width="70" height="120" fill="white" stroke="black" strokeWidth="1.5"/>
+        <rect x="200" y="80" width="70" height="120" fill="white" stroke="black" strokeWidth="1.5"/>
+        <rect x="290" y="80" width="70" height="120" fill="white" stroke="black" strokeWidth="1.5"/>
         
         {/* Labels */}
         <text x="55" y="215" textAnchor="middle">A</text>
