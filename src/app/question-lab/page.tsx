@@ -22,7 +22,7 @@ import { InlineMath } from 'react-katex';
  */
 
 const GasSamplesGraph = () => (
-     <svg width="300" height="200" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
+     <svg width="300" height="200" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
         {/* Beakers - Larger size */}
         <rect x="20" y="80" width="70" height="140" fill="white" stroke="black" strokeWidth="1.5"/>
         <rect x="110" y="80" width="70" height="140" fill="white" stroke="black" strokeWidth="1.5"/>
