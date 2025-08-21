@@ -22,64 +22,60 @@ import { InlineMath } from 'react-katex';
  */
 
 const GasSamplesGraph = () => (
-     <svg width="300" height="200" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
-        {/* Beakers - Larger size */}
-        <rect x="20" y="80" width="70" height="140" fill="white" stroke="black" strokeWidth="1.5"/>
-        <rect x="110" y="80" width="70" height="140" fill="white" stroke="black" strokeWidth="1.5"/>
-        <rect x="200" y="80" width="70" height="140" fill="white" stroke="black" strokeWidth="1.5"/>
-        <rect x="290" y="80" width="70" height="140" fill="white" stroke="black" strokeWidth="1.5"/>
-        
-        {/* Labels */}
-        <text x="55" y="235" textAnchor="middle">A</text>
-        <text x="145" y="235" textAnchor="middle">B</text>
-        <text x="235" y="235" textAnchor="middle">C</text>
-        <text x="325" y="235" textAnchor="middle">D</text>
-
-        {/* Particles A (2 complex particles: square + 2 circles) */}
+     <svg width="400" height="300" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg">
+        {/* Container A */}
+        <rect x="20" y="100" width="140" height="280" fill="white" stroke="black" strokeWidth="2"/>
         <g fill="hsl(var(--primary))">
-            <g transform="translate(45, 110)">
+            <g transform="translate(70, 180) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" />
                 <circle cx="-10" cy="0" r="4" />
                 <circle cx="10" cy="0" r="4" />
             </g>
-            <g transform="translate(65, 160)">
+            <g transform="translate(100, 280) scale(1.5)">
                  <rect x="-5" y="-5" width="10" height="10" />
                 <circle cx="-10" cy="0" r="4" />
                 <circle cx="10" cy="0" r="4" />
             </g>
         </g>
+        <text x="90" y="410" textAnchor="middle" fontSize="24">A</text>
         
-        {/* Particles B (5 squares) */}
+        {/* Container B */}
+        <rect x="220" y="100" width="140" height="280" fill="white" stroke="black" strokeWidth="2"/>
         <g fill="hsl(var(--destructive))">
-            <rect x="125" y="100" width="10" height="10" />
-            <rect x="145" y="130" width="10" height="10" />
-            <rect x="120" y="150" width="10" height="10" />
-            <rect x="150" y="170" width="10" height="10" />
-            <rect x="135" y="185" width="10" height="10" />
+            <rect x="250" y="140" width="15" height="15" />
+            <rect x="290" y="190" width="15" height="15" />
+            <rect x="240" y="240" width="15" height="15" />
+            <rect x="300" y="280" width="15" height="15" />
+            <rect x="270" y="320" width="15" height="15" />
         </g>
-        
-        {/* Particles C (2 complex particles: square + 3 triangles) */}
+        <text x="290" y="410" textAnchor="middle" fontSize="24">B</text>
+
+        {/* Container C */}
+        <rect x="420" y="100" width="140" height="280" fill="white" stroke="black" strokeWidth="2"/>
         <g fill="hsl(var(--accent))">
-             <g transform="translate(225, 120)">
+             <g transform="translate(470, 190) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" />
                 <polygon points="0,-12 -5,-7 5,-7" />
                 <polygon points="-12,5 -7,0 -7,10" />
                 <polygon points="12,5 7,0 7,10" />
             </g>
-            <g transform="translate(245, 170)">
+            <g transform="translate(510, 290) scale(1.5)">
                 <rect x="-5" y="-5" width="10" height="10" />
                 <polygon points="0,-12 -5,-7 5,-7" />
                 <polygon points="-12,5 -7,0 -7,10" />
                 <polygon points="12,5 7,0 7,10" />
             </g>
         </g>
+        <text x="490" y="410" textAnchor="middle" fontSize="24">C</text>
         
-        {/* Particles D (3 diatomic molecules) */}
+        {/* Container D */}
+        <rect x="620" y="100" width="140" height="280" fill="white" stroke="black" strokeWidth="2"/>
         <g fill="#facc15">
-            <g transform="translate(315, 110)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(335, 150)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(310, 180)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(660, 170) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(700, 240) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
+            <g transform="translate(650, 300) scale(1.5)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
         </g>
+        <text x="690" y="410" textAnchor="middle" fontSize="24">D</text>
     </svg>
 );
 
@@ -159,3 +155,4 @@ export default function QuestionLabPage() {
         </div>
     );
 }
+
