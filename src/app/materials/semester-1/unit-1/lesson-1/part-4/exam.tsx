@@ -44,7 +44,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الصيغة الصحيحة لقانون شارل هي V₁/T₁ = V₂/T₂، حيث يجب أن تكون درجة الحرارة بوحدة الكلفن"
     },
     {
-        "question": <>بالون حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="1L" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="27^\circ\text{C}" /></span>. ما هو حجمه إذا تم تبريده إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="0^\circ\text{C}" /></span> مع ثبات الضغط؟</>,
+        "question": <>بالون حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="1L" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="27^\circ\text{C}" /></span>، ما هو حجمه إذا تم تبريده إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="0^\circ\text{C}" /></span> مع ثبات الضغط؟</>,
         "options": [
             "0.91L",
             "1.09L",
@@ -69,7 +69,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <>عينة من غاز النيون تشغل حجمًا قدره <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="752mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span>. ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="940mL" /></span>؟</>,
+        "question": <>عينة من غاز النيون تشغل حجمًا قدره <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="752mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span>، ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="940mL" /></span>؟</>,
         "options": [
             "31.25°C",
             "99.3°C",
