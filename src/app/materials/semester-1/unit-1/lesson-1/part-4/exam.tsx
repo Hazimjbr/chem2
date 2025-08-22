@@ -69,7 +69,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <>عينة من غاز النيون تشغل حجمًا قدره <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="752\text{mL}" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span>. ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="940\text{mL}" /></span>؟</>,
+        "question": <>عينة من غاز النيون تشغل حجمًا قدره <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="752mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span>. ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="940mL" /></span>؟</>,
         "options": [
             "31.25°C",
             "99.3°C",
@@ -91,7 +91,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "وفقًا لقانون شارل، العلاقة بين حجم الغاز ودرجة حرارته المطلقة هي علاقة طردية خطية (V ∝ T)، والتي تُمثل بيانيًا على شكل خط مستقيم متزايد يمر بنقطة الأصل"
     },
     {
-        "question": <>إذا تم تسخين غاز في وعاء مرن (مثل بالون) من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="100\text{K}" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200\text{K}" /></span>، ماذا يحدث لحجمه؟</>,
+        "question": <>إذا تم تسخين غاز في وعاء مرن (مثل بالون) من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="100K" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200K" /></span>، ماذا يحدث لحجمه؟</>,
         "options": [
             "يقل إلى النصف",
             "يزداد بمقدار 100L",
@@ -113,7 +113,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "نظريًا، إذا قمنا بتمديد الخط البياني لقانون شارل إلى درجة حرارة منخفضة جدًا، فإنه سيصل إلى حجم صفر عند -273.15°C (0K). في الواقع، تتكاثف الغازات إلى سوائل قبل الوصول لهذه النقطة"
     },
     {
-        "question": <>غاز حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="5.0\text{L}" /></span> عند ضغط ودرجة حرارة معينين. إذا تم الحفاظ على الضغط ثابتًا وتم خفض درجة الحرارة المطلقة إلى النصف، فما هو الحجم الجديد؟</>,
+        "question": <>غاز حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="5.0L" /></span> عند ضغط ودرجة حرارة معينين. إذا تم الحفاظ على الضغط ثابتًا وتم خفض درجة الحرارة المطلقة إلى النصف، فما هو الحجم الجديد؟</>,
         "options": [
             "2.5L",
             "5.0L",
@@ -171,7 +171,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "قانون شارل هو نموذج مثالي. في الواقع، كل الخيارات صحيحة. قبل الوصول إلى 0K، ستكون قوى التجاذب بين الجسيمات قوية بما يكفي لتحويل الغاز إلى سائل ثم صلب. بالإضافة إلى ذلك، فإن الجسيمات نفسها لها حجم مادي، لذلك لا يمكن أن يكون الحجم الكلي صفرًا"
     },
     {
-        "question": <>تم قياس حجم عينة من الهواء فكان <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="280\text{mL}" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="30^\circ\text{C}" /></span>. ثم تم تبريد العينة عند ضغط ثابت حتى أصبح حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250\text{mL}" /></span>. ما هي درجة الحرارة النهائية بالسيليزيوس؟</>,
+        "question": <>تم قياس حجم عينة من الهواء فكان <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="280mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="30^\circ\text{C}" /></span>. ثم تم تبريد العينة عند ضغط ثابت حتى أصبح حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250mL" /></span>. ما هي درجة الحرارة النهائية بالسيليزيوس؟</>,
         "options": [
             "-2.5°C",
             "26.7°C",
