@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Beaker, ChevronDown, FlaskConical } from 'lucide-react';
+import { Beaker, ChevronDown, FlaskConical, Library } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,10 +56,17 @@ export default function MainNav() {
         >
           تحليل الأداء
         </Link>
+        <Link
+          href="/question-bank"
+          className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
+        >
+          <Library className="h-4 w-4" />
+          بنك الأسئلة
+        </Link>
          {/* Temporary link for development */}
         <Link
           href="/question-lab"
-          className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
+          className="font-medium text-destructive/50 transition-colors hover:text-destructive/80 flex items-center gap-1"
         >
           <FlaskConical className="h-4 w-4" />
           مختبر الأسئلة
