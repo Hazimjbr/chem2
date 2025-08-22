@@ -15,7 +15,7 @@ import React from 'react';
 // This is the universal QuizQuestion interface
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: React.ReactNode[];
     correctAnswerIndex: number;
     explanation: string;
 }
@@ -158,7 +158,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
 
         } else {
             const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz.map(q => ({...q, question: q.question}));
+            generatedQuestions = result.quiz.map(q => ({...q, question: q.question, options: q.options}));
         }
         setQuiz(generatedQuestions.filter(q => q && q.options && q.options.length > 0));
     } catch (error) {
@@ -348,7 +348,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                 disabled={answerStatus !== 'unanswered'}
               >
                   <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{option}</span>
+                  <div className="flex-1 whitespace-normal">{option}</div>
               </Button>
             );
           })}
