@@ -370,9 +370,14 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                     {currentQuestion.explanation}
                 </AlertDescription>
             </Alert>
-            <Button onClick={handleNextQuestion} className="w-full">
-                {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-            </Button>
+            <div className="flex gap-2">
+                <Button onClick={handleNextQuestion} className="w-full">
+                    {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
+                </Button>
+                <Button onClick={handleStartOver} variant="outline">
+                    أعد مستوى الاختبار
+                </Button>
+            </div>
          </CardFooter>
       )}
     </Card>
