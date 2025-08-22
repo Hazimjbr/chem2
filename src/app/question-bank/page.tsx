@@ -1,7 +1,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Library } from 'lucide-react';
@@ -9,6 +9,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils.tsx';
 import type { QuizQuestion as BaseQuizQuestion } from '@/components/quiz';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // Import all exam files
 import * as part1Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-1/exam';
@@ -102,6 +103,14 @@ const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
 );
 
 export default function QuestionBankPage() {
+    const [selectedSource, setSelectedSource] = useState('all');
+
+    const sourcesList = ['all', ...Array.from(new Set(allQuestions.map(q => q.source)))];
+
+    const filteredQuestions = selectedSource === 'all' 
+        ? allQuestions 
+        : allQuestions.filter(q => q.source === selectedSource);
+
     return (
         <div className="container mx-auto p-8">
             <header className="mb-10 text-center">
@@ -113,8 +122,22 @@ export default function QuestionBankPage() {
                 </p>
             </header>
             
+            <div className="mb-6 max-w-md mx-auto">
+                <Select dir="rtl" onValueChange={setSelectedSource} defaultValue="all">
+                    <SelectTrigger>
+                        <SelectValue placeholder="اختر مصدر الأسئلة لعرضها..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">عرض كل الأسئلة</SelectItem>
+                        {sourcesList.slice(1).map(source => (
+                            <SelectItem key={source} value={source}>{source}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+
             <div className="space-y-6">
-                {allQuestions.map((q, index) => (
+                {filteredQuestions.map((q, index) => (
                     <QuestionCard key={index} question={q} />
                 ))}
             </div>
