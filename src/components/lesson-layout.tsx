@@ -97,7 +97,7 @@ export default function LessonLayout({
                     <CardHeader>
                         <CardTitle>اختبر فهمك</CardTitle>
                         <CardDescription>
-                            بعد أن تعرفت على محتوى الدرس، اختبر فهمك له من خلال هذا الاختبار القصير.
+                            بعد أن تعرفت على محتوى الدرس اختبر فهمك له من خلال هذا الاختبار القصير
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

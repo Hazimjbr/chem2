@@ -24,7 +24,7 @@ export default function Home() {
           أهلاً بك في ChemInteractive
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
-          منصتك التفاعلية لإتقان كيمياء التوجيهي الأردني بأحدث الطرق التعليمية.
+          منصتك التفاعلية لإتقان كيمياء التوجيهي الأردني بأحدث الطرق التعليمية
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/materials/semester-1" passHref>
@@ -54,7 +54,7 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                الحالة الغازية: نظرية الحركة الجزيئية
+                الحالة الغازية نظرية الحركة الجزيئية
               </p>
               <Link href={lastVisitedLesson} passHref>
                 <Button>متابعة الدرس</Button>
@@ -70,7 +70,7 @@ export default function Home() {
             </CardHeader>
             <CardContent>
                <p className="text-muted-foreground mb-4">
-                اختبر فهمك في وحدة "حالات المادة".
+                اختبر فهمك في وحدة حالات المادة
               </p>
               <Link href="/quizzes" passHref>
                 <Button variant="outline">بدء الامتحان</Button>

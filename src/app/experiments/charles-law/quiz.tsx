@@ -20,7 +20,7 @@ type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
 const experimentQuiz: QuizQuestion[] = [
     {
-        question: "ماذا يحدث لحجم البالون عند وضعه في الحمام الثلجي، كما هو موضح في المحاكاة؟",
+        question: "ماذا يحدث لحجم البالون عند وضعه في الحمام الثلجي كما هو موضح في المحاكاة؟",
         options: [
             "يزداد حجمه",
             "يقل حجمه",
@@ -28,7 +28,7 @@ const experimentQuiz: QuizQuestion[] = [
             "ينفجر البالون"
         ],
         correctAnswerIndex: 1,
-        explanation: "عندما تنخفض درجة حرارة الهواء داخل البالون، تقل الطاقة الحركية لجسيمات الهواء، فتقل تصادماتها مع جدار البالون الداخلي، مما يؤدي إلى انكماش البالون ونقصان حجمه."
+        explanation: "عندما تنخفض درجة حرارة الهواء داخل البالون تقل الطاقة الحركية لجسيمات الهواء فتقل تصادماتها مع جدار البالون الداخلي مما يؤدي إلى انكماش البالون ونقصان حجمه"
     },
     {
         question: "ماذا يحدث لحجم البالون عند وضعه في الحمام المائي الساخن؟",
@@ -39,10 +39,10 @@ const experimentQuiz: QuizQuestion[] = [
             "يتغير لونه"
         ],
         correctAnswerIndex: 0,
-        explanation: "عندما ترتفع درجة حرارة الهواء داخل البالون، تزداد الطاقة الحركية لجسيمات الهواء، فتزداد قوة وسرعة تصادماتها مع جدار البالون الداخلي، مما يؤدي إلى تمدد البالون وزيادة حجمه."
+        explanation: "عندما ترتفع درجة حرارة الهواء داخل البالون تزداد الطاقة الحركية لجسيمات الهواء فتزداد قوة وسرعة تصادماتها مع جدار البالون الداخلي مما يؤدي إلى تمدد البالون وزيادة حجمه"
     },
     {
-        question: "بناءً على التجربة، ما هي العلاقة التي يمكن استنتاجها بين حجم الغاز ودرجة حرارته عند ثبات الضغط؟",
+        question: "بناءً على التجربة ما هي العلاقة التي يمكن استنتاجها بين حجم الغاز ودرجة حرارته عند ثبات الضغط؟",
         options: [
             "علاقة عكسية (كلما زادت الحرارة قل الحجم)",
             "علاقة طردية (كلما زادت الحرارة زاد الحجم)",
@@ -50,7 +50,7 @@ const experimentQuiz: QuizQuestion[] = [
             "العلاقة تعتمد على نوع الغاز"
         ],
         correctAnswerIndex: 1,
-        explanation: "توضح التجربة أنه كلما زادت درجة الحرارة، زاد حجم الغاز، والعكس صحيح. هذه العلاقة تُعرف بالعلاقة الطردية، وهي أساس قانون شارل."
+        explanation: "توضح التجربة أنه كلما زادت درجة الحرارة زاد حجم الغاز والعكس صحيح هذه العلاقة تُعرف بالعلاقة الطردية وهي أساس قانون شارل"
     }
 ];
 
@@ -99,11 +99,11 @@ export default function Quiz() {
     return (
       <Card className="text-center">
         <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
+          <CardTitle>اكتمل الاختبار</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
             <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
+                نتيجتك النهائية هي <span className="font-bold text-primary">{score}</span> من {quiz?.length}
             </p>
             <div className="flex items-center justify-center gap-2">
                 <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
@@ -179,7 +179,7 @@ export default function Quiz() {
             )}>
                 {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
                 <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
+                    {answerStatus === 'correct' ? 'إجابة صحيحة' : 'إجابة خاطئة'}
                 </AlertTitle>
                 <AlertDescription>
                     {currentQuestion.explanation}

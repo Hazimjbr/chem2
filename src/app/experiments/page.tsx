@@ -8,13 +8,13 @@ const experiments = [
     {
         id: 'charles-law',
         title: 'العلاقة بين حجم الغاز ودرجة حرارته (قانون شارل)',
-        description: 'تجربة استهلالية تفاعلية توضح قانون شارل للغازات.',
+        description: 'تجربة استهلالية تفاعلية توضح قانون شارل للغازات',
         tags: ['غازات', 'قانون شارل', 'ديناميكا حرارية']
     },
     {
         id: 'boyles-law',
         title: 'العلاقة بين حجم الغاز وضغطه (قانون بويل)',
-        description: 'استكشف كيف يتغير حجم الغاز بتغير الضغط عند ثبات درجة الحرارة.',
+        description: 'استكشف كيف يتغير حجم الغاز بتغير الضغط عند ثبات درجة الحرارة',
         tags: ['غازات', 'قانون بويل', 'ضغط']
     }
 ];
@@ -25,7 +25,7 @@ export default function ExperimentsPage() {
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold mb-2">مختبر التجارب التفاعلية</h1>
         <p className="text-lg text-muted-foreground">
-          استكشف المفاهيم الكيميائية من خلال تجارب عملية ومحاكاة تفاعلية.
+          استكشف المفاهيم الكيميائية من خلال تجارب عملية ومحاكاة تفاعلية
         </p>
       </header>
 
@@ -53,8 +53,8 @@ export default function ExperimentsPage() {
         ))}
          <Card className="flex flex-col items-center justify-center border-dashed">
             <CardHeader className="text-center">
-              <CardTitle>قريباً...</CardTitle>
-              <CardDescription>المزيد من التجارب التفاعلية المثيرة قادمة!</CardDescription>
+              <CardTitle>قريبا</CardTitle>
+              <CardDescription>المزيد من التجارب التفاعلية المثيرة قادمة</CardDescription>
             </CardHeader>
           </Card>
       </main>

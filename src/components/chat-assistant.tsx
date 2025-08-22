@@ -112,7 +112,7 @@ export default function ChatAssistant() {
       console.error('Error getting response from AI:', error);
       const errorMessage: Message = {
         role: 'model',
-        content: [{ text: 'عذراً، حدث خطأ. الرجاء المحاولة مرة أخرى.' }],
+        content: [{ text: 'عذرًا حدث خطأ الرجاء المحاولة مرة أخرى' }],
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -127,7 +127,7 @@ export default function ChatAssistant() {
             <Bot /> المساعد الكيميائي الذكي
         </CardTitle>
         <CardDescription>
-            اسأل أي سؤال يتعلق بكيمياء التوجيهي الأردني.
+            اسأل أي سؤال يتعلق بكيمياء التوجيهي الأردني
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden">
@@ -175,7 +175,7 @@ export default function ChatAssistant() {
                     <AvatarFallback><Bot size={20}/></AvatarFallback>
                   </Avatar>
                 <div className="rounded-lg px-4 py-2 text-sm bg-muted">
-                     أفكر...
+                     أفكر
                 </div>
               </div>
             )}
@@ -186,7 +186,7 @@ export default function ChatAssistant() {
         <form onSubmit={handleSendMessage} className="flex w-full items-center space-x-2">
           <Input
             id="message"
-            placeholder="اسأل عن أي شيء في الكيمياء..."
+            placeholder="اسأل عن أي شيء في الكيمياء"
             className="flex-1"
             autoComplete="off"
             value={input}

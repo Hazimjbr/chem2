@@ -117,7 +117,7 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
         <div className="w-full space-y-4">
              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Input 
-                    placeholder="ابحث بالاسم أو الرمز (مثال: Fe أو حديد)"
+                    placeholder="ابحث بالاسم أو الرمز (مثال Fe أو حديد)"
                     value={searchTerm}
                     onChange={handleSearch}
                     className="md:col-span-1"
@@ -145,7 +145,7 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                             </div>
                         ) : (
                             <p className="text-center text-muted-foreground p-2">
-                                ابدأ البحث لعرض معلومات العنصر هنا.
+                                ابدأ البحث لعرض معلومات العنصر هنا
                             </p>
                         )}
                     </CardContent>

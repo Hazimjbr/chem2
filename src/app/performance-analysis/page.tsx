@@ -8,7 +8,7 @@ export default function PerformanceAnalysisPage() {
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold mb-2">تحليل الأداء الشامل</h1>
         <p className="text-lg text-muted-foreground">
-          احصل على تقرير مفصل عن أدائك في الاختبارات وتوصيات مخصصة.
+          احصل على تقرير مفصل عن أدائك في الاختبارات وتوصيات مخصصة
         </p>
       </header>
 
@@ -17,7 +17,7 @@ export default function PerformanceAnalysisPage() {
             <CardHeader>
                 <CardTitle>تحليل أداء الطالب</CardTitle>
                 <CardDescription>
-                    يقوم هذا النموذج بتحليل نتائج اختبارات الطالب السابقة لتقديم تقرير مفصل عن نقاط القوة والضعف، بالإضافة إلى توصيات مخصصة لتحسين المستوى.
+                    يقوم هذا النموذج بتحليل نتائج اختبارات الطالب السابقة لتقديم تقرير مفصل عن نقاط القوة والضعف بالإضافة إلى توصيات مخصصة لتحسين المستوى
                 </CardDescription>
             </CardHeader>
             <CardContent>

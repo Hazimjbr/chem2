@@ -166,7 +166,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
         toast({
             variant: 'destructive',
             title: 'حدث خطأ',
-            description: 'لم نتمكن من إنشاء الاختبار. الرجاء المحاولة مرة أخرى.',
+            description: 'لم نتمكن من إنشاء الاختبار الرجاء المحاولة مرة أخرى',
         });
         // Reset to initial state on failure
         setQuiz(null);
@@ -217,8 +217,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     if (passed && difficultyLevel < 5) {
       nextLevel = difficultyLevel + 1;
       toast({
-          title: 'مستوى الصعوبة ارتفع!',
-          description: `رائع! لقد أتقنت هذا المستوى. الاختبار القادم سيكون أكثر تحديًا. المستوى الجديد: ${nextLevel}`,
+          title: 'مستوى الصعوبة ارتفع',
+          description: `رائع لقد أتقنت هذا المستوى الاختبار القادم سيكون أكثر تحديًا المستوى الجديد ${nextLevel}`,
           className: 'bg-green-100 border-green-400 text-green-800'
       });
     }
@@ -244,11 +244,11 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     return (
       <Card className="text-center">
         <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
+          <CardTitle>اكتمل الاختبار</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
             <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
+                نتيجتك النهائية هي <span className="font-bold text-primary">{score}</span> من {quiz?.length}
             </p>
             <div className="flex items-center justify-center gap-2">
                 <Progress value={finalScoreRatio * 100} className="w-1/2" />
@@ -272,8 +272,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     return (
       <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2">جاري إنشاء اختبار مخصص لك...</p>
-        <p className="text-sm font-semibold text-accent">مستوى الصعوبة: {difficultyLevel}</p>
+        <p className="mt-2">جاري إنشاء اختبار مخصص لك</p>
+        <p className="text-sm font-semibold text-accent">مستوى الصعوبة {difficultyLevel}</p>
       </div>
     );
   }
@@ -283,14 +283,14 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
       <div className="text-center space-y-3 p-4 rounded-lg bg-muted/50 min-h-[200px] flex flex-col justify-center items-center">
          <div className='flex justify-center items-center gap-1 font-bold text-accent'>
             <Star className='h-5 w-5' />
-            <span>مستوى الصعوبة الحالي: {difficultyLevel}</span>
+            <span>مستوى الصعوبة الحالي {difficultyLevel}</span>
         </div>
         <Button onClick={() => handleGenerateQuiz(difficultyLevel)} size="lg">
           <Sparkles className="ml-2 h-4 w-4" />
           أنشئ اختباري
         </Button>
         <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
-            انقر لإنشاء اختبار قصير. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
+            انقر لإنشاء اختبار قصير تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى
         </p>
       </div>
     );
@@ -301,7 +301,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   if (!currentQuestion) {
     return (
         <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground p-8 min-h-[200px]">
-            <p>حدث خطأ في تحميل السؤال.</p>
+            <p>حدث خطأ في تحميل السؤال</p>
             <Button onClick={handleRestartQuiz}>أعد المحاولة</Button>
         </div>
     );
@@ -316,7 +316,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
           </CardTitle>
           <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
             <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة: {difficultyLevel}</span>
+            <span>مستوى الصعوبة {difficultyLevel}</span>
           </div>
         </div>
         <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
@@ -364,7 +364,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             )}>
                 {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
                 <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
+                    {answerStatus === 'correct' ? 'إجابة صحيحة' : 'إجابة خاطئة'}
                 </AlertTitle>
                 <AlertDescription>
                     {currentQuestion.explanation}

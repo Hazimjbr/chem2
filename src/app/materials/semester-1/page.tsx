@@ -64,7 +64,7 @@ export default function Semester1Page() {
       <header className="mb-10">
         <h1 className="text-4xl font-bold mb-2">الفصل الدراسي الأول</h1>
         <p className="text-lg text-muted-foreground">
-          استعرض وحدات الفصل الأول وابدأ رحلتك في عالم الكيمياء.
+          استعرض وحدات الفصل الأول وابدأ رحلتك في عالم الكيمياء
         </p>
       </header>
 

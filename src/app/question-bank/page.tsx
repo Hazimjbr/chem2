@@ -66,11 +66,11 @@ const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
                     {question.question}
                 </CardTitle>
                 <Badge variant={question.level === 3 ? "destructive" : question.level === 2 ? "secondary" : "default"}>
-                    المستوى: {question.level}
+                    المستوى {question.level}
                 </Badge>
             </div>
             <CardDescription className="text-xs pt-2">
-                المصدر: {question.source}
+                المصدر {question.source}
             </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
@@ -118,14 +118,14 @@ export default function QuestionBankPage() {
                     <Library className="inline-block h-10 w-10 mb-2" /> بنك الأسئلة
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                    مراجعة شاملة لجميع أسئلة الاختبارات في المشروع.
+                    مراجعة شاملة لجميع أسئلة الاختبارات في المشروع
                 </p>
             </header>
             
             <div className="mb-6 max-w-md mx-auto">
                 <Select dir="rtl" onValueChange={setSelectedSource} defaultValue="all">
                     <SelectTrigger>
-                        <SelectValue placeholder="اختر مصدر الأسئلة لعرضها..." />
+                        <SelectValue placeholder="اختر مصدر الأسئلة لعرضها" />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="all">عرض كل الأسئلة</SelectItem>

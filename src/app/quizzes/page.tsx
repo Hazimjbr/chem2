@@ -6,14 +6,14 @@ import Link from 'next/link';
 const quizzes = [
     {
         id: 'unit-1-comprehensive',
-        title: 'اختبار شامل: الوحدة الأولى - حالات المادة',
-        description: 'اختبار شامل يغطي جميع مفاهيم الحالة الغازية والسائلة والصلبة.',
+        title: 'اختبار شامل الوحدة الأولى حالات المادة',
+        description: 'اختبار شامل يغطي جميع مفاهيم الحالة الغازية والسائلة والصلبة',
         tags: ['حالات المادة', 'غازات', 'سوائل', 'مواد صلبة']
     },
     {
         id: 'unit-2-comprehensive',
-        title: 'اختبار شامل: الوحدة الثانية - المحاليل',
-        description: 'اختبر فهمك لتصنيف وخصائص المحاليل المختلفة.',
+        title: 'اختبار شامل الوحدة الثانية المحاليل',
+        description: 'اختبر فهمك لتصنيف وخصائص المحاليل المختلفة',
         tags: ['المحاليل', 'الخصائص الجامعة', 'تركيز']
     }
 ];
@@ -24,7 +24,7 @@ export default function QuizzesPage() {
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold mb-2">بنك الاختبارات</h1>
         <p className="text-lg text-muted-foreground">
-          اختر اختبارًا من القائمة لتقييم فهمك للمادة بشكل شامل.
+          اختر اختبارًا من القائمة لتقييم فهمك للمادة بشكل شامل
         </p>
       </header>
 
@@ -46,7 +46,7 @@ export default function QuizzesPage() {
                 </div>
               <Link href={`/quizzes/${quiz.id}`} passHref>
                 <Button className="w-full" disabled>
-                  ابدأ الاختبار (قريباً)
+                  ابدأ الاختبار (قريبا)
                   <ArrowLeft className="mr-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -55,8 +55,8 @@ export default function QuizzesPage() {
         ))}
          <Card className="flex flex-col items-center justify-center border-dashed">
             <CardHeader className="text-center">
-              <CardTitle>قريباً...</CardTitle>
-              <CardDescription>المزيد من الاختبارات الشاملة قادمة!</CardDescription>
+              <CardTitle>قريبا</CardTitle>
+              <CardDescription>المزيد من الاختبارات الشاملة قادمة</CardDescription>
             </CardHeader>
           </Card>
       </main>

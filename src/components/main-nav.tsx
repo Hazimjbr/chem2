@@ -34,7 +34,7 @@ export default function MainNav() {
               <DropdownMenuItem>الفصل الأول</DropdownMenuItem>
             </Link>
             <Link href="/materials/semester-2">
-              <DropdownMenuItem disabled>الفصل الثاني (قريباً)</DropdownMenuItem>
+              <DropdownMenuItem disabled>الفصل الثاني (قريبا)</DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>

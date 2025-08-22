@@ -49,7 +49,7 @@ export default function ExperimentPage() {
                     </CardHeader>
                     <CardContent>
                         <p>
-                        يُعَدُّ العالم بويل من أوائل العلماء الذين بحثوا في خصائص الغازات؛ إذ درس العلاقة بين حجم كمية محددة من الغاز المحصور والضغط المؤثر فيه عند ثبات درجة حرارته. توصَّل من ذلك إلى العلاقة التي سُمِّيت قانون بويل، وينص على أن: "حجم كميّة محدّدة من الغاز المحصور يتناسب تناسبًا عكسيًا مع الضغط المؤثر فيه عند ثبات درجة حرارته".
+                        يُعَدُّ العالم بويل من أوائل العلماء الذين بحثوا في خصائص الغازات إذ درس العلاقة بين حجم كمية محددة من الغاز المحصور والضغط المؤثر فيه عند ثبات درجة حرارته توصَّل من ذلك إلى العلاقة التي سُمِّيت قانون بويل وينص على أن "حجم كميّة محدّدة من الغاز المحصور يتناسب تناسبًا عكسيًا مع الضغط المؤثر فيه عند ثبات درجة حرارته"
                         </p>
                     </CardContent>
                 </Card>
@@ -60,7 +60,7 @@ export default function ExperimentPage() {
                     </CardHeader>
                     <CardContent>
                         <p>
-                        أستقصي العلاقة بين حجم الغاز وضغطه عند ثبات درجة حرارته.
+                        أستقصي العلاقة بين حجم الغاز وضغطه عند ثبات درجة حرارته
                         </p>
                     </CardContent>
                 </Card>
@@ -71,8 +71,8 @@ export default function ExperimentPage() {
                     </CardHeader>
                     <CardContent>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>توضح هذه المحاكاة استخدام الزئبق وهو مادة سامة. يجب التعامل معه بحذر شديد في المختبر الحقيقي.</li>
-                            <li>أرتدي معطف المختبر والنظارات الواقية والقفازات عند التعامل مع المواد الكيميائية.</li>
+                            <li>توضح هذه المحاكاة استخدام الزئبق وهو مادة سامة يجب التعامل معه بحذر شديد في المختبر الحقيقي</li>
+                            <li>أرتدي معطف المختبر والنظارات الواقية والقفازات عند التعامل مع المواد الكيميائية</li>
                         </ul>
                     </CardContent>
                 </Card>
@@ -80,7 +80,7 @@ export default function ExperimentPage() {
              <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2"><Beaker className="h-6 w-6 text-primary" /> محاكاة التجربة</CardTitle>
-                    <CardDescription>حرّك المنزلق لتغيير الضغط ولاحظ ما يحدث لحجم الغاز.</CardDescription>
+                    <CardDescription>حرّك المنزلق لتغيير الضغط ولاحظ ما يحدث لحجم الغاز</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Diagram />
@@ -90,21 +90,21 @@ export default function ExperimentPage() {
         
         <Card>
             <CardHeader>
-                <CardTitle className="flex items-center gap-2"><Wind className="h-6 w-6 text-primary" /> مثال من عالمنا: فقاعة الغواص</CardTitle>
+                <CardTitle className="flex items-center gap-2"><Wind className="h-6 w-6 text-primary" /> مثال من عالمنا فقاعة الغواص</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="flex flex-col md:flex-row items-center gap-6">
                     <DiverBubbleDiagram />
                     <div className="w-full md:w-1/2 space-y-3">
                         <p>
-                            تخيل غواصًا يطلق فقاعة هواء في أعماق البحر.
+                            تخيل غواصًا يطلق فقاعة هواء في أعماق البحر
                         </p>
                         <ul className="list-disc list-inside space-y-2 text-sm">
-                            <li><strong className="text-accent">في الأعماق:</strong> يكون ضغط الماء هائلاً، مما يجبر فقاعة الهواء على أن تكون صغيرة الحجم.</li>
-                            <li><strong className="text-primary">أثناء الصعود:</strong> كلما ارتفعت الفقاعة نحو السطح، يقل ضغط الماء عليها.</li>
-                            <li><strong className="text-foreground">النتيجة:</strong> يتمدد الغاز داخل الفقاعة ويزداد حجمها بشكل كبير، تمامًا كما ينص قانون بويل.</li>
+                            <li><strong className="text-accent">في الأعماق</strong> يكون ضغط الماء هائلاً مما يجبر فقاعة الهواء على أن تكون صغيرة الحجم</li>
+                            <li><strong className="text-primary">أثناء الصعود</strong> كلما ارتفعت الفقاعة نحو السطح يقل ضغط الماء عليها</li>
+                            <li><strong className="text-foreground">النتيجة</strong> يتمدد الغاز داخل الفقاعة ويزداد حجمها بشكل كبير تمامًا كما ينص قانون بويل</li>
                         </ul>
-                         <p className="text-xs text-muted-foreground pt-2 border-t">هذا المثال يوضح أن العلاقة بين الضغط والحجم عكسية: عندما يقل أحدهما، يزداد الآخر.</p>
+                         <p className="text-xs text-muted-foreground pt-2 border-t">هذا المثال يوضح أن العلاقة بين الضغط والحجم عكسية عندما يقل أحدهما يزداد الآخر</p>
                     </div>
                 </div>
             </CardContent>
@@ -114,7 +114,7 @@ export default function ExperimentPage() {
           <CardHeader>
               <CardTitle className="flex items-center gap-2"><CheckSquare className="h-6 w-6 text-primary" /> اختبر استنتاجك</CardTitle>
                <CardDescription>
-                  أجب عن الأسئلة التالية للتأكد من فهمك لنتائج التجربة.
+                  أجب عن الأسئلة التالية للتأكد من فهمك لنتائج التجربة
                 </CardDescription>
           </CardHeader>
           <CardContent>

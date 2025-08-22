@@ -40,7 +40,7 @@ export function CalculationTriangles() {
                     علاقات رياضية مساعدة
                 </CardTitle>
                 <CardDescription>
-                    هذه المثلثات تساعدك على تذكر وحساب الكميات الأساسية بسهولة.
+                    هذه المثلثات تساعدك على تذكر وحساب الكميات الأساسية بسهولة
                 </CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center" dir="ltr">

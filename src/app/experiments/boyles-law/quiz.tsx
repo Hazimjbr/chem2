@@ -20,7 +20,7 @@ type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
 const experimentQuiz: QuizQuestion[] = [
     {
-        question: "وفقًا لقانون بويل، إذا تضاعف الضغط على كمية معينة من الغاز عند درجة حرارة ثابتة، فماذا يحدث لحجمه؟",
+        question: "وفقًا لقانون بويل إذا تضاعف الضغط على كمية معينة من الغاز عند درجة حرارة ثابتة فماذا يحدث لحجمه؟",
         options: [
             "يتضاعف",
             "يبقى ثابتًا",
@@ -28,10 +28,10 @@ const experimentQuiz: QuizQuestion[] = [
             "يقل إلى الربع"
         ],
         correctAnswerIndex: 2,
-        explanation: "قانون بويل ينص على وجود علاقة عكسية بين الضغط والحجم. إذا تضاعف الضغط (P -> 2P)، فإن الحجم يجب أن يقل إلى النصف (V -> V/2) للحفاظ على حاصل الضرب ثابتًا (P₁V₁ = P₂V₂)."
+        explanation: "قانون بويل ينص على وجود علاقة عكسية بين الضغط والحجم إذا تضاعف الضغط (P -> 2P) فإن الحجم يجب أن يقل إلى النصف (V -> V/2) للحفاظ على حاصل الضرب ثابتًا (P₁V₁ = P₂V₂)"
     },
     {
-        question: "في المحاكاة، عندما تقوم بزيادة الضغط من 1 atm إلى 3 atm، ماذا تلاحظ على حجم الغاز (V)؟",
+        question: "في المحاكاة عندما تقوم بزيادة الضغط من 1 atm إلى 3 atm ماذا تلاحظ على حجم الغاز (V)؟",
         options: [
             "يقل حجمه إلى الثلث تقريبًا",
             "يزداد حجمه ثلاثة أضعاف",
@@ -39,7 +39,7 @@ const experimentQuiz: QuizQuestion[] = [
             "يقل حجمه بشكل طفيف فقط"
         ],
         correctAnswerIndex: 0,
-        explanation: "العلاقة عكسية ومباشرة. زيادة الضغط ثلاث مرات (من 1 إلى 3) تؤدي إلى انخفاض الحجم إلى الثلث (V -> V/3) تمامًا كما هو موضح في قانون بويل."
+        explanation: "العلاقة عكسية ومباشرة زيادة الضغط ثلاث مرات (من 1 إلى 3) تؤدي إلى انخفاض الحجم إلى الثلث (V -> V/3) تمامًا كما هو موضح في قانون بويل"
     },
     {
         question: "أي من العلاقات الرياضية التالية تمثل قانون بويل بشكل صحيح؟ (حيث k ثابت)",
@@ -50,7 +50,7 @@ const experimentQuiz: QuizQuestion[] = [
             "P + V = k"
         ],
         correctAnswerIndex: 2,
-        explanation: "قانون بويل ينص على أن حاصل ضرب الضغط (P) في الحجم (V) لكمية ثابتة من الغاز عند درجة حرارة ثابتة يساوي قيمة ثابتة (k). لذلك، المعادلة الصحيحة هي P * V = k أو P₁V₁ = P₂V₂."
+        explanation: "قانون بويل ينص على أن حاصل ضرب الضغط (P) في الحجم (V) لكمية ثابتة من الغاز عند درجة حرارة ثابتة يساوي قيمة ثابتة (k) لذلك المعادلة الصحيحة هي P * V = k أو P₁V₁ = P₂V₂"
     }
 ];
 
@@ -99,11 +99,11 @@ export default function Quiz() {
     return (
       <Card className="text-center">
         <CardHeader>
-          <CardTitle>اكتمل الاختبار!</CardTitle>
+          <CardTitle>اكتمل الاختبار</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
             <p className="text-lg">
-                نتيجتك النهائية هي: <span className="font-bold text-primary">{score}</span> من {quiz?.length}
+                نتيجتك النهائية هي <span className="font-bold text-primary">{score}</span> من {quiz?.length}
             </p>
             <div className="flex items-center justify-center gap-2">
                 <Progress value={(score / (quiz?.length || 1)) * 100} className="w-1/2" />
@@ -179,7 +179,7 @@ export default function Quiz() {
             )}>
                 {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
                 <AlertTitle className="font-bold">
-                    {answerStatus === 'correct' ? 'إجابة صحيحة!' : 'إجابة خاطئة!'}
+                    {answerStatus === 'correct' ? 'إجابة صحيحة' : 'إجابة خاطئة'}
                 </AlertTitle>
                 <AlertDescription>
                     {currentQuestion.explanation}
