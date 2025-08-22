@@ -27,9 +27,9 @@ import { InlineMath } from 'react-katex';
 const sampleQuestion = {
     question: <span>بالون قراءة ضغطه الأولى كانت <InlineMath math="760\text{mmHg}" /> وقراءة ضغطه الثانية كانت <InlineMath math="760\text{kPa}" /> فإن العبارة الصحيحة التي تصف هذا التغير هي:</span>,
     options: [
-        <span>النسبة بين القراءة الثانية إلى الأولى هي 7.5 : 1 تقريبًا</span>, 
-        <span>قراءة الضغط الأولى أكبر</span>, 
-        <span>النسبة بين القراءة الأولى إلى الثانية هي 5 : 1</span>,
+        <span>النسبة بين القراءة الثانية إلى الأولى هي 7.5 : 1 تقريبًا</span>,
+        <span>قراءة الضغط الأولى أكبر</span>,
+        <span>النسبة بين القراءة الأولى إلى الثانية هي 5 : 1 تقريبًا</span>,
         <span>لا يوجد تغير بين القراءتين</span>
     ],
     correctAnswerIndex: 0,
