@@ -1,6 +1,7 @@
 
 import { InlineMath } from 'react-katex';
 import React from 'react';
+import Image from 'next/image';
 
 
 export interface QuizQuestion {
@@ -88,7 +89,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون جاي-لوساك، يتناسب الضغط طرديًا مع درجة الحرارة عند ثبات الحجم. بما أن وعاء F₂ تم تسخينه (زيادة الحرارة)، فسيكون ضغطه هو الأعلى. بينما وعاء H₂ تم تبريده، فسيكون ضغطه هو الأقل."
     },
     {
-        "question": <div>ادرس الرسم البياني الذي يمثل أربع عينات من الغازات متساوية الحجم عند نفس درجة الحرارة ثم أجب:<br/><GasSamplesGraph /><strong className="text-accent">أي عينة غاز لها الضغط الأكبر؟</strong></div>,
+        question: <div>ادرس الرسم البياني الذي يمثل أربع عينات من الغازات متساوية الحجم عند نفس درجة الحرارة ثم أجب:<br/><GasSamplesGraph /><strong className="text-accent">أي عينة غاز لها الضغط الأكبر؟</strong></div>,
         "options": [
             "D",
             "B",
@@ -99,7 +100,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون الغاز المثالي (PV=nRT)، عند ثبات الحجم (V) والحرارة (T)، فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n). العينة B تحتوي على أكبر عدد من المولات (0.8mol)، لذا فهي الأعلى ضغطًا."
     },
     {
-        "question": <div>ادرس الرسم البياني للغازات من السؤال السابق، إذا كانت الكتل المولية للغازات (D:32, C:46, B:18, A:20)g/mol، فأي عينة هي الأكثر كثافة؟</div>,
+        question: <div>ادرس الرسم البياني للغازات من السؤال السابق، إذا كانت الكتل المولية للغازات (D:32, C:46, B:18, A:20)g/mol، فأي عينة هي الأكثر كثافة؟</div>,
         "options": [
             "C",
             "B",
@@ -112,18 +113,13 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <div>ادرس الرسم البياني الذي يوضح سلوك غاز النيتروجين عند درجات حرارة مختلفة وأجب:<br/><GasLawsGraph /><strong className="text-accent">عند أي درجة حرارة يكون انحراف غاز النيتروجين عن السلوك المثالي هو الأقل؟</strong></div>,
-        "options": [
-            "200K",
-            "273K",
-            "500K",
-            "1000K"
-        ],
+        "question": <div><p>ادرس الرسم المجاور والذي يمثل العلاقة بين الضغط المؤثر على غاز النيتروجين وقيمة PV/nRT التي قيمتها تساوي 1 للغاز المثالي ثم أجب عن السؤال التالي:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">درجة الحرارة التي يكون انحراف غاز النيتروجين عن الغاز المثالي أقل ما يمكن:</strong></div>,
+        "options": ["200 K", "273 K", "500 K", "1000 K"],
         "correctAnswerIndex": 3,
         "explanation": "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي. المنحنى الأقرب لهذا الخط يمثل أقل انحراف. منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي، مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة."
     },
      {
-        "question": <div>ادرس الرسم البياني من السؤال السابق وأجب:<br/><strong className="text-accent">ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</strong></div>,
+        question: <div>ادرس الرسم البياني من السؤال السابق وأجب:<br/><strong className="text-accent mt-2 block">ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</strong></div>,
         "options": [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -134,7 +130,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "عند درجات الحرارة المنخفضة والضغوط المعتدلة، تصبح قوى التجاذب بين الجسيمات مؤثرة. هذه القوى تجذب الجسيمات لبعضها، مما يقلل من تصادمها مع جدار الوعاء، وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي، فتصبح قيمة PV/nRT أقل من 1."
     },
      {
-        "question": <div>ادرس الرسم البياني من السؤال السابق وأجب:<br/><strong className="text-accent">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
+        question: <div>ادرس الرسم البياني من السؤال السابق وأجب:<br/><strong className="text-accent mt-2 block">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
         "options": [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -224,3 +220,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الظروف المعيارية T₁=273K, V₁=20L. الحرارة الجديدة T₂=273+273=546K. باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L."
     }
 ];
+
+    
