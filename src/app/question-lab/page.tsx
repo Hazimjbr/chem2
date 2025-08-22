@@ -7,11 +7,12 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
+import Image from 'next/image';
 
 const GasLawsGraph = () => (
     <svg width="300" height="200" viewBox="0 0 450 350" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-background p-4 rounded-lg border">
         <line x1="50" y1="300" x2="400" y2="300" stroke="black" strokeWidth="2"/>
-        <text x="415" y="345" dominantBaseline="middle">P(atm)</text>
+        <text x="415" y="325" dominantBaseline="middle">P(atm)</text>
 
         <line x1="50" y1="300" x2="50" y2="50" stroke="black" strokeWidth="2"/>
         <text x="50" y="40" textAnchor="middle">PV/nRT</text>
@@ -30,22 +31,22 @@ const GasLawsGraph = () => (
     </text>
 
         <path
-      d="M50,175 C150,150 250,160 400,140"
+      d="M50,175 C150,150 250,160 400,120"
       stroke="hsl(var(--accent))"
       strokeWidth="2"
       fill="none"
     />
-        <text x="380" y="120" fill="hsl(var(--accent))" fontSize="12">
+        <text x="380" y="100" fill="hsl(var(--accent))" fontSize="12">
       500 K
     </text>
 
         <path
-      d="M50,175 C150,220 250,230 400,80"
+      d="M380,230 C150,220 250,230 400,80"
       stroke="hsl(var(--destructive))"
       strokeWidth="2"
       fill="none"
     />
-        <text x="380" y="90" fill="hsl(var(--destructive))" fontSize="12">
+        <text x="350" y="245" fill="hsl(var(--destructive))" fontSize="12">
       200 K
     </text>
 
@@ -71,7 +72,7 @@ const GasLawsGraph = () => (
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <div><p>ادرس الرسم المجاور والذي يمثل العلاقة بين الضغط المؤثر على غاز النيتروجين وقيمة PV/nRT التي قيمتها تساوي 1 للغاز المثالي ثم أجب عن السؤال التالي:</p><GasLawsGraph /><strong className="text-accent mt-2 block">درجة الحرارة التي يكون انحراف غاز النيتروجين عن الغاز المثالي أقل ما يمكن:</strong></div>,
+    question: <div><p>ادرس الرسم المجاور والذي يمثل العلاقة بين الضغط المؤثر على غاز النيتروجين وقيمة PV/nRT التي قيمتها تساوي 1 للغاز المثالي ثم أجب عن السؤال التالي:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">درجة الحرارة التي يكون انحراف غاز النيتروجين عن الغاز المثالي أقل ما يمكن:</strong></div>,
     options: ["200 K", "273 K", "500 K", "1000 K"],
     correctAnswerIndex: 3,
     explanation: "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي. المنحنى الأقرب لهذا الخط يمثل أقل انحراف. منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي، مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة."
