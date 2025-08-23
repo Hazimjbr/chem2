@@ -7,7 +7,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: React.ReactNode[] | string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -39,10 +39,10 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "P₁V₁ = P₂V₂",
             "V₁/T₁ = V₂/T₂",
             "P₁T₁ = P₂T₂",
-            "P₁/T₁ = P₂T₂"
+            "P₁/T₁ = P₂/T₂"
         ],
         "correctAnswerIndex": 3,
-        "explanation": "الصيغة الصحيحة لقانون جاي-لوساك هي P₁/T₁ = P₂T₂ حيث يجب أن تكون درجة الحرارة بوحدة الكلفن"
+        "explanation": "الصيغة الصحيحة لقانون جاي-لوساك هي P₁/T₁ = P₂/T₂ حيث يجب أن تكون درجة الحرارة بوحدة الكلفن"
     },
     {
         "question": (
@@ -57,7 +57,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "100kPa"
         ],
         "correctAnswerIndex": 0,
-        "explanation": "أولاً نحول الحرارة إلى كلفن T₁=27+273=300K, T₂=127+273=400K ثم نستخدم P₂ = P₁T₂/T₁ = (100 * 400) / 300 ≈ 133.3kPa"
+        "explanation": "أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=127+273=400K ثم نستخدم P₂ = P₁T₂/T₁ = (100 * 400) / 300 ≈ 133.3kPa"
     },
     {
         "question": "في أي من الحالات التالية ينطبق قانون جاي-لوساك",
@@ -163,11 +163,11 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "options": [
             <span dir="ltr">0°C</span>,
             <span dir="ltr">100°C</span>,
-            <span dir="ltr">-273.15°C</span>,
+            <span dir="ltr"><InlineMath math="-273.15^\circ\text{C}"/></span>,
             "لا يتقاطع"
         ],
         "correctAnswerIndex": 2,
-        "explanation": "تمامًا مثل قانون شارل إذا تم رسم الضغط مقابل درجة الحرارة بالسيليزيوس، فإن امتداد الخط المستقيم سيصل إلى ضغط صفر عند درجة حرارة -273.15 درجة مئوية، وهي قيمة الصفر المطلق"
+        "explanation": <><span>تمامًا مثل قانون شارل إذا تم رسم الضغط مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى ضغط صفر عند درجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="-273.15^\circ C"/></span><span> وهي قيمة الصفر المطلق</span></>
     },
     {
         "question": "غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز",
