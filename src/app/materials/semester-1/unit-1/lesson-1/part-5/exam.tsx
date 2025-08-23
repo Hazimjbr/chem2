@@ -143,10 +143,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
             </>
         ),
         "options": [
-            "56.1°C",
-            "329.1°C",
-            "117°C",
-            "423°C"
+            <span dir="ltr">56.1°C</span>,
+            <span dir="ltr">329.1°C</span>,
+            <span dir="ltr">117°C</span>,
+            <span dir="ltr">423°C</span>
         ],
         "correctAnswerIndex": 0,
         "explanation": "P₁=700, P₂=900 T₂=150+273=423K T₁=T₂P₁/P₂ = (423 * 700) / 900 ≈ 329.1K نحول إلى سيليزيوس T₁(°C) = 329.1 - 273 ≈ 56.1°C"
@@ -161,9 +161,9 @@ export const staticQuizLvl3: QuizQuestion[] = [
             </>
         ),
         "options": [
-            "0°C",
-            "100°C",
-            "-273.15°C",
+            <span dir="ltr">0°C</span>,
+            <span dir="ltr">100°C</span>,
+            <span dir="ltr">-273.15°C</span>,
             "لا يتقاطع"
         ],
         "correctAnswerIndex": 2,
@@ -233,3 +233,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "بما أن نسبة الضغط إلى الحرارة المطلقة (P/T) ثابتة، يمكن حساب الحرارة بالكلفن T(K) = P / (P/T) = 0.9atm / 0.003atm/K = 300K ثم نحول إلى سيليزيوس T(°C) = 300 - 273 = 27°C"
     }
 ];
+
+    
