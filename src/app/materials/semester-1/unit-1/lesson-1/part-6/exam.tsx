@@ -138,7 +138,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "T₁=27+273=300K و T₂=-23+273=250K و P₁=1atm و V₁=300L و P₂=0.5atm و V₂ = (P₁V₁T₂)/(P₂T₁) = (1 * 300 * 250) / (0.5 * 300) = 500L"
     },
     {
-        question: <>عند أي درجة حرارة بالسيليزيوس سيشغل 1.0 مول من غاز حجم 22.4 لتر عند ضغط 2.0atm (علما بأنه عند STP يشغل 1 مول 22.4 لتر عند 1atm و <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="0^\circ\text{C}" /></span>)</>,
+        question: <>عند أي درجة حرارة بالسيليزيوس سيشغل 1.0mol من غاز حجم 22.4L عند ضغط 2.0atm (علما بأنه عند STP يشغل 1mol 22.4L عند 1atm و <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="0^\circ\text{C}" /></span>)</>,
         "options": [
             <><span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="0^\circ\text{C}" /></span></>,
             <><span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="273^\circ\text{C}" /></span></>,
