@@ -67,7 +67,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الكثافة d = (P × Mr) / (R × T) في الظروف المعيارية P=1atm و T=273K الكتلة المولية للهيليوم (He) هي 4g/mol إذن d = (1 × 4) / (0.082 × 273) ≈ 0.18 g/L"
     },
     {
-        "question": <>أربعة أوعية محكمة الإغلاق حجم كل منها <InlineMath math="2\text{L}" /> يحتوي كل منها على غازات بضغط <InlineMath math="1.15\text{atm}" /> عند حرارة <InlineMath math="7^\circ\text{C}" /> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</>,
+        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block">7°C</span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
         "options": [
             "Ar",
             "H₂",
@@ -220,7 +220,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الظروف المعيارية T₁=273K, V₁=20L الحرارة الجديدة T₂=273+273=546K باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L"
     },
     {
-        "question": "غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز",
+        question: <><span>غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز</span></>,
         "options": [
             "كمية A نصف كمية B",
             "كمية A ضعف كمية B",
