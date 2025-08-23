@@ -4,7 +4,7 @@ import React from 'react';
 
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: string[] | React.ReactNode[];
     correctAnswerIndex: number;
     explanation: string | React.ReactNode;
 }
@@ -35,10 +35,10 @@ export const staticQuizLvl1: QuizQuestion[] = [
     {
         "question": "الظروف المعيارية (STP) تشير إلى:",
         "options": [
-            "1atm و25°C",
+            <>1atm و <span dir="ltr">25°C</span></>,
             "1atm و0K",
             "760mmHg و273K",
-            "101.3kPa و100°C"
+            <>101.3kPa و <span dir="ltr">100°C</span></>
         ],
         "correctAnswerIndex": 2,
         "explanation": <><span>الظروف المعيارية (STP) هي ضغط 1atm (والذي يكافئ 760mmHg أو 101.3kPa) ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span><span> (والتي تكافئ 273K)</span></>
@@ -184,8 +184,8 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "300°C", 
             "27°C"
         ],
-        correctAnswerIndex: 3,
-        explanation: "أولاً نحسب القيمة الجديدة بالكلفن 900K / 3 = 300K بعد ذلك نحول هذه القيمة إلى الدرجة المئوية T(°C) = T(K) - 273 = 300 - 273 = 27°C لذا الخيار الصحيح هو 27°C"
+        "correctAnswerIndex": 3,
+        "explanation": "أولاً نحسب القيمة الجديدة بالكلفن 900K / 3 = 300K بعد ذلك نحول هذه القيمة إلى الدرجة المئوية T(°C) = T(K) - 273 = 300 - 273 = 27°C لذا الخيار الصحيح هو 27°C"
     },
     {
         question: <span>بالون قراءة ضغطه الأولى كانت 760mmHg وقراءة ضغطه الثانية كانت 760kPa فإن العبارة الصحيحة التي تصف هذا التغير هي:</span>,
@@ -199,4 +199,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "للتحويل نستخدم العلاقات 1atm = 760mmHg و 1atm = 101.3kPa القراءة الأولى = 760mmHg = 101.3kPa القراءة الثانية = 760kPa النسبة بين القراءة الثانية والأولى هي 760kPa / 101.3kPa ≈ 7.5 إذن الخيار (أ) هو الصحيح"
     }
 ];
-
