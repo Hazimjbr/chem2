@@ -102,15 +102,15 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: <><span>للتحويل من كلفن إلى سيليزي نطرح 273 من قيمة الكلفن إذن </span><span dir="ltr" className="inline-block"><InlineMath math="T(^\circ C) = T(K) - 273 = 300 - 273 = 27^\circ C" /></span></>
     },
     {
-        "question": "بالون درجة حرارته المطلقة 526K فإن حرارته بوحدة درجة مئوية تساوي:",
-        "options": [
+        question: <span>بالون درجة حرارته المطلقة 526K فإن حرارته بوحدة درجة مئوية تساوي:</span>,
+        options: [
             <span dir="ltr">253°C</span>,
             <span dir="ltr">13.75°C</span>,
             <span dir="ltr">293°C</span>,
             <span dir="ltr">0.073°C</span>
         ],
-        "correctAnswerIndex": 0,
-        explanation: <><span>للتحويل من كلفن (K) إلى درجة مئوية (°C) نستخدم العلاقة </span><span dir="ltr" className="inline-block"><InlineMath math="T(^\circ C)=T(K)-273" /></span><span> بالتطبيق على السؤال </span><span dir="ltr" className="inline-block"><InlineMath math="526 - 273 = 253^\circ\text{C}" /></span></>
+        correctAnswerIndex: 0,
+        explanation: <span>للتحويل من كلفن (K) إلى درجة مئوية (°C) نستخدم العلاقة <InlineMath math="T(^\circ C)=T(K)-273" /> بالتطبيق على السؤال <span dir="ltr" className="inline-block"><InlineMath math="526 - 273 = 253^\circ\text{C}" /></span></span>
     },
     {
         "question": "حاوية حجمها 5000cm³ ما هو حجمها بوحدة (L)؟",
@@ -160,7 +160,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "قوانين مثل قانون شارل (V/T=k) تعتمد على علاقة تناسب طردي مباشر هذه العلاقة لا تعمل إذا كانت درجة الحرارة يمكن أن تكون صفرًا (0°C) أو سالبة مما قد يؤدي إلى حجم صفر أو سالب وهو أمر مستحيل فيزيائيًا مقياس كلفن هو مقياس مطلق يبدأ من الصفر الحقيقي مما يجعل علاقات التناسب صحيحة رياضيًا وفيزيائيًا"
     },
     {
-        "question": "ماذا تمثل قيمة الصفر المطلق (0 كلفن)؟",
+        question: <>الصفر المطلق (<span dir="ltr">0K</span> أو <span dir="ltr">-273.15°C</span>) هو أدنى درجة حرارة ممكنة نظريًا حيث تصل الطاقة الحركية للجسيمات إلى أدنى قيمة لها (تقترب من الصفر)</>,
         "options": [
             "درجة تجمد الماء",
             "أقل درجة حرارة يمكن الوصول إليها نظريًا",
@@ -171,7 +171,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": <>الصفر المطلق (<span dir="ltr">0K</span> أو <span dir="ltr">-273.15°C</span>) هو أدنى درجة حرارة ممكنة نظريًا حيث تصل الطاقة الحركية للجسيمات إلى أدنى قيمة لها (تقترب من الصفر)</>
     },
     {
-        question: <span>بالون درجة حرارته المطلقة 523K إذا تغيرت لتصبح 125°C فإن العبارة الصحيحة التي تصف هذا التغير هي:</span>,
+        question: <span>بالون درجة حرارته المطلقة 523K إذا تغيرت لتصبح <span dir="ltr">125°C</span> فإن العبارة الصحيحة التي تصف هذا التغير هي:</span>,
         options: ["زادت إلى الضعف", "قلت إلى النصف", "لا شيء مما ذكر", "قلت إلى الخمس"],
         correctAnswerIndex: 2,
         explanation: "يجب توحيد الوحدات أولاً للمقارنة الصحيحة الحرارة النهائية T₂ = 125 + 273 = 398K الحرارة الابتدائية T₁ = 523K عند المقارنة نجد أن 398K ليست نصف 523K (النصف هو 261.5K) وليست خمسها لذلك لا يوجد وصف دقيق من الخيارات المعطاة"
