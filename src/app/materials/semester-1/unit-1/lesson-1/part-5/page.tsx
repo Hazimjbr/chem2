@@ -145,8 +145,8 @@ export default function LessonPartPage() {
                         <ol className="list-decimal mr-6 text-sm space-y-2">
                             <li>
                                 <span>نحول درجات الحرارة إلى كلفن</span>
-                                <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{ K}" /></div>
-                                <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 400 + 273 = 673\text{ K}" /></div>
+                                <div className="text-left" dir="ltr"><BlockMath math="T_1(K) = 25 + 273 = 298\text{ K}" /></div>
+                                <div className="text-left" dir="ltr"><BlockMath math="T_2(K) = 400 + 273 = 673\text{ K}" /></div>
                             </li>
                             <li>
                                 <span>نكتب قانون جاي-لوساك</span>
@@ -218,7 +218,7 @@ export default function LessonPartPage() {
                   onCorrect={handleCorrectAnswer}
                   question={(
                     <>
-                     عينة من غاز محصور في وعاء حجمه ثابت <span dir="ltr">(<InlineMath math="4\text{L}"/>)</span> وضغطها <span dir="ltr">(<InlineMath math="2\text{atm}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="200^\circ\text{C}"/>)</span> فإذا ارتفعت درجة حرارتها بمقدار <span dir="ltr">(<InlineMath math="100"/>)</span> درجة فإن ضغطها بوحدة <span dir="ltr">(<InlineMath math="\text{atm}"/>)</span> يساوي
+                     عينة من غاز محصور في وعاء حجمه ثابت <span dir="ltr">(<InlineMath math="4\text{L}"/>)</span> وضغطها <span dir="ltr">(<InlineMath math="2\text{atm}"/>)</span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span> فإذا ارتفعت درجة حرارتها بمقدار <span dir="ltr">(<InlineMath math="100"/>)</span> درجة فإن ضغطها بوحدة <span dir="ltr">(<InlineMath math="\text{atm}"/>)</span> يساوي
                     </>
                   )}
                   options={[
@@ -228,7 +228,7 @@ export default function LessonPartPage() {
                       "2.4"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="T₁=200+273=473K. T₂= (200+100)+273=573K. P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm"
+                  explanation="T₁=200+273=473K T₂= (200+100)+273=573K P₁=2atm باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -236,7 +236,7 @@ export default function LessonPartPage() {
                   onCorrect={handleCorrectAnswer}
                   question={(
                     <>
-                     عينة من غاز محصور ضغطها <span dir="ltr">(<InlineMath math="900\text{mmHg}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="273\text{K}"/>)</span> فإذا أصبح ضغطها <span dir="ltr">(<InlineMath math="200\text{kPa}"/>)</span> فإن درجة حرارتها بوحدة <span dir="ltr">(<InlineMath math="^\circ\text{C}"/>)</span> تساوي
+                     عينة من غاز محصور ضغطها <span dir="ltr">(<InlineMath math="900\text{mmHg}"/>)</span> عند درجة حرارة <span dir="ltr">(<InlineMath math="273\text{K}"/>)</span> فإذا أصبح ضغطها <span dir="ltr">(<InlineMath math="200\text{kPa}"/>)</span> فإن درجة حرارتها بوحدة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="^\circ\text{C}"/></span> تساوي
                     </>
                   )}
                   options={[
@@ -246,7 +246,7 @@ export default function LessonPartPage() {
                       "455"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="أولاً نوحد الضغط. P₁(atm) = 900/760 ≈ 1.184atm. P₂(atm) = 200/101.3 ≈ 1.974atm. T₁=273K. T₂ = T₁P₂/P₁ = (273*1.974)/1.184 ≈ 455K. نحول إلى سيليزيوس: 455-273 = 182°C"
+                  explanation="أولاً نوحد الضغط P₁(atm) = 900/760 ≈ 1.184atm P₂(atm) = 200/101.3 ≈ 1.974atm T₁=273K T₂ = T₁P₂/P₁ = (273*1.974)/1.184 ≈ 455K نحول إلى سيليزيوس 455-273 = 182°C"
               />
           </div>
         </div>
