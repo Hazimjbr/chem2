@@ -41,7 +41,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             <>101.3kPa و <span dir="ltr">100°C</span></>
         ],
         "correctAnswerIndex": 2,
-        "explanation": <><span>الظروف المعيارية (STP) هي ضغط 1atm (والذي يكافئ 760mmHg أو 101.3kPa) ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span><span> (والتي تكافئ 273K)</span></>
+        explanation: <><span>الظروف المعيارية (STP) هي ضغط 1atm (والذي يكافئ 760mmHg أو 101.3kPa) ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span><span> (والتي تكافئ 273K)</span></>
     },
     {
         "question": "خزان سعته 2L فإن حجمه يساوي:",
@@ -110,7 +110,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             <span dir="ltr">0.073°C</span>
         ],
         "correctAnswerIndex": 0,
-        explanation: <><span>للتحويل من كلفن (K) إلى درجة مئوية (°C) نستخدم العلاقة T(°C)=T(K)-273 بالتطبيق على السؤال 526-273=</span><span dir="ltr">253°C</span></>
+        explanation: <><span>للتحويل من كلفن (K) إلى درجة مئوية (°C) نستخدم العلاقة T(°C)=T(K)-273 بالتطبيق على السؤال </span><span dir="ltr" className="inline-block"><InlineMath math="526 - 273 = 253^\circ\text{C}" /></span></>
     },
     {
         "question": "حاوية حجمها 5000cm³ ما هو حجمها بوحدة (L)؟",
@@ -199,3 +199,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "للتحويل نستخدم العلاقات 1atm = 760mmHg و 1atm = 101.3kPa القراءة الأولى = 760mmHg = 101.3kPa القراءة الثانية = 760kPa النسبة بين القراءة الثانية والأولى هي 760kPa / 101.3kPa ≈ 7.5 إذن الخيار (أ) هو الصحيح"
     }
 ];
+
