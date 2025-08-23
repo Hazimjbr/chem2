@@ -98,7 +98,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": (
             <>
-                وعاء يحتوي على غاز عند ضغط <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="3\text{atm}" /></span> ودرجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200\text{K}" /></span> إذا تم تبريد الوعاء إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="100\text{K}" /></span> فما هو الضغط الجديد
+                وعاء يحتوي على غاز عند ضغط <span dir="ltr"><InlineMath math="3\text{atm}" /></span> ودرجة حرارة <span dir="ltr"><InlineMath math="200\text{K}" /></span> إذا تم تبريد الوعاء إلى <span dir="ltr"><InlineMath math="100\text{K}" /></span> فما هو الضغط الجديد
             </>
         ),
         "options": [
@@ -139,14 +139,14 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": (
             <>
-                غاز ضغطه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة تم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="900\text{mmHg}" /></span> ما كانت درجة الحرارة الابتدائية بالسيليزيوس
+                غاز ضغطه <span dir="ltr"><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة تم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr"><InlineMath math="900\text{mmHg}" /></span> ما كانت درجة الحرارة الابتدائية بالسيليزيوس
             </>
         ),
         "options": [
-            <span dir="ltr">56.1°C</span>,
-            <span dir="ltr">329.1°C</span>,
-            <span dir="ltr">117°C</span>,
-            <span dir="ltr">423°C</span>
+            <span dir="ltr">56.1^\circ\text{C}</span>,
+            <span dir="ltr">329.1^\circ\text{C}</span>,
+            <span dir="ltr">117^\circ\text{C}</span>,
+            <span dir="ltr">423^\circ\text{C}</span>
         ],
         "correctAnswerIndex": 0,
         "explanation": "P₁=700, P₂=900 T₂=150+273=423K T₁=T₂P₁/P₂ = (423 * 700) / 900 ≈ 329.1K نحول إلى سيليزيوس T₁(°C) = 329.1 - 273 ≈ 56.1°C"
@@ -157,28 +157,17 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         "question": (
             <>
-                إذا كان الرسم البياني للضغط (<InlineMath math="P" />) مقابل درجة الحرارة بالسيليزيوس (<InlineMath math="T^\circ C" />) لغاز مثالي هو خط مستقيم، فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة
+                إذا كان الرسم البياني للضغط (<InlineMath math="P" />) مقابل درجة الحرارة بالسيليزيوس (<InlineMath math="T^\circ C" />) لغاز مثالي هو خط مستقيم فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة
             </>
         ),
         "options": [
-            <span dir="ltr">0°C</span>,
-            <span dir="ltr">100°C</span>,
+            <span dir="ltr">0^\circ\text{C}</span>,
+            <span dir="ltr">100^\circ\text{C}</span>,
             <span dir="ltr"><InlineMath math="-273.15^\circ\text{C}"/></span>,
             "لا يتقاطع"
         ],
         "correctAnswerIndex": 2,
-        "explanation": <><span>تمامًا مثل قانون شارل إذا تم رسم الضغط مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى ضغط صفر عند درجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="-273.15^\circ C"/></span><span> وهي قيمة الصفر المطلق</span></>
-    },
-    {
-        "question": "غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز",
-        "options": [
-            "كمية A نصف كمية B",
-            "كمية A ضعف كمية B",
-            "الكميتان متساويتان",
-            "لا يمكن تحديد العلاقة من هذه المعلومات"
-        ],
-        "correctAnswerIndex": 1,
-        "explanation": "هذا السؤال يربط بين قانون جاي-لوساك ومبدأ أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب الضغط طرديًا مع عدد المولات (كمية الغاز) بما أن ضغط A ضعف ضغط B فإن عدد مولات A يجب أن يكون ضعف عدد مولات B"
+        explanation: <><span>تمامًا مثل قانون شارل إذا تم رسم الضغط مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى ضغط صفر عند درجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="-273.15^\circ C"/></span><span> وهي قيمة الصفر المطلق</span></>
     },
     {
         "question": "ماذا يحدث لمتوسط المسافة بين جسيمات الغاز عند تطبيق قانون جاي-لوساك",
@@ -209,7 +198,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         "question": (
             <>
-                في المحاكاة التفاعلية، عندما تزيد درجة الحرارة من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="546\text{K}" /></span> ماذا تلاحظ على قيمة الضغط
+                في المحاكاة التفاعلية عندما تزيد درجة الحرارة من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="546\text{K}" /></span> ماذا تلاحظ على قيمة الضغط
             </>
         ),
         "options": [
