@@ -35,13 +35,13 @@ export const staticQuizLvl1: QuizQuestion[] = [
     {
         "question": "الظروف المعيارية (STP) تشير إلى:",
         "options": [
-            <>1atm و <span dir="ltr">25°C</span></>,
-            "1atm و0K",
-            "760mmHg و273K",
-            <>101.3kPa و <span dir="ltr">100°C</span></>
+            <><span dir="ltr">1atm</span> و <span dir="ltr">25°C</span></>,
+            <><span dir="ltr">1atm</span> و<span dir="ltr">0K</span></>,
+            <><span dir="ltr">760mmHg</span> و <span dir="ltr">273K</span></>,
+            <><span dir="ltr">101.3kPa</span> و <span dir="ltr">100°C</span></>
         ],
         "correctAnswerIndex": 2,
-        explanation: <><span>الظروف المعيارية (STP) هي ضغط 1atm (والذي يكافئ 760mmHg أو 101.3kPa) ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span><span> (والتي تكافئ 273K)</span></>
+        explanation: <><span>الظروف المعيارية (STP) هي ضغط </span><span dir="ltr">1atm</span><span> (والذي يكافئ </span><span dir="ltr">760mmHg</span><span> أو </span><span dir="ltr">101.3kPa</span><span>) ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span><span> (والتي تكافئ </span><span dir="ltr">273K</span><span>)</span></>
     },
     {
         "question": "خزان سعته 2L فإن حجمه يساوي:",
@@ -99,7 +99,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             <span dir="ltr">300°C</span>
         ],
         "correctAnswerIndex": 1,
-        "explanation": <><span>للتحويل من كلفن إلى سيليزي نطرح 273 من قيمة الكلفن إذن T(°C)=T(K)-273=300-273=</span><span dir="ltr">27°C</span></>
+        explanation: <><span>للتحويل من كلفن إلى سيليزي نطرح 273 من قيمة الكلفن إذن </span><span dir="ltr" className="inline-block"><InlineMath math="T(^\circ C) = T(K) - 273 = 300 - 273 = 27^\circ C" /></span></>
     },
     {
         "question": "بالون درجة حرارته المطلقة 526K فإن حرارته بوحدة درجة مئوية تساوي:",
@@ -110,7 +110,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             <span dir="ltr">0.073°C</span>
         ],
         "correctAnswerIndex": 0,
-        explanation: <><span>للتحويل من كلفن (K) إلى درجة مئوية (°C) نستخدم العلاقة T(°C)=T(K)-273 بالتطبيق على السؤال </span><span dir="ltr" className="inline-block"><InlineMath math="526 - 273 = 253^\circ\text{C}" /></span></>
+        explanation: <><span>للتحويل من كلفن (K) إلى درجة مئوية (°C) نستخدم العلاقة </span><span dir="ltr" className="inline-block"><InlineMath math="T(^\circ C)=T(K)-273" /></span><span> بالتطبيق على السؤال </span><span dir="ltr" className="inline-block"><InlineMath math="526 - 273 = 253^\circ\text{C}" /></span></>
     },
     {
         "question": "حاوية حجمها 5000cm³ ما هو حجمها بوحدة (L)؟",
@@ -168,7 +168,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "نقطة لا معنى لها فيزيائيًا"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "الصفر المطلق (0K أو -273.15°C) هو أدنى درجة حرارة ممكنة نظريًا حيث تصل الطاقة الحركية للجسيمات إلى أدنى قيمة لها (تقترب من الصفر) "
+        "explanation": <>الصفر المطلق (<span dir="ltr">0K</span> أو <span dir="ltr">-273.15°C</span>) هو أدنى درجة حرارة ممكنة نظريًا حيث تصل الطاقة الحركية للجسيمات إلى أدنى قيمة لها (تقترب من الصفر)</>
     },
     {
         question: <span>بالون درجة حرارته المطلقة 523K إذا تغيرت لتصبح 125°C فإن العبارة الصحيحة التي تصف هذا التغير هي:</span>,
@@ -182,10 +182,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "600K", 
             "27K", 
             "300°C", 
-            "27°C"
+            <span dir="ltr">27°C</span>
         ],
         "correctAnswerIndex": 3,
-        explanation: <><span>أولاً نحسب القيمة الجديدة بالكلفن 900K / 3 = 300K بعد ذلك نحول هذه القيمة إلى الدرجة المئوية T(°C) = T(K) - 273 = 300 - 273 = </span><span dir="ltr">27°C</span><span> لذا الخيار الصحيح هو </span><span dir="ltr">27°C</span></>
+        explanation: <><span>أولاً نحسب القيمة الجديدة بالكلفن 900K / 3 = 300K بعد ذلك نحول هذه القيمة إلى الدرجة المئوية </span><span dir="ltr" className="inline-block"><InlineMath math="T(^\circ C) = T(K) - 273 = 300 - 273 = 27^\circ C" /></span><span> لذا الخيار الصحيح هو </span><span dir="ltr">27°C</span></>
     },
     {
         question: <span>بالون قراءة ضغطه الأولى كانت 760mmHg وقراءة ضغطه الثانية كانت 760kPa فإن العبارة الصحيحة التي تصف هذا التغير هي:</span>,
@@ -199,4 +199,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "للتحويل نستخدم العلاقات 1atm = 760mmHg و 1atm = 101.3kPa القراءة الأولى = 760mmHg = 101.3kPa القراءة الثانية = 760kPa النسبة بين القراءة الثانية والأولى هي 760kPa / 101.3kPa ≈ 7.5 إذن الخيار (أ) هو الصحيح"
     }
 ];
-
