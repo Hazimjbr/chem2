@@ -1,6 +1,6 @@
 
 export interface QuizQuestion {
-    question: string;
+    question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
     explanation: string;
@@ -88,7 +88,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "لنفترض أن T₂ = 2T₁ و V₂ = 2V₁ باستخدام القانون الجامع P₂ = (P₁V₁T₂)/(T₁V₂) = (1.5 * V₁ * 2T₁) / (T₁ * 2V₁) = 1.5 atm زيادة الحجم والحرارة بنفس النسبة تلغي تأثير بعضها البعض على الضغط"
     },
      {
-        "question": "عينة من الهواء حجمها 4L وضغطها 202.6kPa عند درجة حرارة 20°C فإذا أصبحت حرارتها 278K وحجمها 2500ml فإن ضغطها بوحدة atm يساوي",
+        "question": <>عينة من الهواء حجمها 4L وضغطها 202.6kPa عند درجة حرارة <span dir="ltr">20°C</span> فإذا أصبحت حرارتها 278K وحجمها 2500ml فإن ضغطها بوحدة atm يساوي</>,
         "options": [
             "200",
             "1",
