@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        "question": "منطاد طقس حجمه 300L عند سطح الأرض (1atm, 27°C) ما هو حجمه على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة -23°C",
+        "question": <>منطاد طقس حجمه 300L عند سطح الأرض (1atm, <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="27^\circ\text{C}" /></span>) ما هو حجمه على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="-23^\circ\text{C}" /></span></>,
         "options": [
             "500L",
             "600L",
