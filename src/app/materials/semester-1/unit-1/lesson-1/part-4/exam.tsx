@@ -72,10 +72,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": <>عينة من غاز النيون تشغل حجمًا قدره <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="752mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="25^\circ\text{C}" /></span> ما درجة الحرارة بالسيليزيوس التي يجب أن تصل إليها العينة لتشغل حجم <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="940mL" /></span>؟</>,
         "options": [
-            "31.25°C",
-            "99.3°C",
-            "372.3°C",
-            "54.7°C"
+            <span dir="ltr">31.25°C</span>,
+            <span dir="ltr">99.3°C</span>,
+            <span dir="ltr">372.3°C</span>,
+            <span dir="ltr">54.7°C</span>
         ],
         "correctAnswerIndex": 1,
         "explanation": "T₁=25+273=298K و V₁=752mL و V₂=940mL نجد T₂ بالكلفن أولاً T₂ = V₂T₁/V₁ = (940mL * 298K)/752mL ≈ 372.3K ثم نحول إلى سيليزيوس 372.3K - 273 = 99.3°C"
@@ -111,7 +111,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "جميع ما سبق"
         ],
         "correctAnswerIndex": 2,
-        "explanation": "نظريًا إذا قمنا بتمديد الخط البياني لقانون شارل إلى درجة حرارة منخفضة جدًا فإنه سيصل إلى حجم صفر عند -273.15°C (0K) في الواقع تتكاثف الغازات إلى سوائل قبل الوصول لهذه النقطة"
+        "explanation": <>نظريًا إذا قمنا بتمديد الخط البياني لقانون شارل إلى درجة حرارة منخفضة جدًا فإنه سيصل إلى حجم صفر عند <span dir="ltr">-273.15°C</span> (0K) في الواقع تتكاثف الغازات إلى سوائل قبل الوصول لهذه النقطة</>
     },
     {
         "question": <>غاز حجمه <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="5.0L" /></span> عند ضغط ودرجة حرارة معينين إذا تم الحفاظ على الضغط ثابتًا وتم خفض درجة الحرارة المطلقة إلى النصف فما هو الحجم الجديد؟</>,
@@ -175,9 +175,9 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "question": <>تم قياس حجم عينة من الهواء فكان <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="280mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="30^\circ\text{C}" /></span> ثم تم تبريد العينة عند ضغط ثابت حتى أصبح حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250mL" /></span> ما هي درجة الحرارة النهائية بالسيليزيوس؟</>,
         "options": [
             <span dir="ltr">-2.5°C</span>,
-            "26.7°C",
-            "270.6°C",
-            "2.3°C"
+            <span dir="ltr">26.7°C</span>,
+            <span dir="ltr">270.6°C</span>,
+            <span dir="ltr">2.3°C</span>
         ],
         "correctAnswerIndex": 0,
         "explanation": "T₁=30+273=303K و V₁=280mL و V₂=250mL نجد T₂ بالكلفن T₂ = V₂T₁/V₁ = (250mL * 303K)/280mL ≈ 270.5K ثم نحول إلى سيليزيوس 270.5K - 273 ≈ -2.5°C"
