@@ -184,5 +184,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً، نحسب عدد مولات الميثان: n = 3L / 22.4 L/mol ≈ 0.134mol. ثانياً، نحسب كتلة الميثان: m = n × Mr = 0.134mol × 16g/mol ≈ 2.14g. أخيراً، نحسب الكثافة: d = m / V = 2.14g / 3L ≈ 0.71g/L، الإجابة الأقرب هي 0.7"
     }
 ];
-
-```
