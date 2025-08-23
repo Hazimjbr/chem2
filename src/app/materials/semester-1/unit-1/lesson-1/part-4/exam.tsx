@@ -126,7 +126,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": "عينة من غاز محصور في وعاء حرارته 25°C وحجمه 1500ml إذا تقلص حجم الوعاء إلى 1L فإن درجة حرارة الغاز بفرض ثبات الضغط تساوي",
         "options": [
-            "-74°C",
+            <span dir="ltr">-74°C</span>,
             "0.2K",
             "198K",
             "16.6°C"
@@ -173,7 +173,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         "question": <>تم قياس حجم عينة من الهواء فكان <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="280mL" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="30^\circ\text{C}" /></span> ثم تم تبريد العينة عند ضغط ثابت حتى أصبح حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250mL" /></span> ما هي درجة الحرارة النهائية بالسيليزيوس؟</>,
         "options": [
-            "-2.5°C",
+            <span dir="ltr">-2.5°C</span>,
             "26.7°C",
             "270.6°C",
             "2.3°C"
