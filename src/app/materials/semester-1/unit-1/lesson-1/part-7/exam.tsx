@@ -81,7 +81,19 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "في الظروف المعيارية عدد المولات = الحجم / 22.4 إذن n = 3L / 22.4L/mol ≈ 0.13mol"
     },
     {
-        question: <>كمية من غاز النيتروجين (<InlineMath math="N_2" />) حجمها <InlineMath math="10\text{L}" /> وكمية أخرى من غاز الهيليوم (<InlineMath math="He" />) تشغل حجم <InlineMath math="20\text{L}" /> عند نفس الظروف ما هي نسبة عدد مولات الهيليوم إلى النيتروجين</>,
+        question: (
+            <>
+                <span>كمية من غاز النيتروجين</span>
+                <span dir="ltr" className="inline-block mx-1">(<InlineMath math="N_2" />)</span>
+                <span>حجمها</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="10\text{L}" /></span>
+                <span>وكمية أخرى من غاز الهيليوم</span>
+                <span dir="ltr" className="inline-block mx-1">(<InlineMath math="He" />)</span>
+                <span>تشغل حجم</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="20\text{L}" /></span>
+                <span>عند نفس الظروف ما هي نسبة عدد مولات الهيليوم إلى النيتروجين</span>
+            </>
+        ),
         "options": [
             "1:2",
             "2:1",
@@ -170,7 +182,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "4"
         ],
         "correctAnswerIndex": 0,
-        "explanation": "أولاً نجد عدد مولات الغاز (n) في الظروف المعيارية: n = الحجم / 22.4 = 44.8L / 22.4L/mol = 2mol ثانياً نحسب الكتلة المولية للغاز (Mr): Mr = الكتلة / n = 4g / 2mol = 2g/mol. بما أن الغاز ثنائي الذرة، فإن هذه هي كتلة الجزيء (مثل X₂). إذن، الكتلة المولية للعنصر الواحد هي نصف هذه القيمة: 2g/mol / 2 = 1g/mol."
+        "explanation": "أولاً نجد عدد مولات الغاز (n) في الظروف المعيارية: n = الحجم / 22.4 = 44.8L / 22.4L/mol = 2mol ثانياً نحسب الكتلة المولية للغاز (Mr): Mr = الكتلة / n = 4g / 2mol = 2g/mol بما أن الغاز ثنائي الذرة فإن هذه هي كتلة الجزيء (مثلاً X₂) إذن الكتلة المولية للعنصر الواحد هي نصف هذه القيمة: 2g/mol / 2 = 1g/mol"
     },
     {
         "question": "غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز",
