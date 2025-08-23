@@ -1,3 +1,4 @@
+
 import { InlineMath } from 'react-katex';
 import { GraphCurveDown, GraphCurveUp, GraphLineDown, GraphLineUp } from '@/components/illustrations/graphs';
 import React from 'react';
@@ -6,7 +7,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: React.ReactNode[] | string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -182,15 +183,15 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "T₁=30+273=303K و V₁=280mL و V₂=250mL نجد T₂ بالكلفن T₂ = V₂T₁/V₁ = (250mL * 303K)/280mL ≈ 270.5K ثم نحول إلى سيليزيوس 270.5K - 273 ≈ -2.5°C"
     },
     {
-        "question": <>إذا كان الرسم البياني للحجم (<InlineMath math="V" />) مقابل درجة الحرارة بالسيليزيوس (<InlineMath math="T^\circ C" />) لغاز مثالي هو خط مستقيم فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة؟</>,
-        "options": [
-            "0°C",
-            "100°C",
-            "-273.15°C",
+        question: <>إذا كان الرسم البياني للحجم (<InlineMath math="V" />) مقابل درجة الحرارة بالسيليزيوس (<InlineMath math="T^\circ C" />) لغاز مثالي هو خط مستقيم فأين يتقاطع امتداد هذا الخط مع محور درجة الحرارة؟</>,
+        options: [
+            <span dir="ltr">0°C</span>,
+            <span dir="ltr">100°C</span>,
+            <span dir="ltr">-273.15°C</span>,
             "لا يتقاطع معه"
         ],
-        "correctAnswerIndex": 2,
-        "explanation": "إذا تم رسم الحجم مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى حجم صفر عند درجة حرارة -273.15°C وهي قيمة الصفر المطلق على مقياس كلفن"
+        correctAnswerIndex: 2,
+        explanation: <>إذا تم رسم الحجم مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى حجم صفر عند درجة حرارة <span dir="ltr">-273.15°C</span> وهي قيمة الصفر المطلق على مقياس كلفن</>
     },
     {
         "question": <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها <span dir="ltr" className="inline-block">5L</span> يساوي:</span>,
