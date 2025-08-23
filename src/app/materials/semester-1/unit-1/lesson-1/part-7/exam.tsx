@@ -96,7 +96,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <><span className="inline-block">إذا علمت أن الكتلة المولية الذرية للأكسجين تساوي</span><span dir="ltr" className="inline-block"><InlineMath math="16\text{g/mol}" /></span><span className="inline-block">فإن حجم الأكسجين الذي تشغله</span><span dir="ltr" className="inline-block"><InlineMath math="50\text{g}" /></span><span className="inline-block">من غاز الأكسجين</span><span dir="ltr" className="inline-block">(<InlineMath math="O_2" />)</span><span className="inline-block">يساوي</span></>,
+        question: <><span className="inline-block">إذا علمت أن الكتلة المولية الذرية للأكسجين تساوي</span><span dir="ltr" className="inline-block mx-1"><InlineMath math="16\text{g/mol}"/></span><span className="inline-block">فإن حجم الأكسجين الذي تشغله</span><span dir="ltr" className="inline-block mx-1"><InlineMath math="50\text{g}"/></span><span className="inline-block">من غاز الأكسجين</span><span dir="ltr" className="inline-block mx-1">(<InlineMath math="O_2"/>)</span><span className="inline-block">يساوي</span></>,
         "options": [
             "70L",
             "14mL",
@@ -107,7 +107,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الكتلة المولية لغاز الأكسجين O₂ هي 2 * 16 = 32g/mol عدد المولات n = 50g / 32g/mol ≈ 1.56mol الحجم = 1.56mol * 22.4L/mol ≈ 35L"
     },
     {
-        "question": <>حجم الغاز الذي يشغله <InlineMath math="6.02 \times 10^{23}" /> ذرة من الهيليوم (<InlineMath math="He" />) في الظروف المعيارية يساوي</>,
+        question: <><span className="inline-block">حجم الغاز الذي يشغله</span><span dir="ltr" className="inline-block mx-1"><InlineMath math="6.02 \times 10^{23}" /></span><span className="inline-block">ذرة من الهيليوم</span><span dir="ltr" className="inline-block mx-1">(<InlineMath math="He" />)</span><span className="inline-block">في الظروف المعيارية يساوي</span></>,
         "options": [
             "2.2L",
             "22400mL",
@@ -162,7 +162,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً نجد عدد المولات n = 3L / 22.4L/mol ≈ 0.134mol عدد الجزيئات = n × عدد أفوجادرو = 0.134 × (6.022 × 10²³) ≈ 8.06 × 10²² جزيء"
     },
     {
-        question: <div><span className="inline-block">عينة من غاز ثنائي الذرة كتلة</span><span dir="ltr" className="inline-block"><InlineMath math="44.8\text{L}"/></span><span className="inline-block">منها في الظروف المعيارية يساوي</span><span dir="ltr" className="inline-block"><InlineMath math="4\text{g}"/></span><span className="inline-block">فإن الكتلة المولية للعنصر تساوي</span></div>,
+        question: <div>عينة من غاز ثنائي الذرة كتلة <span dir="ltr" className="inline-block"><InlineMath math="44.8\text{L}"/></span> منها في الظروف المعيارية يساوي <span dir="ltr" className="inline-block"><InlineMath math="4\text{g}"/></span> فإن الكتلة المولية للعنصر تساوي</div>,
         "options": [
             "1",
             "2",
