@@ -143,10 +143,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
             </>
         ),
         "options": [
-            <span dir="ltr"><InlineMath math="56.1^\circ\text{C}" /></span>,
-            <span dir="ltr"><InlineMath math="329.1^\circ\text{C}" /></span>,
-            <span dir="ltr"><InlineMath math="117^\circ\text{C}" /></span>,
-            <span dir="ltr"><InlineMath math="423^\circ\text{C}" /></span>
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="56.1^\circ\text{C}" /></span>,
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="329.1^\circ\text{C}" /></span>,
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="117^\circ\text{C}" /></span>,
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="423^\circ\text{C}" /></span>
         ],
         "correctAnswerIndex": 0,
         "explanation": "P₁=700, P₂=900 T₂=150+273=423K T₁=T₂P₁/P₂ = (423 * 700) / 900 ≈ 329.1K نحول إلى سيليزيوس T₁(°C) = 329.1 - 273 ≈ 56.1°C"
@@ -161,9 +161,9 @@ export const staticQuizLvl3: QuizQuestion[] = [
             </>
         ),
         "options": [
-            <span dir="ltr">0°C</span>,
-            <span dir="ltr">100°C</span>,
-            <span dir="ltr"><InlineMath math="-273.15^\circ\text{C}"/></span>,
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="0^\circ\text{C}"/></span>,
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="100^\circ\text{C}"/></span>,
+            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="-273.15^\circ\text{C}"/></span>,
             "لا يتقاطع"
         ],
         "correctAnswerIndex": 2,

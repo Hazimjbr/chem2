@@ -18,8 +18,8 @@ const lessonInfo = {
     lessonSubtitle: "قانون أفوجادرو",
     mainIdea: "لكمية ثابتة من الغاز عند ضغط وحرارة ثابتين، يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته. أي أن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجسيمات.",
     learningOutcomes: [
-        "أصف العلاقة بين حجم الغاز وعدد مولاته.",
-        "أستخدم مبدأ أفوجادرو في الحسابات الكيميائية المتعلقة بالغازات."
+        "أصف العلاقة بين حجم الغاز وعدد مولاته",
+        "أستخدم مبدأ أفوجادرو في الحسابات الكيميائية المتعلقة بالغازات"
     ],
     lessonContent: `<p>يُعَدُّ هذا القانون من أهم قوانين الغازات، حيث يربط بين كمية الغاز (التي يصعب قياسها مباشرة) وحجمه (الذي يسهل قياسه). اكتشف هذا المبدأ العالم الإيطالي أميديو أفوجادرو.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-7",
@@ -71,11 +71,11 @@ export default function LessonPartPage() {
                     cardIcon={<BookCopy className="h-6 w-6" />}
                 >
                     <div className="space-y-3 text-sm">
-                        <p>يمكن التعبير عن قانون أفوجادرو بعدة طرق مترابطة:</p>
+                        <p>يمكن التعبير عن قانون أفوجادرو بعدة طرق مترابطة</p>
                         <ul className="list-disc mr-4 space-y-2">
-                        <li>"تحتوي الحجوم المتساوية من الغازات المختلفة على نفس العدد من الجزيئات عند نفس الظروف من الضغط ودرجة الحرارة."</li>
-                        <li>"يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الضغط والحرارة."</li>
-                        <li>"يتناسب ضغط الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الحجم والحرارة."</li>
+                        <li>"تحتوي الحجوم المتساوية من الغازات المختلفة على نفس العدد من الجزيئات عند نفس الظروف من الضغط ودرجة الحرارة"</li>
+                        <li>"يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الضغط والحرارة"</li>
+                        <li>"يتناسب ضغط الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الحجم والحرارة"</li>
                         </ul>
                     </div>
                 </FlippableCard>
@@ -85,11 +85,11 @@ export default function LessonPartPage() {
                     cardIcon={<Cpu className="h-6 w-6" />}
                 >
                 <div className="space-y-4">
-                    <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي:</p>
+                    <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي</p>
                     <div className="text-left" dir="ltr"><BlockMath math="V \propto n" /></div>
-                    <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة:</p>
+                    <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k)، لتصبح المعادلة</p>
                     <div className="text-left" dir="ltr"><BlockMath math="\frac{V}{n} = k" /></div>
-                    <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                    <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز</p>
                     <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
                     <p className="text-sm text-muted-foreground">
                         <span>حيث </span>
@@ -116,11 +116,11 @@ export default function LessonPartPage() {
                         <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
                         <span>. ما حجم العينة إذا أضيف إليها </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
-                        <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
+                        <span> من الغاز عند نفس الظروف من الحرارة والضغط</span>
                     </p>
                     <div className="bg-muted/50 p-4 rounded-lg space-y-3">
                         <div>
-                            <p><strong className="text-accent">المعطيات:</strong></p>
+                            <p><strong className="text-accent">المعطيات</strong></p>
                             <div className='grid grid-cols-2 gap-x-4 text-sm text-left' dir="ltr">
                                 <p><InlineMath math="V_1 = 5.0L" /></p>
                                 <p><InlineMath math="V_2 = ?" /></p>
@@ -129,7 +129,7 @@ export default function LessonPartPage() {
                             </div>
                         </div>
                         <div>
-                            <p><strong className="text-accent">الحل:</strong></p>
+                            <p><strong className="text-accent">الحل</strong></p>
                             <ol className="list-decimal mr-6 text-sm space-y-2">
                                 <li>
                                     <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>)</span>
@@ -203,7 +203,7 @@ export default function LessonPartPage() {
             <Lightbulb className="h-7 w-7 text-yellow-400" />
             <div>
               <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -218,7 +218,7 @@ export default function LessonPartPage() {
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
                     <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
-                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح:</span>
+                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات العينة بعد الإضافة أصبح</span>
                   </>}
                   options={[
                       "0.25",
@@ -227,7 +227,7 @@ export default function LessonPartPage() {
                       "0.16"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="باستخدام قانون أفوجادرو (V₁/n₁ = V₂/n₂)، فإن عدد المولات النهائي n₂ = (V₂ * n₁) / V₁ = (4 L * 0.2 mol) / 3.2 L = 0.25 mol."
+                  explanation="باستخدام قانون أفوجادرو (V₁/n₁ = V₂/n₂)، فإن عدد المولات النهائي n₂ = (V₂ * n₁) / V₁ = (4 L * 0.2 mol) / 3.2 L = 0.25 mol"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -240,7 +240,7 @@ export default function LessonPartPage() {
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
                     <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
-                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي:</span>
+                    <span>. بفرض ثبات الضغط والحرارة فإن عدد مولات الغاز B المضافة يساوي</span>
                   </>}
                   options={[
                       "0.25",
@@ -249,7 +249,7 @@ export default function LessonPartPage() {
                       "0.16"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="أولاً نجد عدد المولات الكلي بعد الإضافة (n₂) = 0.25 mol (من السؤال السابق). عدد مولات B المضافة = n₂ - n₁ = 0.25 - 0.2 = 0.05 mol."
+                  explanation="أولاً نجد عدد المولات الكلي بعد الإضافة (n₂) = 0.25 mol (من السؤال السابق). عدد مولات B المضافة = n₂ - n₁ = 0.25 - 0.2 = 0.05 mol"
               />
           </div>
         </div>
