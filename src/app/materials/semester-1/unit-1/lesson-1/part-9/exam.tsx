@@ -36,7 +36,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لغاز PA يساوي حاصل ضرب الكسر المولي له XA في الضغط الكلي للخليط PA = XA * PTotal"
     },
     {
-        "question": <span>في خليط من غازي النيتروجين والأكسجين إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" /> فما هو الضغط الكلي للخليط</span>,
+        question: <span>في خليط من غازي النيتروجين والأكسجين إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" /> فما هو الضغط الكلي للخليط</span>,
         "options": [
             "0.6atm",
             "1.0atm",
@@ -47,7 +47,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون دالتون الضغط الكلي هو مجموع الضغوط الجزئية P_Total = P_Nitrogen + P_Oxygen = 0.8 + 0.2 = 1.0atm"
     },
      {
-        "question": <span>إذا خلط <InlineMath math="1.5L" /> من غاز A ضغطه <InlineMath math="0.5atm" /> مع <InlineMath math="3L" /> من غاز B ضغطه <InlineMath math="0.25atm" /> في وعاء حجمه <InlineMath math="1L" /> فإن الضغط الكلي للخليط بوحدة atm عند نفس درجة الحرارة يساوي</span>,
+        question: <span>إذا خلط <InlineMath math="1.5L" /> من غاز A ضغطه <InlineMath math="0.5atm" /> مع <InlineMath math="3L" /> من غاز B ضغطه <InlineMath math="0.25atm" /> في وعاء حجمه <InlineMath math="1L" /> فإن الضغط الكلي للخليط بوحدة atm عند نفس درجة الحرارة يساوي</span>,
         "options": [
             "0.75atm",
             "1.5atm",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="10^\circ C"/></span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي</span>,
+        question: <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C"/> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي</span>,
         "options": [
             "1.4",
             "0.11",
@@ -82,7 +82,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لـ A هو P_A = (1-0.7) * 2.5 = 0.75atm الحرارة T = 10+273=283K عدد مولات A هو n_A = (P_A*V)/(R*T) = (0.75*1.5)/(0.082*283) ≈ 0.05mol"
     },
     {
-        "question": <span>يحتوي وعاء حجمه <span dir="ltr" className="inline-block"><InlineMath math="1.5L" /></span> غازين A, B عند حرارة <span dir="ltr" className="inline-block"><InlineMath math="10^\circ C" /></span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <span dir="ltr" className="inline-block"><InlineMath math="2.5atm" /></span> وإذا كانت كتلة الغاز B تساوي <span dir="ltr" className="inline-block"><InlineMath math="3.4g" /></span> فإن الكتلة المولية للغاز B تساوي</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C" /> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> وإذا كانت كتلة الغاز B تساوي <InlineMath math="3.4g" /> فإن الكتلة المولية للغاز B تساوي</span>,
         "options": [
             "70",
             "30",
@@ -129,7 +129,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        "question": <div>{mainQuestionLvl3Text}<span> فإن عدد مولات الغاز A يساوي:</span></div>,
+        "question": <div><span>إذا خلط </span><span dir="ltr" className="inline-block"><InlineMath math="0.5L" /></span><span> من غاز A ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="300mmHg" /></span><span> درجة حرارته </span><span dir="ltr" className="inline-block"><InlineMath math="300K" /></span><span> مع </span><span dir="ltr" className="inline-block"><InlineMath math="0.43L" /></span><span> من غاز B له نفس الحرارة ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="350mmHg" /></span><span> فكان الضغط الكلي للخليط داخل الوعاء W يساوي </span><span dir="ltr" className="inline-block"><InlineMath math="500mmHg" /></span><span> عند نفس درجة الحرارة فإن عدد مولات الغاز A يساوي:</span></div>,
         "options": [
             "0016mol",
             "0008mol",
