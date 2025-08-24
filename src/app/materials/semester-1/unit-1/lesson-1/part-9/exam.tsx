@@ -33,7 +33,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "درجة حرارته فقط"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "الضغط الجزئي لغاز (P_A) يساوي حاصل ضرب الكسر المولي له (X_A) في الضغط الكلي للخليط (P_Total). P_A = X_A * P_Total."
+        "explanation": "الضغط الجزئي لغاز PA يساوي حاصل ضرب الكسر المولي له XA في الضغط الكلي للخليط PTotal PA = XA * PTotal"
     },
     {
         "question": <span>في خليط من غازي النيتروجين والأكسجين، إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" />، فما هو الضغط الكلي للخليط؟</span>,
