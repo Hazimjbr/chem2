@@ -75,10 +75,10 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "O₂"
         ],
         "correctAnswerIndex": 0,
-        "explanation": "بما أن جميع الغازات لها نفس الحجم والضغط ودرجة الحرارة فإن لها نفس عدد المولات n وفقًا لقانون الغاز المثالي الكتلة m = n × الكتلة المولية Mr لذلك الغاز الذي له أكبر كتلة مولية سيكون له أكبر كتلة الكتل المولية H₂=2 و O₂=32 و F₂=38 و Ar=40 إذن Ar هو صاحب الكتلة الأكبر"
+        "explanation": "بما أن جميع الغازات لها نفس الحجم والضغط ودرجة الحرارة فإن لها نفس عدد المولات n وفقا لقانون الغاز المثالي الكتلة m = n × الكتلة المولية Mr لذلك الغاز الذي له أكبر كتلة مولية سيكون له أكبر كتلة الكتل المولية H₂=2 و O₂=32 و F₂=38 و Ar=40 إذن Ar هو صاحب الكتلة الأكبر"
     },
     {
-        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block">7°C</span><span> إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
+        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span>. إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
         "options": [
             "F₂",
             "Ar",
@@ -119,7 +119,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
     },
      {
-        question: <div><p>من الرسم البياني، ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /></div>,
+        question: <div><p>ادرس الرسم البياني من السؤال السابق وأجب: ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /></div>,
         "options": [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -130,7 +130,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>من الرسم البياني، ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /></div>,
+        question: <div><p>ادرس الرسم البياني من السؤال السابق وأجب: ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /></div>,
         "options": [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -152,7 +152,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "أولاً نحسب الكتلة المولية لـ CO₂ = 12 + (2*16) = 44 g/mol ثم نحسب عدد المولات n = 11g / 44g/mol = 0.25 mol حجم الغاز في الظروف المعيارية = 0.25 mol * 22.4 L/mol = 5.6 L"
     },
     {
-        "question": "عينة من غاز النيتروجين (N₂) حجمها 2L عند ضغط 3atm ودرجة حرارة 27°C ما هو عدد مولات الغاز",
+        question: <><span>عينة من غاز النيتروجين (N₂) حجمها 2L عند ضغط 3atm ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ\text{C}" /></span><span> ما هو عدد مولات الغاز</span></>,
         "options": [
             "0.24 mol",
             "2.4 mol",
@@ -231,5 +231,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الظروف المعيارية T₁=273K, V₁=20L الحرارة الجديدة T₂=273+273=546K باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L"
     }
 ];
+
+    
 
     
