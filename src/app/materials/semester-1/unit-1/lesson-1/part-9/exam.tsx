@@ -58,7 +58,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "أولاً نحسب الضغط الجزئي لكل غاز في الوعاء الجديد 1L باستخدام قانون بويل P_A = (0.5*1.5)/1 = 0.75atm و P_B = (0.25*3)/1 = 0.75atm الضغط الكلي P_total = P_A + P_B = 0.75 + 0.75 = 1.5atm"
     },
     {
-        "question": "من السؤال السابق فإن الضغط الكلي للخليط عند نفس درجة الحرارة يساوي",
+        "question": "إذا كان الضغط الكلي للخليط عند نفس درجة الحرارة يساوي",
         "options": [
             "1.5kPa",
             "1atm",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr">10^\circ C</span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> فإن عدد مولات الغاز A تساوي</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="10^\circ C"/></span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> فإن عدد مولات الغاز A تساوي</span>,
         "options": [
             "1.4",
             "0.11",
@@ -82,7 +82,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لـ A هو P_A = (1-0.7) * 2.5 = 0.75atm الحرارة T = 10+273=283K عدد مولات A هو n_A = (P_A*V)/(R*T) = (0.75*1.5)/(0.082*283) ≈ 0.05mol"
     },
     {
-        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr">10^\circ C</span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> وإذا كانت كتلة الغاز B تساوي <InlineMath math="3.4\text{g}" /> فإن الكتلة المولية للغاز B تساوي</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="10^\circ C"/></span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> وإذا كانت كتلة الغاز B تساوي <InlineMath math="3.4\text{g}" /> فإن الكتلة المولية للغاز B تساوي</span>,
         "options": [
             "70",
             "30",
