@@ -33,7 +33,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "درجة حرارته فقط"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "الضغط الجزئي لغاز PA يساوي حاصل ضرب الكسر المولي له XA في الضغط الكلي للخليط PTotal PA = XA * PTotal"
+        "explanation": "الضغط الجزئي لغاز PA يساوي حاصل ضرب الكسر المولي له XA في الضغط الكلي للخليط PA = XA * PTotal"
     },
     {
         "question": <span>في خليط من غازي النيتروجين والأكسجين إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" /> فما هو الضغط الكلي للخليط؟</span>,
@@ -131,35 +131,35 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">1) عدد مولات الغاز A</strong></div>,
         "options": [
-            "0.016mol",
-            "0.008mol",
-            "0.004mol",
-            "0.032mol"
+            "0016mol",
+            "0008mol",
+            "0004mol",
+            "0032mol"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "P_A = 300/760 atm و n_A = PV/RT = ((300/760) * 0.5) / (0.082 * 300) ≈ 0.008mol"
+        "explanation": "P_A = 300/760 atm و n_A = PV/RT = ((300/760) * 05) / (0082 * 300) ≈ 0008mol"
     },
     {
         "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">2) عدد مولات الغاز B</strong></div>,
         "options": [
-            "0.008mol",
-            "0.016mol",
-            "0.004mol",
-            "0.032mol"
+            "0008mol",
+            "0016mol",
+            "0004mol",
+            "0032mol"
         ],
         "correctAnswerIndex": 0,
-        "explanation": "P_B = 350/760 atm و n_B = PV/RT = ((350/760) * 0.43) / (0.082 * 300) ≈ 0.008mol"
+        "explanation": "P_B = 350/760 atm و n_B = PV/RT = ((350/760) * 043) / (0082 * 300) ≈ 0008mol"
     },
     {
         "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">3) حجم الوعاء W بوحدة L</strong></div>,
         "options": [
-            "0.004L",
-            "0.1L",
-            "0.6L",
-            "0.032L"
+            "0004L",
+            "01L",
+            "06L",
+            "0032L"
         ],
         "correctAnswerIndex": 2,
-        "explanation": "n_total = n_A + n_B = 0.008 + 0.008 = 0.016mol و P_total = 500/760 atm و V = nRT/P = (0.016 * 0.082 * 300) / (500/760) ≈ 0.6L"
+        "explanation": "n_total = n_A + n_B = 0008 + 0008 = 0016mol و P_total = 500/760 atm و V = nRT/P = (0016 * 0082 * 300) / (500/760) ≈ 06L"
     },
      {
         "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">4) ضغط الغاز B في الوعاء W بوحدة mmHg</strong></div>,
@@ -170,17 +170,17 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "250mmHg"
         ],
         "correctAnswerIndex": 3,
-        "explanation": "الكسر المولي لـ B هو X_B = n_B / n_total = 0.008 / 0.016 = 0.5 الضغط الجزئي لـ B هو P_B = X_B * P_total = 0.5 * 500mmHg = 250mmHg"
+        "explanation": "الكسر المولي لـ B هو X_B = n_B / n_total = 0008 / 0016 = 05 الضغط الجزئي لـ B هو P_B = X_B * P_total = 05 * 500mmHg = 250mmHg"
     },
      {
         "question": <div>{mainQuestionLvl3}<br/><strong className="text-accent mt-2 block">5) الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm</strong></div>,
         "options": [
             "620atm",
-            "0.82atm",
-            "2.6atm",
-            "6.2atm"
+            "082atm",
+            "26atm",
+            "62atm"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "نستخدم القانون الجامع P₁=500mmHg, T₁=300K, T₂=100+273=373K و P₂ = P₁T₂/T₁ = (500 * 373) / 300 ≈ 621.7 mmHg نحول إلى atm: 621.7 / 760 ≈ 0.82atm"
+        "explanation": "نستخدم القانون الجامع P₁=500mmHg T₁=300K T₂=100+273=373K و P₂ = P₁T₂/T₁ = (500 * 373) / 300 ≈ 6217 mmHg نحول إلى atm: 6217 / 760 ≈ 082atm"
     }
 ];
