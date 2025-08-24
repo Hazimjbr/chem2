@@ -78,7 +78,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "بما أن جميع الغازات لها نفس الحجم والضغط ودرجة الحرارة فإن لها نفس عدد المولات n وفقا لقانون الغاز المثالي الكتلة m = n × الكتلة المولية Mr لذلك الغاز الذي له أكبر كتلة مولية سيكون له أكبر كتلة الكتل المولية H₂=2 و O₂=32 و F₂=38 و Ar=40 إذن Ar هو صاحب الكتلة الأكبر"
     },
     {
-        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}"/></span><span>. إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
+        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span>. إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
         "options": [
             "F₂",
             "Ar",
@@ -200,10 +200,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: <><span>ما هي كثافة غاز النيون (Ne) عند ضغط 900mmHg ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="127^\circ\text{C}" /></span><span> (الكتلة المولية لـ Ne=20g/mol)</span></>,
         "options": [
-            "0.72 g/L",
-            "7.2 g/L",
-            "1.44 g/L",
-            "0.36 g/L"
+            "0.72g/L",
+            "7.2g/L",
+            "1.44g/L",
+            "0.36g/L"
         ],
         "correctAnswerIndex": 0,
         "explanation": "نحول الوحدات P = 900/760 ≈ 1.184 atm T = 127+273 = 400K الكثافة d = (P*Mr)/(R*T) = (1.184 * 20) / (0.082 * 400) ≈ 0.72 g/L"
@@ -235,3 +235,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
