@@ -67,7 +67,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الكثافة d = (P × Mr) / (R × T) في الظروف المعيارية P=1atm و T=273K الكتلة المولية للهيليوم (He) هي 4g/mol إذن d = (1 × 4) / (0.082 × 273) ≈ 0.18 g/L"
     },
     {
-        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block">7°C</span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
+        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
         "options": [
             "Ar",
             "H₂",
@@ -119,7 +119,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
     },
      {
-        question: <div><p>ادرس الرسم البياني من السؤال السابق وأجب: ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /></div>,
+        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</strong></div>,
         "options": [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -130,7 +130,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>ادرس الرسم البياني من السؤال السابق وأجب: ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /></div>,
+        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
         "options": [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -154,12 +154,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: <><span>عينة من غاز النيتروجين (N₂) حجمها 2L عند ضغط 3atm ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ\text{C}" /></span><span> ما هو عدد مولات الغاز</span></>,
         "options": [
-            "0.24 mol",
-            "2.4 mol",
-            "4.1 mol",
-            "0.41 mol"
+            "0.24mol",
+            "2.4mol",
+            "4.1mol",
+            "0.41mol"
         ],
-        "correctAnswerIndex": 0,
+        correctAnswerIndex: 0,
         "explanation": "نستخدم قانون الغاز المثالي PV=nRT نحول الحرارة إلى كلفن T = 27 + 273 = 300K نعيد ترتيب المعادلة n = PV/RT = (3 atm * 2 L) / (0.082 L·atm/mol·K * 300 K) ≈ 0.24 mol"
     },
     {
