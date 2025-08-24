@@ -36,7 +36,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لغاز PA يساوي حاصل ضرب الكسر المولي له XA في الضغط الكلي للخليط PA = XA * PTotal"
     },
     {
-        "question": <span>في خليط من غازي النيتروجين والأكسجين إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" /> فما هو الضغط الكلي للخليط؟</span>,
+        "question": <span>في خليط من غازي النيتروجين والأكسجين إذا كان الضغط الجزئي للنيتروجين <InlineMath math="0.8atm" /> والضغط الجزئي للأكسجين <InlineMath math="0.2atm" /> فما هو الضغط الكلي للخليط</span>,
         "options": [
             "0.6atm",
             "1.0atm",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr">10°C</span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> فإن عدد مولات الغاز A تساوي</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr">10^\circ C</span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> فإن عدد مولات الغاز A تساوي</span>,
         "options": [
             "1.4",
             "0.11",
@@ -82,7 +82,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لـ A هو P_A = (1-0.7) * 2.5 = 0.75atm الحرارة T = 10+273=283K عدد مولات A هو n_A = (P_A*V)/(R*T) = (0.75*1.5)/(0.082*283) ≈ 0.05mol"
     },
     {
-        "question": <span>من السؤال السابق إذا كانت كتلة الغاز B تساوي <InlineMath math="3.4\text{g}" /> فإن الكتلة المولية للغاز B تساوي</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr">10^\circ C</span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> وإذا كانت كتلة الغاز B تساوي <InlineMath math="3.4\text{g}" /> فإن الكتلة المولية للغاز B تساوي</span>,
         "options": [
             "70",
             "30",
@@ -101,7 +101,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "1atm"
         ],
         "correctAnswerIndex": 3,
-        "explanation": "النسبة المولية للمتفاعلات هي 1:1 والكميات متساوية 1mol لكل منهما لذا يتفاعلان تمامًا يتكون 1mol من الناتج C بما أن الظروف لم تتغير والضغط يعتمد على عدد المولات والعدد الكلي للمولات الناتجة هو 1 فسيكون الضغط النهائي هو ضغط 1mol من الغاز في الظروف نفسها وهو 1atm بافتراض أن درجة الحرارة ثابتة"
+        "explanation": "النسبة المولية للمتفاعلات هي 1:1 والكميات متساوية 1mol لكل منهما لذا يتفاعلان تمامًا ويتكون 1mol من الناتج C بما أن الظروف لم تتغير والضغط يعتمد على عدد المولات والعدد الكلي للمولات الناتجة هو 1 فسيكون الضغط النهائي هو ضغط 1mol من الغاز في الظروف نفسها وهو 1atm بافتراض أن درجة الحرارة ثابتة"
     },
     {
         "question": <span>إذا خلط <InlineMath math="1\text{mol}" /> من الغاز A ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> مع <InlineMath math="1\text{mol}" /> من الغاز B ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> في وعاء حجمه <InlineMath math="1\text{L}" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow 3C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
