@@ -14,7 +14,7 @@ const mainQuestionLvl3 = <><span>إذا خلط </span><span dir="ltr" className=
 
 export const staticQuizLvl1: QuizQuestion[] = [
     {
-        "question": "تتفق العبارة \"يمكن حساب الضغط الكلي لخليط من الغازات باستخدام العدد الكلي لمولات غازات الخليط\" مع",
+        "question": "تتفق العبارة يمكن حساب الضغط الكلي لخليط من الغازات باستخدام العدد الكلي لمولات غازات الخليط مع",
         "options": [
             "قانون جراهام",
             "قانون جاي لوساك",
@@ -22,7 +22,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "قانون دالتون"
         ],
         "correctAnswerIndex": 3,
-        "explanation": "قانون دالتون والغاز المثالي يوضحان أن الضغط الكلي يعتمد على العدد الكلي للمولات (P_total = n_total * RT/V) بغض النظر عن أنواع الغازات"
+        "explanation": "قانون دالتون والغاز المثالي يوضحان أن الضغط الكلي يعتمد على العدد الكلي للمولات P_total = n_total * RT/V بغض النظر عن أنواع الغازات"
     },
     {
         "question": "الضغط الجزئي لغاز في خليط يعتمد على",
@@ -55,7 +55,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "3.0atm"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "أولاً نحسب الضغط الجزئي لكل غاز في الوعاء الجديد (1L) باستخدام قانون بويل P_A = (0.5*1.5)/1 = 0.75atm و P_B = (0.25*3)/1 = 0.75atm الضغط الكلي P_total = P_A + P_B = 0.75 + 0.75 = 1.5atm"
+        "explanation": "أولاً نحسب الضغط الجزئي لكل غاز في الوعاء الجديد 1L باستخدام قانون بويل P_A = (0.5*1.5)/1 = 0.75atm و P_B = (0.25*3)/1 = 0.75atm الضغط الكلي P_total = P_A + P_B = 0.75 + 0.75 = 1.5atm"
     },
     {
         "question": "من السؤال السابق فإن الضغط الكلي للخليط عند نفس درجة الحرارة يساوي",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ \text{C}" /> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي</span>,
+        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5\text{L}" /> غازين A, B عند حرارة <span dir="ltr">10°C</span> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5\text{atm}" /> فإن عدد مولات الغاز A تساوي</span>,
         "options": [
             "1.4",
             "0.11",
@@ -82,7 +82,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لـ A هو P_A = (1-0.7) * 2.5 = 0.75atm الحرارة T = 10+273=283K عدد مولات A هو n_A = (P_A*V)/(R*T) = (0.75*1.5)/(0.082*283) ≈ 0.05mol"
     },
     {
-        "question": <span>من السؤال السابق إذا كانت كتلة الغاز B تساوي <InlineMath math="3.4g" /> فإن الكتلة المولية للغاز B تساوي</span>,
+        "question": <span>من السؤال السابق إذا كانت كتلة الغاز B تساوي <InlineMath math="3.4\text{g}" /> فإن الكتلة المولية للغاز B تساوي</span>,
         "options": [
             "70",
             "30",
@@ -93,7 +93,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "P_B = 0.7 * 2.5 = 1.75atm و n_B = (P_B*V)/(R*T) = (1.75*1.5)/(0.082*283) ≈ 0.113mol الكتلة المولية Mr = m/n = 3.4g / 0.113mol ≈ 30 g/mol"
     },
      {
-        "question": <span>إذا خلط <InlineMath math="1mol" /> من الغاز A ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> مع <InlineMath math="1mol" /> من الغاز B ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> في وعاء حجمه <InlineMath math="1L" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
+        "question": <span>إذا خلط <InlineMath math="1\text{mol}" /> من الغاز A ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> مع <InlineMath math="1\text{mol}" /> من الغاز B ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> في وعاء حجمه <InlineMath math="1\text{L}" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
         "options": [
             "2atm",
             "4atm",
@@ -101,10 +101,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "1atm"
         ],
         "correctAnswerIndex": 3,
-        "explanation": "النسبة المولية للمتفاعلات هي 1:1 والكميات متساوية (1mol لكل منهما) لذا يتفاعلان تمامًا يتكون 1mol من الناتج C بما أن الظروف لم تتغير والضغط يعتمد على عدد المولات والعدد الكلي للمولات الناتجة هو 1 فسيكون الضغط النهائي هو ضغط 1mol من الغاز في الظروف نفسها وهو 1atm (بافتراض أن درجة الحرارة ثابتة)"
+        "explanation": "النسبة المولية للمتفاعلات هي 1:1 والكميات متساوية 1mol لكل منهما لذا يتفاعلان تمامًا يتكون 1mol من الناتج C بما أن الظروف لم تتغير والضغط يعتمد على عدد المولات والعدد الكلي للمولات الناتجة هو 1 فسيكون الضغط النهائي هو ضغط 1mol من الغاز في الظروف نفسها وهو 1atm بافتراض أن درجة الحرارة ثابتة"
     },
     {
-        "question": <span>إذا خلط <InlineMath math="1mol" /> من الغاز A ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> مع <InlineMath math="1mol" /> من الغاز B ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> في وعاء حجمه <InlineMath math="1L" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow 3C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
+        "question": <span>إذا خلط <InlineMath math="1\text{mol}" /> من الغاز A ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> مع <InlineMath math="1\text{mol}" /> من الغاز B ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> في وعاء حجمه <InlineMath math="1\text{L}" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow 3C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
         "options": [
             "2atm",
             "4atm",
@@ -115,7 +115,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "يتفاعل 1mol من A مع 1mol من B لإنتاج 3mol من C بما أن الضغط يتناسب طرديًا مع عدد المولات والعدد الكلي للمولات أصبح 3 فإن الضغط الكلي سيصبح 3atm"
     },
     {
-        "question": <span>إذا خلط <InlineMath math="1mol" /> من الغاز A ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> مع <InlineMath math="1mol" /> من الغاز B ضغطه <InlineMath math="1atm" /> وحجمه <InlineMath math="1L" /> في وعاء حجمه <InlineMath math="1L" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + 2B(g) \rightarrow 3C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
+        "question": <span>إذا خلط <InlineMath math="1\text{mol}" /> من الغاز A ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> مع <InlineMath math="1\text{mol}" /> من الغاز B ضغطه <InlineMath math="1\text{atm}" /> وحجمه <InlineMath math="1\text{L}" /> في وعاء حجمه <InlineMath math="1\text{L}" /> فحدث التفاعل <span dir="ltr" className="inline-block"><InlineMath math="A(g) + 2B(g) \rightarrow 3C(g)" /></span> فإن الضغط الكلي بعد انتهاء التفاعل</span>,
         "options": [
             "2atm",
             "4atm",
@@ -123,7 +123,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "1atm"
         ],
         "correctAnswerIndex": 0,
-        "explanation": "المادة المحددة للتفاعل هي B (نحتاج 2mol ولدينا 1mol فقط) سيتفاعل 0.5mol من A مع 1mol من B وينتج 1.5mol من C سيتبقى 0.5mol من A العدد الكلي للمولات النهائية = 1.5(C) + 0.5(A) = 2mol إذن الضغط النهائي سيكون 2atm"
+        "explanation": "المادة المحددة للتفاعل هي B نحتاج 2mol ولدينا 1mol فقط سيتفاعل 0.5mol من A مع 1mol من B وينتج 1.5mol من C سيتبقى 0.5mol من A العدد الكلي للمولات النهائية = 1.5(C) + 0.5(A) = 2mol إذن الضغط النهائي سيكون 2atm"
     }
 ];
 
