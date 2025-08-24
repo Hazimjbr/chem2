@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C"/> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي</span>,
+        question: <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C" /> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> فإن عدد مولات الغاز A تساوي</span>,
         "options": [
             "1.4",
             "0.11",
@@ -82,7 +82,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الضغط الجزئي لـ A هو P_A = (1-0.7) * 2.5 = 0.75atm الحرارة T = 10+273=283K عدد مولات A هو n_A = (P_A*V)/(R*T) = (0.75*1.5)/(0.082*283) ≈ 0.05mol"
     },
     {
-        "question": <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C" /> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> وإذا كانت كتلة الغاز B تساوي <InlineMath math="3.4g" /> فإن الكتلة المولية للغاز B تساوي</span>,
+        question: <span>يحتوي وعاء حجمه <InlineMath math="1.5L" /> غازين A, B عند حرارة <InlineMath math="10^\circ C" /> حيث يشكل الغاز B 70% إذا كان ضغط الوعاء يساوي <InlineMath math="2.5atm" /> وإذا كانت كتلة الغاز B تساوي <InlineMath math="3.4g" /> فإن الكتلة المولية للغاز B تساوي</span>,
         "options": [
             "70",
             "30",
@@ -129,7 +129,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        "question": <div><span>إذا خلط </span><span dir="ltr" className="inline-block"><InlineMath math="0.5L" /></span><span> من غاز A ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="300mmHg" /></span><span> درجة حرارته </span><span dir="ltr" className="inline-block"><InlineMath math="300K" /></span><span> مع </span><span dir="ltr" className="inline-block"><InlineMath math="0.43L" /></span><span> من غاز B له نفس الحرارة ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="350mmHg" /></span><span> فكان الضغط الكلي للخليط داخل الوعاء W يساوي </span><span dir="ltr" className="inline-block"><InlineMath math="500mmHg" /></span><span> عند نفس درجة الحرارة فإن عدد مولات الغاز A يساوي:</span></div>,
+        question: <div>{mainQuestionLvl3Text}<span> فإن عدد مولات الغاز A يساوي:</span></div>,
         "options": [
             "0016mol",
             "0008mol",
@@ -173,7 +173,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الكسر المولي لـ B هو X_B = n_B / n_total = 0008 / 0016 = 05 الضغط الجزئي لـ B هو P_B = X_B * P_total = 05 * 500mmHg = 250mmHg"
     },
      {
-        "question": <div>{mainQuestionLvl3Text}<span> فإن الضغط الكلي للخليط عند درجة حرارة <InlineMath math='100^\circ C' /> بوحدة atm يساوي:</span></div>,
+        "question": <div>{mainQuestionLvl3Text}<span> فإن الضغط الكلي للخليط عند درجة حرارة <InlineMath math="100^\circ C" /> بوحدة atm يساوي:</span></div>,
         "options": [
             "620atm",
             "082atm",
@@ -184,3 +184,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "نستخدم القانون الجامع P₁=500mmHg T₁=300K T₂=100+273=373K و P₂ = P₁T₂/T₁ = (500 * 373) / 300 ≈ 6217 mmHg نحول إلى atm: 6217 / 760 ≈ 082atm"
     }
 ];
+
+    
