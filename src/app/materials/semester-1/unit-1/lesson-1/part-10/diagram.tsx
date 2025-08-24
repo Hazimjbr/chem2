@@ -9,7 +9,7 @@ const SvgDiagram = ({ children, className, ...props }: { children: React.ReactNo
     <div className="flex justify-center items-center my-4">
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={cn("w-full h-auto bg-muted/50 rounded-lg border p-2", className)}
+            className={cn("w-full h-auto bg-white rounded-lg border p-2", className)}
             {...props}
         >
             {children}
@@ -192,3 +192,4 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         
     </SvgDiagram>
 );
+
