@@ -67,7 +67,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الكثافة d = (P × Mr) / (R × T) في الظروف المعيارية P=1atm و T=273K الكتلة المولية للهيليوم (He) هي 4g/mol إذن d = (1 × 4) / (0.082 × 273) ≈ 0.18 g/L"
     },
     {
-        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
+        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}"/></span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
         "options": [
             "Ar",
             "H₂",
@@ -78,7 +78,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "بما أن جميع الغازات لها نفس الحجم والضغط ودرجة الحرارة فإن لها نفس عدد المولات n وفقا لقانون الغاز المثالي الكتلة m = n × الكتلة المولية Mr لذلك الغاز الذي له أكبر كتلة مولية سيكون له أكبر كتلة الكتل المولية H₂=2 و O₂=32 و F₂=38 و Ar=40 إذن Ar هو صاحب الكتلة الأكبر"
     },
     {
-        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span>. إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
+        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}"/></span><span>. إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
         "options": [
             "F₂",
             "Ar",
@@ -198,7 +198,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "باستخدام القانون الجامع (P₁V₁/T₁ = P₂V₂/T₂) فإن P₂ = P₁ * (V₁/V₂) * (T₂/T₁) لدينا V₂=2V₁ و T₂=T₁/2 إذن P₂ = P₁ * (V₁/2V₁) * ((T₁/2)/T₁) = P₁ * (1/2) * (1/2) = P₁/4 يقل الضغط إلى الربع"
     },
     {
-        "question": "ما هي كثافة غاز النيون (Ne) عند ضغط 900mmHg ودرجة حرارة 127°C (الكتلة المولية لـ Ne=20g/mol)",
+        question: <><span>ما هي كثافة غاز النيون (Ne) عند ضغط 900mmHg ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="127^\circ\text{C}" /></span><span> (الكتلة المولية لـ Ne=20g/mol)</span></>,
         "options": [
             "0.72 g/L",
             "7.2 g/L",
