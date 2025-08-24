@@ -67,7 +67,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الكثافة d = (P × Mr) / (R × T) في الظروف المعيارية P=1atm و T=273K الكتلة المولية للهيليوم (He) هي 4g/mol إذن d = (1 × 4) / (0.082 × 273) ≈ 0.18 g/L"
     },
     {
-        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}"/></span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
+        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
         "options": [
             "Ar",
             "H₂",
@@ -100,7 +100,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون الغاز المثالي (PV=nRT) عند ثبات الحجم (V) والحرارة (T) فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n) العينة B تحتوي على أكبر عدد من المولات (0.8mol) لذا فهي الأعلى ضغطًا"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات في الرسم البياني (D:32, C:46, B:18, A:20)g/mol، فأي عينة هي الأكثر كثافة؟</p><GasSamplesGraph /></div>,
+        question: <div><p>ادرس الرسم البياني للغازات. إذا كانت الكتل المولية للغازات (D:32, C:46, B:18, A:20)g/mol، فأي عينة هي الأكثر كثافة؟</p><GasSamplesGraph /></div>,
         "options": [
             "C",
             "B",
@@ -220,7 +220,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "نستخدم قانون دالتون مع قانون بويل n_total = n₁ + n₂ بما أن n ∝ PV يمكننا القول P_final * V_final = P₁V₁ + P₂V₂ الحجم النهائي V_final = 3+5=8L إذن P_final * 8 = (4*3) + (2*5) = 12 + 10 = 22 P_final = 22/8 = 2.75atm"
     },
     {
-        "question": "غاز حجمه 20L في الظروف المعيارية إذا تم تسخينه إلى 273°C مع الحفاظ على الضغط ثابتًا ما هو حجمه الجديد",
+        question: <><span>غاز حجمه 20L في الظروف المعيارية إذا تم تسخينه إلى </span><span dir="ltr" className="inline-block"><InlineMath math="273^\circ\text{C}" /></span><span> مع الحفاظ على الضغط ثابتًا ما هو حجمه الجديد</span></>,
         "options": [
             "20L",
             "10L",
@@ -228,7 +228,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "40L"
         ],
         "correctAnswerIndex": 3,
-        "explanation": "الظروف المعيارية T₁=273K, V₁=20L الحرارة الجديدة T₂=273+273=546K باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L"
+        "explanation": "الظروف المعيارية T₁=273K, V₁=20L, الحرارة الجديدة T₂=273+273=546K باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L"
     }
 ];
 
