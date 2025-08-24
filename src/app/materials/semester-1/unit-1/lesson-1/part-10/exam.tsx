@@ -70,10 +70,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         "question": "أي من الغازات التالية هو الأسرع انتشارًا عند نفس درجة الحرارة",
         "options": [
-            "O₂ (32g/mol)",
-            "H₂S (34g/mol)",
-            "CH₄ (16g/mol)",
-            "SO₂ (64g/mol)"
+            "O₂",
+            "H₂S",
+            "CH₄",
+            "SO₂"
         ],
         "correctAnswerIndex": 2,
         "explanation": "الغاز الأسرع انتشارًا هو الذي له أقل كتلة مولية بالنظر للخيارات الميثان CH₄ هو الأخف (16 g/mol) وبالتالي هو الأسرع انتشارًا"
