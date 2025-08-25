@@ -40,7 +40,7 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: القانون الجامع"
 };
 
-export default function LessonPartPage({ params }: { params: { 'part-5': string } }) {
+export default function LessonPartPage() {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     useEffect(() => {
@@ -253,5 +253,7 @@ export default function LessonPartPage({ params }: { params: { 'part-5': string 
     </LessonLayout>
   );
 }
+
+    
 
     

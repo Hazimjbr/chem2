@@ -31,7 +31,7 @@ const lessonInfo = {
 };
 
 
-export default function LessonPartPage({ params }: { params: { 'part-7': string } }) {
+export default function LessonPartPage() {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     useEffect(() => {
@@ -256,5 +256,7 @@ export default function LessonPartPage({ params }: { params: { 'part-7': string 
     </LessonLayout>
   );
 }
+
+    
 
     

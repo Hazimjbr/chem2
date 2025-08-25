@@ -40,7 +40,7 @@ const lessonInfo = {
   nextLessonTitle: "الجزء التالي: مقدمة قوانين الغازات"
 }
 
-export default function LessonPartPage({ params }: { params: { 'part-1': string } }) {
+export default function LessonPartPage() {
   const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -286,5 +286,7 @@ export default function LessonPartPage({ params }: { params: { 'part-1': string 
     </LessonLayout>
   );
 }
+
+    
 
     

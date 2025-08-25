@@ -10,7 +10,7 @@ import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import React, { useEffect } from 'react';
 
 
-export default function Unit1ReviewPage({ params }: { params: { 'section-5': string } }) {
+export default function Unit1ReviewPage() {
     
     // We can use this effect to mark the unit as "completed" if the user scores well.
     useEffect(() => {
@@ -72,5 +72,7 @@ export default function Unit1ReviewPage({ params }: { params: { 'section-5': str
         </div>
     );
 }
+
+    
 
     
