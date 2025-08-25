@@ -93,17 +93,15 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <rect x="230" y="10" width="180" height="70" fill="none" stroke="black" strokeWidth="1"/>
         <path d="M195,45 l 30,0" stroke="black" strokeWidth="2" markerEnd="url(#arrow)" />
         {/* Initial State A - Unified */}
-        <use href="#white-diatomic" x="30" y="30" /> 
-        <use href="#white-diatomic" x="70" y="60" /> 
-        <use href="#black-diatomic" x="130" y="20" /> 
-        <use href="#black-diatomic" x="170" y="50" /> 
+        <use href="#white-diatomic" x="60" y="30" /> 
+        <use href="#white-diatomic" x="90" y="60" /> 
+        <use href="#black-diatomic" x="120" y="20" /> 
+        <use href="#black-diatomic" x="150" y="50" /> 
         {/* Final State A */}
         <use href="#white-diatomic" x="250" y="60" /> 
-        <use href="#white-diatomic" x="390" y="30" /> 
-        <use href="#white-diatomic" x="330" y="55" /> 
-        <use href="#black-diatomic" x="270" y="25" /> 
-        <use href="#black-diatomic" x="310" y="70" /> 
-        <use href="#black-diatomic" x="360" y="45" />
+        <use href="#white-diatomic" x="380" y="25" /> 
+        <use href="#black-diatomic" x="280" y="20" /> 
+        <use href="#black-diatomic" x="350" y="55" /> 
 
         {/* --- Row 2, Process B (Separation) --- */}
         <text x="430" y="135" textAnchor="middle" fontSize="16">ب</text>
@@ -198,3 +196,6 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
 );
 
 
+
+
+    
