@@ -39,7 +39,7 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: قانون جاي لوساك"
 };
 
-export default function LessonPartPage() {
+export default function LessonPartPage({ params }: { params: { 'part-4': string } }) {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     useEffect(() => {
@@ -256,3 +256,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

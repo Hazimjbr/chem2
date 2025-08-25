@@ -27,7 +27,7 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: قانون جراهام"
 };
 
-export default function LessonPartPage() {
+export default function LessonPartPage({ params }: { params: { 'part-9': string } }) {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     useEffect(() => {
@@ -130,3 +130,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
