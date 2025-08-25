@@ -98,8 +98,12 @@ export const DiffusionProcessDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         <use href="#black-diatomic" x="130" y="20" /> 
         <use href="#black-diatomic" x="170" y="50" /> 
         {/* Final State A */}
-        <use href="#white-diatomic" x="250" y="65" /> <use href="#white-diatomic" x="290" y="20" /> <use href="#white-diatomic" x="330" y="50" /> 
-        <use href="#black-diatomic" x="270" y="40" /> <use href="#black-diatomic" x="310" y="70" /> <use href="#black-diatomic" x="350" y="25" /> 
+        <use href="#white-diatomic" x="250" y="60" /> 
+        <use href="#white-diatomic" x="390" y="30" /> 
+        <use href="#white-diatomic" x="330" y="55" /> 
+        <use href="#black-diatomic" x="270" y="25" /> 
+        <use href="#black-diatomic" x="310" y="70" /> 
+        <use href="#black-diatomic" x="360" y="45" />
 
         {/* --- Row 2, Process B (Separation) --- */}
         <text x="430" y="135" textAnchor="middle" fontSize="16">ب</text>
@@ -192,4 +196,5 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
         
     </SvgDiagram>
 );
+
 
