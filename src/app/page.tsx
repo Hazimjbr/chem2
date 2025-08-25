@@ -79,6 +79,32 @@ export default function Home() {
           </Card>
         </div>
       </section>
+
+       <section className="py-16 border-t">
+        <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold">مثال على التصميم المتجاوب</h2>
+            <p className="text-muted-foreground mt-2">
+                قم بتغيير حجم نافذة المتصفح لترى كيف تتكيف هذه الصناديق مع عرض الشاشة
+            </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="h-40 rounded-lg bg-primary text-primary-foreground flex items-center justify-center text-lg font-bold">
+                (هاتف) عمود 1
+            </div>
+            <div className="h-40 rounded-lg bg-secondary text-secondary-foreground flex items-center justify-center text-lg font-bold">
+                (جهاز لوحي) عمود 2
+            </div>
+            <div className="h-40 rounded-lg bg-accent text-accent-foreground flex items-center justify-center text-lg font-bold lg:col-span-1 md:col-span-2">
+                (لابتوب) عمود 3
+            </div>
+        </div>
+        <div className="text-center mt-6 p-4 bg-muted rounded-lg text-sm text-muted-foreground" dir="ltr">
+            <p className="font-mono">{`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">`}</p>
+            <p className="mt-2 text-right" dir="rtl">
+                هذا الكود يخبر المتصفح: استخدم عمودًا واحدًا افتراضيًا (للهواتف)، ثم استخدم عمودين للشاشات المتوسطة (`md`) فما فوق، ثم ثلاثة أعمدة للشاشات الكبيرة (`lg`) فما فوق.
+            </p>
+        </div>
+      </section>
     </div>
   );
 }
