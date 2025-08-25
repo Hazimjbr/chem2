@@ -157,8 +157,14 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             generatedQuestions = selectedQuestions.map(q => shuffleOptions(q));
 
         } else {
-            const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            generatedQuestions = result.quiz.map(q => ({...q, question: q.question, options: q.options}));
+            // This case should no longer be reached from the UI
+            toast({
+                variant: 'destructive',
+                title: 'خطأ',
+                description: 'مستوى الصعوبة المطلوب غير متوفر.',
+            });
+            setIsLoading(false);
+            return;
         }
         setQuiz(generatedQuestions.filter(q => q && q.options && q.options.length > 0));
     } catch (error) {
@@ -214,7 +220,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     const passed = finalScore >= 0.8;
     
     let nextLevel = difficultyLevel;
-    if (passed && difficultyLevel < 5) {
+    if (passed && difficultyLevel < 3) { // Cap level at 3
       nextLevel = difficultyLevel + 1;
       toast({
           title: 'مستوى الصعوبة ارتفع',
@@ -258,7 +264,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
         <CardFooter className="justify-center flex-wrap gap-2">
              <Button onClick={handleRestartQuiz}>
                  <RefreshCw className="ml-2 h-4 w-4" />
-                {passed && difficultyLevel < 5 ? `تحدّ جديد (المستوى ${difficultyLevel + 1})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
+                {passed && difficultyLevel < 3 ? `تحدّ جديد (المستوى ${difficultyLevel + 1})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
             </Button>
             <Button onClick={handleStartOver} variant="outline">
                 البدء من جديد
@@ -383,5 +389,3 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
-
-    
