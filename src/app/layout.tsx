@@ -10,7 +10,7 @@ import 'katex/dist/katex.min.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ChemInteractive',
+  title: 'Chemzim',
   description: 'Interactive Chemistry Learning Platform',
 };
 

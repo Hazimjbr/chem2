@@ -21,7 +21,7 @@ export default function Home() {
     <div className="container mx-auto p-8">
       <section className="text-center py-16">
         <h1 className="text-5xl font-bold mb-4">
-          أهلاً بك في ChemInteractive
+          أهلاً بك في Chemzim
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
           منصتك التفاعلية لإتقان كيمياء التوجيهي الأردني بأحدث الطرق التعليمية

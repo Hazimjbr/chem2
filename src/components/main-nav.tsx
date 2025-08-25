@@ -23,7 +23,7 @@ function Logo() {
     return (
         <Link href="/" className="flex items-center space-x-2">
             <Beaker className="h-6 w-6 text-primary" />
-            <span className="inline-block font-bold">ChemInteractive</span>
+            <span className="inline-block font-bold">Chemzim</span>
         </Link>
     )
 }
