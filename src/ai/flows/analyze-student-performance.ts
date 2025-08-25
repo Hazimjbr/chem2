@@ -8,22 +8,48 @@ import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { units } from '@/data/materials';
 
-// Helper function to map lessonId to a human-readable title
+// Helper function to map lessonId (which is a URL path) to a human-readable title
 const getLessonTitle = (lessonId: string): string => {
-  // Example lessonId: "unit-1-lesson-2-part-3"
-  const parts = lessonId.split('-');
-  const unitNum = parts[1];
-  const lessonNum = parts[3];
+    // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
+    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
 
-  const unit = units.find(u => u.id === `unit-${unitNum}`);
-  if (!unit) return lessonId;
+    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
+    if (!unitIdentifier) return lessonId; // Return raw path if no unit found
 
-  const lesson = unit.lessons.find(l => l.lessonNum === parseInt(lessonNum, 10));
-  return lesson ? `${unit.title} / ${lesson.title}` : unit.title;
+    const unit = units.find(u => u.id === unitIdentifier);
+    if (!unit) return lessonId;
+
+    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
+    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
+
+    if (lessonIdentifier) {
+        const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
+        const lesson = unit.lessons.find(l => l.lessonNum === lessonNum);
+        if (!lesson) return unit.title;
+
+        const partIdentifier = pathParts.find(p => p.startsWith('part-'));
+        if (partIdentifier) {
+            const partNum = parseInt(partIdentifier.replace('part-', ''), 10);
+            const part = lesson.parts.find(p => p.partNum === partNum);
+            return part ? `${lesson.title} / ${part.title}` : lesson.title;
+        }
+        return lesson.title;
+    }
+
+    if (sectionIdentifier) {
+        const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
+        const section = unit.lessons.find(l => l.sectionNum === sectionNum);
+         if (section) {
+            return `${unit.title} / ${section.title}`;
+        }
+    }
+
+    return unit.title; // Fallback to unit title
 }
 
+
 const QuizResultSchema = z.object({
-  lessonId: z.string().describe("The unique identifier for the lesson, e.g., 'unit-1-lesson-2-part-3'."),
+  lessonId: z.string().describe("The unique identifier for the lesson, which is the URL path."),
   score: z.number().min(0).max(1).describe("The student's score, from 0.0 to 1.0."),
   difficulty: z.number().min(0.5).describe("The difficulty level of the quiz taken. Level 0.5 is for quick checks."),
 });
@@ -90,10 +116,10 @@ export async function analyzeStudentPerformance(input: z.infer<typeof QuizResult
   // For demonstration, if no real data is passed, use mock data.
   // In a real application, you would remove this mock data logic.
   const finalResults = processedResults.length > 0 ? processedResults : [
-      { lessonId: 'unit-1-lesson-1-part-3', score: 0.95, difficulty: 1, lessonTitle: getLessonTitle('unit-1-lesson-1-part-3'), scorePercentage: '95' },
-      { lessonId: 'unit-1-lesson-1-part-8', score: 0.55, difficulty: 2, lessonTitle: getLessonTitle('unit-1-lesson-1-part-8'), scorePercentage: '55' },
-      { lessonId: 'unit-1-lesson-1-part-4', score: 0.88, difficulty: 2, lessonTitle: getLessonTitle('unit-1-lesson-1-part-4'), scorePercentage: '88' },
-      { lessonId: 'unit-1-lesson-1-part-9', score: 0.65, difficulty: 1, lessonTitle: getLessonTitle('unit-1-lesson-1-part-9'), scorePercentage: '65' },
+      { lessonId: '/materials/semester-1/unit-1/lesson-1/part-3', score: 0.95, difficulty: 1, lessonTitle: getLessonTitle('/materials/semester-1/unit-1/lesson-1/part-3'), scorePercentage: '95' },
+      { lessonId: '/materials/semester-1/unit-1/lesson-1/part-8', score: 0.55, difficulty: 2, lessonTitle: getLessonTitle('/materials/semester-1/unit-1/lesson-1/part-8'), scorePercentage: '55' },
+      { lessonId: '/materials/semester-1/unit-1/lesson-1/part-4', score: 0.88, difficulty: 2, lessonTitle: getLessonTitle('/materials/semester-1/unit-1/lesson-1/part-4'), scorePercentage: '88' },
+      { lessonId: '/materials/semester-1/unit-1/lesson-1/part-9', score: 0.65, difficulty: 1, lessonTitle: getLessonTitle('/materials/semester-1/unit-1/lesson-1/part-9'), scorePercentage: '65' },
   ];
   
   const studentData = {
