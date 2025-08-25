@@ -26,7 +26,7 @@ export default function Home() {
           <span className="text-foreground">Zim</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
-          منصتك التفاعلية لإتقان كيمياء التوجيهي الأردني بأحدث الطرق التعليمية
+          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/materials/semester-1" passHref>
