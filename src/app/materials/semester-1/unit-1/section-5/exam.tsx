@@ -195,7 +195,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل T(K) = V / (V/T) = 5L / 0.01 = 500K بالسيليزيوس T(°C) = 500 - 273 = 227°C"
     },
     {
-        "question": <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها <span dir="ltr" className="inline-block">0.75L</span> وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من <span dir="ltr" className="inline-block">2.25atm</span> إلى <span dir="ltr" className="inline-block">1.03atm</span> فإن حجم فقاعة الهواء على السطح يساوي</span>,
+        question: <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها 0.75L وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من 2.25atm إلى 1.03atm فإن حجم فقاعة الهواء على السطح يساوي</span>,
         "options": [
             "0.34",
             "0.77",
@@ -204,6 +204,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 3,
         "explanation": "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض V₂ = (P₁V₁) / P₂ = (2.25 atm × 0.75 L) / 1.03 atm ≈ 1.64 L"
+    },
+    {
+        "question": <span>يكون حجم مول واحد من غاز ثاني أكسيد الكبريت <span dir="ltr">(SO₂)</span> أقل ما يمكن عند</span>,
+        "options": [
+            <span><span dir="ltr">2 atm</span> و <span dir="ltr">273 K</span></span>,
+            <span><span dir="ltr">1 atm</span> و <span dir="ltr">273 K</span></span>,
+            <span><span dir="ltr">1 atm</span> و <span dir="ltr">546 K</span></span>,
+            <span><span dir="ltr">2 atm</span> و <span dir="ltr">546 K</span></span>
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "وفقًا لقانون الغاز المثالي (V = nRT/P) يكون حجم الغاز أقل ما يمكن عندما تكون درجة الحرارة (T) أقل ما يمكن والضغط (P) أعلى ما يمكن الخيار (أ) يحقق هذه الشروط (أقل درجة حرارة وأعلى ضغط)"
     }
 ];
 
