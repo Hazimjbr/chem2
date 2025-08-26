@@ -25,15 +25,15 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <span>دورق محكم الإغلاق حجمه <span dir="ltr" className="inline-block">1L</span> يحوي غاز النيون Ne وآخر حجمه <span dir="ltr" className="inline-block">1.5L</span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كُلّ منهما هي</span>,
+    question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
     options: [
-        <span dir="ltr"><InlineMath math="n_{Ne} = n_{Xe}" /></span>,
-        <span dir="ltr"><InlineMath math="n_{Ne} = 1.5 \times n_{Xe}" /></span>,
-        <span dir="ltr"><InlineMath math="n_{Xe} = 1.5 \times n_{Ne}" /></span>,
-        <span dir="ltr"><InlineMath math="n_{Xe} = 0.5 \times n_{Ne}" /></span>
+        "0.4mol",
+        "0.6mol",
+        "0.27mol",
+        "0.8mol"
     ],
-    correctAnswerIndex: 2,
-    explanation: "وفقًا لقانون أفوجادرو يتناسب حجم الغاز (V) طرديًا مع عدد مولاته (n) عند ثبات الضغط والحرارة (V/n = ثابت). يمكننا كتابة العلاقة كالتالي: V(Ne)/n(Ne) = V(Xe)/n(Xe). بالتعويض: 1/n(Ne) = 1.5/n(Xe). بإعادة ترتيب المعادلة نجد أن: n(Xe) = 1.5 × n(Ne)."
+    correctAnswerIndex: 1,
+    explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
 };
 // ====================================================================================
 // ====================================================================================
@@ -96,3 +96,4 @@ export default function QuestionLabPage() {
         </div>
     );
 }
+
