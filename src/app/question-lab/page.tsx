@@ -25,7 +25,7 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها <span dir="ltr" className="inline-block">0.75L</span> وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من <span dir="ltr" className="inline-block">2.25atm</span> إلى <span dir="ltr" className="inline-block">1.03atm</span>؛ فإن حجم فقاعة الهواء على السطح يساوي:</span>,
+    "question": <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها <span dir="ltr" className="inline-block">0.75L</span> وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من <span dir="ltr" className="inline-block">2.25atm</span> إلى <span dir="ltr" className="inline-block">1.03atm</span> فإن حجم فقاعة الهواء على السطح يساوي:</span>,
     "options": [
         "0.34",
         "0.77",
