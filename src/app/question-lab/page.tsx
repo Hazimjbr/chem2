@@ -25,7 +25,7 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <InlineMath math="25^{\circ}\text{C}" /> إلى <InlineMath math="150^{\circ}\text{C}" /> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
+    "question": <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <span dir="ltr" className="inline-block">25°C</span> إلى <span dir="ltr" className="inline-block">150°C</span> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
     "options": [
         "متوسط سرعة جزيئات الغاز",
         "ضغط الغاز",
