@@ -25,15 +25,15 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1.5L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+    question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
     options: [
         <InlineMath math="n_{Ne} = n_{Xe}" />,
-        <InlineMath math="n_{Ne} = 1.5 n_{Xe}" />,
-        <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
+        <InlineMath math="3n_{Ne} = 2n_{Xe}" />,
+        <InlineMath math="2n_{Ne} = 3n_{Xe}" />,
         <InlineMath math="n_{Xe} = 0.5 n_{Ne}" />
     ],
     correctAnswerIndex: 2,
-    explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 1 / n_Ne = 1.5 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = 1.5 * n_Ne"
+    explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على 2n_Xe = 3n_Ne"
 };
 // ====================================================================================
 // ====================================================================================
