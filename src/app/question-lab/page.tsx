@@ -25,15 +25,15 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها <span dir="ltr" className="inline-block">0.75L</span> وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من <span dir="ltr" className="inline-block">2.25atm</span> إلى <span dir="ltr" className="inline-block">1.03atm</span> فإن حجم فقاعة الهواء على السطح يساوي:</span>,
+    "question": <span>يكون حجم مول واحد من غاز ثاني أكسيد الكبريت <span dir="ltr">(SO₂)</span> أقل ما يمكن عند</span>,
     "options": [
-        "0.34",
-        "0.77",
-        "1.68",
-        "1.64"
+        <span><span dir="ltr">2 atm</span>, <span dir="ltr">273 K</span></span>,
+        <span><span dir="ltr">1 atm</span>, <span dir="ltr">273 K</span></span>,
+        <span><span dir="ltr">1 atm</span>, <span dir="ltr">546 K</span></span>,
+        <span><span dir="ltr">2 atm</span>, <span dir="ltr">546 K</span></span>
     ],
-    "correctAnswerIndex": 3,
-    "explanation": "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض: V₂ = (P₁V₁) / P₂ = (2.25 atm × 0.75 L) / 1.03 atm ≈ 1.64 L"
+    "correctAnswerIndex": 0,
+    "explanation": "وفقًا لقانون الغاز المثالي (V = nRT/P) يكون حجم الغاز أقل ما يمكن عندما تكون درجة الحرارة (T) أقل ما يمكن والضغط (P) أعلى ما يمكن الخيار (أ) يحقق هذه الشروط (أقل درجة حرارة وأعلى ضغط)"
 };
 // ====================================================================================
 // ====================================================================================
