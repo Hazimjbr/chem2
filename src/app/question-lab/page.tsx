@@ -29,7 +29,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 const sampleQuestion = {
     question: (
         <div className="space-y-4">
-            <p className="font-bold">ادرس المعلومات الواردة في الجدول ثم احسب عدد مولات الهواء اللازم إضافتها إلى الإطار في الوضع (B) حتى يعود حجم الهواء إلى 20.5L.</p>
+            <p className="font-bold">ادرس المعلومات الواردة في الجدول عن إطار سيارة في وضعين مختلفين (A, B) واحسب حجم الهواء داخل الإطار في الوضع B بوحدة L</p>
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -52,7 +52,7 @@ const sampleQuestion = {
                     <TableRow>
                         <TableCell>حجم الهواء</TableCell>
                         <TableCell className="text-center">20.5 L</TableCell>
-                        <TableCell className="text-center">20 L</TableCell>
+                        <TableCell className="text-center">??</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>عدد مولات الهواء</TableCell>
@@ -64,13 +64,13 @@ const sampleQuestion = {
         </div>
     ),
     options: [
-        "0.65 mol",
-        "0.5 mol",
-        "1.29 mol",
-        "25.65 mol"
+        "25",
+        "20",
+        "30",
+        "50"
     ],
-    correctAnswerIndex: 0,
-    explanation: "أولاً، نحسب عدد المولات اللازم للوصول للحجم المطلوب في الظروف الجديدة (الحالة C) باستخدام قانون الغاز المثالي n = PV/RT. الظروف هي: P=29atm, V=20.5L, T=10°C=283K. إذن n_C = (29 * 20.5) / (0.082 * 283) ≈ 25.65 mol. عدد المولات في الوضع B هو 25 mol. عدد المولات اللازم إضافتها = n_C - n_B = 25.65 - 25 = 0.65 mol."
+    correctAnswerIndex: 1,
+    explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P, V, T) تتغير، فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂. أولاً نحول الحرارة إلى كلفن: T₁=27+273=300K و T₂=10+273=283K. ثم نعوض: V₂ = (P₁V₁T₂)/(P₂T₁) = (30 * 20.5 * 283)/(29 * 300) ≈ 20L."
 };
 // ====================================================================================
 // ====================================================================================
