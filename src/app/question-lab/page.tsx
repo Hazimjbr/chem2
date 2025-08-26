@@ -9,6 +9,8 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import Image from 'next/image';
 import { InlineMath } from 'react-katex';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 /**
  * منطقة الاختبار المؤقتة - معمل الأسئلة
@@ -25,15 +27,51 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+    question: (
+        <div className="space-y-4">
+            <p>ادرس المعلومات الواردة في الجدول عن إطار سيارة في وضعين مختلفين (A, B) ثم أجب عن السؤال التالي:</p>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="text-right">المعلومات داخل الإطار</TableHead>
+                        <TableHead className="text-center">الوضع A</TableHead>
+                        <TableHead className="text-center">الوضع B</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    <TableRow>
+                        <TableCell>درجة حرارة الهواء</TableCell>
+                        <TableCell className="text-center">27°C</TableCell>
+                        <TableCell className="text-center">10°C</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>ضغط الهواء</TableCell>
+                        <TableCell className="text-center">30 atm</TableCell>
+                        <TableCell className="text-center">29 atm</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>حجم الهواء</TableCell>
+                        <TableCell className="text-center">20.5 L</TableCell>
+                        <TableCell className="text-center">??</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>عدد مولات الهواء</TableCell>
+                        <TableCell className="text-center">25 mol</TableCell>
+                        <TableCell className="text-center">25 mol</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+            <p className="font-bold">ما حجم الهواء داخل الإطار في الوضع B يساوي بوحدة L؟</p>
+        </div>
+    ),
     options: [
-        <InlineMath math="n_{Ne} = n_{Xe}" />,
-        <InlineMath math="3n_{Ne} = 2n_{Xe}" />,
-        <InlineMath math="2n_{Ne} = 3n_{Xe}" />,
-        <InlineMath math="n_{Xe} = 0.5 n_{Ne}" />
+        "25",
+        "20",
+        "30",
+        "50"
     ],
-    correctAnswerIndex: 2,
-    explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على 2n_Xe = 3n_Ne"
+    correctAnswerIndex: 1,
+    explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P, V, T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30 * 20.5 * 283)/(29 * 300) ≈ 20L"
 };
 // ====================================================================================
 // ====================================================================================
