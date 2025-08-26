@@ -4,6 +4,8 @@
 import React from 'react';
 import { cn } from '@/lib/utils.tsx';
 import { InlineMath } from 'react-katex';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 export interface QuizQuestion {
     question: React.ReactNode;
@@ -128,6 +130,74 @@ const PistonDiagram = () => (
 );
 
 export const staticQuizLvl1: QuizQuestion[] = [
+     {
+        question: (
+            <div className="space-y-4">
+                <p className="font-bold">ادرس المعلومات الواردة في الجدول عن إطار سيارة في وضعين مختلفين (A, B) واحسب حجم الهواء داخل الإطار في الوضع B بوحدة L</p>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="text-right">المعلومات داخل الإطار</TableHead>
+                            <TableHead className="text-center">الوضع A</TableHead>
+                            <TableHead className="text-center">الوضع B</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell>درجة حرارة الهواء</TableCell>
+                            <TableCell className="text-center">27°C</TableCell>
+                            <TableCell className="text-center">10°C</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>ضغط الهواء</TableCell>
+                            <TableCell className="text-center">30 atm</TableCell>
+                            <TableCell className="text-center">29 atm</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>حجم الهواء</TableCell>
+                            <TableCell className="text-center">20.5 L</TableCell>
+                            <TableCell className="text-center">??</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>عدد مولات الهواء</TableCell>
+                            <TableCell className="text-center">25 mol</TableCell>
+                            <TableCell className="text-center">25 mol</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </div>
+        ),
+        options: [
+            "25",
+            "20",
+            "30",
+            "50"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P, V, T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30 * 20.5 * 283)/(29 * 300) ≈ 20L"
+    },
+    {
+        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+        options: [
+            <InlineMath math="n_{Ne} = n_{Xe}" />,
+            <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
+            <InlineMath math="n_{Ne} = 1.5 n_{Xe}" />,
+            <InlineMath math="n_{Xe} = 0.5 n_{Ne}" />
+        ],
+        correctAnswerIndex: 1,
+        explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
+    },
+     {
+        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
+        options: [
+            "0.4mol",
+            "0.6mol",
+            "0.27mol",
+            "0.8mol"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
+    },
     {
         question: <div><p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p><PistonDiagram /></div>,
         options: [
@@ -226,28 +296,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 3,
         "explanation": "الأسطوانة هي وعاء صلب حجمه ثابت لذلك يبقى حجم الغاز ثابتًا بينما يؤدي التسخين إلى زيادة درجة الحرارة مما يزيد من متوسط الطاقة الحركية ومتوسط سرعة الجزيئات وبالتالي يزداد ضغط الغاز وفقًا لقانون جاي لوساك"
-    },
-    {
-        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
-        options: [
-            "0.4mol",
-            "0.6mol",
-            "0.27mol",
-            "0.8mol"
-        ],
-        correctAnswerIndex: 1,
-        explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
-    },
-    {
-        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
-        options: [
-            <InlineMath math="n_{Ne} = n_{Xe}" />,
-            <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
-            <InlineMath math="n_{Ne} = 1.5 n_{Xe}" />,
-            <InlineMath math="n_{Xe} = 0.5 n_{Ne}" />
-        ],
-        correctAnswerIndex: 1,
-        explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     }
 ];
 
