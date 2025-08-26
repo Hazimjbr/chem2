@@ -25,15 +25,15 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
+    question: <><span className="inline-block">كمية من غاز النيتروجين</span><span className="inline-block" dir="ltr">(<InlineMath math="N_2" />)</span><span className="inline-block">حجمها</span><span className="inline-block" dir="ltr"><InlineMath math="10\text{L}" /></span><span className="inline-block">وكمية أخرى من غاز الهيليوم</span><span className="inline-block" dir="ltr">(<InlineMath math="He" />)</span><span className="inline-block">تشغل حجم</span><span className="inline-block" dir="ltr"><InlineMath math="20\text{L}" /></span><span className="inline-block">عند نفس الظروف ما هي نسبة عدد مولات الهيليوم إلى النيتروجين</span></>,
     options: [
-        "0.4mol",
-        "0.6mol",
-        "0.27mol",
-        "0.8mol"
+        "1:2",
+        "2:1",
+        "1:1",
+        "لا يمكن تحديدها"
     ],
     correctAnswerIndex: 1,
-    explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
+    explanation: "بما أن V ∝ n فإن نسبة الأحجام تساوي نسبة عدد المولات V(He)/V(N₂) = n(He)/n(N₂) إذن 20/10 = 2/1 نسبة الهيليوم إلى النيتروجين هي 2:1"
 };
 // ====================================================================================
 // ====================================================================================
@@ -96,4 +96,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
