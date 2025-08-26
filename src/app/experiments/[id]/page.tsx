@@ -163,7 +163,7 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
                     </CardHeader>
                     <CardContent>
                         <p>
-                        كان العالم شارل مِنَ المُهتمين بالمناطيد والبالونات، وهو أوَّلُ مَنِ استخدم غاز الهيدروجين لملئها، وقد درس العلاقة بين حجم الغاز ودرجة حرارته عند ثبات الضغط، وتوصل من تجاربه إلى أنّ: "حجم كمية محددة من الغاز المحصور يتناسب تناسبًا طرديًا مع درجة حرارته عند ثبات ضغطه".
+                        كان العالم شارل مِنَ المُهتمين بالمناطيد والبالونات وهو أوَّلُ مَنِ استخدم غاز الهيدروجين لملئها وقد درس العلاقة بين حجم الغاز ودرجة حرارته عند ثبات الضغط وتوصل من تجاربه إلى أنّ: "حجم كمية محددة من الغاز المحصور يتناسب تناسبًا طرديًا مع درجة حرارته عند ثبات ضغطه"
                         </p>
                     </CardContent>
                 </Card>
@@ -174,7 +174,7 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
                     </CardHeader>
                     <CardContent>
                         <p>
-                        أستكشف العلاقة بين حجم الغاز ودرجة حرارته عند ثبات الضغط.
+                        أستكشف العلاقة بين حجم الغاز ودرجة حرارته عند ثبات الضغط
                         </p>
                     </CardContent>
                 </Card>
@@ -184,7 +184,7 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
                         <CardTitle className="flex items-center gap-2"><FlaskConical className="h-6 w-6 text-primary" /> المواد والأدوات</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p>بالونان، قلم تخطيط، متر مصنوع من القماش أو الورق، حمام ثلجي، حمام مائي ساخن.</p>
+                        <p>بالونان وقلم تخطيط ومتر مصنوع من القماش أو الورق وحمام ثلجي وحمام مائي ساخن</p>
                     </CardContent>
                 </Card>
 
@@ -194,8 +194,8 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
                     </CardHeader>
                     <CardContent>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>أتَّبع إرشادات السلامة العامة في المختبر.</li>
-                            <li>أرتدي معطف المختبر والنظارات الواقية والقفازات.</li>
+                            <li>أتَّبع إرشادات السلامة العامة في المختبر</li>
+                            <li>أرتدي معطف المختبر والنظارات الواقية والقفازات</li>
                         </ul>
                     </CardContent>
                 </Card>
@@ -216,10 +216,10 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
             </CardHeader>
             <CardContent>
                 <ol className="list-decimal list-inside space-y-4">
-                    <li>أحضر بالونين وأنفخهما وأربط فوّهة كل منهما جيّدًا، ثم أرسم باستخدام القلم دائرة على كل منهما.</li>
-                    <li>أقيس محيط كل منهما، ثم أُسَجِّله.</li>
-                    <li>**أُجَرِّبُ:** أضعُ أحد البالونين في حمام ثلجي والآخر في حمام مائي ساخن مدة 10 دقائق.</li>
-                    <li>**أقيس:** أُخرِجُ البالونين، وأقيس محيط كُلِّ منهما مباشرةً، ثمّ أُسَجِّل ملاحظاتي.</li>
+                    <li>أحضر بالونين وأنفخهما وأربط فوّهة كل منهما جيّدًا ثم أرسم باستخدام القلم دائرة على كل منهما</li>
+                    <li>أقيس محيط كل منهما ثم أُسَجِّله</li>
+                    <li>**أُجَرِّبُ:** أضعُ أحد البالونين في حمام ثلجي والآخر في حمام مائي ساخن مدة 10 دقائق</li>
+                    <li>**أقيس:** أُخرِجُ البالونين وأقيس محيط كُلِّ منهما مباشرةً ثمّ أُسَجِّل ملاحظاتي</li>
                 </ol>
             </CardContent>
         </Card>
@@ -228,7 +228,7 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
           <CardHeader>
               <CardTitle className="flex items-center gap-2"><CheckSquare className="h-6 w-6 text-primary" /> اختبر استنتاجك</CardTitle>
                <CardDescription>
-                  أجب عن الأسئلة التالية للتأكد من فهمك لنتائج التجربة.
+                  أجب عن الأسئلة التالية للتأكد من فهمك لنتائج التجربة
                 </CardDescription>
           </CardHeader>
           <CardContent>
@@ -239,5 +239,3 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-    

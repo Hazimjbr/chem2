@@ -28,11 +28,11 @@ const Diagram = dynamic(() => import('./diagram'), {
 const lessonInfo = {
   lessonTitle: "الدرس الأول: الحالة الغازية",
   lessonSubtitle: "نظرية الحركة الجزيئية",
-  mainIdea: "تصف نظرية الحركة الجزيئية سلوك المادة بالاعتماد على حركة جسيماتها، وتفسر الخصائص الفيزيائية للمواد في حالاتها المختلفة.",
+  mainIdea: "تصف نظرية الحركة الجزيئية سلوك المادة بالاعتماد على حركة جسيماتها وتفسر الخصائص الفيزيائية للمواد في حالاتها المختلفة",
   learningOutcomes: [
-    "أصف الخصائص الفيزيائية للغازات وأفسرها باستخدام نظرية الحركة الجزيئية."
+    "أصف الخصائص الفيزيائية للغازات وأفسرها باستخدام نظرية الحركة الجزيئية"
   ],
-  lessonContent: `<p>هل تساءلت يومًا كيف يملأ الهواء إطار السيارة أو كيف تنتشر رائحة العطر في أرجاء الغرفة؟ كل هذا يمكن تفسيره من خلال فهم سلوك الجزيئات في الحالة الغازية. في هذا الدرس، سنغوص في أعماق نظرية الحركة الجزيئية لنكتشف أسرار عالم الغازات.</p>`,
+  lessonContent: `<p>هل تساءلت يومًا كيف يملأ الهواء إطار السيارة أو كيف تنتشر رائحة العطر في أرجاء الغرفة؟ كل هذا يمكن تفسيره من خلال فهم سلوك الجزيئات في الحالة الغازية في هذا الدرس سنغوص في أعماق نظرية الحركة الجزيئية لنكتشف أسرار عالم الغازات</p>`,
   lessonId: "/materials/semester-1/unit-1/lesson-1/part-1",
   staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
   previousLesson: null,
@@ -69,23 +69,23 @@ export default function LessonPartPage() {
           <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
                 <h4 className="font-bold text-accent">نظرية الحركة الجزيئية</h4>
-                <p className="text-muted-foreground">نموذج علمي يصف سلوك المادة (صلبة، سائلة، غازية) بناءً على حركة جسيماتها المستمرة.</p>
+                <p className="text-muted-foreground">نموذج علمي يصف سلوك المادة (صلبة سائلة غازية) بناءً على حركة جسيماتها المستمرة</p>
             </div>
              <div>
                 <h4 className="font-bold text-accent">الغاز المثالي</h4>
-                <p className="text-muted-foreground">غاز افتراضي تنطبق عليه تمامًا جميع افتراضات نظرية الحركة الجزيئية.</p>
+                <p className="text-muted-foreground">غاز افتراضي تنطبق عليه تمامًا جميع افتراضات نظرية الحركة الجزيئية</p>
             </div>
               <div>
                 <h4 className="font-bold text-accent">الغاز الحقيقي</h4>
-                <p className="text-muted-foreground">الغازات الموجودة فعليًا في الطبيعة، والتي تحيد عن السلوك المثالي في ظروف معينة.</p>
+                <p className="text-muted-foreground">الغازات الموجودة فعليًا في الطبيعة والتي تحيد عن السلوك المثالي في ظروف معينة</p>
             </div>
              <div>
                 <h4 className="font-bold text-accent">الحركة البراونية</h4>
-                <p className="text-muted-foreground">الحركة العشوائية للجسيمات المعلقة في مائع (سائل أو غاز) نتيجة اصطدامها بجزيئات ذلك المائع.</p>
+                <p className="text-muted-foreground">الحركة العشوائية للجسيمات المعلقة في مائع (سائل أو غاز) نتيجة اصطدامها بجزيئات ذلك المائع</p>
             </div>
             <div>
                 <h4 className="font-bold text-accent">ضغط الغاز</h4>
-                <p className="text-muted-foreground">القوة المؤثرة على وحدة المساحة والناتجة من تصادم جسيمات الغاز مع جدار الوعاء باستمرار.</p>
+                <p className="text-muted-foreground">القوة المؤثرة على وحدة المساحة والناتجة من تصادم جسيمات الغاز مع جدار الوعاء باستمرار</p>
             </div>
           </CardContent>
         </Card>
@@ -101,8 +101,8 @@ export default function LessonPartPage() {
                     <div>
                       <p className='font-semibold'>تصف سلوك جسيمات المادة وتفترض حركتها الدائمة المستمرة:</p>
                        <ul className="mt-2 space-y-1 mr-4 text-xs">
-                          <li><strong className="font-semibold text-accent/80">أ) الصلبة:</strong> حركة اهتزازية في مكانها.</li>
-                          <li><strong className="font-semibold text-accent/80">ب) السائلة والغازية:</strong> تتحرك عشوائيا في جميع الاتجاهات.</li>
+                          <li><strong className="font-semibold text-accent/80">أ) الصلبة:</strong> حركة اهتزازية في مكانها</li>
+                          <li><strong className="font-semibold text-accent/80">ب) السائلة والغازية:</strong> تتحرك عشوائيا في جميع الاتجاهات</li>
                       </ul>
                     </div>
                   </li>
@@ -118,7 +118,7 @@ export default function LessonPartPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
-                    <p className='font-semibold'>تستخدم قوانين الغازات في وصف العلاقة بين العوامل المؤثرة في سلوك الغاز الفيزيائي.</p>
+                    <p className='font-semibold'>تستخدم قوانين الغازات في وصف العلاقة بين العوامل المؤثرة في سلوك الغاز الفيزيائي</p>
                   </li>
                </ul>
             </FlippableCard>
@@ -130,19 +130,19 @@ export default function LessonPartPage() {
                <ul className="space-y-4 text-sm">
                    <li className="flex items-start gap-3">
                     <Boxes className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p><strong className="font-semibold">تكوين الغاز:</strong> يتكون من جسيمات صغيرة جدا (مهملة الحجم) ومتباعدة، وقوى التجاذب بينها شبه معدومة، لذلك معظم حجمه فراغ.</p>
+                    <p><strong className="font-semibold">تكوين الغاز:</strong> يتكون من جسيمات صغيرة جدا (مهملة الحجم) ومتباعدة وقوى التجاذب بينها شبه معدومة لذلك معظم حجمه فراغ</p>
                   </li>
                   <li className="flex items-start gap-3">
                     <Move className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p><strong className="font-semibold">حركة الجسيمات:</strong> مستمرة، عشوائية، وسريعة في خطوط مستقيمة، مما يكسبها طاقة حركية عالية.</p>
+                    <p><strong className="font-semibold">حركة الجسيمات:</strong> مستمرة عشوائية وسريعة في خطوط مستقيمة مما يكسبها طاقة حركية عالية</p>
                   </li>
                    <li className="flex items-start gap-3">
                     <RefreshCw className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p><strong className="font-semibold">التصادمات المرنة:</strong> تصادمات لا تفقد فيها الطاقة الحركية الكلية للنظام، وتسبب ضغط الغاز عند اصطدامها بجدار الوعاء.</p>
+                    <p><strong className="font-semibold">التصادمات المرنة:</strong> تصادمات لا تفقد فيها الطاقة الحركية الكلية للنظام وتسبب ضغط الغاز عند اصطدامها بجدار الوعاء</p>
                   </li>
                    <li className="flex items-start gap-3">
                     <Thermometer className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p><strong className="font-semibold">الطاقة والحرارة:</strong> متوسط الطاقة الحركية للجسيمات يتناسب طرديًا مع درجة الحرارة المطلقة (بالكلفن).</p>
+                    <p><strong className="font-semibold">الطاقة والحرارة:</strong> متوسط الطاقة الحركية للجسيمات يتناسب طرديًا مع درجة الحرارة المطلقة (بالكلفن)</p>
                   </li>
                </ul>
             </FlippableCard>
@@ -155,23 +155,23 @@ export default function LessonPartPage() {
                 <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
-                        <p>حجم جسيماته يساوي صفر.</p>
+                        <p>حجم جسيماته يساوي صفر</p>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
-                        <p>قوى التجاذب بين جسيماته تساوي صفر (معدومة).</p>
+                        <p>قوى التجاذب بين جسيماته تساوي صفر (معدومة)</p>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
-                        <p>تنطبق عليه فرضيات نظرية الحركة الجزيئية وقوانين الغازات عند كل الظروف.</p>
+                        <p>تنطبق عليه فرضيات نظرية الحركة الجزيئية وقوانين الغازات عند كل الظروف</p>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">4.</span>
-                        <p>لا يمكن إسالته مهما انخفضت درجة حرارته أو زاد الضغط عليه.</p>
+                        <p>لا يمكن إسالته مهما انخفضت درجة حرارته أو زاد الضغط عليه</p>
                     </li>
                 </ul>
                 <p className='text-xs mt-4 text-muted-foreground italic border-t pt-3'>
-                  يستخدم العلماء نموذج الغاز المثالي لتبسيط الحسابات وفهم سلوك الغازات الحقيقية في ظروف معينة (مثل الضغط المنخفض والحرارة المرتفعة).
+                  يستخدم العلماء نموذج الغاز المثالي لتبسيط الحسابات وفهم سلوك الغازات الحقيقية في ظروف معينة (مثل الضغط المنخفض والحرارة المرتفعة)
                 </p>
             </FlippableCard>
 
@@ -179,23 +179,23 @@ export default function LessonPartPage() {
               cardTitle="الغاز الحقيقي (Real Gas)"
               cardIcon={<Cloud className="h-6 w-6" />}
             >
-                <p className="mb-4 font-semibold">هو الغاز الموجود فعليًا في الطبيعة، وتتشابه معظم الغازات في سلوكها الفيزيائي.</p>
+                <p className="mb-4 font-semibold">هو الغاز الموجود فعليًا في الطبيعة وتتشابه معظم الغازات في سلوكها الفيزيائي</p>
                 <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
-                        <p>حجم جسيماته صغير جدًا ولكنه ليس صفرًا (لا يمكن إهماله في الحسابات الدقيقة).</p>
+                        <p>حجم جسيماته صغير جدًا ولكنه ليس صفرًا (لا يمكن إهماله في الحسابات الدقيقة)</p>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
-                        <p>توجد قوى تجاذب بين جسيماته، وإن كانت ضعيفة جدًا.</p>
+                        <p>توجد قوى تجاذب بين جسيماته وإن كانت ضعيفة جدًا</p>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
-                        <p>يسلك سلوكًا قريبًا جدًا من الغاز المثالي في الظروف العادية (الضغط الجوي ودرجة حرارة الغرفة).</p>
+                        <p>يسلك سلوكًا قريبًا جدًا من الغاز المثالي في الظروف العادية (الضغط الجوي ودرجة حرارة الغرفة)</p>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">4.</span>
-                        <p>يمكن تحويله إلى سائل (إسالته) عن طريق زيادة الضغط وخفض درجة الحرارة.</p>
+                        <p>يمكن تحويله إلى سائل (إسالته) عن طريق زيادة الضغط وخفض درجة الحرارة</p>
                     </li>
                 </ul>
             </FlippableCard>
@@ -204,7 +204,7 @@ export default function LessonPartPage() {
               cardTitle="انحراف الغازات الحقيقية"
               cardIcon={<GitCommitHorizontal className="h-6 w-6" />}
             >
-                <p className="mb-4 text-sm">تتشابه الغازات الحقيقية مع الغاز المثالي في الظروف الطبيعية إلى حد كبير.</p>
+                <p className="mb-4 text-sm">تتشابه الغازات الحقيقية مع الغاز المثالي في الظروف الطبيعية إلى حد كبير</p>
                 <p className="mb-4 font-semibold">يزداد انحراف الغازات الحقيقية عن سلوك الغاز المثالي كلما:</p>
                 <ul className="space-y-4 text-sm">
                     <li className="flex items-start gap-3">
@@ -213,21 +213,21 @@ export default function LessonPartPage() {
                             <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
                             <ul className="mt-2 space-y-2 mr-4 text-xs">
                                 <li><span className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</span> (هيدروجيني مثل HF > ثنائي قطب مثل NH3 > قوى لندن مثل Ne)</li>
-                                <li><span className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</span> (مثلًا Cl2 > F2) لأن زيادة الكتلة المولية تزيد من قوى لندن.</li>
+                                <li><span className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</span> (مثلًا Cl2 > F2) لأن زيادة الكتلة المولية تزيد من قوى لندن</li>
                             </ul>
                         </div>
                     </li>
                     <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
-                        <p className='font-semibold'>ازداد الضغط على الغاز أو قل حجمه.</p>
+                        <p className='font-semibold'>ازداد الضغط على الغاز أو قل حجمه</p>
                     </li>
                      <li className="flex items-start gap-3">
                         <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
-                        <p className='font-semibold'>انخفضت درجة الحرارة.</p>
+                        <p className='font-semibold'>انخفضت درجة الحرارة</p>
                     </li>
                 </ul>
                 <p className='text-xs mt-3 text-muted-foreground'>
-                    (ملاحظة: زيادة الحرارة تقلل من قوة الترابط بين الجسيمات وتزيد من طاقتها الحركية، مما يجعلها تسلك سلوكًا أقرب للمثالي).
+                    (ملاحظة: زيادة الحرارة تقلل من قوة الترابط بين الجسيمات وتزيد من طاقتها الحركية مما يجعلها تسلك سلوكًا أقرب للمثالي)
                 </p>
             </FlippableCard>
 
@@ -238,7 +238,7 @@ export default function LessonPartPage() {
                 <CardContent>
                     <Diagram />
                     <p className="text-sm text-muted-foreground mt-4 text-center">
-                    تحكم في درجة الحرارة والضغط ولاحظ كيف يتغير سلوك الغاز بين المثالي والحقيقي.
+                    تحكم في درجة الحرارة والضغط ولاحظ كيف يتغير سلوك الغاز بين المثالي والحقيقي
                     </p>
                 </CardContent>
             </Card>
@@ -249,7 +249,7 @@ export default function LessonPartPage() {
             <Lightbulb className="h-7 w-7 text-yellow-400" />
             <div>
               <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -265,7 +265,7 @@ export default function LessonPartPage() {
                       "تتصادم جسيمات الغاز تصادمات مرنة مع بعضها ومع جدار الوعاء"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="عند درجة حرارة ثابتة، يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت، ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة."
+                  explanation="عند درجة حرارة ثابتة يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -279,14 +279,10 @@ export default function LessonPartPage() {
                       "غاز الهيدروجين"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا، ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة."
+                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة"
               />
           </div>
         </div>
     </LessonLayout>
   );
 }
-
-    
-
-    

@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A chemistry assistant AI agent.
@@ -62,5 +63,5 @@ const chemistryTutorPrompt = ai.definePrompt({
 
 export async function chat(input: ChatInput): Promise<string> {
     const {output} = await chemistryTutorPrompt(input);
-    return output || 'عذراً، لم أتمكن من فهم الطلب. الرجاء المحاولة مرة أخرى.';
+    return output || 'عذراً لم أتمكن من فهم الطلب الرجاء المحاولة مرة أخرى';
 }

@@ -23,7 +23,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "قانون أفوجادرو ينص على أن حجم الغاز يتناسب طرديًا مع عدد مولاته (كميته) بشرط ثبات الضغط ودرجة الحرارة"
     },
     {
-        "question": <>ما هو حجم <InlineMath math="1\text{mol}" /> من أي غاز مثالي في الظروف المعيارية (STP)</>,
+        question: <>ما هو حجم <InlineMath math="1\text{mol}" /> من أي غاز مثالي في الظروف المعيارية (STP)?</>,
         "options": [
             "1L",
             "22.4L",
@@ -48,7 +48,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        "question": <>عينة من غاز الميثان في الظروف المعيارية تحتوي <InlineMath math="0.1\text{mol}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي</>,
+        question: <>عينة من غاز الميثان في الظروف المعيارية تحتوي <InlineMath math="0.1\text{mol}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي</>,
         "options": [
             "4.48L",
             "2.24L",
@@ -59,7 +59,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "في الظروف المعيارية حجم الغاز = عدد المولات × 22.4 إذن الحجم = 0.1mol × 22.4L/mol = 2.24L"
     },
     {
-        "question": <>وعاء حجمه <InlineMath math="2\text{L}" /> يحتوي على <InlineMath math="0.5\text{mol}" /> من غاز الأكسجين إذا أفرغنا نصف كمية الغاز فما هو الحجم الجديد الذي سيشغله الغاز المتبقي عند نفس الظروف</>,
+        question: <>وعاء حجمه <InlineMath math="2\text{L}" /> يحتوي على <InlineMath math="0.5\text{mol}" /> من غاز الأكسجين إذا أفرغنا نصف كمية الغاز فما هو الحجم الجديد الذي سيشغله الغاز المتبقي عند نفس الظروف</>,
         "options": [
             "2L",
             "1L",
@@ -70,7 +70,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "الكمية المتبقية من الغاز هي 0.25mol (نصف الكمية الأصلية) بما أن الحجم يتناسب طرديًا مع عدد المولات فإن الحجم سيقل إلى النصف أيضًا ليصبح 1L"
     },
     {
-        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد مولات الميثان يساوي</>,
+        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد مولات الميثان يساوي</>,
         "options": [
             "1.34",
             "7.47",
@@ -118,7 +118,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "عدد أفوجادرو (6.02x10²³) من الذرات يساوي 1mol حجم 1mol في الظروف المعيارية هو 22.4 لتر بالمليلتر: 22.4L * 1000mL/L = 22400mL"
     },
     {
-        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن كتلتها بوحدة <InlineMath math="\text{g}" /> تساوي</>,
+        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن كتلتها بوحدة <InlineMath math="\text{g}" /> تساوي</>,
         "options": [
             "1.34",
             "2.1",
@@ -129,7 +129,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً نجد عدد المولات n = 3L / 22.4L/mol ≈ 0.134mol ثم نحسب الكتلة: الكتلة = n × الكتلة المولية = 0.134mol × 16g/mol ≈ 2.1g"
     },
     {
-        "question": <>عينة من غاز كتلة <InlineMath math="44.8\text{L}" /> منها في الظروف المعيارية يساوي <InlineMath math="4\text{g}" /> فإن الكتلة المولية للغاز بوحدة <InlineMath math="\text{g/mol}" /> تساوي</>,
+        question: <>عينة من غاز كتلة <InlineMath math="44.8\text{L}" /> منها في الظروف المعيارية يساوي <InlineMath math="4\text{g}" /> فإن الكتلة المولية للغاز بوحدة <InlineMath math="\text{g/mol}" /> تساوي</>,
         "options": [
             "2",
             "0.5",
@@ -181,6 +181,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "0.2"
         ],
         "correctAnswerIndex": 1,
-        "explanation": "أولاً، نحسب عدد مولات الميثان: n = 3L / 22.4 L/mol ≈ 0.134mol. ثانياً، نحسب كتلة الميثان: m = n × Mr = 0.134mol × 16g/mol ≈ 2.14g. أخيراً، نحسب الكثافة: d = m / V = 2.14g / 3L ≈ 0.71g/L، الإجابة الأقرب هي 0.7"
+        "explanation": "أولاً نحسب عدد مولات الميثان: n = 3L / 22.4 L/mol ≈ 0.134mol ثانياً نحسب كتلة الميثان: m = n × Mr = 0.134mol × 16g/mol ≈ 2.14g أخيراً نحسب الكثافة: d = m / V = 2.14g / 3L ≈ 0.71g/L الإجابة الأقرب هي 0.7"
     }
 ];

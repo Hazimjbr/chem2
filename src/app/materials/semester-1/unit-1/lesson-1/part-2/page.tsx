@@ -15,12 +15,12 @@ import React, { useState, useEffect } from 'react';
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
     lessonSubtitle: "مقدمة قوانين الغازات",
-    mainIdea: "يمكن وصف سلوك الغازات من خلال أربع متغيرات أساسية قابلة للقياس: الضغط (P)، الحجم (V)، درجة الحرارة (T)، وكمية الغاز (n). فهم هذه المتغيرات هو مفتاح فهم قوانين الغازات.",
+    mainIdea: "يمكن وصف سلوك الغازات من خلال أربع متغيرات أساسية قابلة للقياس: الضغط (P) والحجم (V) ودرجة الحرارة (T) وكمية الغاز (n) فهم هذه المتغيرات هو مفتاح فهم قوانين الغازات",
     learningOutcomes: [
-        "أحدد المتغيرات الأربعة (الضغط، الحجم، الحرارة، كمية الغاز) التي تصف سلوك الغاز.",
-        "أصف المقصود بكل متغير وأذكر وحدات القياس الشائعة له."
+        "أحدد المتغيرات الأربعة (الضغط الحجم الحرارة كمية الغاز) التي تصف سلوك الغاز",
+        "أصف المقصود بكل متغير وأذكر وحدات القياس الشائعة له"
     ],
-    lessonContent: `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`,
+    lessonContent: `<p>لفهم سلوك الغازات بشكل دقيق نحتاج إلى دراسة العوامل التي تؤثر فيها هذه العوامل هي متغيرات يمكن قياسها وتغييرها وهي تحدد حالة الغاز في هذا الجزء سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-2",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-1",
@@ -58,7 +58,7 @@ export default function LessonPartPage() {
               >
                  <div className="space-y-3">
                     <p className="font-semibold text-sm">هو القوة المؤثرة عموديًا على وحدة المساحة</p>
-                    <p className="text-xs text-muted-foreground">ينشأ ضغط الغاز عن تصادم جسيماته بجدار الوعاء الذي يحتويه. كلما زادت التصادمات، زاد الضغط</p>
+                    <p className="text-xs text-muted-foreground">ينشأ ضغط الغاز عن تصادم جسيماته بجدار الوعاء الذي يحتويه كلما زادت التصادمات زاد الضغط</p>
                     <div>
                         <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
                         <ul className="list-disc mr-4 text-xs space-y-1">
@@ -166,7 +166,7 @@ export default function LessonPartPage() {
               <Lightbulb className="h-7 w-7 text-yellow-400" />
               <div>
                 <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-                <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+                <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
@@ -182,7 +182,7 @@ export default function LessonPartPage() {
                         "140"
                     ]}
                     correctAnswerIndex={0}
-                    explanation="للتحويل من mmHg إلى atm، نقوم بالقسمة على 760. المعادلة هي: 900 mmHg / 760 ≈ 1.18 atm."
+                    explanation="للتحويل من mmHg إلى atm نقوم بالقسمة على 760 المعادلة هي: 900 mmHg / 760 ≈ 1.18 atm"
                 />
                  <InteractiveQuestionCard 
                     questionId="q2"
@@ -196,7 +196,7 @@ export default function LessonPartPage() {
                         "0.073"
                     ]}
                     correctAnswerIndex={2}
-                    explanation="للتحويل من درجة سيليزية (°C) إلى كلفن (K)، نستخدم المعادلة: T(K) = T(°C) + 273. إذن، 20 + 273 = 293 K."
+                    explanation="للتحويل من درجة سيليزية (°C) إلى كلفن (K) نستخدم المعادلة: T(K) = T(°C) + 273 إذن 20 + 273 = 293 K"
                 />
             </div>
           </div>

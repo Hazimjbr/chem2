@@ -151,7 +151,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "P_B = 350/760 atm و n_B = PV/RT = ((350/760) * 043) / (0082 * 300) ≈ 0008mol"
     },
     {
-        "question": <div>{mainQuestionLvl3Text}<span> فإن حجم الوعاء W بوحدة L يساوي:</span></div>,
+        question: <div>{mainQuestionLvl3Text}<span> فإن حجم الوعاء W بوحدة L يساوي:</span></div>,
         "options": [
             "0004L",
             "01L",
@@ -162,7 +162,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "n_total = n_A + n_B = 0008 + 0008 = 0016mol و P_total = 500/760 atm و V = nRT/P = (0016 * 0082 * 300) / (500/760) ≈ 06L"
     },
      {
-        "question": <div>{mainQuestionLvl3Text}<span> فإن ضغط الغاز B في الوعاء W بوحدة mmHg يساوي:</span></div>,
+        question: <div>{mainQuestionLvl3Text}<span> فإن ضغط الغاز B في الوعاء W بوحدة mmHg يساوي:</span></div>,
         "options": [
             "500mmHg",
             "350mmHg",

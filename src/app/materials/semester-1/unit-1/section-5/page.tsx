@@ -72,7 +72,3 @@ export default function Unit1ReviewPage() {
         </div>
     );
 }
-
-    
-
-    

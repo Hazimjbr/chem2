@@ -17,7 +17,7 @@ const lessonInfo = {
     learningOutcomes: [
         "أستخدم القانون الجامع للغازات في حل المسائل الحسابية التي تربط بين الضغط والحجم ودرجة الحرارة"
     ],
-    lessonContent: `<p>بعد أن درسنا كيف تتغير متغيرات الغاز كل على حدة، يجمع القانون الجامع للغازات قوانين بويل وشارل وجاي-لوساك في علاقة واحدة قوية تصف سلوك الغاز عندما تتغير جميع المتغيرات الثلاثة (الضغط، الحجم، والحرارة) في آن واحد.</p>`,
+    lessonContent: `<p>بعد أن درسنا كيف تتغير متغيرات الغاز كل على حدة يجمع القانون الجامع للغازات قوانين بويل وشارل وجاي-لوساك في علاقة واحدة قوية تصف سلوك الغاز عندما تتغير جميع المتغيرات الثلاثة (الضغط والحجم والحرارة) في آن واحد</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-6",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-5",
@@ -160,7 +160,7 @@ export default function LessonPartPage() {
                       "4.5"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="T₁=25+273=298K, T₂=(25-10)+273=288K, P₁=1.8atm, V₁=5L, P₂=0.8atm. نطبق القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1.8 * 5 * 288) / (0.8 * 298) ≈ 10.9L."
+                  explanation="T₁=25+273=298K, T₂=(25-10)+273=288K, P₁=1.8atm, V₁=5L, P₂=0.8atm نطبق القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1.8 * 5 * 288) / (0.8 * 298) ≈ 10.9L"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -174,14 +174,10 @@ export default function LessonPartPage() {
                       "4"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="نوحد الوحدات: V₁=4L, P₁=202.6/101.3=2atm, T₁=20+273=293K. V₂=2.5L, T₂=278K. نطبق القانون الجامع: P₂=(P₁V₁T₂)/(T₁V₂) = (2*4*278)/(293*2.5) ≈ 3.03atm. أقرب إجابة هي 3atm"
+                  explanation="نوحد الوحدات: V₁=4L, P₁=202.6/101.3=2atm, T₁=20+273=293K. V₂=2.5L, T₂=278K نطبق القانون الجامع: P₂=(P₁V₁T₂)/(T₁V₂) = (2*4*278)/(293*2.5) ≈ 3.03atm أقرب إجابة هي 3atm"
               />
           </div>
         </div>
     </LessonLayout>
   );
 }
-
-    
-
-    

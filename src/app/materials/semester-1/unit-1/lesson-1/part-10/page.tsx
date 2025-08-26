@@ -13,12 +13,12 @@ import LessonLayout from '@/components/lesson-layout';
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
     lessonSubtitle: "قانون جراهام للانتشار والتدفق",
-    mainIdea: "عند نفس الظروف من الحرارة والضغط، يتناسب معدل سرعة انتشار أو تدفق الغاز تناسبًا عكسيًا مع الجذر التربيعي لكتلته المولية. ببساطة: الغازات الأخف هي الأسرع.",
+    mainIdea: "عند نفس الظروف من الحرارة والضغط يتناسب معدل سرعة انتشار أو تدفق الغاز تناسبًا عكسيًا مع الجذر التربيعي لكتلته المولية ببساطة: الغازات الأخف هي الأسرع",
     learningOutcomes: [
-        "أقارن بين معدل سرعة تدفق غازين مختلفين.",
-        "أحل مسائل حسابية على قانون جراهام."
+        "أقارن بين معدل سرعة تدفق غازين مختلفين",
+        "أحل مسائل حسابية على قانون جراهام"
     ],
-    lessonContent: `<p>آخر قانون في رحلتنا مع الغازات هو قانون جراهام، الذي يصف ظاهرة مهمة جدًا وهي سرعة حركة الغازات. هل تساءلت يومًا لماذا نشم رائحة عطر في أحد أركان الغرفة بعد فترة قصيرة من رشه في الركن الآخر؟ قانون جراهام يجيب على هذا السؤال.</p>`,
+    lessonContent: `<p>آخر قانون في رحلتنا مع الغازات هو قانون جراهام الذي يصف ظاهرة مهمة جدًا وهي سرعة حركة الغازات هل تساءلت يومًا لماذا نشم رائحة عطر في أحد أركان الغرفة بعد فترة قصيرة من رشه في الركن الآخر؟ قانون جراهام يجيب على هذا السؤال</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-10",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-9",
@@ -56,7 +56,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p>
-                        لاحظ العالم توماس جراهام أن الغازات الخفيفة مثل الهيدروجين والأمونيا تنتشر أسرع بكثير من الغازات الثقيلة مثل ثاني أكسيد الكربون. قاده ذلك إلى إجراء تجارب دقيقة لقياس سرعة تدفق الغازات المختلفة عبر ثقوب صغيرة، واستنتج من ذلك العلاقة الرياضية التي تربط بين سرعة التدفق والكتلة المولية.
+                        لاحظ العالم توماس جراهام أن الغازات الخفيفة مثل الهيدروجين والأمونيا تنتشر أسرع بكثير من الغازات الثقيلة مثل ثاني أكسيد الكربون قاده ذلك إلى إجراء تجارب دقيقة لقياس سرعة تدفق الغازات المختلفة عبر ثقوب صغيرة واستنتج من ذلك العلاقة الرياضية التي تربط بين سرعة التدفق والكتلة المولية
                     </p>
                 </CardContent>
             </Card>
@@ -67,11 +67,11 @@ export default function LessonPartPage() {
                     cardIcon={<Waves className="h-6 w-6" />}
                 >
                     <div className="space-y-3 text-sm">
-                        <p className="font-semibold">هو الاختلاط التدريجي لجسيمات غاز مع جسيمات غاز آخر.</p>
+                        <p className="font-semibold">هو الاختلاط التدريجي لجسيمات غاز مع جسيمات غاز آخر</p>
                         <ul className="list-disc mr-4 space-y-2">
-                            <li>تنتقل الجسيمات من منطقة التركيز المرتفع إلى منطقة التركيز المنخفض.</li>
-                            <li>تستمر الحركة حتى يتوزع الغاز بشكل متساوٍ في الوعاء.</li>
-                            <li>مثال: انتشار رائحة الطعام في المنزل.</li>
+                            <li>تنتقل الجسيمات من منطقة التركيز المرتفع إلى منطقة التركيز المنخفض</li>
+                            <li>تستمر الحركة حتى يتوزع الغاز بشكل متساوٍ في الوعاء</li>
+                            <li>مثال: انتشار رائحة الطعام في المنزل</li>
                         </ul>
                     </div>
                 </FlippableCard>
@@ -81,10 +81,10 @@ export default function LessonPartPage() {
                     cardIcon={<Wind className="h-6 w-6" />}
                 >
                     <div className="space-y-3 text-sm">
-                        <p className="font-semibold">هو عملية تسرب غاز مضغوط من خلال فتحة صغيرة جدًا.</p>
+                        <p className="font-semibold">هو عملية تسرب غاز مضغوط من خلال فتحة صغيرة جدًا</p>
                          <ul className="list-disc mr-4 space-y-2">
-                            <li>يحدث عندما يكون ضغط الغاز داخل الوعاء أعلى من الضغط خارجه.</li>
-                            <li>مثال: تسرب الهواء من ثقب صغير في إطار سيارة.</li>
+                            <li>يحدث عندما يكون ضغط الغاز داخل الوعاء أعلى من الضغط خارجه</li>
+                            <li>مثال: تسرب الهواء من ثقب صغير في إطار سيارة</li>
                         </ul>
                     </div>
                 </FlippableCard>
@@ -96,7 +96,7 @@ export default function LessonPartPage() {
             >
                  <div className="space-y-3">
                     <blockquote className="border-r-4 border-primary pr-4">
-                        "يتناسب معدل سرعة انتشار (أو تدفق) الغاز عكسيًا مع الجذر التربيعي لكتلته المولية عند ثبات درجة الحرارة والضغط."
+                        "يتناسب معدل سرعة انتشار (أو تدفق) الغاز عكسيًا مع الجذر التربيعي لكتلته المولية عند ثبات درجة الحرارة والضغط"
                     </blockquote>
                      <div dir="ltr" className="text-center pt-2 border-t mt-2"><BlockMath math="r \propto \frac{1}{\sqrt{Mr}}" /></div>
                 </div>
@@ -108,7 +108,7 @@ export default function LessonPartPage() {
             <Lightbulb className="h-7 w-7 text-yellow-400" />
             <div>
               <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -124,13 +124,13 @@ export default function LessonPartPage() {
                       "لا يمكن التحديد"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol، بينما لـ HCl ≈ 36.5g/mol. بما أن الأمونيا أخف (كتلتها المولية أقل)، فهي الأسرع انتشارًا وفقًا لقانون جراهام."
+                  explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol بينما لـ HCl ≈ 36.5g/mol بما أن الأمونيا أخف (كتلتها المولية أقل) فهي الأسرع انتشارًا وفقًا لقانون جراهام"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
+                  question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span> كتلته المولية 16g/mol) فما هي الكتلة المولية للغاز المجهول?</span></>}
                   options={[
                       "8g/mol",
                       "32g/mol",
@@ -145,7 +145,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
-
-    
