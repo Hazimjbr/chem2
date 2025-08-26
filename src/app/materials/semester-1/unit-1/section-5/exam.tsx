@@ -237,6 +237,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
+    },
+    {
+        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+        options: [
+            <InlineMath math="n_{Ne} = n_{Xe}" />,
+            <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
+            <InlineMath math="n_{Ne} = 1.5 n_{Xe}" />,
+            <InlineMath math="n_{Xe} = 0.5 n_{Ne}" />
+        ],
+        correctAnswerIndex: 1,
+        explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     }
 ];
 
