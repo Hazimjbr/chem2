@@ -25,7 +25,7 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    "question": <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي <span dir="ltr" className="inline-block">0.01</span>، فإن درجة الحرارة (<span dir="ltr" className="inline-block">°C</span>) لهذه العينة عندما يكون حجمها <span dir="ltr" className="inline-block">5L</span> تساوي:</span>,
+    "question": <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي <span dir="ltr" className="inline-block">0.01</span> فإن درجة الحرارة (<span dir="ltr" className="inline-block">°C</span>) لهذه العينة عندما يكون حجمها <span dir="ltr" className="inline-block">5L</span> تساوي:</span>,
     "options": [
         "500",
         "227",
