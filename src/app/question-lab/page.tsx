@@ -29,7 +29,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 const sampleQuestion = {
     question: (
         <div className="space-y-4">
-            <p>ادرس المعلومات الواردة في الجدول عن إطار سيارة في وضعين مختلفين (A, B) ثم أجب عن السؤال التالي:</p>
+            <p className="font-bold">ادرس المعلومات الواردة في الجدول عن إطار سيارة في وضعين مختلفين (A, B) واحسب حجم الهواء داخل الإطار في الوضع B بوحدة L</p>
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -61,7 +61,6 @@ const sampleQuestion = {
                     </TableRow>
                 </TableBody>
             </Table>
-            <p className="font-bold">ما حجم الهواء داخل الإطار في الوضع B يساوي بوحدة L؟</p>
         </div>
     ),
     options: [
