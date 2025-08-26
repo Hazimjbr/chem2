@@ -175,7 +175,7 @@ export const AmmoniumChlorideDiagram = (props: Partial<SVGProps<SVGSVGElement>>)
 
         {/* Right cotton */}
         <circle cx="425" cy="50" r="10" fill="white" stroke="black" />
-        <text x="425" y="80" textAnchor="middle" fontSize="10">قطن مبلل بـ NH₃</text>
+        <text x="420" y="80" textAnchor="middle" fontSize="10">قطن مبلل بـ NH₃</text>
         
         {/* Reaction points */}
         <text x="120" y="30" textAnchor="middle">A</text>
