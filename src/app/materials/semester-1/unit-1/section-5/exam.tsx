@@ -182,6 +182,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 2,
         "explanation": "وفقًا لفرضية أفوجادرو فإن كميات متساوية من الغازات المختلفة (1mol لكل منهما) عند نفس درجة الحرارة والحجم تحتوي على نفس العدد من الجسيمات وبالتالي تمارس نفس الضغط"
+    },
+    {
+        "question": <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة (°C) لهذه العينة عندما يكون حجمها 5L تساوي:</span>,
+        "options": [
+            "500",
+            "227",
+            "273",
+            "773"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل. T(K) = V / (V/T) = 5L / 0.01 = 500K. بالسيليزيوس، T(°C) = 500 - 273 = 227°C"
     }
 ];
 
@@ -190,5 +201,7 @@ export const staticQuizLvl2: QuizQuestion[] = [];
 
 // Add more level 3 questions here
 export const staticQuizLvl3: QuizQuestion[] = [];
+
+    
 
     
