@@ -206,7 +206,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض V₂ = (P₁V₁) / P₂ = (2.25 atm × 0.75 L) / 1.03 atm ≈ 1.64 L"
     },
     {
-        "question": <span>يكون حجم مول واحد من غاز ثاني أكسيد الكبريت <span dir="ltr">(SO₂)</span> أقل ما يمكن عند</span>,
+        question: <span>يكون حجم مول واحد من غاز ثاني أكسيد الكبريت <span dir="ltr">(SO₂)</span> أقل ما يمكن عند</span>,
         "options": [
             <span><span dir="ltr">2 atm</span> و <span dir="ltr">273 K</span></span>,
             <span><span dir="ltr">1 atm</span> و <span dir="ltr">273 K</span></span>,
@@ -215,6 +215,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 0,
         "explanation": "وفقًا لقانون الغاز المثالي (V = nRT/P) يكون حجم الغاز أقل ما يمكن عندما تكون درجة الحرارة (T) أقل ما يمكن والضغط (P) أعلى ما يمكن الخيار (أ) يحقق هذه الشروط (أقل درجة حرارة وأعلى ضغط)"
+    },
+    {
+        "question": <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <span dir="ltr">25°C</span> إلى <span dir="ltr">150°C</span> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
+        "options": [
+            "متوسط سرعة جزيئات الغاز",
+            "ضغط الغاز",
+            "متوسط الطاقة الحركية والجزيئات",
+            "حجم الغاز"
+        ],
+        "correctAnswerIndex": 3,
+        "explanation": "الأسطوانة هي وعاء صلب حجمه ثابت لذلك يبقى حجم الغاز ثابتًا بينما يؤدي التسخين إلى زيادة درجة الحرارة مما يزيد من متوسط الطاقة الحركية ومتوسط سرعة الجزيئات وبالتالي يزداد ضغط الغاز وفقًا لقانون جاي لوساك"
     }
 ];
 
