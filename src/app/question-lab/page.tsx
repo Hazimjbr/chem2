@@ -25,15 +25,15 @@ import { InlineMath } from 'react-katex';
 // ===================              مكان وضع السؤال للمعاينة              ===================
 // ====================================================================================
 const sampleQuestion = {
-    question: <><span className="inline-block">كمية من غاز النيتروجين</span><span className="inline-block" dir="ltr">(<InlineMath math="N_2" />)</span><span className="inline-block">حجمها</span><span className="inline-block" dir="ltr"><InlineMath math="10\text{L}" /></span><span className="inline-block">وكمية أخرى من غاز الهيليوم</span><span className="inline-block" dir="ltr">(<InlineMath math="He" />)</span><span className="inline-block">تشغل حجم</span><span className="inline-block" dir="ltr"><InlineMath math="20\text{L}" /></span><span className="inline-block">عند نفس الظروف ما هي نسبة عدد مولات الهيليوم إلى النيتروجين</span></>,
+    question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1.5L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
     options: [
-        "1:2",
-        "2:1",
-        "1:1",
-        "لا يمكن تحديدها"
+        <InlineMath math="n_{Ne} = n_{Xe}" />,
+        <InlineMath math="n_{Ne} = 1.5 n_{Xe}" />,
+        <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
+        <InlineMath math="n_{Xe} = 0.5 n_{Ne}" />
     ],
-    correctAnswerIndex: 1,
-    explanation: "بما أن V ∝ n فإن نسبة الأحجام تساوي نسبة عدد المولات V(He)/V(N₂) = n(He)/n(N₂) إذن 20/10 = 2/1 نسبة الهيليوم إلى النيتروجين هي 2:1"
+    correctAnswerIndex: 2,
+    explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 1 / n_Ne = 1.5 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = 1.5 * n_Ne"
 };
 // ====================================================================================
 // ====================================================================================
