@@ -29,7 +29,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 const sampleQuestion = {
     question: (
         <div className="space-y-4">
-            <p className="font-bold">ادرس المعلومات الواردة في الجدول ثم احسب عدد مولات الهواء اللازم إضافتها إلى الإطار في الوضع (B) حتى يعود حجم الهواء إلى 20.5L عند درجة حرارة 10°C وضغط 29atm.</p>
+            <p className="font-bold">ادرس المعلومات الواردة في الجدول ثم احسب عدد مولات الهواء اللازم إضافتها إلى الإطار في الوضع (B) حتى يعود حجم الهواء إلى 20.5L.</p>
             <Table>
                 <TableHeader>
                     <TableRow>
