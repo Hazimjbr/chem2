@@ -6,12 +6,12 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "chem1-93ct1",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  "projectId": "chem1-93ct1",
+  "appId": "1:478091867826:web:52e564e2a5b42f70ed7bab",
+  "storageBucket": "chem1-93ct1.appspot.com",
+  "apiKey": "AIzaSyD5meKUxkfCEJJ9n6Mi-LdXmBtRmT76xy8",
+  "authDomain": "chem1-93ct1.firebaseapp.com",
+  "messagingSenderId": "478091867826"
 };
 
 // Initialize Firebase
