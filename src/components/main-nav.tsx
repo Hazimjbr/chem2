@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useCurriculum } from '@/context/CurriculumContext';
 
 function Logo() {
     return (
@@ -32,6 +33,9 @@ function Logo() {
 }
 
 function DesktopNav() {
+    const { isSelected, curriculum } = useCurriculum();
+    if (!isSelected) return null;
+
     return (
         <nav className="hidden md:flex items-center gap-6 text-sm">
             <DropdownMenu>
@@ -68,14 +72,14 @@ function DesktopNav() {
             >
                 تحليل الأداء
             </Link>
-            <Link
+             <Link
                 href="/question-bank"
                 className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
             >
                 <Library className="h-4 w-4" />
                 بنك الأسئلة
             </Link>
-            <Link
+             <Link
                 href="/question-lab"
                 className="font-medium text-destructive/50 transition-colors hover:text-destructive/80 flex items-center gap-1"
             >
@@ -87,6 +91,9 @@ function DesktopNav() {
 }
 
 function MobileNav() {
+    const { isSelected } = useCurriculum();
+    if (!isSelected) return null;
+
     return (
         <div className="md:hidden">
             <Sheet>
@@ -118,7 +125,7 @@ function MobileNav() {
                         <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
                             بنك الأسئلة
                         </Link>
-                        <Link href="/question-lab" className="text-lg font-medium text-destructive/50 transition-colors hover:text-destructive/80">
+                         <Link href="/question-lab" className="text-lg font-medium text-destructive/50 transition-colors hover:text-destructive/80">
                             مختبر الأسئلة
                         </Link>
                     </nav>

@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -5,7 +6,8 @@ import Header from '@/components/header';
 import FloatingActions from '@/components/floating-actions';
 import { Toaster } from '@/components/ui/toaster';
 import 'katex/dist/katex.min.css';
-
+import { CurriculumProvider } from '@/context/CurriculumContext';
+import AppContent from '@/components/app-content';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,10 +24,11 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
-        <FloatingActions />
-        <Toaster />
+        <CurriculumProvider>
+            <AppContent>
+                 {children}
+            </AppContent>
+        </CurriculumProvider>
       </body>
     </html>
   );

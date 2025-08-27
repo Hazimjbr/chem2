@@ -2,85 +2,63 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, CheckSquare, Clock } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { BookOpen, CheckSquare, Clock, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useCurriculum } from '@/context/CurriculumContext';
+import MainAppContent from '@/components/main-app-content';
 
-export default function Home() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
+export default function HomePage() {
+  const { curriculum, selectCurriculum, isSelected } = useCurriculum();
 
-  useEffect(() => {
-    const savedLesson = localStorage.getItem('lastVisitedLesson');
-    if (savedLesson) {
-      setLastVisitedLesson(savedLesson);
-    }
-  }, []);
-
-  return (
-    <div className="container mx-auto p-8">
-      <section className="text-center py-16">
-        <h1 className="text-5xl font-bold mb-4">
-          أهلاً بك في{' '}
-          <span className="text-accent">Chem</span>
-          <span className="text-foreground">Zim</span>
-        </h1>
-        <p className="text-xl text-muted-foreground mb-8">
-          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
-        </p>
-        <div className="flex justify-center gap-4">
-          <Link href="/materials/semester-1" passHref>
-            <Button size="lg" variant="default">
-              <BookOpen className="ml-2" />
-              ابدأ التعلم
-            </Button>
-          </Link>
-          <Link href="/quizzes" passHref>
-            <Button size="lg" variant="outline">
-              <CheckSquare className="ml-2" />
-              اختبر نفسك
-            </Button>
-          </Link>
+  if (!isSelected) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background">
+        <div className="text-center mb-12">
+            <h1 className="text-5xl font-bold mb-4">
+              أهلاً بك في{' '}
+              <span className="text-accent">Chem</span>
+              <span className="text-foreground">Zim</span>
+            </h1>
+            <p className="text-xl text-muted-foreground">
+              منصتك التفاعلية لإتقان الكيمياء، اختر منهجك لتبدأ
+            </p>
         </div>
-      </section>
-
-      <section className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Clock />
-                أكمل من حيث توقفت
-              </CardTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Card className="hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="items-center text-center">
+              <CardTitle className="text-3xl">توجيهي 2008</CardTitle>
+              <CardDescription>المنهاج الأردني الجديد</CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
-                الحالة الغازية نظرية الحركة الجزيئية
+            <CardContent className="text-center">
+              <p className="text-muted-foreground mb-6">
+                شرح شامل للمادة، تجارب تفاعلية، أسئلة وامتحانات متنوعة.
               </p>
-              <Link href={lastVisitedLesson} passHref>
-                <Button>متابعة الدرس</Button>
-              </Link>
+              <Button size="lg" className="w-full" onClick={() => selectCurriculum('tawjihi')}>
+                ابدأ رحلتك
+                <ArrowLeft className="mr-2 h-5 w-5" />
+              </Button>
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                 <CheckSquare />
-                امتحان مقترح
-              </CardTitle>
+          <Card className="border-dashed bg-muted/50">
+             <CardHeader className="items-center text-center">
+              <CardTitle className="text-3xl text-muted-foreground">IGCSE 0620</CardTitle>
+               <CardDescription>Cambridge Curriculum</CardDescription>
             </CardHeader>
-            <CardContent>
-               <p className="text-muted-foreground mb-4">
-                اختبر فهمك في وحدة حالات المادة
+            <CardContent className="text-center">
+                <p className="text-muted-foreground mb-6">
+                هذا القسم قيد التطوير حاليًا وسيكون متاحًا قريبًا.
               </p>
-              <Link href="/quizzes" passHref>
-                <Button variant="outline">بدء الامتحان</Button>
-              </Link>
+              <Button size="lg" className="w-full" disabled>
+                قريبًا
+              </Button>
             </CardContent>
           </Card>
         </div>
-      </section>
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return <MainAppContent />;
 }
