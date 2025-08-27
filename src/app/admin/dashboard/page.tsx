@@ -6,6 +6,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { Loader2, ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import AddStudentForm from '@/components/admin/add-student-form';
 
 export default function AdminDashboardPage() {
     const { currentUser, isLoading } = useApp();
@@ -73,16 +75,28 @@ export default function AdminDashboardPage() {
                 </p>
             </header>
             <main>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>أهلاً بك يا مسؤول</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p>هنا ستكون أدوات إدارة النظام (قيد الإنشاء)</p>
-                    </CardContent>
-                </Card>
+                <Tabs defaultValue="add-student" className="w-full">
+                    <TabsList className="grid w-full grid-cols-4">
+                        <TabsTrigger value="add-student">إضافة طالب</TabsTrigger>
+                        <TabsTrigger value="view-students" disabled>عرض الطلاب</TabsTrigger>
+                        <TabsTrigger value="approve-devices" disabled>الموافقة على الأجهزة</TabsTrigger>
+                        <TabsTrigger value="registered-devices" disabled>الأجهزة المسجلة</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="add-student">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>إنشاء حساب طالب جديد</CardTitle>
+                                <CardDescription>
+                                    أدخل بيانات الطالب لإنشاء حساب جديد في النظام
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <AddStudentForm />
+                            </CardContent>
+                        </Card>
+                    </TabsContent>
+                </Tabs>
             </main>
         </div>
     )
-
 }
