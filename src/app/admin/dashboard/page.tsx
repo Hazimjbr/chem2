@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AddStudentForm from '@/components/admin/add-student-form';
+import ApproveDevicesList from '@/components/admin/approve-devices-list';
 
 export default function AdminDashboardPage() {
     const { currentUser, isLoading } = useApp();
@@ -78,8 +79,8 @@ export default function AdminDashboardPage() {
                 <Tabs defaultValue="add-student" className="w-full">
                     <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger value="add-student">إضافة طالب</TabsTrigger>
+                        <TabsTrigger value="approve-devices">الموافقة على الأجهزة</TabsTrigger>
                         <TabsTrigger value="view-students" disabled>عرض الطلاب</TabsTrigger>
-                        <TabsTrigger value="approve-devices" disabled>الموافقة على الأجهزة</TabsTrigger>
                         <TabsTrigger value="registered-devices" disabled>الأجهزة المسجلة</TabsTrigger>
                     </TabsList>
                     <TabsContent value="add-student">
@@ -92,6 +93,19 @@ export default function AdminDashboardPage() {
                             </CardHeader>
                             <CardContent>
                                 <AddStudentForm />
+                            </CardContent>
+                        </Card>
+                    </TabsContent>
+                     <TabsContent value="approve-devices">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>طلبات الأجهزة قيد المراجعة</CardTitle>
+                                <CardDescription>
+                                    وافق أو ارفض طلبات تسجيل الأجهزة الجديدة للطلاب
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ApproveDevicesList />
                             </CardContent>
                         </Card>
                     </TabsContent>
