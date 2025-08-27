@@ -2,7 +2,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { onAuthStateChangedListener } from '@/lib/firebase/auth';
+import { onAuthStateChangedListener, signOutUser } from '@/lib/firebase/auth';
 import type { User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase/config';
@@ -13,7 +13,6 @@ interface AppUser {
     uid: string;
     email: string | null;
     role: 'student' | 'admin' | null;
-    // Add other user-specific data here later, e.g., name, courseIds
 }
 
 interface AppContextType {
@@ -21,8 +20,6 @@ interface AppContextType {
   isSelected: boolean;
   selectCurriculum: (curriculum: NonNullable<Curriculum>) => void;
   clearCurriculum: () => void;
-  
-  // New auth state
   currentUser: AppUser | null;
   isLoading: boolean;
 }
@@ -32,7 +29,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [curriculum, setCurriculum] = useState<Curriculum>(null);
   const [currentUser, setCurrentUser] = useState<AppUser | null>(null);
-  const [isLoading, setIsLoading] = useState(true); // Start with loading true
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -48,25 +45,23 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
     const unsubscribe = onAuthStateChangedListener(async (user: FirebaseUser | null) => {
         if (user) {
-            // User is signed in, check their role
             const adminDocRef = doc(db, 'admins', user.uid);
             const adminDoc = await getDoc(adminDocRef);
 
             if (adminDoc.exists()) {
                 setCurrentUser({ uid: user.uid, email: user.email, role: 'admin' });
             } else {
-                // For now, assume anyone not an admin is a student
-                // Later, we can add a check to the 'students' collection
+                // In a full system, you'd check a 'students' collection.
+                // For now, any authenticated non-admin is a student.
                 setCurrentUser({ uid: user.uid, email: user.email, role: 'student' });
             }
         } else {
-            // User is signed out
             setCurrentUser(null);
+            clearCurriculum(); // Clear curriculum on sign out
         }
         setIsLoading(false);
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 

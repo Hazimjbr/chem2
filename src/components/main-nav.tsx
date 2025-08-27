@@ -25,13 +25,13 @@ import { Avatar, AvatarFallback } from './ui/avatar';
 
 
 function AuthSection() {
-    const { currentUser } = useApp();
+    const { currentUser, clearCurriculum } = useApp();
     const { toast } = useToast();
 
     const handleSignOut = async () => {
         try {
             await signOutUser();
-            // The onAuthStateChanged listener will handle the rest
+            clearCurriculum();
             toast({
                 title: 'تم تسجيل الخروج بنجاح',
             });
@@ -111,11 +111,11 @@ function DesktopNav() {
             >
                 التجارب
             </Link>
-            <Link
-                href="/quizzes"
+             <Link
+                href="/performance-analysis"
                 className="font-medium text-muted-foreground transition-colors hover:text-primary"
             >
-                الاختبارات
+                تحليل الأداء
             </Link>
              <Link
                 href="/question-bank"
@@ -123,13 +123,6 @@ function DesktopNav() {
             >
                 <Library className="h-4 w-4" />
                 بنك الأسئلة
-            </Link>
-             <Link
-                href="/question-lab"
-                className="font-medium text-destructive/50 transition-colors hover:text-destructive/80 flex items-center gap-1"
-            >
-                <FlaskConical className="h-4 w-4" />
-                مختبر الأسئلة
             </Link>
         </nav>
     );
@@ -161,14 +154,11 @@ function MobileNav() {
                         <Link href="/experiments" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
                             التجارب
                         </Link>
-                        <Link href="/quizzes" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
-                            الاختبارات
+                         <Link href="/performance-analysis" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
+                            تحليل الأداء
                         </Link>
                         <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
                             بنك الأسئلة
-                        </Link>
-                         <Link href="/question-lab" className="text-lg font-medium text-destructive/50 transition-colors hover:text-destructive/80">
-                            مختبر الأسئلة
                         </Link>
                     </nav>
                 </SheetContent>
@@ -188,7 +178,7 @@ export default function MainNav() {
         {isMobile ? null : <DesktopNav />}
       </div>
       <div className="flex items-center gap-4">
-        {currentUser && <AuthSection />}
+        <AuthSection />
         {isMobile && <MobileNav />}
       </div>
     </div>

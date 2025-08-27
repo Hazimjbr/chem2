@@ -3,7 +3,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, CheckSquare, Clock, ShieldCheck } from 'lucide-react';
+import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
@@ -36,10 +36,10 @@ export default function MainAppContent() {
               ابدأ التعلم
             </Button>
           </Link>
-          <Link href="/quizzes" passHref>
+           <Link href="/performance-analysis" passHref>
             <Button size="lg" variant="outline">
-              <CheckSquare className="ml-2" />
-              اختبر نفسك
+              <BarChart className="ml-2" />
+              حلل أدائي
             </Button>
           </Link>
         </div>
@@ -57,7 +57,7 @@ export default function MainAppContent() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                الحالة الغازية نظرية الحركة الجزيئية
+                الاستمرار في آخر درس قمت بزيارته
               </p>
               <Link href={lastVisitedLesson} passHref>
                 <Button>متابعة الدرس</Button>
@@ -67,16 +67,16 @@ export default function MainAppContent() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                 <CheckSquare />
-                امتحان مقترح
+                 <Library />
+                بنك الأسئلة
               </CardTitle>
             </CardHeader>
             <CardContent>
                <p className="text-muted-foreground mb-4">
-                اختبر فهمك في وحدة حالات المادة
+                تصفح جميع الأسئلة الموجودة في المنصة
               </p>
-              <Link href="/materials/semester-1/unit-1/section-5" passHref>
-                <Button variant="outline">بدء الامتحان</Button>
+              <Link href="/question-bank" passHref>
+                <Button variant="outline">تصفح البنك</Button>
               </Link>
             </CardContent>
           </Card>
