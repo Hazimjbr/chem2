@@ -12,17 +12,19 @@ import AuthDialog from '@/components/auth-dialog';
 export default function HomePage() {
   const { curriculum, selectCurriculum, isSelected, currentUser } = useApp();
   const [authOpen, setAuthOpen] = useState(false);
-  const [selectedProvider, setSelectedProvider] = useState<'tawjihi' | 'igcse' | null>(null);
+  
+  // We remove selectedProvider state as the login is now universal
 
-  const handleCardClick = (provider: 'tawjihi' | 'igcse') => {
-    setSelectedProvider(provider);
+  const handleCardClick = () => {
+    // Any card click now simply opens the auth dialog
     setAuthOpen(true);
   }
 
   const handleAuthSuccess = () => {
-    if (selectedProvider) {
-      selectCurriculum(selectedProvider);
-    }
+    // After successful login, the onAuthStateChanged listener in the context
+    // will handle setting the user. We just need to close the dialog.
+    // We can default to a curriculum here or let the user choose on the main screen.
+    selectCurriculum('tawjihi');
     setAuthOpen(false);
   }
 
@@ -50,7 +52,7 @@ export default function HomePage() {
               <p className="text-muted-foreground mb-6">
                 شرح شامل للمادة تجارب تفاعلية أسئلة وامتحانات متنوعة
               </p>
-              <Button size="lg" className="w-full" onClick={() => handleCardClick('tawjihi')}>
+              <Button size="lg" className="w-full" onClick={handleCardClick}>
                 ابدأ رحلتك
                 <ArrowLeft className="mr-2 h-5 w-5" />
               </Button>
@@ -76,9 +78,13 @@ export default function HomePage() {
     );
   }
   
+  // If user is logged in but curriculum isn't selected, default to 'tawjihi'.
+  // This handles the state right after login.
   if (currentUser && !isSelected) {
-     // This state occurs after login but before curriculum selection
-      selectCurriculum('tawjihi'); // Default to tawjihi for now
+      selectCurriculum('tawjihi'); 
+      // This will cause a re-render, and on the next render, MainAppContent will be shown.
+      // Returning null or a loader here prevents a flash of the selection screen.
+      return null;
   }
 
   return <MainAppContent />;
