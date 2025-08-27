@@ -8,12 +8,29 @@ import Link from 'next/link';
 import { useState, useEffect, useContext } from 'react';
 import { useCurriculum } from '@/context/CurriculumContext';
 import MainAppContent from '@/components/main-app-content';
+import AuthDialog from '@/components/auth-dialog';
 
 export default function HomePage() {
   const { curriculum, selectCurriculum, isSelected } = useCurriculum();
+  const [authOpen, setAuthOpen] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState<'tawjihi' | 'igcse' | null>(null);
+
+  const handleCardClick = (provider: 'tawjihi' | 'igcse') => {
+    setSelectedProvider(provider);
+    setAuthOpen(true);
+  }
+
+  const handleAuthSuccess = () => {
+    if (selectedProvider) {
+      selectCurriculum(selectedProvider);
+    }
+    setAuthOpen(false);
+  }
 
   if (!isSelected) {
     return (
+      <>
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} onAuthSuccess={handleAuthSuccess} />
       <div className="flex flex-col items-center justify-center min-h-screen bg-background">
         <div className="text-center mb-12">
             <h1 className="text-5xl font-bold mb-4">
@@ -34,7 +51,7 @@ export default function HomePage() {
               <p className="text-muted-foreground mb-6">
                 شرح شامل للمادة تجارب تفاعلية أسئلة وامتحانات متنوعة
               </p>
-              <Button size="lg" className="w-full" onClick={() => selectCurriculum('tawjihi')}>
+              <Button size="lg" className="w-full" onClick={() => handleCardClick('tawjihi')}>
                 ابدأ رحلتك
                 <ArrowLeft className="mr-2 h-5 w-5" />
               </Button>
@@ -56,6 +73,7 @@ export default function HomePage() {
           </Card>
         </div>
       </div>
+      </>
     );
   }
 
