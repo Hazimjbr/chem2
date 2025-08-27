@@ -1,8 +1,9 @@
+
 'use server';
 
 import { initializeApp, getApps, deleteApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from './config';
 
 // This is the same config object used for the client-side app.
@@ -24,8 +25,8 @@ export async function addStudent(studentData: {
     password_clear: string,
     courses: string[],
     courseIds: string[],
-    phone1: string,
-    phone2: string,
+    phone1?: string,
+    phone2?: string,
 }) {
     const { studentName, username, password_clear, courses, courseIds, phone1, phone2 } = studentData;
     const email = `${username}@gmail.com`;
@@ -57,8 +58,8 @@ export async function addStudent(studentData: {
             password: password_clear, // Store the clear password for admin reference as requested.
             courses,
             courseIds,
-            phone1,
-            phone2,
+            phone1: phone1 || '',
+            phone2: phone2 || '',
             createdAt: new Date(),
         });
         
@@ -81,5 +82,32 @@ export async function addStudent(studentData: {
         }
         
         return { success: false, message: errorMessage };
+    }
+}
+
+
+export async function getStudents() {
+    try {
+        const studentsRef = collection(db, 'students');
+        const q = query(studentsRef, orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(q);
+
+        const students = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                studentName: data.studentName,
+                username: data.username,
+                email: data.email,
+                courses: data.courses || [],
+                phone1: data.phone1 || '',
+                phone2: data.phone2 || '',
+            };
+        });
+        
+        return { success: true, data: students };
+    } catch (error) {
+        console.error("Error getting students:", error);
+        return { success: false, message: "فشل في جلب بيانات الطلاب." };
     }
 }

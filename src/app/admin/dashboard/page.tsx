@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AddStudentForm from '@/components/admin/add-student-form';
 import ApproveDevicesList from '@/components/admin/approve-devices-list';
+import ViewStudentsList from '@/components/admin/view-students-list';
 
 export default function AdminDashboardPage() {
     const { currentUser, isLoading } = useApp();
@@ -80,7 +81,7 @@ export default function AdminDashboardPage() {
                     <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger value="add-student">إضافة طالب</TabsTrigger>
                         <TabsTrigger value="approve-devices">الموافقة على الأجهزة</TabsTrigger>
-                        <TabsTrigger value="view-students" disabled>عرض الطلاب</TabsTrigger>
+                        <TabsTrigger value="view-students">عرض الطلاب</TabsTrigger>
                         <TabsTrigger value="registered-devices" disabled>الأجهزة المسجلة</TabsTrigger>
                     </TabsList>
                     <TabsContent value="add-student">
@@ -106,6 +107,19 @@ export default function AdminDashboardPage() {
                             </CardHeader>
                             <CardContent>
                                 <ApproveDevicesList />
+                            </CardContent>
+                        </Card>
+                    </TabsContent>
+                    <TabsContent value="view-students">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>قائمة الطلاب المسجلين</CardTitle>
+                                <CardDescription>
+                                    عرض وتعديل بيانات الطلاب المسجلين في النظام
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ViewStudentsList />
                             </CardContent>
                         </Card>
                     </TabsContent>
