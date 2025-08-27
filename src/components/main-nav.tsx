@@ -32,6 +32,8 @@ function AuthSection() {
         try {
             await signOutUser();
             clearCurriculum();
+            // The onAuthStateChanged listener in context will handle user state.
+            // Clearing curriculum ensures we go back to the selection screen.
             toast({
                 title: 'تم تسجيل الخروج بنجاح',
             });

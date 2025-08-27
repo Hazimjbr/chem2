@@ -12,22 +12,17 @@ import AuthDialog from '@/components/auth-dialog';
 export default function HomePage() {
   const { curriculum, selectCurriculum, isSelected, currentUser } = useApp();
   const [authOpen, setAuthOpen] = useState(false);
-  
-  // We remove selectedProvider state as the login is now universal
 
   const handleCardClick = () => {
-    // Any card click now simply opens the auth dialog
     setAuthOpen(true);
   }
 
   const handleAuthSuccess = () => {
-    // After successful login, the onAuthStateChanged listener in the context
-    // will handle setting the user. We just need to close the dialog.
-    // We can default to a curriculum here or let the user choose on the main screen.
     selectCurriculum('tawjihi');
     setAuthOpen(false);
   }
 
+  // If there's no user, always show the initial landing/selection page.
   if (!currentUser) {
      return (
       <>
@@ -78,13 +73,11 @@ export default function HomePage() {
     );
   }
   
-  // If user is logged in but curriculum isn't selected, default to 'tawjihi'.
-  // This handles the state right after login.
+  // If user is logged in, show the main app content.
+  // The curriculum context will handle selecting 'tawjihi' by default if nothing is selected.
   if (currentUser && !isSelected) {
       selectCurriculum('tawjihi'); 
-      // This will cause a re-render, and on the next render, MainAppContent will be shown.
-      // Returning null or a loader here prevents a flash of the selection screen.
-      return null;
+      return null; // Show a loader or null to prevent flash of content
   }
 
   return <MainAppContent />;
