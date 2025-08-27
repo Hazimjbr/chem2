@@ -40,7 +40,7 @@ export default function HomePage() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="border-dashed bg-muted/50">
+          <Card className="border-dashed">
              <CardHeader className="items-center text-center">
               <CardTitle className="text-3xl text-muted-foreground">IGCSE 0620</CardTitle>
                <CardDescription>Cambridge Curriculum</CardDescription>
