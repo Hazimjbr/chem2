@@ -6,14 +6,23 @@ import { onAuthStateChangedListener, signOutUser } from '@/lib/firebase/auth';
 import type { User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase/config';
+import { getOrCreateDeviceId } from '@/lib/device-id';
+import { registerDevice } from '@/lib/firebase/device.actions';
 
 type Curriculum = 'tawjihi' | 'igcse' | null;
 
-interface AppUser {
+export interface AppUser {
     uid: string;
     email: string | null;
     displayName: string | null;
     role: 'student' | 'admin' | null;
+}
+
+interface VerificationResult {
+    success: boolean;
+    message: string;
+    title?: string;
+    variant?: 'default' | 'destructive';
 }
 
 interface AppContextType {
@@ -23,6 +32,7 @@ interface AppContextType {
   clearCurriculum: () => void;
   currentUser: AppUser | null;
   isLoading: boolean;
+  handleLogin: (user: FirebaseUser) => Promise<VerificationResult>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -33,6 +43,35 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // Function to fetch user details from Firestore
+  const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
+      // Check if the user is an admin first
+      if (user.email === 'h75jbr@gmail.com') {
+          return { uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' };
+      }
+      const adminDocRef = doc(db, 'admins', user.uid);
+      const adminDoc = await getDoc(adminDocRef);
+
+      if (adminDoc.exists()) {
+          return { uid: user.uid, email: user.email, role: 'admin', displayName: adminDoc.data().displayName || 'Admin' };
+      } else {
+          // If not an admin, assume student and fetch student data
+          const studentDocRef = doc(db, 'students', user.uid);
+          const studentDoc = await getDoc(studentDocRef);
+          if (studentDoc.exists()) {
+               const studentData = studentDoc.data();
+               return { 
+                   uid: user.uid, 
+                   email: user.email, 
+                   role: 'student',
+                   displayName: studentData.studentName || user.email,
+              };
+          } else {
+              return null; // User not found in admins or students
+          }
+      }
+  }
+
   useEffect(() => {
     try {
       const savedCurriculum = localStorage.getItem('selectedCurriculum') as Curriculum;
@@ -42,43 +81,28 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
         console.error("Failed to load curriculum from local storage:", error);
     }
-    setIsLoaded(true);
 
     const unsubscribe = onAuthStateChangedListener(async (user: FirebaseUser | null) => {
         if (user) {
-            // Check if the user is an admin first
-            const adminDocRef = doc(db, 'admins', user.uid);
-            const adminDoc = await getDoc(adminDocRef);
-
-            if (adminDoc.exists()) {
-                setCurrentUser({ uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' });
+            const appUser = await fetchAppUser(user);
+             if (appUser) {
+                // If user is valid, we still need to verify the device on next login.
+                // For now, we just set them.
+                setCurrentUser(appUser);
             } else {
-                // If not an admin, assume student and fetch student data
-                const studentDocRef = doc(db, 'students', user.uid);
-                const studentDoc = await getDoc(studentDocRef);
-                if (studentDoc.exists()) {
-                     const studentData = studentDoc.data();
-                     setCurrentUser({ 
-                         uid: user.uid, 
-                         email: user.email, 
-                         role: 'student',
-                         displayName: studentData.studentName || user.email,
-                    });
-                } else {
-                    // This is an edge case: user exists in Auth but not in our DBs.
-                    // This could happen if DB write failed. For safety, sign them out.
-                    console.warn(`User ${user.uid} exists in Auth but not in Firestore. Signing out.`);
-                    await signOutUser();
-                    setCurrentUser(null);
-                }
+                // User exists in Auth but not in our DBs, or is not the owner.
+                console.warn(`User ${user.uid} exists in Auth but not in Firestore or is unauthorized. Signing out.`);
+                await signOutUser();
+                setCurrentUser(null);
             }
         } else {
             setCurrentUser(null);
-            clearCurriculum(); // Clear curriculum on sign out
+            clearCurriculum();
         }
         setIsLoading(false);
     });
-
+    
+    setIsLoaded(true);
     return () => unsubscribe();
   }, []);
 
@@ -99,6 +123,32 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
          console.error("Failed to clear curriculum from local storage:", error);
     }
   }
+
+  const handleLogin = async (user: FirebaseUser): Promise<VerificationResult> => {
+      const appUser = await fetchAppUser(user);
+      if (!appUser) {
+          await signOutUser();
+          return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام" };
+      }
+      
+      const deviceId = getOrCreateDeviceId();
+      const verificationResult = await registerDevice({ user: appUser, deviceId });
+
+      if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
+          setCurrentUser(appUser); // Set the current user only on successful verification
+          return { success: true, message: `أهلاً بك، ${appUser.displayName}!` };
+      } else {
+          // Device is pending or an error occurred
+          await signOutUser();
+          setCurrentUser(null);
+          return { 
+              success: false, 
+              title: verificationResult.status === 'pending' ? 'جهازك قيد المراجعة' : 'خطأ في التحقق',
+              message: verificationResult.message,
+              variant: verificationResult.status === 'error' ? 'destructive' : 'default',
+          };
+      }
+  }
   
   if (!isLoaded) {
     return null;
@@ -111,9 +161,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         selectCurriculum, 
         clearCurriculum,
         currentUser,
-        isLoading
+        isLoading,
+        handleLogin,
     }}>
-      {!isLoading && children}
+      {children}
     </AppContext.Provider>
   );
 };

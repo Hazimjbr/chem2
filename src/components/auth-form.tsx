@@ -16,13 +16,12 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { signInUser, signOutUser } from '@/lib/firebase/auth';
+import { signInUser } from '@/lib/firebase/auth';
 import { Loader2 } from 'lucide-react';
-import { getOrCreateDeviceId } from '@/lib/device-id';
-import { registerDevice } from '@/lib/firebase/device.actions';
+import { useApp } from '@/context/CurriculumContext';
 
 const formSchema = z.object({
-  username: z.string().min(1, { message: "اسم المستخدم مطلوب" }),
+  email: z.string().email({ message: "الرجاء إدخال بريد إلكتروني صالح" }),
   password: z.string().min(6, { message: "كلمة المرور يجب أن تكون 6 أحرف على الأقل" }),
 });
 
@@ -35,50 +34,43 @@ interface AuthFormProps {
 export default function AuthForm({ onAuthSuccess }: AuthFormProps) {
   const [isLoading, setIsLoading] = React.useState(false);
   const { toast } = useToast();
+  const { handleLogin } = useApp();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
+      email: '',
       password: '',
     },
   });
 
   const onSubmit = async (values: FormValues) => {
     setIsLoading(true);
-    const email = `${values.username}@gmail.com`;
     try {
-      // Step 1: Firebase Authentication
-      const user = await signInUser(email, values.password);
+      const user = await signInUser(values.email, values.password);
       
-      // Step 2: Device Verification
-      const deviceId = getOrCreateDeviceId();
-      const verificationResult = await registerDevice({ studentId: user.uid, deviceId });
+      const verificationResult = await handleLogin(user);
 
-      if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
-          // Device is approved, let the user in.
+      if (verificationResult.success) {
           toast({
             title: 'تم تسجيل الدخول بنجاح',
-            description: 'أهلاً بك مجددًا!',
+            description: verificationResult.message,
           });
           onAuthSuccess();
       } else {
-          // Device is pending or an error occurred
           toast({
-              title: verificationResult.status === 'pending' ? 'جهازك قيد المراجعة' : 'خطأ في التحقق',
+              title: verificationResult.title,
               description: verificationResult.message,
-              variant: verificationResult.status === 'error' ? 'destructive' : 'default',
+              variant: verificationResult.variant || 'default',
               duration: 9000,
           });
-          // CRITICAL: Sign the user out immediately
-          await signOutUser();
       }
 
     } catch (error: any) {
       console.error("Firebase Auth Error:", error);
       let description = 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.';
       if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-        description = 'اسم المستخدم أو كلمة المرور غير صحيحة. يرجى التحقق من بياناتك والمحاولة مرة أخرى.';
+        description = 'البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق من بياناتك والمحاولة مرة أخرى.';
       }
       toast({
         variant: 'destructive',
@@ -95,12 +87,12 @@ export default function AuthForm({ onAuthSuccess }: AuthFormProps) {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>اسم المستخدم</FormLabel>
+              <FormLabel>البريد الإلكتروني</FormLabel>
               <FormControl>
-                <Input placeholder="أدخل اسم المستخدم" {...field} />
+                <Input placeholder="أدخل بريدك الإلكتروني" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

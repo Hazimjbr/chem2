@@ -3,9 +3,10 @@
 
 import { db } from './config';
 import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, getDoc, deleteDoc } from 'firebase/firestore';
+import type { AppUser } from '@/context/CurriculumContext';
 
 interface RegistrationInput {
-    studentId: string;
+    user: AppUser;
     deviceId: string;
 }
 
@@ -15,8 +16,15 @@ interface RegistrationResult {
 }
 
 export async function registerDevice(input: RegistrationInput): Promise<RegistrationResult> {
-    const { studentId, deviceId } = input;
+    const { user, deviceId } = input;
     
+    // If the user is an admin, always approve the device immediately.
+    if (user.role === 'admin') {
+        return { status: 'registered', message: `أهلاً بك أيها المدير ${user.displayName}` };
+    }
+    
+    const studentId = user.uid;
+
     try {
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const pendingDevicesRef = collection(db, 'pendingDevices');
@@ -53,10 +61,11 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         await addDoc(pendingDevicesRef, {
             studentId,
             deviceId,
+            studentName: user.displayName, // Add student name to pending device doc
             requestedAt: Timestamp.now(),
         });
         
-        return { status: 'pending', message: 'هذا جهاز جديد تم إرسال طلب للموافقة عليه من قبل المسؤول' };
+        return { status: 'pending', message: 'هذا جهاز جديد. تم إرسال طلب للموافقة عليه من قبل المسؤول.' };
 
     } catch (error) {
         console.error("Device registration error:", error);
@@ -68,23 +77,19 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
 export async function getPendingDevices() {
     try {
         const pendingDevicesRef = collection(db, 'pendingDevices');
-        const q = query(pendingDevicesRef);
+        const q = query(pendingDevicesRef, orderBy("requestedAt", "desc"));
         const querySnapshot = await getDocs(q);
 
-        const pendingDevices = await Promise.all(querySnapshot.docs.map(async (d) => {
+        const pendingDevices = querySnapshot.docs.map((d) => {
             const data = d.data();
-            const studentDocRef = doc(db, 'students', data.studentId);
-            const studentDoc = await getDoc(studentDocRef);
-            const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
-
             return {
                 id: d.id,
                 studentId: data.studentId,
                 deviceId: data.deviceId,
-                studentName: studentName,
+                studentName: data.studentName || 'طالب غير معروف',
                 requestedAt: (data.requestedAt as Timestamp).toDate().toLocaleString('ar-JO'),
             };
-        }));
+        });
 
         return { success: true, data: pendingDevices };
     } catch (error) {
