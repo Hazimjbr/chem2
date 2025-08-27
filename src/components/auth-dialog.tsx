@@ -3,6 +3,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import React from 'react';
+import AuthForm from './auth-form';
 
 interface AuthDialogProps {
     open: boolean;
@@ -11,7 +12,6 @@ interface AuthDialogProps {
 }
 
 export default function AuthDialog({ open, onOpenChange, onAuthSuccess }: AuthDialogProps) {
-    // This component will later hold the AuthForm for login/signup
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent>
@@ -21,10 +21,7 @@ export default function AuthDialog({ open, onOpenChange, onAuthSuccess }: AuthDi
                        للمتابعة يرجى تسجيل الدخول إلى حسابك
                     </DialogDescription>
                 </DialogHeader>
-                <div>
-                    {/* The AuthForm component will go here in the next step */}
-                    <p className="text-center p-8 text-muted-foreground">نموذج تسجيل الدخول سيظهر هنا قريباً</p>
-                </div>
+                <AuthForm onAuthSuccess={onAuthSuccess} />
             </DialogContent>
         </Dialog>
     )
