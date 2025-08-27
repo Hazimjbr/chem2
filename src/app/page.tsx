@@ -32,7 +32,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent className="text-center">
               <p className="text-muted-foreground mb-6">
-                شرح شامل للمادة، تجارب تفاعلية، أسئلة وامتحانات متنوعة.
+                شرح شامل للمادة تجارب تفاعلية أسئلة وامتحانات متنوعة
               </p>
               <Button size="lg" className="w-full" onClick={() => selectCurriculum('tawjihi')}>
                 ابدأ رحلتك
@@ -42,12 +42,12 @@ export default function HomePage() {
           </Card>
           <Card>
              <CardHeader className="items-center text-center">
-              <CardTitle className="text-3xl text-muted-foreground">IGCSE 0620</CardTitle>
+              <CardTitle className="text-3xl">IGCSE 0620</CardTitle>
                <CardDescription>Cambridge Curriculum</CardDescription>
             </CardHeader>
             <CardContent className="text-center">
                 <p className="text-muted-foreground mb-6">
-                This section is currently under development and will be available soon.
+                This section is currently under development and will be available soon
               </p>
               <Button size="lg" className="w-full" disabled>
                 Coming Soon
