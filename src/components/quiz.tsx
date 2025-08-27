@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils.tsx';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import React from 'react';
+import { useApp } from '@/context/CurriculumContext';
 
 // This is the universal QuizQuestion interface
 export interface QuizQuestion {
@@ -26,6 +27,7 @@ export interface QuizResult {
   score: number; // 0 to 1
   difficulty: number;
   timestamp: number;
+  studentId: string;
 }
 
 // The props for our new central quiz component
@@ -70,8 +72,8 @@ const saveQuizResult = (result: QuizResult) => {
     const history: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
     // Add the new result and keep the history to a reasonable size, e.g., last 50 quizzes
     history.push(result);
-    if (history.length > 50) {
-      history.shift();
+    if (history.length > 100) { // Limit total history size
+        history.shift();
     }
     localStorage.setItem('quizHistory', JSON.stringify(history));
   } catch (error) {
@@ -81,6 +83,7 @@ const saveQuizResult = (result: QuizResult) => {
 
 
 export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizProps) {
+  const { currentUser } = useApp();
   const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -91,7 +94,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   const [difficultyLevel, setDifficultyLevel] = useState(1);
   const { toast } = useToast();
   
-  const storageKey = `quizState_${lessonId}`;
+  const storageKey = currentUser ? `quizState_${lessonId}_${currentUser.uid}` : `quizState_${lessonId}_guest`;
 
   // Load state from localStorage on mount
   useEffect(() => {
@@ -199,13 +202,16 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     if (isLastQuestion) {
         // Calculate the score at the very end
         const finalScore = score / quiz!.length;
-         // Save the final result
-        saveQuizResult({
-            lessonId: lessonId,
-            score: finalScore,
-            difficulty: difficultyLevel,
-            timestamp: Date.now(),
-        });
+         // Save the final result only if a user is logged in
+        if (currentUser) {
+            saveQuizResult({
+                lessonId: lessonId,
+                score: finalScore,
+                difficulty: difficultyLevel,
+                timestamp: Date.now(),
+                studentId: currentUser.uid,
+            });
+        }
        setIsFinished(true);
     } else {
        setAnswerStatus('unanswered');
