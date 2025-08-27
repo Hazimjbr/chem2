@@ -12,7 +12,7 @@ export default function AppContent({ children }: { children: React.ReactNode }) 
 
     return (
         <>
-            {isSelected && <Header />}
+            <Header />
             <main>{children}</main>
             {isSelected && <FloatingActions />}
             <Toaster />
