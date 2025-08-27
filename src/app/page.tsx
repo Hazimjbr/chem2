@@ -17,12 +17,11 @@ export default function HomePage() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-background">
         <div className="text-center mb-12">
             <h1 className="text-5xl font-bold mb-4">
-              أهلاً بك في{' '}
               <span className="text-accent">Chem</span>
               <span className="text-foreground">Zim</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              منصتك التفاعلية لإتقان الكيمياء، اختر منهجك لتبدأ
+              Chose your path
             </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
