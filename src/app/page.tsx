@@ -4,23 +4,31 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowLeft } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
 import MainAppContent from '@/components/main-app-content';
 import AuthDialog from '@/components/auth-dialog';
 
 export default function HomePage() {
-  const { curriculum, selectCurriculum, isSelected, currentUser } = useApp();
+  const { selectCurriculum, isSelected, currentUser } = useApp();
   const [authOpen, setAuthOpen] = useState(false);
 
   const handleCardClick = () => {
     setAuthOpen(true);
-  }
+  };
 
   const handleAuthSuccess = () => {
     selectCurriculum('tawjihi');
     setAuthOpen(false);
-  }
+  };
+
+  // This effect runs only when the user logs in and no curriculum is selected.
+  useEffect(() => {
+    if (currentUser && !isSelected) {
+      selectCurriculum('tawjihi');
+    }
+  }, [currentUser, isSelected, selectCurriculum]);
+
 
   // If there's no user, always show the initial landing/selection page.
   if (!currentUser) {
@@ -73,12 +81,11 @@ export default function HomePage() {
     );
   }
   
-  // If user is logged in, show the main app content.
-  // The curriculum context will handle selecting 'tawjihi' by default if nothing is selected.
-  if (currentUser && !isSelected) {
-      selectCurriculum('tawjihi'); 
-      return null; // Show a loader or null to prevent flash of content
+  // If user is logged in, and a curriculum is selected, show the main content.
+  if (currentUser && isSelected) {
+    return <MainAppContent />;
   }
-
-  return <MainAppContent />;
+  
+  // Otherwise, show nothing (or a loader) while the effect runs.
+  return null;
 }
