@@ -40,17 +40,17 @@ export default function HomePage() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="border-dashed">
+          <Card>
              <CardHeader className="items-center text-center">
               <CardTitle className="text-3xl text-muted-foreground">IGCSE 0620</CardTitle>
                <CardDescription>Cambridge Curriculum</CardDescription>
             </CardHeader>
             <CardContent className="text-center">
                 <p className="text-muted-foreground mb-6">
-                هذا القسم قيد التطوير حاليًا وسيكون متاحًا قريبًا.
+                This section is currently under development and will be available soon.
               </p>
               <Button size="lg" className="w-full" disabled>
-                قريبًا
+                Coming Soon
               </Button>
             </CardContent>
           </Card>
