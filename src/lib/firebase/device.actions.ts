@@ -2,7 +2,7 @@
 'use server';
 
 import { db } from './config';
-import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, getDoc, deleteDoc, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, deleteDoc, orderBy } from 'firebase/firestore';
 import type { AppUser } from '@/context/CurriculumContext';
 
 interface RegistrationInput {
@@ -29,26 +29,32 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const pendingDevicesRef = collection(db, 'pendingDevices');
 
-        // Check if device is already registered
-        const registeredQuery = query(registeredDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
-        const registeredSnapshot = await getDocs(registeredQuery);
-        if (!registeredSnapshot.empty) {
-            return { status: 'already-exists', message: 'هذا الجهاز معتمد بالفعل' };
-        }
-
         // Check if any device is registered for this student
         const anyRegisteredQuery = query(registeredDevicesRef, where("studentId", "==", studentId));
         const anyRegisteredSnapshot = await getDocs(anyRegisteredQuery);
 
         if (anyRegisteredSnapshot.empty) {
             // This is the student's first device, register it automatically
-            await addDoc(registeredDevicesRef, {
-                studentId,
-                deviceId,
-                registeredAt: Timestamp.now(),
-            });
-            return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
+            const pendingQuery = query(pendingDevicesRef, where("studentId", "==", studentId));
+            const pendingSnapshot = await getDocs(pendingQuery);
+            if(pendingSnapshot.empty) {
+                await addDoc(registeredDevicesRef, {
+                    studentId,
+                    deviceId,
+                    registeredAt: Timestamp.now(),
+                });
+                return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
+            }
         }
+        
+        // Check if this specific device is already registered
+        const deviceAlreadyRegisteredQuery = query(registeredDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
+        const deviceSnapshot = await getDocs(deviceAlreadyRegisteredQuery);
+
+        if (!deviceSnapshot.empty) {
+            return { status: 'already-exists', message: 'هذا الجهاز معتمد بالفعل' };
+        }
+
 
         // Student has registered devices, but this is a new one. Check if it's pending.
         const pendingQuery = query(pendingDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
