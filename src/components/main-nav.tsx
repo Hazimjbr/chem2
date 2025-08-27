@@ -21,8 +21,20 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { useCurriculum } from '@/context/CurriculumContext';
 
 function Logo() {
+    const { clearCurriculum, isSelected } = useCurriculum();
+
+    const handleClick = (e: React.MouseEvent) => {
+        // If a curriculum is already selected, prevent navigation and clear the selection
+        // This will cause the UI to go back to the selection screen.
+        if (isSelected) {
+            e.preventDefault();
+            clearCurriculum();
+        }
+        // If no curriculum is selected, the Link will navigate to '/' as normal.
+    };
+
     return (
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" onClick={handleClick} className="flex items-center space-x-2">
             <Beaker className="h-6 w-6 text-primary" />
             <span className="inline-block font-bold text-xl">
                 <span className="text-accent">Chem</span>
@@ -65,12 +77,6 @@ function DesktopNav() {
                 className="font-medium text-muted-foreground transition-colors hover:text-primary"
             >
                 الاختبارات
-            </Link>
-            <Link
-                href="/performance-analysis"
-                className="font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                تحليل الأداء
             </Link>
              <Link
                 href="/question-bank"
@@ -118,9 +124,6 @@ function MobileNav() {
                         </Link>
                         <Link href="/quizzes" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
                             الاختبارات
-                        </Link>
-                        <Link href="/performance-analysis" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
-                            تحليل الأداء
                         </Link>
                         <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
                             بنك الأسئلة
