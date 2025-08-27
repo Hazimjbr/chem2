@@ -2,7 +2,7 @@
 'use server';
 
 import { db } from './config';
-import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, getDoc, deleteDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, getDoc, deleteDoc, orderBy } from 'firebase/firestore';
 import type { AppUser } from '@/context/CurriculumContext';
 
 interface RegistrationInput {
