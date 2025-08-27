@@ -16,8 +16,10 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { signInUser } from '@/lib/firebase/auth';
+import { signInUser, signOutUser } from '@/lib/firebase/auth';
 import { Loader2 } from 'lucide-react';
+import { getOrCreateDeviceId } from '@/lib/device-id';
+import { registerDevice } from '@/lib/firebase/device.actions';
 
 const formSchema = z.object({
   username: z.string().min(1, { message: "اسم المستخدم مطلوب" }),
@@ -46,10 +48,32 @@ export default function AuthForm({ onAuthSuccess }: AuthFormProps) {
     setIsLoading(true);
     const email = `${values.username}@gmail.com`;
     try {
-      await signInUser(email, values.password);
-      // Let the onAuthStateChanged listener handle the rest.
-      // onAuthSuccess will be called from the parent to close the dialog.
-      onAuthSuccess();
+      // Step 1: Firebase Authentication
+      const user = await signInUser(email, values.password);
+      
+      // Step 2: Device Verification
+      const deviceId = getOrCreateDeviceId();
+      const verificationResult = await registerDevice({ studentId: user.uid, deviceId });
+
+      if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
+          // Device is approved, let the user in.
+          toast({
+            title: 'تم تسجيل الدخول بنجاح',
+            description: 'أهلاً بك مجددًا!',
+          });
+          onAuthSuccess();
+      } else {
+          // Device is pending or an error occurred
+          toast({
+              title: verificationResult.status === 'pending' ? 'جهازك قيد المراجعة' : 'خطأ في التحقق',
+              description: verificationResult.message,
+              variant: verificationResult.status === 'error' ? 'destructive' : 'default',
+              duration: 9000,
+          });
+          // CRITICAL: Sign the user out immediately
+          await signOutUser();
+      }
+
     } catch (error: any) {
       console.error("Firebase Auth Error:", error);
       let description = 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.';

@@ -18,13 +18,17 @@ export default function MainAppContent() {
       setLastVisitedLesson(savedLesson);
     }
   }, []);
+  
+  const studentName = currentUser?.role === 'student'
+    ? currentUser.displayName
+    : currentUser?.email?.split('@')[0];
 
   return (
     <div className="container mx-auto p-8">
       <section className="text-center py-16">
         <h1 className="text-5xl font-bold mb-4">
           أهلاً بك يا{' '}
-          <span className="text-accent">{currentUser?.email?.split('@')[0]}</span>
+          <span className="text-accent">{studentName}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
           منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية

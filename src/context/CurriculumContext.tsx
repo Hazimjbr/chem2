@@ -12,6 +12,7 @@ type Curriculum = 'tawjihi' | 'igcse' | null;
 interface AppUser {
     uid: string;
     email: string | null;
+    displayName: string | null;
     role: 'student' | 'admin' | null;
 }
 
@@ -45,15 +46,31 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
     const unsubscribe = onAuthStateChangedListener(async (user: FirebaseUser | null) => {
         if (user) {
+            // Check if the user is an admin first
             const adminDocRef = doc(db, 'admins', user.uid);
             const adminDoc = await getDoc(adminDocRef);
 
             if (adminDoc.exists()) {
-                setCurrentUser({ uid: user.uid, email: user.email, role: 'admin' });
+                setCurrentUser({ uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' });
             } else {
-                // In a full system, you'd check a 'students' collection.
-                // For now, any authenticated non-admin is a student.
-                setCurrentUser({ uid: user.uid, email: user.email, role: 'student' });
+                // If not an admin, assume student and fetch student data
+                const studentDocRef = doc(db, 'students', user.uid);
+                const studentDoc = await getDoc(studentDocRef);
+                if (studentDoc.exists()) {
+                     const studentData = studentDoc.data();
+                     setCurrentUser({ 
+                         uid: user.uid, 
+                         email: user.email, 
+                         role: 'student',
+                         displayName: studentData.studentName || user.email,
+                    });
+                } else {
+                    // This is an edge case: user exists in Auth but not in our DBs.
+                    // This could happen if DB write failed. For safety, sign them out.
+                    console.warn(`User ${user.uid} exists in Auth but not in Firestore. Signing out.`);
+                    await signOutUser();
+                    setCurrentUser(null);
+                }
             }
         } else {
             setCurrentUser(null);
