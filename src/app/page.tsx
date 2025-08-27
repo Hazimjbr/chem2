@@ -21,7 +21,7 @@ export default function HomePage() {
               <span className="text-foreground">Zim</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Chose your path
+              Choose your path
             </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
