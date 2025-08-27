@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Beaker, ChevronDown, FlaskConical, Library, Menu } from 'lucide-react';
+import { Beaker, ChevronDown, FlaskConical, Library, Menu, LogOut } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,19 +18,58 @@ import {
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { useCurriculum } from '@/context/CurriculumContext';
+import { useApp } from '@/context/CurriculumContext';
+import { signOutUser } from '@/lib/firebase/auth';
+import { useToast } from '@/hooks/use-toast';
+import { Avatar, AvatarFallback } from './ui/avatar';
+
+
+function AuthSection() {
+    const { currentUser } = useApp();
+    const { toast } = useToast();
+
+    const handleSignOut = async () => {
+        try {
+            await signOutUser();
+            // The onAuthStateChanged listener will handle the rest
+            toast({
+                title: 'تم تسجيل الخروج بنجاح',
+            });
+        } catch (error) {
+            console.error(error);
+            toast({
+                variant: 'destructive',
+                title: 'حدث خطأ أثناء تسجيل الخروج',
+            });
+        }
+    }
+
+    if (!currentUser) return null;
+
+    return (
+        <div className="flex items-center gap-2">
+             <Avatar className="h-8 w-8">
+                <AvatarFallback>{currentUser.email?.charAt(0).toUpperCase()}</AvatarFallback>
+            </Avatar>
+            <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
+                {currentUser.email}
+            </span>
+             <Button onClick={handleSignOut} variant="ghost" size="icon" aria-label="تسجيل الخروج">
+                <LogOut className="h-5 w-5" />
+            </Button>
+        </div>
+    )
+}
+
 
 function Logo() {
-    const { clearCurriculum, isSelected } = useCurriculum();
+    const { clearCurriculum, isSelected } = useApp();
 
     const handleClick = (e: React.MouseEvent) => {
-        // If a curriculum is already selected, prevent navigation and clear the selection
-        // This will cause the UI to go back to the selection screen.
         if (isSelected) {
             e.preventDefault();
             clearCurriculum();
         }
-        // If no curriculum is selected, the Link will navigate to '/' as normal.
     };
 
     return (
@@ -45,8 +84,8 @@ function Logo() {
 }
 
 function DesktopNav() {
-    const { isSelected, curriculum } = useCurriculum();
-    if (!isSelected) return null;
+    const { isSelected, currentUser } = useApp();
+    if (!isSelected || !currentUser) return null;
 
     return (
         <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -97,8 +136,8 @@ function DesktopNav() {
 }
 
 function MobileNav() {
-    const { isSelected } = useCurriculum();
-    if (!isSelected) return null;
+    const { isSelected, currentUser } = useApp();
+    if (!isSelected || !currentUser) return null;
 
     return (
         <div className="md:hidden">
@@ -140,11 +179,18 @@ function MobileNav() {
 
 export default function MainNav() {
   const isMobile = useIsMobile();
+  const { currentUser } = useApp();
 
   return (
     <div className="flex w-full items-center justify-between">
-      <Logo />
-       {isMobile ? <MobileNav /> : <DesktopNav />}
+      <div className="flex items-center gap-4">
+        <Logo />
+        {isMobile ? null : <DesktopNav />}
+      </div>
+      <div className="flex items-center gap-4">
+        {currentUser && <AuthSection />}
+        {isMobile && <MobileNav />}
+      </div>
     </div>
   );
 }

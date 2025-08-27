@@ -6,7 +6,7 @@ import Header from '@/components/header';
 import FloatingActions from '@/components/floating-actions';
 import { Toaster } from '@/components/ui/toaster';
 import 'katex/dist/katex.min.css';
-import { CurriculumProvider } from '@/context/CurriculumContext';
+import { AppProvider } from '@/context/CurriculumContext';
 import AppContent from '@/components/app-content';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={inter.className}>
-        <CurriculumProvider>
+        <AppProvider>
             <AppContent>
                  {children}
             </AppContent>
-        </CurriculumProvider>
+        </AppProvider>
       </body>
     </html>
   );

@@ -2,13 +2,15 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, CheckSquare, Clock } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { BookOpen, CheckSquare, Clock, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useApp } from '@/context/CurriculumContext';
 
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
+  const { currentUser } = useApp();
 
   useEffect(() => {
     const savedLesson = localStorage.getItem('lastVisitedLesson');
@@ -21,9 +23,8 @@ export default function MainAppContent() {
     <div className="container mx-auto p-8">
       <section className="text-center py-16">
         <h1 className="text-5xl font-bold mb-4">
-          أهلاً بك في{' '}
-          <span className="text-accent">Chem</span>
-          <span className="text-foreground">Zim</span>
+          أهلاً بك يا{' '}
+          <span className="text-accent">{currentUser?.email?.split('@')[0]}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
           منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
@@ -46,7 +47,7 @@ export default function MainAppContent() {
 
       <section className="py-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -74,11 +75,29 @@ export default function MainAppContent() {
                <p className="text-muted-foreground mb-4">
                 اختبر فهمك في وحدة حالات المادة
               </p>
-              <Link href="/quizzes" passHref>
+              <Link href="/materials/semester-1/unit-1/section-5" passHref>
                 <Button variant="outline">بدء الامتحان</Button>
               </Link>
             </CardContent>
           </Card>
+          {currentUser?.role === 'admin' && (
+             <Card className="col-span-1 md:col-span-2 lg:col-span-1 border-primary">
+                <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-primary">
+                    <ShieldCheck />
+                    لوحة تحكم المسؤول
+                </CardTitle>
+                <CardDescription>
+                    إدارة الطلاب والأجهزة والمحتوى
+                </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Link href="/admin/dashboard" passHref>
+                        <Button variant="default">الانتقال إلى لوحة التحكم</Button>
+                    </Link>
+                </CardContent>
+            </Card>
+          )}
         </div>
       </section>
     </div>
