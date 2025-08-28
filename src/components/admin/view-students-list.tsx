@@ -24,6 +24,7 @@ interface Student {
     courses: string[];
     phone1: string;
     phone2: string;
+    createdAt: string;
 }
 
 export default function ViewStudentsList() {
@@ -116,7 +117,7 @@ export default function ViewStudentsList() {
                                                     <Pencil className="h-4 w-4" />
                                                 </Button>
                                             </TooltipTrigger>
-                                            <TooltipContent><p>تعديل (قريبا)</p></TooltipContent>
+                                            <TooltipContent><p>تعديل (قيد التطوير)</p></TooltipContent>
                                         </Tooltip>
                                         <Tooltip>
                                             <TooltipTrigger asChild>
@@ -124,7 +125,7 @@ export default function ViewStudentsList() {
                                                     <Trash2 className="h-4 w-4" />
                                                 </Button>
                                             </TooltipTrigger>
-                                            <TooltipContent><p>حذف (قريبا)</p></TooltipContent>
+                                            <TooltipContent><p>حذف (قيد التطوير)</p></TooltipContent>
                                         </Tooltip>
                                     </div>
                                 </TooltipProvider>

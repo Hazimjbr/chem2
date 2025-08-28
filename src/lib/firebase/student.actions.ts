@@ -3,7 +3,7 @@
 
 import { initializeApp, getApps, deleteApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import { doc, setDoc, collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp } from 'firebase/firestore';
 import { db } from './config';
 
 // This is the same config object used for the client-side app.
@@ -29,7 +29,7 @@ export async function addStudent(studentData: {
     phone2?: string,
 }) {
     const { studentName, username, password_clear, courses, courseIds, phone1, phone2 } = studentData;
-    const email = `${username}@gmail.com`;
+    const email = `${username}@chemzim.com`;
 
     // Create a unique name for the secondary app to avoid conflicts.
     const secondaryAppName = `secondary-app-${Date.now()}`;
@@ -60,7 +60,7 @@ export async function addStudent(studentData: {
             courseIds,
             phone1: phone1 || '',
             phone2: phone2 || '',
-            createdAt: new Date(),
+            createdAt: Timestamp.now(),
         });
         
         return { success: true, message: 'تم إنشاء حساب الطالب بنجاح', userId: user.uid };
@@ -102,6 +102,7 @@ export async function getStudents() {
                 courses: data.courses || [],
                 phone1: data.phone1 || '',
                 phone2: data.phone2 || '',
+                createdAt: (data.createdAt as Timestamp).toDate().toISOString(),
             };
         });
         
