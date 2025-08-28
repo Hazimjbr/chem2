@@ -34,20 +34,17 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         const anyRegisteredSnapshot = await getDocs(anyRegisteredQuery);
 
         if (anyRegisteredSnapshot.empty) {
-            // This is the student's first device, register it automatically
-            const pendingQuery = query(pendingDevicesRef, where("studentId", "==", studentId));
-            const pendingSnapshot = await getDocs(pendingQuery);
-            if(pendingSnapshot.empty) {
-                await addDoc(registeredDevicesRef, {
-                    studentId,
-                    deviceId,
-                    registeredAt: Timestamp.now(),
-                });
-                return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
-            }
+            // This is the student's first device, register it automatically regardless of pending requests.
+            await addDoc(registeredDevicesRef, {
+                studentId,
+                deviceId,
+                registeredAt: Timestamp.now(),
+            });
+            return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
         }
         
-        // Check if this specific device is already registered
+        // At this point, the student has at least one registered device.
+        // Check if this specific device is already registered.
         const deviceAlreadyRegisteredQuery = query(registeredDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
         const deviceSnapshot = await getDocs(deviceAlreadyRegisteredQuery);
 
@@ -56,14 +53,14 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         }
 
 
-        // Student has registered devices, but this is a new one. Check if it's pending.
+        // This is a new device for an existing student. Check if it's already pending approval.
         const pendingQuery = query(pendingDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
         const pendingSnapshot = await getDocs(pendingQuery);
         if (!pendingSnapshot.empty) {
             return { status: 'pending', message: 'تم إرسال طلب الموافقة على هذا الجهاز مسبقًا وهو قيد المراجعة' };
         }
         
-        // This is a new, non-pending device. Add it to the pending list.
+        // This is a new, non-pending device. Add it to the pending list for admin approval.
         await addDoc(pendingDevicesRef, {
             studentId,
             deviceId,
