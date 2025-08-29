@@ -21,9 +21,12 @@ const firebaseConfig = {
 
 // Helper to get or create a secondary app instance
 const getSecondaryApp = (): FirebaseApp => {
-    const secondaryAppName = `secondary-app-for-admin`;
-    const existingApp = getApps().find(app => app.name === secondaryAppName);
-    return existingApp || initializeApp(firebaseConfig, secondaryAppName);
+    const secondaryAppName = `secondary-app-for-admin-${Date.now()}`; // Use a unique name to avoid conflicts on hot-reloads
+    const existingApp = getApps().find(app => app.name.startsWith('secondary-app-for-admin'));
+    if (existingApp) {
+        deleteApp(existingApp);
+    }
+    return initializeApp(firebaseConfig, secondaryAppName);
 }
 
 export async function addStudent(studentData: {
@@ -38,10 +41,11 @@ export async function addStudent(studentData: {
     const { studentName, username, password_clear, courses, courseIds, phone1, phone2 } = studentData;
     const email = `${username.toLowerCase()}@chemzim.com`;
 
-    const secondaryApp = getSecondaryApp();
-    const secondaryAuth = getAuth(secondaryApp);
-    
+    let secondaryApp: FirebaseApp | null = null;
     try {
+        secondaryApp = getSecondaryApp();
+        const secondaryAuth = getAuth(secondaryApp);
+        
         const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, password_clear);
         const user = userCredential.user;
         await signOut(secondaryAuth); // Sign out from the temporary instance
@@ -70,6 +74,14 @@ export async function addStudent(studentData: {
         }
         
         return { success: false, message: errorMessage };
+    } finally {
+        if(secondaryApp){
+            try {
+                await deleteApp(secondaryApp);
+            } catch (e) {
+                console.error("Error deleting secondary app:", e);
+            }
+        }
     }
 }
 
