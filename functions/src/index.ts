@@ -50,13 +50,15 @@ export const manageUser = functions.https.onCall(
       try {
         await admin.auth().revokeRefreshTokens(uid);
         const userRecord = await admin.auth().getUser(uid);
-        const timestamp =
-          new Date(userRecord.tokensValidAfterTime!).getTime() / 1000;
-        console.log(
-          `Tokens revoked for ${uid} at ${new Date(
-            timestamp * 1000,
-          ).toISOString()}`,
-        );
+        if (userRecord.tokensValidAfterTime) {
+          const timestamp =
+            new Date(userRecord.tokensValidAfterTime).getTime() / 1000;
+          console.log(
+            `Tokens revoked for ${uid} at ${new Date(
+              timestamp * 1000,
+            ).toISOString()}`,
+          );
+        }
         return {
           message: `Successfully revoked sessions for user ${uid}.`,
         };
