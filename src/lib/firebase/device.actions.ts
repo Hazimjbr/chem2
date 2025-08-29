@@ -169,10 +169,7 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         // 5. Commit all batched writes at once.
         await batch.commit();
         
-        // 6. After successful DB update, revoke user's session.
-        await manageUser({ action: 'revokeSession', uid: studentId });
-
-        return { success: true, message: 'تم استبدال الجهاز بنجاح وتم تسجيل خروج الطالب من جميع الأجهزة الأخرى' };
+        return { success: true, message: 'تم استبدال الجهاز بنجاح. سيتم تسجيل خروج الطالب من جهازه القديم في المرة القادمة التي يغلق فيها التطبيق.' };
     } catch (error) {
         console.error("Error approving and replacing device:", error);
         return { success: false, message: 'فشل في عملية الموافقة والاستبدال' };
