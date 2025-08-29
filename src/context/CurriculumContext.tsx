@@ -37,6 +37,9 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+// Hardcoded admin UIDs for client-side role check
+const ADMIN_UIDS = ['uPqBUQ3i18fTta4f4tu2fTCyNKO2'];
+
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [curriculum, setCurriculum] = useState<Curriculum>(null);
   const [currentUser, setCurrentUser] = useState<AppUser | null>(null);
@@ -45,13 +48,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   // Function to fetch user details from Firestore
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
-      const adminDocRef = doc(db, 'admins', user.uid);
-      const adminDoc = await getDoc(adminDocRef);
-
-      if (adminDoc.exists()) {
-          return { uid: user.uid, email: user.email, role: 'admin', displayName: adminDoc.data().displayName || 'Admin' };
-      } else {
-          // If not an admin, assume student and fetch student data
+      // Prioritize admin check to avoid unnecessary student doc reads for admins
+      if (ADMIN_UIDS.includes(user.uid)) {
+          return { uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' };
+      }
+      
+      // If not an admin, try to fetch student data
+      try {
           const studentDocRef = doc(db, 'students', user.uid);
           const studentDoc = await getDoc(studentDocRef);
           if (studentDoc.exists()) {
@@ -63,8 +66,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                    displayName: studentData.studentName || user.email,
               };
           } else {
-              return null; // User not found in admins or students
+              // User exists in Auth but not in our students collection
+              return null; 
           }
+      } catch (error) {
+          // This might happen due to security rules if a non-student/non-admin tries to log in
+          console.error("Error fetching user data from Firestore:", error);
+          return null;
       }
   }
 
@@ -124,7 +132,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       const appUser = await fetchAppUser(user);
       if (!appUser) {
           await signOutUser();
-          return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام" };
+          return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام", variant: 'destructive' };
       }
       
       const deviceId = getOrCreateDeviceId();

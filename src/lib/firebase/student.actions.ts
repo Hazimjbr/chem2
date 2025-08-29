@@ -22,9 +22,12 @@ const firebaseConfig = {
 // Helper to get or create a secondary app instance
 const getSecondaryApp = (): FirebaseApp => {
     // A more robust way to handle secondary app instances on the server during development
-    const appName = "secondary-admin-app";
+    const appName = "secondary-admin-app-for-creation";
     const existingApp = getApps().find(app => app.name === appName);
-    return existingApp || initializeApp(firebaseConfig, appName);
+    if (existingApp) {
+        return existingApp;
+    }
+    return initializeApp(firebaseConfig, appName);
 }
 
 export async function addStudent(studentData: {
@@ -40,13 +43,16 @@ export async function addStudent(studentData: {
     const email = `${username.toLowerCase()}@chemzim.com`;
 
     let secondaryApp: FirebaseApp | null = null;
+    let user: User | null = null;
     try {
         secondaryApp = getSecondaryApp();
         const secondaryAuth = getAuth(secondaryApp);
         
         const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, password_clear);
-        const user = userCredential.user;
-        await signOut(secondaryAuth); // Sign out from the temporary instance
+        user = userCredential.user;
+        
+        // IMPORTANT: We must sign out from the secondary app instance to avoid session conflicts.
+        await signOut(secondaryAuth);
 
         await setDoc(doc(db, 'students', user.uid), {
             studentName,
@@ -60,19 +66,30 @@ export async function addStudent(studentData: {
             createdAt: Timestamp.now(),
         });
         
-        // Do not delete the secondary app here if you want to reuse it.
-        // It will be handled by the getSecondaryApp helper.
         return { success: true, message: 'تم إنشاء حساب الطالب بنجاح', userId: user.uid };
 
     } catch (error: any) {
         console.error("Error creating student:", error);
+        
+        // If user was created in Auth but failed to save to Firestore, we should ideally delete the Auth user.
+        // However, this is a complex operation that requires admin SDK.
+        // For now, we return a specific error message.
+        
         let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
         if (error.code === 'auth/email-already-in-use') {
             errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
         } else if (error.code === 'auth/weak-password') {
             errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
+        } else if (user) {
+             errorMessage = 'تم إنشاء الحساب في نظام المصادقة ولكن فشل حفظه في قاعدة البيانات. الرجاء حذف المستخدم يدويًا من قسم المصادقة والمحاولة مرة أخرى.';
         }
         
+        // Clean up the secondary app instance if it's no longer needed, especially on serverless environments.
+        // Note: In a persistent server, you might want to reuse the instance.
+        if(secondaryApp){
+             try { await deleteApp(secondaryApp); } catch(e) { console.error("Could not delete secondary app", e); }
+        }
+
         return { success: false, message: errorMessage };
     }
 }
