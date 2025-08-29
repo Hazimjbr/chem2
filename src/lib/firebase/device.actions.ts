@@ -151,11 +151,15 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         const devicesRef = collection(db, 'registeredDevices');
         const q = query(devicesRef, where("studentId", "==", studentId));
         const oldDevicesSnapshot = await getDocs(q);
-        const deletePromises = oldDevicesSnapshot.docs.map(doc => deleteDoc(doc.ref));
-        await Promise.all(deletePromises);
+        
+        const batch = writeBatch(db);
+        oldDevicesSnapshot.docs.forEach(doc => {
+            batch.delete(doc.ref);
+        });
 
         // 2. Add the new device
-        await addDoc(collection(db, 'registeredDevices'), {
+        const newDeviceRef = doc(collection(db, 'registeredDevices'));
+        batch.set(newDeviceRef, {
             studentId,
             deviceId,
             studentName,
@@ -163,7 +167,9 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         });
         
         // 3. Delete the pending request
-        await deleteDoc(pendingDeviceRef);
+        batch.delete(pendingDeviceRef);
+
+        await batch.commit();
 
         // 4. After successfully changing the database, revoke user sessions
         await manageUser({ action: 'revokeSession', uid: studentId });
@@ -189,16 +195,26 @@ export async function rejectDevice(pendingDeviceId: string) {
 
 export async function deleteDevice(deviceId: string, studentId: string) {
     try {
-        // Delete the device document from Firestore
-        const deviceRef = doc(db, 'registeredDevices', deviceId);
-        await deleteDoc(deviceRef);
+        const devicesRef = collection(db, 'registeredDevices');
+        const q = query(devicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
+        const deviceSnapshot = await getDocs(q);
 
-        // After successful deletion, revoke the student's sessions to log them out
+        if (deviceSnapshot.empty) {
+            return { success: false, message: 'الجهاز المطلوب حذفه غير موجود.' };
+        }
+        
+        const docToDeleteRef = deviceSnapshot.docs[0].ref;
+        await deleteDoc(docToDeleteRef);
+
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم حذف الجهاز بنجاح، وتم تسجيل خروج الطالب من جميع الجلسات.' };
     } catch (error: any) {
         console.error("Error deleting device:", error);
-        return { success: false, message: `فشل حذف الجهاز: ${error.message}` };
+        let errorMessage = `فشل حذف الجهاز: ${error.message}`;
+        if (error.code === 'permission-denied') {
+            errorMessage = 'فشل حذف الجهاز: صلاحيات غير كافية.';
+        }
+        return { success: false, message: errorMessage };
     }
 }

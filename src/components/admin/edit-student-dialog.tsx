@@ -97,9 +97,9 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
     }
   };
 
-  const handleDeleteDevice = (deviceId: string, studentId: string) => {
+  const handleDeleteDevice = (deviceIdString: string, studentId: string) => {
     startDeleteTransition(async () => {
-        const result = await deleteDevice(deviceId, studentId);
+        const result = await deleteDevice(deviceIdString, studentId);
         if (result.success) {
             toast({ title: 'نجاح', description: result.message });
             onUpdateSuccess(); // This will refresh the student list and data in the dialog
@@ -223,7 +223,7 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
                                 <AlertDialogAction
                                     disabled={isDeletingDevice}
                                     className="bg-destructive hover:bg-destructive/90"
-                                    onClick={() => handleDeleteDevice(device.id, student.id)}
+                                    onClick={() => handleDeleteDevice(device.deviceId, student.id)}
                                 >
                                     {isDeletingDevice && <Loader2 className="ml-2 h-4 w-4 animate-spin"/>}
                                     تأكيد الحذف
