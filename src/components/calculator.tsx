@@ -6,7 +6,7 @@ import { useState } from "react";
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  ')', '(',  '7', '8', '9', // Corrected order for RTL rendering
+  ')', '(',  '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
   '.', '0', '⌫', '=',
@@ -19,7 +19,7 @@ const safeEval = (expr: string): number => {
     // It replaces custom symbols with Math object equivalents.
     const safeExpr = expr
         .replace(/√/g, 'Math.sqrt')
-        .replace(/\^/g, '**') // Re-enabled exponentiation
+        .replace(/\^/g, '**')
         .replace(/π/g, 'Math.PI')
         .replace(/e/g, 'Math.E')
         .replace(/sin\(/g, 'Math.sin(Math.PI/180 * ')
@@ -49,6 +49,7 @@ export default function Calculator() {
 
     if (display === 'Error') {
         setDisplay('0');
+        return; // Exit after resetting from error
     }
 
     switch (btn) {
