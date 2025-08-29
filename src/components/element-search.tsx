@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Input } from '@/components/ui/input';
@@ -30,7 +29,7 @@ export default function ElementSearch({ searchTerm, foundElement, handleSearch }
                 <CardContent className="p-2">
                     {foundElement ? (
                         <div className="flex flex-row flex-wrap justify-around items-center text-center text-xs sm:text-sm">
-                            {!termIsName && !termIsSymbol && (
+                            {!termIsName && (
                                 <div className="flex items-center gap-2 p-1">
                                     <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الاسم:</span>
                                     <span className="font-bold">{foundElement.name}</span>
