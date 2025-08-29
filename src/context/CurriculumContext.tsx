@@ -125,18 +125,28 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleLogin = async (user: FirebaseUser): Promise<VerificationResult> => {
-      const appUser = await fetchAppUser(user);
-
-      if (!appUser) {
-          await signOutUser(); // Ensure they are signed out if not recognized
-          return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام", variant: 'destructive' };
-      }
-      
       // If user is admin, bypass device checks.
-      if (appUser.role === 'admin') {
-          setCurrentUser(appUser);
+      if (user.email === ADMIN_EMAIL) {
+          const adminUser = { uid: user.uid, email: user.email, role: 'admin' as const, displayName: 'Admin' };
+          setCurrentUser(adminUser);
           return { success: true, message: `أهلاً بك أيها المدير!` };
       }
+      
+      const studentDocRef = doc(db, 'students', user.uid);
+      const studentDoc = await getDoc(studentDocRef);
+
+      if (!studentDoc.exists()) {
+          await signOutUser();
+          return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام كطالب.", variant: 'destructive' };
+      }
+      
+      const studentData = studentDoc.data();
+      const appUser: AppUser = {
+          uid: user.uid,
+          email: user.email,
+          role: 'student',
+          displayName: studentData.studentName || user.email,
+      };
 
       // Proceed with device checks only for students.
       const deviceId = getOrCreateDeviceId();
