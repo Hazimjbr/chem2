@@ -30,7 +30,7 @@ interface ElementCellProps {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "relative flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-16 sm:h-20",
+            "relative p-1 rounded border-2 shadow-sm h-16 sm:h-20 flex flex-col",
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -40,10 +40,14 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRowStart: element.gridRow 
         }}
     >
-        <div className="absolute top-1 left-1 font-bold">{element.number}</div>
-        <div className="text-sm sm:text-base font-bold">{element.symbol}</div>
-        <div className="hidden sm:block truncate">{element.name}</div>
-        <div className="hidden sm:block">{typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}</div>
+        <div className="text-[0.6rem] sm:text-xs font-bold text-left">{element.number}</div>
+        <div className="flex-grow flex flex-col items-center justify-center text-center">
+            <div className="text-sm sm:text-xl font-bold">{element.symbol}</div>
+            <div className="hidden sm:block text-[0.6rem] sm:text-xs truncate">{element.name}</div>
+        </div>
+        <div className="text-[0.6rem] sm:text-xs text-center">
+            {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(2) : element.atomic_mass}
+        </div>
     </div>
 );
 
@@ -76,14 +80,14 @@ export default function PeriodicTable() {
                         gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-2 relative" style={{ gridColumn: '3 / span 10', gridRow: '2 / span 2', bottom: '20px' }}>
+                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 p-2" style={{ gridColumn: '3 / span 10', gridRow: '1' }}>
                         <Input 
-                            placeholder="ابحث..."
+                            placeholder="ابحث بالاسم، الرمز، أو العدد الذري"
                             value={searchTerm}
                             onChange={handleSearch}
                             className="md:col-span-1 h-9"
                         />
-                         <Card className="md:col-span-1">
+                         <Card className="md:col-span-2">
                             <CardContent className="p-2">
                                 {foundElement ? (
                                     <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-center text-xs sm:text-sm">
@@ -105,7 +109,7 @@ export default function PeriodicTable() {
                                         </div>
                                         <div className="flex justify-between border-b pb-1">
                                             <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الكتلة</span>
-                                            <span className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</span>
+                                            <span className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(2) : foundElement.atomic_mass}</span>
                                         </div>
                                     </div>
                                 ) : (
