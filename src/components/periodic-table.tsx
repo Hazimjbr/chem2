@@ -28,7 +28,7 @@ const categoryColors: Record<string, string> = {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "relative p-1 rounded border-2 shadow-sm h-16 sm:h-20 flex flex-col",
+            "relative p-1 rounded border-2 shadow-sm h-16 sm:h-20 flex flex-col justify-center text-center",
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -39,12 +39,10 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="absolute top-0.5 left-1 text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
-        <div className="flex-grow flex flex-col items-center justify-center text-center">
-            <div className="text-sm sm:text-xl font-bold">{element.symbol}</div>
-            <div className="hidden sm:block text-[0.6rem] sm:text-xs truncate">{element.name}</div>
-        </div>
-         <div className="absolute bottom-0.5 right-1 text-[0.6rem] sm:text-[10px]">
-            {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
+        <div className="font-bold text-sm sm:text-xl">{element.symbol}</div>
+        <div className="hidden sm:block text-[0.6rem] sm:text-xs truncate">{element.name}</div>
+        <div className="text-[0.6rem] sm:text-[10px] mt-1">
+             {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
         </div>
     </div>
 );
@@ -69,7 +67,7 @@ export default function PeriodicTable() {
     return (
         <div className="w-full space-y-4">
              <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
-                <div className="relative overflow-x-auto">
+                <div className="relative overflow-auto h-[75vh]">
                     <div 
                         className="relative grid gap-1 min-w-[700px]"
                         style={{
