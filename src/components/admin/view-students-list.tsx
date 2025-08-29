@@ -18,6 +18,10 @@ import { Badge } from '@/components/ui/badge';
 import EditStudentDialog from './edit-student-dialog';
 import DeleteStudentDialog from './delete-student-dialog';
 
+export interface Device {
+    id: string;
+    deviceId: string;
+}
 export interface Student {
     id: string;
     studentName: string;
@@ -29,6 +33,7 @@ export interface Student {
     phone1?: string;
     phone2?: string;
     createdAt: string;
+    devices: Device[];
 }
 
 export default function ViewStudentsList() {
@@ -139,6 +144,7 @@ export default function ViewStudentsList() {
                             <TableHead>اسم الطالب</TableHead>
                             <TableHead>اسم المستخدم</TableHead>
                             <TableHead>كلمة المرور</TableHead>
+                            <TableHead>الأجهزة</TableHead>
                             <TableHead>الدورات</TableHead>
                             <TableHead>الهواتف</TableHead>
                             <TableHead className="text-left">إجراءات</TableHead>
@@ -150,6 +156,9 @@ export default function ViewStudentsList() {
                                 <TableCell className="font-medium">{student.studentName}</TableCell>
                                 <TableCell>{student.username}</TableCell>
                                 <TableCell className="font-mono text-muted-foreground">{student.password_clear}</TableCell>
+                                <TableCell>
+                                    <Badge variant="outline">{student.devices.length}</Badge>
+                                </TableCell>
                                 <TableCell>
                                     <div className="flex flex-wrap gap-1">
                                     {student.courses.map(course => <Badge key={course} variant="secondary">{course}</Badge>)}

@@ -87,8 +87,15 @@ export async function getStudents() {
         const q = query(studentsRef, orderBy('createdAt', 'desc'));
         const querySnapshot = await getDocs(q);
 
-        const students = querySnapshot.docs.map(doc => {
+        const students = await Promise.all(querySnapshot.docs.map(async (doc) => {
             const data = doc.data();
+
+            // Fetch devices for this student
+            const devicesRef = collection(db, 'registeredDevices');
+            const qDevices = query(devicesRef, where("studentId", "==", doc.id));
+            const devicesSnapshot = await getDocs(qDevices);
+            const devices = devicesSnapshot.docs.map(d => ({ id: d.id, deviceId: d.data().deviceId }));
+
             return {
                 id: doc.id,
                 studentName: data.studentName,
@@ -100,8 +107,9 @@ export async function getStudents() {
                 phone1: data.phone1 || '',
                 phone2: data.phone2 || '',
                 createdAt: (data.createdAt as Timestamp).toDate().toISOString(),
+                devices: devices,
             };
-        });
+        }));
         
         return { success: true, data: students };
     } catch (error: any) {

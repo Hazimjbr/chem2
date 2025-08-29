@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import { Laptop } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { updateStudent } from '@/lib/firebase/student.actions';
@@ -85,7 +86,7 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
 
   return (
     <Dialog open={true} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>تعديل بيانات الطالب</DialogTitle>
           <DialogDescription>تحديث معلومات الطالب {student.studentName}</DialogDescription>
@@ -168,6 +169,23 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
                 </FormItem>
               )}
             />
+
+            <div className="space-y-2">
+                <Label>الأجهزة المسجلة ({student.devices.length})</Label>
+                <div className="space-y-2 rounded-md border p-2 bg-muted max-h-24 overflow-y-auto">
+                {student.devices.length > 0 ? (
+                    student.devices.map(device => (
+                    <div key={device.id} className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
+                        <Laptop className="h-4 w-4" />
+                        <span className="truncate">{device.deviceId}</span>
+                    </div>
+                    ))
+                ) : (
+                    <p className="text-sm text-center text-muted-foreground py-2">لا توجد أجهزة مسجلة</p>
+                )}
+                </div>
+            </div>
+
              <DialogFooter>
                 <Button type="submit" disabled={isLoading}>
                     {isLoading && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
