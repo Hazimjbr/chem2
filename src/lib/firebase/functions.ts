@@ -6,4 +6,5 @@ import { app } from './config';
 
 const functions = getFunctions(app);
 
-export const addAdminRole = httpsCallable(functions, 'addAdminRole');
+// This cloud function handles multiple user management actions.
+export const manageUser = httpsCallable(functions, 'manageUser');

@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-import { addAdminRole } from '@/lib/firebase/functions';
+import { manageUser } from '@/lib/firebase/functions';
 
 const formSchema = z.object({
   email: z.string().email({ message: "البريد الإلكتروني غير صالح" }),
@@ -30,7 +30,7 @@ export default function GrantAdminRoleForm() {
   const onSubmit = async (values: FormValues) => {
     setIsLoading(true);
     try {
-      const result: any = await addAdminRole({ email: values.email });
+      const result: any = await manageUser({ action: 'grantAdmin', email: values.email });
       toast({
         title: 'نجاح',
         description: result.data.message,

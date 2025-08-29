@@ -4,6 +4,7 @@
 import { db } from './config';
 import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, deleteDoc, orderBy, getDoc, limit } from 'firebase/firestore';
 import type { AppUser } from '@/context/CurriculumContext';
+import { manageUser } from './functions';
 
 interface RegistrationInput {
     user: AppUser;
@@ -137,16 +138,18 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
 
 export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
+        // Step 1: Delete all existing devices for the student from Firestore.
         const registeredDevicesRef = collection(db, 'registeredDevices');
-        
-        // Step 1: Find and delete all existing devices for the student.
         const q = query(registeredDevicesRef, where("studentId", "==", studentId));
         const querySnapshot = await getDocs(q);
-        const deleteBatch = writeBatch(db);
-        querySnapshot.forEach(doc => {
-            deleteBatch.delete(doc.ref);
-        });
-        await deleteBatch.commit();
+        
+        if (!querySnapshot.empty) {
+            const deleteBatch = writeBatch(db);
+            querySnapshot.forEach(doc => {
+                deleteBatch.delete(doc.ref);
+            });
+            await deleteBatch.commit();
+        }
 
         // Step 2: Add the new device and delete the pending request.
         const addBatch = writeBatch(db);
@@ -166,8 +169,11 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         addBatch.delete(pendingDeviceRef);
         
         await addBatch.commit();
+        
+        // Step 3: Revoke the user's session to force re-login on all devices.
+        await manageUser({ action: 'revokeSession', uid: studentId });
 
-        return { success: true, message: 'تمت الموافقة على الجهاز الجديد واستبدال الأجهزة القديمة' };
+        return { success: true, message: 'تم استبدال الجهاز بنجاح وتم تسجيل خروج الطالب من جميع الأجهزة الأخرى' };
     } catch (error) {
         console.error("Error approving and replacing device:", error);
         return { success: false, message: 'فشل في عملية الموافقة والاستبدال' };
