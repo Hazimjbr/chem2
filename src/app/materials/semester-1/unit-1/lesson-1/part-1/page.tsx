@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import FlippableCard from './flippable-card';
-import InteractiveQuestionCard from './interactive-question-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import { useEffect, useState } from 'react';
 import LessonLayout from '@/components/lesson-layout';
@@ -265,7 +265,7 @@ export default function LessonPartPage() {
                       "تتصادم جسيمات الغاز تصادمات مرنة مع بعضها ومع جدار الوعاء"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="عند درجة حرارة ثابتة يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة"
+                  explanation="عند درجة حرارة ثابتة يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة."
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -279,7 +279,7 @@ export default function LessonPartPage() {
                       "غاز الهيدروجين"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة"
+                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا، ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة."
               />
           </div>
         </div>

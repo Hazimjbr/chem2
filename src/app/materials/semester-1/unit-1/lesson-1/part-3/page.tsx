@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Skeleton } from '@/components/ui/skeleton';
 import { BookCopy, GitCompare, Box, Lightbulb, Cpu, LineChart } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -25,12 +25,12 @@ const Diagram = dynamic(() => import('./diagram'), {
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
     lessonSubtitle: "قانون بويل",
-    mainIdea: "عند ثبات درجة الحرارة وكمية الغاز يتناسب حجم الغاز تناسبًا عكسيًا مع الضغط الواقع عليه",
+    mainIdea: "عند ثبات درجة الحرارة وكمية الغاز، يتناسب حجم الغاز تناسبًا عكسيًا مع الضغط الواقع عليه.",
     learningOutcomes: [
-        "أصف العلاقة بين الضغط والحجم لغاز محصور عند ثبات درجة حرارته",
-        "أحل مسائل حسابية على قانون بويل"
+        "أصف العلاقة بين الضغط والحجم لغاز محصور عند ثبات درجة حرارته.",
+        "أحل مسائل حسابية على قانون بويل."
     ],
-    lessonContent: `<p>بعد أن تعرفنا على المتغيرات الأربعة سنبدأ الآن بدراسة العلاقات التي تربط بينها أول هذه العلاقات اكتشفها العالم الإيرلندي روبرت بويل الذي درس العلاقة بين ضغط الغاز وحجمه</p>`,
+    lessonContent: `<p>بعد أن تعرفنا على المتغيرات الأربعة، سنبدأ الآن بدراسة العلاقات التي تربط بينها. أول هذه العلاقات اكتشفها العالم الإيرلندي روبرت بويل، الذي درس العلاقة بين ضغط الغاز وحجمه.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-3",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-2",
@@ -68,7 +68,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p>
-                    يُعَدُّ العالم بويل من أوائل العلماء الذين بحثوا في خصائص الغازات؛ إذ درس العلاقة بين حجم كمية محددة من الغاز المحصور والضغط المؤثر فيه عند ثبات درجة حرارته توصَّل من ذلك إلى العلاقة التي سُمِّيت قانون بويل
+                    يُعَدُّ العالم بويل من أوائل العلماء الذين بحثوا في خصائص الغازات؛ إذ درس العلاقة بين حجم كمية محددة من الغاز المحصور والضغط المؤثر فيه عند ثبات درجة حرارته. توصَّل من ذلك إلى العلاقة التي سُمِّيت قانون بويل.
                     </p>
                 </CardContent>
             </Card>
@@ -80,9 +80,9 @@ export default function LessonPartPage() {
                 >
                 <div className="space-y-3">
                     <blockquote className="border-r-4 border-primary pr-4 text-base">
-                    "يتناسب حجم الغاز المحصور عكسيًا مع الضغط الواقع عليه عند ثبات درجة الحرارة"
+                    "يتناسب حجم الغاز المحصور عكسيًا مع الضغط الواقع عليه عند ثبات درجة الحرارة."
                     </blockquote>
-                    <p className="text-xs text-muted-foreground pt-2 border-t">اعتمد بويل في تجاربه على ملاحظة انكماش حجم الهواء المحصور في أنبوب على شكل حرف J عند إضافة الزئبق إليه مما يزيد الضغط</p>
+                    <p className="text-xs text-muted-foreground pt-2 border-t">اعتمد بويل في تجاربه على ملاحظة انكماش حجم الهواء المحصور في أنبوب على شكل حرف J عند إضافة الزئبق إليه، مما يزيد الضغط.</p>
                 </div>
             </FlippableCard>
 
@@ -93,16 +93,16 @@ export default function LessonPartPage() {
               <div className="space-y-4">
                   <p>يمكن التعبير عن العلاقة العكسية بين الحجم (V) والضغط (P) رياضيًا كالتالي:</p>
                   <div dir="ltr" className="text-center"><BlockMath math="V \propto \frac{1}{P}" /></div>
-                  <p>لتحويل التناسب إلى مساواة نستخدم ثابتًا (k) لتصبح المعادلة:</p>
+                  <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k) لتصبح المعادلة:</p>
                   <div dir="ltr" className="text-center"><BlockMath math="P \cdot V = k" /></div>
-                  <p>وهذا يعني أن حاصل ضرب الضغط في الحجم لكمية معينة من الغاز عند درجة حرارة ثابتة هو قيمة ثابتة ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                  <p>وهذا يعني أن حاصل ضرب الضغط في الحجم لكمية معينة من الغاز عند درجة حرارة ثابتة هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
                   <div dir="ltr" className="text-center"><BlockMath math="P_1V_1 = P_2V_2" /></div>
                    <p className="text-sm text-muted-foreground">
                       <span>حيث </span>
                       <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="P_1, V_1" /></span>
-                      <span> هما الضغط والحجم الابتدائيان و </span>
+                      <span> هما الضغط والحجم الابتدائيان، و </span>
                       <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="P_2, V_2" /></span>
-                      <span> هما الضغط والحجم النهائيان</span>
+                      <span> هما الضغط والحجم النهائيان.</span>
                   </p>
               </div>
             </FlippableCard>
@@ -111,7 +111,7 @@ export default function LessonPartPage() {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2"><Box className="h-6 w-6 text-primary" /> محاكاة وتوضيح</CardTitle>
-                    <CardDescription>حرّك المنزلق لتغيير الضغط ولاحظ ما يحدث لحجم الغاز</CardDescription>
+                    <CardDescription>حرّك المنزلق لتغيير الضغط، ولاحظ ما يحدث لحجم الغاز.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Diagram />
@@ -126,7 +126,7 @@ export default function LessonPartPage() {
                       </CardHeader>
                       <CardContent>
                         <p className="text-xs text-muted-foreground text-center mb-2">
-                            يمثل المنحنى العلاقة العكسية بين الحجم والضغط
+                            يمثل المنحنى العلاقة العكسية بين الحجم والضغط.
                         </p>
                         <div className="flex justify-center items-center p-4">
                             <svg width="250" height="200" viewBox="0 0 150 125" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
@@ -158,7 +158,7 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent>
                             <p className="text-xs text-muted-foreground text-center mb-2">
-                                يمثل المنحنى العلاقة الطردية بين الحجم ومقلوب الضغط
+                                يمثل المنحنى العلاقة الطردية بين الحجم ومقلوب الضغط.
                             </p>
                             <div className="flex justify-center items-center p-4">
                                 <svg width="250" height="200" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
@@ -195,37 +195,37 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="mb-4">
-                            عينة من غاز النيتروجين حجمها <InlineMath math="150\text{mL}" /> عند ضغط مقداره <InlineMath math="98.8\text{kPa}" /> ما الحجم الجديد للعينة إذا انخفض الضغط إلى <InlineMath math="96.1\text{kPa}" /> مع بقاء درجة الحرارة ثابتة؟
+                            عينة من غاز النيتروجين حجمها <InlineMath math="150\text{mL}" /> عند ضغط مقداره <InlineMath math="98.8\text{kPa}" />. ما الحجم الجديد للعينة إذا انخفض الضغط إلى <InlineMath math="96.1\text{kPa}" /> مع بقاء درجة الحرارة ثابتة؟
                         </p>
                         <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                            <p className="font-bold text-accent">المعطيات</p>
+                            <p className="font-bold text-accent">المعطيات:</p>
                             <div className="space-y-1" dir="ltr">
                                 <p className="text-left"><InlineMath math="V_1 = 150\text{mL}" /></p>
                                 <p className="text-left"><InlineMath math="P_1 = 98.8\text{kPa}" /></p>
                                 <p className="text-left"><InlineMath math="P_2 = 96.1\text{kPa}" /></p>
                             </div>
-                            <p><span className="font-bold text-accent">المطلوب</span> الحجم الجديد <InlineMath math="V_2" /></p>
+                            <p><span className="font-bold text-accent">المطلوب:</span> الحجم الجديد <InlineMath math="V_2" /></p>
                             
                             <div>
-                                <p><strong className="text-accent">الحل</strong></p>
+                                <p><strong className="text-accent">الحل:</strong></p>
                                 <ol className="list-decimal mr-6 text-sm space-y-2">
-                                    <li>نكتب قانون بويل
+                                    <li>نكتب قانون بويل:
                                         <div className="text-left" dir="ltr"><BlockMath math="P_1V_1 = P_2V_2" /></div>
                                     </li>
-                                    <li>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />
+                                    <li>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />:
                                         <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{P_1V_1}{P_2}" /></div>
                                     </li>
-                                    <li>نعوض القيم
+                                    <li>نعوض القيم:
                                         <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(98.8\text{kPa}) \cdot (150\text{mL})}{96.1\text{kPa}}" /></div>
                                     </li>
-                                    <li>نحسب الناتج
+                                    <li>نحسب الناتج:
                                         <div className="text-left" dir="ltr"><BlockMath math="V_2 \approx 154.2\text{mL}" /></div>
                                     </li>
                                 </ol>
                             </div>
                             <div className="border-t pt-3">
                                 <p className="text-sm font-semibold">
-                                الجواب: الحجم الجديد للغاز هو <InlineMath math="154.2\text{mL}" /> وهذا منطقي لأن الضغط انخفض فمن المتوقع أن يزداد الحجم
+                                الجواب: الحجم الجديد للغاز هو <InlineMath math="154.2\text{mL}" />. وهذا منطقي لأن الضغط انخفض، فمن المتوقع أن يزداد الحجم.
                                 </p>
                             </div>
                         </div>
@@ -254,13 +254,13 @@ export default function LessonPartPage() {
                           "درجة الحرارة وكمية الغاز"
                       ]}
                       correctAnswerIndex={3}
-                      explanation="ينص قانون بويل على دراسة العلاقة بين الضغط والحجم عند ثبات كل من درجة الحرارة وكمية الغاز"
+                      explanation="ينص قانون بويل على دراسة العلاقة بين الضغط والحجم عند ثبات كل من درجة الحرارة وكمية الغاز."
                   />
                    <InteractiveQuestionCard 
                       questionId="q2"
                       lessonId={lessonInfo.lessonId}
                       onCorrect={handleCorrectAnswer}
-                      question="إذا ضغطنا مكبسًا يحتوي على غاز إلى نصف حجمه الأصلي (مع ثبات الحرارة) ماذا يحدث للضغط؟"
+                      question="إذا ضغطنا مكبسًا يحتوي على غاز إلى نصف حجمه الأصلي (مع ثبات الحرارة)، ماذا يحدث للضغط؟"
                       options={[
                           "يقل إلى النصف",
                           "يبقى ثابتًا",
@@ -268,7 +268,7 @@ export default function LessonPartPage() {
                           "يزداد أربع مرات"
                       ]}
                       correctAnswerIndex={2}
-                      explanation="العلاقة بين الضغط والحجم عكسية إذا قل الحجم إلى النصف (V/2) يجب أن يتضاعف الضغط (2P) للحفاظ على حاصل الضرب P·V ثابتًا"
+                      explanation="العلاقة بين الضغط والحجم عكسية. إذا قل الحجم إلى النصف (V/2)، يجب أن يتضاعف الضغط (2P) للحفاظ على حاصل الضرب P·V ثابتًا."
                   />
               </div>
             </div>

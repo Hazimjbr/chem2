@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Skeleton } from '@/components/ui/skeleton';
 import { BookCopy, Thermometer, Box, Cpu, Lightbulb, LineChart } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -25,12 +25,12 @@ const Diagram = dynamic(() => import('./diagram'), {
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
     lessonSubtitle: "قانون شارل",
-    mainIdea: "عند ثبات الضغط وكمية الغاز يتناسب حجم الغاز تناسبًا طرديًا مع درجة حرارته المطلقة",
+    mainIdea: "عند ثبات الضغط وكمية الغاز، يتناسب حجم الغاز تناسبًا طرديًا مع درجة حرارته المطلقة.",
     learningOutcomes: [
-        "أصف العلاقة بين الحجم ودرجة الحرارة لغاز محصور عند ثبات ضغطه",
-        "أحل مسائل حسابية على قانون شارل"
+        "أصف العلاقة بين الحجم ودرجة الحرارة لغاز محصور عند ثبات ضغطه.",
+        "أحل مسائل حسابية على قانون شارل."
     ],
-    lessonContent: `<p>بعد أن درسنا العلاقة بين الضغط والحجم ننتقل الآن إلى علاقة مهمة أخرى اكتشفها العالم الفرنسي جاك شارل الذي كان مهتمًا بالمناطيد درس شارل العلاقة بين حجم الغاز ودرجة حرارته</p>`,
+    lessonContent: `<p>بعد أن درسنا العلاقة بين الضغط والحجم، ننتقل الآن إلى علاقة مهمة أخرى اكتشفها العالم الفرنسي جاك شارل، الذي كان مهتمًا بالمناطيد. درس شارل العلاقة بين حجم الغاز ودرجة حرارته.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-4",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-3",
@@ -70,7 +70,7 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent>
                             <p>
-                            لاحظ العالم شارل أن حجم الهواء في البالونات يتغير بتغير درجة حرارته عند تسخين الهواء يتمدد ويزداد حجمه وعند تبريده يتقلص وينقص حجمه قاده هذا الاكتشاف إلى دراسة العلاقة بشكل منهجي
+                            لاحظ العالم شارل أن حجم الهواء في البالونات يتغير بتغير درجة حرارته. عند تسخين الهواء، يتمدد ويزداد حجمه، وعند تبريده، يتقلص وينقص حجمه. قاده هذا الاكتشاف إلى دراسة العلاقة بشكل منهجي.
                             </p>
                         </CardContent>
                     </Card>
@@ -81,7 +81,7 @@ export default function LessonPartPage() {
                         </CardHeader>
                         <CardContent>
                             <p>
-                            عند زيادة درجة حرارة الغاز يزداد متوسط الطاقة الحركية للجزيئات وتزداد سرعتها وعدد تصادماتها مع جدار الوعاء وبالتالي يزداد حجم الغاز
+                            عند زيادة درجة حرارة الغاز، يزداد متوسط الطاقة الحركية للجزيئات، وتزداد سرعتها وعدد تصادماتها مع جدار الوعاء، وبالتالي يزداد حجم الغاز.
                             </p>
                         </CardContent>
                     </Card>
@@ -89,7 +89,7 @@ export default function LessonPartPage() {
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2"><Box className="h-6 w-6 text-primary" /> محاكاة التجربة</CardTitle>
-                        <CardDescription>اختر بين الحمام الثلجي والحمام الساخن ولاحظ تأثير درجة الحرارة على حجم البالون</CardDescription>
+                        <CardDescription>اختر بين الحمام الثلجي والحمام الساخن، ولاحظ تأثير درجة الحرارة على حجم البالون.</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Diagram />
@@ -103,9 +103,9 @@ export default function LessonPartPage() {
             >
                  <div className="space-y-3">
                     <blockquote className="border-r-4 border-primary pr-4">
-                        "يتناسب حجم كمية محددة من الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات ضغطه"
+                        "يتناسب حجم كمية محددة من الغاز المحصور تناسبًا طرديًا مع درجة حرارته المطلقة عند ثبات ضغطه."
                     </blockquote>
-                    <p className="text-sm text-muted-foreground mt-2">بعبارة أخرى: كلما زادت درجة حرارة الغاز زاد حجمه والعكس صحيح</p>
+                    <p className="text-sm text-muted-foreground mt-2">بعبارة أخرى: كلما زادت درجة حرارة الغاز، زاد حجمه، والعكس صحيح.</p>
                 </div>
             </FlippableCard>
 
@@ -116,12 +116,12 @@ export default function LessonPartPage() {
                 <div className="space-y-4">
                   <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) ودرجة الحرارة المطلقة (T) رياضيًا كالتالي:</p>
                   <div dir="ltr" className="text-left"><BlockMath math="V \propto T" /></div>
-                  <p>لتحويل التناسب إلى مساواة نستخدم ثابتًا (k) لتصبح المعادلة:</p>
+                  <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k) لتصبح المعادلة:</p>
                   <div dir="ltr" className="text-left"><BlockMath math="\frac{V}{T} = k" /></div>
-                  <p>وهذا يعني أن حاصل قسمة الحجم على درجة الحرارة المطلقة لكمية معينة من الغاز عند ضغط ثابت هو قيمة ثابتة ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                  <p>وهذا يعني أن حاصل قسمة الحجم على درجة الحرارة المطلقة لكمية معينة من الغاز عند ضغط ثابت هو قيمة ثابتة. ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
                   <div dir="ltr" className="text-left"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
                   <p className="text-sm text-muted-foreground" dir="rtl">
-                      حيث <span dir="ltr">(<InlineMath math="V_1, T_1" />)</span> هما الحجم والحرارة الابتدائيان و <span dir="ltr">(<InlineMath math="V_2, T_2" />)</span> هما الحجم والحرارة النهائيان **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>**
+                      حيث <span dir="ltr">(<InlineMath math="V_1, T_1" />)</span> هما الحجم والحرارة الابتدائيان، و <span dir="ltr">(<InlineMath math="V_2, T_2" />)</span> هما الحجم والحرارة النهائيان. **يجب دائمًا استخدام درجة حرارة الكلفن <span dir="ltr">(K)</span>.**
                   </p>
                 </div>
             </FlippableCard>
@@ -135,45 +135,45 @@ export default function LessonPartPage() {
                     <CardContent>
                         <div className="mb-4">
                             <p>
-                                إذا كان حجم بالون <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="2.5\text{L}" /></span> عند درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="25^\circ\text{C}" /></span> فما هو حجمه الجديد إذا سخن إلى <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="55^\circ\text{C}" /></span> مع بقاء الضغط ثابتًا؟
+                                إذا كان حجم بالون <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="2.5\text{L}" /></span> عند درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="25^\circ\text{C}" /></span>، فما هو حجمه الجديد إذا سخن إلى <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="55^\circ\text{C}" /></span> مع بقاء الضغط ثابتًا؟
                             </p>
                         </div>
                         <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                            <p><strong className="text-accent">المعطيات</strong></p>
+                            <p><strong className="text-accent">المعطيات:</strong></p>
                             <div className='grid grid-cols-2 gap-x-4' dir="ltr">
                                 <p className="text-left"><InlineMath math="V_1 = 2.5\text{L}" /></p>
                                 <p className="text-left"><InlineMath math="V_2 = ?" /></p>
                                 <p className="text-left"><InlineMath math="T_1 = 25^\circ\text{C}" /></p>
                                 <p className="text-left"><InlineMath math="T_2 = 55^\circ\text{C}" /></p>
                             </div>
-                            <p><span className="font-bold text-accent">المطلوب:</span> حساب الحجم الجديد <span dir="ltr">(<InlineMath math="V_2" />)</span></p>
-                            <p><strong className="text-accent">الحل</strong></p>
+                            <p><span className="font-bold text-accent">المطلوب:</span> حساب الحجم الجديد <span dir="ltr">(<InlineMath math="V_2" />)</span>.</p>
+                            <p><strong className="text-accent">الحل:</strong></p>
                             <ol className="list-decimal mr-6 text-sm space-y-2">
                                 <li>
-                                    <span>**الخطوة الأولى والأهم:** نحول درجات الحرارة إلى كلفن</span>
+                                    <span>**الخطوة الأولى والأهم:** نحول درجات الحرارة إلى كلفن.</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="T_1(\text{K}) = 25 + 273 = 298\text{K}" /></div>
                                     <div className="text-left" dir="ltr"><BlockMath math="T_2(\text{K}) = 55 + 273 = 328\text{K}" /></div>
                                 </li>
                                 <li>
-                                    <span>نكتب قانون شارل</span>
+                                    <span>نكتب قانون شارل.</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{T_1} = \frac{V_2}{T_2}" /></div>
                                 </li>
                                 <li>
-                                    <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" /></span>
+                                    <span>نعيد ترتيب المعادلة لحل <InlineMath math="V_2" />.</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 T_2}{T_1}" /></div>
                                 </li>
                                 <li>
-                                    <span>نعوض القيم</span>
+                                    <span>نعوض القيم.</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(2.5\text{L}) \cdot (328\text{K})}{298\text{K}}" /></div>
                                 </li>
                                 <li>
-                                    <span>نحسب الناتج</span>
+                                    <span>نحسب الناتج.</span>
                                     <div className="text-left" dir="ltr"><BlockMath math="V_2 \approx 2.75\text{L}" /></div>
                                 </li>
                             </ol>
                             <div className="border-t pt-3">
                                 <p className="text-sm font-semibold">
-                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="\approx 2.75\text{L}" /></span> وهذا منطقي لأن درجة الحرارة زادت فمن المتوقع أن يزداد الحجم
+                                الجواب: الحجم الجديد للبالون هو <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="\approx 2.75\text{L}" /></span>. وهذا منطقي لأن درجة الحرارة زادت، فمن المتوقع أن يزداد الحجم.
                                 </p>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                     <p className="text-xs text-muted-foreground text-center mb-2">
-                        يمثل الخط المستقيم العلاقة الطردية بين الحجم ودرجة الحرارة المطلقة
+                        يمثل الخط المستقيم العلاقة الطردية بين الحجم ودرجة الحرارة المطلقة.
                     </p>
                     <div className="flex justify-center items-center p-4">
                         <svg width="250" height="200" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-xs h-auto">
@@ -227,7 +227,7 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span> فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي</>}
+                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span>، فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي:</>}
                   options={[
                       "5",
                       "3.6",
@@ -235,13 +235,13 @@ export default function LessonPartPage() {
                       "3.2"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="أولاً نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K الضغط ثابت لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L"
+                  explanation="أولاً نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K. الضغط ثابت، لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L."
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span> عند مضاعفة حرارتها وثبات ضغطها فإن حجمها</>}
+                  question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span>. عند مضاعفة حرارتها وثبات ضغطها، فإن حجمها:</>}
                   options={[
                       "يصبح 5L",
                       "يزداد إلى الضعف",
@@ -249,7 +249,7 @@ export default function LessonPartPage() {
                       "لا يتغير"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="قانون شارل ينص على علاقة طردية بين الحجم ودرجة الحرارة المطلقة عند مضاعفة درجة الحرارة (من 400K إلى 800K) يجب أن يتضاعف الحجم أيضًا للحفاظ على النسبة ثابتة فيصبح 8L"
+                  explanation="قانون شارل ينص على علاقة طردية بين الحجم ودرجة الحرارة المطلقة. عند مضاعفة درجة الحرارة (من 400K إلى 800K)، يجب أن يتضاعف الحجم أيضًا للحفاظ على النسبة ثابتة، فيصبح 8L."
               />
           </div>
         </div>

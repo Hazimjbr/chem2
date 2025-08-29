@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Cpu, Lightbulb, Layers } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -13,12 +13,12 @@ import React, { useState, useEffect } from 'react';
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
     lessonSubtitle: "قانون دالتون للضغوط الجزئية",
-    mainIdea: "الضغط الكلي لخليط من الغازات غير المتفاعلة يساوي مجموع الضغوط الجزئية لكل غاز على حدة",
+    mainIdea: "الضغط الكلي لخليط من الغازات غير المتفاعلة يساوي مجموع الضغوط الجزئية لكل غاز على حدة.",
     learningOutcomes: [
-        "أصف قانون دالتون للضغوط الجزئية",
-        "أحل مسائل حسابية باستخدام قانون دالتون"
+        "أصف قانون دالتون للضغوط الجزئية.",
+        "أحل مسائل حسابية باستخدام قانون دالتون."
     ],
-    lessonContent: `<p>حتى الآن تعاملنا مع غاز واحد في كل مرة لكن الهواء الذي نتنفسه هو خليط من غازات متعددة قانون دالتون للضغوط الجزئية يشرح كيف يتصرف خليط من الغازات وكيف يساهم كل غاز في الضغط الكلي</p>`,
+    lessonContent: `<p>حتى الآن تعاملنا مع غاز واحد في كل مرة. لكن الهواء الذي نتنفسه هو خليط من غازات متعددة. قانون دالتون للضغوط الجزئية يشرح كيف يتصرف خليط من الغازات وكيف يساهم كل غاز في الضغط الكلي.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-9",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-8",
@@ -56,7 +56,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p>
-                        لاحظ العالم جون دالتون أن الغازات تختلط ببعضها البعض بسبب الحركة العشوائية لجسيماتها واستنتج أن كل غاز في الخليط يمارس ضغطًا كما لو كان موجودًا بمفرده وأن الضغط الكلي هو ببساطة مجموع هذه الضغوط الفردية
+                        لاحظ العالم جون دالتون أن الغازات تختلط ببعضها البعض بسبب الحركة العشوائية لجسيماتها، واستنتج أن كل غاز في الخليط يمارس ضغطًا كما لو كان موجودًا بمفرده، وأن الضغط الكلي هو ببساطة مجموع هذه الضغوط الفردية.
                     </p>
                 </CardContent>
             </Card>
@@ -67,9 +67,9 @@ export default function LessonPartPage() {
             >
                  <div className="space-y-3">
                     <blockquote className="border-r-4 border-primary pr-4">
-                        "الضغط الكلي لخليط من الغازات (غير المتفاعلة مع بعضها) يساوي مجموع الضغوط الجزئية لها"
+                        "الضغط الكلي لخليط من الغازات (غير المتفاعلة مع بعضها) يساوي مجموع الضغوط الجزئية لها."
                     </blockquote>
-                    <p className="text-xs text-muted-foreground pt-2 border-t">الضغط الجزئي هو الضغط الذي سيمارسه غاز معين لو كان موجودًا بمفرده في نفس الوعاء وعند نفس درجة الحرارة</p>
+                    <p className="text-xs text-muted-foreground pt-2 border-t">الضغط الجزئي هو الضغط الذي سيمارسه غاز معين لو كان موجودًا بمفرده في نفس الوعاء وعند نفس درجة الحرارة.</p>
                 </div>
             </FlippableCard>
 
@@ -80,7 +80,7 @@ export default function LessonPartPage() {
                <div className="space-y-4 text-center">
                   <p>الصيغة الأساسية لحساب الضغط الكلي (<span dir="ltr" className="inline-block"><InlineMath math="P_{Total}"/></span>):</p>
                   <div dir="ltr"><BlockMath math="P_{Total} = P_A + P_B + P_C + \dots" /></div>
-                  <p>لحساب الضغط الجزئي لغاز معين (<span dir="ltr" className="inline-block"><InlineMath math="P_A"/></span>) نستخدم الكسر المولي (<span dir="ltr" className="inline-block"><InlineMath math="X_A"/></span>):</p>
+                  <p>لحساب الضغط الجزئي لغاز معين (<span dir="ltr" className="inline-block"><InlineMath math="P_A"/></span>)، نستخدم الكسر المولي (<span dir="ltr" className="inline-block"><InlineMath math="X_A"/></span>):</p>
                    <div dir="ltr"><BlockMath math="P_A = X_A \cdot P_{Total}" /></div>
                    <p className="text-sm">حيث أن الكسر المولي للغاز A هو نسبة عدد مولاته إلى العدد الكلي للمولات:</p>
                    <div dir="ltr"><BlockMath math="X_A = \frac{n_A}{n_{Total}}" /></div>
@@ -115,7 +115,7 @@ export default function LessonPartPage() {
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="1L"/></span><span> غازين A, B في الظروف المعيارية حيث يشكل الغاز B 70% فإن قيمة ضغط الغاز A تساوي:</span></>}
+                  question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="1L"/></span><span> غازين A, B في الظروف المعيارية، حيث يشكل الغاز B 70%. فإن قيمة ضغط الغاز A تساوي:</span></>}
                   options={[
                       "0.7atm",
                       "0.3atm",
@@ -123,7 +123,7 @@ export default function LessonPartPage() {
                       "6.7atm"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="في الظروف المعيارية الضغط الكلي P_total = 1atm. إذا كان الغاز B يشكل 70% فإن الغاز A يشكل 30%. الكسر المولي للغاز A هو X_A = 0.3. الضغط الجزئي لـ A هو P_A = X_A * P_total = 0.3 * 1atm = 0.3atm."
+                  explanation="في الظروف المعيارية، الضغط الكلي P_total = 1atm. إذا كان الغاز B يشكل 70%، فإن الغاز A يشكل 30%. الكسر المولي للغاز A هو X_A = 0.3. الضغط الجزئي لـ A هو P_A = X_A * P_total = 0.3 * 1atm = 0.3atm."
               />
           </div>
         </div>
