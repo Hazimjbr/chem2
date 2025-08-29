@@ -18,10 +18,12 @@ interface RegistrationResult {
 export async function registerDevice(input: RegistrationInput): Promise<RegistrationResult> {
     const { user, deviceId } = input;
 
+    // If the user is an admin, bypass all device checks and return success immediately.
     if (user.role === 'admin') {
         return { status: 'registered', message: `أهلاً بك أيها المدير ${user.displayName}` };
     }
 
+    // Proceed with device checks only for students.
     const studentId = user.uid;
 
     try {

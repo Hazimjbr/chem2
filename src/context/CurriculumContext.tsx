@@ -48,12 +48,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   // Function to fetch user details from Firestore
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
-      // Check if user is an admin first
+      // 1. First, check if the user is a hardcoded admin.
       if (ADMIN_UIDS.includes(user.uid)) {
           return { uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' };
       }
       
-      // If not an admin, try to fetch student data
+      // 2. If not an admin, check if they are a student.
       try {
           const studentDocRef = doc(db, 'students', user.uid);
           const studentDoc = await getDoc(studentDocRef);
@@ -66,8 +66,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                    displayName: studentData.studentName || user.email,
               };
           } else {
-              // User exists in Auth but not in our students collection
-              console.warn(`User ${user.uid} is authenticated but not found in 'students' collection.`);
+              // 3. If not found in students or admins, they are an unknown user.
+              console.warn(`User ${user.uid} is authenticated but not found in 'students' collection or admin list.`);
               return null; 
           }
       } catch (error) {
@@ -90,25 +90,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const unsubscribe = onAuthStateChangedListener(async (user: FirebaseUser | null) => {
         setIsLoading(true);
         if (user) {
-            const appUser = await fetchAppUser(user);
-             if (appUser) {
-                // Before setting the user, verify their device
-                const deviceId = getOrCreateDeviceId();
-                const verificationResult = await registerDevice({ user: appUser, deviceId });
-
-                if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
-                    setCurrentUser(appUser);
-                } else {
-                    // If device check fails (e.g., pending), sign the user out on the client
-                    await signOutUser();
-                    setCurrentUser(null);
-                     // Optionally show a toast here, but handleLogin will also show one.
-                }
-            } else {
-                console.warn(`User ${user.uid} exists in Auth but is not a valid admin or student. Signing out.`);
-                await signOutUser();
-                setCurrentUser(null);
-            }
+            // This listener will now simply set the user state based on the login flow.
+            // The handleLogin function will be the main point of entry for new logins.
+             const appUser = await fetchAppUser(user);
+             setCurrentUser(appUser); // This will be null if user is not found, effectively logging them out.
         } else {
             setCurrentUser(null);
             clearCurriculum();
@@ -140,6 +125,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const handleLogin = async (user: FirebaseUser): Promise<VerificationResult> => {
       const appUser = await fetchAppUser(user);
+
       if (!appUser) {
           await signOutUser();
           return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام", variant: 'destructive' };
@@ -149,10 +135,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       const verificationResult = await registerDevice({ user: appUser, deviceId });
 
       if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
-          setCurrentUser(appUser); // Set the current user only on successful verification
+          setCurrentUser(appUser);
           return { success: true, message: `أهلاً بك، ${appUser.displayName}!` };
       } else {
-          // Device is pending or an error occurred
           await signOutUser();
           setCurrentUser(null);
           return { 
