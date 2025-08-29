@@ -30,7 +30,7 @@ interface ElementCellProps {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-14 sm:h-auto", // Further reduced height
+            "flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-12 sm:h-auto",
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -66,42 +66,6 @@ export default function PeriodicTable() {
 
     return (
         <div className="w-full space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 md:flex-row-reverse md:items-center gap-4">
-                <Input 
-                    placeholder="ابحث بالاسم، الرمز، أو العدد الذري"
-                    value={searchTerm}
-                    onChange={handleSearch}
-                    className="md:col-span-1"
-                />
-                <Card className="md:col-span-2">
-                    <CardContent className="p-4">
-                        {foundElement ? (
-                            <div className="flex justify-around items-center text-center">
-                                <div>
-                                    <p className="text-sm text-muted-foreground">الاسم</p>
-                                    <p className="text-lg font-bold">{foundElement.name}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-muted-foreground">الرمز</p>
-                                    <p className="text-2xl font-mono">{foundElement.symbol}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-muted-foreground">العدد الذري</p>
-                                    <p className="text-lg font-bold">{foundElement.number}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-muted-foreground">الكتلة الذرية</p>
-                                    <p className="text-lg font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</p>
-                                </div>
-                            </div>
-                        ) : (
-                            <p className="text-center text-muted-foreground p-2">
-                                ابدأ البحث لعرض معلومات العنصر هنا
-                            </p>
-                        )}
-                    </CardContent>
-                </Card>
-            </div>
              <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
                 <div 
                     className="relative grid gap-1"
@@ -109,6 +73,43 @@ export default function PeriodicTable() {
                         gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
+                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 p-2" style={{ gridColumn: '3 / span 10', gridRow: '2 / span 2' }}>
+                        <Input 
+                            placeholder="ابحث..."
+                            value={searchTerm}
+                            onChange={handleSearch}
+                            className="md:col-span-1 h-9"
+                        />
+                        <Card className="md:col-span-2">
+                            <CardContent className="p-2">
+                                {foundElement ? (
+                                    <div className="flex justify-around items-center text-center text-xs sm:text-sm">
+                                        <div>
+                                            <p className="text-muted-foreground text-[0.6rem]">الاسم</p>
+                                            <p className="font-bold">{foundElement.name}</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-muted-foreground text-[0.6rem]">الرمز</p>
+                                            <p className="text-lg font-mono">{foundElement.symbol}</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-muted-foreground text-[0.6rem]">العدد</p>
+                                            <p className="font-bold">{foundElement.number}</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-muted-foreground text-[0.6rem]">الكتلة</p>
+                                            <p className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <p className="text-center text-muted-foreground text-xs p-2">
+                                        ابحث عن عنصر لعرض معلوماته
+                                    </p>
+                                )}
+                            </CardContent>
+                        </Card>
+                    </div>
+
                     {elements.map(el => (
                         <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
                     ))}
