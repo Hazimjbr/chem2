@@ -88,10 +88,22 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const unsubscribe = onAuthStateChangedListener(async (user: FirebaseUser | null) => {
+        setIsLoading(true);
         if (user) {
             const appUser = await fetchAppUser(user);
              if (appUser) {
-                setCurrentUser(appUser);
+                // Before setting the user, verify their device
+                const deviceId = getOrCreateDeviceId();
+                const verificationResult = await registerDevice({ user: appUser, deviceId });
+
+                if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
+                    setCurrentUser(appUser);
+                } else {
+                    // If device check fails (e.g., pending), sign the user out on the client
+                    await signOutUser();
+                    setCurrentUser(null);
+                     // Optionally show a toast here, but handleLogin will also show one.
+                }
             } else {
                 console.warn(`User ${user.uid} exists in Auth but is not a valid admin or student. Signing out.`);
                 await signOutUser();
