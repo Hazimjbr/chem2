@@ -112,9 +112,12 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
     try {
         const batch = writeBatch(db);
         
-        const studentDocRef = doc(db, 'students', studentId);
-        const studentDoc = await getDoc(studentDocRef);
-        const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
+        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
+        const pendingDoc = await getDoc(pendingDeviceRef);
+        if (!pendingDoc.exists()) {
+             throw new Error("Pending device request not found.");
+        }
+        const studentName = pendingDoc.data().studentName || 'طالب غير معروف';
 
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
@@ -124,7 +127,6 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
             registeredAt: Timestamp.now(),
         });
 
-        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
         batch.delete(pendingDeviceRef);
         
         await batch.commit();
@@ -138,53 +140,32 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
 
 export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
-        const batch = writeBatch(db);
-
-        // 1. Find all existing registered devices for the student
-        const registeredDevicesRef = collection(db, 'registeredDevices');
-        const q = query(registeredDevicesRef, where("studentId", "==", studentId));
-        const querySnapshot = await getDocs(q);
-        
-        // 2. Schedule them for deletion
-        querySnapshot.forEach(doc => {
-            batch.delete(doc.ref);
-        });
-
-        // 3. Get student name from the pending request itself (more reliable)
-        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
-        const pendingDoc = await getDoc(pendingDeviceRef);
-        if (!pendingDoc.exists()) {
-             throw new Error("Pending device request not found.");
+        // First, approve the new device and remove the pending request.
+        const approvalResult = await approveDevice(pendingDeviceId, studentId, deviceId);
+        if (!approvalResult.success) {
+            throw new Error(approvalResult.message);
         }
-        const studentName = pendingDoc.data().studentName || 'طالب غير معروف';
-        
-        // 4. Add the new device
-        const newDeviceRef = doc(collection(db, 'registeredDevices'));
-        batch.set(newDeviceRef, {
-            studentId,
-            deviceId,
-            studentName,
-            registeredAt: Timestamp.now(),
-        });
-        
-        // 5. Delete the pending request
-        batch.delete(pendingDeviceRef);
 
-        // 6. Commit all database changes
-        await batch.commit();
+        // Second, find all other registered devices for the student and delete them.
+        const devicesRef = collection(db, 'registeredDevices');
+        const q = query(devicesRef, where("studentId", "==", studentId), where("deviceId", "!=", deviceId));
+        const oldDevicesSnapshot = await getDocs(q);
 
-        // 7. Revoke user sessions
+        if (!oldDevicesSnapshot.empty) {
+            const deleteBatch = writeBatch(db);
+            oldDevicesSnapshot.forEach(doc => {
+                deleteBatch.delete(doc.ref);
+            });
+            await deleteBatch.commit();
+        }
+
+        // Finally, revoke the user's sessions to log them out of old devices.
         await manageUser({ action: 'revokeSession', uid: studentId });
 
-        return { success: true, message: 'تم استبدال الجهاز وإبطال الجلسات القديمة بنجاح.' };
-
+        return { success: true, message: 'تم استبدال الجهاز بنجاح وإبطال صلاحية الجلسات القديمة.' };
     } catch (error: any) {
-        console.error("Error approving and replacing device:", error);
-        let errorMessage = 'فشل في عملية الموافقة والاستبدال.';
-        if (error.message) {
-            errorMessage += ` السبب: ${error.message}`;
-        }
-        return { success: false, message: errorMessage };
+        console.error("Error in approveAndReplaceDevice:", error);
+        return { success: false, message: `فشلت عملية الاستبدال الكاملة: ${error.message}` };
     }
 }
 
