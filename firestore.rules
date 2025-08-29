@@ -1,54 +1,31 @@
-
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // --- Helper Functions ---
 
-    // Checks if the requesting user's UID exists in the 'admins' collection.
-    // This requires that the 'admins' collection is readable by authenticated users.
-    function isAdmin() {
-      return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
-    }
-
-    // Checks if the user is the owner of a given resource.
-    function isOwner(resource) {
-      return request.auth.uid == resource.data.studentId;
-    }
-
-    // --- Admin Rules ---
-
-    // Admins have full read/write access to the entire database.
-    // This rule is powerful and grants comprehensive control for admin tasks.
+    // --- Admin Rule ---
+    // Admins can do anything, anywhere.
+    // We check for a custom claim 'admin' on the user's auth token.
     match /{path=**} {
-      allow read, write: if isAdmin();
+      allow read, write, list, delete: if request.auth.claims.admin == true;
     }
 
-    // --- Student and General User Rules ---
+    // --- Student-specific Rules ---
+    // These rules apply if the user is NOT an admin.
 
-    // Allow authenticated users to check for admin status.
-    // This is crucial for the isAdmin() function to work.
-    match /admins/{adminId} {
-      allow get: if request.auth != null;
-    }
-
-    // Students can read their own data.
-    // They cannot see other students' data or list all students.
+    // A student can read their own document.
     match /students/{studentId} {
-      allow get: if request.auth.uid == studentId;
-      allow list: if false; // Explicitly deny listing all students
+      allow read: if request.auth.uid == studentId;
     }
 
-    // Students can read their own registered devices.
-    match /registeredDevices/{docId} {
-      allow read: if request.auth != null && isOwner(get(path));
-    }
-
-    // Authenticated users can create a request to register a new device.
-    // This allows the device verification flow to start.
+    // Any authenticated user can create a device registration request for themselves.
     match /pendingDevices/{docId} {
       allow create: if request.auth != null && request.resource.data.studentId == request.auth.uid;
+    }
+
+    // A student can read their own registered devices.
+    match /registeredDevices/{docId} {
+      allow read: if request.auth != null && resource.data.studentId == request.auth.uid;
     }
   }
 }
