@@ -37,8 +37,8 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Hardcoded admin UIDs for client-side role check
-const ADMIN_UIDS = ['uPqBUQ3i18fTta4f4tu2fTCyNKO2'];
+// Define admin by a more stable identifier like email.
+const ADMIN_EMAIL = 'h75jbr@gmail.com';
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [curriculum, setCurriculum] = useState<Curriculum>(null);
@@ -46,10 +46,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Function to fetch user details from Firestore
+  // Function to fetch user details and determine role
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
-      // 1. First, check if the user is a hardcoded admin.
-      if (ADMIN_UIDS.includes(user.uid)) {
+      // 1. Check if the user is the admin by email.
+      if (user.email === ADMIN_EMAIL) {
           return { uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' };
       }
       
@@ -66,12 +66,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                    displayName: studentData.studentName || user.email,
               };
           } else {
-              // 3. If not found in students or admins, they are an unknown user.
-              console.warn(`User ${user.uid} is authenticated but not found in 'students' collection or admin list.`);
+              // 3. If not found, they are an unknown user.
+              console.warn(`User ${user.uid} (${user.email}) is authenticated but not found in 'students' collection or admin list.`);
               return null; 
           }
       } catch (error) {
-          // This might happen due to security rules if a non-student/non-admin tries to log in
           console.error("Error fetching user data from Firestore:", error);
           return null;
       }
@@ -90,10 +89,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const unsubscribe = onAuthStateChangedListener(async (user: FirebaseUser | null) => {
         setIsLoading(true);
         if (user) {
-            // This listener will now simply set the user state based on the login flow.
-            // The handleLogin function will be the main point of entry for new logins.
              const appUser = await fetchAppUser(user);
-             setCurrentUser(appUser); // This will be null if user is not found, effectively logging them out.
+             setCurrentUser(appUser);
+             if (!appUser) {
+                // If fetchAppUser returns null (not a known student or admin), sign them out.
+                await signOutUser();
+             }
         } else {
             setCurrentUser(null);
             clearCurriculum();
@@ -127,10 +128,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       const appUser = await fetchAppUser(user);
 
       if (!appUser) {
-          await signOutUser();
+          await signOutUser(); // Ensure they are signed out if not recognized
           return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام", variant: 'destructive' };
       }
       
+      // If user is admin, bypass device checks.
+      if (appUser.role === 'admin') {
+          setCurrentUser(appUser);
+          return { success: true, message: `أهلاً بك أيها المدير!` };
+      }
+
+      // Proceed with device checks only for students.
       const deviceId = getOrCreateDeviceId();
       const verificationResult = await registerDevice({ user: appUser, deviceId });
 
