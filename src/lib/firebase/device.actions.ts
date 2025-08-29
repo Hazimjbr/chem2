@@ -18,19 +18,16 @@ interface RegistrationResult {
 export async function registerDevice(input: RegistrationInput): Promise<RegistrationResult> {
     const { user, deviceId } = input;
 
-    // If the user is an admin, bypass all device checks and return success immediately.
     if (user.role === 'admin') {
         return { status: 'registered', message: `أهلاً بك أيها المدير ${user.displayName}` };
     }
-
-    // Proceed with device checks only for students.
+    
     const studentId = user.uid;
 
     try {
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const pendingDevicesRef = collection(db, 'pendingDevices');
 
-        // Check if this specific device is already registered for the student
         const specificDeviceQuery = query(
             registeredDevicesRef,
             where("studentId", "==", studentId),
@@ -42,7 +39,6 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
             return { status: 'already-exists', message: 'هذا الجهاز معتمد بالفعل' };
         }
         
-        // Check if ANY device is registered for this student
         const anyDeviceQuery = query(
             registeredDevicesRef,
             where("studentId", "==", studentId),
@@ -51,17 +47,15 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         const anyDeviceSnapshot = await getDocs(anyDeviceQuery);
         
         if (anyDeviceSnapshot.empty) {
-            // First device for this student, register it automatically
              await addDoc(registeredDevicesRef, {
                 studentId,
                 deviceId,
-                studentName: user.displayName, // Add student name for easier lookup
+                studentName: user.displayName,
                 registeredAt: Timestamp.now(),
             });
             return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
         }
 
-        // Student has other devices, but this one is new. Check if it's pending.
         const pendingQuery = query(
             pendingDevicesRef, 
             where("studentId", "==", studentId), 
@@ -73,7 +67,6 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
             return { status: 'pending', message: 'تم إرسال طلب الموافقة على هذا الجهاز مسبقًا وهو قيد المراجعة' };
         }
 
-        // Add to pending list for admin approval
         await addDoc(pendingDevicesRef, {
             studentId,
             deviceId,
@@ -122,27 +115,66 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
         const studentDoc = await getDoc(studentDocRef);
         const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
 
-        // 1. Add the new device to registeredDevices
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
             studentId,
             deviceId,
-            studentName, // Store the student's name for easier reference
+            studentName,
             registeredAt: Timestamp.now(),
         });
 
-        // 2. Delete the request from pendingDevices
         const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
         batch.delete(pendingDeviceRef);
         
         await batch.commit();
 
-        return { success: true, message: 'تمت الموافقة على الجهاز بنجاح' };
+        return { success: true, message: 'تمت الموافقة على الجهاز وإضافته بنجاح' };
     } catch (error) {
         console.error("Error approving device:", error);
         return { success: false, message: 'فشل في الموافقة على الجهاز' };
     }
 }
+
+export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
+    try {
+        const batch = writeBatch(db);
+        const registeredDevicesRef = collection(db, 'registeredDevices');
+
+        // 1. Find all existing devices for the student
+        const q = query(registeredDevicesRef, where("studentId", "==", studentId));
+        const querySnapshot = await getDocs(q);
+        
+        // 2. Delete all old devices
+        querySnapshot.forEach(doc => {
+            batch.delete(doc.ref);
+        });
+
+        // 3. Add the new device
+        const studentDocRef = doc(db, 'students', studentId);
+        const studentDoc = await getDoc(studentDocRef);
+        const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
+
+        const newDeviceRef = doc(registeredDevicesRef);
+        batch.set(newDeviceRef, {
+            studentId,
+            deviceId,
+            studentName,
+            registeredAt: Timestamp.now(),
+        });
+        
+        // 4. Delete the request from pendingDevices
+        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
+        batch.delete(pendingDeviceRef);
+        
+        await batch.commit();
+
+        return { success: true, message: 'تمت الموافقة على الجهاز الجديد واستبدال الأجهزة القديمة' };
+    } catch (error) {
+        console.error("Error approving and replacing device:", error);
+        return { success: false, message: 'فشل في عملية الموافقة والاستبدال' };
+    }
+}
+
 
 export async function rejectDevice(pendingDeviceId: string) {
      try {

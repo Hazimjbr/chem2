@@ -3,12 +3,9 @@
 
 import { initializeApp, getApps, deleteApp, FirebaseApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signOut, User } from 'firebase/auth';
-import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp } from 'firebase/firestore';
+import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp, updateDoc, writeBatch, where } from 'firebase/firestore';
 import { db } from './config';
 
-// This is the same config object used for the client-side app.
-// We are re-using it here to create a temporary, secondary Firebase app instance
-// for the sole purpose of creating a new user without signing out the admin.
 const firebaseConfig = {
   "projectId": "chem1-93ct1",
   "appId": "1:478091867826:web:52e564e2a5b42f70ed7bab",
@@ -18,11 +15,8 @@ const firebaseConfig = {
   "messagingSenderId": "478091867826"
 };
 
-
-// Helper to get or create a secondary app instance
 const getSecondaryApp = (): FirebaseApp => {
-    // A more robust way to handle secondary app instances on the server during development
-    const appName = "secondary-admin-app-for-creation";
+    const appName = "secondary-admin-app";
     const existingApp = getApps().find(app => app.name === appName);
     if (existingApp) {
         return existingApp;
@@ -51,7 +45,6 @@ export async function addStudent(studentData: {
         const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, password_clear);
         user = userCredential.user;
         
-        // IMPORTANT: We must sign out from the secondary app instance to avoid session conflicts.
         await signOut(secondaryAuth);
 
         await setDoc(doc(db, 'students', user.uid), {
@@ -77,7 +70,7 @@ export async function addStudent(studentData: {
         } else if (error.code === 'auth/weak-password') {
             errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
         } else if (user) {
-             errorMessage = 'تم إنشاء الحساب في نظام المصادقة ولكن فشل حفظه في قاعدة البيانات. الرجاء حذف المستخدم يدويًا من قسم المصادقة والمحاولة مرة أخرى.';
+             errorMessage = 'تم إنشاء الحساب في نظام المصادقة ولكن فشل حفظه في قاعدة البيانات.';
         }
         
         if(secondaryApp){
@@ -87,47 +80,6 @@ export async function addStudent(studentData: {
         return { success: false, message: errorMessage };
     }
 }
-
-
-export async function signUpStudent(studentData: {
-    studentName: string,
-    username: string,
-    password: string,
-    phone?: string,
-}): Promise<{success: boolean; message: string; user?: User}> {
-    const { studentName, username, password, phone } = studentData;
-    const email = `${username.toLowerCase()}@chemzim.com`;
-
-    try {
-        const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
-        const user = userCredential.user;
-
-        await setDoc(doc(db, 'students', user.uid), {
-            studentName,
-            username,
-            email,
-            courseIds: ['tawjihi_2008'],
-            courses: ['توجيهي 2008'],
-            phone1: phone || '',
-            phone2: '',
-            createdAt: Timestamp.now(),
-        });
-        
-        return { success: true, message: 'تم إنشاء حسابك بنجاح', user };
-
-    } catch (error: any) {
-        console.error("Error signing up student:", error);
-        let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
-        if (error.code === 'auth/email-already-in-use') {
-            errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
-        } else if (error.code === 'auth/weak-password') {
-            errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
-        }
-        
-        return { success: false, message: errorMessage };
-    }
-}
-
 
 export async function getStudents() {
     try {
@@ -143,6 +95,7 @@ export async function getStudents() {
                 username: data.username,
                 email: data.email,
                 courses: data.courses || [],
+                courseIds: data.courseIds || [],
                 phone1: data.phone1 || '',
                 phone2: data.phone2 || '',
                 createdAt: (data.createdAt as Timestamp).toDate().toISOString(),
@@ -154,8 +107,53 @@ export async function getStudents() {
         console.error("Error getting students:", error);
         let detailedMessage = "فشل في جلب بيانات الطلاب.";
         if (error.code === 'permission-denied') {
-            detailedMessage = "فشل في جلب بيانات الطلاب: صلاحيات غير كافية. يرجى مراجعة قواعد الأمان في Firestore.";
+            detailedMessage = "فشل في جلب بيانات الطلاب: صلاحيات غير كافية.";
         }
         return { success: false, message: detailedMessage };
+    }
+}
+
+
+export async function updateStudent(studentId: string, dataToUpdate: {
+    studentName: string;
+    phone1: string;
+    phone2: string;
+    courseIds: string[];
+    courses: string[];
+}) {
+    try {
+        const studentRef = doc(db, 'students', studentId);
+        await updateDoc(studentRef, dataToUpdate);
+        return { success: true, message: 'تم تحديث بيانات الطالب بنجاح' };
+    } catch (error) {
+        console.error("Error updating student:", error);
+        return { success: false, message: 'فشل في تحديث بيانات الطالب' };
+    }
+}
+
+
+export async function deleteStudent(studentId: string) {
+    try {
+        // This needs a server-side environment with Admin SDK to delete users from Auth.
+        // The client-side SDK cannot delete other users.
+        // For now, we will only delete from Firestore.
+        const batch = writeBatch(db);
+
+        // 1. Delete student document
+        const studentRef = doc(db, 'students', studentId);
+        batch.delete(studentRef);
+
+        // 2. Delete all registered devices for the student
+        const devicesRef = collection(db, 'registeredDevices');
+        const q = query(devicesRef, where("studentId", "==", studentId));
+        const devicesSnapshot = await getDocs(q);
+        devicesSnapshot.forEach(doc => batch.delete(doc.ref));
+
+        await batch.commit();
+        
+        return { success: true, message: 'تم حذف الطالب من قاعدة البيانات. يجب حذفه من نظام المصادقة يدويًا.' };
+    } catch (error) {
+        console.error("Error deleting student data:", error);
+        return { success: false, message: 'فشل في حذف بيانات الطالب من Firestore' };
     }
 }
