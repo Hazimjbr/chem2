@@ -147,19 +147,15 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         }
         const studentName = pendingDocSnap.data().studentName || 'طالب غير معروف';
         
-        const batch = writeBatch(db);
-
-        // 1. Find and delete all old devices for the student
+        // 1. Delete all old devices for the student
         const devicesRef = collection(db, 'registeredDevices');
         const q = query(devicesRef, where("studentId", "==", studentId));
         const oldDevicesSnapshot = await getDocs(q);
-        oldDevicesSnapshot.forEach(doc => {
-            batch.delete(doc.ref);
-        });
+        const deletePromises = oldDevicesSnapshot.docs.map(doc => deleteDoc(doc.ref));
+        await Promise.all(deletePromises);
 
         // 2. Add the new device
-        const newDeviceRef = doc(collection(db, 'registeredDevices'));
-        batch.set(newDeviceRef, {
+        await addDoc(collection(db, 'registeredDevices'), {
             studentId,
             deviceId,
             studentName,
@@ -167,10 +163,7 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         });
         
         // 3. Delete the pending request
-        batch.delete(pendingDeviceRef);
-
-        // Commit all database changes at once
-        await batch.commit();
+        await deleteDoc(pendingDeviceRef);
 
         // 4. After successfully changing the database, revoke user sessions
         await manageUser({ action: 'revokeSession', uid: studentId });
@@ -181,6 +174,7 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         return { success: false, message: `فشلت عملية الاستبدال الكاملة: ${error.message}` };
     }
 }
+
 
 export async function rejectDevice(pendingDeviceId: string) {
      try {
