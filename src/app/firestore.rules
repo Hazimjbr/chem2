@@ -1,0 +1,37 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    // Helper function to check if the user is an admin
+    function isAdmin() {
+      // The admin's UID is hardcoded here for simplicity and security.
+      // Replace with your actual admin UID from Firebase Authentication.
+      return request.auth.uid == '5H03X45oEiOAaIEOFaQDb0UslsF3';
+    }
+
+    // --- Admin Rules ---
+    // A single, powerful rule: Admins can do anything with any document.
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+    
+    // --- Student & General User Rules ---
+
+    // Any authenticated user can create a pending device request.
+    // This is secure because the server action will set the studentId to the user's own UID.
+    match /pendingDevices/{docId} {
+      allow create: if request.auth != null;
+    }
+    
+    // Students can read their own document in the 'students' collection.
+    match /students/{studentId} {
+        allow read: if request.auth.uid == studentId;
+    }
+
+    // Students can read their own registered device documents.
+    match /registeredDevices/{docId} {
+      allow read: if request.auth.uid == resource.data.studentId;
+    }
+  }
+}

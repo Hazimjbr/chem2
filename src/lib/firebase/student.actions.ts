@@ -71,10 +71,6 @@ export async function addStudent(studentData: {
     } catch (error: any) {
         console.error("Error creating student:", error);
         
-        // If user was created in Auth but failed to save to Firestore, we should ideally delete the Auth user.
-        // However, this is a complex operation that requires admin SDK.
-        // For now, we return a specific error message.
-        
         let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
         if (error.code === 'auth/email-already-in-use') {
             errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
@@ -84,8 +80,6 @@ export async function addStudent(studentData: {
              errorMessage = 'تم إنشاء الحساب في نظام المصادقة ولكن فشل حفظه في قاعدة البيانات. الرجاء حذف المستخدم يدويًا من قسم المصادقة والمحاولة مرة أخرى.';
         }
         
-        // Clean up the secondary app instance if it's no longer needed, especially on serverless environments.
-        // Note: In a persistent server, you might want to reuse the instance.
         if(secondaryApp){
              try { await deleteApp(secondaryApp); } catch(e) { console.error("Could not delete secondary app", e); }
         }
@@ -104,7 +98,6 @@ export async function signUpStudent(studentData: {
     const { studentName, username, password, phone } = studentData;
     const email = `${username.toLowerCase()}@chemzim.com`;
 
-    // Here we use the main auth instance since the user is not logged in yet.
     try {
         const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
         const user = userCredential.user;
@@ -157,8 +150,12 @@ export async function getStudents() {
         });
         
         return { success: true, data: students };
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error getting students:", error);
-        return { success: false, message: "فشل في جلب بيانات الطلاب." };
+        let detailedMessage = "فشل في جلب بيانات الطلاب.";
+        if (error.code === 'permission-denied') {
+            detailedMessage = "فشل في جلب بيانات الطلاب: صلاحيات غير كافية. يرجى مراجعة قواعد الأمان في Firestore.";
+        }
+        return { success: false, message: detailedMessage };
     }
 }
