@@ -45,8 +45,8 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
     defaultValues: {
       studentName: student.studentName,
       courseIds: student.courseIds,
-      phone1: student.phone1,
-      phone2: student.phone2,
+      phone1: student.phone1 || '',
+      phone2: student.phone2 || '',
     },
   });
 
