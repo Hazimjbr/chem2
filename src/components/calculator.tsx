@@ -19,7 +19,7 @@ const safeEval = (expr: string): number => {
     // It replaces custom symbols with Math object equivalents.
     const safeExpr = expr
         .replace(/√/g, 'Math.sqrt')
-        .replace(/\^/g, '**')
+        .replace(/\^/g, '')
         .replace(/π/g, 'Math.PI')
         .replace(/e/g, 'Math.E')
         .replace(/sin\(/g, 'Math.sin(Math.PI/180 * ')
