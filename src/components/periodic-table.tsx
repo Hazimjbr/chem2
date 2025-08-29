@@ -162,27 +162,6 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                     {elements.map(el => (
                         <ElementCell key={el.number} {...el} isHighlighted={foundElement?.number === el.number} />
                     ))}
-                    {/* Group Ruler */}
-                     <g fontFamily="Arial-BoldMT, Arial" fontWeight={700} fontSize="14px" textAnchor="middle" fill="hsl(var(--muted-foreground))">
-                        <text x={51.6 + 24.85} y={335}>1</text>
-                        <text x={101.3 + 24.85} y={335}>2</text>
-                        <text x={151 + 24.85} y={335}>3</text>
-                        <text x={200.7 + 24.85} y={335}>4</text>
-                        <text x={250.4 + 24.85} y={335}>5</text>
-                        <text x={300.1 + 24.85} y={335}>6</text>
-                        <text x={349.8 + 24.85} y={335}>7</text>
-                        <text x={399.5 + 24.85} y={335}>8</text>
-                        <text x={449.2 + 24.85} y={335}>9</text>
-                        <text x={498.9 + 24.85} y={335}>10</text>
-                        <text x={548.6 + 24.85} y={335}>11</text>
-                        <text x={598.3 + 24.85} y={335}>12</text>
-                        <text x={648 + 24.85} y={335}>13</text>
-                        <text x={697.7 + 24.85} y={335}>14</text>
-                        <text x={747.4 + 24.85} y={335}>15</text>
-                        <text x={797.1 + 24.85} y={335}>16</text>
-                        <text x={846.8 + 24.85} y={335}>17</text>
-                        <text x={896.5 + 24.85} y={335}>18</text>
-                    </g>
                 </svg>
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>
