@@ -65,8 +65,6 @@ export const elements: Element[] = [
   { name: 'تيلوريوم', symbol: 'Te', number: 52, atomic_mass: 127.60, category: 'metalloid', gridRow: 5, gridColumn: 16 },
   { name: 'يود', symbol: 'I', number: 53, atomic_mass: 126.90, category: 'halogen', gridRow: 5, gridColumn: 17 },
   { name: 'زينون', symbol: 'Xe', number: 54, atomic_mass: 131.29, category: 'noble-gas', gridRow: 5, gridColumn: 18 },
-  { name: 'سيزيوم', symbol: 'Cs', number: 55, atomic_mass: 132.91, category: 'alkali-metal', gridRow: 6, gridColumn: 1 },
-  { name: 'باريوم', symbol: 'Ba', number: 56, atomic_mass: 137.33, category: 'alkaline-earth-metal', gridRow: 6, gridColumn: 2 },
 ];
 
     
