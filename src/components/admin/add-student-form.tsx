@@ -14,10 +14,7 @@ import { Loader2 } from 'lucide-react';
 import { addStudent } from '@/lib/firebase/student.actions';
 
 const courses = [
-    { id: 'tawjihi_2007_sem1', label: 'تكميلي 2007 - فصل أول' },
-    { id: 'tawjihi_2007_sem2', label: 'تكميلي 2007 - فصل ثاني' },
-    { id: 'tawjihi_2008_sem1', label: 'توجيهي 2008 - فصل أول' },
-    { id: 'tawjihi_2008_sem2', label: 'توجيهي 2008 - فصل ثاني' },
+    { id: 'tawjihi_2008', label: 'توجيهي 2008' },
 ];
 
 const formSchema = z.object({
@@ -43,7 +40,7 @@ export default function AddStudentForm() {
       studentName: '',
       username: '',
       password_clear: '',
-      courseIds: [],
+      courseIds: ['tawjihi_2008'],
       phone1: '',
       phone2: '',
     },
