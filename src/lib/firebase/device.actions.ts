@@ -140,24 +140,29 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
 
 export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
-        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
-        const pendingDocSnap = await getDoc(pendingDeviceRef);
-        if (!pendingDocSnap.exists()) {
-            throw new Error("Pending device request not found.");
-        }
-        const studentName = pendingDocSnap.data().studentName || 'طالب غير معروف';
-        
-        // 1. Delete all old devices for the student
-        const devicesRef = collection(db, 'registeredDevices');
-        const q = query(devicesRef, where("studentId", "==", studentId));
-        const oldDevicesSnapshot = await getDocs(q);
-        
+        const studentDocRef = doc(db, 'students', studentId);
+        const studentDoc = await getDoc(studentDocRef);
+        const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
+
         const batch = writeBatch(db);
+
+        // 1. Delete all old registered devices for the student
+        const registeredDevicesRef = collection(db, 'registeredDevices');
+        const qOldDevices = query(registeredDevicesRef, where("studentId", "==", studentId));
+        const oldDevicesSnapshot = await getDocs(qOldDevices);
         oldDevicesSnapshot.docs.forEach(doc => {
             batch.delete(doc.ref);
         });
 
-        // 2. Add the new device
+        // 2. Delete all pending requests for the student
+        const pendingDevicesRef = collection(db, 'pendingDevices');
+        const qPending = query(pendingDevicesRef, where("studentId", "==", studentId));
+        const pendingSnapshot = await getDocs(qPending);
+        pendingSnapshot.forEach(doc => {
+            batch.delete(doc.ref);
+        });
+        
+        // 3. Add the new device
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
             studentId,
@@ -166,9 +171,7 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
             registeredAt: Timestamp.now(),
         });
         
-        // 3. Delete the pending request
-        batch.delete(pendingDeviceRef);
-
+        // Commit all database changes
         await batch.commit();
 
         // 4. After successfully changing the database, revoke user sessions
