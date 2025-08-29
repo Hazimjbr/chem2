@@ -1,0 +1,41 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function to check if the requesting user is an admin.
+    // An admin is identified by the existence of a document with their UID in the 'admins' collection.
+    function isAdmin() {
+      return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // --- Admin Catch-All Rule ---
+    // This rule grants admins full read and write access to the entire database.
+    // This is the most straightforward way to ensure the admin dashboard works without permission issues.
+    match /{path=**} {
+      allow read, write: if isAdmin();
+    }
+
+    // --- Student-Specific Read Rule ---
+    // This rule allows a student to read their own document in the 'students' collection.
+    // This is separate from the admin rule to ensure non-admins cannot access it.
+    match /students/{studentId} {
+      allow read: if request.auth.uid == studentId;
+    }
+
+    // --- Device Registration Rules ---
+
+    // Any authenticated user can create a device registration request for themselves.
+    // This allows a new student device to add itself to the pending list.
+    match /pendingDevices/{docId} {
+      allow create: if request.auth != null && request.resource.data.studentId == request.auth.uid;
+    }
+
+    // A student can read their own registered device documents.
+    // This might be useful for future client-side checks.
+    match /registeredDevices/{docId} {
+      allow read: if request.auth != null && resource.data.studentId == request.auth.uid;
+    }
+  }
+}
