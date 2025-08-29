@@ -66,7 +66,7 @@ export default function PeriodicTable() {
     return (
         <div className="w-full space-y-4">
              <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
-                <div className="relative overflow-scroll h-[75vh]">
+                <div className="relative overflow-auto h-[75vh]">
                     <div 
                         className="relative grid gap-1 min-w-[700px]"
                         style={{
