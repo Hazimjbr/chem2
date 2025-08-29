@@ -30,7 +30,7 @@ interface ElementCellProps {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-16 sm:h-auto", // Reduced padding and height
+            "flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-14 sm:h-auto", // Further reduced height
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -117,5 +117,3 @@ export default function PeriodicTable() {
         </div>
     )
 }
-
-    
