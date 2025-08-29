@@ -1,25 +1,22 @@
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow admin to read all student documents.
-    match /students/{studentId} {
-      allow read, list: if request.auth.token.admin == true;
-      // Allow student to read their own document.
-      allow get: if request.auth.uid == studentId;
-      // Allow admin to create, update, delete student documents.
-      allow write: if request.auth.token.admin == true;
+
+    // Allow a user to read their own document
+    match /students/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false; // Nobody can write for now
     }
 
-    // Allow any authenticated user to create a device request.
-    match /pendingDevices/{deviceId} {
-      allow create: if request.auth != null;
-      // Allow only admin to read or delete pending device requests.
-      allow read, delete: if request.auth.token.admin == true;
+    // Allow admins to read the entire students collection
+    match /students/{studentId} {
+      allow list: if request.auth != null && request.auth.token.admin == true;
     }
     
-    // Allow only admin to manage registered devices.
-    match /registeredDevices/{deviceId} {
-       allow read, write, delete: if request.auth.token.admin == true;
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
