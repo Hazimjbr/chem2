@@ -92,17 +92,23 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="studentName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>اسم الطالب الكامل</FormLabel>
-                  <FormControl><Input {...field} /></FormControl>
-                  <FormMessage />
+            <div className="grid grid-cols-2 gap-4">
+                <FormField
+                control={form.control}
+                name="studentName"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>اسم الطالب الكامل</FormLabel>
+                    <FormControl><Input {...field} /></FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
+                 <FormItem>
+                  <FormLabel>اسم المستخدم</FormLabel>
+                  <Input value={student.username} disabled />
                 </FormItem>
-              )}
-            />
+            </div>
             <div className="grid grid-cols-2 gap-4">
                  <FormField
                 control={form.control}

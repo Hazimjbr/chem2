@@ -134,8 +134,8 @@ export default function ViewStudentsList() {
                                     </div>
                                 </TableCell>
                                 <TableCell>
-                                    {student.phone1 && <p>{student.phone1}</p>}
-                                    {student.phone2 && <p>{student.phone2}</p>}
+                                    {student.phone1 && <p className="text-sm">{student.phone1}</p>}
+                                    {student.phone2 && <p className="text-sm text-muted-foreground">{student.phone2}</p>}
                                 </TableCell>
                                 <TableCell className="text-left">
                                     <div className="flex gap-2">
