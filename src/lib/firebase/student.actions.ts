@@ -27,14 +27,14 @@ const getSecondaryApp = (): FirebaseApp => {
 export async function addStudent(studentData: {
     studentName: string,
     username: string,
+    email: string,
     password_clear: string,
     courses: string[],
     courseIds: string[],
     phone1?: string,
     phone2?: string,
 }) {
-    const { studentName, username, password_clear, courses, courseIds, phone1, phone2 } = studentData;
-    const email = `${username.toLowerCase()}@chemzim.com`;
+    const { studentName, username, email, password_clear, courses, courseIds, phone1, phone2 } = studentData;
 
     let secondaryApp: FirebaseApp | null = null;
     let user: User | null = null;

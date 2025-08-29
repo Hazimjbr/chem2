@@ -51,6 +51,7 @@ export default function AddStudentForm() {
     try {
         const studentData = {
             ...values,
+            email: `${values.username.toLowerCase()}@chemzim.com`,
             courses: values.courseIds.map(id => courses.find(c => c.id === id)?.label || ''),
         };
         const result = await addStudent(studentData);
