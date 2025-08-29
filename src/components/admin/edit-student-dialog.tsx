@@ -15,6 +15,7 @@ import { Loader2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { updateStudent } from '@/lib/firebase/student.actions';
 import type { Student } from './view-students-list';
+import { Label } from '@/components/ui/label';
 
 const coursesList = [
     { id: 'tawjihi_2008', label: 'توجيهي 2008' },
