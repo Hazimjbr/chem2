@@ -16,9 +16,9 @@ export default function AuthDialog({ open, onOpenChange, onAuthSuccess }: AuthDi
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>تسجيل الدخول</DialogTitle>
+                    <DialogTitle>أهلاً بك في ChemZim</DialogTitle>
                     <DialogDescription>
-                       للمتابعة يرجى تسجيل الدخول إلى حسابك
+                       سجل دخولك أو أنشئ حسابًا جديدًا للمتابعة
                     </DialogDescription>
                 </DialogHeader>
                 <AuthForm onAuthSuccess={onAuthSuccess} />

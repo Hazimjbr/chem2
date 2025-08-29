@@ -1,8 +1,8 @@
 
 'use server';
 
-import { initializeApp, getApps, deleteApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import { initializeApp, getApps, deleteApp, FirebaseApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp } from 'firebase/firestore';
 import { db } from './config';
 
@@ -19,6 +19,13 @@ const firebaseConfig = {
 };
 
 
+// Helper to get or create a secondary app instance
+const getSecondaryApp = (): FirebaseApp => {
+    const secondaryAppName = `secondary-app-for-admin`;
+    const existingApp = getApps().find(app => app.name === secondaryAppName);
+    return existingApp || initializeApp(firebaseConfig, secondaryAppName);
+}
+
 export async function addStudent(studentData: {
     studentName: string,
     username: string,
@@ -29,35 +36,23 @@ export async function addStudent(studentData: {
     phone2?: string,
 }) {
     const { studentName, username, password_clear, courses, courseIds, phone1, phone2 } = studentData;
-    const email = `${username}@chemzim.com`;
+    const email = `${username.toLowerCase()}@chemzim.com`;
 
-    // Create a unique name for the secondary app to avoid conflicts.
-    const secondaryAppName = `secondary-app-${Date.now()}`;
+    const secondaryApp = getSecondaryApp();
+    const secondaryAuth = getAuth(secondaryApp);
     
     try {
-        // Initialize a temporary, secondary Firebase app.
-        const secondaryApp = initializeApp(firebaseConfig, secondaryAppName);
-        const secondaryAuth = getAuth(secondaryApp);
-        
-        // Create the user with the secondary app's auth instance.
         const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, password_clear);
         const user = userCredential.user;
+        await signOut(secondaryAuth); // Sign out from the temporary instance
 
-        // Immediately sign out the newly created user from this temporary auth instance.
-        await signOut(secondaryAuth);
-        
-        // Delete the temporary app instance once we're done with it.
-        await deleteApp(secondaryApp);
-
-        // Now, store the student's information in Firestore using the main db instance.
-        // The document ID will be the UID from the newly created user.
         await setDoc(doc(db, 'students', user.uid), {
             studentName,
             username,
             email,
-            password: password_clear, // Store the clear password for admin reference as requested.
+            password: password_clear,
             courses,
-            courseIds,
+            courseIds: ['tawjihi_2008'], // Default course
             phone1: phone1 || '',
             phone2: phone2 || '',
             createdAt: Timestamp.now(),
@@ -67,13 +62,47 @@ export async function addStudent(studentData: {
 
     } catch (error: any) {
         console.error("Error creating student:", error);
-        
-        // Clean up the secondary app if it exists, even on failure.
-        const secondaryApp = getApps().find(app => app.name === secondaryAppName);
-        if (secondaryApp) {
-            await deleteApp(secondaryApp);
+        let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
+        if (error.code === 'auth/email-already-in-use') {
+            errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
+        } else if (error.code === 'auth/weak-password') {
+            errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
         }
+        
+        return { success: false, message: errorMessage };
+    }
+}
 
+
+export async function signUpStudent(studentData: {
+    studentName: string,
+    username: string,
+    password: string,
+    phone?: string,
+}): Promise<{success: boolean; message: string; user?: User}> {
+    const { studentName, username, password, phone } = studentData;
+    const email = `${username.toLowerCase()}@chemzim.com`;
+
+    // Here we use the main auth instance since the user is not logged in yet.
+    try {
+        const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, 'students', user.uid), {
+            studentName,
+            username,
+            email,
+            courseIds: ['tawjihi_2008'],
+            courses: ['توجيهي 2008'],
+            phone1: phone || '',
+            phone2: '',
+            createdAt: Timestamp.now(),
+        });
+        
+        return { success: true, message: 'تم إنشاء حسابك بنجاح', user };
+
+    } catch (error: any) {
+        console.error("Error signing up student:", error);
         let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
         if (error.code === 'auth/email-already-in-use') {
             errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
