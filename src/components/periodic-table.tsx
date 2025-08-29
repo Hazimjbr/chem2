@@ -80,35 +80,35 @@ export default function PeriodicTable() {
                         gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 p-2" style={{ gridColumn: '3 / span 10', gridRow: '1' }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-2" style={{ gridColumn: '3 / span 10', gridRow: '1' }}>
                         <Input 
                             placeholder="ابحث بالاسم، الرمز، أو العدد الذري"
                             value={searchTerm}
                             onChange={handleSearch}
                             className="md:col-span-1 h-9"
                         />
-                         <Card className="md:col-span-2">
+                         <Card className="md:col-span-1">
                             <CardContent className="p-2">
                                 {foundElement ? (
-                                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-center text-xs sm:text-sm">
+                                    <div className="flex flex-row flex-wrap justify-around items-center text-center text-xs sm:text-sm">
                                         {!termIsName && (
-                                            <div className="flex justify-between border-b pb-1">
-                                                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الاسم</span>
+                                            <div className="flex items-center gap-2 p-1">
+                                                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الاسم:</span>
                                                 <span className="font-bold">{foundElement.name}</span>
                                             </div>
                                         )}
                                         {!termIsSymbol && (
-                                            <div className="flex justify-between border-b pb-1">
-                                                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الرمز</span>
+                                            <div className="flex items-center gap-2 p-1">
+                                                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الرمز:</span>
                                                 <span className="font-mono font-bold">{foundElement.symbol}</span>
                                             </div>
                                         )}
-                                        <div className="flex justify-between border-b pb-1">
-                                            <span className="text-muted-foreground text-[0.6rem] sm:text-xs">العدد</span>
+                                        <div className="flex items-center gap-2 p-1">
+                                            <span className="text-muted-foreground text-[0.6rem] sm:text-xs">العدد:</span>
                                             <span className="font-bold">{foundElement.number}</span>
                                         </div>
-                                        <div className="flex justify-between border-b pb-1">
-                                            <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الكتلة</span>
+                                        <div className="flex items-center gap-2 p-1">
+                                            <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الكتلة:</span>
                                             <span className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(2) : foundElement.atomic_mass}</span>
                                         </div>
                                     </div>
