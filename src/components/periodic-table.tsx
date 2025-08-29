@@ -152,7 +152,7 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                     </CardContent>
                 </Card>
             </div>
-             <ScrollArea className="w-full whitespace-nowrap rounded-lg border">
+             <ScrollArea className="w-full whitespace-nowrap rounded-lg border h-[350px]">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 950 350"
@@ -164,9 +164,12 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                     ))}
                 </svg>
                 <ScrollBar orientation="horizontal" />
+                <ScrollBar orientation="vertical" />
             </ScrollArea>
         </div>
     )
 }
 
 export default PeriodicTable;
+
+    
