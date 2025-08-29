@@ -30,7 +30,7 @@ interface ElementCellProps {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-12 sm:h-auto",
+            "relative flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-16 sm:h-20",
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -40,7 +40,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRowStart: element.gridRow 
         }}
     >
-        <div className="font-bold">{element.number}</div>
+        <div className="absolute top-1 left-1 font-bold">{element.number}</div>
         <div className="text-sm sm:text-base font-bold">{element.symbol}</div>
         <div className="hidden sm:block truncate">{element.name}</div>
         <div className="hidden sm:block">{typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}</div>
@@ -76,36 +76,36 @@ export default function PeriodicTable() {
                         gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 p-2 relative" style={{ gridColumn: '3 / span 10', gridRow: '2 / span 2', bottom: '20px' }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-2 relative" style={{ gridColumn: '3 / span 10', gridRow: '2 / span 2', bottom: '20px' }}>
                         <Input 
                             placeholder="ابحث..."
                             value={searchTerm}
                             onChange={handleSearch}
                             className="md:col-span-1 h-9"
                         />
-                         <Card className="md:col-span-2">
+                         <Card className="md:col-span-1">
                             <CardContent className="p-2">
                                 {foundElement ? (
-                                    <div className="flex justify-around items-center text-center text-xs sm:text-sm">
+                                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-center text-xs sm:text-sm">
                                         {!termIsName && (
-                                            <div>
-                                                <p className="text-muted-foreground text-[0.6rem]">الاسم</p>
-                                                <p className="font-bold">{foundElement.name}</p>
+                                            <div className="flex justify-between border-b pb-1">
+                                                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الاسم</span>
+                                                <span className="font-bold">{foundElement.name}</span>
                                             </div>
                                         )}
                                         {!termIsSymbol && (
-                                            <div>
-                                                <p className="text-muted-foreground text-[0.6rem]">الرمز</p>
-                                                <p className="text-lg font-mono">{foundElement.symbol}</p>
+                                            <div className="flex justify-between border-b pb-1">
+                                                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الرمز</span>
+                                                <span className="font-mono font-bold">{foundElement.symbol}</span>
                                             </div>
                                         )}
-                                        <div>
-                                            <p className="text-muted-foreground text-[0.6rem]">العدد</p>
-                                            <p className="font-bold">{foundElement.number}</p>
+                                        <div className="flex justify-between border-b pb-1">
+                                            <span className="text-muted-foreground text-[0.6rem] sm:text-xs">العدد</span>
+                                            <span className="font-bold">{foundElement.number}</span>
                                         </div>
-                                        <div>
-                                            <p className="text-muted-foreground text-[0.6rem]">الكتلة</p>
-                                            <p className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</p>
+                                        <div className="flex justify-between border-b pb-1">
+                                            <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الكتلة</span>
+                                            <span className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</span>
                                         </div>
                                     </div>
                                 ) : (
