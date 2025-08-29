@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { cn } from "@/lib/utils.tsx";
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { elements } from '@/data/elements';
 import type { Element } from '@/data/elements';
 
@@ -31,7 +30,7 @@ interface ElementCellProps {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "flex flex-col items-center justify-center p-1 rounded border-2 text-center shadow-sm",
+            "flex flex-col items-center justify-center p-1 rounded border-2 text-center shadow-sm text-[0.6rem] sm:text-xs", // Smaller base text size
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -41,10 +40,10 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRowStart: element.gridRow 
         }}
     >
-        <div className="text-xs font-bold">{element.number}</div>
-        <div className="text-lg font-bold">{element.symbol}</div>
-        <div className="text-xs truncate">{element.name}</div>
-        <div className="text-xs mt-1">{element.atomic_mass}</div>
+        <div className="font-bold">{element.number}</div>
+        <div className="text-sm sm:text-lg font-bold">{element.symbol}</div>
+        <div className="hidden sm:block truncate">{element.name}</div>
+        <div className="hidden sm:block mt-1">{typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}</div>
     </div>
 );
 
@@ -92,7 +91,7 @@ export default function PeriodicTable() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-muted-foreground">الكتلة الذرية</p>
-                                    <p className="text-lg font-bold">{foundElement.atomic_mass}</p>
+                                    <p className="text-lg font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</p>
                                 </div>
                             </div>
                         ) : (
@@ -103,21 +102,18 @@ export default function PeriodicTable() {
                     </CardContent>
                 </Card>
             </div>
-             <ScrollArea className="w-full rounded-lg border bg-muted/30">
+             <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
                 <div 
-                    className="relative grid gap-1 p-2"
+                    className="relative grid gap-1"
                     style={{
-                        gridTemplateColumns: 'repeat(18, minmax(60px, 1fr))',
-                        gridTemplateRows: 'repeat(7, auto)',
-                        direction: 'ltr'
+                        gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
                     {elements.map(el => (
                         <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
                     ))}
                 </div>
-                <ScrollBar orientation="horizontal" />
-            </ScrollArea>
+            </div>
         </div>
     )
 }
