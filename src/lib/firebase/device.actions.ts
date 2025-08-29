@@ -2,7 +2,7 @@
 'use server';
 
 import { db } from './config';
-import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, deleteDoc, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, deleteDoc, orderBy, getDoc, limit } from 'firebase/firestore';
 import type { AppUser } from '@/context/CurriculumContext';
 
 interface RegistrationInput {
@@ -17,54 +17,64 @@ interface RegistrationResult {
 
 export async function registerDevice(input: RegistrationInput): Promise<RegistrationResult> {
     const { user, deviceId } = input;
-    
-    // If the user is an admin, always approve the device immediately.
+
     if (user.role === 'admin') {
         return { status: 'registered', message: `أهلاً بك أيها المدير ${user.displayName}` };
     }
-    
+
     const studentId = user.uid;
 
     try {
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const pendingDevicesRef = collection(db, 'pendingDevices');
 
-        // Check if any device is registered for this student
-        const anyRegisteredQuery = query(registeredDevicesRef, where("studentId", "==", studentId));
-        const anyRegisteredSnapshot = await getDocs(anyRegisteredQuery);
-
-        if (anyRegisteredSnapshot.empty) {
-            // This is the student's first device, register it automatically regardless of pending requests.
-            await addDoc(registeredDevicesRef, {
+        // Check if this specific device is already registered for the student
+        const specificDeviceQuery = query(
+            registeredDevicesRef,
+            where("studentId", "==", studentId),
+            where("deviceId", "==", deviceId),
+            limit(1)
+        );
+        const specificDeviceSnapshot = await getDocs(specificDeviceQuery);
+        if (!specificDeviceSnapshot.empty) {
+            return { status: 'already-exists', message: 'هذا الجهاز معتمد بالفعل' };
+        }
+        
+        // Check if ANY device is registered for this student
+        const anyDeviceQuery = query(
+            registeredDevicesRef,
+            where("studentId", "==", studentId),
+            limit(1)
+        );
+        const anyDeviceSnapshot = await getDocs(anyDeviceQuery);
+        
+        if (anyDeviceSnapshot.empty) {
+            // First device for this student, register it automatically
+             await addDoc(registeredDevicesRef, {
                 studentId,
                 deviceId,
                 registeredAt: Timestamp.now(),
             });
             return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
         }
-        
-        // At this point, the student has at least one registered device.
-        // Check if this specific device is already registered.
-        const deviceAlreadyRegisteredQuery = query(registeredDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
-        const deviceSnapshot = await getDocs(deviceAlreadyRegisteredQuery);
 
-        if (!deviceSnapshot.empty) {
-            return { status: 'already-exists', message: 'هذا الجهاز معتمد بالفعل' };
-        }
-
-
-        // This is a new device for an existing student. Check if it's already pending approval.
-        const pendingQuery = query(pendingDevicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
+        // Student has other devices, but this one is new. Check if it's pending.
+        const pendingQuery = query(
+            pendingDevicesRef, 
+            where("studentId", "==", studentId), 
+            where("deviceId", "==", deviceId),
+            limit(1)
+        );
         const pendingSnapshot = await getDocs(pendingQuery);
         if (!pendingSnapshot.empty) {
             return { status: 'pending', message: 'تم إرسال طلب الموافقة على هذا الجهاز مسبقًا وهو قيد المراجعة' };
         }
-        
-        // This is a new, non-pending device. Add it to the pending list for admin approval.
+
+        // Add to pending list for admin approval
         await addDoc(pendingDevicesRef, {
             studentId,
             deviceId,
-            studentName: user.displayName, // Add student name to pending device doc
+            studentName: user.displayName,
             requestedAt: Timestamp.now(),
         });
         
