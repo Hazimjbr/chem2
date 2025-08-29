@@ -140,22 +140,20 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
     try {
         const batch = writeBatch(db);
 
-        // 1. Find all existing devices for the student.
+        // 1. Delete all existing registered devices for the student
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const q = query(registeredDevicesRef, where("studentId", "==", studentId));
         const querySnapshot = await getDocs(q);
-
-        // 2. Schedule deletion for all of them in the same batch.
         querySnapshot.forEach(doc => {
             batch.delete(doc.ref);
         });
-        
-        // 3. Get student's name for the new device record.
+
+        // 2. Get student's name
         const studentDocRef = doc(db, 'students', studentId);
         const studentDoc = await getDoc(studentDocRef);
         const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
 
-        // 4. Schedule the creation of the new approved device.
+        // 3. Add the new device
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
             studentId,
@@ -164,14 +162,14 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
             registeredAt: Timestamp.now(),
         });
         
-        // 5. Schedule deletion of the pending request.
+        // 4. Delete the pending request
         const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
         batch.delete(pendingDeviceRef);
-        
-        // 6. Commit all database operations at once.
+
+        // 5. Commit all batched writes at once.
         await batch.commit();
         
-        // 7. After successful DB update, revoke user's session.
+        // 6. After successful DB update, revoke user's session.
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم استبدال الجهاز بنجاح وتم تسجيل خروج الطالب من جميع الأجهزة الأخرى' };
