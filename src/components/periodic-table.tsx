@@ -36,17 +36,17 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             "transition-transform duration-200"
         )}
         style={{ 
-            gridColumnStart: element.gridColumn, 
-            gridRowStart: element.gridRow 
+            gridColumn: element.gridColumn, 
+            gridRow: element.gridRow 
         }}
     >
-        <div className="text-[0.6rem] sm:text-xs font-bold text-left">{element.number}</div>
+        <div className="absolute top-0.5 left-1 text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
         <div className="flex-grow flex flex-col items-center justify-center text-center">
             <div className="text-sm sm:text-xl font-bold">{element.symbol}</div>
             <div className="hidden sm:block text-[0.6rem] sm:text-xs truncate">{element.name}</div>
         </div>
-        <div className="text-[0.6rem] sm:text-xs text-center">
-            {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(2) : element.atomic_mass}
+         <div className="absolute bottom-0.5 right-1 text-[0.6rem] sm:text-[10px]">
+            {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
         </div>
     </div>
 );
@@ -80,7 +80,7 @@ export default function PeriodicTable() {
                         gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-2" style={{ gridColumn: '3 / span 10', gridRow: '1' }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-2" style={{ gridColumn: '2 / span 16', gridRow: '1' }}>
                         <Input 
                             placeholder="ابحث بالاسم، الرمز، أو العدد الذري"
                             value={searchTerm}
@@ -91,7 +91,7 @@ export default function PeriodicTable() {
                             <CardContent className="p-2">
                                 {foundElement ? (
                                     <div className="flex flex-row flex-wrap justify-around items-center text-center text-xs sm:text-sm">
-                                        {!termIsName && (
+                                        {!termIsName && !termIsSymbol && (
                                             <div className="flex items-center gap-2 p-1">
                                                 <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الاسم:</span>
                                                 <span className="font-bold">{foundElement.name}</span>
@@ -109,7 +109,7 @@ export default function PeriodicTable() {
                                         </div>
                                         <div className="flex items-center gap-2 p-1">
                                             <span className="text-muted-foreground text-[0.6rem] sm:text-xs">الكتلة:</span>
-                                            <span className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(2) : foundElement.atomic_mass}</span>
+                                            <span className="font-bold">{typeof foundElement.atomic_mass === 'number' ? foundElement.atomic_mass.toFixed(1) : foundElement.atomic_mass}</span>
                                         </div>
                                     </div>
                                 ) : (
