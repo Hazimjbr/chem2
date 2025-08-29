@@ -10,7 +10,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AddStudentForm from '@/components/admin/add-student-form';
 import ApproveDevicesList from '@/components/admin/approve-devices-list';
 import ViewStudentsList from '@/components/admin/view-students-list';
-import GrantAdminRoleForm from '@/components/admin/grant-admin-role-form';
 
 export default function AdminDashboardPage() {
     const { currentUser, isLoading } = useApp();
@@ -43,8 +42,6 @@ export default function AdminDashboardPage() {
         )
     }
 
-    // Now that the user can become an admin, we protect the page properly.
-    // Only show the dashboard if the user's role is 'admin'.
     if (currentUser.role !== 'admin') {
          return (
              <div className="container mx-auto p-8 text-center">
@@ -79,11 +76,10 @@ export default function AdminDashboardPage() {
             </header>
             <main>
                 <Tabs defaultValue="add-student" className="w-full">
-                    <TabsList className="grid w-full grid-cols-4">
+                    <TabsList className="grid w-full grid-cols-3">
                         <TabsTrigger value="add-student">إضافة طالب</TabsTrigger>
                         <TabsTrigger value="approve-devices">الموافقة على الأجهزة</TabsTrigger>
                         <TabsTrigger value="view-students">عرض الطلاب</TabsTrigger>
-                        <TabsTrigger value="grant-admin">منح صلاحيات مسؤول</TabsTrigger>
                     </TabsList>
                     <TabsContent value="add-student">
                         <Card>
@@ -121,19 +117,6 @@ export default function AdminDashboardPage() {
                             </CardHeader>
                             <CardContent>
                                 <ViewStudentsList />
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
-                    <TabsContent value="grant-admin">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>منح صلاحيات مسؤول</CardTitle>
-                                <CardDescription>
-                                    أدخل البريد الإلكتروني للمستخدم لمنحه صلاحيات المسؤول الكاملة.
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <GrantAdminRoleForm />
                             </CardContent>
                         </Card>
                     </TabsContent>
