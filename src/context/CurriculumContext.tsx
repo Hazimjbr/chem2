@@ -48,7 +48,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   // Function to fetch user details from Firestore
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
-      // Prioritize admin check to avoid unnecessary student doc reads for admins
+      // Check if user is an admin first
       if (ADMIN_UIDS.includes(user.uid)) {
           return { uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' };
       }
@@ -67,6 +67,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
               };
           } else {
               // User exists in Auth but not in our students collection
+              console.warn(`User ${user.uid} is authenticated but not found in 'students' collection.`);
               return null; 
           }
       } catch (error) {
@@ -90,12 +91,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         if (user) {
             const appUser = await fetchAppUser(user);
              if (appUser) {
-                // If user is valid, we still need to verify the device on next login.
-                // For now, we just set them.
                 setCurrentUser(appUser);
             } else {
-                // User exists in Auth but not in our DBs, or is not the owner.
-                console.warn(`User ${user.uid} exists in Auth but not in Firestore or is unauthorized. Signing out.`);
+                console.warn(`User ${user.uid} exists in Auth but is not a valid admin or student. Signing out.`);
                 await signOutUser();
                 setCurrentUser(null);
             }
