@@ -3,8 +3,9 @@
 
 import { initializeApp, getApps, deleteApp, FirebaseApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signOut, User } from 'firebase/auth';
-import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp, updateDoc, writeBatch, where } from 'firebase/firestore';
+import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp, updateDoc, writeBatch, where, deleteDoc } from 'firebase/firestore';
 import { db } from './config';
+import { manageUser } from './functions';
 
 const firebaseConfig = {
   "projectId": "chem1-93ct1",
@@ -143,26 +144,36 @@ export async function updateStudent(studentId: string, dataToUpdate: {
 
 export async function deleteStudent(studentId: string) {
     try {
-        // This needs a server-side environment with Admin SDK to delete users from Auth.
-        // The client-side SDK cannot delete other users.
-        // For now, we will only delete from Firestore.
+        // Step 1: Delete the user from Firebase Authentication via the Cloud Function
+        const deleteAuthResult: any = await manageUser({ action: 'deleteUser', uid: studentId });
+        if (deleteAuthResult.data.message.includes('Error')) {
+             console.warn(`Could not delete user from Auth: ${deleteAuthResult.data.message}. Continuing with Firestore deletion.`);
+        }
+
+        // Step 2: Delete Firestore data in a batch
         const batch = writeBatch(db);
 
-        // 1. Delete student document
+        // Delete the student document itself
         const studentRef = doc(db, 'students', studentId);
         batch.delete(studentRef);
 
-        // 2. Delete all registered devices for the student
+        // Delete all registered devices for the student
         const devicesRef = collection(db, 'registeredDevices');
-        const q = query(devicesRef, where("studentId", "==", studentId));
-        const devicesSnapshot = await getDocs(q);
+        const qDevices = query(devicesRef, where("studentId", "==", studentId));
+        const devicesSnapshot = await getDocs(qDevices);
         devicesSnapshot.forEach(doc => batch.delete(doc.ref));
+
+        // Delete all pending devices requests for the student
+        const pendingDevicesRef = collection(db, 'pendingDevices');
+        const qPending = query(pendingDevicesRef, where("studentId", "==", studentId));
+        const pendingSnapshot = await getDocs(qPending);
+        pendingSnapshot.forEach(doc => batch.delete(doc.ref));
 
         await batch.commit();
         
-        return { success: true, message: 'تم حذف الطالب من قاعدة البيانات. يجب حذفه من نظام المصادقة يدويًا.' };
+        return { success: true, message: 'تم حذف الطالب وبياناته بالكامل بنجاح.' };
     } catch (error) {
         console.error("Error deleting student data:", error);
-        return { success: false, message: 'فشل في حذف بيانات الطالب من Firestore' };
+        return { success: false, message: 'فشل في حذف بيانات الطالب.' };
     }
 }

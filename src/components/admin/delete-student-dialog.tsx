@@ -53,9 +53,8 @@ export default function DeleteStudentDialog({ student, onOpenChange, onDeleteSuc
         <AlertDialogHeader>
           <AlertDialogTitle>هل أنت متأكد تمامًا؟</AlertDialogTitle>
           <AlertDialogDescription>
-            سيتم حذف حساب الطالب <span className="font-bold text-destructive">{student.studentName}</span> بشكل نهائي. سيؤدي هذا إلى حذف بياناته من قاعدة البيانات وجميع الأجهزة المسجلة باسمه.
-            <br />
-            <strong className="mt-2 block">ملاحظة مهمة: هذه العملية لا تحذف المستخدم من نظام المصادقة في Firebase. يجب عليك حذف المستخدم يدويًا من هناك لإكمال عملية الحذف.</strong>
+            سيتم حذف حساب الطالب <span className="font-bold text-destructive">{student.studentName}</span> وجميع بياناته المسجلة (بما في ذلك الأجهزة) بشكل نهائي من نظام المصادقة وقاعدة البيانات.
+             <strong className="mt-2 block">هذا الإجراء لا يمكن التراجع عنه.</strong>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

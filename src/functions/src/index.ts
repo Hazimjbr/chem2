@@ -6,7 +6,7 @@ admin.initializeApp();
 
 /**
  * Manages user roles and sessions.
- * Can grant admin roles or revoke user sessions.
+ * Can grant admin roles, revoke user sessions, or delete users.
  */
 export const manageUser = functions.https.onCall(
   async (data, context) => {
@@ -50,13 +50,15 @@ export const manageUser = functions.https.onCall(
       try {
         await admin.auth().revokeRefreshTokens(uid);
         const userRecord = await admin.auth().getUser(uid);
-        const timestamp =
-          new Date(userRecord.tokensValidAfterTime!).getTime() / 1000;
-        console.log(
-          `Tokens revoked for ${uid} at ${new Date(
-            timestamp * 1000,
-          ).toISOString()}`,
-        );
+        if (userRecord.tokensValidAfterTime) {
+          const timestamp =
+            new Date(userRecord.tokensValidAfterTime).getTime() / 1000;
+          console.log(
+            `Tokens revoked for ${uid} at ${new Date(
+              timestamp * 1000,
+            ).toISOString()}`,
+          );
+        }
         return {
           message: `Successfully revoked sessions for user ${uid}.`,
         };
@@ -65,6 +67,30 @@ export const manageUser = functions.https.onCall(
         throw new functions.https.HttpsError(
           "internal",
           "An error occurred while revoking tokens.",
+        );
+      }
+    } else if (action === "deleteUser") {
+      if (typeof uid !== "string" || uid.length === 0) {
+        throw new functions.https.HttpsError(
+          "invalid-argument",
+          "User ID (uid) is required to delete a user.",
+        );
+      }
+      try {
+        await admin.auth().deleteUser(uid);
+        return {
+          message: `Successfully deleted user ${uid} from Authentication.`,
+        };
+      } catch (error: any) {
+        console.error("Error deleting user:", error);
+        if (error.code === "auth/user-not-found") {
+          return {
+            message: "User not found in Authentication, may have been already deleted.",
+          };
+        }
+        throw new functions.https.HttpsError(
+          "internal",
+          "An error occurred while deleting the user from Authentication.",
         );
       }
     } else {
