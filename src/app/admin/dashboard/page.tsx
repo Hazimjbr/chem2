@@ -43,32 +43,38 @@ export default function AdminDashboardPage() {
         )
     }
 
-    if (currentUser.role !== 'admin') {
-         return (
-             <div className="container mx-auto p-8 text-center">
-                 <Card className="max-w-md mx-auto border-destructive">
-                     <CardHeader>
-                        <CardTitle className="flex items-center justify-center gap-2 text-destructive">
-                            <ShieldAlert className="h-8 w-8" />
-                            وصول غير مصرح به
-                        </CardTitle>
-                        <CardDescription>
-                           عذراً هذه الصفحة مخصصة للمسؤولين فقط
-                        </CardDescription>
-                     </CardHeader>
-                     <CardContent>
-                          <p className="text-sm text-muted-foreground mb-4">
-                            المستخدم <span className="font-bold">{currentUser.email}</span> لا يملك الصلاحيات اللازمة
-                          </p>
-                         <Link href="/" passHref>
-                            <Button variant="outline">العودة إلى الصفحة الرئيسية</Button>
-                         </Link>
-                     </CardContent>
-                 </Card>
+    // Temporary logic to allow initial admin setup
+    // We show the full dashboard if the user is an admin.
+    // If they are not an admin, we show only the "Grant Admin" form.
+    const isFirstTimeSetup = currentUser.role !== 'admin';
+
+    if (isFirstTimeSetup) {
+        return (
+             <div className="container mx-auto p-8">
+                <header className="mb-10 text-center">
+                    <h1 className="text-4xl font-bold text-primary mb-2">إعداد المسؤول الأول</h1>
+                    <p className="text-lg text-muted-foreground">
+                        لمنح نفسك صلاحيات المسؤول، أدخل بريدك الإلكتروني أدناه
+                    </p>
+                </header>
+                <main className="max-w-xl mx-auto">
+                     <Card>
+                        <CardHeader>
+                            <CardTitle>منح صلاحيات مسؤول</CardTitle>
+                            <CardDescription>
+                                أدخل البريد الإلكتروني لحسابك لمنحه صلاحيات المسؤول الكاملة.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <GrantAdminRoleForm />
+                        </CardContent>
+                    </Card>
+                </main>
             </div>
         )
     }
 
+    // This is the standard view for an already-authenticated admin.
     return (
         <div className="container mx-auto p-8">
             <header className="mb-10">
