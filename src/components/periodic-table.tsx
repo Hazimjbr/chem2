@@ -53,7 +53,7 @@ export default function PeriodicTable() {
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const term = event.target.value.toLowerCase();
-        setSearchTerm(term);
+        setSearchTerm(event.target.value); // Keep original casing for display
         if (!term) {
             setFoundElement(null);
             return;
@@ -63,6 +63,9 @@ export default function PeriodicTable() {
         );
         setFoundElement(found || null);
     };
+    
+    const termIsName = foundElement && searchTerm.toLowerCase() === foundElement.name.toLowerCase();
+    const termIsSymbol = foundElement && searchTerm.toLowerCase() === foundElement.symbol.toLowerCase();
 
     return (
         <div className="w-full space-y-4">
@@ -73,25 +76,29 @@ export default function PeriodicTable() {
                         gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     }}
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 p-2" style={{ gridColumn: '3 / span 10', gridRow: '2 / span 2' }}>
+                    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 p-2 relative" style={{ gridColumn: '3 / span 10', gridRow: '2 / span 2', bottom: '20px' }}>
                         <Input 
                             placeholder="ابحث..."
                             value={searchTerm}
                             onChange={handleSearch}
                             className="md:col-span-1 h-9"
                         />
-                        <Card className="md:col-span-2">
+                         <Card className="md:col-span-2">
                             <CardContent className="p-2">
                                 {foundElement ? (
                                     <div className="flex justify-around items-center text-center text-xs sm:text-sm">
-                                        <div>
-                                            <p className="text-muted-foreground text-[0.6rem]">الاسم</p>
-                                            <p className="font-bold">{foundElement.name}</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-muted-foreground text-[0.6rem]">الرمز</p>
-                                            <p className="text-lg font-mono">{foundElement.symbol}</p>
-                                        </div>
+                                        {!termIsName && (
+                                            <div>
+                                                <p className="text-muted-foreground text-[0.6rem]">الاسم</p>
+                                                <p className="font-bold">{foundElement.name}</p>
+                                            </div>
+                                        )}
+                                        {!termIsSymbol && (
+                                            <div>
+                                                <p className="text-muted-foreground text-[0.6rem]">الرمز</p>
+                                                <p className="text-lg font-mono">{foundElement.symbol}</p>
+                                            </div>
+                                        )}
                                         <div>
                                             <p className="text-muted-foreground text-[0.6rem]">العدد</p>
                                             <p className="font-bold">{foundElement.number}</p>
