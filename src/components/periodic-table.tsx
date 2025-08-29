@@ -69,21 +69,23 @@ export default function PeriodicTable() {
     return (
         <div className="w-full space-y-4">
              <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
-                <div 
-                    className="relative grid gap-1"
-                    style={{
-                        gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
-                    }}
-                >
-                    <ElementSearch 
-                        searchTerm={searchTerm} 
-                        foundElement={foundElement}
-                        handleSearch={handleSearch}
-                    />
+                <div className="relative overflow-x-auto">
+                    <div 
+                        className="relative grid gap-1 min-w-[700px]"
+                        style={{
+                            gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
+                        }}
+                    >
+                        <ElementSearch 
+                            searchTerm={searchTerm} 
+                            foundElement={foundElement}
+                            handleSearch={handleSearch}
+                        />
 
-                    {elements.map(el => (
-                        <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
-                    ))}
+                        {elements.map(el => (
+                            <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
