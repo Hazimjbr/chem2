@@ -7,7 +7,7 @@ import { useState } from "react";
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  ')', '(',  '7', '8', '9',
+  '(', ')',  '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
   '.', '0', '⌫', '=',
@@ -63,12 +63,7 @@ export default function Calculator() {
 
       case '=':
         try {
-            // Replace visual symbols with evaluatable ones for calculation
-            const exprToEval = display
-                .replace(/π/g, String(Math.PI))
-                .replace(/e/g, String(Math.E));
-            
-            const result = safeEval(exprToEval);
+            const result = safeEval(display);
             setDisplay(String(parseFloat(result.toPrecision(15))));
         } catch (error) {
             setDisplay('Error');
