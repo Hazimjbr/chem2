@@ -88,7 +88,7 @@ export default function Calculator() {
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-4">
-      <div dir="rtl" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
+      <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2">
