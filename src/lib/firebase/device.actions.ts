@@ -145,17 +145,20 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         const q = query(registeredDevicesRef, where("studentId", "==", studentId));
         const querySnapshot = await getDocs(q);
         
-        // 2. Schedule them for deletion in the batch
+        // 2. Schedule them for deletion
         querySnapshot.forEach(doc => {
             batch.delete(doc.ref);
         });
 
-        // 3. Get student's name
-        const studentDocRef = doc(db, 'students', studentId);
-        const studentDoc = await getDoc(studentDocRef);
-        const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
-
-        // 4. Add the new device to the batch
+        // 3. Get student name from the pending request itself (more reliable)
+        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
+        const pendingDoc = await getDoc(pendingDeviceRef);
+        if (!pendingDoc.exists()) {
+             throw new Error("Pending device request not found.");
+        }
+        const studentName = pendingDoc.data().studentName || 'طالب غير معروف';
+        
+        // 4. Add the new device
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
             studentId,
@@ -164,14 +167,13 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
             registeredAt: Timestamp.now(),
         });
         
-        // 5. Delete the pending request from the batch
-        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
+        // 5. Delete the pending request
         batch.delete(pendingDeviceRef);
 
-        // 6. Commit all database changes at once
+        // 6. Commit all database changes
         await batch.commit();
 
-        // 7. After successful DB commit, revoke user sessions
+        // 7. Revoke user sessions
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم استبدال الجهاز وإبطال الجلسات القديمة بنجاح.' };
@@ -179,8 +181,8 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
     } catch (error: any) {
         console.error("Error approving and replacing device:", error);
         let errorMessage = 'فشل في عملية الموافقة والاستبدال.';
-        if (error.details) {
-            errorMessage += ` السبب: ${error.details}`;
+        if (error.message) {
+            errorMessage += ` السبب: ${error.message}`;
         }
         return { success: false, message: errorMessage };
     }
