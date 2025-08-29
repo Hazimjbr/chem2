@@ -9,52 +9,52 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const elements = [
     // Row 1
-    { x: 51.6, y: 30.1, number: 1, symbol: 'H', name: 'هيدروجين', mass: '1.008', category: 'nonmetal' },
-    { x: 896.5, y: 30.1, number: 2, symbol: 'He', name: 'هيليوم', mass: '4.003', category: 'noble-gas' },
+    { x: 51.6, y: 30.1, number: 1, symbol: 'H', name: 'هيدروجين', mass: '1.0', category: 'nonmetal' },
+    { x: 896.5, y: 30.1, number: 2, symbol: 'He', name: 'هيليوم', mass: '4.0', category: 'noble-gas' },
     // Row 2
-    { x: 51.6, y: 85.9, number: 3, symbol: 'Li', name: 'ليثيوم', mass: '6.941', category: 'alkali-metal' },
-    { x: 101.3, y: 85.9, number: 4, symbol: 'Be', name: 'بيريليوم', mass: '9.012', category: 'alkaline-earth-metal' },
-    { x: 648, y: 85.9, number: 5, symbol: 'B', name: 'بورون', mass: '10.81', category: 'metalloid' },
-    { x: 697.7, y: 85.9, number: 6, symbol: 'C', name: 'كربون', mass: '12.01', category: 'nonmetal' },
-    { x: 747.4, y: 85.9, number: 7, symbol: 'N', name: 'نيتروجين', mass: '14.01', category: 'nonmetal' },
-    { x: 797.1, y: 85.9, number: 8, symbol: 'O', name: 'أكسجين', mass: '16.00', category: 'nonmetal' },
-    { x: 846.8, y: 85.9, number: 9, symbol: 'F', name: 'فلور', mass: '19.00', category: 'halogen' },
-    { x: 896.5, y: 85.9, number: 10, symbol: 'Ne', name: 'نيون', mass: '20.18', category: 'noble-gas' },
+    { x: 51.6, y: 85.9, number: 3, symbol: 'Li', name: 'ليثيوم', mass: '6.9', category: 'alkali-metal' },
+    { x: 101.3, y: 85.9, number: 4, symbol: 'Be', name: 'بيريليوم', mass: '9.0', category: 'alkaline-earth-metal' },
+    { x: 648, y: 85.9, number: 5, symbol: 'B', name: 'بورون', mass: '10.8', category: 'metalloid' },
+    { x: 697.7, y: 85.9, number: 6, symbol: 'C', name: 'كربون', mass: '12.0', category: 'nonmetal' },
+    { x: 747.4, y: 85.9, number: 7, symbol: 'N', name: 'نيتروجين', mass: '14.0', category: 'nonmetal' },
+    { x: 797.1, y: 85.9, number: 8, symbol: 'O', name: 'أكسجين', mass: '16.0', category: 'nonmetal' },
+    { x: 846.8, y: 85.9, number: 9, symbol: 'F', name: 'فلور', mass: '19.0', category: 'halogen' },
+    { x: 896.5, y: 85.9, number: 10, symbol: 'Ne', name: 'نيون', mass: '20.2', category: 'noble-gas' },
     // Row 3
-    { x: 51.6, y: 141.7, number: 11, symbol: 'Na', name: 'صوديوم', mass: '22.99', category: 'alkali-metal' },
-    { x: 101.3, y: 141.7, number: 12, symbol: 'Mg', name: 'ماغنسيوم', mass: '24.31', category: 'alkaline-earth-metal' },
-    { x: 648, y: 141.7, number: 13, symbol: 'Al', name: 'ألومنيوم', mass: '26.98', category: 'post-transition-metal' },
-    { x: 697.7, y: 141.7, number: 14, symbol: 'Si', name: 'سيليكون', mass: '28.09', category: 'metalloid' },
-    { x: 747.4, y: 141.7, number: 15, symbol: 'P', name: 'فسفور', mass: '30.97', category: 'nonmetal' },
-    { x: 797.1, y: 141.7, number: 16, symbol: 'S', name: 'كبريت', mass: '32.07', category: 'nonmetal' },
-    { x: 846.8, y: 141.7, number: 17, symbol: 'Cl', name: 'كلور', mass: '35.45', category: 'halogen' },
-    { x: 896.5, y: 141.7, number: 18, symbol: 'Ar', name: 'أرجون', mass: '39.95', category: 'noble-gas' },
+    { x: 51.6, y: 141.7, number: 11, symbol: 'Na', name: 'صوديوم', mass: '23.0', category: 'alkali-metal' },
+    { x: 101.3, y: 141.7, number: 12, symbol: 'Mg', name: 'ماغنسيوم', mass: '24.3', category: 'alkaline-earth-metal' },
+    { x: 648, y: 141.7, number: 13, symbol: 'Al', name: 'ألومنيوم', mass: '27.0', category: 'post-transition-metal' },
+    { x: 697.7, y: 141.7, number: 14, symbol: 'Si', name: 'سيليكون', mass: '28.1', category: 'metalloid' },
+    { x: 747.4, y: 141.7, number: 15, symbol: 'P', name: 'فسفور', mass: '31.0', category: 'nonmetal' },
+    { x: 797.1, y: 141.7, number: 16, symbol: 'S', name: 'كبريت', mass: '32.1', category: 'nonmetal' },
+    { x: 846.8, y: 141.7, number: 17, symbol: 'Cl', name: 'كلور', mass: '35.5', category: 'halogen' },
+    { x: 896.5, y: 141.7, number: 18, symbol: 'Ar', name: 'أرجون', mass: '39.9', category: 'noble-gas' },
     // Row 4
-    { x: 51.6, y: 197.5, number: 19, symbol: 'K', name: 'بوتاسيوم', mass: '39.10', category: 'alkali-metal' },
-    { x: 101.3, y: 197.5, number: 20, symbol: 'Ca', name: 'كالسيوم', mass: '40.08', category: 'alkaline-earth-metal' },
-    { x: 151, y: 197.5, number: 21, symbol: 'Sc', name: 'سكانديوم', mass: '44.96', category: 'transition-metal' },
-    { x: 200.7, y: 197.5, number: 22, symbol: 'Ti', name: 'تيتانيوم', mass: '47.87', category: 'transition-metal' },
-    { x: 250.4, y: 197.5, number: 23, symbol: 'V', name: 'فاناديوم', mass: '50.94', category: 'transition-metal' },
-    { x: 300.1, y: 197.5, number: 24, symbol: 'Cr', name: 'كروم', mass: '52.00', category: 'transition-metal' },
-    { x: 349.8, y: 197.5, number: 25, symbol: 'Mn', name: 'منغنيز', mass: '54.94', category: 'transition-metal' },
-    { x: 399.5, y: 197.5, number: 26, symbol: 'Fe', name: 'حديد', mass: '55.85', category: 'transition-metal' },
-    { x: 449.2, y: 197.5, number: 27, symbol: 'Co', name: 'كوبالت', mass: '58.93', category: 'transition-metal' },
-    { x: 498.9, y: 197.5, number: 28, symbol: 'Ni', name: 'نيكل', mass: '58.69', category: 'transition-metal' },
-    { x: 548.6, y: 197.5, number: 29, symbol: 'Cu', name: 'نحاس', mass: '63.55', category: 'transition-metal' },
-    { x: 598.3, y: 197.5, number: 30, symbol: 'Zn', name: 'خارصين', mass: '65.39', category: 'transition-metal' },
-    { x: 648, y: 197.5, number: 31, symbol: 'Ga', name: 'جاليوم', mass: '69.72', category: 'post-transition-metal' },
-    { x: 697.7, y: 197.5, number: 32, symbol: 'Ge', name: 'جرمانيوم', mass: '72.64', category: 'metalloid' },
-    { x: 747.4, y: 197.5, number: 33, symbol: 'As', name: 'زرنيخ', mass: '74.92', category: 'metalloid' },
-    { x: 797.1, y: 197.5, number: 34, symbol: 'Se', name: 'سيلينيوم', mass: '78.96', category: 'nonmetal' },
-    { x: 846.8, y: 197.5, number: 35, symbol: 'Br', name: 'بروم', mass: '79.90', category: 'halogen' },
-    { x: 896.5, y: 197.5, number: 36, symbol: 'Kr', name: 'كريبتون', mass: '83.80', category: 'noble-gas' },
+    { x: 51.6, y: 197.5, number: 19, symbol: 'K', name: 'بوتاسيوم', mass: '39.1', category: 'alkali-metal' },
+    { x: 101.3, y: 197.5, number: 20, symbol: 'Ca', name: 'كالسيوم', mass: '40.1', category: 'alkaline-earth-metal' },
+    { x: 151, y: 197.5, number: 21, symbol: 'Sc', name: 'سكانديوم', mass: '45.0', category: 'transition-metal' },
+    { x: 200.7, y: 197.5, number: 22, symbol: 'Ti', name: 'تيتانيوم', mass: '47.9', category: 'transition-metal' },
+    { x: 250.4, y: 197.5, number: 23, symbol: 'V', name: 'فاناديوم', mass: '50.9', category: 'transition-metal' },
+    { x: 300.1, y: 197.5, number: 24, symbol: 'Cr', name: 'كروم', mass: '52.0', category: 'transition-metal' },
+    { x: 349.8, y: 197.5, number: 25, symbol: 'Mn', name: 'منغنيز', mass: '54.9', category: 'transition-metal' },
+    { x: 399.5, y: 197.5, number: 26, symbol: 'Fe', name: 'حديد', mass: '55.8', category: 'transition-metal' },
+    { x: 449.2, y: 197.5, number: 27, symbol: 'Co', name: 'كوبالت', mass: '58.9', category: 'transition-metal' },
+    { x: 498.9, y: 197.5, number: 28, symbol: 'Ni', name: 'نيكل', mass: '58.7', category: 'transition-metal' },
+    { x: 548.6, y: 197.5, number: 29, symbol: 'Cu', name: 'نحاس', mass: '63.5', category: 'transition-metal' },
+    { x: 598.3, y: 197.5, number: 30, symbol: 'Zn', name: 'خارصين', mass: '65.4', category: 'transition-metal' },
+    { x: 648, y: 197.5, number: 31, symbol: 'Ga', name: 'جاليوم', mass: '69.7', category: 'post-transition-metal' },
+    { x: 697.7, y: 197.5, number: 32, symbol: 'Ge', name: 'جرمانيوم', mass: '72.6', category: 'metalloid' },
+    { x: 747.4, y: 197.5, number: 33, symbol: 'As', name: 'زرنيخ', mass: '74.9', category: 'metalloid' },
+    { x: 797.1, y: 197.5, number: 34, symbol: 'Se', name: 'سيلينيوم', mass: '79.0', category: 'nonmetal' },
+    { x: 846.8, y: 197.5, number: 35, symbol: 'Br', name: 'بروم', mass: '79.9', category: 'halogen' },
+    { x: 896.5, y: 197.5, number: 36, symbol: 'Kr', name: 'كريبتون', mass: '83.8', category: 'noble-gas' },
     // Row 5
-    { x: 51.6, y: 253.3, number: 37, symbol: 'Rb', name: 'روبيديوم', mass: '85.47', category: 'alkali-metal' },
-    { x: 101.3, y: 253.3, number: 38, symbol: 'Sr', name: 'سترونشيوم', mass: '87.62', category: 'alkaline-earth-metal' },
-    { x: 151, y: 253.3, number: 39, symbol: 'Y', name: 'إتريوم', mass: '88.91', category: 'transition-metal' },
-    { x: 200.7, y: 253.3, number: 40, symbol: 'Zr', name: 'زركونيوم', mass: '91.22', category: 'transition-metal' },
-    { x: 250.4, y: 253.3, number: 41, symbol: 'Nb', name: 'نيوبيوم', mass: '92.91', category: 'transition-metal' },
-    { x: 300.1, y: 253.3, number: 42, symbol: 'Mo', name: 'موليبدنوم', mass: '95.94', category: 'transition-metal' },
+    { x: 51.6, y: 253.3, number: 37, symbol: 'Rb', name: 'روبيديوم', mass: '85.5', category: 'alkali-metal' },
+    { x: 101.3, y: 253.3, number: 38, symbol: 'Sr', name: 'سترونشيوم', mass: '87.6', category: 'alkaline-earth-metal' },
+    { x: 151, y: 253.3, number: 39, symbol: 'Y', name: 'إتريوم', mass: '88.9', category: 'transition-metal' },
+    { x: 200.7, y: 253.3, number: 40, symbol: 'Zr', name: 'زركونيوم', mass: '91.2', category: 'transition-metal' },
+    { x: 250.4, y: 253.3, number: 41, symbol: 'Nb', name: 'نيوبيوم', mass: '92.9', category: 'transition-metal' },
+    { x: 300.1, y: 253.3, number: 42, symbol: 'Mo', name: 'موليبدنوم', mass: '95.9', category: 'transition-metal' },
     { x: 349.8, y: 253.3, number: 43, symbol: 'Tc', name: 'تكنيشيوم', mass: '(98)', category: 'transition-metal' },
     { x: 399.5, y: 253.3, number: 44, symbol: 'Ru', name: 'روثينيوم', mass: '101.1', category: 'transition-metal' },
     { x: 449.2, y: 253.3, number: 45, symbol: 'Rh', name: 'روديوم', mass: '102.9', category: 'transition-metal' },
@@ -115,7 +115,7 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
 
     return (
         <div className="w-full space-y-4">
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 md:flex-row-reverse md:items-center gap-4">
                 <Input 
                     placeholder="ابحث بالاسم أو الرمز (مثال Fe أو حديد)"
                     value={searchTerm}
@@ -151,16 +151,18 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                     </CardContent>
                 </Card>
             </div>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 950 310"
-                className={cn("w-full h-auto rounded-lg border bg-card", className)}
-                {...props}
-            >
-                {elements.map(el => (
-                    <ElementCell key={el.number} {...el} isHighlighted={foundElement?.number === el.number} />
-                ))}
-            </svg>
+             <div className="overflow-x-auto">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 950 310"
+                    className={cn("w-full min-w-[950px] h-auto rounded-lg border bg-card", className)}
+                    {...props}
+                >
+                    {elements.map(el => (
+                        <ElementCell key={el.number} {...el} isHighlighted={foundElement?.number === el.number} />
+                    ))}
+                </svg>
+            </div>
         </div>
     )
 }
