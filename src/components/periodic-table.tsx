@@ -30,7 +30,7 @@ interface ElementCellProps {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "flex flex-col items-center justify-center p-1 rounded border-2 text-center shadow-sm text-[0.6rem] sm:text-xs", // Smaller base text size
+            "flex flex-col items-center justify-center p-0.5 rounded border-2 text-center shadow-sm text-[0.5rem] sm:text-xs h-16 sm:h-auto", // Reduced padding and height
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
             "transition-transform duration-200"
@@ -41,9 +41,9 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="font-bold">{element.number}</div>
-        <div className="text-sm sm:text-lg font-bold">{element.symbol}</div>
+        <div className="text-sm sm:text-base font-bold">{element.symbol}</div>
         <div className="hidden sm:block truncate">{element.name}</div>
-        <div className="hidden sm:block mt-1">{typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}</div>
+        <div className="hidden sm:block">{typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}</div>
     </div>
 );
 
@@ -117,3 +117,5 @@ export default function PeriodicTable() {
         </div>
     )
 }
+
+    
