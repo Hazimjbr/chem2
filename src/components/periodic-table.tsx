@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -152,19 +151,20 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                     </CardContent>
                 </Card>
             </div>
-             <ScrollArea className="w-full whitespace-nowrap rounded-lg border h-[350px]">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 950 350"
-                    className={cn("min-w-[950px] h-auto bg-card", className)}
-                    {...props}
-                >
-                    {elements.map(el => (
-                        <ElementCell key={el.number} {...el} isHighlighted={foundElement?.number === el.number} />
-                    ))}
-                </svg>
+             <ScrollArea className="w-full whitespace-nowrap rounded-lg border">
+                <div className="min-w-[950px]">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 950 315"
+                        className={cn("h-auto bg-card", className)}
+                        {...props}
+                    >
+                        {elements.map(el => (
+                            <ElementCell key={el.number} {...el} isHighlighted={foundElement?.number === el.number} />
+                        ))}
+                    </svg>
+                </div>
                 <ScrollBar orientation="horizontal" />
-                <ScrollBar orientation="vertical" />
             </ScrollArea>
         </div>
     )
