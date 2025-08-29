@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { onAuthStateChangedListener, signOutUser } from '@/lib/firebase/auth';
 import type { User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -37,7 +37,6 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Define admin by a more stable identifier like email.
 const ADMIN_EMAIL = 'h75jbr@gmail.com';
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
