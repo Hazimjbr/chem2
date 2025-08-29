@@ -161,6 +161,14 @@ function PeriodicTable({ className, ...props }: SVGProps<SVGSVGElement>) {
                     {elements.map(el => (
                         <ElementCell key={el.number} {...el} isHighlighted={foundElement?.number === el.number} />
                     ))}
+                    {/* Period Ruler */}
+                    <g fontFamily="Arial-BoldMT, Arial" fontWeight={700} fontSize="14px" textAnchor="middle" fill="hsl(var(--muted-foreground))">
+                        <text x="25" y="58">1</text>
+                        <text x="25" y="113.8">2</text>
+                        <text x="25" y="169.6">3</text>
+                        <text x="25" y="225.4">4</text>
+                        <text x="25" y="281.2">5</text>
+                    </g>
                 </svg>
             </div>
         </div>
