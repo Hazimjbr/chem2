@@ -55,6 +55,7 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
              await addDoc(registeredDevicesRef, {
                 studentId,
                 deviceId,
+                studentName: user.displayName, // Add student name for easier lookup
                 registeredAt: Timestamp.now(),
             });
             return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
@@ -116,12 +117,17 @@ export async function getPendingDevices() {
 export async function approveDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
         const batch = writeBatch(db);
+        
+        const studentDocRef = doc(db, 'students', studentId);
+        const studentDoc = await getDoc(studentDocRef);
+        const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
 
         // 1. Add the new device to registeredDevices
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
             studentId,
             deviceId,
+            studentName, // Store the student's name for easier reference
             registeredAt: Timestamp.now(),
         });
 

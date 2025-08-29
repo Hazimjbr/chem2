@@ -89,10 +89,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         setIsLoading(true);
         if (user) {
              const appUser = await fetchAppUser(user);
-             setCurrentUser(appUser);
-             if (!appUser) {
+             if (appUser) {
+                setCurrentUser(appUser);
+             } else {
                 // If fetchAppUser returns null (not a known student or admin), sign them out.
+                // This prevents users who are in Auth but not in Firestore from staying logged in.
                 await signOutUser();
+                setCurrentUser(null);
              }
         } else {
             setCurrentUser(null);
