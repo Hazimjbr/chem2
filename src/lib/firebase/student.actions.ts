@@ -57,6 +57,7 @@ export async function addStudent(studentData: {
             courseIds,
             phone1: phone1 || '',
             phone2: phone2 || '',
+            activeDeviceId: '', // Initialize with no active device
             createdAt: Timestamp.now(),
         });
         
@@ -107,6 +108,7 @@ export async function getStudents() {
                 courseIds: data.courseIds || [],
                 phone1: data.phone1 || '',
                 phone2: data.phone2 || '',
+                activeDeviceId: data.activeDeviceId || '',
                 createdAt: (data.createdAt as Timestamp).toDate().toISOString(),
                 devices: devices,
             };

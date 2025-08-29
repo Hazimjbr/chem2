@@ -2,7 +2,7 @@
 'use server';
 
 import { db } from './config';
-import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, deleteDoc, orderBy, getDoc, limit } from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc, Timestamp, writeBatch, doc, deleteDoc, orderBy, getDoc, limit, updateDoc } from 'firebase/firestore';
 import type { AppUser } from '@/context/CurriculumContext';
 import { manageUser } from './functions';
 
@@ -48,12 +48,21 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         const anyDeviceSnapshot = await getDocs(anyDeviceQuery);
         
         if (anyDeviceSnapshot.empty) {
-             await addDoc(registeredDevicesRef, {
+            const batch = writeBatch(db);
+            // Add to registered devices
+            const newDeviceRef = doc(collection(db, 'registeredDevices'));
+            batch.set(newDeviceRef, {
                 studentId,
                 deviceId,
                 studentName: user.displayName,
                 registeredAt: Timestamp.now(),
             });
+            // Set as active device
+            const studentRef = doc(db, 'students', studentId);
+            batch.update(studentRef, { activeDeviceId: deviceId });
+            
+            await batch.commit();
+
             return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
         }
 
@@ -119,6 +128,7 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
         }
         const studentName = pendingDoc.data().studentName || 'طالب غير معروف';
 
+        // Add the new device
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
         batch.set(newDeviceRef, {
             studentId,
@@ -126,7 +136,12 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
             studentName,
             registeredAt: Timestamp.now(),
         });
+        
+        // Also set this as the active device for the student
+        const studentRef = doc(db, 'students', studentId);
+        batch.update(studentRef, { activeDeviceId: deviceId });
 
+        // Delete the pending request
         batch.delete(pendingDeviceRef);
         
         await batch.commit();
@@ -171,10 +186,13 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
             registeredAt: Timestamp.now(),
         });
         
+        // 4. Set the new device as the single active device
+        batch.update(studentDocRef, { activeDeviceId: deviceId });
+        
         // Commit all database changes
         await batch.commit();
 
-        // 4. After successfully changing the database, revoke user sessions
+        // 5. After successfully changing the database, revoke user sessions
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم استبدال الجهاز بنجاح وإبطال صلاحية الجلسات القديمة.' };
@@ -208,6 +226,15 @@ export async function deleteDevice(deviceId: string, studentId: string) {
         
         const docToDeleteRef = deviceSnapshot.docs[0].ref;
         await deleteDoc(docToDeleteRef);
+
+        // After deleting a device, check if it was the active one.
+        // If it was, clear the activeDeviceId field for the student.
+        // This prompts them to request a new device if they try to log in again.
+        const studentRef = doc(db, 'students', studentId);
+        const studentDoc = await getDoc(studentRef);
+        if (studentDoc.exists() && studentDoc.data().activeDeviceId === deviceId) {
+            await updateDoc(studentRef, { activeDeviceId: '' });
+        }
 
         await manageUser({ action: 'revokeSession', uid: studentId });
 

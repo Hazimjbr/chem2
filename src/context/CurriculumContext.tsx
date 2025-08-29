@@ -16,6 +16,7 @@ export interface AppUser {
     email: string | null;
     displayName: string | null;
     role: 'student' | 'admin' | null;
+    activeDeviceId?: string;
 }
 
 interface VerificationResult {
@@ -63,6 +64,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                    email: user.email, 
                    role: 'student',
                    displayName: studentData.studentName || user.email,
+                   activeDeviceId: studentData.activeDeviceId || '',
               };
           } else {
               // 3. If not found, they are an unknown user.
@@ -90,10 +92,23 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         if (user) {
              const appUser = await fetchAppUser(user);
              if (appUser) {
-                setCurrentUser(appUser);
+                // If the user is a student, perform the device check
+                if (appUser.role === 'student' && appUser.activeDeviceId) {
+                    const currentDeviceId = getOrCreateDeviceId();
+                    if (currentDeviceId !== appUser.activeDeviceId) {
+                        console.log('Device mismatch, signing out.');
+                        await signOutUser();
+                        setCurrentUser(null);
+                        clearCurriculum();
+                    } else {
+                        setCurrentUser(appUser);
+                    }
+                } else {
+                    // For admin or student without an active device yet
+                    setCurrentUser(appUser);
+                }
              } else {
-                // If fetchAppUser returns null (not a known student or admin), sign them out.
-                // This prevents users who are in Auth but not in Firestore from staying logged in.
+                // If fetchAppUser returns null (not a known user), sign them out.
                 await signOutUser();
                 setCurrentUser(null);
              }
@@ -127,31 +142,33 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleLogin = async (user: FirebaseUser): Promise<VerificationResult> => {
+      const appUser = await fetchAppUser(user);
+
+      if (!appUser) {
+           await signOutUser();
+           return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام كطالب.", variant: 'destructive' };
+      }
+      
       // If user is admin, bypass device checks.
-      if (user.email === ADMIN_EMAIL) {
-          const adminUser = { uid: user.uid, email: user.email, role: 'admin' as const, displayName: 'Admin' };
-          setCurrentUser(adminUser);
+      if (appUser.role === 'admin') {
+          setCurrentUser(appUser);
           return { success: true, message: `أهلاً بك أيها المدير!` };
       }
-      
-      const studentDocRef = doc(db, 'students', user.uid);
-      const studentDoc = await getDoc(studentDocRef);
-
-      if (!studentDoc.exists()) {
-          await signOutUser();
-          return { success: false, title: "مستخدم غير معروف", message: "هذا الحساب غير مسجل في النظام كطالب.", variant: 'destructive' };
-      }
-      
-      const studentData = studentDoc.data();
-      const appUser: AppUser = {
-          uid: user.uid,
-          email: user.email,
-          role: 'student',
-          displayName: studentData.studentName || user.email,
-      };
 
       // Proceed with device checks only for students.
       const deviceId = getOrCreateDeviceId();
+
+      // Check if the student's activeDeviceId matches the current device
+      if (appUser.activeDeviceId && appUser.activeDeviceId !== deviceId) {
+          await signOutUser();
+          return {
+              success: false,
+              title: 'الجهاز غير معتمد',
+              message: 'تم تسجيل الدخول من جهاز آخر. يرجى استخدام الجهاز المعتمد أو طلب الموافقة على هذا الجهاز.',
+              variant: 'destructive',
+          };
+      }
+      
       const verificationResult = await registerDevice({ user: appUser, deviceId });
 
       if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {

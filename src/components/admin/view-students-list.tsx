@@ -5,7 +5,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { getStudents } from '@/lib/firebase/student.actions';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, ServerCrash, UserSearch, Pencil, Trash2, Copy } from 'lucide-react';
+import { Loader2, ServerCrash, UserSearch, Pencil, Trash2, Copy, Smartphone } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -33,6 +33,7 @@ export interface Student {
     courseIds: string[];
     phone1?: string;
     phone2?: string;
+    activeDeviceId?: string;
     createdAt: string;
     devices: Device[];
 }
@@ -171,7 +172,10 @@ export default function ViewStudentsList() {
                                 <TableCell>{student.username}</TableCell>
                                 <TableCell className="font-mono text-muted-foreground">{student.password_clear}</TableCell>
                                 <TableCell>
-                                    <Badge variant="outline">{student.devices.length}</Badge>
+                                    <Badge variant={student.activeDeviceId ? "default" : "secondary"}>
+                                       {student.activeDeviceId ? <Smartphone className="h-3 w-3 ml-1" /> : null}
+                                       {student.devices.length}
+                                    </Badge>
                                 </TableCell>
                                 <TableCell>
                                     <div className="flex flex-wrap gap-1">
