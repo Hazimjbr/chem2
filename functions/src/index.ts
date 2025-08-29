@@ -36,7 +36,7 @@ export const addAdminRole = functions.https.onCall(async (data: { email: string 
     };
   } catch (error) {
     console.error(error);
-    throw new functions.https.HttpsError(
+    throw new functions.https.Error(
       "internal",
       "An error occurred while trying to set admin claim.",
     );
