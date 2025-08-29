@@ -137,36 +137,35 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
 
 export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
-        const batch = writeBatch(db);
         const registeredDevicesRef = collection(db, 'registeredDevices');
-
-        // 1. Find all existing devices for the student
+        
+        // Step 1: Find and delete all existing devices for the student.
         const q = query(registeredDevicesRef, where("studentId", "==", studentId));
         const querySnapshot = await getDocs(q);
-        
-        // 2. Delete all old devices
+        const deleteBatch = writeBatch(db);
         querySnapshot.forEach(doc => {
-            batch.delete(doc.ref);
+            deleteBatch.delete(doc.ref);
         });
+        await deleteBatch.commit();
 
-        // 3. Add the new device
+        // Step 2: Add the new device and delete the pending request.
+        const addBatch = writeBatch(db);
         const studentDocRef = doc(db, 'students', studentId);
         const studentDoc = await getDoc(studentDocRef);
         const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
 
-        const newDeviceRef = doc(registeredDevicesRef);
-        batch.set(newDeviceRef, {
+        const newDeviceRef = doc(collection(db, 'registeredDevices'));
+        addBatch.set(newDeviceRef, {
             studentId,
             deviceId,
             studentName,
             registeredAt: Timestamp.now(),
         });
         
-        // 4. Delete the request from pendingDevices
         const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
-        batch.delete(pendingDeviceRef);
+        addBatch.delete(pendingDeviceRef);
         
-        await batch.commit();
+        await addBatch.commit();
 
         return { success: true, message: 'تمت الموافقة على الجهاز الجديد واستبدال الأجهزة القديمة' };
     } catch (error) {
