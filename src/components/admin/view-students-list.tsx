@@ -17,6 +17,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import EditStudentDialog from './edit-student-dialog';
 import DeleteStudentDialog from './delete-student-dialog';
+import { Input } from '@/components/ui/input';
 
 export interface Device {
     id: string;
@@ -42,6 +43,7 @@ export default function ViewStudentsList() {
     const [error, setError] = useState<string | null>(null);
     const [editingStudent, setEditingStudent] = useState<Student | null>(null);
     const [deletingStudent, setDeletingStudent] = useState<Student | null>(null);
+    const [searchTerm, setSearchTerm] = useState('');
     const { toast } = useToast();
 
     const fetchStudents = useCallback(async () => {
@@ -92,6 +94,10 @@ export default function ViewStudentsList() {
         });
     };
 
+    const filteredStudents = students.filter(student => 
+        student.studentName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-40">
@@ -137,6 +143,14 @@ export default function ViewStudentsList() {
                     onDeleteSuccess={handleDeleteSuccess}
                 />
             )}
+            <div className="mb-4">
+                <Input 
+                    placeholder="ابحث عن اسم طالب..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="max-w-sm"
+                />
+            </div>
             <div className="border rounded-lg">
                 <Table>
                     <TableHeader>
@@ -151,7 +165,7 @@ export default function ViewStudentsList() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {students.map((student) => (
+                        {filteredStudents.map((student) => (
                             <TableRow key={student.id}>
                                 <TableCell className="font-medium">{student.studentName}</TableCell>
                                 <TableCell>{student.username}</TableCell>
