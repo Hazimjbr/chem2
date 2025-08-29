@@ -1,3 +1,4 @@
+
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 
@@ -29,7 +30,7 @@ export const addAdminRole = functions.https.onCall(async (data, context) => {
 
   try {
     const user = await admin.auth().getUserByEmail(email);
-    await admin.auth().setCustomUserClaims(user.uid, { admin: true });
+    await admin.auth().setCustomUserClaims(user.uid, {admin: true});
     return {
       message: `Success! ${email} has been made an admin.`,
     };
