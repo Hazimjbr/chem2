@@ -186,3 +186,19 @@ export async function rejectDevice(pendingDeviceId: string) {
         return { success: false, message: 'فشل في رفض الطلب' };
     }
 }
+
+export async function deleteDevice(deviceId: string, studentId: string) {
+    try {
+        // Delete the device document from Firestore
+        const deviceRef = doc(db, 'registeredDevices', deviceId);
+        await deleteDoc(deviceRef);
+
+        // After successful deletion, revoke the student's sessions to log them out
+        await manageUser({ action: 'revokeSession', uid: studentId });
+
+        return { success: true, message: 'تم حذف الجهاز بنجاح، وتم تسجيل خروج الطالب من جميع الجلسات.' };
+    } catch (error: any) {
+        console.error("Error deleting device:", error);
+        return { success: false, message: `فشل حذف الجهاز: ${error.message}` };
+    }
+}

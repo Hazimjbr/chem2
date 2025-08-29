@@ -1,7 +1,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -10,12 +10,23 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Laptop } from 'lucide-react';
-import { Loader2 } from 'lucide-react';
+import { Laptop, Loader2, Trash2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { updateStudent } from '@/lib/firebase/student.actions';
 import type { Student } from './view-students-list';
 import { Label } from '@/components/ui/label';
+import { deleteDevice } from '@/lib/firebase/device.actions';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 const coursesList = [
     { id: 'tawjihi_2008', label: 'توجيهي 2008' },
@@ -40,6 +51,7 @@ interface EditStudentDialogProps {
 
 export default function EditStudentDialog({ student, onOpenChange, onUpdateSuccess }: EditStudentDialogProps) {
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isDeletingDevice, startDeleteTransition] = useTransition();
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -84,6 +96,18 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
       setIsLoading(false);
     }
   };
+
+  const handleDeleteDevice = (deviceId: string, studentId: string) => {
+    startDeleteTransition(async () => {
+        const result = await deleteDevice(deviceId, studentId);
+        if (result.success) {
+            toast({ title: 'نجاح', description: result.message });
+            onUpdateSuccess(); // This will refresh the student list and data in the dialog
+        } else {
+            toast({ variant: 'destructive', title: 'فشل', description: result.message });
+        }
+    });
+  }
 
   return (
     <Dialog open={true} onOpenChange={onOpenChange}>
@@ -173,12 +197,40 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
 
             <div className="space-y-2">
                 <Label>الأجهزة المسجلة ({student.devices.length})</Label>
-                <div className="space-y-2 rounded-md border p-2 bg-muted max-h-24 overflow-y-auto">
+                <div className="space-y-2 rounded-md border p-2 bg-muted max-h-32 overflow-y-auto">
                 {student.devices.length > 0 ? (
                     student.devices.map(device => (
-                    <div key={device.id} className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                        <Laptop className="h-4 w-4" />
-                        <span className="truncate">{device.deviceId}</span>
+                    <div key={device.id} className="flex items-center justify-between gap-2 text-sm text-muted-foreground font-mono">
+                        <div className="flex items-center gap-2 truncate">
+                           <Laptop className="h-4 w-4 flex-shrink-0" />
+                           <span className="truncate">{device.deviceId}</span>
+                        </div>
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive flex-shrink-0">
+                                    <Trash2 className="h-4 w-4" />
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                <AlertDialogTitle>هل أنت متأكد من حذف هذا الجهاز؟</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    سيتم حذف هذا الجهاز بشكل دائم وسيتم تسجيل خروج الطالب منه فورًا.
+                                </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                <AlertDialogCancel>إلغاء</AlertDialogCancel>
+                                <AlertDialogAction
+                                    disabled={isDeletingDevice}
+                                    className="bg-destructive hover:bg-destructive/90"
+                                    onClick={() => handleDeleteDevice(device.id, student.id)}
+                                >
+                                    {isDeletingDevice && <Loader2 className="ml-2 h-4 w-4 animate-spin"/>}
+                                    تأكيد الحذف
+                                </AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
                     </div>
                     ))
                 ) : (
