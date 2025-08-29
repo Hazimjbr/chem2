@@ -94,6 +94,7 @@ export async function getStudents() {
                 studentName: data.studentName,
                 username: data.username,
                 email: data.email,
+                password_clear: data.password_clear,
                 courses: data.courses || [],
                 courseIds: data.courseIds || [],
                 phone1: data.phone1 || '',
