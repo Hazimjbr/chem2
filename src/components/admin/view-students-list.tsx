@@ -24,8 +24,8 @@ export interface Student {
     email: string;
     courses: string[];
     courseIds: string[];
-    phone1: string;
-    phone2: string;
+    phone1?: string;
+    phone2?: string;
     createdAt: string;
 }
 
