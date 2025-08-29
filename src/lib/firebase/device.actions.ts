@@ -140,26 +140,39 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
 
 export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
-        // First, approve the new device and remove the pending request.
-        const approvalResult = await approveDevice(pendingDeviceId, studentId, deviceId);
-        if (!approvalResult.success) {
-            throw new Error(approvalResult.message);
+        const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
+        const pendingDocSnap = await getDoc(pendingDeviceRef);
+        if (!pendingDocSnap.exists()) {
+            throw new Error("Pending device request not found.");
         }
+        const studentName = pendingDocSnap.data().studentName || 'طالب غير معروف';
+        
+        const batch = writeBatch(db);
 
-        // Second, find all other registered devices for the student and delete them.
+        // 1. Find and delete all old devices for the student
         const devicesRef = collection(db, 'registeredDevices');
-        const q = query(devicesRef, where("studentId", "==", studentId), where("deviceId", "!=", deviceId));
+        const q = query(devicesRef, where("studentId", "==", studentId));
         const oldDevicesSnapshot = await getDocs(q);
+        oldDevicesSnapshot.forEach(doc => {
+            batch.delete(doc.ref);
+        });
 
-        if (!oldDevicesSnapshot.empty) {
-            const deleteBatch = writeBatch(db);
-            oldDevicesSnapshot.forEach(doc => {
-                deleteBatch.delete(doc.ref);
-            });
-            await deleteBatch.commit();
-        }
+        // 2. Add the new device
+        const newDeviceRef = doc(collection(db, 'registeredDevices'));
+        batch.set(newDeviceRef, {
+            studentId,
+            deviceId,
+            studentName,
+            registeredAt: Timestamp.now(),
+        });
+        
+        // 3. Delete the pending request
+        batch.delete(pendingDeviceRef);
 
-        // Finally, revoke the user's sessions to log them out of old devices.
+        // Commit all database changes at once
+        await batch.commit();
+
+        // 4. After successfully changing the database, revoke user sessions
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم استبدال الجهاز بنجاح وإبطال صلاحية الجلسات القديمة.' };
@@ -168,7 +181,6 @@ export async function approveAndReplaceDevice(pendingDeviceId: string, studentId
         return { success: false, message: `فشلت عملية الاستبدال الكاملة: ${error.message}` };
     }
 }
-
 
 export async function rejectDevice(pendingDeviceId: string) {
      try {

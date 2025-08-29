@@ -40,7 +40,6 @@ export const manageUser = functions.https.onCall(
         }
         try {
             await admin.auth().revokeRefreshTokens(uid);
-            // Get user record to confirm.
             const userRecord = await admin.auth().getUser(uid);
             const timestamp = new Date(userRecord.tokensValidAfterTime!).getTime() / 1000;
             console.log(`Tokens revoked for ${uid} at ${new Date(timestamp * 1000).toISOString()}`);
@@ -49,7 +48,7 @@ export const manageUser = functions.https.onCall(
             };
         } catch (error) {
              console.error("Error revoking tokens:", error);
-             throw new functions.https://HttpsError("internal", "An error occurred while revoking tokens.");
+             throw new functions.https.HttpsError("internal", "An error occurred while revoking tokens.");
         }
     } else {
         throw new functions.https.HttpsError("invalid-argument", "Invalid action specified.");
