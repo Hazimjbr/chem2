@@ -161,14 +161,14 @@ export default function ViewStudentsList() {
                                 </TableCell>
                                 <TableCell className="text-left">
                                     <div className="flex gap-1">
-                                        <Button variant="ghost" size="icon" onClick={() => handleCopyCredentials(student)}>
-                                            <Copy className="h-4 w-4" />
-                                        </Button>
                                         <Button variant="ghost" size="icon" onClick={() => setEditingStudent(student)}>
                                             <Pencil className="h-4 w-4" />
                                         </Button>
                                         <Button variant="ghost" size="icon" className="text-destructive" onClick={() => setDeletingStudent(student)}>
                                             <Trash2 className="h-4 w-4" />
+                                        </Button>
+                                         <Button variant="ghost" size="icon" onClick={() => handleCopyCredentials(student)}>
+                                            <Copy className="h-4 w-4" />
                                         </Button>
                                     </div>
                                 </TableCell>
