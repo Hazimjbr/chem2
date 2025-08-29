@@ -23,9 +23,9 @@ const safeEval = (expr: string): number => {
         .replace(/\^/g, '**')
         .replace(/π/g, 'Math.PI')
         .replace(/e/g, 'Math.E')
-        .replace(/sin/g, 'Math.sin')
-        .replace(/cos/g, 'Math.cos')
-        .replace(/tan/g, 'Math.tan')
+        .replace(/sin\(/g, 'Math.sin(Math.PI/180 * ')
+        .replace(/cos\(/g, 'Math.cos(Math.PI/180 * ')
+        .replace(/tan\(/g, 'Math.tan(Math.PI/180 * ')
         .replace(/log/g, 'Math.log10')
         .replace(/ln/g, 'Math.log');
     
@@ -65,12 +65,9 @@ export default function Calculator() {
         try {
             // Replace visual symbols with evaluatable ones for calculation
             const exprToEval = display
-                .replace(/√/g, 'sqrt')
                 .replace(/π/g, String(Math.PI))
                 .replace(/e/g, String(Math.E));
             
-            // Basic Shunting-yard based evaluator would be ideal, but for simplicity
-            // and avoiding a full library, we'll use a safer eval approach.
             const result = safeEval(exprToEval);
             setDisplay(String(parseFloat(result.toPrecision(15))));
         } catch (error) {
