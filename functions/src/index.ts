@@ -9,7 +9,7 @@ admin.initializeApp();
  * This function can only be called by an already authenticated user.
  * For production, you would add a check to ensure only admins can call this.
  */
-export const addAdminRole = functions.https.onCall(async (data, context) => {
+export const addAdminRole = functions.https.onCall(async (data: { email: string }, context) => {
   // For security, you might want to check if context.auth.uid is an admin
   // before allowing them to make someone else an admin.
   // For now, we will keep it simple.
