@@ -138,39 +138,40 @@ export async function approveDevice(pendingDeviceId: string, studentId: string, 
 
 export async function approveAndReplaceDevice(pendingDeviceId: string, studentId: string, deviceId: string) {
     try {
-        // Step 1: Delete all existing devices for the student from Firestore.
+        const batch = writeBatch(db);
+
+        // 1. Find all existing devices for the student.
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const q = query(registeredDevicesRef, where("studentId", "==", studentId));
         const querySnapshot = await getDocs(q);
-        
-        if (!querySnapshot.empty) {
-            const deleteBatch = writeBatch(db);
-            querySnapshot.forEach(doc => {
-                deleteBatch.delete(doc.ref);
-            });
-            await deleteBatch.commit();
-        }
 
-        // Step 2: Add the new device and delete the pending request.
-        const addBatch = writeBatch(db);
+        // 2. Schedule deletion for all of them in the same batch.
+        querySnapshot.forEach(doc => {
+            batch.delete(doc.ref);
+        });
+        
+        // 3. Get student's name for the new device record.
         const studentDocRef = doc(db, 'students', studentId);
         const studentDoc = await getDoc(studentDocRef);
         const studentName = studentDoc.exists() ? studentDoc.data().studentName : 'طالب غير معروف';
 
+        // 4. Schedule the creation of the new approved device.
         const newDeviceRef = doc(collection(db, 'registeredDevices'));
-        addBatch.set(newDeviceRef, {
+        batch.set(newDeviceRef, {
             studentId,
             deviceId,
             studentName,
             registeredAt: Timestamp.now(),
         });
         
+        // 5. Schedule deletion of the pending request.
         const pendingDeviceRef = doc(db, 'pendingDevices', pendingDeviceId);
-        addBatch.delete(pendingDeviceRef);
+        batch.delete(pendingDeviceRef);
         
-        await addBatch.commit();
+        // 6. Commit all database operations at once.
+        await batch.commit();
         
-        // Step 3: Revoke the user's session to force re-login on all devices.
+        // 7. After successful DB update, revoke user's session.
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم استبدال الجهاز بنجاح وتم تسجيل خروج الطالب من جميع الأجهزة الأخرى' };
