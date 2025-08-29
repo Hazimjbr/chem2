@@ -1,37 +1,39 @@
 
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-  
-    // Helper function to check if the user is an admin
+
+    // --- Admin Function ---
+    // Checks if a document with the user's UID exists in the 'admins' collection.
     function isAdmin() {
-      // The admin's UID is hardcoded here for simplicity and security.
-      // Replace with your actual admin UID from Firebase Authentication.
-      return request.auth.uid == '5H03X45oEiOAaIEOFaQDb0UslsF3';
+      return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
 
-    // --- Admin Rules ---
-    // A single, powerful rule: Admins can do anything with any document.
-    match /{document=**} {
+    // --- Global Admin Rule ---
+    // This rule grants full read and write access to the entire database for any user
+    // identified as an admin by the isAdmin() function. This is the key to fixing the admin panel.
+    match /{path=**} {
       allow read, write: if isAdmin();
     }
-    
-    // --- Student & General User Rules ---
 
-    // Any authenticated user can create a pending device request.
-    // This is secure because the server action will set the studentId to the user's own UID.
-    match /pendingDevices/{docId} {
-      allow create: if request.auth != null;
-    }
-    
-    // Students can read their own document in the 'students' collection.
+    // --- Student-specific Rules ---
+    // These rules apply only if the user is NOT an admin.
+
+    // A student can read their own document in the 'students' collection.
     match /students/{studentId} {
-        allow read: if request.auth.uid == studentId;
+      allow read: if request.auth != null && request.auth.uid == studentId;
     }
 
-    // Students can read their own registered device documents.
+    // An authenticated user can create a device registration request for themselves.
+    // This allows students to request new devices.
+    match /pendingDevices/{docId} {
+      allow create: if request.auth != null && request.resource.data.studentId == request.auth.uid;
+    }
+
+    // A student can read their own registered devices. This is necessary for the app to function.
     match /registeredDevices/{docId} {
-      allow read: if request.auth.uid == resource.data.studentId;
+      allow read: if request.auth != null && resource.data.studentId == request.auth.uid;
     }
   }
 }
