@@ -62,10 +62,11 @@ export default function Calculator() {
 
       case '=':
         try {
-            const result = safeEval(display);
-            setDisplay(String(parseFloat(result.toPrecision(15))));
+          const result = safeEval(display);
+          // يمكنك تحديد 10 أرقام عشرية مثلاً 
+          setDisplay(String(result.toFixed(10)));
         } catch (error) {
-            setDisplay('Error');
+          setDisplay('Error');
         }
         break;
 
