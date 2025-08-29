@@ -52,7 +52,7 @@ export async function addStudent(studentData: {
             email,
             password: password_clear,
             courses,
-            courseIds: ['tawjihi_2008'], // Default course
+            courseIds,
             phone1: phone1 || '',
             phone2: phone2 || '',
             createdAt: Timestamp.now(),
