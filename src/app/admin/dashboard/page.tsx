@@ -43,33 +43,27 @@ export default function AdminDashboardPage() {
         )
     }
 
-    // Temporary logic to allow initial admin setup
-    // We show the full dashboard if the user is an admin.
-    // If they are not an admin, we show only the "Grant Admin" form.
-    const isFirstTimeSetup = currentUser.role !== 'admin';
-
-    if (isFirstTimeSetup) {
-        return (
-             <div className="container mx-auto p-8">
-                <header className="mb-10 text-center">
-                    <h1 className="text-4xl font-bold text-primary mb-2">إعداد المسؤول الأول</h1>
-                    <p className="text-lg text-muted-foreground">
-                        لمنح نفسك صلاحيات المسؤول، أدخل بريدك الإلكتروني أدناه
-                    </p>
-                </header>
-                <main className="max-w-xl mx-auto">
-                     <Card>
-                        <CardHeader>
-                            <CardTitle>منح صلاحيات مسؤول</CardTitle>
-                            <CardDescription>
-                                أدخل البريد الإلكتروني لحسابك لمنحه صلاحيات المسؤول الكاملة.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <GrantAdminRoleForm />
-                        </CardContent>
-                    </Card>
-                </main>
+    // Now that the user can become an admin, we protect the page properly.
+    // Only show the dashboard if the user's role is 'admin'.
+    if (currentUser.role !== 'admin') {
+         return (
+             <div className="container mx-auto p-8 text-center">
+                 <Card className="max-w-md mx-auto">
+                     <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-destructive">
+                            <ShieldAlert />
+                            الوصول مرفوض
+                        </CardTitle>
+                        <CardDescription>
+                            هذه الصفحة مخصصة للمسؤولين فقط. إذا كنت تعتقد أن هذا خطأ، يرجى التواصل مع الدعم الفني.
+                        </CardDescription>
+                     </CardHeader>
+                     <CardContent>
+                         <Link href="/" passHref>
+                            <Button>العودة إلى الصفحة الرئيسية</Button>
+                         </Link>
+                     </CardContent>
+                 </Card>
             </div>
         )
     }
