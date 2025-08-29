@@ -1,31 +1,25 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // --- Admin Rule ---
-    // Admins can do anything, anywhere.
-    // We check for a custom claim 'admin' on the user's auth token.
-    match /{path=**} {
-      allow read, write, list, delete: if request.auth.claims.admin == true;
-    }
-
-    // --- Student-specific Rules ---
-    // These rules apply if the user is NOT an admin.
-
-    // A student can read their own document.
+    // Allow admin to read all student documents.
     match /students/{studentId} {
-      allow read: if request.auth.uid == studentId;
+      allow read, list: if request.auth.token.admin == true;
+      // Allow student to read their own document.
+      allow get: if request.auth.uid == studentId;
+      // Allow admin to create, update, delete student documents.
+      allow write: if request.auth.token.admin == true;
     }
 
-    // Any authenticated user can create a device registration request for themselves.
-    match /pendingDevices/{docId} {
-      allow create: if request.auth != null && request.resource.data.studentId == request.auth.uid;
+    // Allow any authenticated user to create a device request.
+    match /pendingDevices/{deviceId} {
+      allow create: if request.auth != null;
+      // Allow only admin to read or delete pending device requests.
+      allow read, delete: if request.auth.token.admin == true;
     }
-
-    // A student can read their own registered devices.
-    match /registeredDevices/{docId} {
-      allow read: if request.auth != null && resource.data.studentId == request.auth.uid;
+    
+    // Allow only admin to manage registered devices.
+    match /registeredDevices/{deviceId} {
+       allow read, write, delete: if request.auth.token.admin == true;
     }
   }
 }
