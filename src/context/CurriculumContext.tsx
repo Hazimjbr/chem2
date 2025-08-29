@@ -45,10 +45,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   // Function to fetch user details from Firestore
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
-      // Check if the user is an admin first
-      if (user.email === 'h75jbr@gmail.com') {
-          return { uid: user.uid, email: user.email, role: 'admin', displayName: 'Admin' };
-      }
       const adminDocRef = doc(db, 'admins', user.uid);
       const adminDoc = await getDoc(adminDocRef);
 
