@@ -30,7 +30,8 @@ const safeEval = (expr: string): number => {
     
     // Regular expression to validate the expression.
     // Allows: numbers, parentheses, operators (+, -, *, /, **), and Math object calls.
-    const validPattern = /^[0-9\s\(\)\+\-\*\/\.\*eE,Math\.]+$/;
+    const validPattern = /^[0-9\s\(\)\+\-\*\/\.\*eE,Math\s\w\d\.]+$/;
+
 
     if (!validPattern.test(safeExpr)) {
         throw new Error("Invalid characters in expression");
@@ -67,6 +68,7 @@ export default function Calculator() {
             // Use toPrecision to avoid trailing zeros but maintain precision
             setDisplay(String(parseFloat(result.toPrecision(15))));
         } catch (error) {
+            console.error(error);
             setDisplay('Error');
         }
         break;
