@@ -142,7 +142,7 @@ export default function Calculator() {
                  if (isClear) variant = 'destructive';
                  if (isEqual) variant = 'default';
 
-                 let className = 'h-full text-base';
+                 let className = 'h-[calc(100%-2px)] text-base';
                  if (isEqual) {
                      className += ' row-span-2';
                  }
