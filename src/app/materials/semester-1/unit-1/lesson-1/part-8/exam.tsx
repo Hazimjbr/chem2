@@ -1,7 +1,7 @@
 
 import { InlineMath } from 'react-katex';
 import React from 'react';
-import Image from 'next/image';
+import GasLawsGraph from './diagram';
 
 
 export interface QuizQuestion {
@@ -10,28 +10,6 @@ export interface QuizQuestion {
     correctAnswerIndex: number;
     explanation: string;
 }
-
-const GasLawsGraph = () => (
-    <svg width="300" height="200" viewBox="0 0 450 350" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-background p-4 rounded-lg border">
-        <line x1="50" y1="300" x2="400" y2="300" stroke="black" strokeWidth="2"/>
-        <text x="410" y="300" dominantBaseline="middle">P(atm)</text>
-
-        <line x1="50" y1="300" x2="50" y2="50" stroke="black" strokeWidth="2"/>
-        <text x="50" y="40" textAnchor="middle">PV/nRT</text>
-
-        <path d="M50,175 L400,175" stroke="gray" strokeWidth="1" strokeDasharray="5,5"/>
-        <text x="30" y="175" dominantBaseline="middle" fontSize="12">1</text>
-
-        <path d="M60,160 C150,100 250,110 400,140" stroke="hsl(var(--primary))" strokeWidth="2" fill="none"/>
-        <text x="380" y="130" fill="hsl(var(--primary))" fontSize="12">1000 K</text>
-
-        <path d="M60,180 C150,150 250,160 400,170" stroke="hsl(var(--accent))" strokeWidth="2" fill="none"/>
-        <text x="380" y="180" fill="hsl(var(--accent))" fontSize="12">500 K</text>
-
-        <path d="M60,250 C150,220 250,230 400,220" stroke="hsl(var(--destructive))" strokeWidth="2" fill="none"/>
-        <text x="380" y="230" fill="hsl(var(--destructive))" fontSize="12">200 K</text>
-    </svg>
-);
 
 const GasSamplesGraph = () => (
      <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
@@ -113,13 +91,13 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">عند أي درجة حرارة يكون انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن؟</strong></div>,
+        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><GasLawsGraph /><strong className="text-accent mt-2 block">عند أي درجة حرارة يكون انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن؟</strong></div>,
         options: ["200 K", "273 K", "500 K", "1000 K"],
         correctAnswerIndex: 3,
         "explanation": "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
     },
      {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</strong></div>,
+        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><GasLawsGraph /><strong className="text-accent mt-2 block">ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</strong></div>,
         "options": [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -130,7 +108,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={450} height={350} className="mx-auto my-2 bg-background p-4 rounded-lg border" /><strong className="text-accent mt-2 block">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
+        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><GasLawsGraph /><strong className="text-accent mt-2 block">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
         "options": [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
