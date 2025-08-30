@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -16,6 +17,9 @@ export default {
       },
     },
     extend: {
+       screens: {
+        'mobile-landscape': {'raw': '(max-height: 500px) and (min-width: 640px)'},
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

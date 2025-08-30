@@ -96,11 +96,11 @@ export default function Calculator() {
 
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-4 landscape:max-w-2xl">
+    <div className="w-full max-w-sm mx-auto space-y-4 mobile-landscape:max-w-2xl">
       <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
         {display}
       </div>
-      <div className="grid grid-cols-5 landscape:grid-cols-10 gap-2">
+      <div className="grid grid-cols-5 mobile-landscape:grid-cols-10 gap-2">
         {buttons.map((btn) => {
           const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
           const isEqual = btn.value === '=';
@@ -113,14 +113,14 @@ export default function Calculator() {
           if (isClear || btn.value === '⌫') variant = 'destructive';
           if (isEqual) {
               variant = 'default';
-              className += ' col-span-2 landscape:col-span-2';
+              className += ' col-span-2 mobile-landscape:col-span-2';
           }
 
           return (
             <Button
               key={btn.display}
               variant={variant}
-              className={`${className} landscape:h-12`}
+              className={`${className} mobile-landscape:h-12`}
               size="lg"
               onClick={() => handleButtonClick(btn.value)}
             >
