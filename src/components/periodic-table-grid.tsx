@@ -28,9 +28,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         className={cn(
             "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center",
             "transition-transform duration-300 ease-in-out",
-            "hover:scale-200 hover:z-10",
-            categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
-            isHighlighted && "ring-2 ring-offset-2 ring-primary z-10"
+            "hover:scale-200 hover:z-10 hover:shadow-2xl"
         )}
         style={{ 
             gridColumn: element.gridColumn, 
@@ -56,12 +54,12 @@ export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridPro
         <div 
             className="w-full rounded-lg border bg-muted/30 p-1" 
             dir="ltr"
-            style={{ perspective: '1000px' }}
         >
             <div 
                 className="relative grid gap-1 min-w-[700px]"
                 style={{
                     gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
+                    transformStyle: 'preserve-3d',
                 }}
             >
                 {elements.map(el => (

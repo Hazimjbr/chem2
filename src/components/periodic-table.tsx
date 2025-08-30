@@ -25,7 +25,10 @@ export default function PeriodicTable() {
     };
 
     return (
-        <div className="w-[95vw] mx-auto space-y-4">
+        <div 
+            className="w-full space-y-4"
+            style={{ perspective: '1000px' }}
+        >
              <ElementSearch 
                 searchTerm={searchTerm} 
                 foundElement={foundElement}
