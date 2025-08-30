@@ -32,7 +32,9 @@ export default function PeriodicTable() {
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
-            <PeriodicTableGrid foundElement={foundElement} />
+            <div className="w-full overflow-x-auto rounded-lg border bg-muted/30">
+                <PeriodicTableGrid foundElement={foundElement} />
+            </div>
         </div>
     )
 }
