@@ -39,7 +39,7 @@ const categoryBgColors: Record<string, string> = {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center cursor-pointer",
+            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-start items-center text-center cursor-pointer",
             "transition-all duration-300 ease-in-out",
             "hover:scale-150 hover:-translate-y-4 hover:z-10 hover:shadow-2xl",
             categoryColors[element.category] || 'bg-gray-200',
@@ -50,7 +50,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRow: element.gridRow,
         }}
     >
-        <div className="absolute top-1 right-1 text-[0.6rem] sm:text-xs font-bold text-gray-600 group-hover:opacity-0 transition-opacity">
+        <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600 group-hover:opacity-0 transition-opacity">
             {element.number}
         </div>
         <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
@@ -65,7 +65,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
              <div className="font-extrabold text-base my-0.5">{element.symbol}</div>
              <div className="font-semibold truncate">{element.name}</div>
              <div className="text-xs">
-                 {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(2) : element.atomic_mass}
+                 {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
              </div>
         </div>
     </div>
