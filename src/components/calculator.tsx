@@ -9,7 +9,7 @@ const buttons = [
   // Row 2
   { display: '^', value: '^' }, { display: '√', value: '√' }, { display: 'π', value: 'π' }, { display: 'e', value: 'e' }, { display: 'C', value: 'C' },
   // Row 3
-  { display: '(', value: '(' }, { display: ')', value: ')' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '/', value: '/' },
+  { display: '(', value: ')' }, { display: ')', value: '(' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '/', value: '/' },
   // Row 4
   { display: '*', value: '*' }, { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '-', value: '-' },
   // Row 5
