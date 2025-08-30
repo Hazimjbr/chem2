@@ -95,8 +95,8 @@ export default function Calculator() {
   };
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-screen">
-       <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-start mobile-landscape:h-16 mobile-landscape:text-2xl mobile-landscape:mb-2">
+    <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-screen mobile-landscape:space-y-[3px]">
+       <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-start mobile-landscape:h-16 mobile-landscape:text-2xl">
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2 mobile-landscape:hidden">
@@ -130,7 +130,7 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-       <div className="hidden mobile-landscape:grid flex-1 gap-1 grid-cols-7">
+       <div className="hidden mobile-landscape:grid flex-1 gap-[3px] grid-cols-7">
             {landscapeButtons.map((btn) => {
                  const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
                  const isClear = ['C', '⌫'].includes(btn.value);
