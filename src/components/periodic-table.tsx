@@ -5,6 +5,7 @@ import { elements } from '@/data/elements';
 import type { Element } from '@/data/elements';
 import ElementSearch from './element-search';
 import PeriodicTableGrid from './periodic-table-grid';
+import PeriodicTableContainer from './periodic-table-container';
 
 export default function PeriodicTable() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -30,10 +31,9 @@ export default function PeriodicTable() {
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
-            {/* This is the new scrolling container */}
-            <div className="overflow-x-auto border rounded-lg">
+            <PeriodicTableContainer>
                 <PeriodicTableGrid foundElement={foundElement} />
-            </div>
+            </PeriodicTableContainer>
         </div>
     )
 }
