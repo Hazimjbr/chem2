@@ -62,17 +62,19 @@ interface PeriodicTableGridProps {
 
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
-        <div 
-            dir="ltr"
-            className="grid gap-1 p-4"
-            style={{
-                gridTemplateColumns: 'repeat(18, minmax(60px, 1fr))',
-                minWidth: '1200px'
-            }}
-        >
-            {elements.map(el => (
-                <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
-            ))}
+        <div className="w-full overflow-auto border rounded-lg bg-muted/30">
+             <div 
+                dir="ltr"
+                className="relative grid gap-1 p-4"
+                style={{
+                    gridTemplateColumns: 'repeat(18, minmax(60px, 1fr))',
+                    minWidth: '1200px',
+                }}
+            >
+                {elements.map(el => (
+                    <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
+                ))}
+            </div>
         </div>
     );
 }
