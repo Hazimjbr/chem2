@@ -32,7 +32,10 @@ export default function PeriodicTable() {
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
-            <PeriodicTableGrid foundElement={foundElement} />
+            {/* The container below now has permanent scrollbars */}
+            <div className="w-full h-[550px] overflow-scroll border rounded-lg bg-muted/30 p-4">
+                <p className="text-center text-muted-foreground">المحتوى هنا</p>
+            </div>
         </div>
     )
 }
