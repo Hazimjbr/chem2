@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -32,7 +33,7 @@ export default function PeriodicTable() {
             />
             
             {/* This is the container that will handle scrolling */}
-            <div className="flex-grow overflow-auto border rounded-lg">
+            <div className="flex-1 overflow-auto min-w-0">
                 <PeriodicTableGrid foundElement={foundElement} />
             </div>
         </div>
