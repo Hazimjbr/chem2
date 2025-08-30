@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { elements } from '@/data/elements';
 import type { Element } from '@/data/elements';
 import ElementSearch from './element-search';
-// import PeriodicTableGrid from './periodic-table-grid';
+import PeriodicTableGrid from './periodic-table-grid';
 
 export default function PeriodicTable() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -26,14 +26,13 @@ export default function PeriodicTable() {
     return (
         <div 
             className="w-full space-y-4"
-            style={{ perspective: '1000px' }}
         >
              <ElementSearch 
                 searchTerm={searchTerm} 
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
-            {/* <PeriodicTableGrid foundElement={foundElement} /> */}
+            <PeriodicTableGrid foundElement={foundElement} />
         </div>
     )
 }
