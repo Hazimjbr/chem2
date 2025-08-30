@@ -50,20 +50,20 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRow: element.gridRow,
         }}
     >
+        {/* Default content (visible) */}
         <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600 group-hover:opacity-0 transition-opacity">
             {element.number}
         </div>
-        <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
+        <div className="font-bold text-sm sm:text-lg group-hover:opacity-0 transition-opacity">{element.symbol}</div>
         
-        {/* Hover content */}
+        {/* Hover content (hidden by default) */}
         <div className={cn(
-            "absolute inset-0 hidden group-hover:flex flex-col justify-center items-center rounded-sm",
+            "absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center rounded-sm transition-opacity duration-300",
             "p-2 text-[10px] leading-tight",
             categoryBgColors[element.category] || 'bg-gray-200/80'
             )}>
              <div className="font-bold text-xs">{element.number}</div>
-             <div className="font-extrabold text-base my-0.5">{element.symbol}</div>
-             <div className="font-semibold truncate">{element.name}</div>
+             <div className="font-extrabold text-base my-0.5 truncate">{element.name}</div>
              <div className="text-xs">
                  {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
              </div>
