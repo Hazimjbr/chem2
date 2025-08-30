@@ -25,7 +25,7 @@ const landscapeButtons = [
   'e', '^', '7', '8', '9', '/', 'C',
   '√', '4', '5', '6', '*', '⌫',
   '1', '2', '3', '-', '=',
-  '0', '.', 
+  '0', '.',
 ].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
 
 
@@ -131,7 +131,7 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-      <div className="hidden mobile-landscape:grid flex-1 gap-1 grid-cols-7">
+       <div className="hidden mobile-landscape:grid flex-1 gap-1 grid-cols-7">
             {landscapeButtons.map((btn) => {
                  const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
                  const isClear = ['C', '⌫'].includes(btn.value);
@@ -142,7 +142,7 @@ export default function Calculator() {
                  if (isClear) variant = 'destructive';
                  if (isEqual) variant = 'default';
 
-                 let className = 'h-[calc(100%-2px)] text-base';
+                 let className = 'h-[calc(100%-5px)] text-base';
                  if (isEqual) {
                      className += ' row-span-2';
                  }
