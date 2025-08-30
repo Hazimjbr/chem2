@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from "@/lib/utils.tsx";
@@ -26,14 +27,15 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
             "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center",
-            "transition-transform duration-300 ease-in-out", // Added for smooth transition
-            "hover:scale-200 hover:z-10", // Scale up on hover
+            "transition-transform duration-300 ease-in-out",
+            "hover:scale-200 hover:z-10",
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
             isHighlighted && "ring-2 ring-offset-2 ring-primary z-10"
         )}
         style={{ 
             gridColumn: element.gridColumn, 
-            gridRow: element.gridRow 
+            gridRow: element.gridRow,
+            transformStyle: 'preserve-3d'
         }}
     >
         <div className="text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
@@ -51,18 +53,20 @@ interface PeriodicTableGridProps {
 
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
-        <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
-            <div className="relative">
-                <div 
-                    className="relative grid gap-1 min-w-[700px]"
-                    style={{
-                        gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
-                    }}
-                >
-                    {elements.map(el => (
-                        <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
-                    ))}
-                </div>
+        <div 
+            className="w-full rounded-lg border bg-muted/30 p-1" 
+            dir="ltr"
+            style={{ perspective: '1000px' }}
+        >
+            <div 
+                className="relative grid gap-1 min-w-[700px]"
+                style={{
+                    gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
+                }}
+            >
+                {elements.map(el => (
+                    <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
+                ))}
             </div>
         </div>
     );
