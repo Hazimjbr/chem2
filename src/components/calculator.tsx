@@ -21,11 +21,12 @@ const buttons = [
 
 
 const landscapeButtons = [
-  'sin', 'cos', 'tan', 'log', 'ln', '^', 'C',
-  '√', 'π', 'e', { display: ')', value: '(' }, { display: '(', value: ')' }, '⌫', '/',
-  '7', '8', '9', '4', '5', '6', '*',
-  '1', '2', '3', '0', '.', '=', '-',
-  '+'
+  'sin', 'cos', 'tan', 'log', 'ln',
+  '^', '√', 'π', 'e', { display: '(', value: ')' },
+  '7', '8', '9', '/', 'C',
+  '4', '5', '6', '*', '⌫',
+  '1', '2', '3', '-', '=',
+  '0', '.',
 ].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : { display: btn.value, value: btn.display }));
 
 const safeEval = (expr: string): number => {
@@ -142,9 +143,13 @@ export default function Calculator() {
                  if (isEqual) variant = 'default';
 
                  let className = 'h-full text-base';
-                 if (isEqual || btn.value === '+') {
+                 if (isEqual) {
                      className += ' row-span-2';
                  }
+                  if (btn.value === '0') {
+                     className += ' col-span-2';
+                 }
+
 
                  return(
                       <Button 
