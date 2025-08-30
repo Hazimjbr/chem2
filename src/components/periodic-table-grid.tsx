@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from "@/lib/utils.tsx";
@@ -37,7 +38,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="flex flex-col justify-center items-center w-full h-full">
-            <div className="absolute top-0.5 left-1 text-[0.6rem] font-bold text-gray-600/80">
+            <div className="absolute top-0.5 right-1 text-[0.6rem] font-bold text-gray-600/80">
                 {element.number}
             </div>
             
@@ -62,9 +63,8 @@ interface PeriodicTableGridProps {
 
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
-        <div className="w-full overflow-scroll rounded-lg border bg-muted/30 p-1">
+        <div className="w-full overflow-auto rounded-lg border bg-muted/30 p-1">
             <div 
-                dir="ltr"
                 className="relative grid gap-1 py-4"
                 style={{
                     gridTemplateColumns: 'repeat(18, minmax(48px, 1fr))',
