@@ -37,17 +37,14 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="flex flex-col justify-center items-center w-full h-full">
-            {/* Always visible number */}
             <div className="absolute top-0.5 right-1 text-[0.6rem] font-bold text-gray-600/80">
                 {element.number}
             </div>
             
-            {/* Default view */}
             <div className="group-hover:hidden transition-opacity duration-300">
                 <div className="font-bold text-lg">{element.symbol}</div>
             </div>
 
-            {/* Hover view */}
             <div className="hidden group-hover:flex flex-col items-center justify-center transition-opacity duration-300">
                  <div className="font-extrabold text-xs truncate">{element.name}</div>
                  <div className="text-[10px] mt-0.5">
@@ -66,18 +63,19 @@ interface PeriodicTableGridProps {
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
         <div 
-            className="w-full rounded-lg border bg-muted/30 p-1 overflow-auto" 
-            dir="ltr"
+            className="w-full rounded-lg border bg-muted/30 p-1" 
         >
-            <div 
-                className="relative grid gap-1 py-4"
-                style={{
-                    gridTemplateColumns: 'repeat(18, 48px)', // Use fixed width
-                }}
-            >
-                {elements.map(el => (
-                    <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
-                ))}
+            <div className="overflow-auto flex justify-center">
+                <div 
+                    className="relative grid gap-1 py-4"
+                    style={{
+                        gridTemplateColumns: 'repeat(18, 48px)',
+                    }}
+                >
+                    {elements.map(el => (
+                        <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
+                    ))}
+                </div>
             </div>
         </div>
     );
