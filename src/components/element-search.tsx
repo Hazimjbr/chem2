@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Input } from '@/components/ui/input';
@@ -17,7 +18,6 @@ export default function ElementSearch({ searchTerm, foundElement, handleSearch }
     return (
         <div
             className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-2"
-            style={{ gridColumn: '2 / span 16', gridRow: '1' }}
         >
             <Input
                 placeholder="ابحث بالاسم، الرمز، أو العدد الذري"
