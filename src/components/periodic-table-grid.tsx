@@ -1,4 +1,3 @@
-
 'use client';
 
 import { cn } from "@/lib/utils.tsx";
@@ -39,16 +38,14 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="w-full h-full flex flex-col justify-center items-center">
-             <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600">
+            <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600">
                 {element.number}
             </div>
 
-            {/* Symbol - visible by default, hidden on hover */}
             <div className="font-bold text-sm sm:text-lg group-hover:hidden">
                 {element.symbol}
             </div>
 
-            {/* Name and Mass - hidden by default, visible on hover */}
             <div className="hidden group-hover:flex group-hover:flex-col group-hover:items-center group-hover:justify-center">
                  <div className="font-extrabold text-xs truncate">{element.name}</div>
                  <div className="text-[10px] mt-0.5">
@@ -70,7 +67,7 @@ export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridPro
             dir="ltr"
         >
             <div 
-                className="relative grid gap-1 w-[90vw] min-w-[700px] py-4"
+                className="relative grid gap-1 w-full min-w-[700px] py-4"
                 style={{
                     gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
                     transformStyle: 'preserve-3d'
