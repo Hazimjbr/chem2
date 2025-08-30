@@ -5,7 +5,6 @@ import { elements } from '@/data/elements';
 import type { Element } from '@/data/elements';
 import ElementSearch from './element-search';
 import PeriodicTableGrid from './periodic-table-grid';
-import PeriodicTableContainer from './periodic-table-container';
 
 export default function PeriodicTable() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -27,9 +26,9 @@ export default function PeriodicTable() {
     return (
         <div className="w-full flex flex-col h-[85vh] space-y-4">
             <ElementSearch searchTerm={searchTerm} foundElement={foundElement} handleSearch={handleSearch} />
-            <PeriodicTableContainer>
+            <div className="flex-1 overflow-auto min-w-0">
                 <PeriodicTableGrid foundElement={foundElement} />
-            </PeriodicTableContainer>
+            </div>
         </div>
     )
 }
