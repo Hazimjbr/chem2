@@ -37,7 +37,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="flex flex-col justify-center items-center w-full h-full">
-            <div className="absolute top-0.5 right-1 text-[0.6rem] font-bold text-gray-600/80">
+            <div className="absolute top-0.5 left-1 text-[0.6rem] font-bold text-gray-600/80">
                 {element.number}
             </div>
             
@@ -62,9 +62,10 @@ interface PeriodicTableGridProps {
 
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
-        <div className="w-full overflow-scroll h-[500px] border rounded-lg">
+        <div className="w-full overflow-auto border rounded-lg bg-muted/30">
             <div 
-                className="relative grid gap-1 p-4 bg-muted/30"
+                dir="ltr"
+                className="relative grid gap-1 p-4"
                 style={{
                     gridTemplateColumns: 'repeat(18, minmax(48px, 1fr))',
                     minWidth: '700px',
