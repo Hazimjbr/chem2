@@ -23,10 +23,23 @@ const categoryColors: Record<string, string> = {
     'actinide': 'bg-cyan-200/50 hover:bg-cyan-300/80 border-cyan-400',
 };
 
+const categoryBgColors: Record<string, string> = {
+    'nonmetal': 'bg-green-200/80',
+    'noble-gas': 'bg-blue-200/80',
+    'alkali-metal': 'bg-red-200/80',
+    'alkaline-earth-metal': 'bg-orange-200/80',
+    'metalloid': 'bg-yellow-200/80',
+    'halogen': 'bg-purple-200/80',
+    'post-transition-metal': 'bg-indigo-200/80',
+    'transition-metal': 'bg-pink-200/80',
+    'lanthanide': 'bg-teal-200/80',
+    'actinide': 'bg-cyan-200/80',
+};
+
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center",
+            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center cursor-pointer",
             "transition-all duration-300 ease-in-out",
             "hover:scale-150 hover:-translate-y-4 hover:z-10 hover:shadow-2xl",
             categoryColors[element.category] || 'bg-gray-200',
@@ -37,11 +50,23 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRow: element.gridRow,
         }}
     >
-        <div className="text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
+        <div className="absolute top-1 right-1 text-[0.6rem] sm:text-xs font-bold text-gray-600 group-hover:opacity-0 transition-opacity">
+            {element.number}
+        </div>
         <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
-        <div className="hidden group-hover:block text-[0.6rem] sm:text-[10px] truncate">{element.name}</div>
-        <div className="hidden group-hover:block text-[0.6rem] sm:text-[10px] mt-1">
-             {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
+        
+        {/* Hover content */}
+        <div className={cn(
+            "absolute inset-0 hidden group-hover:flex flex-col justify-center items-center rounded-sm",
+            "p-2 text-[10px] leading-tight",
+            categoryBgColors[element.category] || 'bg-gray-200/80'
+            )}>
+             <div className="font-bold text-xs">{element.number}</div>
+             <div className="font-extrabold text-base my-0.5">{element.symbol}</div>
+             <div className="font-semibold truncate">{element.name}</div>
+             <div className="text-xs">
+                 {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(2) : element.atomic_mass}
+             </div>
         </div>
     </div>
 );
