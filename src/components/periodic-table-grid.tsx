@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from "@/lib/utils.tsx";
@@ -22,19 +23,6 @@ const categoryColors: Record<string, string> = {
     'actinide': 'bg-cyan-200/50 hover:bg-cyan-300/80 border-cyan-400',
 };
 
-const categoryBgColors: Record<string, string> = {
-    'nonmetal': 'bg-green-200/80',
-    'noble-gas': 'bg-blue-200/80',
-    'alkali-metal': 'bg-red-200/80',
-    'alkaline-earth-metal': 'bg-orange-200/80',
-    'metalloid': 'bg-yellow-200/80',
-    'halogen': 'bg-purple-200/80',
-    'post-transition-metal': 'bg-indigo-200/80',
-    'transition-metal': 'bg-pink-200/80',
-    'lanthanide': 'bg-teal-200/80',
-    'actinide': 'bg-cyan-200/80',
-};
-
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
@@ -49,25 +37,23 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRow: element.gridRow,
         }}
     >
-        {/* Default content (visible) */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-0 transition-opacity">
-            <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600">
+        <div className="w-full h-full flex flex-col justify-center items-center">
+             <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600">
                 {element.number}
             </div>
-            <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
-        </div>
-        
-        {/* Hover content (hidden by default) */}
-        <div className={cn(
-            "absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center rounded-sm transition-opacity duration-300",
-            "p-2 text-[10px] leading-tight",
-            categoryBgColors[element.category] || 'bg-gray-200/80'
-            )}>
-             <div className="font-bold text-xs">{element.number}</div>
-             <div className="font-extrabold text-base my-0.5 truncate">{element.name}</div>
-             <div className="text-xs">
-                 {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
-             </div>
+
+            {/* Symbol - visible by default, hidden on hover */}
+            <div className="font-bold text-sm sm:text-lg group-hover:hidden">
+                {element.symbol}
+            </div>
+
+            {/* Name and Mass - hidden by default, visible on hover */}
+            <div className="hidden group-hover:flex group-hover:flex-col group-hover:items-center group-hover:justify-center">
+                 <div className="font-extrabold text-xs truncate">{element.name}</div>
+                 <div className="text-[10px] mt-0.5">
+                     {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
+                 </div>
+            </div>
         </div>
     </div>
 );
