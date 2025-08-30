@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 // The buttons are now objects with a 'display' for the UI and a 'value' for logic.
-// This is to implement the user's request of swapping the display of parentheses.
+// This implements the user's request of swapping the display of parentheses.
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  { display: '(', value: '(' }, 
-  { display: ')', value: ')' }, 
+  { display: '(', value: ')' }, 
+  { display: ')', value: '(' }, 
   '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
