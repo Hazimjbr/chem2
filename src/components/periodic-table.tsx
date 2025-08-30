@@ -37,7 +37,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
             gridRow: element.gridRow 
         }}
     >
-        <div className="absolute top-0.5 left-1 text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
+        <div className="text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
         <div className="font-bold text-sm sm:text-xl">{element.symbol}</div>
         <div className="hidden sm:block text-[0.6rem] sm:text-xs truncate">{element.name}</div>
         <div className="text-[0.6rem] sm:text-[10px] mt-1">
