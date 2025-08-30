@@ -33,8 +33,12 @@ export default function PeriodicTable() {
                 handleSearch={handleSearch}
             />
             {/* The container below now has permanent scrollbars */}
-            <div className="w-full h-[550px] overflow-scroll border rounded-lg bg-muted/30 p-4">
-                <p className="text-center text-muted-foreground">المحتوى هنا</p>
+            <div className="w-full h-[550px] overflow-scroll border rounded-lg bg-muted/30">
+                <iframe 
+                    src="https://www.canva.com/design/DAGxhAWkRWM/vg7x0bxtYDqcwQM2mFL5Og/view?embed"
+                    className="w-full h-full"
+                    allowFullScreen
+                ></iframe>
             </div>
         </div>
     )
