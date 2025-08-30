@@ -7,23 +7,27 @@ const buttons = [
   // Row 1
   { display: 'sin', value: 'sin' }, { display: 'cos', value: 'cos' }, { display: 'tan', value: 'tan' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' },
   // Row 2
-  { display: '^', value: '^' }, { display: '√', value: '√' }, { display: 'π', value: 'π' }, { display: 'e', value: 'e' }, { display: 'C', value: 'C' },
+  { display: '^', value: '^' }, { display: '√', value: '√' }, { display: '(', value: ')' }, { display: ')', value: '(' }, { display: 'C', value: 'C' },
   // Row 3
-  { display: '(', value: '(' }, { display: ')', value: ')' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '/', value: '/' },
+  { display: '/', value: '/' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '*', value: '*' },
   // Row 4
-  { display: '*', value: '*' }, { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '-', value: '-' },
+  { display: '-', value: '-' }, { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '+', value: '+' },
   // Row 5
-  { display: '+', value: '+' }, { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '=', value: '=' },
+  { display: '⌫', value: '⌫' }, { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '=', value: '=' },
   // Row 6
-  { display: '.', value: '.' }, { display: '0', value: '0' }, { display: '⌫', value: '⌫' },
+  { display: '.', value: '.' }, { display: '0', value: '0' },
 ];
 
 
 const landscapeButtons = [
-    { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' }, { display: 'sin', value: 'sin' }, { display: 'cos', value: 'cos' },
-    { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '*', value: '*' }, { display: '/', value: '/' }, { display: 'tan', value: 'tan' }, { display: '^', value: '^' },
-    { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '+', value: '+' }, { display: '-', value: '-' }, { display: '(', value: '(' }, { display: ')', value: ')' },
-    { display: '0', value: '0' }, { display: '.', value: '.' }, { display: '⌫', value: '⌫' }, { display: '=', value: '=' }, { display: 'C', value: 'C' },  { display: 'e', value: 'e' }, { display: '√', value: '√' },
+    // Row 1
+    { display: '9', value: '9' }, { display: '8', value: '8' }, { display: '7', value: '7' }, { display: '(', value: '(' }, { display: ')', value: ')' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' },
+    // Row 2
+    { display: '6', value: '6' }, { display: '5', value: '5' }, { display: '4', value: '4' }, { display: '*', value: '*' }, { display: '/', value: '/' }, { display: 'e', value: 'e' }, { display: 'tan', value: 'tan' },
+    // Row 3
+    { display: '3', value: '3' }, { display: '2', value: '2' }, { display: '1', value: '1' }, { display: '+', value: '+' }, { display: '-', value: '-' }, { display: '√', value: '√' }, { display: 'cos', value: 'cos' },
+    // Row 4
+    { display: '⌫', value: '⌫' }, { display: '0', value: '0' }, { display: '.', value: '.' }, { display: '=', value: '=' }, { display: '^', value: '^' }, { display: 'C', value: 'C' }, { display: 'sin', value: 'sin' },
 ];
 
 
@@ -94,7 +98,7 @@ export default function Calculator() {
   };
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-screen mobile-landscape:space-y-1">
+    <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-full mobile-landscape:space-y-1">
        <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-start mobile-landscape:h-16 mobile-landscape:text-2xl mobile-landscape:mb-1">
         {display}
       </div>
@@ -103,15 +107,31 @@ export default function Calculator() {
           const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
           const isEqual = btn.value === '=';
           const isClear = btn.value === 'C';
+           const isBackspace = btn.value === '⌫';
           
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
           let className = `text-lg h-14`;
 
           if (isOperator) variant = 'default';
-          if (isClear || btn.value === '⌫') variant = 'destructive';
+          if (isClear || isBackspace) variant = 'destructive';
           if (isEqual) {
               variant = 'default';
               className += ' col-span-2';
+          }
+           if (isBackspace) {
+              className += ' col-start-1';
+          }
+           if (btn.value === '.') {
+              className += ' col-start-3';
+          }
+          if (btn.value === '0') {
+               className += ' col-span-2 col-start-1';
+          }
+          if (btn.value === '.') {
+               className += ' col-start-3';
+          }
+           if (btn.value === '⌫') {
+               className += ' col-start-1';
           }
 
           return (
@@ -129,7 +149,7 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-       <div className="hidden mobile-landscape:grid flex-1 gap-x-1 gap-y-0.5 grid-cols-7">
+       <div className="hidden mobile-landscape:grid flex-1 gap-x-1 gap-y-[2px] grid-cols-7">
             {landscapeButtons.map((btn) => {
                  const isOperator = ['/', '*', '-', '+', '^', '='].includes(btn.value);
                  const isClear = ['C', '⌫'].includes(btn.value);
