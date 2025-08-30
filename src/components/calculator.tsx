@@ -96,7 +96,7 @@ export default function Calculator() {
 
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-4 mobile-landscape:max-w-2xl">
+    <div className="w-full max-w-sm mx-auto space-y-4 mobile-landscape:max-w-[28rem]">
       <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
         {display}
       </div>
