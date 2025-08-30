@@ -1,16 +1,20 @@
+
 'use client';
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
+// The buttons are now objects with a 'display' for the UI and a 'value' for logic.
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  ')', '(',  '7', '8', '9',
+  { display: '(', value: ')' }, // Display '(', but its value is ')'
+  { display: ')', value: '(' }, // Display ')', but its value is '('
+  '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
   '.', '0', '⌫', '=',
-];
+].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
 
 // A safer evaluation function
 const safeEval = (expr: string): number => {
@@ -45,15 +49,15 @@ const safeEval = (expr: string): number => {
 export default function Calculator() {
   const [display, setDisplay] = useState('0');
 
-  const handleButtonClick = (btn: string) => {
-    if (display.length > 24 && !['C', '=', '⌫'].includes(btn)) return;
+  const handleButtonClick = (btnValue: string) => {
+    if (display.length > 24 && !['C', '=', '⌫'].includes(btnValue)) return;
 
     if (display === 'Error') {
         setDisplay('0');
         return; // Exit after resetting from error
     }
 
-    switch (btn) {
+    switch (btnValue) {
       case 'C':
         setDisplay('0');
         break;
@@ -79,11 +83,11 @@ export default function Calculator() {
       case 'log':
       case 'ln':
       case '√':
-         setDisplay(prev => (prev === '0' ? btn + '(' : prev + btn + '('));
+         setDisplay(prev => (prev === '0' ? btnValue + '(' : prev + btnValue + '('));
          break;
 
       default: // For numbers, operators, and parenthesis
-        setDisplay(prev => (prev === '0' && btn !== '.') ? btn : prev + btn);
+        setDisplay(prev => (prev === '0' && btnValue !== '.') ? btnValue : prev + btnValue);
         break;
     }
   };
@@ -96,26 +100,26 @@ export default function Calculator() {
       </div>
       <div className="grid grid-cols-5 gap-2">
         {buttons.map((btn) => {
-          const isOperator = ['/', '*', '-', '+', '^'].includes(btn);
-          const isEqual = btn === '=';
-          const isClear = btn === 'C';
+          const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
+          const isEqual = btn.value === '=';
+          const isClear = btn.value === 'C';
           
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
           let className = `text-lg h-14 ${isEqual ? 'col-span-2' : ''}`;
 
           if (isOperator) variant = 'default';
-          if (isClear || btn === '⌫') variant = 'destructive';
+          if (isClear || btn.value === '⌫') variant = 'destructive';
           if (isEqual) variant = 'default';
 
           return (
             <Button
-              key={btn}
+              key={btn.display}
               variant={variant}
               className={className}
               size="lg"
-              onClick={() => handleButtonClick(btn)}
+              onClick={() => handleButtonClick(btn.value)}
             >
-              {btn}
+              {btn.display}
             </Button>
           );
         })}
