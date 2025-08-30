@@ -5,26 +5,26 @@ import { useState } from "react";
 
 const buttons = [
   // Row 1
-  'sin', 'cos', 'tan', 'log', 'ln',
+  { display: 'sin', value: 'sin' }, { display: 'cos', value: 'cos' }, { display: 'tan', value: 'tan' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' },
   // Row 2
-  '^', '√', 'π', 'e', 'C',
+  { display: '^', value: '^' }, { display: '√', value: '√' }, { display: 'π', value: 'π' }, { display: 'e', value: 'e' }, { display: 'C', value: 'C' },
   // Row 3
-  '(', ')', '7', '8', '9', '/',
+  { display: '(', value: ')' }, { display: ')', value: '(' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '/', value: '/' },
   // Row 4
-  '*', '4', '5', '6', '-',
+  { display: '*', value: '*' }, { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '-', value: '-' },
   // Row 5
-  '+', '1', '2', '3', '=',
+  { display: '+', value: '+' }, { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '=', value: '=' },
   // Row 6
-  '.', '0', '⌫',
-].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
+  { display: '.', value: '.' }, { display: '0', value: '0' }, { display: '⌫', value: '⌫' },
+];
 
 
 const landscapeButtons = [
-  'sin', 'cos', 'tan', 'log', 'ln', '(', ')',
-  'e', '^', '7', '8', '9', '/', 'C',
-  '√', '4', '5', '6', '*', '⌫',
-  '1', '2', '3', '-', '=',
-  '0', '.',
+  { display: 'sin', value: 'sin' }, { display: 'cos', value: 'cos' }, { display: 'tan', value: 'tan' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' }, { display: '(', value: '(' }, { display: ')', value: ')' },
+  { display: 'e', value: 'e' }, { display: '^', value: '^' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '/', value: '/' }, { display: 'C', value: 'C' },
+  { display: '√', value: '√' }, { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '*', value: '*' }, { display: '⌫', value: '⌫' },
+  { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '-', value: '-' }, { display: '=', value: '=' },
+  { display: '0', value: '0' }, { display: '.', value: '.' },
 ].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
 
 
