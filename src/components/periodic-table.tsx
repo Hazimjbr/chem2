@@ -24,9 +24,12 @@ export default function PeriodicTable() {
     };
 
     return (
-        // تم تفريغ هذه الحاوية استعدادًا للبناء الجديد
         <div className="w-full flex flex-col h-[85vh] space-y-4">
-            
+            <ElementSearch searchTerm={searchTerm} foundElement={foundElement} handleSearch={handleSearch} />
+            {/* The scrollable container */}
+            <div className="flex-1 overflow-scroll border rounded-lg">
+                 <PeriodicTableGrid foundElement={foundElement} />
+            </div>
         </div>
     )
 }
