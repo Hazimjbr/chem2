@@ -7,15 +7,15 @@ const buttons = [
   // Row 1
   { display: 'sin', value: 'sin' }, { display: 'cos', value: 'cos' }, { display: 'tan', value: 'tan' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' },
   // Row 2
-  { display: '^', value: '^' }, { display: '√', value: '√' }, { display: '(', value: '(' }, { display: ')', value: ')' }, { display: 'C', value: 'C' },
+  { display: 'C', value: 'C' }, { display: 'e', value: 'e' }, { display: 'π', value: 'π' }, { display: '√', value: '√' }, { display: '^', value: '^' },
   // Row 3
-  { display: '/', value: '/' }, { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '*', value: '*' },
+  { display: '7', value: '7' }, { display: '8', value: '8' }, { display: '9', value: '9' }, { display: '(', value: '(' }, { display: ')', value: ')' },
   // Row 4
-  { display: '-', value: '-' }, { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '+', value: '+' },
+  { display: '4', value: '4' }, { display: '5', value: '5' }, { display: '6', value: '6' }, { display: '*', value: '*' }, { display: '/', value: '/' },
   // Row 5
-  { display: '⌫', value: '⌫' }, { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '=', value: '=' },
+  { display: '1', value: '1' }, { display: '2', value: '2' }, { display: '3', value: '3' }, { display: '+', value: '+' }, { display: '-', value: '-' },
   // Row 6
-  { display: '.', value: '.' }, { display: '0', value: '0' },
+  { display: '⌫', value: '⌫' }, { display: '0', value: '0' }, { display: '.', value: '.' }, { display: '=', value: '=' },
 ];
 
 
@@ -112,26 +112,14 @@ export default function Calculator() {
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
           let className = `text-lg h-14`;
 
-          if (isOperator) variant = 'default';
-          if (isClear || isBackspace) variant = 'destructive';
+          if (isOperator || ['^', '√'].includes(btn.value)) variant = 'default';
+          if (isClear) variant = 'destructive';
+           if (isBackspace) {
+              variant = 'destructive';
+          }
           if (isEqual) {
               variant = 'default';
               className += ' col-span-2';
-          }
-           if (isBackspace) {
-              className += ' col-start-1';
-          }
-           if (btn.value === '.') {
-              className += ' col-start-3';
-          }
-          if (btn.value === '0') {
-               className += ' col-span-2 col-start-1';
-          }
-          if (btn.value === '.') {
-               className += ' col-start-3';
-          }
-           if (btn.value === '⌫') {
-               className += ' col-start-1';
           }
 
           return (
@@ -175,5 +163,3 @@ export default function Calculator() {
     </div>
   );
 }
-
-    
