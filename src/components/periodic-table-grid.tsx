@@ -1,4 +1,3 @@
-
 'use client';
 
 import { cn } from "@/lib/utils.tsx";
@@ -53,7 +52,7 @@ interface PeriodicTableGridProps {
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
         <div className="w-full rounded-lg border bg-muted/30 p-1" dir="ltr">
-            <div className="relative overflow-auto">
+            <div className="relative">
                 <div 
                     className="relative grid gap-1 min-w-[700px]"
                     style={{
