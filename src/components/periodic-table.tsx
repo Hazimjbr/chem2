@@ -31,7 +31,8 @@ export default function PeriodicTable() {
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
-            <PeriodicTableContainer>
+            {/* This is the container that will handle scrolling */}
+            <PeriodicTableContainer className="h-[75vh] overflow-auto">
                 <PeriodicTableGrid foundElement={foundElement} />
             </PeriodicTableContainer>
         </div>
