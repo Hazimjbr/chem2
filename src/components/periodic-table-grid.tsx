@@ -25,7 +25,7 @@ const categoryColors: Record<string, string> = {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center cursor-pointer",
+            "group relative p-1 rounded border-2 shadow-sm h-14 flex flex-col justify-center items-center text-center cursor-pointer",
             "transition-all duration-300 ease-in-out",
             "hover:scale-150 hover:-translate-y-4 hover:z-10 hover:shadow-2xl",
             categoryColors[element.category] || 'bg-gray-200',
@@ -33,20 +33,22 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         )}
         style={{ 
             gridColumn: element.gridColumn, 
-            gridRow: element.gridRow,
-            transformStyle: 'preserve-3d'
+            gridRow: element.gridRow
         }}
     >
-        <div className="w-full h-full flex flex-col justify-center items-center">
-            <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600">
+        <div className="flex flex-col justify-center items-center w-full h-full">
+            {/* Always visible number */}
+            <div className="absolute top-0.5 right-1 text-[0.6rem] font-bold text-gray-600/80">
                 {element.number}
             </div>
-
-            <div className="font-bold text-sm sm:text-lg group-hover:hidden">
-                {element.symbol}
+            
+            {/* Default view */}
+            <div className="group-hover:hidden transition-opacity duration-300">
+                <div className="font-bold text-lg">{element.symbol}</div>
             </div>
 
-            <div className="hidden group-hover:flex group-hover:flex-col group-hover:items-center group-hover:justify-center">
+            {/* Hover view */}
+            <div className="hidden group-hover:flex flex-col items-center justify-center transition-opacity duration-300">
                  <div className="font-extrabold text-xs truncate">{element.name}</div>
                  <div className="text-[10px] mt-0.5">
                      {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
@@ -55,6 +57,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         </div>
     </div>
 );
+
 
 interface PeriodicTableGridProps {
     foundElement: Element | null;
@@ -67,10 +70,9 @@ export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridPro
             dir="ltr"
         >
             <div 
-                className="relative grid gap-1 w-full min-w-[700px] py-4"
+                className="relative grid gap-1 py-4"
                 style={{
-                    gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
-                    transformStyle: 'preserve-3d'
+                    gridTemplateColumns: 'repeat(18, 48px)', // Use fixed width
                 }}
             >
                 {elements.map(el => (
