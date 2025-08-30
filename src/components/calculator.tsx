@@ -6,8 +6,8 @@ import { useState } from "react";
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  { display: '(', value: ')' },
   { display: ')', value: '(' },
+  { display: '(', value: ')' },
   '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
@@ -116,14 +116,14 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-      <div className="hidden mobile-landscape:flex flex-1 gap-1">
-          <div className="grid grid-cols-5 gap-1 w-[60%]">
+       <div className="hidden mobile-landscape:flex flex-1 gap-1">
+          <div className="grid grid-cols-5 gap-1 w-[60%] h-full">
               {buttons.slice(0, 12).map(btn => (
                   <Button key={btn.display} variant="secondary" className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
                       {btn.display}
                   </Button>
               ))}
-              {buttons.slice(25, 29).map((btn) => { // . 0 ⌫ =
+              {buttons.slice(25, 29).map((btn) => { 
                   const isClear = btn.value === '⌫';
                   const isEqual = btn.value === '=';
                    return(
@@ -138,8 +138,8 @@ export default function Calculator() {
                    )
               })}
           </div>
-          <div className="grid grid-cols-4 gap-1 w-[40%]">
-              {buttons.slice(12, 25).map((btn) => { // Numbers and main operators
+          <div className="grid grid-cols-4 gap-1 w-[40%] h-full">
+              {buttons.slice(12, 25).map((btn) => {
                   const isOperator = ['/', '*', '-', '+'].includes(btn.value);
                    return(
                       <Button key={btn.display} variant={isOperator ? 'default' : 'secondary'} className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
