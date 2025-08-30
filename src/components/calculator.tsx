@@ -21,7 +21,7 @@ const buttons = [
 
 const landscapeButtons = [
     // Row 1
-    { display: '9', value: '9' }, { display: '8', value: '8' }, { display: '7', value: '7' }, { display: '(', value: '(' }, { display: ')', value: ')' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' },
+    { display: '9', value: '9' }, { display: '8', value: '8' }, { display: '7', value: '7' }, { display: '(', value: ')' }, { display: ')', value: '(' }, { display: 'log', value: 'log' }, { display: 'ln', value: 'ln' },
     // Row 2
     { display: '6', value: '6' }, { display: '5', value: '5' }, { display: '4', value: '4' }, { display: '*', value: '*' }, { display: '/', value: '/' }, { display: 'e', value: 'e' }, { display: 'tan', value: 'tan' },
     // Row 3
@@ -175,3 +175,5 @@ export default function Calculator() {
     </div>
   );
 }
+
+    
