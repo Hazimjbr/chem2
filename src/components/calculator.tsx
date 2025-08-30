@@ -130,7 +130,7 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-       <div className="hidden mobile-landscape:grid flex-1 gap-[3px] grid-cols-7">
+       <div className="hidden mobile-landscape:grid flex-1 gap-x-[3px] gap-y-[1px] grid-cols-7">
             {landscapeButtons.map((btn) => {
                  const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
                  const isClear = ['C', '⌫'].includes(btn.value);
