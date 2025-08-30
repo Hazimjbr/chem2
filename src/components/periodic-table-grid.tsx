@@ -35,6 +35,7 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         style={{ 
             gridColumn: element.gridColumn, 
             gridRow: element.gridRow,
+            transformStyle: 'preserve-3d'
         }}
     >
         <div className="w-full h-full flex flex-col justify-center items-center">
@@ -69,9 +70,10 @@ export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridPro
             dir="ltr"
         >
             <div 
-                className="relative grid gap-1 min-w-[700px] py-4"
+                className="relative grid gap-1 w-[90vw] min-w-[700px] py-4"
                 style={{
                     gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
+                    transformStyle: 'preserve-3d'
                 }}
             >
                 {elements.map(el => (
