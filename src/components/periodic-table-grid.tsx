@@ -26,10 +26,11 @@ const categoryColors: Record<string, string> = {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "relative p-1 rounded border-2 shadow-sm h-16 sm:h-20 flex flex-col justify-center items-center text-center",
+            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center",
+            "transition-transform duration-300 ease-in-out", // Added for smooth transition
+            "hover:scale-200 hover:z-10", // Scale up on hover
             categoryColors[element.category] || 'bg-gray-200/50 border-gray-400',
-            isHighlighted && "ring-2 ring-offset-2 ring-primary scale-110 z-10",
-            "transition-transform duration-200"
+            isHighlighted && "ring-2 ring-offset-2 ring-primary z-10"
         )}
         style={{ 
             gridColumn: element.gridColumn, 
@@ -37,9 +38,9 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         <div className="text-[0.6rem] sm:text-xs font-bold">{element.number}</div>
-        <div className="font-bold text-sm sm:text-xl">{element.symbol}</div>
-        <div className="hidden sm:block text-[0.6rem] sm:text-xs truncate">{element.name}</div>
-        <div className="text-[0.6rem] sm:text-[10px] mt-1">
+        <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
+        <div className="hidden group-hover:block text-[0.6rem] sm:text-[10px] truncate">{element.name}</div>
+        <div className="hidden group-hover:block text-[0.6rem] sm:text-[10px] mt-1">
              {typeof element.atomic_mass === 'number' ? element.atomic_mass.toFixed(1) : element.atomic_mass}
         </div>
     </div>
