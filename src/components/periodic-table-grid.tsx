@@ -62,20 +62,17 @@ interface PeriodicTableGridProps {
 
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
-        <div 
-            className="w-full rounded-lg border bg-muted/30 p-1" 
-        >
-            <div className="overflow-auto flex justify-center">
-                <div 
-                    className="relative grid gap-1 py-4"
-                    style={{
-                        gridTemplateColumns: 'repeat(18, 48px)',
-                    }}
-                >
-                    {elements.map(el => (
-                        <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
-                    ))}
-                </div>
+        <div className="w-full overflow-auto rounded-lg border bg-muted/30 p-1">
+            <div 
+                className="relative grid gap-1 py-4"
+                style={{
+                    gridTemplateColumns: 'repeat(18, minmax(48px, 1fr))',
+                    minWidth: '700px',
+                }}
+            >
+                {elements.map(el => (
+                    <ElementCell key={el.number} element={el} isHighlighted={foundElement?.number === el.number} />
+                ))}
             </div>
         </div>
     );
