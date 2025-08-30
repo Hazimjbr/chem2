@@ -5,16 +5,18 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 // The buttons are now objects with a 'display' for the UI and a 'value' for logic.
+// This is to implement the user's request of swapping the display of parentheses.
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  { display: '(', value: ')' }, // Display '(', but its value is ')'
-  { display: ')', value: '(' }, // Display ')', but its value is '('
+  { display: '(', value: ')' }, 
+  { display: ')', value: '(' }, 
   '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
   '.', '0', '⌫', '=',
 ].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
+
 
 // A safer evaluation function
 const safeEval = (expr: string): number => {
@@ -27,7 +29,7 @@ const safeEval = (expr: string): number => {
         .replace(/π/g, 'Math.PI')
         .replace(/e/g, 'Math.E')
         .replace(/sin\(/g, 'Math.sin(Math.PI/180 * ')
-        .replace(/cos\(/g, 'Math.cos(Math.PI/180 * ')
+        .replace(/cos\(/g, 'Math.cos(MathPI/180 * ')
         .replace(/tan\(/g, 'Math.tan(Math.PI/180 * ')
         .replace(/log/g, 'Math.log10')
         .replace(/ln/g, 'Math.log');
@@ -94,16 +96,17 @@ export default function Calculator() {
 
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-4">
+    <div className="w-full max-w-sm mx-auto space-y-4 landscape:max-w-xl">
       <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
         {display}
       </div>
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-5 landscape:grid-cols-10 gap-2">
         {buttons.map((btn) => {
           const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
           const isEqual = btn.value === '=';
           const isClear = btn.value === 'C';
           
+          // Default classes for portrait mode
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
           let className = `text-lg h-14 ${isEqual ? 'col-span-2' : ''}`;
 
@@ -115,7 +118,7 @@ export default function Calculator() {
             <Button
               key={btn.display}
               variant={variant}
-              className={className}
+              className={`${className} landscape:h-12`} // Reduce height in landscape
               size="lg"
               onClick={() => handleButtonClick(btn.value)}
             >
