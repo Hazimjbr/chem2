@@ -26,8 +26,10 @@ export default function PeriodicTable() {
     return (
         <div className="w-full flex flex-col h-[85vh] space-y-4">
             <ElementSearch searchTerm={searchTerm} foundElement={foundElement} handleSearch={handleSearch} />
-            <div className="flex-1 overflow-auto min-w-0">
-                <PeriodicTableGrid foundElement={foundElement} />
+            <div className="flex-1 relative">
+                <div className="absolute inset-0 overflow-auto">
+                     <PeriodicTableGrid foundElement={foundElement} />
+                </div>
             </div>
         </div>
     )
