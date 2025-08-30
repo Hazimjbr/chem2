@@ -21,13 +21,13 @@ const buttons = [
 
 
 const landscapeButtons = [
-  'sin', 'cos', 'tan', 'log', 'ln',
-  '^', '√', 'π', 'e', { display: '(', value: ')' },
-  '7', '8', '9', '/', 'C',
-  '4', '5', '6', '*', '⌫',
+  'sin', 'cos', 'tan', 'log', 'ln', '(', ')',
+  'e', '^', '7', '8', '9', '/', 'C',
+  '√', '4', '5', '6', '*', '⌫',
   '1', '2', '3', '-', '=',
-  '0', '.',
-].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : { display: btn.value, value: btn.display }));
+  '0', '.', 
+].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
+
 
 const safeEval = (expr: string): number => {
     const safeExpr = expr
