@@ -25,16 +25,16 @@ export default function PeriodicTable() {
     };
 
     return (
-        <div className="w-full space-y-4">
+        <div className="w-full flex flex-col h-[85vh] space-y-4">
              <ElementSearch 
                 searchTerm={searchTerm} 
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
             {/* This is the container that will handle scrolling */}
-            <PeriodicTableContainer className="h-[75vh] overflow-auto">
+            <div className="flex-grow overflow-auto border rounded-lg">
                 <PeriodicTableGrid foundElement={foundElement} />
-            </PeriodicTableContainer>
+            </div>
         </div>
     )
 }
