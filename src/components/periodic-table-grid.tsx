@@ -66,7 +66,7 @@ interface PeriodicTableGridProps {
 export default function PeriodicTableGrid({ foundElement }: PeriodicTableGridProps) {
     return (
         <div 
-            className="w-full rounded-lg border bg-muted/30 p-1" 
+            className="w-full rounded-lg border bg-muted/30 p-1 overflow-auto" 
             dir="ltr"
         >
             <div 
