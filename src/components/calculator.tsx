@@ -29,7 +29,7 @@ const safeEval = (expr: string): number => {
         .replace(/π/g, 'Math.PI')
         .replace(/e/g, 'Math.E')
         .replace(/sin\(/g, 'Math.sin(Math.PI/180 * ')
-        .replace(/cos\(/g, 'Math.cos(MathPI/180 * ')
+        .replace(/cos\(/g, 'Math.cos(Math.PI/180 * ')
         .replace(/tan\(/g, 'Math.tan(Math.PI/180 * ')
         .replace(/log/g, 'Math.log10')
         .replace(/ln/g, 'Math.log');
@@ -96,7 +96,7 @@ export default function Calculator() {
 
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-4 landscape:max-w-xl">
+    <div className="w-full max-w-sm mx-auto space-y-4 landscape:max-w-2xl">
       <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
         {display}
       </div>
@@ -106,19 +106,21 @@ export default function Calculator() {
           const isEqual = btn.value === '=';
           const isClear = btn.value === 'C';
           
-          // Default classes for portrait mode
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
-          let className = `text-lg h-14 ${isEqual ? 'col-span-2' : ''}`;
+          let className = `text-lg h-14`;
 
           if (isOperator) variant = 'default';
           if (isClear || btn.value === '⌫') variant = 'destructive';
-          if (isEqual) variant = 'default';
+          if (isEqual) {
+              variant = 'default';
+              className += ' col-span-2 landscape:col-span-2';
+          }
 
           return (
             <Button
               key={btn.display}
               variant={variant}
-              className={`${className} landscape:h-12`} // Reduce height in landscape
+              className={`${className} landscape:h-12`}
               size="lg"
               onClick={() => handleButtonClick(btn.value)}
             >
