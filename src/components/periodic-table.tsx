@@ -30,6 +30,7 @@ export default function PeriodicTable() {
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
+            {/* This is the key fix: An outer container that controls scrolling */}
             <div className="w-full overflow-x-auto rounded-lg border bg-muted/30">
                 <PeriodicTableGrid foundElement={foundElement} />
             </div>
