@@ -82,7 +82,7 @@ export default function Calculator() {
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-screen">
-      <div dir="ltr" className="bg-muted text-right text-3xl font-mono p-4 rounded-lg break-all flex-grow-0 flex items-end justify-end mobile-landscape:h-16 mobile-landscape:text-2xl mobile-landscape:mb-2">
+      <div dir="ltr" className="bg-muted text-right text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-end mobile-landscape:h-20 mobile-landscape:text-2xl mobile-landscape:mb-2">
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2 mobile-landscape:hidden">
@@ -116,23 +116,33 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-      <div className="hidden mobile-landscape:flex flex-1 gap-2">
-          <div className="grid grid-cols-5 gap-1 w-3/5">
+      <div className="hidden mobile-landscape:flex flex-1 gap-1">
+          <div className="grid grid-cols-5 gap-1 w-[60%]">
               {buttons.slice(0, 12).map(btn => (
                   <Button key={btn.display} variant="secondary" className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
                       {btn.display}
                   </Button>
               ))}
-          </div>
-          <div className="grid grid-cols-4 gap-1 w-2/5">
-              {buttons.slice(12, 28).map((btn) => {
-                  const isOperator = ['/', '*', '-', '+'].includes(btn.value);
+              {buttons.slice(25, 29).map((btn) => { // . 0 ⌫ =
+                  const isClear = btn.value === '⌫';
                   const isEqual = btn.value === '=';
-                  let variant: 'default' | 'secondary' = 'secondary';
-                  if (isOperator) variant = 'default';
-
                    return(
-                      <Button key={btn.display} variant={variant} className={`h-full text-base ${isEqual ? 'col-span-2' : ''}`} onClick={() => handleButtonClick(btn.value)}>
+                      <Button 
+                        key={btn.display} 
+                        variant={isClear ? 'destructive' : isEqual ? 'default' : 'secondary'} 
+                        className={`h-full text-base ${isEqual ? 'col-span-2' : ''}`} 
+                        onClick={() => handleButtonClick(btn.value)}
+                      >
+                          {btn.display}
+                      </Button>
+                   )
+              })}
+          </div>
+          <div className="grid grid-cols-4 gap-1 w-[40%]">
+              {buttons.slice(12, 25).map((btn) => { // Numbers and main operators
+                  const isOperator = ['/', '*', '-', '+'].includes(btn.value);
+                   return(
+                      <Button key={btn.display} variant={isOperator ? 'default' : 'secondary'} className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
                           {btn.display}
                       </Button>
                    )
