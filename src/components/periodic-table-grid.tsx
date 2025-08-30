@@ -38,7 +38,7 @@ const categoryBgColors: Record<string, string> = {
 const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
     <div
         className={cn(
-            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-start items-center text-center cursor-pointer",
+            "group relative p-1 rounded border-2 shadow-sm h-11 sm:h-14 flex flex-col justify-center items-center text-center cursor-pointer",
             "transition-all duration-300 ease-in-out",
             "hover:scale-150 hover:-translate-y-4 hover:z-10 hover:shadow-2xl",
             categoryColors[element.category] || 'bg-gray-200',
@@ -50,10 +50,12 @@ const ElementCell = ({ element, isHighlighted }: ElementCellProps) => (
         }}
     >
         {/* Default content (visible) */}
-        <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600 group-hover:opacity-0 transition-opacity">
-            {element.number}
+        <div className="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-0 transition-opacity">
+            <div className="text-[0.6rem] sm:text-xs font-bold text-gray-600">
+                {element.number}
+            </div>
+            <div className="font-bold text-sm sm:text-lg">{element.symbol}</div>
         </div>
-        <div className="font-bold text-sm sm:text-lg group-hover:opacity-0 transition-opacity">{element.symbol}</div>
         
         {/* Hover content (hidden by default) */}
         <div className={cn(
