@@ -4,13 +4,28 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const buttons = [
+  // Row 1
   'sin', 'cos', 'tan', 'log', 'ln',
+  // Row 2
   '^', '√', 'π', 'e', 'C',
+  // Row 3
   { display: ')', value: '(' },
-  { display: '(', value: ')' }, '7', '8', '9',
-  '/', '*', '4', '5', '6',
-  '+', '-', '1', '2', '3',
-  '.', '0', '⌫', '=',
+  { display: '(', value: ')' }, '7', '8', '9', '/',
+  // Row 4
+  '*', '4', '5', '6', '-',
+  // Row 5
+  '+', '1', '2', '3', '=',
+  // Row 6
+  '.', '0', '⌫',
+].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : { display: btn.value, value: btn.display }));
+
+
+const landscapeButtons = [
+  'sin', 'cos', 'tan', 'log', 'ln', '^', 'C',
+  '√', 'π', 'e', { display: ')', value: '(' }, { display: '(', value: ')' }, '⌫', '/',
+  '7', '8', '9', '4', '5', '6', '*',
+  '1', '2', '3', '0', '.', '=', '-',
+  '+'
 ].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : { display: btn.value, value: btn.display }));
 
 const safeEval = (expr: string): number => {
@@ -81,7 +96,7 @@ export default function Calculator() {
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-screen">
-      <div dir="ltr" className="bg-muted text-right text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-end mobile-landscape:h-16 mobile-landscape:text-2xl mobile-landscape:mb-2">
+       <div dir="ltr" className="bg-muted text-right text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-end mobile-landscape:h-16 mobile-landscape:text-2xl mobile-landscape:mb-2">
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2 mobile-landscape:hidden">
@@ -115,42 +130,34 @@ export default function Calculator() {
       </div>
       
       {/* Landscape layout */}
-       <div className="hidden mobile-landscape:flex flex-1 gap-1">
-          {/* Scientific buttons */}
-          <div className="grid grid-cols-2 gap-1 w-2/5 h-full">
-              {buttons.slice(0, 10).map(btn => (
-                  <Button key={btn.display} variant="secondary" className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
-                      {btn.display}
-                  </Button>
-              ))}
-          </div>
-          {/* Main buttons */}
-          <div className="grid grid-cols-4 gap-1 w-3/5 h-full">
-              {buttons.slice(10, 26).map((btn) => { // Get all numbers and operators
-                  const isOperator = ['/', '*', '-', '+'].includes(btn.value);
-                   return(
-                      <Button key={btn.display} variant={isOperator ? 'default' : 'secondary'} className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
-                          {btn.display}
-                      </Button>
-                   )
-              })}
-               {buttons.slice(26, 29).map((btn) => { // Get last row: '.', '0', '⌫', '='
-                  const isClear = btn.value === '⌫';
-                  const isEqual = btn.value === '=';
-                   return(
+      <div className="hidden mobile-landscape:grid flex-1 gap-1 grid-cols-7">
+            {landscapeButtons.map((btn) => {
+                 const isOperator = ['/', '*', '-', '+', '^'].includes(btn.value);
+                 const isClear = ['C', '⌫'].includes(btn.value);
+                 const isEqual = btn.value === '=';
+
+                 let variant: 'default' | 'secondary' | 'destructive' = 'secondary';
+                 if (isOperator) variant = 'default';
+                 if (isClear) variant = 'destructive';
+                 if (isEqual) variant = 'default';
+
+                 let className = 'h-full text-base';
+                 if (isEqual || btn.value === '+') {
+                     className += ' row-span-2';
+                 }
+
+                 return(
                       <Button 
                         key={btn.display} 
-                        variant={isClear ? 'destructive' : isEqual ? 'default' : 'secondary'} 
-                        className={`h-full text-base ${isEqual ? 'col-span-2' : ''}`} 
+                        variant={variant}
+                        className={className}
                         onClick={() => handleButtonClick(btn.value)}
                       >
                           {btn.display}
                       </Button>
                    )
-              })}
-          </div>
-      </div>
-
+            })}
+        </div>
     </div>
   );
 }
