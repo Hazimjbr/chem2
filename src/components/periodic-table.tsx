@@ -30,7 +30,10 @@ export default function PeriodicTable() {
                 foundElement={foundElement}
                 handleSearch={handleSearch}
             />
-            <PeriodicTableGrid foundElement={foundElement} />
+            {/* This is the new scrolling container */}
+            <div className="overflow-x-auto border rounded-lg">
+                <PeriodicTableGrid foundElement={foundElement} />
+            </div>
         </div>
     )
 }
