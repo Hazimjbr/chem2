@@ -7,12 +7,11 @@ const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
   { display: ')', value: '(' },
-  { display: '(', value: ')' },
-  '7', '8', '9',
-  '*', '/', '4', '5', '6',
+  { display: '(', value: ')' }, '7', '8', '9',
+  '/', '*', '4', '5', '6',
   '+', '-', '1', '2', '3',
   '.', '0', '⌫', '=',
-].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
+].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : { display: btn.value, value: btn.display }));
 
 const safeEval = (expr: string): number => {
     const safeExpr = expr
@@ -82,7 +81,7 @@ export default function Calculator() {
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-screen">
-      <div dir="ltr" className="bg-muted text-right text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-end mobile-landscape:h-20 mobile-landscape:text-2xl mobile-landscape:mb-2">
+      <div dir="ltr" className="bg-muted text-right text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-end mobile-landscape:h-16 mobile-landscape:text-2xl mobile-landscape:mb-2">
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2 mobile-landscape:hidden">
@@ -117,13 +116,25 @@ export default function Calculator() {
       
       {/* Landscape layout */}
        <div className="hidden mobile-landscape:flex flex-1 gap-1">
-          <div className="grid grid-cols-5 gap-1 w-[60%] h-full">
-              {buttons.slice(0, 12).map(btn => (
+          {/* Scientific buttons */}
+          <div className="grid grid-cols-2 gap-1 w-2/5 h-full">
+              {buttons.slice(0, 10).map(btn => (
                   <Button key={btn.display} variant="secondary" className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
                       {btn.display}
                   </Button>
               ))}
-              {buttons.slice(25, 29).map((btn) => { 
+          </div>
+          {/* Main buttons */}
+          <div className="grid grid-cols-4 gap-1 w-3/5 h-full">
+              {buttons.slice(10, 26).map((btn) => { // Get all numbers and operators
+                  const isOperator = ['/', '*', '-', '+'].includes(btn.value);
+                   return(
+                      <Button key={btn.display} variant={isOperator ? 'default' : 'secondary'} className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
+                          {btn.display}
+                      </Button>
+                   )
+              })}
+               {buttons.slice(26, 29).map((btn) => { // Get last row: '.', '0', '⌫', '='
                   const isClear = btn.value === '⌫';
                   const isEqual = btn.value === '=';
                    return(
@@ -133,16 +144,6 @@ export default function Calculator() {
                         className={`h-full text-base ${isEqual ? 'col-span-2' : ''}`} 
                         onClick={() => handleButtonClick(btn.value)}
                       >
-                          {btn.display}
-                      </Button>
-                   )
-              })}
-          </div>
-          <div className="grid grid-cols-4 gap-1 w-[40%] h-full">
-              {buttons.slice(12, 25).map((btn) => {
-                  const isOperator = ['/', '*', '-', '+'].includes(btn.value);
-                   return(
-                      <Button key={btn.display} variant={isOperator ? 'default' : 'secondary'} className="h-full text-base" onClick={() => handleButtonClick(btn.value)}>
                           {btn.display}
                       </Button>
                    )
