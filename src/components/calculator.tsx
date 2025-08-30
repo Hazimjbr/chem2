@@ -9,15 +9,14 @@ const buttons = [
   // Row 2
   '^', '√', 'π', 'e', 'C',
   // Row 3
-  { display: ')', value: '(' },
-  { display: '(', value: ')' }, '7', '8', '9', '/',
+  '(', ')', '7', '8', '9', '/',
   // Row 4
   '*', '4', '5', '6', '-',
   // Row 5
   '+', '1', '2', '3', '=',
   // Row 6
   '.', '0', '⌫',
-].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : { display: btn.value, value: btn.display }));
+].map(btn => (typeof btn === 'string' ? { display: btn, value: btn } : btn));
 
 
 const landscapeButtons = [
@@ -142,7 +141,7 @@ export default function Calculator() {
                  if (isClear) variant = 'destructive';
                  if (isEqual) variant = 'default';
 
-                 let className = 'h-[calc(100%-5px)] text-base';
+                 let className = 'h-10 text-base';
                  if (isEqual) {
                      className += ' row-span-2';
                  }
