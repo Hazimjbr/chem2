@@ -9,8 +9,8 @@ import { useState } from "react";
 const buttons = [
   'sin', 'cos', 'tan', 'log', 'ln',
   '^', '√', 'π', 'e', 'C',
-  { display: '(', value: ')' }, 
-  { display: ')', value: '(' }, 
+  { display: '(', value: '(' }, 
+  { display: ')', value: ')' }, 
   '7', '8', '9',
   '*', '/', '4', '5', '6',
   '+', '-', '1', '2', '3',
@@ -97,7 +97,7 @@ export default function Calculator() {
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-4 mobile-landscape:max-w-xl">
-      <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start">
+      <div dir="ltr" className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all h-20 flex items-end justify-start mobile-landscape:h-16 mobile-landscape:text-2xl">
         {display}
       </div>
       <div className="grid grid-cols-5 mobile-landscape:grid-cols-10 gap-2">
