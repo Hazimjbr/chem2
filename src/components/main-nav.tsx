@@ -114,12 +114,6 @@ function DesktopNav() {
             >
                 التجارب
             </Link>
-             <Link
-                href="/performance-analysis"
-                className="font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                تحليل الأداء
-            </Link>
              {currentUser.role === 'admin' && (
                 <Link
                     href="/question-bank"
@@ -161,11 +155,6 @@ function MobileNav() {
                         <SheetClose asChild>
                         <Link href="/experiments" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
                             التجارب
-                        </Link>
-                        </SheetClose>
-                        <SheetClose asChild>
-                         <Link href="/performance-analysis" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
-                            تحليل الأداء
                         </Link>
                         </SheetClose>
                         {currentUser.role === 'admin' && (
