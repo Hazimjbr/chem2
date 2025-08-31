@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -65,22 +64,6 @@ export default function MainAppContent() {
               </p>
               <Link href={lastVisitedLesson} passHref>
                 <Button>متابعة الدرس</Button>
-              </Link>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                 <Library />
-                بنك الأسئلة
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-               <p className="text-muted-foreground mb-4">
-                تصفح جميع الأسئلة الموجودة في المنصة
-              </p>
-              <Link href="/question-bank" passHref>
-                <Button variant="outline">تصفح البنك</Button>
               </Link>
             </CardContent>
           </Card>
