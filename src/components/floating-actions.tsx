@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import PeriodicTable from './periodic-table';
 import CalculatorComponent from './calculator';
@@ -47,7 +47,7 @@ export default function FloatingActions() {
       label: 'آلة حاسبة',
       component: <CalculatorComponent />,
       dialogTitle: 'آلة حاسبة علمية',
-      dialogClassName: 'max-w-sm',
+      dialogClassName: 'max-w-sm mobile-landscape:gap-0',
     },
   ];
 
