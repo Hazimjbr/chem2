@@ -2,13 +2,37 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library } from 'lucide-react';
+import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library, Zap, Target } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
+import { units } from '@/data/materials';
+
+interface NextStep {
+    lessonTitle: string;
+    nextPartPath: string;
+    completedParts: number;
+    totalParts: number;
+}
+
+const constructPath = (unitId: string, lesson: any, part: any) => {
+    const unitNum = unitId.replace('unit-', '');
+    let path = `/materials/semester-1/unit-${unitNum}`;
+    if (lesson.lessonNum) {
+        path += `/lesson-${lesson.lessonNum}`;
+    } else if (lesson.sectionNum) {
+        path += `/section-${lesson.sectionNum}`;
+    }
+    if (part.partNum) {
+        path += `/part-${part.partNum}`;
+    }
+    return path;
+}
+
 
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
+  const [nextStep, setNextStep] = useState<NextStep | null>(null);
   const { currentUser } = useApp();
 
   useEffect(() => {
@@ -16,6 +40,48 @@ export default function MainAppContent() {
     if (savedLesson) {
       setLastVisitedLesson(savedLesson);
     }
+    
+    // Logic to find the next step
+    try {
+        const savedProgress = localStorage.getItem('completedLessons');
+        const completedLessons = new Set(savedProgress ? JSON.parse(savedProgress) : []);
+        
+        let firstUncompletedPart: NextStep | null = null;
+
+        for (const unit of units) {
+            for (const lesson of unit.lessons) {
+                 if (lesson.parts.length === 0) continue;
+
+                 let completedInThisLesson = 0;
+                 let firstUncompletedPathInThisLesson = '';
+
+                 for (const part of lesson.parts) {
+                    const path = constructPath(unit.id, lesson, part);
+                    if (completedLessons.has(path)) {
+                        completedInThisLesson++;
+                    } else if (!firstUncompletedPathInThisLesson) {
+                        firstUncompletedPathInThisLesson = path;
+                    }
+                 }
+
+                 if (firstUncompletedPathInThisLesson) {
+                    firstUncompletedPart = {
+                        lessonTitle: lesson.title,
+                        nextPartPath: firstUncompletedPathInThisLesson,
+                        completedParts: completedInThisLesson,
+                        totalParts: lesson.parts.length,
+                    };
+                    break; // Exit inner loop
+                 }
+            }
+            if (firstUncompletedPart) break; // Exit outer loop
+        }
+        setNextStep(firstUncompletedPart);
+    } catch(e) {
+        console.error("Failed to calculate next step", e);
+    }
+
+
   }, []);
   
   const studentName = currentUser?.role === 'student'
@@ -67,6 +133,34 @@ export default function MainAppContent() {
               </Link>
             </CardContent>
           </Card>
+          
+           {nextStep && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
+                  خطوتك التالية
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {nextStep.totalParts - nextStep.completedParts === 1 ? (
+                  <p className="text-muted-foreground mb-4">
+                     رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                  </p>
+                ) : (
+                  <p className="text-muted-foreground mb-4">
+                    أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                  </p>
+                )}
+                <Link href={nextStep.nextPartPath} passHref>
+                  <Button>
+                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          )}
+
           {currentUser?.role === 'admin' && (
              <Card className="col-span-1 md:col-span-2 lg:col-span-1 border-primary">
                 <CardHeader>
