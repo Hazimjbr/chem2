@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from '@/components/ui/dialog';
 import PeriodicTable from './periodic-table';
 import CalculatorComponent from './calculator';
