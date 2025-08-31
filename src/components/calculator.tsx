@@ -110,7 +110,7 @@ export default function Calculator() {
            const isBackspace = btn.value === '⌫';
           
           let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'secondary';
-          let className = `text-lg h-14`;
+          let className = `text-lg h-12`;
 
           if (isOperator || ['^', '√'].includes(btn.value)) variant = 'default';
           if (isClear) variant = 'destructive';
