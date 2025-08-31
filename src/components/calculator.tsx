@@ -98,8 +98,8 @@ export default function Calculator() {
   };
 
   return (
-    <div dir="ltr" className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:h-full mobile-landscape:space-y-1">
-       <div className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-start mobile-landscape:text-2xl mobile-landscape:h-14 mobile-landscape:mb-0">
+    <div dir="ltr" className="w-full max-w-sm mx-auto space-y-2 flex flex-col h-full mobile-landscape:max-w-none mobile-landscape:p-2 mobile-landscape:pt-0.5 mobile-landscape:space-y-0.5">
+       <div className="bg-muted text-left text-3xl font-mono p-4 rounded-lg break-all flex items-end justify-start mobile-landscape:text-2xl mobile-landscape:h-12 mobile-landscape:mb-0.5">
         {display}
       </div>
       <div className="grid grid-cols-5 gap-2 mobile-landscape:hidden">
