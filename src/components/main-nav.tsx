@@ -15,6 +15,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -150,18 +151,26 @@ function MobileNav() {
                         </SheetTitle>
                     </SheetHeader>
                     <nav className="flex flex-col gap-4 mt-8">
+                        <SheetClose asChild>
                          <Link href="/materials/semester-1" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
                             المواد التعليمية
                         </Link>
+                        </SheetClose>
+                        <SheetClose asChild>
                         <Link href="/experiments" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
                             التجارب
                         </Link>
+                        </SheetClose>
+                        <SheetClose asChild>
                          <Link href="/performance-analysis" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
                             تحليل الأداء
                         </Link>
+                        </SheetClose>
+                        <SheetClose asChild>
                         <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
                             بنك الأسئلة
                         </Link>
+                        </SheetClose>
                     </nav>
                 </SheetContent>
             </Sheet>
