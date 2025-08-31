@@ -120,13 +120,15 @@ function DesktopNav() {
             >
                 تحليل الأداء
             </Link>
-             <Link
-                href="/question-bank"
-                className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
-            >
-                <Library className="h-4 w-4" />
-                بنك الأسئلة
-            </Link>
+             {currentUser.role === 'admin' && (
+                <Link
+                    href="/question-bank"
+                    className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
+                >
+                    <Library className="h-4 w-4" />
+                    بنك الأسئلة
+                </Link>
+            )}
         </nav>
     );
 }
@@ -166,11 +168,13 @@ function MobileNav() {
                             تحليل الأداء
                         </Link>
                         </SheetClose>
-                        <SheetClose asChild>
-                        <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
-                            بنك الأسئلة
-                        </Link>
-                        </SheetClose>
+                        {currentUser.role === 'admin' && (
+                            <SheetClose asChild>
+                            <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
+                                بنك الأسئلة
+                            </Link>
+                            </SheetClose>
+                        )}
                     </nav>
                 </SheetContent>
             </Sheet>
