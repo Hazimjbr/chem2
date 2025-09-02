@@ -73,24 +73,42 @@ function Logo() {
     const { clearCurriculum, currentUser } = useApp();
     const router = useRouter();
 
-    const handleLogoClick = () => {
-        // Custom behavior for Admin: Reset to curriculum selection screen
+    // Admin-specific action: reset to curriculum selection
+    const handleIconClick = () => {
         if (currentUser?.role === 'admin') {
             clearCurriculum();
+            router.push('/');
+        } else {
+             // For students, just go to the dashboard
+             router.push('/');
         }
-        // For all users, go to the home page. The logic in page.tsx will handle what to show.
+    };
+    
+    // General action for all users: go to dashboard
+    const handleTextClick = () => {
         router.push('/');
     };
     
     return (
         <div className="flex items-center space-x-2">
-            <button onClick={handleLogoClick} className="flex items-center gap-2 p-0 bg-transparent border-none">
+             <Button
+                onClick={handleIconClick}
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9"
+                aria-label={currentUser?.role === 'admin' ? 'العودة إلى اختيار الدورة' : 'الصفحة الرئيسية'}
+            >
                 <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
-                <span className="inline-block font-bold text-xl">
-                  <span className="text-accent">Chem</span>
-                  <span className="text-foreground">Zim</span>
-                </span>
-            </button>
+            </Button>
+            <Button
+                 onClick={handleTextClick}
+                 variant="link"
+                 className="p-0 text-xl font-bold"
+                 aria-label="الصفحة الرئيسية"
+            >
+                <span className="text-accent">Chem</span>
+                <span className="text-foreground">Zim</span>
+            </Button>
         </div>
     )
 }
