@@ -81,7 +81,7 @@ function Logo() {
     
     return (
         <Link href="/" onClick={handleClick} className="flex items-center space-x-2">
-            <Image src="https://i.ibb.co/L51hWJd/chemzim-logo.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
+            <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
             <span className="inline-block font-bold text-xl">
                 <span className="text-accent">Chem</span>
                 <span className="text-foreground">Zim</span>
