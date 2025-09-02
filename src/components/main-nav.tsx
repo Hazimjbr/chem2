@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Beaker, ChevronDown, FlaskConical, Library, Menu, LogOut } from 'lucide-react';
+import { Beaker, ChevronDown, FlaskConical, Library, Menu, LogOut, ShieldCheck } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -74,15 +74,7 @@ function Logo() {
     const router = useRouter();
 
     const handleIconClick = () => {
-        if (currentUser?.role === 'admin') {
-            clearCurriculum();
-            router.push('/');
-        } else {
-             router.push('/');
-        }
-    };
-    
-    const handleTextClick = () => {
+        clearCurriculum();
         router.push('/');
     };
     
@@ -93,67 +85,65 @@ function Logo() {
                 variant="ghost"
                 size="icon"
                 className="h-9 w-9"
-                aria-label={currentUser?.role === 'admin' ? 'العودة إلى اختيار الدورة' : 'الصفحة الرئيسية'}
+                aria-label={'العودة إلى اختيار الدورة'}
             >
                 <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
             </Button>
-            <Button
-                 onClick={handleTextClick}
-                 variant="link"
-                 className="p-0 text-xl font-bold"
-                 aria-label="الصفحة الرئيسية"
-            >
+            <span className="text-xl font-bold">
                 <span className="text-accent">Chem</span>
                 <span className="text-foreground">Zim</span>
-            </Button>
+            </span>
         </div>
     )
 }
 
 function DesktopNav() {
     const { isSelected, currentUser } = useApp();
-    if (!isSelected || !currentUser) return null;
+    if (!currentUser) return null;
 
     return (
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:ring-0">
-                    المواد التعليمية
-                    <ChevronDown className="relative top-[1px] mr-1 h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180" />
+        <nav className="hidden md:flex items-center gap-2 text-sm">
+           {currentUser.role === 'admin' && (
+                <Link href="/admin/dashboard" passHref>
+                    <Button variant="ghost" className="font-medium text-destructive transition-colors hover:text-destructive/80">
+                        <ShieldCheck className="ml-2 h-4 w-4" />
+                        لوحة تحكم المسؤول
                     </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start">
-                    <Link href="/materials/semester-1">
-                    <DropdownMenuItem>الفصل الأول</DropdownMenuItem>
-                    </Link>
-                    <Link href="/materials/semester-2">
-                    <DropdownMenuItem disabled>الفصل الثاني (قريبا)</DropdownMenuItem>
-                    </Link>
-                </DropdownMenuContent>
-            </DropdownMenu>
-            <Link
-                href="/experiments"
-                className="font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                التجارب
-            </Link>
-             {currentUser.role === 'admin' && (
-                <Link
-                    href="/question-bank"
-                    className="font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-1"
-                >
-                    <Library className="h-4 w-4" />
-                    بنك الأسئلة
                 </Link>
             )}
+            {isSelected && (
+              <>
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:ring-0">
+                        المواد التعليمية
+                        <ChevronDown className="relative top-[1px] mr-1 h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start">
+                        <Link href="/materials/semester-1">
+                        <DropdownMenuItem>الفصل الأول</DropdownMenuItem>
+                        </Link>
+                        <Link href="/materials/semester-2">
+                        <DropdownMenuItem disabled>الفصل الثاني (قريبا)</DropdownMenuItem>
+                        </Link>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+                <Link
+                    href="/experiments"
+                    className="font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                    التجارب
+                </Link>
+             </>
+           )}
         </nav>
     );
 }
 
 function MobileNav() {
     const { isSelected, currentUser } = useApp();
-    if (!isSelected || !currentUser) return null;
+    if (!currentUser) return null;
 
     return (
         <div className="md:hidden">
@@ -171,22 +161,26 @@ function MobileNav() {
                         </SheetTitle>
                     </SheetHeader>
                     <nav className="flex flex-col gap-4 mt-8">
-                        <SheetClose asChild>
-                         <Link href="/materials/semester-1" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
-                            المواد التعليمية
-                        </Link>
-                        </SheetClose>
-                        <SheetClose asChild>
-                        <Link href="/experiments" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
-                            التجارب
-                        </Link>
-                        </SheetClose>
-                        {currentUser.role === 'admin' && (
+                       {currentUser.role === 'admin' && (
                             <SheetClose asChild>
-                            <Link href="/question-bank" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80">
-                                بنك الأسئلة
+                            <Link href="/admin/dashboard" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-2">
+                                <ShieldCheck /> لوحة تحكم المسؤول
                             </Link>
                             </SheetClose>
+                        )}
+                        {isSelected && (
+                         <>
+                            <SheetClose asChild>
+                            <Link href="/materials/semester-1" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
+                                المواد التعليمية
+                            </Link>
+                            </SheetClose>
+                            <SheetClose asChild>
+                            <Link href="/experiments" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary">
+                                التجارب
+                            </Link>
+                            </SheetClose>
+                         </>
                         )}
                     </nav>
                 </SheetContent>
