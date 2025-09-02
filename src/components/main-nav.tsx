@@ -23,6 +23,7 @@ import { useApp } from '@/context/CurriculumContext';
 import { signOutUser } from '@/lib/firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback } from './ui/avatar';
+import Image from 'next/image';
 
 
 function AuthSection() {
@@ -80,7 +81,7 @@ function Logo() {
     
     return (
         <Link href="/" onClick={handleClick} className="flex items-center space-x-2">
-            <Beaker className="h-6 w-6 text-primary" />
+            <Image src="https://i.ibb.co/L51hWJd/chemzim-logo.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
             <span className="inline-block font-bold text-xl">
                 <span className="text-accent">Chem</span>
                 <span className="text-foreground">Zim</span>
