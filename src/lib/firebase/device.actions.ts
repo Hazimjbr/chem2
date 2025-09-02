@@ -29,6 +29,7 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         const registeredDevicesRef = collection(db, 'registeredDevices');
         const pendingDevicesRef = collection(db, 'pendingDevices');
 
+        // Check if this specific device is already registered for this student
         const specificDeviceQuery = query(
             registeredDevicesRef,
             where("studentId", "==", studentId),
@@ -40,6 +41,7 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
             return { status: 'already-exists', message: 'هذا الجهاز معتمد بالفعل' };
         }
         
+        // Check if student has ANY registered device to decide if it's a first-time or subsequent request
         const anyDeviceQuery = query(
             registeredDevicesRef,
             where("studentId", "==", studentId),
@@ -47,6 +49,7 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
         );
         const anyDeviceSnapshot = await getDocs(anyDeviceQuery);
         
+        // If the student has no devices registered at all, this is their first time.
         if (anyDeviceSnapshot.empty) {
             const batch = writeBatch(db);
             // Add to registered devices
@@ -66,6 +69,10 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
             return { status: 'registered', message: 'تم تسجيل جهازك الأول بنجاح' };
         }
 
+        // If the student already has a registered device, they are trying to add a new one.
+        // We will create a pending request for the admin.
+
+        // First, check if a pending request for this exact device already exists to avoid duplicates.
         const pendingQuery = query(
             pendingDevicesRef, 
             where("studentId", "==", studentId), 
@@ -77,6 +84,7 @@ export async function registerDevice(input: RegistrationInput): Promise<Registra
             return { status: 'pending', message: 'تم إرسال طلب الموافقة على هذا الجهاز مسبقًا وهو قيد المراجعة' };
         }
 
+        // Create a new pending request.
         await addDoc(pendingDevicesRef, {
             studentId,
             deviceId,

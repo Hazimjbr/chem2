@@ -157,17 +157,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
       // Proceed with device checks only for students.
       const deviceId = getOrCreateDeviceId();
-
-      // Check if the student's activeDeviceId matches the current device
-      if (appUser.activeDeviceId && appUser.activeDeviceId !== deviceId) {
-          await signOutUser();
-          return {
-              success: false,
-              title: 'الجهاز غير معتمد',
-              message: 'تم تسجيل الدخول من جهاز آخر. يرجى استخدام الجهاز المعتمد أو طلب الموافقة على هذا الجهاز.',
-              variant: 'destructive',
-          };
-      }
       
       const verificationResult = await registerDevice({ user: appUser, deviceId });
 
@@ -175,6 +164,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
           setCurrentUser(appUser);
           return { success: true, message: `أهلاً بك، ${appUser.displayName}!` };
       } else {
+          // This handles 'pending' or 'error' statuses
           await signOutUser();
           setCurrentUser(null);
           return { 
