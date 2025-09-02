@@ -28,6 +28,8 @@ export interface QuizResult {
   difficulty: number;
   timestamp: number;
   studentId: string;
+  timeTaken?: number; // Optional: total time in seconds
+  questionCount?: number; // Optional: number of questions in the quiz
 }
 
 // The props for our new central quiz component
@@ -96,6 +98,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([]);
   const [isReviewing, setIsReviewing] = useState(false);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
+  const [initialTime, setInitialTime] = useState<number | null>(null);
   
   const storageKey = currentUser ? `quizState_${lessonId}_${currentUser.uid}` : `quizState_${lessonId}_guest`;
 
@@ -104,7 +107,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
-        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft } = JSON.parse(savedState);
+        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime } = JSON.parse(savedState);
         if (quiz) {
             setQuiz(quiz);
             setCurrentQuestionIndex(currentQuestionIndex);
@@ -115,6 +118,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             setSelectedAnswer(selectedAnswer || null);
             setUserAnswers(userAnswers || []);
             setTimeLeft(timeLeft !== undefined ? timeLeft : null);
+            setInitialTime(initialTime !== undefined ? initialTime : null);
         }
       }
     } catch (error) {
@@ -130,18 +134,18 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
       // Don't save if there's no quiz active, to allow starting fresh.
       if (!quiz || isLoading) return;
       
-      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft };
+      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Failed to save quiz state:", error);
     }
-  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey, answerStatus, selectedAnswer, isLoading, userAnswers, timeLeft]);
+  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey, answerStatus, selectedAnswer, isLoading, userAnswers, timeLeft, initialTime]);
   
   // Timer effect
   useEffect(() => {
     if (timeLeft === null || timeLeft <= 0 || isFinished) {
       if (timeLeft === 0) {
-        handleNextQuestion(true); // Force finish
+        handleNextQuestion(true); // Force finish when time is up
       }
       return;
     }
@@ -166,6 +170,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     setDifficultyLevel(level);
     setUserAnswers([]);
     setIsReviewing(false);
+    setTimeLeft(null);
+    setInitialTime(null);
 
     // Immediately clear localStorage for the new quiz
     localStorage.removeItem(storageKey);
@@ -184,7 +190,10 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
 
             // Shuffle options for each selected question
             generatedQuestions = selectedQuestions.map(q => shuffleOptions(q));
-            setTimeLeft(generatedQuestions.length * 60); // 1 minute per question
+            
+            const quizTime = generatedQuestions.length * 60; // 1 minute per question
+            setTimeLeft(quizTime);
+            setInitialTime(quizTime);
 
         } else {
             // This case should no longer be reached from the UI
@@ -235,12 +244,15 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     if (isLastQuestion || forceFinish) {
         const finalScore = score / quiz!.length;
         if (currentUser) {
+            const timeTaken = initialTime !== null && timeLeft !== null ? initialTime - timeLeft : undefined;
             saveQuizResult({
                 lessonId: lessonId,
                 score: finalScore,
                 difficulty: difficultyLevel,
                 timestamp: Date.now(),
                 studentId: currentUser.uid,
+                timeTaken: timeTaken,
+                questionCount: quiz?.length,
             });
         }
        setIsFinished(true);
@@ -280,6 +292,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
       setSelectedAnswer(null);
       setDifficultyLevel(1);
       setTimeLeft(null);
+      setInitialTime(null);
       setIsReviewing(false);
   }
 

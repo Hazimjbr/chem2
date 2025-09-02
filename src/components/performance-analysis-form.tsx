@@ -39,6 +39,17 @@ export default function PerformanceAnalysisForm() {
 
       const studentName = currentUser.displayName || 'الطالب';
 
+      // Calculate average time per question from timed quizzes
+      const timedQuizzes = relevantResults.filter(r => r.timeTaken !== undefined && r.questionCount !== undefined);
+      let averageTimePerQuestion: number | undefined = undefined;
+      if (timedQuizzes.length > 0) {
+        const totalTime = timedQuizzes.reduce((acc, r) => acc + r.timeTaken!, 0);
+        const totalQuestions = timedQuizzes.reduce((acc, r) => acc + r.questionCount!, 0);
+        if (totalQuestions > 0) {
+          averageTimePerQuestion = totalTime / totalQuestions;
+        }
+      }
+
       if (relevantResults.length === 0) {
         toast({
             title: 'لا توجد بيانات كافية',
@@ -47,7 +58,7 @@ export default function PerformanceAnalysisForm() {
             duration: 7000,
         });
         // Generate analysis with mock data if no real data is available but pass the student name
-        const result = await analyzeStudentPerformance({ studentName: studentName, quizResults: [] });
+        const result = await analyzeStudentPerformance({ studentName: studentName, quizResults: [], averageTimePerQuestion });
         setAnalysis(result);
         setIsLoading(false);
         return;
@@ -55,7 +66,8 @@ export default function PerformanceAnalysisForm() {
 
       const studentDataForAnalysis = {
         studentName: studentName,
-        quizResults: relevantResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty }))
+        quizResults: relevantResults.map(r => ({ lessonId: r.lessonId, score: r.score, difficulty: r.difficulty })),
+        averageTimePerQuestion,
       };
 
       const result = await analyzeStudentPerformance(studentDataForAnalysis);
