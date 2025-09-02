@@ -68,22 +68,28 @@ function AuthSection() {
 
 
 function Logo() {
-    const { isSelected } = useApp();
+    const { isSelected, clearCurriculum, currentUser } = useApp();
     const router = useRouter();
 
     const handleLogoClick = () => {
         if (isSelected) {
             router.push('/');
         } else {
-            // Default behavior if no curriculum is selected
             router.push('/');
         }
+    };
+    
+    const handleIconClick = () => {
+        if (currentUser?.role === 'admin') {
+            clearCurriculum();
+        }
+        router.push('/');
     };
     
     return (
         <div className="flex items-center space-x-2 rtl:space-x-reverse">
              <Button
-                onClick={handleLogoClick}
+                onClick={handleIconClick}
                 variant="ghost"
                 size="icon"
                 className="h-9 w-9"
