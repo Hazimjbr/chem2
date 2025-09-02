@@ -56,8 +56,8 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 // Helper function to shuffle an array and return the new index of the correct answer
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    // Avoid shuffling for specific simple option types
-    if (question.options.every(o => typeof o === 'string' && (o.length === 1 || o.startsWith("أقرب") || o.startsWith("في منتصف")))) {
+    // Avoid shuffling for specific simple option types that depend on order
+    if (question.options.every(o => typeof o === 'string' && (o.length <= 3 || o.startsWith("أقرب") || o.startsWith("في منتصف")))) {
         return question;
     }
     const correctAnswerValue = question.options[question.correctAnswerIndex];
