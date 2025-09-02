@@ -24,9 +24,7 @@ import { signOutUser } from '@/lib/firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
-import AdminLoginDialog from './admin/admin-login-dialog';
+import { useRouter } from 'next/navigation';
 
 
 function AuthSection() {
@@ -70,29 +68,35 @@ function AuthSection() {
 
 
 function Logo() {
-    const { clearCurriculum, currentUser } = useApp();
+    const { isSelected } = useApp();
     const router = useRouter();
 
-    const handleIconClick = () => {
-        clearCurriculum();
-        router.push('/');
+    const handleLogoClick = () => {
+        if (isSelected) {
+            router.push('/');
+        } else {
+            // Default behavior if no curriculum is selected
+            router.push('/');
+        }
     };
     
     return (
         <div className="flex items-center space-x-2 rtl:space-x-reverse">
              <Button
-                onClick={handleIconClick}
+                onClick={handleLogoClick}
                 variant="ghost"
                 size="icon"
                 className="h-9 w-9"
-                aria-label={'العودة إلى اختيار الدورة'}
+                aria-label={'العودة إلى الواجهة الرئيسية'}
             >
                 <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
             </Button>
-            <span className="text-xl font-bold">
-                <span className="text-accent">Chem</span>
-                <span className="text-foreground">Zim</span>
-            </span>
+            <button onClick={handleLogoClick} className="flex items-baseline">
+                <span className="text-xl font-bold">
+                    <span className="text-accent">Chem</span>
+                    <span className="text-foreground">Zim</span>
+                </span>
+            </button>
         </div>
     )
 }
