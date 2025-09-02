@@ -13,10 +13,8 @@ import { useToast } from '@/hooks/use-toast';
 import { signInUser, signOutUser } from '@/lib/firebase/auth';
 import { Loader2 } from 'lucide-react';
 import { useApp } from '@/context/CurriculumContext';
-import { useRouter } from 'next/navigation';
 
 const loginSchema = z.object({
-  email: z.string().email({ message: "الرجاء إدخال بريد إلكتروني صالح" }),
   password: z.string().min(6, { message: "كلمة المرور يجب أن تكون 6 أحرف على الأقل" }),
 });
 
@@ -25,36 +23,38 @@ type LoginValues = z.infer<typeof loginSchema>;
 interface AdminLoginDialogProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
+    onLoginSuccess: () => void;
 }
 
-export default function AdminLoginDialog({ open, onOpenChange }: AdminLoginDialogProps) {
+const ADMIN_EMAIL = 'h75jbr@gmail.com';
+
+export default function AdminLoginDialog({ open, onOpenChange, onLoginSuccess }: AdminLoginDialogProps) {
     const [isLoading, setIsLoading] = React.useState(false);
     const { toast } = useToast();
-    const router = useRouter();
-    const { handleLogin } = useApp(); // We'll use handleLogin to verify user role
+    const { handleLogin } = useApp();
 
     const form = useForm<LoginValues>({
         resolver: zodResolver(loginSchema),
-        defaultValues: { email: '', password: '' },
+        defaultValues: { password: '' },
     });
 
     const onSubmit = async (values: LoginValues) => {
         setIsLoading(true);
         try {
-            const user = await signInUser(values.email, values.password);
+            // Attempt to sign in with the hardcoded admin email
+            const user = await signInUser(ADMIN_EMAIL, values.password);
             const verificationResult = await handleLogin(user);
 
-            if (verificationResult.success && user?.email?.endsWith('@chemzim.com') === false) {
-                 router.push('/admin/dashboard');
+            if (verificationResult.success && user?.email === ADMIN_EMAIL) {
                  toast({ title: 'أهلاً بك أيها المدير', description: 'تم تسجيل دخولك بنجاح.' });
+                 onLoginSuccess(); // Notify parent component of success
                  onOpenChange(false);
             } else {
-                // If the user is a student or verification failed, sign them out and show an error.
-                await signOutUser();
+                await signOutUser(); // Sign out if not the admin
                 toast({
                     variant: 'destructive',
-                    title: 'الوصول مرفوض',
-                    description: 'هذا المدخل مخصص للمسؤولين فقط.',
+                    title: 'فشل تسجيل الدخول',
+                    description: 'كلمة المرور غير صحيحة.',
                 });
             }
         } catch (error: any) {
@@ -62,7 +62,7 @@ export default function AdminLoginDialog({ open, onOpenChange }: AdminLoginDialo
             toast({
                 variant: 'destructive',
                 title: 'فشل تسجيل الدخول',
-                description: 'بيانات اعتماد المسؤول غير صحيحة.',
+                description: 'كلمة المرور غير صحيحة.',
             });
         } finally {
             setIsLoading(false);
@@ -71,26 +71,15 @@ export default function AdminLoginDialog({ open, onOpenChange }: AdminLoginDialo
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent>
+            <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle>دخول المسؤول</DialogTitle>
                     <DialogDescription>
-                        هذه الواجهة مخصصة لدخول المسؤول فقط.
+                        الرجاء إدخال كلمة مرور المسؤول للوصول.
                     </DialogDescription>
                 </DialogHeader>
                  <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                        <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>البريد الإلكتروني</FormLabel>
-                            <FormControl><Input placeholder="admin@example.com" {...field} /></FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
                         <FormField
                         control={form.control}
                         name="password"

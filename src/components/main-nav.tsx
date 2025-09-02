@@ -32,13 +32,13 @@ import AdminLoginDialog from './admin/admin-login-dialog';
 function AuthSection() {
     const { currentUser, clearCurriculum } = useApp();
     const { toast } = useToast();
+    const router = useRouter();
 
     const handleSignOut = async () => {
         try {
             await signOutUser();
             clearCurriculum();
-            // The onAuthStateChanged listener in context will handle user state.
-            // Clearing curriculum ensures we go back to the selection screen.
+            router.push('/');
             toast({
                 title: 'تم تسجيل الخروج بنجاح',
             });
@@ -59,7 +59,7 @@ function AuthSection() {
                 <AvatarFallback>{currentUser.email?.charAt(0).toUpperCase()}</AvatarFallback>
             </Avatar>
             <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
-                {currentUser.email}
+                {currentUser.role === 'admin' ? 'Admin' : currentUser.displayName}
             </span>
              <Button onClick={handleSignOut} variant="ghost" size="icon" aria-label="تسجيل الخروج">
                 <LogOut className="h-5 w-5" />
@@ -73,24 +73,21 @@ function Logo() {
     const { clearCurriculum, currentUser } = useApp();
     const router = useRouter();
 
-    // Admin-specific action: reset to curriculum selection
     const handleIconClick = () => {
         if (currentUser?.role === 'admin') {
             clearCurriculum();
             router.push('/');
         } else {
-             // For students, just go to the dashboard
              router.push('/');
         }
     };
     
-    // General action for all users: go to dashboard
     const handleTextClick = () => {
         router.push('/');
     };
     
     return (
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 rtl:space-x-reverse">
              <Button
                 onClick={handleIconClick}
                 variant="ghost"
