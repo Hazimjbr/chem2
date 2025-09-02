@@ -90,16 +90,18 @@ function Logo() {
     
     // This handles clicking the marshmallow icon
     const handleIconClick = () => {
-        // If on any page other than home, clear curriculum and go to home (selection screen)
+        // If on any page other than home, clear curriculum and go to home (selection screen) for ALL users
         if (!isHomePage) {
              clearCurriculum();
              router.push('/');
+             return;
         }
-        // Special case for admin login on homepage for non-logged-in users
-        else if (isHomePage && !currentUser) {
+        
+        // On the homepage, if not logged in, open admin dialog
+        if (isHomePage && !currentUser) {
             setDialogOpen(true);
         } else {
-            // Default behavior on homepage for logged-in users: go to home (which will show the dashboard).
+            // On the homepage for a logged-in user, just go to home (which shows their dashboard)
             router.push('/');
         }
     };
