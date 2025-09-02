@@ -73,27 +73,24 @@ function Logo() {
     const { clearCurriculum, currentUser } = useApp();
     const router = useRouter();
 
-    const handleIconClick = () => {
+    const handleLogoClick = () => {
         // Custom behavior for Admin: Reset to curriculum selection screen
         if (currentUser?.role === 'admin') {
             clearCurriculum();
-            router.push('/');
-            return;
         }
-
-        // Default behavior for Students: Go to their main dashboard
+        // For all users, go to the home page. The logic in page.tsx will handle what to show.
         router.push('/');
     };
     
     return (
         <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon" className="h-auto w-auto p-0" onClick={handleIconClick}>
+            <button onClick={handleLogoClick} className="flex items-center gap-2 p-0 bg-transparent border-none">
                 <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
-            </Button>
-            <Link href="/" className="inline-block font-bold text-xl">
-                <span className="text-accent">Chem</span>
-                <span className="text-foreground">Zim</span>
-            </Link>
+                <span className="inline-block font-bold text-xl">
+                  <span className="text-accent">Chem</span>
+                  <span className="text-foreground">Zim</span>
+                </span>
+            </button>
         </div>
     )
 }
