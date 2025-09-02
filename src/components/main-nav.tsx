@@ -76,32 +76,27 @@ function Logo() {
     const isHomePage = pathname === '/';
     const [dialogOpen, setDialogOpen] = useState(false);
 
-    // This handles clicking the "ChemZim" text
     const handleLogoTextClick = (e: React.MouseEvent) => {
-        // Prevent navigation if the user is not logged in on the homepage
         if (isHomePage && !currentUser) {
             e.preventDefault();
         } else {
-            // For logged-in users, clicking the logo text always goes home.
             clearCurriculum();
             router.push('/');
         }
     };
     
-    // This handles clicking the marshmallow icon
     const handleIconClick = () => {
-        // If on any page other than home, clear curriculum and go to home (selection screen) for ALL users
-        if (!isHomePage) {
+        // If the user is an admin and not on the home page, log them out (clear curriculum).
+        if (!isHomePage && currentUser?.role === 'admin') {
              clearCurriculum();
              router.push('/');
              return;
         }
-        
-        // On the homepage, if not logged in, open admin dialog
+
+        // Default behavior for students or for admin on the homepage
         if (isHomePage && !currentUser) {
             setDialogOpen(true);
         } else {
-            // On the homepage for a logged-in user, just go to home (which shows their dashboard)
             router.push('/');
         }
     };
