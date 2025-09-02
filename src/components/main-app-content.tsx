@@ -17,13 +17,6 @@ interface NextStep {
     totalParts: number;
 }
 
-interface ProgressStats {
-    completedLessons: number;
-    totalLessons: number;
-    averageScore: number;
-    quizzesTaken: number;
-}
-
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
     let path = `/materials/semester-1/unit-${unitNum}`;
@@ -42,7 +35,6 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
-  const [progressStats, setProgressStats] = useState<ProgressStats | null>(null);
   const { currentUser } = useApp();
 
   useEffect(() => {
@@ -84,24 +76,6 @@ export default function MainAppContent() {
         }
         setNextStep(firstUncompletedPart);
 
-        // --- Progress Stats Logic ---
-        const historyJSON = localStorage.getItem('quizHistory');
-        const allResults: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
-        const studentResults = currentUser ? allResults.filter(r => r.studentId === currentUser.uid && r.difficulty > 0.5) : [];
-        
-        const totalLessons = units.reduce((acc, unit) => acc + unit.lessons.filter(l => l.parts.length > 0 && l.lessonNum).length, 0);
-
-        const averageScore = studentResults.length > 0 
-            ? studentResults.reduce((acc, r) => acc + r.score, 0) / studentResults.length
-            : 0;
-
-        setProgressStats({
-            completedLessons: completedLessons.size,
-            totalLessons,
-            averageScore: Math.round(averageScore * 100),
-            quizzesTaken: studentResults.length,
-        });
-
     } catch(e) {
         console.error("Failed to calculate progress", e);
     }
@@ -133,53 +107,15 @@ export default function MainAppContent() {
            <Link href="/performance-analysis" passHref>
             <Button size="lg" variant="outline">
               <BarChart className="ml-2" />
-              حلل أدائي
+              عرض لوحة معلوماتي
             </Button>
           </Link>
         </div>
       </section>
 
-      {progressStats && (
-        <section className="pb-16">
-            <h2 className="text-3xl font-bold text-center mb-8">نظرة عامة على تقدمك</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">الدروس المكتملة</CardTitle>
-                        <BookCheckIcon className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{progressStats.completedLessons} / {progressStats.totalLessons}</div>
-                        <p className="text-xs text-muted-foreground">درسًا مكتملًا</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">متوسط الأداء</CardTitle>
-                        <Award className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{progressStats.averageScore}%</div>
-                         <p className="text-xs text-muted-foreground">متوسط علامتك في الاختبارات</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">الاختبارات المقدمة</CardTitle>
-                        <CheckSquare className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">+{progressStats.quizzesTaken}</div>
-                        <p className="text-xs text-muted-foreground">اختبارًا قمت بتقديمه</p>
-                    </CardContent>
-                </Card>
-            </div>
-        </section>
-      )}
-
       <section className="pb-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
