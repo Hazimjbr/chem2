@@ -7,14 +7,19 @@ import { ArrowLeft, Check, X } from 'lucide-react';
 import Link from 'next/link';
 import Quiz from '@/components/quiz';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 export default function Unit1ReviewPage() {
     
-    // We can use this effect to mark the unit as "completed" if the user scores well.
+    const [lastLessonPath, setLastLessonPath] = useState('/materials/semester-1');
+
     useEffect(() => {
         // Future logic for completion tracking
+        const savedPath = localStorage.getItem('lastVisitedLesson');
+        if (savedPath) {
+            setLastLessonPath(savedPath);
+        }
     }, []);
 
     const lessonContentForQuiz = "تم تصميم هذا الاختبار ليغطي جميع المفاهيم الأساسية في وحدة حالات المادة بما في ذلك قوانين الغازات المختلفة وخصائص السوائل والمواد الصلبة";
@@ -56,7 +61,7 @@ export default function Unit1ReviewPage() {
 
              <footer className="mt-12 border-t pt-6">
                 <div className="flex justify-between">
-                     <Link href="/materials/semester-1/unit-1/lesson-1/part-10" passHref>
+                     <Link href={lastLessonPath} passHref>
                         <Button size="lg" variant="outline">
                             <ArrowLeft className="ml-2 h-5 w-5" />
                             العودة إلى آخر درس

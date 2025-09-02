@@ -66,15 +66,18 @@ function AuthSection() {
 
 
 function Logo() {
-    const { clearCurriculum, isSelected } = useApp();
+    const { clearCurriculum, currentUser } = useApp();
 
     const handleClick = (e: React.MouseEvent) => {
-        if (isSelected) {
+        // If a user is NOT logged in, clicking the logo should reset the curriculum choice
+        // and take them back to the selection screen.
+        if (!currentUser) {
             e.preventDefault();
             clearCurriculum();
         }
+        // If a user IS logged in, the link will just navigate to the homepage as normal.
     };
-
+    
     return (
         <Link href="/" onClick={handleClick} className="flex items-center space-x-2">
             <Beaker className="h-6 w-6 text-primary" />
