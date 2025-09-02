@@ -5,7 +5,7 @@ import React, { useState, useEffect, useTransition } from 'react';
 import { getPendingDevices, approveDevice, rejectDevice, approveAndReplaceDevice } from '@/lib/firebase/device.actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2, Check, X, ShieldQuestion, ServerCrash, Plus, Replace } from 'lucide-react';
+import { Loader2, Check, X, ShieldQuestion, ServerCrash, Plus, Replace, Smartphone, User, Calendar, KeyRound } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -25,6 +25,7 @@ interface PendingDevice {
     deviceId: string;
     studentName: string;
     requestedAt: string;
+    studentCourses: string[];
 }
 
 export default function ApproveDevicesList() {
@@ -97,24 +98,34 @@ export default function ApproveDevicesList() {
     }
 
     return (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {pendingDevices.map((device) => (
-                <Card key={device.id} className="bg-muted/50">
+                <Card key={device.id} className="bg-muted/50 flex flex-col">
                     <CardHeader>
-                        <CardTitle className="text-lg">الطالب: {device.studentName}</CardTitle>
+                        <CardTitle className="text-lg flex items-center gap-2">
+                            <User className="h-5 w-5 text-primary" />
+                            {device.studentName}
+                        </CardTitle>
                         <CardDescription>
-                            طلب تسجيل جهاز جديد في {device.requestedAt}
+                            {device.studentCourses.join('، ')}
                         </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        <p className="text-sm font-mono break-all bg-background p-2 rounded-md">
-                            Device ID: {device.deviceId}
-                        </p>
+                    <CardContent className="space-y-3 text-sm flex-grow">
+                        <div className="flex items-center gap-2">
+                             <Calendar className="h-4 w-4 text-muted-foreground" />
+                             <span>{device.requestedAt}</span>
+                        </div>
+                         <div className="flex items-start gap-2">
+                            <KeyRound className="h-4 w-4 text-muted-foreground mt-1" />
+                            <p className="font-mono break-all bg-background p-2 rounded-md text-xs">
+                                {device.deviceId}
+                            </p>
+                        </div>
                     </CardContent>
                     <CardFooter className="gap-2">
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <Button size="sm" disabled={isProcessing} variant="secondary">
+                                <Button size="sm" disabled={isProcessing} variant="secondary" className="flex-1">
                                     <Plus className="ml-2 h-4 w-4" />
                                     موافقة وإضافة
                                 </Button>
@@ -138,7 +149,7 @@ export default function ApproveDevicesList() {
 
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <Button size="sm" disabled={isProcessing}>
+                                <Button size="sm" disabled={isProcessing} className="flex-1">
                                     <Replace className="ml-2 h-4 w-4" />
                                     موافقة واستبدال
                                 </Button>

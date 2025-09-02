@@ -99,16 +99,21 @@ export async function getPendingDevices() {
         const q = query(pendingDevicesRef, orderBy("requestedAt", "desc"));
         const querySnapshot = await getDocs(q);
 
-        const pendingDevices = querySnapshot.docs.map((d) => {
+        const pendingDevices = await Promise.all(querySnapshot.docs.map(async (d) => {
             const data = d.data();
+            const studentRef = doc(db, 'students', data.studentId);
+            const studentDoc = await getDoc(studentRef);
+            const studentCourses = studentDoc.exists() ? studentDoc.data().courses || ['دورة غير محددة'] : ['طالب غير موجود'];
+
             return {
                 id: d.id,
                 studentId: data.studentId,
                 deviceId: data.deviceId,
                 studentName: data.studentName || 'طالب غير معروف',
                 requestedAt: (data.requestedAt as Timestamp).toDate().toLocaleString('ar-JO'),
+                studentCourses,
             };
-        });
+        }));
 
         return { success: true, data: pendingDevices };
     } catch (error) {
@@ -217,7 +222,7 @@ export async function rejectDevice(pendingDeviceId: string) {
 export async function deleteDevice(deviceId: string, studentId: string) {
     try {
         const devicesRef = collection(db, 'registeredDevices');
-        const q = query(devicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId));
+        const q = query(devicesRef, where("studentId", "==", studentId), where("deviceId", "==", deviceId), limit(1));
         const deviceSnapshot = await getDocs(q);
 
         if (deviceSnapshot.empty) {
@@ -227,13 +232,22 @@ export async function deleteDevice(deviceId: string, studentId: string) {
         const docToDeleteRef = deviceSnapshot.docs[0].ref;
         await deleteDoc(docToDeleteRef);
 
-        // After deleting a device, check if it was the active one.
-        // If it was, clear the activeDeviceId field for the student.
-        // This prompts them to request a new device if they try to log in again.
         const studentRef = doc(db, 'students', studentId);
         const studentDoc = await getDoc(studentRef);
+        
+        // If the deleted device was the active one
         if (studentDoc.exists() && studentDoc.data().activeDeviceId === deviceId) {
-            await updateDoc(studentRef, { activeDeviceId: '' });
+            // Find another registered device to set as active
+            const remainingDevicesQuery = query(devicesRef, where("studentId", "==", studentId), limit(1));
+            const remainingDevicesSnapshot = await getDocs(remainingDevicesQuery);
+
+            if (!remainingDevicesSnapshot.empty) {
+                const newActiveDeviceId = remainingDevicesSnapshot.docs[0].data().deviceId;
+                await updateDoc(studentRef, { activeDeviceId: newActiveDeviceId });
+            } else {
+                // If no other devices are left, clear the activeDeviceId
+                await updateDoc(studentRef, { activeDeviceId: '' });
+            }
         }
 
         await manageUser({ action: 'revokeSession', uid: studentId });

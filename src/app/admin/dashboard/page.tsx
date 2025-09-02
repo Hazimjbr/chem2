@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useApp } from '@/context/CurriculumContext';
@@ -6,10 +5,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { Loader2, ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import AddStudentForm from '@/components/admin/add-student-form';
 import ApproveDevicesList from '@/components/admin/approve-devices-list';
-import ViewStudentsList from '@/components/admin/view-students-list';
+import AdminNav from '@/components/admin/admin-nav';
 
 export default function AdminDashboardPage() {
     const { currentUser, isLoading } = useApp();
@@ -74,53 +71,19 @@ export default function AdminDashboardPage() {
                     إدارة الطلاب والأجهزة والمحتوى
                 </p>
             </header>
-            <main>
-                <Tabs defaultValue="add-student" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="add-student">إضافة طالب</TabsTrigger>
-                        <TabsTrigger value="approve-devices">الموافقة على الأجهزة</TabsTrigger>
-                        <TabsTrigger value="view-students">عرض الطلاب</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="add-student">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>إنشاء حساب طالب جديد</CardTitle>
-                                <CardDescription>
-                                    أدخل بيانات الطالب لإنشاء حساب جديد في النظام
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <AddStudentForm />
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
-                     <TabsContent value="approve-devices">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>طلبات الأجهزة قيد المراجعة</CardTitle>
-                                <CardDescription>
-                                    وافق أو ارفض طلبات تسجيل الأجهزة الجديدة للطلاب
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <ApproveDevicesList />
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
-                    <TabsContent value="view-students">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>قائمة الطلاب المسجلين</CardTitle>
-                                <CardDescription>
-                                    عرض وتعديل بيانات الطلاب المسجلين في النظام
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <ViewStudentsList />
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
-                </Tabs>
+            <main className="space-y-6">
+                <AdminNav />
+                <Card>
+                    <CardHeader>
+                        <CardTitle>طلبات الأجهزة قيد المراجعة</CardTitle>
+                        <CardDescription>
+                            وافق أو ارفض طلبات تسجيل الأجهزة الجديدة للطلاب
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <ApproveDevicesList />
+                    </CardContent>
+                </Card>
             </main>
         </div>
     )
