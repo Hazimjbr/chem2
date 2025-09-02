@@ -24,6 +24,9 @@ import { signOutUser } from '@/lib/firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import AdminLoginDialog from './admin/admin-login-dialog';
 
 
 function AuthSection() {
@@ -68,25 +71,42 @@ function AuthSection() {
 
 function Logo() {
     const { clearCurriculum, currentUser } = useApp();
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
+    const [dialogOpen, setDialogOpen] = useState(false);
 
-    const handleClick = (e: React.MouseEvent) => {
-        // If a user is NOT logged in, clicking the logo should reset the curriculum choice
-        // and take them back to the selection screen.
+    const handleLogoClick = (e: React.MouseEvent) => {
         if (!currentUser) {
             e.preventDefault();
             clearCurriculum();
         }
-        // If a user IS logged in, the link will just navigate to the homepage as normal.
+    };
+
+    const handleIconClick = () => {
+        if (isHomePage) {
+            setDialogOpen(true);
+        }
     };
     
     return (
-        <Link href="/" onClick={handleClick} className="flex items-center space-x-2">
-            <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
-            <span className="inline-block font-bold text-xl">
-                <span className="text-accent">Chem</span>
-                <span className="text-foreground">Zim</span>
-            </span>
-        </Link>
+        <>
+            {isHomePage && <AdminLoginDialog open={dialogOpen} onOpenChange={setDialogOpen} />}
+            <div className="flex items-center space-x-2">
+                 {isHomePage && !currentUser ? (
+                     <Button variant="ghost" size="icon" className="h-auto w-auto p-0" onClick={handleIconClick}>
+                         <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
+                     </Button>
+                 ) : (
+                     <Link href="/" onClick={handleLogoClick}>
+                        <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
+                     </Link>
+                 )}
+                <Link href="/" onClick={handleLogoClick} className="inline-block font-bold text-xl">
+                    <span className="text-accent">Chem</span>
+                    <span className="text-foreground">Zim</span>
+                </Link>
+            </div>
+        </>
     )
 }
 
