@@ -3,8 +3,8 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { generateQuiz, GenerateQuizOutput } from '@/ai/flows/generate-quiz-flow';
-import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw } from 'lucide-react';
+import { generateQuiz } from '@/ai/flows/generate-quiz-flow';
+import { Loader2, CheckCircle, XCircle, Star, Sparkles, RefreshCw, Clock, Eye } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils.tsx';
@@ -93,6 +93,9 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   const [isFinished, setIsFinished] = useState(false);
   const [difficultyLevel, setDifficultyLevel] = useState(1);
   const { toast } = useToast();
+  const [userAnswers, setUserAnswers] = useState<(number | null)[]>([]);
+  const [isReviewing, setIsReviewing] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
   
   const storageKey = currentUser ? `quizState_${lessonId}_${currentUser.uid}` : `quizState_${lessonId}_guest`;
 
@@ -101,14 +104,18 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
-        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer } = JSON.parse(savedState);
-        setQuiz(quiz);
-        setCurrentQuestionIndex(currentQuestionIndex);
-        setScore(score);
-        setDifficultyLevel(difficultyLevel);
-        setIsFinished(isFinished);
-        setAnswerStatus(answerStatus || 'unanswered');
-        setSelectedAnswer(selectedAnswer || null);
+        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft } = JSON.parse(savedState);
+        if (quiz) {
+            setQuiz(quiz);
+            setCurrentQuestionIndex(currentQuestionIndex);
+            setScore(score);
+            setDifficultyLevel(difficultyLevel);
+            setIsFinished(isFinished);
+            setAnswerStatus(answerStatus || 'unanswered');
+            setSelectedAnswer(selectedAnswer || null);
+            setUserAnswers(userAnswers || []);
+            setTimeLeft(timeLeft !== undefined ? timeLeft : null);
+        }
       }
     } catch (error) {
       console.error("Failed to load quiz state:", error);
@@ -123,12 +130,29 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
       // Don't save if there's no quiz active, to allow starting fresh.
       if (!quiz || isLoading) return;
       
-      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer };
+      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Failed to save quiz state:", error);
     }
-  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey, answerStatus, selectedAnswer, isLoading]);
+  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey, answerStatus, selectedAnswer, isLoading, userAnswers, timeLeft]);
+  
+  // Timer effect
+  useEffect(() => {
+    if (timeLeft === null || timeLeft <= 0 || isFinished) {
+      if (timeLeft === 0) {
+        handleNextQuestion(true); // Force finish
+      }
+      return;
+    }
+
+    const intervalId = setInterval(() => {
+      setTimeLeft(prev => (prev !== null ? prev - 1 : null));
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [timeLeft, isFinished]);
+
 
   const handleGenerateQuiz = async (level: number) => {
     setIsLoading(true);
@@ -140,6 +164,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     setAnswerStatus('unanswered');
     setSelectedAnswer(null);
     setDifficultyLevel(level);
+    setUserAnswers([]);
+    setIsReviewing(false);
 
     // Immediately clear localStorage for the new quiz
     localStorage.removeItem(storageKey);
@@ -158,6 +184,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
 
             // Shuffle options for each selected question
             generatedQuestions = selectedQuestions.map(q => shuffleOptions(q));
+            setTimeLeft(generatedQuestions.length * 60); // 1 minute per question
 
         } else {
             // This case should no longer be reached from the UI
@@ -186,6 +213,12 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (answerStatus !== 'unanswered') return;
+    
+    // Record the user's answer
+    const newAnswers = [...userAnswers];
+    newAnswers[currentQuestionIndex] = answerIndex;
+    setUserAnswers(newAnswers);
+
     setSelectedAnswer(answerIndex);
     const isCorrect = quiz![currentQuestionIndex].correctAnswerIndex === answerIndex;
     if (isCorrect) {
@@ -196,13 +229,11 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     }
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = (forceFinish = false) => {
     const isLastQuestion = currentQuestionIndex >= quiz!.length - 1;
 
-    if (isLastQuestion) {
-        // Calculate the score at the very end
+    if (isLastQuestion || forceFinish) {
         const finalScore = score / quiz!.length;
-         // Save the final result only if a user is logged in
         if (currentUser) {
             saveQuizResult({
                 lessonId: lessonId,
@@ -213,6 +244,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             });
         }
        setIsFinished(true);
+       setTimeLeft(null); // Stop the timer
     } else {
        setAnswerStatus('unanswered');
        setSelectedAnswer(null);
@@ -221,7 +253,6 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   };
   
   const handleRestartQuiz = () => {
-    // Determine the level for the new quiz
     const finalScore = score / (quiz?.length || 1);
     const passed = finalScore >= 0.8;
     
@@ -248,6 +279,57 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
       setAnswerStatus('unanswered');
       setSelectedAnswer(null);
       setDifficultyLevel(1);
+      setTimeLeft(null);
+      setIsReviewing(false);
+  }
+
+  const formatTime = (seconds: number | null) => {
+      if (seconds === null) return "00:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
+  if (isReviewing) {
+    return (
+      <Card>
+        <CardHeader>
+            <CardTitle>مراجعة الإجابات</CardTitle>
+            <CardDescription>هنا يمكنك مراجعة أدائك في الاختبار الأخير.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {quiz?.map((q, qIndex) => (
+            <div key={qIndex} className="p-4 border rounded-lg">
+              <p className="font-bold mb-2">السؤال {qIndex + 1}: {q.question}</p>
+              <div className="space-y-2">
+                {q.options.map((option, oIndex) => {
+                  const isCorrect = oIndex === q.correctAnswerIndex;
+                  const isUserAnswer = userAnswers[qIndex] === oIndex;
+                  return (
+                    <div
+                      key={oIndex}
+                      className={cn(
+                        "flex items-center gap-2 p-2 rounded text-sm",
+                        isCorrect ? "bg-green-100/60" : isUserAnswer ? "bg-red-100/60" : "bg-muted/50"
+                      )}
+                    >
+                      {isCorrect ? <CheckCircle className="h-4 w-4 text-green-600" /> : isUserAnswer ? <XCircle className="h-4 w-4 text-red-600" /> : <div className="h-4 w-4" />}
+                      <span>{option}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="text-xs text-muted-foreground mt-2 border-t pt-2">
+                <span className="font-bold">الشرح:</span> {q.explanation}
+              </p>
+            </div>
+          ))}
+        </CardContent>
+        <CardFooter>
+          <Button onClick={() => setIsReviewing(false)}>العودة لنتيجة الاختبار</Button>
+        </CardFooter>
+      </Card>
+    );
   }
 
   if (isFinished) {
@@ -271,6 +353,10 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
              <Button onClick={handleRestartQuiz}>
                  <RefreshCw className="ml-2 h-4 w-4" />
                 {passed && difficultyLevel < 3 ? `تحدّ جديد (المستوى ${difficultyLevel + 1})` : `إعادة الاختبار (المستوى ${difficultyLevel})`}
+            </Button>
+            <Button onClick={() => setIsReviewing(true)} variant="secondary">
+              <Eye className="ml-2 h-4 w-4" />
+              مراجعة الإجابات
             </Button>
             <Button onClick={handleStartOver} variant="outline">
                 البدء من جديد
@@ -322,13 +408,21 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
           <CardTitle className="text-lg">
             السؤال {currentQuestionIndex + 1} من {quiz.length}
           </CardTitle>
-          <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
-            <Star className='h-4 w-4' />
-            <span>مستوى الصعوبة {difficultyLevel}</span>
+          <div className="flex items-center gap-4">
+            <div className='flex items-center gap-1 text-sm font-semibold text-accent'>
+              <Star className='h-4 w-4' />
+              <span>مستوى {difficultyLevel}</span>
+            </div>
+             {timeLeft !== null && (
+              <div className={cn("flex items-center gap-1 text-sm font-semibold font-mono", timeLeft <= 30 && "text-destructive")}>
+                <Clock className="h-4 w-4" />
+                <span>{formatTime(timeLeft)}</span>
+              </div>
+            )}
           </div>
         </div>
         <Progress value={((currentQuestionIndex + 1) / quiz.length) * 100} className="w-full" />
@@ -383,11 +477,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                 </AlertDescription>
             </Alert>
             <div className="flex gap-2">
-                <Button onClick={handleNextQuestion} className="w-full">
+                <Button onClick={() => handleNextQuestion()} className="w-full">
                     {currentQuestionIndex < quiz.length - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}
-                </Button>
-                <Button onClick={handleStartOver} variant="outline">
-                    أعد مستوى الاختبار
                 </Button>
             </div>
          </CardFooter>
