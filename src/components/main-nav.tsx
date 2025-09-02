@@ -76,7 +76,8 @@ function Logo() {
     const isHomePage = pathname === '/';
     const [dialogOpen, setDialogOpen] = useState(false);
 
-    const handleLogoClick = (e: React.MouseEvent) => {
+    // This handles clicking the "ChemZim" text
+    const handleLogoTextClick = (e: React.MouseEvent) => {
         // Prevent navigation if the user is not logged in on the homepage
         if (isHomePage && !currentUser) {
             e.preventDefault();
@@ -87,17 +88,19 @@ function Logo() {
         }
     };
     
+    // This handles clicking the marshmallow icon
     const handleIconClick = () => {
-        if (isHomePage && !currentUser) {
-            setDialogOpen(true);
-        } else if (!isHomePage && currentUser?.role === 'admin') {
-            // New feature: Admin quick exit
-            clearCurriculum();
-            router.push('/');
-        } else {
-             // Default behavior for students or admin on homepage: go home.
+        // If on any page other than home, clear curriculum and go to home (selection screen)
+        if (!isHomePage) {
              clearCurriculum();
              router.push('/');
+        }
+        // Special case for admin login on homepage for non-logged-in users
+        else if (isHomePage && !currentUser) {
+            setDialogOpen(true);
+        } else {
+            // Default behavior on homepage for logged-in users: go to home (which will show the dashboard).
+            router.push('/');
         }
     };
     
@@ -108,7 +111,7 @@ function Logo() {
                 <Button variant="ghost" size="icon" className="h-auto w-auto p-0" onClick={handleIconClick}>
                     <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
                 </Button>
-                <Link href="/" onClick={handleLogoClick} className="inline-block font-bold text-xl">
+                <Link href="/" onClick={handleLogoTextClick} className="inline-block font-bold text-xl">
                     <span className="text-accent">Chem</span>
                     <span className="text-foreground">Zim</span>
                 </Link>
