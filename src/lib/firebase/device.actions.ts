@@ -219,6 +219,31 @@ export async function rejectDevice(pendingDeviceId: string) {
     }
 }
 
+export async function getRegisteredDevices() {
+    try {
+        const devicesRef = collection(db, 'registeredDevices');
+        const q = query(devicesRef, orderBy("registeredAt", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        const registeredDevices = querySnapshot.docs.map(d => {
+            const data = d.data();
+            return {
+                id: d.id,
+                studentId: data.studentId,
+                deviceId: data.deviceId,
+                studentName: data.studentName || 'طالب غير معروف',
+                registeredAt: (data.registeredAt as Timestamp).toDate().toLocaleString('ar-JO'),
+            };
+        });
+
+        return { success: true, data: registeredDevices };
+    } catch (error) {
+        console.error("Error getting registered devices:", error);
+        return { success: false, message: 'فشل في جلب الأجهزة المسجلة' };
+    }
+}
+
+
 export async function deleteDevice(deviceId: string, studentId: string) {
     try {
         const devicesRef = collection(db, 'registeredDevices');

@@ -1,7 +1,7 @@
 
 import AdminNav from '@/components/admin/admin-nav';
+import ViewRegisteredDevicesList from '@/components/admin/view-registered-devices-list';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Smartphone } from 'lucide-react';
 
 export default function RegisteredDevicesPage() {
     return (
@@ -18,12 +18,11 @@ export default function RegisteredDevicesPage() {
                     <CardHeader>
                         <CardTitle>الأجهزة المسجلة</CardTitle>
                         <CardDescription>
-                            عرض جميع الأجهزة المعتمدة للطلاب في النظام
+                            عرض وإدارة جميع الأجهزة المعتمدة للطلاب في النظام
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex flex-col items-center justify-center h-40 text-muted-foreground">
-                       <Smartphone className="h-10 w-10 mb-4" />
-                        <p>هذه الميزة قيد التطوير حاليًا</p>
+                    <CardContent>
+                       <ViewRegisteredDevicesList />
                     </CardContent>
                 </Card>
             </main>
