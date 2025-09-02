@@ -71,49 +71,30 @@ function AuthSection() {
 
 function Logo() {
     const { clearCurriculum, currentUser } = useApp();
-    const pathname = usePathname();
     const router = useRouter();
-    const isHomePage = pathname === '/';
-    const [dialogOpen, setDialogOpen] = useState(false);
 
-    const handleLogoTextClick = (e: React.MouseEvent) => {
-        if (isHomePage && !currentUser) {
-            e.preventDefault();
-        } else {
+    const handleIconClick = () => {
+        // Custom behavior for Admin: Reset to curriculum selection screen
+        if (currentUser?.role === 'admin') {
             clearCurriculum();
             router.push('/');
-        }
-    };
-    
-    const handleIconClick = () => {
-        // If the user is an admin and not on the home page, log them out (clear curriculum).
-        if (!isHomePage && currentUser?.role === 'admin') {
-             clearCurriculum();
-             router.push('/');
-             return;
+            return;
         }
 
-        // Default behavior for students or for admin on the homepage
-        if (isHomePage && !currentUser) {
-            setDialogOpen(true);
-        } else {
-            router.push('/');
-        }
+        // Default behavior for Students: Go to their main dashboard
+        router.push('/');
     };
     
     return (
-        <>
-            {isHomePage && <AdminLoginDialog open={dialogOpen} onOpenChange={setDialogOpen} />}
-            <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="icon" className="h-auto w-auto p-0" onClick={handleIconClick}>
-                    <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
-                </Button>
-                <Link href="/" onClick={handleLogoTextClick} className="inline-block font-bold text-xl">
-                    <span className="text-accent">Chem</span>
-                    <span className="text-foreground">Zim</span>
-                </Link>
-            </div>
-        </>
+        <div className="flex items-center space-x-2">
+            <Button variant="ghost" size="icon" className="h-auto w-auto p-0" onClick={handleIconClick}>
+                <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
+            </Button>
+            <Link href="/" className="inline-block font-bold text-xl">
+                <span className="text-accent">Chem</span>
+                <span className="text-foreground">Zim</span>
+            </Link>
+        </div>
     )
 }
 
