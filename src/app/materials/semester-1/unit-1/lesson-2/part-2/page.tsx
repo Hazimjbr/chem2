@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -52,6 +53,16 @@ export default function LessonPartPage() {
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        تعتمد عملية التبخر على نظرية الحركة الجزيئية. ففي أي سائل، لا تمتلك جميع الجزيئات نفس الطاقة الحركية، بل هناك توزيع لهذه الطاقات (كما يوضحه مخطط ماكسويل-بولتزمان). الجزيئات الموجودة على السطح والتي تمتلك طاقة حركية عالية كافية للتغلب على قوى التجاذب مع الجزيئات المجاورة، تتمكن من الإفلات والتحول إلى الحالة الغازية.
+                    </p>
+                </CardContent>
+            </Card>
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> تعريف وآلية التبخر</CardTitle>
