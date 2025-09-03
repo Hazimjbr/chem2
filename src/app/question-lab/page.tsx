@@ -9,15 +9,15 @@ import { cn } from '@/lib/utils.tsx';
 import React from 'react';
 
 const question = {
-    question: "السائل الذي تترابط جزيئاته بقوى ترابط هيدروجينية من السوائل الآتية",
+    question: "السائل الذي تترابط جزيئاته بقوى ترابط ثنائية القطب من السوائل الآتية",
     options: [
-        "CH₃OH",
-        "CH₃CH₂Cl",
+        "CH₃COOH",
+        "CH₂=CH₂",
         "CH₃COCH₃",
         "CH₃CH₃"
     ],
-    correctAnswerIndex: 0,
-    explanation: "الترابط الهيدروجيني يحدث عند ارتباط ذرة H مباشرة بذرة ذات كهروسلبية عالية (مثل O N F) وهذا الشرط ينطبق فقط على الميثانول (CH₃OH) الذي يحتوي على رابطة O-H"
+    correctAnswerIndex: 2,
+    explanation: "الأسيتون (CH₃COCH₃) جزيء قطبي بسبب وجود مجموعة الكربونيل (C=O) ولكنه لا يكون روابط هيدروجينية وبالتالي فإن قوى ثنائي القطب هي قوة الترابط المميزة له بينما CH₃COOH يكون روابط هيدروجينية وهي أقوى والمركبات الأخرى غير قطبية"
 }
 
 export default function QuestionLabPage() {
