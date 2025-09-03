@@ -7,17 +7,18 @@ import { CheckCircle, Eye, RefreshCw, XCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import React from 'react';
+import { InlineMath } from 'react-katex';
 
 const question = {
-    question: "السائل الذي له أقوى ترابط من السوائل الآتية:",
+    question: <span>الجملة الصحيحة فيما يتعلق بالسوائل الآتية: (<InlineMath math="CH_3Cl"/>, <InlineMath math="CH_3(CH_2)_3Cl"/>, <InlineMath math="CH_3C(CH_3)_2Cl"/>, <InlineMath math="CH_3CH_2F"/>) هي:</span>,
     options: [
-        "CH₃(CH₂)₃CH₃ (بنتان)",
-        "CH₃C(CH₃)₂CH₃ (نيوبنتان)",
-        "CH₃CH₂CH₂CH₃ (بيوتان)",
-        "CH₃CH₂CH₃ (بروبان)"
+        "CH₃C(CH₃)₂Cl له أضعف ترابط لأنه الأكثر تفرعات",
+        "CH₃CH₂F له أقوى ترابط لأن قوى الترابط هيدروجيني",
+        "CH₃(CH₂)₃Cl له أقوى ترابط لأن كتلته المولية الأكبر وتفرعاته الأقل",
+        "CH₃Cl له أضعف ترابط لأنه الأقل تفرعات"
     ],
-    correctAnswerIndex: 0,
-    explanation: "جميع المركبات غير قطبية وتمتلك قوى لندن فقط. تزداد قوة قوى لندن بزيادة الكتلة المولية (طول السلسلة) وتقل بالتفرع. البنتان يمتلك أعلى كتلة مولية بين الخيارات ذات السلسلة المستقيمة، وهو أقوى من النيوبنتان (الذي له نفس الكتلة المولية) لأن شكله المستقيم يسمح بمساحة سطح أكبر للتجاذب."
+    correctAnswerIndex: 2,
+    explanation: "المركب CH₃(CH₂)₃Cl يمتلك أقوى قوى ترابط لأنه يحتوي على العدد الأكبر من الإلكترونات (أعلى كتلة مولية) بين الخيارات، وشكله المستقيم (الأقل تفرعًا) يسمح بتجاذب أكبر عبر قوى لندن، مما يتطلب طاقة أعلى لكسر الروابط مقارنة ببقية المركبات."
 }
 
 export default function QuestionLabPage() {
@@ -71,7 +72,7 @@ export default function QuestionLabPage() {
                                 disabled={answerStatus !== 'unanswered'}
                             >
                                 <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                                <span className="flex-1 whitespace-normal">{option}</span>
+                                <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
                             </Button>
                         )
                     })}
