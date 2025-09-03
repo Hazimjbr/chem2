@@ -10,15 +10,15 @@ import React from 'react';
 import { InlineMath } from 'react-katex';
 
 const question = {
-    question: <span>السائل الذي تترابط جزيئاته بقوى ترابط ثنائية القطب من السوائل الآتية:</span>,
+    question: <span>كيف تختلف حركة جسيمات السائل عن حركة جسيمات الغاز؟</span>,
     options: [
-        "CH₃COOH",
-        "CH₂=CH₂",
-        "CH₃COCH₃",
-        "CH₃CH₃"
+        "جسيمات السائل ثابتة تمامًا",
+        "جسيمات السائل لها طاقة حركية أعلى من الغاز",
+        "جسيمات السائل تتحرك بحرية أقل ومقيدة أكثر بسبب قوى التجاذب",
+        "لا يوجد فرق في حركتهما"
     ],
     correctAnswerIndex: 2,
-    explanation: "الأسيتون (CH₃COCH₃) جزيء قطبي بسبب وجود مجموعة الكربونيل (C=O) ولكنه لا يكون روابط هيدروجينية، وبالتالي فإن قوى ثنائي القطب هي قوة الترابط المميزة له. حمض الأسيتيك يكون روابط هيدروجينية وهي أقوى، بينما المركبات الأخرى غير قطبية."
+    explanation: "في كلتا الحالتين الجسيمات في حركة مستمرة، لكن في السوائل تكون قوى التجاذب أقوى مما يقيد حركة الجسيمات ويجعلها تنزلق فوق بعضها البعض بدلاً من التحرك بحرية كاملة كما في الغازات."
 }
 
 export default function QuestionLabPage() {
@@ -72,7 +72,7 @@ export default function QuestionLabPage() {
                                 disabled={answerStatus !== 'unanswered'}
                             >
                                 <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                                <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                                <span className="flex-1 whitespace-normal">{option}</span>
                             </Button>
                         )
                     })}
