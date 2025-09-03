@@ -26,16 +26,20 @@ export default function MaxwellBoltzmannDiagram() {
   useEffect(() => {
     if (width <= 0) return;
 
-    // Remove the previous p5 instance before creating a new one
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       
-      const drawChart = (currentTemp: number) => {
+      p.setup = () => {
+        p.createCanvas(width, CANVAS_HEIGHT);
+        p.noLoop(); // We will manually call redraw
+      };
+
+      // This function is now the single source of truth for drawing
+      (p as any).drawChart = (currentTemp: number) => {
         let energyCounts = new Array(150).fill(0);
         // Maxwell-Boltzmann distribution logic
         for (let i = 0; i < NUM_PARTICLES; i++) {
-            // This is a simplified approximation for visualization
             const r1 = p.random();
             const r2 = p.random();
             const energy = -currentTemp * Math.log(r1 * r2);
@@ -116,20 +120,6 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
       };
-      
-      p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // We will manually call redraw
-      };
-      
-      p.draw = () => {
-        // The draw function will be controlled by React's state
-      };
-
-      // Expose a function to be called from React
-      (p as any).updateAndDraw = (newTemp: number) => {
-        drawChart(newTemp);
-      };
     };
     
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
@@ -139,12 +129,12 @@ export default function MaxwellBoltzmannDiagram() {
     };
   }, [width]);
 
-  // This effect will run whenever `temperature` or `width` changes.
+  // This effect will run whenever `temperature` changes, redrawing the chart.
   useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).updateAndDraw) {
-      (p5InstanceRef.current as any).updateAndDraw(temperature);
+    if (p5InstanceRef.current && (p5InstanceRef.current as any).drawChart) {
+      (p5InstanceRef.current as any).drawChart(temperature);
     }
-  }, [temperature, width]);
+  }, [temperature, width]); // Redraw when temp or width changes
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
