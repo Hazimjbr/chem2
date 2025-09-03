@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -65,7 +66,7 @@ export default function LessonPartPage() {
                     cardTitle="ترابط قوى لندن"
                     cardIcon={<Atom className="h-6 w-6" />}
                 >
-                    <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
+                     <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
                     <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
                         <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية مثل CH₄ CO₂</li>
                         <li>تزداد قوته بازدياد الكتلة المولية وقلة تفرعات السلاسل</li>
@@ -117,7 +118,7 @@ export default function LessonPartPage() {
                     cardIcon={<HelpCircle className="h-6 w-6" />}
                 >
                    <CardContent>
-                        <p className="text-sm">المائع هو أي مادة لها القدرة على الجريان أو الانسياب وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
+                        <p className="text-sm">المائع هو أي مادة لها القدرة على الجريان أو الانسياب والانتشار وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
                    </CardContent>
                 </FlippableCard>
             </div>
@@ -136,21 +137,21 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="أي نوع من قوى الترابط هو الأقوى بين جزيئات الماء (H₂O)؟"
+                  question="السائل الذي تترابط جزيئاته بقوى ترابط هيدروجينية من السوائل الآتية"
                   options={[
-                      "قوى لندن",
-                      "ترابط ثنائي القطب",
-                      "ترابط هيدروجيني",
-                      "ترابط أيوني"
+                      "CH₃OH",
+                      "CH₃CH₂Cl",
+                      "CH₃COCH₃",
+                      "CH₃CH₃"
                   ]}
-                  correctAnswerIndex={2}
-                  explanation="جزيء الماء يحتوي على ذرة أكسجين ذات كهروسلبية عالية مرتبطة بذرتي هيدروجين مما يسمح بتكون روابط هيدروجينية قوية بين جزيئاته"
+                  correctAnswerIndex={0}
+                  explanation="الترابط الهيدروجيني يحدث عند ارتباط ذرة H مباشرة بذرة ذات كهروسلبية عالية (مثل O N F) وهذا الشرط ينطبق فقط على الميثانول (CH₃OH) الذي يحتوي على رابطة O-H"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="لماذا تأخذ السوائل شكل الوعاء الذي توضع فيه بينما يبقى حجمها ثابتًا؟"
+                  question="لماذا تأخذ السوائل شكل الوعاء الذي توضع فيه بينما يبقى حجمها ثابتًا"
                   options={[
                       "لأن جزيئاتها لا تتحرك أبدًا",
                       "لأن قوى الترابط بينها قوية جدًا كالمواد الصلبة",
