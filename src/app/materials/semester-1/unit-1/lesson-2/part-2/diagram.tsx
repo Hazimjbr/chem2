@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import p5 from 'p5';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
@@ -30,30 +30,21 @@ export default function MaxwellBoltzmannDiagram() {
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
-      let energyCounts = new Array(150).fill(0); // Bins for energy levels
       
-      const setupParticlesAndCountEnergies = () => {
-        energyCounts.fill(0);
+      const drawChart = (currentTemp: number) => {
+        let energyCounts = new Array(150).fill(0);
         // Maxwell-Boltzmann distribution logic
         for (let i = 0; i < NUM_PARTICLES; i++) {
             // This is a simplified approximation for visualization
             const r1 = p.random();
             const r2 = p.random();
-            const energy = -temperature * Math.log(r1 * r2);
+            const energy = -currentTemp * Math.log(r1 * r2);
             const bin = p.floor(energy);
             if (bin < energyCounts.length) {
               energyCounts[bin]++;
             }
         }
-      }
-
-      p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // We only need to draw once per temperature change
-        setupParticlesAndCountEnergies();
-      };
-      
-      p.draw = () => {
+        
         p.background('hsl(var(--card))');
         p.strokeWeight(2);
 
@@ -69,7 +60,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.noFill();
         p.stroke('hsl(var(--primary))');
         for (let i = 0; i < energyCounts.length; i++) {
-          const x = p.map(i, 0, energyCounts.length, 0, width);
+          const x = p.map(i, 0, energyCounts.length, 10, width - 10);
           const y = p.map(energyCounts[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
           p.vertex(x, y);
 
@@ -80,17 +71,17 @@ export default function MaxwellBoltzmannDiagram() {
         p.endShape();
         
         // Fill the area for particles that can evaporate
-        const startX = p.map(EVAPORATION_ENERGY, 0, energyCounts.length, 0, width);
+        const startX = p.map(EVAPORATION_ENERGY, 0, energyCounts.length, 10, width - 10);
         p.beginShape();
         p.stroke('hsl(var(--destructive))');
         p.fill('hsla(var(--destructive), 0.3)');
         p.vertex(startX, p.map(energyCounts[EVAPORATION_ENERGY] || 0, 0, maxCount, CANVAS_HEIGHT - 20, 20));
         for (let i = EVAPORATION_ENERGY + 1; i < energyCounts.length; i++) {
-          const x = p.map(i, 0, energyCounts.length, 0, width);
+          const x = p.map(i, 0, energyCounts.length, 10, width - 10);
           const y = p.map(energyCounts[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
           p.vertex(x, y);
         }
-        p.vertex(width, CANVAS_HEIGHT - 20);
+        p.vertex(width - 10, CANVAS_HEIGHT - 20);
         p.vertex(startX, CANVAS_HEIGHT - 20);
         p.endShape(p.CLOSE);
 
@@ -125,16 +116,35 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
       };
-    };
+      
+      p.setup = () => {
+        p.createCanvas(width, CANVAS_HEIGHT);
+        p.noLoop(); // We will manually call redraw
+      };
+      
+      p.draw = () => {
+        // The draw function will be controlled by React's state
+      };
 
-    // Create a new p5 instance every time temperature or width changes
+      // Expose a function to be called from React
+      (p as any).updateAndDraw = (newTemp: number) => {
+        drawChart(newTemp);
+      };
+    };
+    
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
 
-    // Cleanup function to remove the p5 instance when the component unmounts
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width, temperature]); // Re-run the effect when temperature or width changes
+  }, [width]);
+
+  // This effect will run whenever `temperature` or `width` changes.
+  useEffect(() => {
+    if (p5InstanceRef.current && (p5InstanceRef.current as any).updateAndDraw) {
+      (p5InstanceRef.current as any).updateAndDraw(temperature);
+    }
+  }, [temperature, width]);
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
