@@ -9,15 +9,15 @@ import { cn } from '@/lib/utils.tsx';
 import React from 'react';
 
 const question = {
-    question: "السائل الذي له أقوى ترابط من السوائل الآتية:",
+    question: "السائل الذي تترابط جزيئاته بقوى ترابط لندن من السوائل الآتية:",
     options: [
-        "CH₃COOH",
+        "CH₃CH₂OH",
         "CH₃CH₂Cl",
         "CH₃COCH₃",
         "CH₃CH₃"
     ],
-    correctAnswerIndex: 0,
-    explanation: "حمض الأسيتيك (CH₃COOH) هو الأقوى لأنه يكون رابطتين هيدروجينيتين لكل جزيء (دايمر)، وهي أقوى بكثير من قوى ثنائي القطب في الخيارين ب و ج، وقوى لندن في الخيار د."
+    correctAnswerIndex: 3,
+    explanation: "قوى لندن هي القوى الوحيدة الموجودة بين الجزيئات غير القطبية. الإيثان (CH₃CH₃) هو الجزيء غير القطبي الوحيد بين الخيارات، بينما باقي الخيارات هي جزيئات قطبية تمتلك أنواعًا أخرى أقوى من قوى الترابط بالإضافة إلى قوى لندن."
 }
 
 export default function QuestionLabPage() {
