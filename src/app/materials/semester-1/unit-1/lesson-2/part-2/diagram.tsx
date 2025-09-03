@@ -26,38 +26,31 @@ export default function MaxwellBoltzmannDiagram() {
   useEffect(() => {
     if (width <= 0) return;
 
+    // Remove the previous p5 instance before creating a new one
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       let energyCounts = new Array(150).fill(0); // Bins for energy levels
-      let particles: { energy: number }[] = [];
-
-      const setupParticles = () => {
-        particles = [];
+      
+      const setupParticlesAndCountEnergies = () => {
+        energyCounts.fill(0);
         // Maxwell-Boltzmann distribution logic
         for (let i = 0; i < NUM_PARTICLES; i++) {
             // This is a simplified approximation for visualization
             const r1 = p.random();
             const r2 = p.random();
             const energy = -temperature * Math.log(r1 * r2);
-            particles.push({ energy });
-        }
-      }
-
-      const countEnergies = () => {
-        energyCounts.fill(0);
-        for(const particle of particles) {
-             const bin = p.floor(particle.energy);
-             if (bin < energyCounts.length) {
-                energyCounts[bin]++;
-             }
+            const bin = p.floor(energy);
+            if (bin < energyCounts.length) {
+              energyCounts[bin]++;
+            }
         }
       }
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        setupParticles();
-        countEnergies();
+        p.noLoop(); // We only need to draw once per temperature change
+        setupParticlesAndCountEnergies();
       };
       
       p.draw = () => {
@@ -87,10 +80,10 @@ export default function MaxwellBoltzmannDiagram() {
         p.endShape();
         
         // Fill the area for particles that can evaporate
+        const startX = p.map(EVAPORATION_ENERGY, 0, energyCounts.length, 0, width);
         p.beginShape();
         p.stroke('hsl(var(--destructive))');
         p.fill('hsla(var(--destructive), 0.3)');
-        const startX = p.map(EVAPORATION_ENERGY, 0, energyCounts.length, 0, width);
         p.vertex(startX, p.map(energyCounts[EVAPORATION_ENERGY] || 0, 0, maxCount, CANVAS_HEIGHT - 20, 20));
         for (let i = EVAPORATION_ENERGY + 1; i < energyCounts.length; i++) {
           const x = p.map(i, 0, energyCounts.length, 0, width);
@@ -132,26 +125,16 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
       };
-
-       (p as any).updateTemperature = () => {
-           setupParticles();
-           countEnergies();
-           p.redraw();
-       };
     };
 
+    // Create a new p5 instance every time temperature or width changes
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
 
+    // Cleanup function to remove the p5 instance when the component unmounts
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
-
-  useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).updateTemperature) {
-      (p5InstanceRef.current as any).updateTemperature();
-    }
-  }, [temperature]);
+  }, [width, temperature]); // Re-run the effect when temperature or width changes
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
