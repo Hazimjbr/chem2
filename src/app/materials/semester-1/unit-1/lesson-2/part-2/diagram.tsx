@@ -26,18 +26,10 @@ export default function MaxwellBoltzmannDiagram() {
   useEffect(() => {
     if (width <= 0 || !sketchRef.current) return;
 
-    p5InstanceRef.current?.remove(); // Clean up previous instance
+    // Remove any previous instance before creating a new one
+    p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
-      let currentTemp = temperature;
-
-      // This function will be called by React to update the sketch's internal state
-      (p as any).updateWithNewProps = (props: { temp: number }) => {
-        if (props.temp) {
-            currentTemp = props.temp;
-        }
-      };
-
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
       };
@@ -48,7 +40,7 @@ export default function MaxwellBoltzmannDiagram() {
         for (let i = 0; i < NUM_PARTICLES; i++) {
             const r1 = p.random();
             const r2 = p.random();
-            const energy = -currentTemp * Math.log(r1 * r2);
+            const energy = -temperature * Math.log(r1 * r2);
             const bin = p.floor(energy);
             if (bin < energyCounts.length) {
               energyCounts[bin]++;
@@ -130,17 +122,12 @@ export default function MaxwellBoltzmannDiagram() {
     
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
 
+    // Cleanup function to remove the p5 instance when the component unmounts or dependencies change
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
+  }, [width, temperature]); // Re-create the sketch when width OR temperature changes
 
-  // This effect will run whenever `temperature` or the instance itself changes.
-  useEffect(() => {
-    if (p5InstanceRef.current && typeof (p5InstanceRef.current as any).updateWithNewProps === 'function') {
-      (p5InstanceRef.current as any).updateWithNewProps({ temp: temperature });
-    }
-  }, [temperature, p5InstanceRef.current]); 
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
