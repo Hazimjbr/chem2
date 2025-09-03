@@ -31,9 +31,15 @@ export default function MaxwellBoltzmannDiagram() {
     const sketch = (p: p5) => {
       let currentTemp = temperature;
 
+      // This function will be called by React to update the sketch's internal state
+      (p as any).updateWithNewProps = (props: { temp: number }) => {
+        if (props.temp) {
+            currentTemp = props.temp;
+        }
+      };
+
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // We will control drawing manually
       };
 
       p.draw = () => {
@@ -120,12 +126,6 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
       };
-
-      // Custom function to update props and redraw
-      (p as any).updateWithNewProps = (props: { temp: number }) => {
-        currentTemp = props.temp;
-        p.redraw();
-      };
     };
     
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
@@ -133,7 +133,7 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]); // Only re-create the p5 instance when width changes
+  }, [width]);
 
   // This effect will run whenever `temperature` or the instance itself changes.
   useEffect(() => {
