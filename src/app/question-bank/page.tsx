@@ -22,6 +22,7 @@ import * as part7Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-7/ex
 import * as part8Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-8/exam';
 import * as part9Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-9/exam';
 import * as part10Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-10/exam';
+import * as unit1Lesson2Part1Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-1/exam';
 import * as unit1ReviewExam from '@/app/materials/semester-1/unit-1/section-5/exam';
 
 interface SourcedQuizQuestion extends BaseQuizQuestion {
@@ -42,6 +43,7 @@ const sources = [
     { module: part8Exam, name: 'حالات المادة / غازية / قانون الغاز المثالي' },
     { module: part9Exam, name: 'حالات المادة / غازية / قانون دالتون' },
     { module: part10Exam, name: 'حالات المادة / غازية / قانون جراهام' },
+    { module: unit1Lesson2Part1Exam, name: 'حالات المادة / سائلة / مقدمة' },
     { module: unit1ReviewExam, name: 'مراجعة الوحدة الأولى' },
 ];
 
