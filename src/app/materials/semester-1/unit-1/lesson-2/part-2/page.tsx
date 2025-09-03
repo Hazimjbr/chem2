@@ -63,19 +63,17 @@ export default function LessonPartPage() {
                     </p>
                 </CardContent>
             </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> تعريف وآلية التبخر</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                    <p>
+            
+            <FlippableCard cardTitle="تعريف وآلية التبخر" cardIcon={<BookCopy className="h-6 w-6" />}>
+                <div className="space-y-4">
+                     <p>
                         <strong>التبخر:</strong> هو تحول المادة من الحالة السائلة إلى الغازية، وهي عملية تحدث على <strong>سطح السائل فقط</strong> عند أي درجة حرارة.
                     </p>
                     <p className="text-muted-foreground">
                         <strong>آلية الحدوث:</strong> لا تمتلك جميع جزيئات السائل نفس الطاقة الحركية. بعض الجزيئات على السطح تمتلك طاقة حركية عالية كافية للتغلب على قوى التجاذب مع الجزيئات المجاورة، فتتمكن من الإفلات والتحول إلى الحالة الغازية. هذه العملية ماصة للطاقة، ولذلك نشعر بالبرودة عند تبخر العرق عن جلدنا، حيث يسحب الحرارة من الجسم.
                     </p>
-                </CardContent>
-            </Card>
+                </div>
+            </FlippableCard>
 
             <Card>
                 <CardHeader>
