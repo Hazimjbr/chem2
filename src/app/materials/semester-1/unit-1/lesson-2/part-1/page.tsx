@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -117,7 +116,7 @@ export default function LessonPartPage() {
                     cardTitle="ما هو المائع؟"
                     cardIcon={<HelpCircle className="h-6 w-6" />}
                 >
-                   <p className="text-sm">المائع هو أي مادة لها القدرة على الجريان وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
+                   <p className="text-sm">المائع هو أي مادة لها القدرة على الجريان او الانسياب وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
                 </FlippableCard>
             </div>
         </div>
