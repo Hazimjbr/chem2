@@ -2,7 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Waves } from 'lucide-react';
+import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Waves, HelpCircle } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -68,7 +68,7 @@ export default function LessonPartPage() {
                 >
                     <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
                     <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
-                        <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية (مثل CH₄ CO₂)</li>
+                        <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية مثل CH₄ CO₂</li>
                         <li>تزداد قوته بازدياد الكتلة المولية</li>
                          <li>يقل بازدياد تفرعات السلاسل</li>
                     </ul>
@@ -80,8 +80,8 @@ export default function LessonPartPage() {
                 >
                     <p className="font-semibold text-sm mb-2">ينشأ بين الجزيئات القطبية</p>
                      <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
-                        <li>يحدث تجاذب بين الشحنات الجزئية المختلفة (δ+ و δ-)</li>
-                        <li>مثال: هاليد الألكيل الإيثر الألدهيد الكيتون</li>
+                        <li>يحدث تجاذب بين الشحنات الجزئية المختلفة δ+ و δ-</li>
+                        <li>مثال هاليد الألكيل الإيثر الألدهيد الكيتون</li>
                         <li>أقوى من قوى لندن للجزيئات المتقاربة في الكتلة المولية</li>
                     </ul>
                 </FlippableCard>
@@ -93,35 +93,32 @@ export default function LessonPartPage() {
                     <p className="font-semibold text-sm mb-2">أقوى أنواع الترابط بين الجزيئات</p>
                      <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
                         <li>نوع خاص من ترابط ثنائي القطب</li>
-                        <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية (N O F)</li>
-                        <li>مثال: الماء (H₂O) الكحول (R-OH) الأمونيا (NH₃)</li>
+                        <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية N O F</li>
+                        <li>مثال الماء H₂O الكحول R-OH الأمونيا NH₃</li>
                     </ul>
                 </FlippableCard>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>خصائص المواد السائلة</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">1</span><div><strong>حجمها ثابت:</strong> غير قابلة للانضغاط لأن جزيئاتها متقاربة</div></li>
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">2</span><div><strong>شكلها متغير:</strong> تأخذ شكل حيز الوعاء الذي توضع فيه وتملأ قاعه</div></li>
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">3</span><div><strong>جسيماتها متحركة:</strong> في حركة مستمرة وعشوائية لكن طاقتها الحركية أقل من الغازات</div></li>
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">4</span><div><strong>قوى ترابط متوسطة:</strong> أضعف من المواد الصلبة ولكنها أقوى من الغازية</div></li>
-                             <li className="flex items-start gap-3"><span className="font-bold text-primary">5</span><div><strong>كثافتها أكبر:</strong> بشكل عام كثافة السوائل أكبر من كثافة الغازات</div></li>
-                        </ul>
-                    </CardContent>
-                </Card>
-                 <Card>
-                    <CardHeader>
-                        <CardTitle>ما هو المائع؟</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                       <p>المائع هو أي مادة لها القدرة على الجريان وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
-                    </CardContent>
-                </Card>
+                <FlippableCard
+                    cardTitle="خصائص المواد السائلة"
+                    cardIcon={<Layers className="h-6 w-6" />}
+                >
+                    <ul className="space-y-3 text-sm">
+                        <li className="flex items-start gap-3"><span className="font-bold text-primary">1</span><div><strong>حجمها ثابت</strong> غير قابلة للانضغاط لأن جزيئاتها متقاربة</div></li>
+                        <li className="flex items-start gap-3"><span className="font-bold text-primary">2</span><div><strong>شكلها متغير</strong> تأخذ شكل حيز الوعاء الذي توضع فيه وتملأ قاعه</div></li>
+                        <li className="flex items-start gap-3"><span className="font-bold text-primary">3</span><div><strong>جسيماتها متحركة</strong> في حركة مستمرة وعشوائية لكن طاقتها الحركية أقل من الغازات</div></li>
+                        <li className="flex items-start gap-3"><span className="font-bold text-primary">4</span><div><strong>قوى ترابط متوسطة</strong> أضعف من المواد الصلبة ولكنها أقوى من الغازية</div></li>
+                         <li className="flex items-start gap-3"><span className="font-bold text-primary">5</span><div><strong>كثافتها أكبر</strong> بشكل عام كثافة السوائل أكبر من كثافة الغازات</div></li>
+                    </ul>
+                </FlippableCard>
+
+                 <FlippableCard
+                    cardTitle="ما هو المائع؟"
+                    cardIcon={<HelpCircle className="h-6 w-6" />}
+                >
+                   <p className="text-sm">المائع هو أي مادة لها القدرة على الجريان وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
+                </FlippableCard>
             </div>
         </div>
         
@@ -146,7 +143,7 @@ export default function LessonPartPage() {
                       "ترابط أيوني"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="جزيء الماء يحتوي على ذرة أكسجين (ذات كهروسلبية عالية) مرتبطة بذرتي هيدروجين مما يسمح بتكون روابط هيدروجينية قوية بين جزيئاته"
+                  explanation="جزيء الماء يحتوي على ذرة أكسجين ذات كهروسلبية عالية مرتبطة بذرتي هيدروجين مما يسمح بتكون روابط هيدروجينية قوية بين جزيئاته"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -160,7 +157,7 @@ export default function LessonPartPage() {
                       "لأن جزيئاتها قادرة على الحركة والانزلاق فوق بعضها ولكنها تبقى متقاربة"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="جزيئات السائل تمتلك طاقة حركية كافية للتغلب جزئيًا على قوى التجاذب والانزلاق فوق بعضها البعض (مما يمنحها شكلاً متغيرًا) لكن هذه القوى لا تزال قوية بما يكفي لإبقائها متقاربة (مما يحافظ على حجم ثابت)"
+                  explanation="جزيئات السائل تمتلك طاقة حركية كافية للتغلب جزئيًا على قوى التجاذب والانزلاق فوق بعضها البعض مما يمنحها شكلاً متغيرًا لكن هذه القوى لا تزال قوية بما يكفي لإبقائها متقاربة مما يحافظ على حجم ثابت"
               />
           </div>
         </div>
