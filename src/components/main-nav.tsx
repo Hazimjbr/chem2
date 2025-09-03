@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Beaker, ChevronDown, FlaskConical, Library, Menu, LogOut, ShieldCheck } from 'lucide-react';
+import { Beaker, ChevronDown, FlaskConical, Library, Menu, LogOut, ShieldCheck, FileQuestion, TestTube } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -72,16 +72,20 @@ function Logo() {
     const router = useRouter();
 
     const handleLogoClick = () => {
+        // This function now specifically handles the TEXT logo click.
+        // It should always take the user to the main content of the selected curriculum.
         if (isSelected) {
-            router.push('/');
+            router.push('/materials/semester-1');
         } else {
             router.push('/');
         }
     };
     
     const handleIconClick = () => {
+        // This function handles the ICON click.
+        // It has a special behavior for the admin.
         if (currentUser?.role === 'admin') {
-            clearCurriculum();
+            clearCurriculum(); // For admin, this clears the selected course and returns to the course selection page.
         }
         router.push('/');
     };
@@ -114,12 +118,26 @@ function DesktopNav() {
     return (
         <nav className="hidden md:flex items-center gap-2 text-sm">
            {currentUser.role === 'admin' && (
+             <>
                 <Link href="/admin/dashboard" passHref>
                     <Button variant="ghost" className="font-medium text-destructive transition-colors hover:text-destructive/80">
                         <ShieldCheck className="ml-2 h-4 w-4" />
-                        لوحة تحكم المسؤول
+                        لوحة التحكم
                     </Button>
                 </Link>
+                 <Link href="/question-bank" passHref>
+                    <Button variant="ghost" className="font-medium">
+                       <Library className="ml-2 h-4 w-4" />
+                        بنك الأسئلة
+                    </Button>
+                </Link>
+                 <Link href="/question-lab" passHref>
+                    <Button variant="ghost" className="font-medium">
+                       <TestTube className="ml-2 h-4 w-4" />
+                        معمل الأسئلة
+                    </Button>
+                </Link>
+            </>
             )}
             {isSelected && (
               <>
@@ -172,11 +190,23 @@ function MobileNav() {
                     </SheetHeader>
                     <nav className="flex flex-col gap-4 mt-8">
                        {currentUser.role === 'admin' && (
-                            <SheetClose asChild>
-                            <Link href="/admin/dashboard" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-2">
-                                <ShieldCheck /> لوحة تحكم المسؤول
-                            </Link>
-                            </SheetClose>
+                            <>
+                                <SheetClose asChild>
+                                <Link href="/admin/dashboard" className="text-lg font-medium text-destructive transition-colors hover:text-destructive/80 flex items-center gap-2">
+                                    <ShieldCheck /> لوحة التحكم
+                                </Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                <Link href="/question-bank" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
+                                   <Library /> بنك الأسئلة
+                                </Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                <Link href="/question-lab" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
+                                   <TestTube /> معمل الأسئلة
+                                </Link>
+                                </SheetClose>
+                            </>
                         )}
                         {isSelected && (
                          <>
