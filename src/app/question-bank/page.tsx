@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Library } from 'lucide-react';
@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils.tsx';
 import type { QuizQuestion as BaseQuizQuestion } from '@/components/quiz';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { units } from '@/data/materials';
 
 // Import all exam files
 import * as part1Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-1/exam';
@@ -26,38 +27,93 @@ import * as unit1Lesson2Part1Exam from '@/app/materials/semester-1/unit-1/lesson
 import * as unit1ReviewExam from '@/app/materials/semester-1/unit-1/section-5/exam';
 
 interface SourcedQuizQuestion extends BaseQuizQuestion {
-    source: string;
+    source: {
+        unitId: string;
+        unitTitle: string;
+        lessonId: string;
+        lessonTitle: string;
+        partId?: string;
+        partTitle?: string;
+    };
     level: number;
 }
 
 const allQuestions: SourcedQuizQuestion[] = [];
 
-const sources = [
-    { module: part1Exam, name: 'حالات المادة / غازية / نظرية الحركة الجزيئية' },
-    { module: part2Exam, name: 'حالات المادة / غازية / مقدمة قوانين الغازات' },
-    { module: part3Exam, name: 'حالات المادة / غازية / قانون بويل' },
-    { module: part4Exam, name: 'حالات المادة / غازية / قانون شارل' },
-    { module: part5Exam, name: 'حالات المادة / غازية / قانون جاي لوساك' },
-    { module: part6Exam, name: 'حالات المادة / غازية / القانون الجامع' },
-    { module: part7Exam, name: 'حالات المادة / غازية / قانون أفوجادرو' },
-    { module: part8Exam, name: 'حالات المادة / غازية / قانون الغاز المثالي' },
-    { module: part9Exam, name: 'حالات المادة / غازية / قانون دالتون' },
-    { module: part10Exam, name: 'حالات المادة / غازية / قانون جراهام' },
-    { module: unit1Lesson2Part1Exam, name: 'حالات المادة / سائلة / مقدمة' },
-    { module: unit1ReviewExam, name: 'مراجعة الوحدة الأولى' },
-];
+// A map to associate path parts with exam modules
+const examModules = {
+    '/materials/semester-1/unit-1/lesson-1/part-1': part1Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-2': part2Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-3': part3Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-4': part4Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-5': part5Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-6': part6Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-7': part7Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-8': part8Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-9': part9Exam,
+    '/materials/semester-1/unit-1/lesson-1/part-10': part10Exam,
+    '/materials/semester-1/unit-1/lesson-2/part-1': unit1Lesson2Part1Exam,
+    '/materials/semester-1/unit-1/section-5': unit1ReviewExam,
+};
 
-sources.forEach(source => {
-    if (source.module.staticQuizLvl1) {
-        allQuestions.push(...source.module.staticQuizLvl1.map(q => ({ ...q, source: source.name, level: 1 })));
-    }
-    if (source.module.staticQuizLvl2) {
-        allQuestions.push(...source.module.staticQuizLvl2.map(q => ({ ...q, source: source.name, level: 2 })));
-    }
-    if (source.module.staticQuizLvl3) {
-        allQuestions.push(...source.module.staticQuizLvl3.map(q => ({ ...q, source: source.name, level: 3 })));
-    }
+// Helper function to construct a unique ID for a lesson or section
+const getLessonId = (lesson: any) => lesson.lessonNum ? `lesson-${lesson.lessonNum}` : `section-${lesson.sectionNum}`;
+
+// Populate allQuestions from imported modules based on the materials structure
+units.forEach(unit => {
+    unit.lessons.forEach(lesson => {
+        if (lesson.parts.length > 0) {
+            lesson.parts.forEach(part => {
+                const path = `/materials/semester-1/${unit.id}/${getLessonId(lesson)}${part.partNum ? `/part-${part.partNum}` : ''}`;
+                // @ts-ignore
+                const module = examModules[path];
+                if (module) {
+                    const sourceInfo = {
+                        unitId: unit.id,
+                        unitTitle: unit.title,
+                        lessonId: getLessonId(lesson),
+                        lessonTitle: lesson.title,
+                        partId: part.partNum ? `part-${part.partNum}` : undefined,
+                        partTitle: part.title,
+                    };
+                    if (module.staticQuizLvl1) {
+                        allQuestions.push(...module.staticQuizLvl1.map((q: any) => ({ ...q, source: sourceInfo, level: 1 })));
+                    }
+                    if (module.staticQuizLvl2) {
+                        allQuestions.push(...module.staticQuizLvl2.map((q: any) => ({ ...q, source: sourceInfo, level: 2 })));
+                    }
+                    if (module.staticQuizLvl3) {
+                        allQuestions.push(...module.staticQuizLvl3.map((q: any) => ({ ...q, source: sourceInfo, level: 3 })));
+                    }
+                }
+            });
+        } else {
+             // Handle lessons without parts (like reviews)
+            const path = `/materials/semester-1/${unit.id}/${getLessonId(lesson)}`;
+             // @ts-ignore
+            const module = examModules[path];
+            if (module) {
+                 const sourceInfo = {
+                    unitId: unit.id,
+                    unitTitle: unit.title,
+                    lessonId: getLessonId(lesson),
+                    lessonTitle: lesson.title,
+                };
+                 if (module.staticQuizLvl1) {
+                    allQuestions.push(...module.staticQuizLvl1.map((q: any) => ({ ...q, source: sourceInfo, level: 1 })));
+                }
+            }
+        }
+    });
 });
+
+const getSourceString = (source: SourcedQuizQuestion['source']) => {
+    let str = `${source.unitTitle} / ${source.lessonTitle}`;
+    if(source.partTitle) {
+        str += ` / ${source.partTitle}`;
+    }
+    return str;
+}
 
 
 const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
@@ -72,7 +128,7 @@ const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
                 </Badge>
             </div>
             <CardDescription className="text-xs pt-2">
-                المصدر {question.source}
+                المصدر {getSourceString(question.source)}
             </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
@@ -105,13 +161,39 @@ const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
 );
 
 export default function QuestionBankPage() {
-    const [selectedSource, setSelectedSource] = useState('all');
+    const [selectedUnit, setSelectedUnit] = useState('all');
+    const [selectedLesson, setSelectedLesson] = useState('all');
+    const [selectedPart, setSelectedPart] = useState('all');
+    
+    const availableLessons = useMemo(() => {
+        if (selectedUnit === 'all') return [];
+        return units.find(u => u.id === selectedUnit)?.lessons || [];
+    }, [selectedUnit]);
+    
+    const availableParts = useMemo(() => {
+        if (selectedLesson === 'all' || !availableLessons.length) return [];
+        return availableLessons.find(l => getLessonId(l) === selectedLesson)?.parts || [];
+    }, [selectedLesson, availableLessons]);
+    
+    const handleUnitChange = (unitId: string) => {
+        setSelectedUnit(unitId);
+        setSelectedLesson('all');
+        setSelectedPart('all');
+    };
+    
+    const handleLessonChange = (lessonId: string) => {
+        setSelectedLesson(lessonId);
+        setSelectedPart('all');
+    };
 
-    const sourcesList = ['all', ...Array.from(new Set(allQuestions.map(q => q.source)))];
-
-    const filteredQuestions = selectedSource === 'all' 
-        ? allQuestions 
-        : allQuestions.filter(q => q.source === selectedSource);
+    const filteredQuestions = useMemo(() => {
+        return allQuestions.filter(q => {
+            const unitMatch = selectedUnit === 'all' || q.source.unitId === selectedUnit;
+            const lessonMatch = selectedLesson === 'all' || q.source.lessonId === selectedLesson;
+            const partMatch = selectedPart === 'all' || q.source.partId === selectedPart;
+            return unitMatch && lessonMatch && partMatch;
+        });
+    }, [selectedUnit, selectedLesson, selectedPart]);
 
     return (
         <div className="container mx-auto p-8">
@@ -124,24 +206,51 @@ export default function QuestionBankPage() {
                 </p>
             </header>
             
-            <div className="mb-6 max-w-md mx-auto">
-                <Select dir="rtl" onValueChange={setSelectedSource} defaultValue="all">
-                    <SelectTrigger>
-                        <SelectValue placeholder="اختر مصدر الأسئلة لعرضها" />
-                    </SelectTrigger>
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto" dir="rtl">
+                <Select onValueChange={handleUnitChange} value={selectedUnit}>
+                    <SelectTrigger><SelectValue placeholder="اختر الوحدة" /></SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="all">عرض كل الأسئلة</SelectItem>
-                        {sourcesList.slice(1).map(source => (
-                            <SelectItem key={source} value={source}>{source}</SelectItem>
+                        <SelectItem value="all">كل الوحدات</SelectItem>
+                        {units.map(unit => (
+                            <SelectItem key={unit.id} value={unit.id}>{unit.title}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+
+                <Select onValueChange={handleLessonChange} value={selectedLesson} disabled={selectedUnit === 'all'}>
+                    <SelectTrigger><SelectValue placeholder="اختر الدرس" /></SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">كل الدروس</SelectItem>
+                        {availableLessons.map(lesson => (
+                            <SelectItem key={getLessonId(lesson)} value={getLessonId(lesson)}>{lesson.title}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+                
+                <Select onValueChange={setSelectedPart} value={selectedPart} disabled={selectedLesson === 'all'}>
+                    <SelectTrigger><SelectValue placeholder="اختر الجزء" /></SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">كل الأجزاء</SelectItem>
+                        {availableParts.map(part => (
+                           part.partNum && <SelectItem key={part.partNum} value={`part-${part.partNum}`}>{part.title}</SelectItem>
                         ))}
                     </SelectContent>
                 </Select>
             </div>
 
             <div className="space-y-6">
-                {filteredQuestions.map((q, index) => (
-                    <QuestionCard key={index} question={q} />
-                ))}
+                 {filteredQuestions.length > 0 ? (
+                    filteredQuestions.map((q, index) => (
+                        <QuestionCard key={index} question={q} />
+                    ))
+                ) : (
+                    <Card className="text-center p-8 text-muted-foreground">
+                        <CardHeader>
+                            <CardTitle>لا توجد أسئلة تطابق هذا الفلتر</CardTitle>
+                            <CardDescription>جرب تغيير خيارات الفلترة لعرض الأسئلة</CardDescription>
+                        </CardHeader>
+                    </Card>
+                )}
             </div>
         </div>
     );
