@@ -107,7 +107,7 @@ export default function LessonPartPage() {
                 </FlippableCard>
                 <FlippableCard cardTitle="طاقة التبخر المولية" cardIcon={<Zap className="h-6 w-6" />}>
                     <p className="text-sm">هي كمية الطاقة اللازمة لتحويل مول واحد من المادة من الحالة السائلة إلى الغازية عند درجة حرارة ثابتة.</p>
-                    <div className="my-4 text-center p-2 bg-muted rounded-lg">
+                    <div className="my-4 text-center p-2 bg-muted rounded-lg" dir="ltr">
                         <BlockMath math="H_2O_{(l)} + 40.7 \text{ kJ/mol} \rightleftharpoons H_2O_{(g)}" />
                     </div>
                     <p className="text-xs text-muted-foreground">تعتمد طاقة التبخر بشكل مباشر على قوة الترابط بين الجزيئات. كلما كانت القوى أقوى، زادت الطاقة اللازمة للتبخر.</p>
