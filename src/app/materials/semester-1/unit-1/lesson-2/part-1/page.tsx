@@ -50,27 +50,55 @@ export default function LessonPartPage() {
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
-            <Card>
+             <Card>
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><Layers className="h-6 w-6 text-primary" /> أنواع الترابط بين الجزيئات</CardTitle>
-                    <CardDescription>القوى التي تربط الجزيئات ببعضها وتحدد خصائص المادة.</CardDescription>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                    <div className="p-4 bg-muted/50 rounded-lg">
-                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Atom className="h-5 w-5" /> 1. ترابط قوى لندن (London Dispersion Forces)</h4>
-                        <p className="text-sm">ينشأ بفعل الاستقطاب اللحظي لذرات العناصر الخاملة أو الجزيئات غير القطبية مثل الهيدروكربونات (ألكان، ألكين، ألكاين). تزداد قوتها بازدياد الكتلة المولية وقلة تفرعات السلاسل.</p>
-                    </div>
-                     <div className="p-4 bg-muted/50 rounded-lg">
-                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Binary className="h-5 w-5" /> 2. ترابط ثنائي القطب (Dipole-Dipole)</h4>
-                        <p className="text-sm">ينشأ بين الجزيئات القطبية حيث تتجاذب ذرة تحمل شحنة جزئية سالبة (<span dir="ltr"><InlineMath math="\delta-" /></span>) في جزيء مع ذرة تحمل شحنة جزئية موجبة (<span dir="ltr"><InlineMath math="\delta+" /></span>) في جزيء مجاور. مثال: هاليد الألكيل، الإيثر، الألدهيد، الكيتون، والإستر.</p>
-                    </div>
-                     <div className="p-4 bg-muted/50 rounded-lg">
-                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Waves className="h-5 w-5" /> 3. ترابط هيدروجيني (Hydrogen Bonding)</h4>
-                        <p className="text-sm">هو نوع خاص وقوي من ترابط ثنائي القطب، ينشأ بين الجزيئات القطبية التي يحتوي أحدها على ذرة هيدروجين مرتبطة تساهمياً مع ذرة ذات كهروسلبية عالية (N, O, F)، وجزيء آخر يحتوي على أحد الذرات (N, O, F). مثال: الماء، الكحول، الحمض الكربوكسيلي، والأمين.</p>
-                    </div>
+                <CardContent>
+                    <p>
+                        تعتمد خصائص المادة في الحالة السائلة، مثل كثافتها وقابليتها للجريان، على طبيعة الجسيمات المكونة لها وقوى الترابط بينها. السوائل، على عكس الغازات، تمتلك حجمًا ثابتًا لأن جسيماتها متقاربة، لكنها تأخذ شكل الوعاء لأن هذه الجسيمات قادرة على الحركة والانزلاق فوق بعضها البعض.
+                    </p>
                 </CardContent>
             </Card>
 
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <FlippableCard
+                    cardTitle="ترابط قوى لندن"
+                    cardIcon={<Atom className="h-6 w-6" />}
+                >
+                    <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي.</p>
+                    <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
+                        <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية (مثل CH₄, CO₂).</li>
+                        <li>تزداد قوته بازدياد الكتلة المولية.</li>
+                         <li>يقل بازدياد تفرعات السلاسل.</li>
+                    </ul>
+                </FlippableCard>
+
+                <FlippableCard
+                    cardTitle="ترابط ثنائي القطب"
+                    cardIcon={<Binary className="h-6 w-6" />}
+                >
+                    <p className="font-semibold text-sm mb-2">ينشأ بين الجزيئات القطبية.</p>
+                     <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
+                        <li>يحدث تجاذب بين الشحنات الجزئية المختلفة (δ+ و δ-).</li>
+                        <li>مثال: هاليد الألكيل، الإيثر، الألدهيد، الكيتون.</li>
+                        <li>أقوى من قوى لندن للجزيئات المتقاربة في الكتلة المولية.</li>
+                    </ul>
+                </FlippableCard>
+
+                <FlippableCard
+                    cardTitle="ترابط هيدروجيني"
+                    cardIcon={<Waves className="h-6 w-6" />}
+                >
+                    <p className="font-semibold text-sm mb-2">أقوى أنواع الترابط بين الجزيئات.</p>
+                     <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
+                        <li>نوع خاص من ترابط ثنائي القطب.</li>
+                        <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية (N, O, F).</li>
+                        <li>مثال: الماء (H₂O)، الكحول (R-OH)، الأمونيا (NH₃).</li>
+                    </ul>
+                </FlippableCard>
+            </div>
+            
             <div className="grid md:grid-cols-2 gap-6">
                 <Card>
                     <CardHeader>
