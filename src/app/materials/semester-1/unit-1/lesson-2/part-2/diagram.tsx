@@ -8,13 +8,13 @@ import { Card } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
-const NUM_PARTICLES = 2000; // Increased for a smoother curve
+const NUM_PARTICLES = 2000;
 const EVAPORATION_ENERGY = 70; // Represents Ea
 
 export default function MaxwellBoltzmannDiagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
-  const [temperature, setTemperature] = useState(30); // Represents T1
+  const [temperature, setTemperature] = useState(30);
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -24,19 +24,19 @@ export default function MaxwellBoltzmannDiagram() {
   }, []);
 
   useEffect(() => {
-    if (width <= 0) return;
+    if (width <= 0 || !sketchRef.current) return;
 
-    p5InstanceRef.current?.remove();
+    p5InstanceRef.current?.remove(); // Clean up previous instance
 
     const sketch = (p: p5) => {
-      
+      let currentTemp = temperature;
+
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // We will manually call redraw
+        p.noLoop(); // We will control drawing manually
       };
 
-      // This function is now the single source of truth for drawing
-      (p as any).drawChart = (currentTemp: number) => {
+      p.draw = () => {
         let energyCounts = new Array(150).fill(0);
         // Maxwell-Boltzmann distribution logic
         for (let i = 0; i < NUM_PARTICLES; i++) {
@@ -120,6 +120,12 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
       };
+
+      // Custom function to update props and redraw
+      (p as any).updateWithNewProps = (props: { temp: number }) => {
+        currentTemp = props.temp;
+        p.redraw();
+      };
     };
     
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
@@ -127,14 +133,14 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
+  }, [width]); // Only re-create the p5 instance when width changes
 
-  // This effect will run whenever `temperature` changes, redrawing the chart.
+  // This effect will run whenever `temperature` or the instance itself changes.
   useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).drawChart) {
-      (p5InstanceRef.current as any).drawChart(temperature);
+    if (p5InstanceRef.current && typeof (p5InstanceRef.current as any).updateWithNewProps === 'function') {
+      (p5InstanceRef.current as any).updateWithNewProps({ temp: temperature });
     }
-  }, [temperature, width]); // Redraw when temp or width changes
+  }, [temperature, p5InstanceRef.current]); 
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
