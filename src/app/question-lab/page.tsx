@@ -12,13 +12,13 @@ import { InlineMath } from 'react-katex';
 const question = {
     question: <span>أي المركبات التالية له أعلى درجة غليان؟</span>,
     options: [
-        "CH₃CH₂CH₃ (بروبان)",
-        "CH₃OCH₃ (ثنائي ميثيل إيثر)",
-        "CH₃CH₂OH (إيثانول)",
-        "CH₃CHO (إيثانال)"
+        "CH₃COOH",
+        "CH₃CH₂Cl",
+        "CH₃COCH₃",
+        "CH₃CH₃"
     ],
-    correctAnswerIndex: 2,
-    explanation: "الإيثانول (CH₃CH₂OH) هو الوحيد القادر على تكوين روابط هيدروجينية قوية بين جزيئاته، وهي أقوى أنواع قوى الترابط بين الجزيئات المذكورة، مما يتطلب طاقة أعلى لكسرها وبالتالي درجة غليان أعلى."
+    correctAnswerIndex: 0,
+    explanation: "حمض الأسيتيك (CH₃COOH) هو الوحيد القادر على تكوين روابط هيدروجينية قوية جدًا على شكل دايمر (جزيئين معًا)، مما يرفع درجة غليانه بشكل كبير مقارنة ببقية المركبات التي تمتلك قوى ثنائي القطب أو قوى لندن فقط."
 }
 
 export default function QuestionLabPage() {
