@@ -127,6 +127,12 @@ function DesktopNav() {
                         بنك الأسئلة
                     </Button>
                 </Link>
+                 <Link href="/question-lab" passHref>
+                    <Button variant="ghost" className="font-medium">
+                       <TestTube className="ml-2 h-4 w-4" />
+                        معمل الأسئلة
+                    </Button>
+                </Link>
             </>
             )}
             {isSelected && (
@@ -189,6 +195,11 @@ function MobileNav() {
                                 <SheetClose asChild>
                                 <Link href="/question-bank" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
                                    <Library /> بنك الأسئلة
+                                </Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                <Link href="/question-lab" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
+                                   <TestTube /> معمل الأسئلة
                                 </Link>
                                 </SheetClose>
                             </>
