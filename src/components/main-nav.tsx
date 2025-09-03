@@ -71,9 +71,7 @@ function Logo() {
     const { isSelected, clearCurriculum, currentUser } = useApp();
     const router = useRouter();
 
-    const handleLogoClick = () => {
-        // This function now specifically handles the TEXT logo click.
-        // It should always take the user to the main content of the selected curriculum.
+    const handleTextClick = () => {
         if (isSelected) {
             router.push('/materials/semester-1');
         } else {
@@ -82,10 +80,8 @@ function Logo() {
     };
     
     const handleIconClick = () => {
-        // This function handles the ICON click.
-        // It has a special behavior for the admin.
         if (currentUser?.role === 'admin') {
-            clearCurriculum(); // For admin, this clears the selected course and returns to the course selection page.
+            clearCurriculum();
         }
         router.push('/');
     };
@@ -101,7 +97,7 @@ function Logo() {
             >
                 <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
             </Button>
-            <button onClick={handleLogoClick} className="flex items-baseline">
+            <button onClick={handleTextClick} className="flex items-baseline">
                 <span className="text-xl font-bold">
                     <span className="text-accent">Chem</span>
                     <span className="text-foreground">Zim</span>
@@ -129,12 +125,6 @@ function DesktopNav() {
                     <Button variant="ghost" className="font-medium">
                        <Library className="ml-2 h-4 w-4" />
                         بنك الأسئلة
-                    </Button>
-                </Link>
-                 <Link href="/question-lab" passHref>
-                    <Button variant="ghost" className="font-medium">
-                       <TestTube className="ml-2 h-4 w-4" />
-                        معمل الأسئلة
                     </Button>
                 </Link>
             </>
@@ -199,11 +189,6 @@ function MobileNav() {
                                 <SheetClose asChild>
                                 <Link href="/question-bank" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
                                    <Library /> بنك الأسئلة
-                                </Link>
-                                </SheetClose>
-                                <SheetClose asChild>
-                                <Link href="/question-lab" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
-                                   <TestTube /> معمل الأسئلة
                                 </Link>
                                 </SheetClose>
                             </>
