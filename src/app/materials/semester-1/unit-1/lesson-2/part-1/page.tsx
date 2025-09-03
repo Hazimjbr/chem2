@@ -2,14 +2,13 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Layers } from 'lucide-react';
+import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Waves } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
-import { Molecule, Dna, Droplets } from 'lucide-react';
 
 const lessonInfo = {
     lessonTitle: "الدرس الثاني: الحالة السائلة",
@@ -58,15 +57,15 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="p-4 bg-muted/50 rounded-lg">
-                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Molecule className="h-5 w-5" /> 1. ترابط قوى لندن (London Dispersion Forces)</h4>
+                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Atom className="h-5 w-5" /> 1. ترابط قوى لندن (London Dispersion Forces)</h4>
                         <p className="text-sm">ينشأ بفعل الاستقطاب اللحظي لذرات العناصر الخاملة أو الجزيئات غير القطبية مثل الهيدروكربونات (ألكان، ألكين، ألكاين). تزداد قوتها بازدياد الكتلة المولية وقلة تفرعات السلاسل.</p>
                     </div>
                      <div className="p-4 bg-muted/50 rounded-lg">
-                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Dna className="h-5 w-5" /> 2. ترابط ثنائي القطب (Dipole-Dipole)</h4>
+                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Binary className="h-5 w-5" /> 2. ترابط ثنائي القطب (Dipole-Dipole)</h4>
                         <p className="text-sm">ينشأ بين الجزيئات القطبية حيث تتجاذب ذرة تحمل شحنة جزئية سالبة (<span dir="ltr"><InlineMath math="\delta-" /></span>) في جزيء مع ذرة تحمل شحنة جزئية موجبة (<span dir="ltr"><InlineMath math="\delta+" /></span>) في جزيء مجاور. مثال: هاليد الألكيل، الإيثر، الألدهيد، الكيتون، والإستر.</p>
                     </div>
                      <div className="p-4 bg-muted/50 rounded-lg">
-                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Droplets className="h-5 w-5" /> 3. ترابط هيدروجيني (Hydrogen Bonding)</h4>
+                        <h4 className="font-bold text-accent flex items-center gap-2 mb-2"><Waves className="h-5 w-5" /> 3. ترابط هيدروجيني (Hydrogen Bonding)</h4>
                         <p className="text-sm">هو نوع خاص وقوي من ترابط ثنائي القطب، ينشأ بين الجزيئات القطبية التي يحتوي أحدها على ذرة هيدروجين مرتبطة تساهمياً مع ذرة ذات كهروسلبية عالية (N, O, F)، وجزيء آخر يحتوي على أحد الذرات (N, O, F). مثال: الماء، الكحول، الحمض الكربوكسيلي، والأمين.</p>
                     </div>
                 </CardContent>
