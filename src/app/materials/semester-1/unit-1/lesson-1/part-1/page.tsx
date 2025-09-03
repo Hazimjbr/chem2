@@ -97,7 +97,7 @@ export default function LessonPartPage() {
             >
                <ul className="space-y-4 text-sm">
                   <li className="flex items-start gap-3">
-                    <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                    <span className="font-bold text-primary text-lg mt-[-2px]">1</span>
                     <div>
                       <p className='font-semibold'>تصف سلوك جسيمات المادة وتفترض حركتها الدائمة المستمرة:</p>
                        <ul className="mt-2 space-y-1 mr-4 text-xs">
@@ -107,7 +107,7 @@ export default function LessonPartPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                    <span className="font-bold text-primary text-lg mt-[-2px]">2</span>
                      <div>
                       <p className='font-semibold'>تفسر الخصائص الفيزيائية والسلوك الفيزيائي للمواد اعتمادا على:</p>
                        <ul className="mt-2 space-y-1 mr-4 text-xs">
@@ -117,7 +117,7 @@ export default function LessonPartPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                    <span className="font-bold text-primary text-lg mt-[-2px]">3</span>
                     <p className='font-semibold'>تستخدم قوانين الغازات في وصف العلاقة بين العوامل المؤثرة في سلوك الغاز الفيزيائي</p>
                   </li>
                </ul>
@@ -154,19 +154,19 @@ export default function LessonPartPage() {
                 <p className="mb-4 font-semibold">هو غاز افتراضي يتميز بالخصائص التالية:</p>
                 <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">1</span>
                         <p>حجم جسيماته يساوي صفر</p>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">2</span>
                         <p>قوى التجاذب بين جسيماته تساوي صفر (معدومة)</p>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">3</span>
                         <p>تنطبق عليه فرضيات نظرية الحركة الجزيئية وقوانين الغازات عند كل الظروف</p>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">4.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">4</span>
                         <p>لا يمكن إسالته مهما انخفضت درجة حرارته أو زاد الضغط عليه</p>
                     </li>
                 </ul>
@@ -182,19 +182,19 @@ export default function LessonPartPage() {
                 <p className="mb-4 font-semibold">هو الغاز الموجود فعليًا في الطبيعة وتتشابه معظم الغازات في سلوكها الفيزيائي</p>
                 <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">1</span>
                         <p>حجم جسيماته صغير جدًا ولكنه ليس صفرًا (لا يمكن إهماله في الحسابات الدقيقة)</p>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">2</span>
                         <p>توجد قوى تجاذب بين جسيماته وإن كانت ضعيفة جدًا</p>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">3</span>
                         <p>يسلك سلوكًا قريبًا جدًا من الغاز المثالي في الظروف العادية (الضغط الجوي ودرجة حرارة الغرفة)</p>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">4.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">4</span>
                         <p>يمكن تحويله إلى سائل (إسالته) عن طريق زيادة الضغط وخفض درجة الحرارة</p>
                     </li>
                 </ul>
@@ -208,7 +208,7 @@ export default function LessonPartPage() {
                 <p className="mb-4 font-semibold">يزداد انحراف الغازات الحقيقية عن سلوك الغاز المثالي كلما:</p>
                 <ul className="space-y-4 text-sm">
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">1.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">1</span>
                         <div>
                             <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
                             <ul className="mt-2 space-y-2 mr-4 text-xs">
@@ -218,11 +218,11 @@ export default function LessonPartPage() {
                         </div>
                     </li>
                     <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">2.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">2</span>
                         <p className='font-semibold'>ازداد الضغط على الغاز أو قل حجمه</p>
                     </li>
                      <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary text-lg mt-[-2px]">3.</span>
+                        <span className="font-bold text-primary text-lg mt-[-2px]">3</span>
                         <p className='font-semibold'>انخفضت درجة الحرارة</p>
                     </li>
                 </ul>
@@ -265,7 +265,7 @@ export default function LessonPartPage() {
                       "تتصادم جسيمات الغاز تصادمات مرنة مع بعضها ومع جدار الوعاء"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="عند درجة حرارة ثابتة يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت ولكن لا تتحرك جميع الجسيمات بنفس السرعة؛ بل تمتلك توزيعًا من السرعات المختلفة."
+                  explanation="عند درجة حرارة ثابتة يكون لجسيمات الغاز *متوسط* طاقة حركية ثابت ولكن لا تتحرك جميع الجسيمات بنفس السرعة بل تمتلك توزيعًا من السرعات المختلفة"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -279,7 +279,7 @@ export default function LessonPartPage() {
                       "غاز الهيدروجين"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا، ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة."
+                  explanation="الغاز المثالي هو غاز افتراضي تُهمل فيه قوى التجاذب بين جسيماته تمامًا ولذلك لا يمكن تحويله إلى سائل مهما زاد الضغط أو انخفضت درجة الحرارة"
               />
           </div>
         </div>

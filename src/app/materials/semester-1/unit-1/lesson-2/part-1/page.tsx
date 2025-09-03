@@ -13,12 +13,12 @@ import React, { useState, useEffect } from 'react';
 const lessonInfo = {
     lessonTitle: "الدرس الثاني: الحالة السائلة",
     lessonSubtitle: "مقدمة عن المواد السائلة",
-    mainIdea: "تتميز السوائل بخصائص فريدة مثل حجمها الثابت وشكلها المتغير، وتعتمد هذه الخصائص بشكل أساسي على طبيعة قوى الترابط بين جزيئاتها وأنواعها.",
+    mainIdea: "تتميز السوائل بخصائص فريدة مثل حجمها الثابت وشكلها المتغير وتعتمد هذه الخصائص بشكل أساسي على طبيعة قوى الترابط بين جزيئاتها وأنواعها",
     learningOutcomes: [
-        "أصف الخصائص الفيزيائية للمواد السائلة.",
-        "أقارن بين أنواع قوى الترابط بين الجزيئات."
+        "أصف الخصائص الفيزيائية للمواد السائلة",
+        "أقارن بين أنواع قوى الترابط بين الجزيئات"
     ],
-    lessonContent: `<p>بعد أن درسنا الحالة الغازية، ننتقل الآن إلى الحالة السائلة. السوائل، مثل الماء والزيت، هي جزء أساسي من حياتنا اليومية. في هذا الدرس، سنتعرف على الخصائص التي تميز السوائل وعلى القوى التي تربط جزيئاتها ببعضها البعض، والتي تمنحها سلوكها الفريد.</p>`,
+    lessonContent: `<p>بعد أن درسنا الحالة الغازية ننتقل الآن إلى الحالة السائلة السوائل مثل الماء والزيت هي جزء أساسي من حياتنا اليومية في هذا الدرس سنتعرف على الخصائص التي تميز السوائل وعلى القوى التي تربط جزيئاتها ببعضها البعض والتي تمنحها سلوكها الفريد</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-2/part-1",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-10",
@@ -56,7 +56,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p>
-                        تعتمد خصائص المادة في الحالة السائلة، مثل كثافتها وقابليتها للجريان، على طبيعة الجسيمات المكونة لها وقوى الترابط بينها. السوائل، على عكس الغازات، تمتلك حجمًا ثابتًا لأن جسيماتها متقاربة، لكنها تأخذ شكل الوعاء لأن هذه الجسيمات قادرة على الحركة والانزلاق فوق بعضها البعض.
+                        تعتمد خصائص المادة في الحالة السائلة مثل كثافتها وقابليتها للجريان على طبيعة الجسيمات المكونة لها وقوى الترابط بينها السوائل على عكس الغازات تمتلك حجمًا ثابتًا لأن جسيماتها متقاربة لكنها تأخذ شكل الوعاء لأن هذه الجسيمات قادرة على الحركة والانزلاق فوق بعضها البعض
                     </p>
                 </CardContent>
             </Card>
@@ -66,11 +66,11 @@ export default function LessonPartPage() {
                     cardTitle="ترابط قوى لندن"
                     cardIcon={<Atom className="h-6 w-6" />}
                 >
-                    <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي.</p>
+                    <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
                     <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
-                        <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية (مثل CH₄, CO₂).</li>
-                        <li>تزداد قوته بازدياد الكتلة المولية.</li>
-                         <li>يقل بازدياد تفرعات السلاسل.</li>
+                        <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية (مثل CH₄ CO₂)</li>
+                        <li>تزداد قوته بازدياد الكتلة المولية</li>
+                         <li>يقل بازدياد تفرعات السلاسل</li>
                     </ul>
                 </FlippableCard>
 
@@ -78,11 +78,11 @@ export default function LessonPartPage() {
                     cardTitle="ترابط ثنائي القطب"
                     cardIcon={<Binary className="h-6 w-6" />}
                 >
-                    <p className="font-semibold text-sm mb-2">ينشأ بين الجزيئات القطبية.</p>
+                    <p className="font-semibold text-sm mb-2">ينشأ بين الجزيئات القطبية</p>
                      <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
-                        <li>يحدث تجاذب بين الشحنات الجزئية المختلفة (δ+ و δ-).</li>
-                        <li>مثال: هاليد الألكيل، الإيثر، الألدهيد، الكيتون.</li>
-                        <li>أقوى من قوى لندن للجزيئات المتقاربة في الكتلة المولية.</li>
+                        <li>يحدث تجاذب بين الشحنات الجزئية المختلفة (δ+ و δ-)</li>
+                        <li>مثال: هاليد الألكيل الإيثر الألدهيد الكيتون</li>
+                        <li>أقوى من قوى لندن للجزيئات المتقاربة في الكتلة المولية</li>
                     </ul>
                 </FlippableCard>
 
@@ -90,11 +90,11 @@ export default function LessonPartPage() {
                     cardTitle="ترابط هيدروجيني"
                     cardIcon={<Waves className="h-6 w-6" />}
                 >
-                    <p className="font-semibold text-sm mb-2">أقوى أنواع الترابط بين الجزيئات.</p>
+                    <p className="font-semibold text-sm mb-2">أقوى أنواع الترابط بين الجزيئات</p>
                      <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
-                        <li>نوع خاص من ترابط ثنائي القطب.</li>
-                        <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية (N, O, F).</li>
-                        <li>مثال: الماء (H₂O)، الكحول (R-OH)، الأمونيا (NH₃).</li>
+                        <li>نوع خاص من ترابط ثنائي القطب</li>
+                        <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية (N O F)</li>
+                        <li>مثال: الماء (H₂O) الكحول (R-OH) الأمونيا (NH₃)</li>
                     </ul>
                 </FlippableCard>
             </div>
@@ -106,11 +106,11 @@ export default function LessonPartPage() {
                     </CardHeader>
                     <CardContent>
                         <ul className="space-y-4">
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">1.</span><div><strong>حجمها ثابت:</strong> غير قابلة للانضغاط لأن جزيئاتها متقاربة.</div></li>
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">2.</span><div><strong>شكلها متغير:</strong> تأخذ شكل حيز الوعاء الذي توضع فيه وتملأ قاعه.</div></li>
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">3.</span><div><strong>جسيماتها متحركة:</strong> في حركة مستمرة وعشوائية لكن طاقتها الحركية أقل من الغازات.</div></li>
-                            <li className="flex items-start gap-3"><span className="font-bold text-primary">4.</span><div><strong>قوى ترابط متوسطة:</strong> أضعف من المواد الصلبة ولكنها أقوى من الغازية.</div></li>
-                             <li className="flex items-start gap-3"><span className="font-bold text-primary">5.</span><div><strong>كثافتها أكبر:</strong> بشكل عام، كثافة السوائل أكبر من كثافة الغازات.</div></li>
+                            <li className="flex items-start gap-3"><span className="font-bold text-primary">1</span><div><strong>حجمها ثابت:</strong> غير قابلة للانضغاط لأن جزيئاتها متقاربة</div></li>
+                            <li className="flex items-start gap-3"><span className="font-bold text-primary">2</span><div><strong>شكلها متغير:</strong> تأخذ شكل حيز الوعاء الذي توضع فيه وتملأ قاعه</div></li>
+                            <li className="flex items-start gap-3"><span className="font-bold text-primary">3</span><div><strong>جسيماتها متحركة:</strong> في حركة مستمرة وعشوائية لكن طاقتها الحركية أقل من الغازات</div></li>
+                            <li className="flex items-start gap-3"><span className="font-bold text-primary">4</span><div><strong>قوى ترابط متوسطة:</strong> أضعف من المواد الصلبة ولكنها أقوى من الغازية</div></li>
+                             <li className="flex items-start gap-3"><span className="font-bold text-primary">5</span><div><strong>كثافتها أكبر:</strong> بشكل عام كثافة السوائل أكبر من كثافة الغازات</div></li>
                         </ul>
                     </CardContent>
                 </Card>
@@ -119,7 +119,7 @@ export default function LessonPartPage() {
                         <CardTitle>ما هو المائع؟</CardTitle>
                     </CardHeader>
                     <CardContent>
-                       <p>المائع هو أي مادة لها القدرة على الجريان وتأخذ شكل الإناء الذي توضع فيه. بناءً على هذا التعريف، تعتبر كل من السوائل والغازات موائع.</p>
+                       <p>المائع هو أي مادة لها القدرة على الجريان وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
                     </CardContent>
                 </Card>
             </div>
@@ -146,7 +146,7 @@ export default function LessonPartPage() {
                       "ترابط أيوني"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="جزيء الماء يحتوي على ذرة أكسجين (ذات كهروسلبية عالية) مرتبطة بذرتي هيدروجين، مما يسمح بتكون روابط هيدروجينية قوية بين جزيئاته."
+                  explanation="جزيء الماء يحتوي على ذرة أكسجين (ذات كهروسلبية عالية) مرتبطة بذرتي هيدروجين مما يسمح بتكون روابط هيدروجينية قوية بين جزيئاته"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -154,13 +154,13 @@ export default function LessonPartPage() {
                   onCorrect={handleCorrectAnswer}
                   question="لماذا تأخذ السوائل شكل الوعاء الذي توضع فيه بينما يبقى حجمها ثابتًا؟"
                   options={[
-                      "لأن جزيئاتها لا تتحرك أبدًا.",
-                      "لأن قوى الترابط بينها قوية جدًا كالمواد الصلبة.",
-                      "لأن جزيئاتها متباعدة جدًا كالغازات.",
-                      "لأن جزيئاتها قادرة على الحركة والانزلاق فوق بعضها ولكنها تبقى متقاربة."
+                      "لأن جزيئاتها لا تتحرك أبدًا",
+                      "لأن قوى الترابط بينها قوية جدًا كالمواد الصلبة",
+                      "لأن جزيئاتها متباعدة جدًا كالغازات",
+                      "لأن جزيئاتها قادرة على الحركة والانزلاق فوق بعضها ولكنها تبقى متقاربة"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="جزيئات السائل تمتلك طاقة حركية كافية للتغلب جزئيًا على قوى التجاذب والانزلاق فوق بعضها البعض (مما يمنحها شكلاً متغيرًا)، لكن هذه القوى لا تزال قوية بما يكفي لإبقائها متقاربة (مما يحافظ على حجم ثابت)."
+                  explanation="جزيئات السائل تمتلك طاقة حركية كافية للتغلب جزئيًا على قوى التجاذب والانزلاق فوق بعضها البعض (مما يمنحها شكلاً متغيرًا) لكن هذه القوى لا تزال قوية بما يكفي لإبقائها متقاربة (مما يحافظ على حجم ثابت)"
               />
           </div>
         </div>
