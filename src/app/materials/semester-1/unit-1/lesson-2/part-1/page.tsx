@@ -69,8 +69,7 @@ export default function LessonPartPage() {
                     <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
                     <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
                         <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية مثل CH₄ CO₂</li>
-                        <li>تزداد قوته بازدياد الكتلة المولية</li>
-                         <li>يقل بازدياد تفرعات السلاسل</li>
+                        <li>تزداد قوته بازدياد الكتلة المولية وقلة تفرعات السلاسل</li>
                     </ul>
                 </FlippableCard>
 
@@ -104,6 +103,7 @@ export default function LessonPartPage() {
                     cardTitle="خصائص المواد السائلة"
                     cardIcon={<Layers className="h-6 w-6" />}
                 >
+                    <p className="text-sm font-bold mb-4">تمتاز السوائل بخصائص محددة اعتمادا على قوى التجاذب بين جزيئاتها</p>
                     <ul className="space-y-3 text-sm">
                         <li className="flex items-start gap-3"><span className="font-bold text-primary">1</span><div><strong>حجمها ثابت</strong> غير قابلة للانضغاط لأن جزيئاتها متقاربة</div></li>
                         <li className="flex items-start gap-3"><span className="font-bold text-primary">2</span><div><strong>شكلها متغير</strong> تأخذ شكل حيز الوعاء الذي توضع فيه وتملأ قاعه</div></li>
