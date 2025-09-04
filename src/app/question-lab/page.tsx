@@ -10,15 +10,29 @@ import React from 'react';
 import Image from 'next/image';
 
 const question = {
-    question: "لا يوجد سؤال حاليًا. هذا المكان مخصص لصياغة الأسئلة الجديدة.",
+    question: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الذي له أعلى طاقة تبخر هو:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/TB6RcQkw/22.png"
+                    alt="Vapor Pressure vs Temperature"
+                    width={400}
+                    height={250}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curve"
+                />
+            </div>
+        </div>
+    ),
     options: [
-        "خيار أ",
-        "خيار ب",
-        "خيار ج",
-        "خيار د"
+        "A",
+        "M",
+        "B",
+        "Q"
     ],
-    correctAnswerIndex: 0,
-    explanation: "هنا يظهر شرح الإجابة الصحيحة بعد اختيار أحد الخيارات."
+    correctAnswerIndex: 2,
+    explanation: "أعلى طاقة تبخر تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن السائل B له أقل ضغط بخاري عند أي درجة حرارة، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى، وبالتالي طاقة تبخره هي الأعلى."
 }
 
 export default function QuestionLabPage() {
@@ -69,7 +83,7 @@ export default function QuestionLabPage() {
                                 variant="outline"
                                 className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
                                 onClick={() => handleSelect(index)}
-                                disabled={answerStatus !== 'unanswered' || question.question.startsWith("لا يوجد")}
+                                disabled={answerStatus !== 'unanswered' || typeof question.question !== 'object'}
                             >
                                 <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
                                 <span className="flex-1 whitespace-normal">{option}</span>
