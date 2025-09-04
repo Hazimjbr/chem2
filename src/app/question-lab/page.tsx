@@ -12,10 +12,10 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>أي السوائل الآتية هو الأسرع تبخراً عند درجة حرارة الغرفة؟</p>
+            <p>ادرس الشكل التالي ثم أجب عن السؤال الذي يليه</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/LgLw4Wf/diagram.png"
+                    src="https://i.ibb.co/v6zrQFz/diagram.png"
                     alt="beakers with different liquids"
                     width={400}
                     height={150}
@@ -23,6 +23,7 @@ const question = {
                     data-ai-hint="liquid evaporation"
                 />
             </div>
+            <p>أي السوائل الآتية هو الأسرع تبخراً عند درجة حرارة الغرفة؟</p>
         </div>
     ),
     options: [
