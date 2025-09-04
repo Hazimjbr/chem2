@@ -58,7 +58,8 @@ export default function MaxwellBoltzmannDiagram() {
         
         const kineticEnergyLabel = 'الطاقة الحركية';
         const labelX = LEFT_PADDING + (width - 10 - LEFT_PADDING) / 2;
-        backgroundG.text(kineticEnergyLabel, labelX, CANVAS_HEIGHT - 5);
+        const kineticEnergyLabelWidth = backgroundG.textWidth(kineticEnergyLabel);
+        backgroundG.text(kineticEnergyLabel, labelX - (kineticEnergyLabelWidth / 2) - 10, CANVAS_HEIGHT - 5);
         
         backgroundG.push();
         backgroundG.translate(15, CANVAS_HEIGHT / 2);
@@ -68,8 +69,7 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.pop();
         
         // Draw the Ea line (Activation Energy)
-        const labelWidth = backgroundG.textWidth(kineticEnergyLabel);
-        const startX_Ea = labelX + (labelWidth / 2) + 5;
+        const startX_Ea = labelX + (kineticEnergyLabelWidth / 2) + 5;
 
         backgroundG.stroke('red');
         backgroundG.strokeWeight(2.5);
@@ -80,11 +80,15 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.line(startX_Ea, finalLineTopY, startX_Ea, lineBottomY);
         backgroundG.drawingContext.setLineDash([]); // Reset line dash
         
-        // Draw Ea label
-        backgroundG.noStroke();
-        backgroundG.fill('hsl(var(--destructive))');
+        // Draw Ea label above the line
+        backgroundG.fill('hsl(var(--destructive))'); // Red color
         backgroundG.textAlign(p.RIGHT);
         backgroundG.text('Ea', startX_Ea - 5, finalLineTopY - 5);
+        
+        // Draw Ea label below the line
+        backgroundG.textAlign(p.CENTER);
+        backgroundG.text('Ea', startX_Ea, CANVAS_HEIGHT - 5);
+
         // Reset fill color to avoid affecting other text
         backgroundG.fill(0);
 
@@ -101,9 +105,10 @@ export default function MaxwellBoltzmannDiagram() {
         let totalParticles = 0;
         let particlesAboveEa = 0;
         
-        const labelWidth = p.textWidth('الطاقة الحركية');
+        const kineticEnergyLabel = 'الطاقة الحركية';
         const labelX = LEFT_PADDING + (width - 10 - LEFT_PADDING) / 2;
-        const startX_Ea = labelX + (labelWidth / 2) + 5;
+        const kineticEnergyLabelWidth = p.textWidth(kineticEnergyLabel);
+        const startX_Ea = labelX + (kineticEnergyLabelWidth / 2) + 5;
         const energyAtEaLine = p.map(startX_Ea, LEFT_PADDING, width - 10, 0, MAX_ENERGY);
 
         for (let i = 0; i <= MAX_ENERGY; i++) {
