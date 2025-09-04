@@ -88,7 +88,7 @@ export default function LessonPartPage() {
                     <CardTitle className="flex items-center gap-2"><Cpu className="h-6 w-6 text-primary" /> محاكاة مخطط ماكسويل-بولتزمان</CardTitle>
                     <CardDescription>تحكم في درجة الحرارة ولاحظ كيف يتغير توزيع الطاقة الحركية وعدد الجزيئات القادرة على التبخر.</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex flex-col items-center">
                     <MaxwellBoltzmannDiagram />
                 </CardContent>
             </Card>
