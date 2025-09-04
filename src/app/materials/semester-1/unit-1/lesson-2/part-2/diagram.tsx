@@ -33,14 +33,14 @@ export default function MaxwellBoltzmannDiagram() {
         if (x < 0) return 0;
         const a = 2.5;
         const b = t / a;
-        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5);
+        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.9);
       };
 
       const drawAxesAndLabels = () => {
         p.stroke(0);
         p.strokeWeight(1);
         // X-axis
-        p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.9, CANVAS_HEIGHT - 30);
+        p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.95, CANVAS_HEIGHT - 30);
         // Y-axis
         p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.1, 40);
         
@@ -74,8 +74,8 @@ export default function MaxwellBoltzmannDiagram() {
         let totalParticles = 0;
         let particlesAboveEa = 0;
 
-        const eaLineX = width * 0.1 + (width * 0.8) * 0.4; // Ea at 40% of the plot width
-        const energyAtEaLine = p.map(eaLineX, width * 0.1, width * 0.9, 0, MAX_ENERGY);
+        const eaLineX = width * 0.1 + (width * 0.85) * 0.4;
+        const energyAtEaLine = p.map(eaLineX, width * 0.1, width * 0.95, 0, MAX_ENERGY);
 
         for (let i = 0; i <= MAX_ENERGY; i++) {
             const val = distribution(i, temp);
@@ -95,11 +95,11 @@ export default function MaxwellBoltzmannDiagram() {
         p.beginShape();
         p.vertex(eaLineX, CANVAS_HEIGHT - 30);
         for (let i = Math.floor(energyAtEaLine); i < energyPoints.length; i++) {
-            const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.9);
+            const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.95);
             const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 40);
             p.vertex(x, y);
         }
-        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, width * 0.1, width * 0.9), CANVAS_HEIGHT - 30);
+        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, width * 0.1, width * 0.95), CANVAS_HEIGHT - 30);
         p.endShape(p.CLOSE);
 
         // Draw the main distribution curve
@@ -108,7 +108,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.strokeWeight(2.5);
         p.beginShape();
         for (let i = 0; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.9);
+          const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.95);
           const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 40);
           p.vertex(x, y);
         }
@@ -123,7 +123,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.fill('hsl(var(--destructive))');
         p.textAlign(p.CENTER);
         p.noStroke();
-        p.text('Ea', eaLineX, CANVAS_HEIGHT - 15); // Place label under axis
+        p.text('Ea', eaLineX, CANVAS_HEIGHT - 15);
         
         const percentage = totalParticles > 0 ? ((particlesAboveEa / totalParticles) * 100).toFixed(1) : '0.0';
         p.noStroke();
