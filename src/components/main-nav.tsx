@@ -230,12 +230,12 @@ export default function MainNav() {
   const { currentUser } = useApp();
 
   return (
-    <div className="flex w-full items-center justify-between">
-      <div className="flex items-center gap-4">
+    <div className="flex w-full items-center">
+      <div className="flex-1 flex justify-start items-center gap-4">
         <Logo />
         {isMobile ? null : <DesktopNav />}
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex-none flex items-center gap-2">
         <AuthSection />
         {isMobile && <MobileNav />}
       </div>
