@@ -80,12 +80,8 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.line(startX_Ea, finalLineTopY, startX_Ea, lineBottomY);
         backgroundG.drawingContext.setLineDash([]); // Reset line dash
         
-        // Draw Ea label above the line
-        backgroundG.fill('hsl(var(--destructive))'); // Red color
-        backgroundG.textAlign(p.RIGHT);
-        backgroundG.text('Ea', startX_Ea - 5, finalLineTopY - 5);
-        
         // Draw Ea label below the line
+        backgroundG.fill('hsl(var(--destructive))'); // Red color
         backgroundG.textAlign(p.CENTER);
         backgroundG.text('Ea', startX_Ea, CANVAS_HEIGHT - 5);
 
