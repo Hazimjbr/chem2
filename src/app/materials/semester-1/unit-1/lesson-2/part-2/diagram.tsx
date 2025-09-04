@@ -75,7 +75,7 @@ export default function MaxwellBoltzmannDiagram() {
         // 2. Draw the distribution curve
         p.beginShape();
         p.noFill();
-        p.stroke('hsl(var(--primary))');
+        p.stroke(0); // Changed to black color for visibility
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
           const x = p.map(i, 0, maxEnergy, 10, width - 10);
