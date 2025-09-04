@@ -12,27 +12,17 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الذي له أعلى طاقة تبخر هو:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/TB6RcQkw/22.png"
-                    alt="Vapor Pressure vs Temperature"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curve"
-                />
-            </div>
+            <p>سؤال جديد قيد الإعداد...</p>
         </div>
     ),
     options: [
-        "A",
-        "M",
-        "B",
-        "Q"
+        "خيار أ",
+        "خيار ب",
+        "خيار ج",
+        "خيار د"
     ],
-    correctAnswerIndex: 2,
-    explanation: "أعلى طاقة تبخر تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن السائل B له أقل ضغط بخاري عند أي درجة حرارة، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى، وبالتالي طاقة تبخره هي الأعلى."
+    correctAnswerIndex: 0,
+    explanation: "سيتم إضافة الشرح هنا بعد اعتماد السؤال."
 }
 
 export default function QuestionLabPage() {
