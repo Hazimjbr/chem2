@@ -12,26 +12,37 @@ const EVAPORATION_ENERGY = 70;
 const LEFT_PADDING = 30;
 
 export default function MaxwellBoltzmannDiagram() {
-  const backgroundSketchRef = useRef<HTMLDivElement>(null);
-  const foregroundSketchRef = useRef<HTMLDivElement>(null);
+  const sketchRef = useRef<HTMLDivElement>(null);
+  const p5InstanceRef = useRef<p5 | null>(null);
   const [temperature, setTemperature] = useState(30);
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
-    if (foregroundSketchRef.current) {
-      setWidth(foregroundSketchRef.current.clientWidth);
+    if (sketchRef.current) {
+      setWidth(sketchRef.current.clientWidth);
     }
   }, []);
 
-  // Effect for the background sketch (axes and Ea line)
   useEffect(() => {
-    if (width <= 0 || !backgroundSketchRef.current) return;
-    
-    const p5Instance = new p5((p: p5) => {
+    if (width <= 0) return;
+    p5InstanceRef.current?.remove();
+
+    const sketch = (p: p5) => {
+      const distribution = (x: number, t: number) => {
+        if (x < 0) return 0;
+        const a = 2.5;
+        const b = t / a;
+        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5);
+      };
+
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
+      };
+
+      p.draw = () => {
         p.background('hsl(var(--card))');
         
+        // --- Static Background Elements (drawn every frame) ---
         // Draw Axes
         p.stroke(0);
         p.strokeWeight(1);
@@ -60,34 +71,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.RIGHT);
         p.text('Ea', startX_Ea - 5, 30);
 
-        p.noLoop(); // Draw once and stop
-      };
-    }, backgroundSketchRef.current);
-
-    return () => {
-      p5Instance.remove();
-    };
-  }, [width]);
-
-  // Effect for the foreground sketch (the moving curve)
-  useEffect(() => {
-    if (width <= 0 || !foregroundSketchRef.current) return;
-
-    const p5Instance = new p5((p: p5) => {
-      const distribution = (x: number, t: number) => {
-        if (x < 0) return 0;
-        const a = 2.5; 
-        const b = t / a;
-        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5);
-      };
-
-      p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
-      };
-      
-      p.draw = () => {
-        p.clear(); // Clear only the foreground canvas
-        
+        // --- Dynamic Foreground Elements ---
         const maxEnergy = 100;
         const temp = temperature;
         let maxCount = 0;
@@ -122,22 +106,24 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
-    }, foregroundSketchRef.current);
+    };
+
+    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
 
     return () => {
-      p5Instance.remove();
+      p5InstanceRef.current?.remove();
     };
   }, [width, temperature]);
   
   return (
     <div className="flex flex-col items-center gap-4 w-full">
       <div
-        className="relative rounded-lg border bg-muted w-full overflow-hidden"
+        ref={sketchRef}
+        className="rounded-lg border bg-muted w-full overflow-hidden"
         style={{ height: `${CANVAS_HEIGHT}px` }}
         data-ai-hint="Maxwell-Boltzmann distribution curve"
       >
-        <div ref={backgroundSketchRef} className="absolute inset-0 z-0"></div>
-        <div ref={foregroundSketchRef} className="absolute inset-0 z-10"></div>
+        {/* p5 canvas is injected here */}
       </div>
 
       <Card className="p-4 w-full">
