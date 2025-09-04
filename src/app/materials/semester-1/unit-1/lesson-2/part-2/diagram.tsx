@@ -41,25 +41,24 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // We will manually redraw when the slider changes
+        p.noLoop();
 
-        // Create the static background graphics layer
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
         
-        // --- Draw all static elements onto backgroundG ---
         backgroundG.background('hsl(var(--card))');
         
-        // Axes
         backgroundG.stroke(0);
         backgroundG.strokeWeight(1);
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
         
-        // Axes labels
         backgroundG.noStroke();
         backgroundG.fill(0);
         backgroundG.textAlign(p.CENTER);
-        backgroundG.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 5);
+        
+        const kineticEnergyLabel = 'الطاقة الحركية';
+        const labelX = width / 2;
+        backgroundG.text(kineticEnergyLabel, labelX, CANVAS_HEIGHT - 5);
         
         backgroundG.push();
         backgroundG.translate(15, CANVAS_HEIGHT / 2);
@@ -68,8 +67,9 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.text('عدد الجزيئات', 0, 0);
         backgroundG.pop();
         
-        // Static Red Line (Ea)
-        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
+        const labelWidth = backgroundG.textWidth(kineticEnergyLabel);
+        const startX_Ea = labelX + (labelWidth / 2) + 5;
+
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(1.5);
         backgroundG.drawingContext.setLineDash([5, 5]);
@@ -83,7 +83,6 @@ export default function MaxwellBoltzmannDiagram() {
       };
 
       p.draw = () => {
-        // First, display the pre-rendered static background
         p.image(backgroundG, 0, 0);
 
         const temp = sketchTemperature;
@@ -97,12 +96,16 @@ export default function MaxwellBoltzmannDiagram() {
             energyPoints.push(val);
             if (val > maxCount) maxCount = val;
             totalParticles += val;
-            if (i >= EVAPORATION_ENERGY) {
+            
+            const labelWidth = p.textWidth('الطاقة الحركية');
+            const startX_Ea = (width / 2) + (labelWidth / 2) + 5;
+            const energyAtEaLine = p.map(startX_Ea, LEFT_PADDING, width - 10, 0, MAX_ENERGY);
+
+            if (i >= energyAtEaLine) {
               particlesAboveEa += val;
             }
         }
         
-        // Draw the dynamic curve
         p.beginShape();
         p.noFill();
         p.stroke(0);
@@ -114,7 +117,6 @@ export default function MaxwellBoltzmannDiagram() {
         }
         p.endShape();
         
-        // Draw the dynamic percentage text
         const percentage = totalParticles > 0 ? ((particlesAboveEa / totalParticles) * 100).toFixed(1) : '0.0';
         p.noStroke();
         p.fill(0);
@@ -122,10 +124,9 @@ export default function MaxwellBoltzmannDiagram() {
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
 
-      // This custom function will be called by React's useEffect when the slider changes
       (p as any).updateTemperature = (newTemp: number) => {
-        sketchTemperature = newTemp; // Update the sketch's internal temperature
-        p.redraw(); // Trigger a single redraw
+        sketchTemperature = newTemp;
+        p.redraw();
       };
     };
 
