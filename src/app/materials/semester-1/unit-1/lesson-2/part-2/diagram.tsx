@@ -8,7 +8,6 @@ import { Card } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
-const LEFT_PADDING = 30;
 const MAX_ENERGY = 100;
 
 export default function MaxwellBoltzmannDiagram() {
@@ -31,6 +30,11 @@ export default function MaxwellBoltzmannDiagram() {
       let backgroundG: p5.Graphics;
       let sketchTemperature = temperature;
       
+      // Make left padding responsive to canvas width
+      const leftPadding = p.max(30, width * 0.1);
+      const rightPadding = 10;
+      const plotWidth = width - leftPadding - rightPadding;
+
       const distribution = (x: number, t: number) => {
         if (x < 0) return 0;
         const a = 2.5;
@@ -48,8 +52,8 @@ export default function MaxwellBoltzmannDiagram() {
         // Draw Axes
         backgroundG.stroke(0);
         backgroundG.strokeWeight(1);
-        backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
-        backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
+        backgroundG.line(leftPadding, CANVAS_HEIGHT - 20, width - rightPadding, CANVAS_HEIGHT - 20); // X-axis
+        backgroundG.line(leftPadding, CANVAS_HEIGHT - 20, leftPadding, 10); // Y-axis
         
         // Draw Labels for Axes
         backgroundG.noStroke();
@@ -57,9 +61,8 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.textAlign(p.CENTER);
         
         const kineticEnergyLabel = 'الطاقة الحركية';
-        const labelX = LEFT_PADDING + (width - 10 - LEFT_PADDING) / 2;
-        const kineticEnergyLabelWidth = backgroundG.textWidth(kineticEnergyLabel);
-        backgroundG.text(kineticEnergyLabel, labelX - (kineticEnergyLabelWidth / 2) - 10, CANVAS_HEIGHT - 5);
+        const labelX = leftPadding + plotWidth / 2;
+        backgroundG.text(kineticEnergyLabel, labelX, CANVAS_HEIGHT - 5);
         
         backgroundG.push();
         backgroundG.translate(15, CANVAS_HEIGHT / 2);
@@ -68,20 +71,18 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.text('عدد الجزيئات', 0, 0);
         backgroundG.pop();
         
-        const startX_Ea = labelX + (kineticEnergyLabelWidth / 2) + 5;
+        const eaLineX = leftPadding + plotWidth * 0.7;
 
         backgroundG.stroke('red');
         backgroundG.strokeWeight(1.5);
         backgroundG.drawingContext.setLineDash([4, 4]);
-        const lineBottomY = CANVAS_HEIGHT - 20;
-        const lineTopY = 10;
-        backgroundG.line(startX_Ea, lineTopY, startX_Ea, lineBottomY);
+        backgroundG.line(eaLineX, 10, eaLineX, CANVAS_HEIGHT - 20);
         backgroundG.drawingContext.setLineDash([]);
         
         backgroundG.fill('hsl(var(--destructive))');
         backgroundG.textAlign(p.CENTER);
         backgroundG.noStroke();
-        backgroundG.text('Ea', startX_Ea, CANVAS_HEIGHT - 5);
+        backgroundG.text('Ea', eaLineX, CANVAS_HEIGHT - 5);
         
         backgroundG.fill(0);
 
@@ -97,11 +98,8 @@ export default function MaxwellBoltzmannDiagram() {
         let totalParticles = 0;
         let particlesAboveEa = 0;
         
-        const kineticEnergyLabel = 'الطاقة الحركية';
-        const labelX = LEFT_PADDING + (width - 10 - LEFT_PADDING) / 2;
-        const kineticEnergyLabelWidth = p.textWidth(kineticEnergyLabel);
-        const startX_Ea = labelX + (kineticEnergyLabelWidth / 2) + 5;
-        const energyAtEaLine = p.map(startX_Ea, LEFT_PADDING, width - 10, 0, MAX_ENERGY);
+        const eaLineX = leftPadding + plotWidth * 0.7;
+        const energyAtEaLine = p.map(eaLineX, leftPadding, width - rightPadding, 0, MAX_ENERGY);
 
         for (let i = 0; i <= MAX_ENERGY; i++) {
             const val = distribution(i, temp);
@@ -119,18 +117,17 @@ export default function MaxwellBoltzmannDiagram() {
         p.stroke(255, 0, 0, 100);
         p.strokeWeight(1);
         p.beginShape();
-        const startShadingIndex = Math.floor(energyAtEaLine);
         
         // First point on the axis at Ea
-        p.vertex(startX_Ea, CANVAS_HEIGHT - 20);
+        p.vertex(eaLineX, CANVAS_HEIGHT - 20);
 
-        for (let i = startShadingIndex; i < energyPoints.length; i++) {
-            const x = p.map(i, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
+        for (let i = Math.floor(energyAtEaLine); i < energyPoints.length; i++) {
+            const x = p.map(i, 0, MAX_ENERGY, leftPadding, width - rightPadding);
             const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
             p.vertex(x, y);
         }
         // Last point on the axis at max energy
-        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10), CANVAS_HEIGHT - 20);
+        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, leftPadding, width - rightPadding), CANVAS_HEIGHT - 20);
         p.endShape(p.CLOSE);
 
         // Draw the main curve
@@ -139,7 +136,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.stroke(0);
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
+          const x = p.map(i, 0, MAX_ENERGY, leftPadding, width - rightPadding);
           const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
           p.vertex(x, y);
         }
@@ -149,7 +146,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.noStroke();
         p.fill(0);
         p.textAlign(p.LEFT);
-        p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
+        p.text(`جزيئات قادرة على التبخر: ${percentage}%`, leftPadding + 5, 20);
       };
 
       (p as any).updateTemperature = (newTemp: number) => {
