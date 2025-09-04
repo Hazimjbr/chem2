@@ -71,9 +71,9 @@ export default function MaxwellBoltzmannDiagram() {
         const labelWidth = backgroundG.textWidth(kineticEnergyLabel);
         const startX_Ea = labelX + (labelWidth / 2) + 5;
 
-        backgroundG.stroke('hsl(var(--destructive))');
-        backgroundG.strokeWeight(6);
-        backgroundG.line(startX_Ea, -5, startX_Ea, CANVAS_HEIGHT - 15);
+        backgroundG.stroke('red');
+        backgroundG.strokeWeight(2.5);
+        backgroundG.line(startX_Ea, -5, startX_Ea, CANVAS_HEIGHT - 20); // End at Y-axis height
         
         // Draw Ea label
         backgroundG.noStroke();
