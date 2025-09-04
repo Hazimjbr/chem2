@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
@@ -12,7 +11,7 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
+            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك الحد الأدنى من الطاقة للتغلب على قوى التجاذب عند درجة الحرارة الأقل هو:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/MxNjGvNM/22.png"
@@ -26,13 +25,13 @@ const question = {
         </div>
     ),
     options: [
-        "ع",
-        "و",
         "ص",
-        "س"
+        "و",
+        "س",
+        "ي"
     ],
-    correctAnswerIndex: 0,
-    explanation: "الرمز (ع) يمثل طاقة التنشيط (Ea)، وهي الحد الأدنى من الطاقة الحركية التي يجب أن تمتلكها الجزيئات لتتمكن من التبخر."
+    correctAnswerIndex: 2,
+    explanation: "المنحنى ذو القمة الأعلى يمثل درجة الحرارة الأقل. المنطقة المظللة تحت هذا المنحنى بعد خط طاقة التنشيط (ع) تمثل عدد الجزيئات القادرة على التبخر. الرمز (س) يشير إلى هذه المنطقة المحددة."
 }
 
 export default function QuestionLabPage() {
