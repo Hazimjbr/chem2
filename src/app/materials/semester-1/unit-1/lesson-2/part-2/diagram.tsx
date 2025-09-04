@@ -27,13 +27,8 @@ export default function MaxwellBoltzmannDiagram() {
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
-      let backgroundG: p5.Graphics;
       let sketchTemperature = temperature;
       
-      const leftPadding = 30;
-      const rightPadding = 20;
-      const plotWidth = width - leftPadding - rightPadding;
-
       const distribution = (x: number, t: number) => {
         if (x < 0) return 0;
         const a = 2.5;
@@ -41,64 +36,46 @@ export default function MaxwellBoltzmannDiagram() {
         return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5);
       };
 
+      const drawAxesAndLabels = () => {
+        p.stroke(0);
+        p.strokeWeight(1);
+        // X-axis
+        p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.9, CANVAS_HEIGHT - 30);
+        // Y-axis
+        p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.1, 10);
+        
+        p.noStroke();
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        
+        // X-axis Label
+        p.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 15);
+        
+        // Y-axis Label
+        p.push();
+        p.translate(width * 0.05, CANVAS_HEIGHT / 2);
+        p.rotate(-p.HALF_PI);
+        p.text('عدد الجزيئات', 0, 0);
+        p.pop();
+      }
+
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
-        
-        // --- Draw all static elements on the background buffer ---
-        backgroundG.background('hsl(var(--card))');
-        
-        // Draw Axes
-        backgroundG.stroke(0);
-        backgroundG.strokeWeight(1);
-        backgroundG.line(leftPadding, CANVAS_HEIGHT - 20, width - rightPadding, CANVAS_HEIGHT - 20); // X-axis
-        backgroundG.line(leftPadding, CANVAS_HEIGHT - 20, leftPadding, 10); // Y-axis
-        
-        // Draw Labels for Axes
-        backgroundG.noStroke();
-        backgroundG.fill(0);
-        backgroundG.textAlign(p.CENTER);
-        
-        const kineticEnergyLabel = 'الطاقة الحركية';
-        const labelX = leftPadding + plotWidth / 2;
-        backgroundG.text(kineticEnergyLabel, labelX, CANVAS_HEIGHT - 5);
-        
-        backgroundG.push();
-        backgroundG.translate(15, CANVAS_HEIGHT / 2);
-        backgroundG.rotate(-p.HALF_PI);
-        backgroundG.textAlign(p.CENTER);
-        backgroundG.text('عدد الجزيئات', 0, 0);
-        backgroundG.pop();
-        
-        const eaLineX = leftPadding + plotWidth * 0.7;
-
-        backgroundG.stroke('red');
-        backgroundG.strokeWeight(1.5);
-        backgroundG.drawingContext.setLineDash([4, 4]);
-        backgroundG.line(eaLineX, 10, eaLineX, CANVAS_HEIGHT - 20);
-        backgroundG.drawingContext.setLineDash([]);
-        
-        backgroundG.fill('hsl(var(--destructive))');
-        backgroundG.textAlign(p.CENTER);
-        backgroundG.noStroke();
-        backgroundG.text('Ea', eaLineX, CANVAS_HEIGHT - 5);
-        
-        backgroundG.fill(0);
-
-        p.noLoop();
+        p.noLoop(); // Redraw only when temperature changes
       };
 
       p.draw = () => {
-        p.image(backgroundG, 0, 0);
-
+        p.background('hsl(var(--card))');
+        drawAxesAndLabels();
+        
         const temp = sketchTemperature;
         let maxCount = 0;
         const energyPoints = [];
         let totalParticles = 0;
         let particlesAboveEa = 0;
-        
-        const eaLineX = leftPadding + plotWidth * 0.7;
-        const energyAtEaLine = p.map(eaLineX, leftPadding, width - rightPadding, 0, MAX_ENERGY);
+
+        const eaLineX = width * 0.1 + (width * 0.8) * 0.7; // Ea at 70% of the plot width
+        const energyAtEaLine = p.map(eaLineX, width * 0.1, width * 0.9, 0, MAX_ENERGY);
 
         for (let i = 0; i <= MAX_ENERGY; i++) {
             const val = distribution(i, temp);
@@ -111,41 +88,48 @@ export default function MaxwellBoltzmannDiagram() {
             }
         }
         
-        // Draw the shaded area first
-        p.fill(255, 0, 0, 50); // Transparent red
+        // Draw the shaded area for Ea
+        p.fill(255, 0, 0, 50);
         p.stroke(255, 0, 0, 100);
         p.strokeWeight(1);
         p.beginShape();
-        
-        // First point on the axis at Ea
-        p.vertex(eaLineX, CANVAS_HEIGHT - 20);
-
+        p.vertex(eaLineX, CANVAS_HEIGHT - 30);
         for (let i = Math.floor(energyAtEaLine); i < energyPoints.length; i++) {
-            const x = p.map(i, 0, MAX_ENERGY, leftPadding, width - rightPadding);
-            const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
+            const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.9);
+            const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 40);
             p.vertex(x, y);
         }
-        // Last point on the axis at max energy
-        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, leftPadding, width - rightPadding), CANVAS_HEIGHT - 20);
+        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, width * 0.1, width * 0.9), CANVAS_HEIGHT - 30);
         p.endShape(p.CLOSE);
 
-        // Draw the main curve
-        p.beginShape();
+        // Draw the main distribution curve
         p.noFill();
         p.stroke(0);
         p.strokeWeight(2.5);
+        p.beginShape();
         for (let i = 0; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, MAX_ENERGY, leftPadding, width - rightPadding);
-          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
+          const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.9);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 40);
           p.vertex(x, y);
         }
         p.endShape();
         
+        // Draw Ea line and label
+        p.stroke('red');
+        p.strokeWeight(1.5);
+        p.drawingContext.setLineDash([4, 4]);
+        p.line(eaLineX, 10, eaLineX, CANVAS_HEIGHT - 30);
+        p.drawingContext.setLineDash([]);
+        p.fill('hsl(var(--destructive))');
+        p.textAlign(p.CENTER);
+        p.noStroke();
+        p.text('Ea', eaLineX, CANVAS_HEIGHT - 15); // Place label under axis
+        
         const percentage = totalParticles > 0 ? ((particlesAboveEa / totalParticles) * 100).toFixed(1) : '0.0';
         p.noStroke();
         p.fill(0);
-        p.textAlign(p.LEFT);
-        p.text(`جزيئات قادرة على التبخر: ${percentage}%`, leftPadding + 5, 20);
+        p.textAlign(p.LEFT, p.TOP);
+        p.text(`جزيئات قادرة على التبخر: ${percentage}%`, width * 0.1 + 5, 15);
       };
 
       (p as any).updateTemperature = (newTemp: number) => {
