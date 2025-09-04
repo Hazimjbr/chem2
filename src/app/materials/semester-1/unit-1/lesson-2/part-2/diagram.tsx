@@ -8,13 +8,12 @@ import { Card } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
-const NUM_PARTICLES = 2000;
-const EVAPORATION_ENERGY = 70; // Represents Ea
+const EVAPORATION_ENERGY = 70; // Represents Ea, the activation energy for evaporation
 
 export default function MaxwellBoltzmannDiagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
-  const [temperature, setTemperature] = useState(30);
+  const [temperature, setTemperature] = useState(30); // Represents the 'T' parameter in the distribution
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -30,64 +29,77 @@ export default function MaxwellBoltzmannDiagram() {
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
+      // A function that resembles Maxwell-Boltzmann distribution
+      // x is energy, t is temperature parameter
+      const distribution = (x: number, t: number) => {
+        if (x < 0) return 0;
+        // This is a simplified mathematical function (Gamma distribution) that looks like a Maxwell-Boltzmann curve.
+        // It's chosen for visual accuracy and stability.
+        const a = 2.5; // Shape parameter
+        const b = t / a; // Scale parameter
+        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5); // 6.5 is a normalization factor
+      };
+
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
+        p.noLoop(); // We only need to redraw when the temperature changes
+      };
+      
+      (p as any).updateWithNewProps = (props: { temp: number }) => {
+          if (props.temp) {
+              p.redraw();
+          }
       };
 
       p.draw = () => {
-        let energyCounts = new Array(150).fill(0);
-        // Maxwell-Boltzmann distribution logic
-        for (let i = 0; i < NUM_PARTICLES; i++) {
-            const r1 = p.random();
-            const r2 = p.random();
-            const energy = -temperature * Math.log(r1 * r2);
-            const bin = p.floor(energy);
-            if (bin < energyCounts.length) {
-              energyCounts[bin]++;
+        p.background('hsl(var(--card))');
+        
+        const maxEnergy = 150;
+        const temp = temperature; // Use the current temperature from the component's state
+        let maxCount = 0;
+        const energyPoints = [];
+        let totalParticles = 0;
+        let particlesAboveEa = 0;
+        
+        // 1. Calculate points and find the peak for normalization
+        for (let i = 0; i <= maxEnergy; i++) {
+            const val = distribution(i, temp);
+            energyPoints.push(val);
+            if (val > maxCount) maxCount = val;
+            totalParticles += val;
+            if (i >= EVAPORATION_ENERGY) {
+              particlesAboveEa += val;
             }
         }
-        
-        p.background('hsl(var(--card))');
-        p.strokeWeight(2);
 
-        let maxCount = 0;
-        for (let count of energyCounts) {
-            if (count > maxCount) maxCount = count;
-        }
-        
-        let particlesAboveEa = 0;
-
-        // Draw the distribution curve
+        // 2. Draw the distribution curve
         p.beginShape();
         p.noFill();
         p.stroke('hsl(var(--primary))');
-        for (let i = 0; i < energyCounts.length; i++) {
-          const x = p.map(i, 0, energyCounts.length, 10, width - 10);
-          const y = p.map(energyCounts[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
+        p.strokeWeight(2.5);
+        for (let i = 0; i < energyPoints.length; i++) {
+          const x = p.map(i, 0, maxEnergy, 10, width - 10);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
           p.vertex(x, y);
-
-          if (i >= EVAPORATION_ENERGY) {
-              particlesAboveEa += energyCounts[i];
-          }
         }
         p.endShape();
         
-        // Fill the area for particles that can evaporate
-        const startX = p.map(EVAPORATION_ENERGY, 0, energyCounts.length, 10, width - 10);
+        // 3. Fill the area for particles that can evaporate
+        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, maxEnergy, 10, width - 10);
         p.beginShape();
         p.stroke('hsl(var(--destructive))');
         p.fill('hsla(var(--destructive), 0.3)');
-        p.vertex(startX, p.map(energyCounts[EVAPORATION_ENERGY] || 0, 0, maxCount, CANVAS_HEIGHT - 20, 20));
-        for (let i = EVAPORATION_ENERGY + 1; i < energyCounts.length; i++) {
-          const x = p.map(i, 0, energyCounts.length, 10, width - 10);
-          const y = p.map(energyCounts[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
+        p.vertex(startX_Ea, p.map(energyPoints[EVAPORATION_ENERGY], 0, maxCount, CANVAS_HEIGHT - 20, 20));
+        for (let i = EVAPORATION_ENERGY + 1; i < energyPoints.length; i++) {
+          const x = p.map(i, 0, maxEnergy, 10, width - 10);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
           p.vertex(x, y);
         }
         p.vertex(width - 10, CANVAS_HEIGHT - 20);
-        p.vertex(startX, CANVAS_HEIGHT - 20);
+        p.vertex(startX_Ea, CANVAS_HEIGHT - 20);
         p.endShape(p.CLOSE);
 
-        // Draw Axes and Labels
+        // 4. Draw Axes and Labels
         p.stroke(0);
         p.strokeWeight(1);
         p.line(10, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
@@ -105,17 +117,17 @@ export default function MaxwellBoltzmannDiagram() {
         p.text('عدد الجزيئات', 0, 0);
         p.pop();
         
-        // Draw Ea line
+        // 5. Draw Ea line and label
         p.stroke('hsl(var(--destructive))');
         p.strokeWeight(1.5);
-        p.line(startX, CANVAS_HEIGHT - 20, startX, 20);
+        p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
         p.noStroke();
         p.fill('hsl(var(--destructive))');
         p.textAlign(p.RIGHT);
-        p.text('Ea', startX + 10, 30);
+        p.text('Ea', startX_Ea - 5, 30);
         
-        // Display percentage of particles that can evaporate
-        const percentage = ((particlesAboveEa / NUM_PARTICLES) * 100).toFixed(1);
+        // 6. Display percentage of particles that can evaporate
+        const percentage = ((particlesAboveEa / totalParticles) * 100).toFixed(1);
         p.fill(0);
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
@@ -128,7 +140,14 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width, temperature]); // Re-create the sketch when width OR temperature changes
+  }, [width]);
+  
+  // This effect will trigger a redraw whenever the temperature state changes.
+  useEffect(() => {
+    if (p5InstanceRef.current && (p5InstanceRef.current as any).updateWithNewProps) {
+        (p5InstanceRef.current as any).updateWithNewProps({ temp: temperature });
+    }
+  }, [temperature]);
 
 
   return (
