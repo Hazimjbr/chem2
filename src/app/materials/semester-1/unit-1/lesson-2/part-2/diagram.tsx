@@ -41,21 +41,23 @@ export default function MaxwellBoltzmannDiagram() {
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
-        p.noLoop();
         
+        // --- Draw all static elements on the background buffer ---
         backgroundG.background('hsl(var(--card))');
         
+        // Draw Axes
         backgroundG.stroke(0);
         backgroundG.strokeWeight(1);
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
         
+        // Draw Labels for Axes
         backgroundG.noStroke();
         backgroundG.fill(0);
         backgroundG.textAlign(p.CENTER);
         
         const kineticEnergyLabel = 'الطاقة الحركية';
-        const labelX = width / 2;
+        const labelX = LEFT_PADDING + (width - 10 - LEFT_PADDING) / 2;
         backgroundG.text(kineticEnergyLabel, labelX, CANVAS_HEIGHT - 5);
         
         backgroundG.push();
@@ -65,22 +67,28 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.text('عدد الجزيئات', 0, 0);
         backgroundG.pop();
         
+        // Draw the Ea line (Activation Energy)
         const labelWidth = backgroundG.textWidth(kineticEnergyLabel);
         const startX_Ea = labelX + (labelWidth / 2) + 5;
 
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(1.5);
         backgroundG.drawingContext.setLineDash([5, 5]);
-        backgroundG.line(startX_Ea, CANVAS_HEIGHT, startX_Ea, 10);
+        // Extend the line upwards significantly
+        backgroundG.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 10); 
         backgroundG.drawingContext.setLineDash([]);
         
+        // Draw Ea label
         backgroundG.noStroke();
         backgroundG.fill('hsl(var(--destructive))');
         backgroundG.textAlign(p.RIGHT);
         backgroundG.text('Ea', startX_Ea - 5, 20);
+
+        p.noLoop(); // Don't start drawing the curve until temperature is updated
       };
 
       p.draw = () => {
+        // First, draw the static background image.
         p.image(backgroundG, 0, 0);
 
         const temp = sketchTemperature;
@@ -89,16 +97,17 @@ export default function MaxwellBoltzmannDiagram() {
         let totalParticles = 0;
         let particlesAboveEa = 0;
         
+        const labelWidth = p.textWidth('الطاقة الحركية');
+        const labelX = LEFT_PADDING + (width - 10 - LEFT_PADDING) / 2;
+        const startX_Ea = labelX + (labelWidth / 2) + 5;
+        const energyAtEaLine = p.map(startX_Ea, LEFT_PADDING, width - 10, 0, MAX_ENERGY);
+
         for (let i = 0; i <= MAX_ENERGY; i++) {
             const val = distribution(i, temp);
             energyPoints.push(val);
             if (val > maxCount) maxCount = val;
             totalParticles += val;
             
-            const labelWidth = p.textWidth('الطاقة الحركية');
-            const startX_Ea = (width / 2) + (labelWidth / 2) + 5;
-            const energyAtEaLine = p.map(startX_Ea, LEFT_PADDING, width - 10, 0, MAX_ENERGY);
-
             if (i >= energyAtEaLine) {
               particlesAboveEa += val;
             }
@@ -139,7 +148,7 @@ export default function MaxwellBoltzmannDiagram() {
      if (p5InstanceRef.current && (p5InstanceRef.current as any).updateTemperature) {
         (p5InstanceRef.current as any).updateTemperature(temperature);
      }
-  }, [temperature]);
+  }, [temperature, width]); // Added width dependency to ensure redraw on resize
   
   return (
     <div className="flex flex-col items-center gap-4 w-full">
