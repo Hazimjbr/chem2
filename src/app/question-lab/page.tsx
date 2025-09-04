@@ -12,10 +12,10 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>1) اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو</p>
+            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/v6zrQFz/diagram.png"
+                    src="https://i.ibb.co/LgLw4Wf/diagram.png"
                     alt="Maxwell-Boltzmann distribution curve"
                     width={400}
                     height={250}
