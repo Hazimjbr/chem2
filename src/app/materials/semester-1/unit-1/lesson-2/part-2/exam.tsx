@@ -158,6 +158,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 2,
         explanation: "سرعة التبخر تتناسب عكسيًا مع قوة الترابط بين الجزيئات. الميثان (CH₄) هو جزيء غير قطبي وله أقل كتلة مولية بين الخيارات، وبالتالي يمتلك أضعف قوى ترابط (قوى لندن)، مما يجعله الأسرع تبخرًا."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك الحد الأدنى من الطاقة للتغلب على قوى التجاذب عند درجة الحرارة الأقل هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        alt="Maxwell-Boltzmann distribution curve"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="Maxwell-Boltzmann distribution"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["ص", "و", "س", "ي"],
+        correctAnswerIndex: 2,
+        explanation: "المنحنى ذو القمة الأعلى يمثل درجة الحرارة الأقل. المنطقة المظللة تحت هذا المنحنى بعد خط طاقة التنشيط (ع) تمثل عدد الجزيئات القادرة على التبخر. الرمز (س) يشير إلى هذه المنطقة المحددة."
     }
 ];
 
