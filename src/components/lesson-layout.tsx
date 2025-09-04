@@ -48,7 +48,7 @@ export default function LessonLayout({
     }, [lessonId]);
 
     return (
-        <div className="container mx-auto p-8 relative">
+        <div className="container mx-auto p-4 md:p-8 relative">
             <Link href="/materials/semester-1" passHref>
                 <Button variant="ghost" size="icon" className="absolute top-4 left-4">
                     <X className="h-6 w-6" />
@@ -56,8 +56,8 @@ export default function LessonLayout({
                 </Button>
             </Link>
             <header className="mb-10 text-center">
-                <h1 className="text-4xl font-bold text-primary mb-2">{lessonTitle}</h1>
-                <p className="text-lg text-muted-foreground">{lessonSubtitle}</p>
+                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">{lessonTitle}</h1>
+                <p className="text-base md:text-lg text-muted-foreground">{lessonSubtitle}</p>
             </header>
 
             <main className="space-y-8">
