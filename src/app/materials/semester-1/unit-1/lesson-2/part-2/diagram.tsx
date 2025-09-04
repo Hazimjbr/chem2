@@ -8,7 +8,6 @@ import { Card } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
-const EVAPORATION_ENERGY = 70; 
 const LEFT_PADDING = 30;
 const MAX_ENERGY = 100;
 
@@ -41,9 +40,8 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop();
-
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
+        p.noLoop();
         
         backgroundG.background('hsl(var(--card))');
         
@@ -73,13 +71,13 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(1.5);
         backgroundG.drawingContext.setLineDash([5, 5]);
-        backgroundG.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
+        backgroundG.line(startX_Ea, CANVAS_HEIGHT, startX_Ea, 10);
         backgroundG.drawingContext.setLineDash([]);
         
         backgroundG.noStroke();
         backgroundG.fill('hsl(var(--destructive))');
         backgroundG.textAlign(p.RIGHT);
-        backgroundG.text('Ea', startX_Ea - 5, 30);
+        backgroundG.text('Ea', startX_Ea - 5, 20);
       };
 
       p.draw = () => {
