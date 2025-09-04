@@ -6,18 +6,32 @@ import { CheckCircle, Eye, RefreshCw, XCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import React from 'react';
-import { InlineMath } from 'react-katex';
+import Image from 'next/image';
 
 const question = {
-    question: <span>السائل الذي له أقل طاقة تبخر مولية من السوائل الآتية:</span>,
+    question: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/LgLw4Wf/diagram.png"
+                    alt="Maxwell-Boltzmann distribution curve"
+                    width={400}
+                    height={150}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="energy distribution curve"
+                />
+            </div>
+        </div>
+    ),
     options: [
-        <span dir="ltr">CH₃CH₂OH</span>,
-        <span dir="ltr">CH₃CH₂Cl</span>,
-        <span dir="ltr">CH₃COCH₃</span>,
-        <span dir="ltr">CH₃CH₃</span>
+        "ل",
+        "ع",
+        "ك",
+        "س"
     ],
-    correctAnswerIndex: 3,
-    explanation: "أقل طاقة تبخر مولية تعني أضعف قوى ترابط بين الجزيئات. الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك قوى لندن فقط، وهي الأضعف مقارنة بالروابط الهيدروجينية في الإيثانول وقوى ثنائي القطب في المركبات الأخرى، لذا فهو الأسهل تبخرًا."
+    correctAnswerIndex: 1,
+    explanation: "الرمز 'ع' يمثل طاقة التنشيط (Ea)، وهي الحد الأدنى من الطاقة الحركية التي يجب أن يمتلكها الجزيء على السطح ليتمكن من التغلب على قوى التجاذب والتبخر."
 }
 
 export default function QuestionLabPage() {
