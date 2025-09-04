@@ -41,10 +41,10 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const ADMIN_EMAIL = 'h75jbr@gmail.com';
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [curriculum, setCurriculum] = useState<Curriculum>(null);
-  const [currentUser, setCurrentUser] = useState<AppUser | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [curriculum, setCurriculum] = React.useState<Curriculum>(null);
+  const [currentUser, setCurrentUser] = React.useState<AppUser | null>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoaded, setIsLoaded] = React.useState(false);
 
   // Function to fetch user details and determine role
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
@@ -77,7 +77,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     try {
       const savedCurriculum = localStorage.getItem('selectedCurriculum') as Curriculum;
       if (savedCurriculum) {
