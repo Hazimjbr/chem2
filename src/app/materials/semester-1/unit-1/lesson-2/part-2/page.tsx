@@ -1,4 +1,3 @@
-
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -11,7 +10,16 @@ import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
-import MaxwellBoltzmannDiagram from './diagram';
+
+const MaxwellBoltzmannDiagram = dynamic(() => import('./diagram'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-col items-center gap-4">
+      <Skeleton className="h-[250px] w-full rounded-lg" />
+      <Skeleton className="h-12 w-full" />
+    </div>
+  ),
+});
 
 const lessonInfo = {
     lessonTitle: "الدرس الثاني: الحالة السائلة",
