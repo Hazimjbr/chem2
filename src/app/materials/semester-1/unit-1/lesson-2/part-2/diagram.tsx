@@ -30,7 +30,7 @@ export default function MaxwellBoltzmannDiagram() {
 
     const sketch = (p: p5) => {
       let backgroundG: p5.Graphics;
-      let sketchTemperature = temperature; // Use a local mutable variable
+      let sketchTemperature = temperature;
       
       const distribution = (x: number, t: number) => {
         if (x < 0) return 0;
@@ -41,14 +41,12 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // Don't loop by default, we'll redraw manually
+        p.noLoop();
 
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
         
-        // --- Draw all static elements to the background buffer ---
         backgroundG.background('hsl(var(--card))');
         
-        // Axes and Labels
         backgroundG.stroke(0);
         backgroundG.strokeWeight(1);
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
@@ -66,13 +64,12 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.text('عدد الجزيئات', 0, 0);
         backgroundG.pop();
         
-        // Ea Line (Evaporation Energy)
         const startX_Ea = p.map(EVAPORATION_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(1.5);
-        backgroundG.drawingContext.setLineDash([5, 5]); // Dashed line
+        backgroundG.drawingContext.setLineDash([5, 5]);
         backgroundG.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
-        backgroundG.drawingContext.setLineDash([]); // Reset to solid
+        backgroundG.drawingContext.setLineDash([]);
         
         backgroundG.noStroke();
         backgroundG.fill('hsl(var(--destructive))');
@@ -81,10 +78,9 @@ export default function MaxwellBoltzmannDiagram() {
       };
 
       p.draw = () => {
-        // Draw the static background first
+        p.clear();
         p.image(backgroundG, 0, 0);
 
-        // --- Distribution Curve (Dynamic Part) ---
         const temp = sketchTemperature;
         let maxCount = 0;
         const energyPoints = [];
@@ -103,7 +99,7 @@ export default function MaxwellBoltzmannDiagram() {
         
         p.beginShape();
         p.noFill();
-        p.stroke(0); // Black color for the curve
+        p.stroke(0);
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
           const x = p.map(i, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
@@ -119,10 +115,9 @@ export default function MaxwellBoltzmannDiagram() {
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
 
-       // This custom function will be called by React's useEffect when the slider changes
       (p as any).updateTemperature = (newTemp: number) => {
-        sketchTemperature = newTemp; // Update the sketch's internal temperature
-        p.redraw(); // Trigger a single redraw
+        sketchTemperature = newTemp;
+        p.redraw();
       };
     };
 
@@ -133,8 +128,6 @@ export default function MaxwellBoltzmannDiagram() {
     };
   }, [width]);
 
-  // This useEffect hook is responsible for telling the p5 sketch to update
-  // whenever the temperature state from the slider changes.
   useEffect(() => {
      if (p5InstanceRef.current && (p5InstanceRef.current as any).updateTemperature) {
         (p5InstanceRef.current as any).updateTemperature(temperature);
@@ -149,7 +142,6 @@ export default function MaxwellBoltzmannDiagram() {
         style={{ height: `${CANVAS_HEIGHT}px` }}
         data-ai-hint="Maxwell-Boltzmann distribution curve"
       >
-        {/* p5 canvas is injected here */}
       </div>
 
       <Card className="p-4 w-full">
