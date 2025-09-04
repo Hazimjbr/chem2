@@ -13,27 +13,27 @@ import { InlineMath } from 'react-katex';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الذي له أضعف قوى تجاذب هو:</p>
+            <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل السائل <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span> هو:</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/TB6RcQkw/22.png"
-                    alt="Vapor Pressure vs Temperature"
+                    src="https://i.ibb.co/hF9Fm0hw/22.png"
+                    alt="Vapor Pressure vs Temperature for four liquids"
                     width={400}
                     height={250}
                     className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curve"
+                    data-ai-hint="vapor pressure curves"
                 />
             </div>
         </div>
     ),
     options: [
         "A",
-        "M",
         "B",
-        "Q"
+        "C",
+        "D"
     ],
-    correctAnswerIndex: 0,
-    explanation: "أضعف قوى تجاذب تعني أن السائل يتبخر بسهولة أكبر، وبالتالي يمتلك أعلى ضغط بخاري عند درجة حرارة معينة. المنحنى A يمثل السائل الذي له أعلى ضغط بخاري، لذا قوى التجاذب بين جزيئاته هي الأضعف."
+    correctAnswerIndex: 3,
+    explanation: "الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك قوى لندن فقط، وهي أضعف من الروابط الهيدروجينية في الإيثانول (B) وقوى ثنائي القطب في كلوروميثان (C)، ولكنه أقوى من الميثان (A) بسبب كتلته المولية الأعلى. لذلك، ضغطه البخاري سيكون أقل من الميثان وأعلى من الإيثانول وكلوروميثان، مما يجعله يمثل المنحنى D."
 }
 
 export default function QuestionLabPage() {
@@ -84,7 +84,7 @@ export default function QuestionLabPage() {
                                 variant="outline"
                                 className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
                                 onClick={() => handleSelect(index)}
-                                disabled={answerStatus !== 'unanswered' || typeof question.question !== 'object'}
+                                disabled={answerStatus !== 'unanswered'}
                             >
                                 <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
                                 <span className="flex-1 whitespace-normal">{option}</span>
