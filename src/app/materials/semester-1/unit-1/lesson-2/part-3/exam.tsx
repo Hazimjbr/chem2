@@ -86,6 +86,26 @@ export const staticQuizLvl1: QuizQuestion[] = [
         options: ["صلب", "سائل", "غاز", "غاز + سائل"],
         correctAnswerIndex: 1,
         explanation: "يوضح الرسم البياني منحنى تبريد المادة. تبدأ المادة كغاز عند درجة حرارة عالية ثم تبرد. الخط الأفقي الأول يمثل عملية التكاثف (التحول من غاز إلى سائل) عند درجة حرارة ثابتة. النقطة B تقع على الخط المائل بعد انتهاء التكاثف وقبل بدء التجمد، مما يعني أن المادة في هذه المرحلة تكون في الحالة السائلة ويتم تبريدها."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن درجة التكاثف للمادة A تساوي:</p>
+                <div className="flex justify-center my-4">
+                     <Image
+                        src="https://i.ibb.co/GfZ5wtqG/22.png"
+                        alt="منحنى تبريد المادة A"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="cooling curve"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["70", "100", "25", "0"],
+        correctAnswerIndex: 0,
+        explanation: "درجة التكاثف هي درجة الحرارة الثابتة التي يتحول عندها الغاز إلى سائل. من الرسم البياني، نلاحظ أن درجة الحرارة تثبت عند 70°C أثناء عملية التكاثف (الخط الأفقي الأول)."
     }
 ];
 
