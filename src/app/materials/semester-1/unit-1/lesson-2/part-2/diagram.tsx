@@ -29,6 +29,8 @@ export default function MaxwellBoltzmannDiagram() {
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
+      let backgroundG: p5.Graphics;
+      
       const distribution = (x: number, t: number) => {
         if (x < 0) return 0;
         const a = 2.5;
@@ -38,40 +40,50 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
+        p.noLoop(); // Don't loop by default, we'll redraw manually
+
+        backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
+        
+        // --- Draw all static elements to the background buffer ---
+        backgroundG.background('hsl(var(--card))');
+        
+        // Axes and Labels
+        backgroundG.stroke(0);
+        backgroundG.strokeWeight(1);
+        backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
+        backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
+        
+        backgroundG.noStroke();
+        backgroundG.fill(0);
+        backgroundG.textAlign(p.CENTER);
+        backgroundG.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 5);
+        
+        backgroundG.push();
+        backgroundG.translate(15, CANVAS_HEIGHT / 2);
+        backgroundG.rotate(-p.HALF_PI);
+        backgroundG.textAlign(p.CENTER);
+        backgroundG.text('عدد الجزيئات', 0, 0);
+        backgroundG.pop();
+        
+        // Ea Line (Evaporation Energy)
+        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
+        backgroundG.stroke('hsl(var(--destructive))');
+        backgroundG.strokeWeight(1.5);
+        backgroundG.drawingContext.setLineDash([5, 5]); // Dashed line
+        backgroundG.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
+        backgroundG.drawingContext.setLineDash([]); // Reset to solid
+        
+        backgroundG.noStroke();
+        backgroundG.fill('hsl(var(--destructive))');
+        backgroundG.textAlign(p.RIGHT);
+        backgroundG.text('Ea', startX_Ea - 5, 30);
       };
 
       p.draw = () => {
-        p.background('hsl(var(--card))');
-        
-        // --- Axes and Labels ---
-        p.stroke(0);
-        p.strokeWeight(1);
-        p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
-        p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
-        
-        p.noStroke();
-        p.fill(0);
-        p.textAlign(p.CENTER);
-        p.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 5);
-        
-        p.push();
-        p.translate(15, CANVAS_HEIGHT / 2);
-        p.rotate(-p.HALF_PI);
-        p.textAlign(p.CENTER);
-        p.text('عدد الجزيئات', 0, 0);
-        p.pop();
-        
-        // --- Ea Line (Evaporation Energy) ---
-        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
-        p.stroke('hsl(var(--destructive))');
-        p.strokeWeight(1.5);
-        p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
-        p.noStroke();
-        p.fill('hsl(var(--destructive))');
-        p.textAlign(p.RIGHT);
-        p.text('Ea', startX_Ea - 5, 30);
+        // Draw the static background first
+        p.image(backgroundG, 0, 0);
 
-        // --- Distribution Curve ---
+        // --- Distribution Curve (Dynamic Part) ---
         const temp = temperature;
         let maxCount = 0;
         const energyPoints = [];
@@ -90,7 +102,7 @@ export default function MaxwellBoltzmannDiagram() {
         
         p.beginShape();
         p.noFill();
-        p.stroke(0);
+        p.stroke(0); // Black color for the curve
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
           const x = p.map(i, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
@@ -105,6 +117,12 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
+
+       // This custom function will be called by React's useEffect when the slider changes
+      (p as any).updateTemperature = (newTemp: number) => {
+        temperature = newTemp; // Update the sketch's internal temperature
+        p.redraw(); // Trigger a single redraw
+      };
     };
 
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
@@ -112,7 +130,15 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width, temperature]);
+  }, [width]);
+
+  // This useEffect hook is responsible for telling the p5 sketch to update
+  // whenever the temperature state from the slider changes.
+  useEffect(() => {
+     if (p5InstanceRef.current && (p5InstanceRef.current as any).updateTemperature) {
+        (p5InstanceRef.current as any).updateTemperature(temperature);
+     }
+  }, [temperature]);
   
   return (
     <div className="flex flex-col items-center gap-4 w-full">
