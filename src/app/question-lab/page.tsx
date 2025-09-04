@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
@@ -11,27 +12,27 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>سؤال جديد يوضع هنا</p>
+            <p>اعتمادا على الرسم المجاور، زيادة درجة حرارة منحنى د2 ستؤدي إلى الآتي:</p>
             <div className="flex justify-center">
                  <Image
-                    src="https://picsum.photos/400/250"
-                    alt="Placeholder image"
+                    src="https://i.ibb.co/MxNjGvNM/22.png"
+                    alt="مخطط توزيع ماكسويل-بولتزمان"
                     width={400}
                     height={250}
                     className="rounded-lg border bg-white"
-                    data-ai-hint="placeholder image"
+                    data-ai-hint="Maxwell-Boltzmann distribution"
                 />
             </div>
         </div>
     ),
     options: [
-        "الخيار أ",
-        "الخيار ب",
-        "الخيار ج",
-        "الخيار د"
+        "تقليل ع",
+        "تقليل و",
+        "زيادة ع",
+        "تقليل ل"
     ],
-    correctAnswerIndex: 0,
-    explanation: "شرح الإجابة الصحيحة."
+    correctAnswerIndex: 1,
+    explanation: "زيادة درجة الحرارة تؤدي إلى تسطيح منحنى التوزيع وتوسعه، مما يقلل من ارتفاع القمة (و) ويزيد من عدد الجزيئات التي تمتلك طاقة التنشيط (ع) أو أكثر. قيمة طاقة التنشيط (ع) نفسها لا تتغير بتغير درجة الحرارة."
 }
 
 export default function QuestionLabPage() {
