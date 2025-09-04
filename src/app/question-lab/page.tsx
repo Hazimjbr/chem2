@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
@@ -10,15 +9,15 @@ import React from 'react';
 import { InlineMath } from 'react-katex';
 
 const question = {
-    question: <span>أي المركبات التالية له أعلى درجة غليان؟</span>,
+    question: <span>السائل الأسرع تبخرًا من السوائل الآتية:</span>,
     options: [
-        "CH₃COOH",
-        "CH₃CH₂Cl",
-        "CH₃COCH₃",
-        "CH₃CH₃"
+        <span dir="ltr">CH₃CH₂OH</span>,
+        <span dir="ltr">CH₃CH₂Cl</span>,
+        <span dir="ltr">CH₄</span>,
+        <span dir="ltr">CH₃CH₃</span>
     ],
-    correctAnswerIndex: 0,
-    explanation: "حمض الأسيتيك (CH₃COOH) هو الوحيد القادر على تكوين روابط هيدروجينية قوية جدًا على شكل دايمر (جزيئين معًا)، مما يرفع درجة غليانه بشكل كبير مقارنة ببقية المركبات التي تمتلك قوى ثنائي القطب أو قوى لندن فقط."
+    correctAnswerIndex: 2,
+    explanation: "سرعة التبخر تتناسب عكسيًا مع قوة الترابط بين الجزيئات. الميثان (CH₄) هو جزيء غير قطبي وله أقل كتلة مولية بين الخيارات، وبالتالي يمتلك أضعف قوى ترابط (قوى لندن)، مما يجعله الأسرع تبخرًا."
 }
 
 export default function QuestionLabPage() {
