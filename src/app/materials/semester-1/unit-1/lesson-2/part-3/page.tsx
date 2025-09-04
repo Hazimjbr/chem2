@@ -63,6 +63,16 @@ export default function LessonPartPage() {
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
+             <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        التكاثف هو العملية المعاكسة للتبخر، حيث تفقد جزيئات الغاز طاقتها الحركية وتتقارب من بعضها البعض بفعل قوى التجاذب، متحولةً إلى الحالة السائلة. هذه العملية أساسية في دورة الماء في الطبيعة وفي العديد من التطبيقات الصناعية مثل التقطير.
+                    </p>
+                </CardContent>
+            </Card>
             <div className="grid md:grid-cols-2 gap-6">
                 <FlippableCard cardTitle="تعريف وشروط التكاثف" cardIcon={<Droplets className="h-6 w-6" />}>
                     <div className="space-y-3">
