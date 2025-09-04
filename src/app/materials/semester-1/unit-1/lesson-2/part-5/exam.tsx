@@ -1,6 +1,7 @@
 
 import { InlineMath } from 'react-katex';
 import React from 'react';
+import Image from 'next/image';
 
 export interface QuizQuestion {
     question: React.ReactNode;
@@ -21,6 +22,31 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 2,
         "explanation": "الإيثانول (CH₃CH₂OH) هو الوحيد القادر على تكوين روابط هيدروجينية قوية بين جزيئاته، وهي أقوى أنواع قوى الترابط بين الجزيئات المذكورة، مما يتطلب طاقة أعلى لكسرها وبالتالي درجة غليان أعلى."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل السائل الذي يرتبط بروابط هيدروجينية هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        alt="Vapor Pressure vs Temperature for four liquids"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "الروابط الهيدروجينية هي أقوى أنواع قوى الترابط بين الجزيئات. السائل الذي يمتلكها (الإيثانول CH₃CH₂OH) يكون له أقل ضغط بخاري لأنه يحتاج إلى أعلى طاقة للتبخر. المنحنى B يمثل أقل ضغط بخاري عند أي درجة حرارة، لذا فهو يمثل الإيثانول."
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];
