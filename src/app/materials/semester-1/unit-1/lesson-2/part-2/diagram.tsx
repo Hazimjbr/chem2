@@ -10,6 +10,7 @@ import { Thermometer } from 'lucide-react';
 const CANVAS_HEIGHT = 250;
 const EVAPORATION_ENERGY = 70; 
 const LEFT_PADDING = 30;
+const MAX_ENERGY = 100;
 
 export default function MaxwellBoltzmannDiagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
@@ -42,8 +43,7 @@ export default function MaxwellBoltzmannDiagram() {
       p.draw = () => {
         p.background('hsl(var(--card))');
         
-        // --- Static Background Elements (drawn every frame) ---
-        // Draw Axes
+        // --- Axes and Labels ---
         p.stroke(0);
         p.strokeWeight(1);
         p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
@@ -61,8 +61,8 @@ export default function MaxwellBoltzmannDiagram() {
         p.text('عدد الجزيئات', 0, 0);
         p.pop();
         
-        // Draw Ea line
-        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, 100, LEFT_PADDING, width - 10);
+        // --- Ea Line (Evaporation Energy) ---
+        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
         p.stroke('hsl(var(--destructive))');
         p.strokeWeight(1.5);
         p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
@@ -71,15 +71,14 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.RIGHT);
         p.text('Ea', startX_Ea - 5, 30);
 
-        // --- Dynamic Foreground Elements ---
-        const maxEnergy = 100;
+        // --- Distribution Curve ---
         const temp = temperature;
         let maxCount = 0;
         const energyPoints = [];
         let totalParticles = 0;
         let particlesAboveEa = 0;
         
-        for (let i = 0; i <= maxEnergy; i++) {
+        for (let i = 0; i <= MAX_ENERGY; i++) {
             const val = distribution(i, temp);
             energyPoints.push(val);
             if (val > maxCount) maxCount = val;
@@ -94,7 +93,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.stroke(0);
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
+          const x = p.map(i, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
           const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
           p.vertex(x, y);
         }
