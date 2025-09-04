@@ -1,5 +1,6 @@
 import { InlineMath } from 'react-katex';
 import React from 'react';
+import Image from 'next/image';
 
 export interface QuizQuestion {
     question: React.ReactNode;
@@ -30,6 +31,31 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "الجزيئات التي تمتلك طاقة حركية كافية للتغلب على قوى التجاذب هي التي تتبخر. هذا يترك وراءه الجزيئات ذات الطاقة الحركية الأقل، مما يؤدي إلى انخفاض متوسط الطاقة الحركية للسائل، أي انخفاض درجة حرارته."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        alt="Maxwell-Boltzmann distribution curve"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="Maxwell-Boltzmann distribution"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "ع",
+            "و",
+            "ص",
+            "س"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "الرمز (ع) يمثل طاقة التنشيط (Ea)، وهي الحد الأدنى من الطاقة الحركية التي يجب أن تمتلكها الجزيئات لتتمكن من التبخر."
     },
     {
         question: "في مخطط ماكسويل-بولتزمان، ماذا تمثل المساحة المظللة الموجودة على يمين طاقة التنشيط (Ea)؟",
