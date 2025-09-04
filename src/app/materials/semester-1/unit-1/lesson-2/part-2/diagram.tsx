@@ -96,7 +96,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.vertex(eaLineX, CANVAS_HEIGHT - 30);
         for (let i = Math.floor(energyAtEaLine); i < energyPoints.length; i++) {
             const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.95);
-            const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 45);
+            const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 55);
             p.vertex(x, y);
         }
         p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, width * 0.1, width * 0.95), CANVAS_HEIGHT - 30);
@@ -109,7 +109,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.beginShape();
         for (let i = 0; i < energyPoints.length; i++) {
           const x = p.map(i, 0, MAX_ENERGY, width * 0.1, width * 0.95);
-          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 45);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 30, 55);
           p.vertex(x, y);
         }
         p.endShape();
