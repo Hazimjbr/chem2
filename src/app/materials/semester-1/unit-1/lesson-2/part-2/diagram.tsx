@@ -131,7 +131,7 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width, temperature]); // Add temperature to dependency array to recreate sketch if needed
+  }, [width]);
 
   // This useEffect hook is responsible for telling the p5 sketch to update
   // whenever the temperature state from the slider changes.
