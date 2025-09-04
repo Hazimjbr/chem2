@@ -89,6 +89,31 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "سرعة التبخر تتناسب عكسيًا مع قوة الترابط. الماء يمتلك أقوى قوى ترابط (روابط هيدروجينية) بين الخيارات، مما يعني أنه يحتاج إلى طاقة أعلى للتبخر، وبالتالي هو الأبطأ."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأكبر هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        alt="Maxwell-Boltzmann distribution curve"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="Maxwell-Boltzmann distribution"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "ص",
+            "و",
+            "س",
+            "ي"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "المنحنى الأعرض والأقل ارتفاعًا يمثل درجة الحرارة الأكبر، وقمة هذا المنحنى (التي يشير إليها الرمز 'و') تمثل الطاقة الحركية الأكثر احتمالًا، والتي ترتبط بمتوسط الطاقة الحركية."
     }
 ];
 

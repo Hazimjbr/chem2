@@ -11,27 +11,17 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأكبر هو:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/MxNjGvNM/22.png"
-                    alt="Maxwell-Boltzmann distribution curve"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="Maxwell-Boltzmann distribution"
-                />
-            </div>
+            <p>سؤال جديد يوضع هنا</p>
         </div>
     ),
     options: [
-        "ص",
-        "و",
-        "س",
-        "ي"
+        "خيار أ",
+        "خيار ب",
+        "خيار ج",
+        "خيار د"
     ],
-    correctAnswerIndex: 1,
-    explanation: "المنحنى الأعرض والأقل ارتفاعًا يمثل درجة الحرارة الأكبر، وقمة هذا المنحنى (التي يشير إليها الرمز 'و') تمثل الطاقة الحركية الأكثر احتمالًا، والتي ترتبط بمتوسط الطاقة الحركية."
+    correctAnswerIndex: 0,
+    explanation: "شرح الإجابة الصحيحة."
 }
 
 export default function QuestionLabPage() {
