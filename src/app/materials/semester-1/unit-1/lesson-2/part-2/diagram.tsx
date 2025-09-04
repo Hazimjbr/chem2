@@ -43,7 +43,6 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // Draw only once in setup, and redraw on demand
       };
       
       p.draw = () => {
@@ -127,14 +126,6 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
-      
-      // A custom function to be called when props change
-      (p as any).updateWithNewProps = (props: { temp: number }) => {
-          if (props.temp) {
-              setTemperature(props.temp);
-              p.redraw();
-          }
-      };
     };
     
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
@@ -143,16 +134,8 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]); // Re-create sketch if width or temperature changes
+  }, [width, temperature]); // Re-create sketch if width or temperature changes
   
-  // This separate effect handles passing the new temperature to the p5 sketch
-  // without re-creating the entire sketch.
-  useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).updateWithNewProps) {
-        (p5InstanceRef.current as any).updateWithNewProps({ temp: temperature });
-    }
-  }, [temperature]);
-
   return (
     <div className="flex flex-col items-center gap-4 w-full">
       <div
