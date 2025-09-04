@@ -48,7 +48,7 @@ export default function HomePage() {
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} onAuthSuccess={handleStudentAuthSuccess} />
       <AdminLoginDialog open={adminLoginOpen} onOpenChange={setAdminLoginOpen} onLoginSuccess={handleAdminLoginSuccess} />
       
-      <div className="flex flex-col items-center justify-center min-h-screen bg-background">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
         <div className="text-center mb-12">
             <h1 className="text-5xl font-bold mb-4">
               <span className="text-accent">Chem</span>
@@ -58,7 +58,7 @@ export default function HomePage() {
               Choose your path
             </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
           <Card className="hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
             <CardHeader className="items-center text-center">
               <CardTitle className="text-3xl">توجيهي 2008</CardTitle>

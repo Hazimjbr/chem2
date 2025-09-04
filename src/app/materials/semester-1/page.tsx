@@ -60,7 +60,7 @@ export default function Semester1Page() {
   }
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="w-full mx-auto p-4 md:p-8">
       <header className="mb-10">
         <h1 className="text-4xl font-bold mb-2">الفصل الدراسي الأول</h1>
         <p className="text-lg text-muted-foreground">
