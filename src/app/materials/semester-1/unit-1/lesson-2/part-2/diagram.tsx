@@ -73,7 +73,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
           const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
-          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
           p.vertex(x, y);
         }
         p.endShape();
@@ -83,10 +83,10 @@ export default function MaxwellBoltzmannDiagram() {
         p.beginShape();
         p.stroke('hsl(var(--destructive))');
         p.fill('hsla(var(--destructive), 0.3)');
-        p.vertex(startX_Ea, p.map(energyPoints[EVAPORATION_ENERGY], 0, maxCount, CANVAS_HEIGHT - 20, 20));
+        p.vertex(startX_Ea, p.map(energyPoints[EVAPORATION_ENERGY], 0, maxCount, CANVAS_HEIGHT - 20, 40));
         for (let i = EVAPORATION_ENERGY + 1; i < energyPoints.length; i++) {
           const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
-          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
           p.vertex(x, y);
         }
         p.vertex(width - 10, CANVAS_HEIGHT - 20);
