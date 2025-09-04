@@ -1,7 +1,6 @@
-
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { onAuthStateChangedListener, signOutUser } from '@/lib/firebase/auth';
 import type { User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -41,10 +40,10 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const ADMIN_EMAIL = 'h75jbr@gmail.com';
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [curriculum, setCurriculum] = React.useState<Curriculum>(null);
-  const [currentUser, setCurrentUser] = React.useState<AppUser | null>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [curriculum, setCurriculum] = useState<Curriculum>(null);
+  const [currentUser, setCurrentUser] = useState<AppUser | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Function to fetch user details and determine role
   const fetchAppUser = async (user: FirebaseUser): Promise<AppUser | null> => {
@@ -77,7 +76,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     try {
       const savedCurriculum = localStorage.getItem('selectedCurriculum') as Curriculum;
       if (savedCurriculum) {
