@@ -3,7 +3,7 @@
 
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap } from 'lucide-react';
+import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3 } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -11,6 +11,7 @@ import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import Image from 'next/image';
 
 const MaxwellBoltzmannDiagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -93,6 +94,37 @@ export default function LessonPartPage() {
                     <MaxwellBoltzmannDiagram />
                 </CardContent>
             </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BarChart3 className="h-6 w-6 text-primary" /> تحليل مخطط ماكسويل-بولتزمان</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="w-full md:w-1/2">
+                         <Image
+                            src="https://i.ibb.co/m50X6chT/22.png"
+                            alt="مخطط ماكسويل بولتزمان"
+                            width={400}
+                            height={300}
+                            className="rounded-lg border bg-white w-full h-auto"
+                            data-ai-hint="Maxwell-Boltzmann distribution"
+                        />
+                    </div>
+                    <div className="w-full md:w-1/2">
+                        <p className="font-semibold mb-3">مخطط ماكسويل بولتزمان لطاقة الجزيئات الحركية حيث:</p>
+                        <ul className="space-y-2 text-sm">
+                            <li><strong className="text-accent font-mono">ع:</strong> الحد الأدنى من الطاقة اللازمة للتبخر (طاقة التنشيط) وتعتمد على قوى التجاذب لا على درجة الحرارة.</li>
+                            <li><strong className="text-accent font-mono">ص:</strong> متوسط الطاقة الحركية للجزيئات.</li>
+                            <li><strong className="text-accent font-mono">س:</strong> الطاقة الحركية التي يمتلكها أكبر عدد من الجزيئات.</li>
+                            <li><strong className="text-accent font-mono">ب:</strong> عدد الجزيئات التي تمتلك مقدار الطاقة الحركية س.</li>
+                            <li><strong className="text-accent font-mono">ك:</strong> عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات.</li>
+                            <li><strong className="text-accent font-mono">أ:</strong> عدد الجزيئات التي تمتلك الطاقة اللازمة للتبخر (Ea).</li>
+                            <li><strong className="text-accent">المساحة المظللة:</strong> عدد الجزيئات التي تمتلك طاقة التنشيط أو أكثر.</li>
+                        </ul>
+                    </div>
+                </CardContent>
+            </Card>
+
 
             <div className="grid md:grid-cols-2 gap-6">
                 <FlippableCard cardTitle="العوامل المؤثرة في سرعة التبخر" cardIcon={<Zap className="h-6 w-6" />}>
