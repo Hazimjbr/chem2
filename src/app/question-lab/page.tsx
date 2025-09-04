@@ -9,15 +9,15 @@ import React from 'react';
 import { InlineMath } from 'react-katex';
 
 const question = {
-    question: <span>السائل الأسرع تبخرًا من السوائل الآتية:</span>,
+    question: <span>السائل الذي له أقل طاقة تبخر مولية من السوائل الآتية:</span>,
     options: [
         <span dir="ltr">CH₃CH₂OH</span>,
         <span dir="ltr">CH₃CH₂Cl</span>,
-        <span dir="ltr">CH₄</span>,
+        <span dir="ltr">CH₃COCH₃</span>,
         <span dir="ltr">CH₃CH₃</span>
     ],
-    correctAnswerIndex: 2,
-    explanation: "سرعة التبخر تتناسب عكسيًا مع قوة الترابط بين الجزيئات. الميثان (CH₄) هو جزيء غير قطبي وله أقل كتلة مولية بين الخيارات، وبالتالي يمتلك أضعف قوى ترابط (قوى لندن)، مما يجعله الأسرع تبخرًا."
+    correctAnswerIndex: 3,
+    explanation: "أقل طاقة تبخر مولية تعني أضعف قوى ترابط بين الجزيئات. الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك قوى لندن فقط، وهي الأضعف مقارنة بالروابط الهيدروجينية في الإيثانول وقوى ثنائي القطب في المركبات الأخرى، لذا فهو الأسهل تبخرًا."
 }
 
 export default function QuestionLabPage() {
