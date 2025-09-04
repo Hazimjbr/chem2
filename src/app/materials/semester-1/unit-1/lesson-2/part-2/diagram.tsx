@@ -68,31 +68,27 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.text('عدد الجزيئات', 0, 0);
         backgroundG.pop();
         
-        // Draw the Ea line (Activation Energy)
         const startX_Ea = labelX + (kineticEnergyLabelWidth / 2) + 5;
 
         backgroundG.stroke('red');
-        backgroundG.strokeWeight(2.5);
-        backgroundG.drawingContext.setLineDash([5, 5]);
+        backgroundG.strokeWeight(1.5);
+        backgroundG.drawingContext.setLineDash([4, 4]);
         const lineBottomY = CANVAS_HEIGHT - 20;
-        const lineTopY = (lineBottomY + 10) / 2;
-        const finalLineTopY = lineTopY - ((lineBottomY - lineTopY) * 0.25 * 1.23);
-        backgroundG.line(startX_Ea, finalLineTopY, startX_Ea, lineBottomY);
-        backgroundG.drawingContext.setLineDash([]); // Reset line dash
+        const lineTopY = 10;
+        backgroundG.line(startX_Ea, lineTopY, startX_Ea, lineBottomY);
+        backgroundG.drawingContext.setLineDash([]);
         
-        // Draw Ea label below the line
-        backgroundG.fill('hsl(var(--destructive))'); // Red color
+        backgroundG.fill('hsl(var(--destructive))');
         backgroundG.textAlign(p.CENTER);
+        backgroundG.noStroke();
         backgroundG.text('Ea', startX_Ea, CANVAS_HEIGHT - 5);
-
-        // Reset fill color to avoid affecting other text
+        
         backgroundG.fill(0);
 
-        p.noLoop(); // Don't start drawing the curve until temperature is updated
+        p.noLoop();
       };
 
       p.draw = () => {
-        // First, draw the static background image.
         p.image(backgroundG, 0, 0);
 
         const temp = sketchTemperature;
@@ -118,6 +114,26 @@ export default function MaxwellBoltzmannDiagram() {
             }
         }
         
+        // Draw the shaded area first
+        p.fill(255, 0, 0, 50); // Transparent red
+        p.stroke(255, 0, 0, 100);
+        p.strokeWeight(1);
+        p.beginShape();
+        const startShadingIndex = Math.floor(energyAtEaLine);
+        
+        // First point on the axis at Ea
+        p.vertex(startX_Ea, CANVAS_HEIGHT - 20);
+
+        for (let i = startShadingIndex; i < energyPoints.length; i++) {
+            const x = p.map(i, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
+            const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
+            p.vertex(x, y);
+        }
+        // Last point on the axis at max energy
+        p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10), CANVAS_HEIGHT - 20);
+        p.endShape(p.CLOSE);
+
+        // Draw the main curve
         p.beginShape();
         p.noFill();
         p.stroke(0);
@@ -153,7 +169,7 @@ export default function MaxwellBoltzmannDiagram() {
      if (p5InstanceRef.current && (p5InstanceRef.current as any).updateTemperature) {
         (p5InstanceRef.current as any).updateTemperature(temperature);
      }
-  }, [temperature, width]); // Added width dependency to ensure redraw on resize
+  }, [temperature, width]);
   
   return (
     <div className="flex flex-col items-center gap-4 w-full">
