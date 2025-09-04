@@ -76,7 +76,7 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.drawingContext.setLineDash([5, 5]);
         const lineBottomY = CANVAS_HEIGHT - 20;
         const lineTopY = (lineBottomY + 10) / 2;
-        const finalLineTopY = lineTopY - ((lineBottomY - lineTopY) * 0.25);
+        const finalLineTopY = lineTopY - ((lineBottomY - lineTopY) * 0.25 * 1.23);
         backgroundG.line(startX_Ea, finalLineTopY, startX_Ea, lineBottomY);
         backgroundG.drawingContext.setLineDash([]); // Reset line dash
         
@@ -85,6 +85,8 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.fill('hsl(var(--destructive))');
         backgroundG.textAlign(p.RIGHT);
         backgroundG.text('Ea', startX_Ea - 5, finalLineTopY - 5);
+        // Reset fill color to avoid affecting other text
+        backgroundG.fill(0);
 
         p.noLoop(); // Don't start drawing the curve until temperature is updated
       };
