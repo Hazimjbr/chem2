@@ -48,7 +48,7 @@ export default function MaxwellBoltzmannDiagram() {
       p.draw = () => {
         p.background('hsl(var(--card))');
         
-        const maxEnergy = 150;
+        const maxEnergy = 100;
         const temp = temperature; // Use the current temperature from the component's state
         let maxCount = 0;
         const energyPoints = [];
@@ -90,21 +90,7 @@ export default function MaxwellBoltzmannDiagram() {
         }
         p.endShape();
         
-        // 4. Fill the area for particles that can evaporate
-        p.beginShape();
-        p.stroke('hsl(var(--destructive))');
-        p.fill('hsla(var(--destructive), 0.3)');
-        p.vertex(startX_Ea, p.map(energyPoints[EVAPORATION_ENERGY], 0, maxCount, CANVAS_HEIGHT - 20, 40));
-        for (let i = EVAPORATION_ENERGY + 1; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
-          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
-          p.vertex(x, y);
-        }
-        p.vertex(width - 10, CANVAS_HEIGHT - 20);
-        p.vertex(startX_Ea, CANVAS_HEIGHT - 20);
-        p.endShape(p.CLOSE);
-
-        // 5. Draw Axes and Labels
+        // 4. Draw Axes and Labels
         p.stroke(0);
         p.strokeWeight(1);
         p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
@@ -123,8 +109,8 @@ export default function MaxwellBoltzmannDiagram() {
         p.pop();
         
         
-        // 6. Display percentage of particles that can evaporate
-        const percentage = ((particlesAboveEa / totalParticles) * 100).toFixed(1);
+        // 5. Display percentage of particles that can evaporate
+        const percentage = totalParticles > 0 ? ((particlesAboveEa / totalParticles) * 100).toFixed(1) : '0.0';
         p.fill(0);
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
