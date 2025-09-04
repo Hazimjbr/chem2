@@ -21,6 +21,24 @@ export default function MaxwellBoltzmannDiagram() {
       setWidth(sketchRef.current.clientWidth);
     }
   }, []);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (sketchRef.current) {
+        setWidth(sketchRef.current.clientWidth);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Initial call to set size
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
 
   useEffect(() => {
     if (width <= 0) return;
@@ -49,7 +67,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.textAlign(p.CENTER, p.CENTER);
         
         // X-axis Label
-        p.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 15);
+        p.text('الطاقة الحركية', width / 2 + 10, CANVAS_HEIGHT - 15);
         
         // Y-axis Label
         p.push();
