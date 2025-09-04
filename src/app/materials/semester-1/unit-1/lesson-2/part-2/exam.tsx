@@ -228,6 +228,31 @@ export const staticQuizLvl2: QuizQuestion[] = [
         options: ["ص", "و", "س", "ي"],
         correctAnswerIndex: 2,
         explanation: "المنحنى ذو القمة الأعلى يمثل درجة الحرارة الأقل. المنطقة المظللة تحت هذا المنحنى بعد خط طاقة التنشيط (ع) تمثل عدد الجزيئات القادرة على التبخر. الرمز (س) يشير إلى هذه المنطقة المحددة."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور، زيادة درجة حرارة منحنى د2 ستؤدي إلى الآتي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        alt="مخطط توزيع ماكسويل-بولتزمان"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="Maxwell-Boltzmann distribution"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "تقليل ع",
+            "تقليل و",
+            "زيادة ع",
+            "تقليل ل"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "زيادة درجة الحرارة تؤدي إلى تسطيح منحنى التوزيع وتوسعه، مما يقلل من ارتفاع القمة (و) ويزيد من عدد الجزيئات التي تمتلك طاقة التنشيط (ع) أو أكثر. قيمة طاقة التنشيط (ع) نفسها لا تتغير بتغير درجة الحرارة."
     }
 ];
 

@@ -10,29 +10,15 @@ import React from 'react';
 import Image from 'next/image';
 
 const question = {
-    question: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور، زيادة درجة حرارة منحنى د2 ستؤدي إلى الآتي:</p>
-            <div className="flex justify-center">
-                 <Image
-                    src="https://i.ibb.co/MxNjGvNM/22.png"
-                    alt="مخطط توزيع ماكسويل-بولتزمان"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="Maxwell-Boltzmann distribution"
-                />
-            </div>
-        </div>
-    ),
+    question: "لا يوجد سؤال حاليًا. هذا المكان مخصص لصياغة الأسئلة الجديدة.",
     options: [
-        "تقليل ع",
-        "تقليل و",
-        "زيادة ع",
-        "تقليل ل"
+        "خيار أ",
+        "خيار ب",
+        "خيار ج",
+        "خيار د"
     ],
-    correctAnswerIndex: 1,
-    explanation: "زيادة درجة الحرارة تؤدي إلى تسطيح منحنى التوزيع وتوسعه، مما يقلل من ارتفاع القمة (و) ويزيد من عدد الجزيئات التي تمتلك طاقة التنشيط (ع) أو أكثر. قيمة طاقة التنشيط (ع) نفسها لا تتغير بتغير درجة الحرارة."
+    correctAnswerIndex: 0,
+    explanation: "هنا يظهر شرح الإجابة الصحيحة بعد اختيار أحد الخيارات."
 }
 
 export default function QuestionLabPage() {
@@ -83,7 +69,7 @@ export default function QuestionLabPage() {
                                 variant="outline"
                                 className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
                                 onClick={() => handleSelect(index)}
-                                disabled={answerStatus !== 'unanswered'}
+                                disabled={answerStatus !== 'unanswered' || question.question.startsWith("لا يوجد")}
                             >
                                 <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
                                 <span className="flex-1 whitespace-normal">{option}</span>
