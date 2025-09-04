@@ -95,11 +95,8 @@ export default function LessonPartPage() {
                 </CardContent>
             </Card>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BarChart3 className="h-6 w-6 text-primary" /> تحليل مخطط ماكسويل-بولتزمان</CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col md:flex-row items-center gap-6">
+            <FlippableCard cardTitle="تحليل مخطط ماكسويل-بولتزمان" cardIcon={<BarChart3 className="h-6 w-6" />}>
+                <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="w-full md:w-1/2">
                          <Image
                             src="https://i.ibb.co/m50X6chT/22.png"
@@ -112,7 +109,7 @@ export default function LessonPartPage() {
                     </div>
                     <div className="w-full md:w-1/2">
                         <p className="font-semibold mb-3">مخطط ماكسويل بولتزمان لطاقة الجزيئات الحركية حيث:</p>
-                        <ul className="space-y-2 text-sm">
+                        <ul className="space-y-2 text-xs">
                             <li><strong className="text-accent font-mono">ع:</strong> الحد الأدنى من الطاقة اللازمة للتبخر (طاقة التنشيط) وتعتمد على قوى التجاذب لا على درجة الحرارة.</li>
                             <li><strong className="text-accent font-mono">ص:</strong> متوسط الطاقة الحركية للجزيئات.</li>
                             <li><strong className="text-accent font-mono">س:</strong> الطاقة الحركية التي يمتلكها أكبر عدد من الجزيئات.</li>
@@ -122,8 +119,8 @@ export default function LessonPartPage() {
                             <li><strong className="text-accent">المساحة المظللة:</strong> عدد الجزيئات التي تمتلك طاقة التنشيط أو أكثر.</li>
                         </ul>
                     </div>
-                </CardContent>
-            </Card>
+                </div>
+            </FlippableCard>
 
 
             <div className="grid md:grid-cols-2 gap-6">
