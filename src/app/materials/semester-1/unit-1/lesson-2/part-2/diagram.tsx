@@ -30,6 +30,7 @@ export default function MaxwellBoltzmannDiagram() {
 
     const sketch = (p: p5) => {
       let backgroundG: p5.Graphics;
+      let sketchTemperature = temperature; // Use a local mutable variable
       
       const distribution = (x: number, t: number) => {
         if (x < 0) return 0;
@@ -84,7 +85,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.image(backgroundG, 0, 0);
 
         // --- Distribution Curve (Dynamic Part) ---
-        const temp = temperature;
+        const temp = sketchTemperature;
         let maxCount = 0;
         const energyPoints = [];
         let totalParticles = 0;
@@ -120,7 +121,7 @@ export default function MaxwellBoltzmannDiagram() {
 
        // This custom function will be called by React's useEffect when the slider changes
       (p as any).updateTemperature = (newTemp: number) => {
-        temperature = newTemp; // Update the sketch's internal temperature
+        sketchTemperature = newTemp; // Update the sketch's internal temperature
         p.redraw(); // Trigger a single redraw
       };
     };
@@ -130,7 +131,7 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
+  }, [width, temperature]); // Add temperature to dependency array to recreate sketch if needed
 
   // This useEffect hook is responsible for telling the p5 sketch to update
   // whenever the temperature state from the slider changes.
