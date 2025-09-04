@@ -41,17 +41,20 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop();
+        p.noLoop(); // Important for performance, we only redraw when needed
 
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
         
+        // --- Draw all static elements onto backgroundG ---
         backgroundG.background('hsl(var(--card))');
         
+        // Axes
         backgroundG.stroke(0);
         backgroundG.strokeWeight(1);
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
         backgroundG.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
         
+        // Axes labels
         backgroundG.noStroke();
         backgroundG.fill(0);
         backgroundG.textAlign(p.CENTER);
@@ -64,6 +67,7 @@ export default function MaxwellBoltzmannDiagram() {
         backgroundG.text('عدد الجزيئات', 0, 0);
         backgroundG.pop();
         
+        // Static Red Line (Ea)
         const startX_Ea = p.map(EVAPORATION_ENERGY, 0, MAX_ENERGY, LEFT_PADDING, width - 10);
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(1.5);
@@ -78,7 +82,7 @@ export default function MaxwellBoltzmannDiagram() {
       };
 
       p.draw = () => {
-        p.clear();
+        // First, display the pre-rendered static background
         p.image(backgroundG, 0, 0);
 
         const temp = sketchTemperature;
@@ -97,6 +101,7 @@ export default function MaxwellBoltzmannDiagram() {
             }
         }
         
+        // Draw the dynamic curve
         p.beginShape();
         p.noFill();
         p.stroke(0);
@@ -108,6 +113,7 @@ export default function MaxwellBoltzmannDiagram() {
         }
         p.endShape();
         
+        // Draw the dynamic percentage text
         const percentage = totalParticles > 0 ? ((particlesAboveEa / totalParticles) * 100).toFixed(1) : '0.0';
         p.noStroke();
         p.fill(0);
