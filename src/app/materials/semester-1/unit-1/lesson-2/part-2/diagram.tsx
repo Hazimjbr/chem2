@@ -118,7 +118,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.stroke('red');
         p.strokeWeight(1.5);
         p.drawingContext.setLineDash([4, 4]);
-        p.line(eaLineX, 10, eaLineX, CANVAS_HEIGHT - 30);
+        p.line(eaLineX, CANVAS_HEIGHT * 0.25, eaLineX, CANVAS_HEIGHT - 30); // Reduced height
         p.drawingContext.setLineDash([]);
         p.fill('hsl(var(--destructive))');
         p.textAlign(p.CENTER);
