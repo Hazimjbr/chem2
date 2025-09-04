@@ -65,11 +65,23 @@ export default function MaxwellBoltzmannDiagram() {
               particlesAboveEa += val;
             }
         }
+        
+        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, maxEnergy, LEFT_PADDING, width - 10);
+        
+        // 2. Draw Ea line and label first (in the background)
+        p.stroke('hsl(var(--destructive))');
+        p.strokeWeight(1.5);
+        p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
+        p.noStroke();
+        p.fill('hsl(var(--destructive))');
+        p.textAlign(p.RIGHT);
+        p.text('Ea', startX_Ea - 5, 30);
 
-        // 2. Draw the distribution curve
+
+        // 3. Draw the distribution curve
         p.beginShape();
         p.noFill();
-        p.stroke(0); // Changed to black color for visibility
+        p.stroke(0); // Black color
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
           const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
@@ -78,8 +90,7 @@ export default function MaxwellBoltzmannDiagram() {
         }
         p.endShape();
         
-        // 3. Fill the area for particles that can evaporate
-        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, maxEnergy, LEFT_PADDING, width - 10);
+        // 4. Fill the area for particles that can evaporate
         p.beginShape();
         p.stroke('hsl(var(--destructive))');
         p.fill('hsla(var(--destructive), 0.3)');
@@ -93,7 +104,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.vertex(startX_Ea, CANVAS_HEIGHT - 20);
         p.endShape(p.CLOSE);
 
-        // 4. Draw Axes and Labels
+        // 5. Draw Axes and Labels
         p.stroke(0);
         p.strokeWeight(1);
         p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
@@ -111,14 +122,6 @@ export default function MaxwellBoltzmannDiagram() {
         p.text('عدد الجزيئات', 0, 0);
         p.pop();
         
-        // 5. Draw Ea line and label
-        p.stroke('hsl(var(--destructive))');
-        p.strokeWeight(1.5);
-        p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
-        p.noStroke();
-        p.fill('hsl(var(--destructive))');
-        p.textAlign(p.RIGHT);
-        p.text('Ea', startX_Ea - 5, 30);
         
         // 6. Display percentage of particles that can evaporate
         const percentage = ((particlesAboveEa / totalParticles) * 100).toFixed(1);
