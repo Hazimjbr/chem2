@@ -28,7 +28,7 @@ export default function QuestionLabPage() {
                     <CardHeader>
                         <div className="flex justify-between items-start">
                             <CardTitle className="text-lg">
-                                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن درجة الغليان للمادة A تساوي:</p>
+                                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن X هي:</p>
                                 <div className="flex justify-center my-4">
                                      <Image
                                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -43,25 +43,25 @@ export default function QuestionLabPage() {
                         </div>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                         <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
+                            <div className="flex-1 whitespace-normal">صلب</div>
+                        </Button>
+                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
+                            <div className="flex-1 whitespace-normal">سائل</div>
+                        </Button>
+                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
+                            <div className="flex-1 whitespace-normal">غاز</div>
+                        </Button>
                         <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20" disabled>
-                            <div className="flex-1 whitespace-normal">70</div>
+                            <div className="flex-1 whitespace-normal">غاز + سائل</div>
                             <CheckCircle className="h-5 w-5 text-green-600" />
-                        </Button>
-                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
-                            <div className="flex-1 whitespace-normal">100</div>
-                        </Button>
-                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
-                            <div className="flex-1 whitespace-normal">25</div>
-                        </Button>
-                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
-                            <div className="flex-1 whitespace-normal">0</div>
                         </Button>
                     </CardContent>
                     <CardFooter>
                         <Alert variant="default" className="border-blue-500 bg-blue-100/30 w-full">
                             <CheckCircle className="h-4 w-4 text-blue-500" />
                             <AlertTitle className="font-bold text-blue-700">الشرح</AlertTitle>
-                            <AlertDescription>درجة الغليان للمادة النقية تساوي درجة تكاثفها. من الرسم البياني، نلاحظ أن درجة حرارة التكاثف (الخط الأفقي الأول) ثابتة عند 70 درجة مئوية، وبالتالي فإن درجة الغليان هي 70 درجة مئوية أيضًا.</AlertDescription>
+                            <AlertDescription>الزمن X يقع على الجزء الأفقي من المنحنى والذي يمثل عملية التكاثف حيث تتحول المادة من غاز إلى سائل وتوجد في الحالتين معًا</AlertDescription>
                         </Alert>
                     </CardFooter>
                 </Card>
