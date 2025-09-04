@@ -14,7 +14,7 @@ const QuestionCard = () => {
     const question = {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> هو:</p>
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل الذي يرتبط بروابط هيدروجينية هو:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/hF9Fm0hw/22.png"
@@ -29,7 +29,7 @@ const QuestionCard = () => {
         ),
         options: ["W", "M", "R", "Q"],
         correctAnswerIndex: 3,
-        explanation: "طاقة التبخر تعتمد على قوة الترابط. كلوروميثان (CH₃Cl) قطبي وقوى الترابط فيه أقوى من قوى لندن في الميثان والإيثان، لكنها أضعف من الروابط الهيدروجينية في الإيثانول. لذلك، يحتاج طاقة تبخر عالية. بترتيب طاقات التنشيط من الأقل للأعلى (W < M < R < Q)، فإن Q تمثل الأعلى طاقة تبخر والتي تعود لأقوى ترابط (الإيثانول)، و R تمثل CH3Cl."
+        explanation: "الروابط الهيدروجينية هي أقوى أنواع قوى الترابط، وتوجد في الإيثانول (CH₃CH₂OH). السائل ذو القوى الأقوى يحتاج إلى أعلى طاقة تبخر (طاقة تنشيط). بالنظر إلى الرسم، Q تمثل أعلى طاقة تنشيط، لذا فهي تمثل الإيثانول."
     };
 
     const [selectedAnswer, setSelectedAnswer] = React.useState<number | null>(null);
