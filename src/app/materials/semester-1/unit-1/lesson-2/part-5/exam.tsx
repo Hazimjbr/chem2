@@ -47,6 +47,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "الروابط الهيدروجينية هي أقوى أنواع قوى الترابط بين الجزيئات. السائل الذي يمتلكها (الإيثانول CH₃CH₂OH) يكون له أقل ضغط بخاري لأنه يحتاج إلى أعلى طاقة للتبخر. المنحنى B يمثل أقل ضغط بخاري عند أي درجة حرارة، لذا فهو يمثل الإيثانول."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل السائل <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>  هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        alt="Vapor Pressure vs Temperature for four liquids"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: [ "A", "B", "C", "D" ],
+        correctAnswerIndex: 0,
+        explanation: "الإيثان (CH₃CH₃) يمتلك قوى لندن وهي أقوى من قوى الميثان (C) بسبب كتلته المولية الأعلى، ولكنه أضعف من قوى كلوروميثان (D) والإيثانول (B). لذلك، ضغطه البخاري سيكون أقل من الميثان وأعلى من المركبين الآخرين، مما يجعله يمثل المنحنى A."
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];

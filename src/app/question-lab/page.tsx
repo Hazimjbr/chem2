@@ -10,47 +10,9 @@ import React from 'react';
 import Image from 'next/image';
 import { InlineMath } from 'react-katex';
 
-const question = {
-    question: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل السائل <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span> هو:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/hF9Fm0hw/22.png"
-                    alt="Vapor Pressure vs Temperature for four liquids"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>
-    ),
-    options: [
-        "A",
-        "B",
-        "C",
-        "D"
-    ],
-    correctAnswerIndex: 0,
-    explanation: "الإيثان (CH₃CH₃) يمتلك قوى لندن وهي أقوى من قوى الميثان (C) بسبب كتلته المولية الأعلى، ولكنه أضعف من قوى كلوروميثان (D) والإيثانول (B). لذلك، ضغطه البخاري سيكون أقل من الميثان وأعلى من المركبين الآخرين، مما يجعله يمثل المنحنى A."
-}
+// This file is intentionally left blank. It's a workspace for creating and testing questions.
 
 export default function QuestionLabPage() {
-    const [selectedAnswer, setSelectedAnswer] = React.useState<number | null>(null);
-    const [answerStatus, setAnswerStatus] = React.useState<'unanswered' | 'correct' | 'incorrect'>('unanswered');
-
-    const handleSelect = (index: number) => {
-        if (answerStatus !== 'unanswered') return;
-        setSelectedAnswer(index);
-        setAnswerStatus(index === question.correctAnswerIndex ? 'correct' : 'incorrect');
-    }
-
-    const handleReset = () => {
-        setSelectedAnswer(null);
-        setAnswerStatus('unanswered');
-    }
-
     return (
         <div className="p-4 md:p-8">
             <header className="mb-10 text-center">
@@ -59,61 +21,14 @@ export default function QuestionLabPage() {
                     هنا نقوم بصياغة ومناقشة الأسئلة قبل إضافتها بشكل نهائي
                 </p>
             </header>
-
-            <Card className="w-full max-w-2xl mx-auto">
+             <Card className="w-full max-w-2xl mx-auto text-center">
                 <CardHeader>
-                    <CardTitle className="text-lg">
-                        {question.question}
-                    </CardTitle>
+                    <CardTitle>المعمل فارغ</CardTitle>
+                    <CardDescription>لا توجد أسئلة قيد الإعداد حاليًا</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                    {question.options.map((option, index) => {
-                        const isSelected = selectedAnswer === index;
-                        let buttonClass = 'border-input hover:bg-accent/50';
-                        if (answerStatus === 'correct' && isSelected) {
-                        buttonClass = 'border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20';
-                        } else if (answerStatus === 'incorrect' && isSelected) {
-                        buttonClass = 'border-red-500 bg-red-500/10 text-red-700 hover:bg-red-500/20';
-                        } else if (answerStatus !== 'unanswered' && index === question.correctAnswerIndex) {
-                        buttonClass = 'border-green-500 bg-green-500/10 text-green-700';
-                        }
-                        
-                        return (
-                            <Button
-                                key={index}
-                                variant="outline"
-                                className={cn("w-full justify-start text-right h-auto py-2 px-3 text-sm flex items-start", buttonClass)}
-                                onClick={() => handleSelect(index)}
-                                disabled={answerStatus !== 'unanswered'}
-                            >
-                                <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                                <span className="flex-1 whitespace-normal">{option}</span>
-                            </Button>
-                        )
-                    })}
+                <CardContent>
+                    <p className="text-muted-foreground">يمكنك إضافة سؤال جديد للمناقشة.</p>
                 </CardContent>
-
-                {answerStatus !== 'unanswered' && (
-                    <CardFooter className="flex-col items-stretch gap-4 pt-4">
-                        <Alert variant={answerStatus === 'correct' ? 'default' : 'destructive'} className={cn(
-                        answerStatus === 'correct' 
-                            ? 'border-green-500 bg-green-100/30' 
-                            : 'border-red-500 bg-red-100/30'
-                        )}>
-                            {answerStatus === 'correct' ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-red-500" />}
-                            <AlertTitle className="font-bold">
-                                {answerStatus === 'correct' ? 'إجابة صحيحة' : 'إجابة خاطئة'}
-                            </AlertTitle>
-                            <AlertDescription>
-                                {question.explanation}
-                            </AlertDescription>
-                        </Alert>
-                         <Button onClick={handleReset} variant="outline">
-                            <RefreshCw className="ml-2 h-4 w-4" />
-                            إعادة المحاولة
-                        </Button>
-                    </CardFooter>
-                )}
             </Card>
         </div>
     )
