@@ -30,9 +30,8 @@ export default function MaxwellBoltzmannDiagram() {
       let backgroundG: p5.Graphics;
       let sketchTemperature = temperature;
       
-      // Make left padding responsive to canvas width
-      const leftPadding = p.max(30, width * 0.1);
-      const rightPadding = 10;
+      const leftPadding = 30;
+      const rightPadding = 20;
       const plotWidth = width - leftPadding - rightPadding;
 
       const distribution = (x: number, t: number) => {
