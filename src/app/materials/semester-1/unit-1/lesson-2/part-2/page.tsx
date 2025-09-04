@@ -110,13 +110,13 @@ export default function LessonPartPage() {
                     <div className="w-full md:w-1/2">
                         <p className="font-semibold mb-3">مخطط ماكسويل بولتزمان لطاقة الجزيئات الحركية حيث:</p>
                         <ul className="space-y-2 text-xs">
-                            <li><strong className="text-accent font-mono">ع:</strong> الحد الأدنى من الطاقة اللازمة للتبخر (طاقة التنشيط) وتعتمد على قوى التجاذب لا على درجة الحرارة.</li>
-                            <li><strong className="text-accent font-mono">ص:</strong> متوسط الطاقة الحركية للجزيئات.</li>
-                            <li><strong className="text-accent font-mono">س:</strong> الطاقة الحركية التي يمتلكها أكبر عدد من الجزيئات.</li>
-                            <li><strong className="text-accent font-mono">ب:</strong> عدد الجزيئات التي تمتلك مقدار الطاقة الحركية س.</li>
-                            <li><strong className="text-accent font-mono">ك:</strong> عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات.</li>
-                            <li><strong className="text-accent font-mono">أ:</strong> عدد الجزيئات التي تمتلك الطاقة اللازمة للتبخر (Ea).</li>
-                            <li><strong className="text-accent">المساحة المظللة:</strong> عدد الجزيئات التي تمتلك طاقة التنشيط أو أكثر.</li>
+                            <li><strong className="text-accent font-mono">ع:</strong> الحد الأدنى من الطاقة اللازمة للتبخر (طاقة التنشيط) وتعتمد على قوى التجاذب لا على درجة الحرارة</li>
+                            <li><strong className="text-accent font-mono">ص:</strong> متوسط الطاقة الحركية للجزيئات</li>
+                            <li><strong className="text-accent font-mono">س:</strong> الطاقة الحركية التي يمتلكها أكبر عدد من الجزيئات</li>
+                            <li><strong className="text-accent font-mono">ب:</strong> عدد الجزيئات التي تمتلك مقدار الطاقة الحركية س</li>
+                            <li><strong className="text-accent font-mono">ك:</strong> عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات</li>
+                            <li><strong className="text-accent font-mono">أ:</strong> عدد الجزيئات التي تمتلك الطاقة اللازمة للتبخر (Ea)</li>
+                            <li><strong className="text-accent">المساحة المظللة:</strong> عدد الجزيئات التي تمتلك الطاقة اللازمة للتبخر وأكثر (طاقة التنشيط على الأقل)</li>
                         </ul>
                     </div>
                 </div>
