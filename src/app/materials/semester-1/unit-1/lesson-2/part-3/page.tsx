@@ -96,7 +96,7 @@ export default function LessonPartPage() {
                 </FlippableCard>
 
                 <FlippableCard cardTitle="تفسير علمي" cardIcon={<AlertTriangle className="h-6 w-6" />}>
-                    <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة 100°C</p>
+                    <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة 100°C ؟</p>
                     <p className="text-xs text-muted-foreground">
                         السبب هو أن بخار الماء يختزن كمية طاقة أكبر طاقة التبخر الكامنة عندما يلامس البخار الجلد فإنه يفقد هذه الطاقة الكبيرة طاقة التكاثف ليتحول أولاً إلى ماء سائل عند 100°C ثم يبدأ هذا الماء الساخن بنقل حرارته إلى الجلد مما يسبب حرقًا أشد
                     </p>
