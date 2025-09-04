@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -88,7 +89,7 @@ export default function LessonPartPage() {
                     <CardTitle className="flex items-center gap-2"><Cpu className="h-6 w-6 text-primary" /> محاكاة مخطط ماكسويل-بولتزمان</CardTitle>
                     <CardDescription>تحكم في درجة الحرارة ولاحظ كيف يتغير توزيع الطاقة الحركية وعدد الجزيئات القادرة على التبخر.</CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center mobile-landscape:p-0 mobile-landscape:pb-2">
+                <CardContent className="mobile-landscape:p-0 mobile-landscape:pb-2">
                     <MaxwellBoltzmannDiagram />
                 </CardContent>
             </Card>
