@@ -97,10 +97,11 @@ export default function MaxwellBoltzmannDiagram() {
         p.fill(0);
         p.textAlign(p.CENTER);
         p.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 5);
-        p.textAlign(p.RIGHT);
+        
         p.push();
         p.translate(5, CANVAS_HEIGHT / 2);
         p.rotate(-p.HALF_PI);
+        p.textAlign(p.CENTER);
         p.text('عدد الجزيئات', 0, 0);
         p.pop();
         
@@ -110,6 +111,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.line(startX, CANVAS_HEIGHT - 20, startX, 20);
         p.noStroke();
         p.fill('hsl(var(--destructive))');
+        p.textAlign(p.RIGHT);
         p.text('Ea', startX + 10, 30);
         
         // Display percentage of particles that can evaporate
