@@ -73,7 +73,11 @@ export default function MaxwellBoltzmannDiagram() {
 
         backgroundG.stroke('red');
         backgroundG.strokeWeight(2.5);
-        backgroundG.line(startX_Ea, -5, startX_Ea, CANVAS_HEIGHT - 20); // End at Y-axis height
+        backgroundG.drawingContext.setLineDash([5, 5]);
+        const lineBottomY = CANVAS_HEIGHT - 20;
+        const lineTopY = (lineBottomY + 10) / 2; // Midpoint to reduce height by half
+        backgroundG.line(startX_Ea, lineTopY, startX_Ea, lineBottomY);
+        backgroundG.drawingContext.setLineDash([]); // Reset line dash
         
         // Draw Ea label
         backgroundG.noStroke();
