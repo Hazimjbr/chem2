@@ -9,6 +9,7 @@ import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
 const EVAPORATION_ENERGY = 70; // Represents Ea, the activation energy for evaporation
+const LEFT_PADDING = 30; // Increased padding for Y-axis label
 
 export default function MaxwellBoltzmannDiagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
@@ -42,15 +43,8 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // We only need to redraw when the temperature changes
       };
       
-      (p as any).updateWithNewProps = (props: { temp: number }) => {
-          if (props.temp) {
-              p.redraw();
-          }
-      };
-
       p.draw = () => {
         p.background('hsl(var(--card))');
         
@@ -78,20 +72,20 @@ export default function MaxwellBoltzmannDiagram() {
         p.stroke(0); // Changed to black color for visibility
         p.strokeWeight(2.5);
         for (let i = 0; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, maxEnergy, 10, width - 10);
+          const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
           const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
           p.vertex(x, y);
         }
         p.endShape();
         
         // 3. Fill the area for particles that can evaporate
-        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, maxEnergy, 10, width - 10);
+        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, maxEnergy, LEFT_PADDING, width - 10);
         p.beginShape();
         p.stroke('hsl(var(--destructive))');
         p.fill('hsla(var(--destructive), 0.3)');
         p.vertex(startX_Ea, p.map(energyPoints[EVAPORATION_ENERGY], 0, maxCount, CANVAS_HEIGHT - 20, 20));
         for (let i = EVAPORATION_ENERGY + 1; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, maxEnergy, 10, width - 10);
+          const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
           const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 20);
           p.vertex(x, y);
         }
@@ -102,8 +96,8 @@ export default function MaxwellBoltzmannDiagram() {
         // 4. Draw Axes and Labels
         p.stroke(0);
         p.strokeWeight(1);
-        p.line(10, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
-        p.line(10, CANVAS_HEIGHT - 20, 10, 10); // Y-axis
+        p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
+        p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, LEFT_PADDING, 10); // Y-axis
         
         p.noStroke();
         p.fill(0);
@@ -111,7 +105,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 5);
         
         p.push();
-        p.translate(5, CANVAS_HEIGHT / 2);
+        p.translate(15, CANVAS_HEIGHT / 2); // Adjusted translate for Y label
         p.rotate(-p.HALF_PI);
         p.textAlign(p.CENTER);
         p.text('عدد الجزيئات', 0, 0);
@@ -130,7 +124,15 @@ export default function MaxwellBoltzmannDiagram() {
         const percentage = ((particlesAboveEa / totalParticles) * 100).toFixed(1);
         p.fill(0);
         p.textAlign(p.LEFT);
-        p.text(`جزيئات قادرة على التبخر: ${percentage}%`, 15, 20);
+        p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
+      };
+      
+      // A custom function to be called when props change
+      (p as any).updateWithNewProps = (props: { temp: number }) => {
+          if (props.temp) {
+              setTemperature(props.temp);
+              p.redraw();
+          }
       };
     };
     
@@ -140,15 +142,8 @@ export default function MaxwellBoltzmannDiagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
+  }, [width, temperature]); // Re-create sketch if width or temperature changes
   
-  // This effect will trigger a redraw whenever the temperature state changes.
-  useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).updateWithNewProps) {
-        (p5InstanceRef.current as any).updateWithNewProps({ temp: temperature });
-    }
-  }, [temperature]);
-
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
