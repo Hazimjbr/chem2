@@ -73,7 +73,7 @@ export default function MaxwellBoltzmannDiagram() {
 
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(6);
-        backgroundG.line(startX_Ea, -5, startX_Ea, CANVAS_HEIGHT - 20); 
+        backgroundG.line(startX_Ea, -5, startX_Ea, CANVAS_HEIGHT - 15);
         
         // Draw Ea label
         backgroundG.noStroke();
