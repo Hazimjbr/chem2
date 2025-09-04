@@ -43,6 +43,7 @@ export default function MaxwellBoltzmannDiagram() {
         p.createCanvas(width, CANVAS_HEIGHT);
         p.noLoop(); // Important for performance, we only redraw when needed
 
+        // Create the static background graphics layer
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
         
         // --- Draw all static elements onto backgroundG ---
