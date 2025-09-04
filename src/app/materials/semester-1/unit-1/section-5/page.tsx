@@ -25,7 +25,7 @@ export default function Unit1ReviewPage() {
     const lessonContentForQuiz = "تم تصميم هذا الاختبار ليغطي جميع المفاهيم الأساسية في وحدة حالات المادة بما في ذلك قوانين الغازات المختلفة وخصائص السوائل والمواد الصلبة";
 
     return (
-        <div className="container mx-auto p-8 relative">
+        <div className="p-4 md:p-8 relative">
             <Link href="/materials/semester-1" passHref>
                 <Button variant="ghost" size="icon" className="absolute top-4 left-4">
                     <X className="h-6 w-6" />

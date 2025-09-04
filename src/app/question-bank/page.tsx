@@ -198,7 +198,7 @@ export default function QuestionBankPage() {
     }, [selectedUnit, selectedLesson, selectedPart]);
 
     return (
-        <div className="container mx-auto p-8">
+        <div className="p-4 md:p-8">
             <header className="mb-10 text-center">
                 <h1 className="text-4xl font-bold text-primary mb-2">
                     <Library className="inline-block h-10 w-10 mb-2" /> بنك الأسئلة

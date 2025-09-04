@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 export default function AdminAddStudentPage() {
     return (
-        <div className="container mx-auto p-8">
+        <div className="p-4 md:p-8">
             <header className="mb-10">
                 <h1 className="text-4xl font-bold text-primary mb-2">لوحة تحكم المسؤول</h1>
                 <p className="text-lg text-muted-foreground">

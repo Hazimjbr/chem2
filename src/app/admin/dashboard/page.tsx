@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useApp } from '@/context/CurriculumContext';
@@ -21,7 +22,7 @@ export default function AdminDashboardPage() {
 
     if (!currentUser) {
         return (
-             <div className="container mx-auto p-8 text-center">
+             <div className="p-4 md:p-8 text-center">
                  <Card className="max-w-md mx-auto">
                      <CardHeader>
                         <CardTitle className="text-destructive">الوصول مرفوض</CardTitle>
@@ -41,7 +42,7 @@ export default function AdminDashboardPage() {
 
     if (currentUser.role !== 'admin') {
          return (
-             <div className="container mx-auto p-8 text-center">
+             <div className="p-4 md:p-8 text-center">
                  <Card className="max-w-md mx-auto">
                      <CardHeader>
                         <CardTitle className="flex items-center justify-center gap-2 text-destructive">
@@ -64,7 +65,7 @@ export default function AdminDashboardPage() {
 
     // This is the standard view for an already-authenticated admin.
     return (
-        <div className="container mx-auto p-8">
+        <div className="p-4 md:p-8">
             <header className="mb-10">
                 <h1 className="text-4xl font-bold text-primary mb-2">لوحة تحكم المسؤول</h1>
                 <p className="text-lg text-muted-foreground">

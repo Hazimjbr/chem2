@@ -21,7 +21,7 @@ const experiments = [
 
 export default function ExperimentsPage() {
   return (
-    <div className="container mx-auto p-8">
+    <div className="p-4 md:p-8">
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold mb-2">مختبر التجارب التفاعلية</h1>
         <p className="text-lg text-muted-foreground">

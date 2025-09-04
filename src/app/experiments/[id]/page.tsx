@@ -38,7 +38,7 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
 
   if (id === 'boyles-law') {
     return (
-     <div className="container mx-auto p-8 relative">
+     <div className="p-4 md:p-8 relative">
        <Link href="/experiments" passHref>
           <Button variant="ghost" size="icon" className="absolute top-4 left-4">
             <X className="h-6 w-6" />
@@ -140,7 +140,7 @@ export default function ExperimentPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="container mx-auto p-8 relative">
+    <div className="p-4 md:p-8 relative">
        <Link href="/experiments" passHref>
           <Button variant="ghost" size="icon" className="absolute top-4 left-4">
             <X className="h-6 w-6" />
