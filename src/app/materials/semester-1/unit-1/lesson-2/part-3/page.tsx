@@ -77,11 +77,7 @@ export default function LessonPartPage() {
                 <FlippableCard cardTitle="تعريف وشروط التكاثف" cardIcon={<Droplets className="h-6 w-6" />}>
                     <div className="space-y-3">
                         <p className="font-semibold text-sm">التكاثف هو تحول المادة من الحالة الغازية إلى السائلة (طارد للطاقة).</p>
-                        <p className="text-xs font-bold text-accent">يحدث بشرطين أساسيين:</p>
-                        <ul className="list-decimal mr-4 text-xs space-y-2">
-                            <li><strong>خفض درجة الحرارة (التبريد):</strong> لتقليل الطاقة الحركية للجزيئات وسرعتها.</li>
-                            <li><strong>تقارب الجزيئات (زيادة الضغط):</strong> لزيادة تأثير قوى التجاذب بينها.</li>
-                        </ul>
+                        <p className="text-xs font-bold text-accent">يحدث عن طريق خفض درجة الحرارة (التبريد) لتقليل طاقة الجزيئات وسرعتها وتقارب الجزيئات من بعضها (زيادة الضغط) لزيادة تأثير قوى التجاذب بينها</p>
                     </div>
                 </FlippableCard>
 
