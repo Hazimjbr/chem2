@@ -8,89 +8,31 @@ import { Card } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
 const CANVAS_HEIGHT = 250;
-const EVAPORATION_ENERGY = 70; // Represents Ea, the activation energy for evaporation
-const LEFT_PADDING = 30; // Increased padding for Y-axis label
+const EVAPORATION_ENERGY = 70; 
+const LEFT_PADDING = 30;
 
 export default function MaxwellBoltzmannDiagram() {
-  const sketchRef = useRef<HTMLDivElement>(null);
-  const p5InstanceRef = useRef<p5 | null>(null);
-  const [temperature, setTemperature] = useState(30); // Represents the 'T' parameter in the distribution
+  const backgroundSketchRef = useRef<HTMLDivElement>(null);
+  const foregroundSketchRef = useRef<HTMLDivElement>(null);
+  const [temperature, setTemperature] = useState(30);
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
-    if (sketchRef.current) {
-      setWidth(sketchRef.current.clientWidth);
+    if (foregroundSketchRef.current) {
+      setWidth(foregroundSketchRef.current.clientWidth);
     }
   }, []);
 
+  // Effect for the background sketch (axes and Ea line)
   useEffect(() => {
-    if (width <= 0 || !sketchRef.current) return;
-
-    // Remove any previous instance before creating a new one
-    p5InstanceRef.current?.remove();
-
-    const sketch = (p: p5) => {
-      // A function that resembles Maxwell-Boltzmann distribution
-      // x is energy, t is temperature parameter
-      const distribution = (x: number, t: number) => {
-        if (x < 0) return 0;
-        // This is a simplified mathematical function (Gamma distribution) that looks like a Maxwell-Boltzmann curve.
-        // It's chosen for visual accuracy and stability.
-        const a = 2.5; // Shape parameter
-        const b = t / a; // Scale parameter
-        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5); // 6.5 is a normalization factor
-      };
-
+    if (width <= 0 || !backgroundSketchRef.current) return;
+    
+    const p5Instance = new p5((p: p5) => {
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-      };
-      
-      p.draw = () => {
         p.background('hsl(var(--card))');
         
-        const maxEnergy = 100;
-        const temp = temperature; // Use the current temperature from the component's state
-        let maxCount = 0;
-        const energyPoints = [];
-        let totalParticles = 0;
-        let particlesAboveEa = 0;
-        
-        // 1. Calculate points and find the peak for normalization
-        for (let i = 0; i <= maxEnergy; i++) {
-            const val = distribution(i, temp);
-            energyPoints.push(val);
-            if (val > maxCount) maxCount = val;
-            totalParticles += val;
-            if (i >= EVAPORATION_ENERGY) {
-              particlesAboveEa += val;
-            }
-        }
-        
-        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, maxEnergy, LEFT_PADDING, width - 10);
-        
-        // 2. Draw Ea line and label first (in the background)
-        p.stroke('hsl(var(--destructive))');
-        p.strokeWeight(1.5);
-        p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
-        p.noStroke();
-        p.fill('hsl(var(--destructive))');
-        p.textAlign(p.RIGHT);
-        p.text('Ea', startX_Ea - 5, 30);
-
-
-        // 3. Draw the distribution curve
-        p.beginShape();
-        p.noFill();
-        p.stroke(0); // Black color
-        p.strokeWeight(2.5);
-        for (let i = 0; i < energyPoints.length; i++) {
-          const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
-          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
-          p.vertex(x, y);
-        }
-        p.endShape();
-        
-        // 4. Draw Axes and Labels
+        // Draw Axes
         p.stroke(0);
         p.strokeWeight(1);
         p.line(LEFT_PADDING, CANVAS_HEIGHT - 20, width - 10, CANVAS_HEIGHT - 20); // X-axis
@@ -102,37 +44,101 @@ export default function MaxwellBoltzmannDiagram() {
         p.text('الطاقة الحركية', width / 2, CANVAS_HEIGHT - 5);
         
         p.push();
-        p.translate(15, CANVAS_HEIGHT / 2); // Adjusted translate for Y label
+        p.translate(15, CANVAS_HEIGHT / 2);
         p.rotate(-p.HALF_PI);
         p.textAlign(p.CENTER);
         p.text('عدد الجزيئات', 0, 0);
         p.pop();
         
+        // Draw Ea line
+        const startX_Ea = p.map(EVAPORATION_ENERGY, 0, 100, LEFT_PADDING, width - 10);
+        p.stroke('hsl(var(--destructive))');
+        p.strokeWeight(1.5);
+        p.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, 20);
+        p.noStroke();
+        p.fill('hsl(var(--destructive))');
+        p.textAlign(p.RIGHT);
+        p.text('Ea', startX_Ea - 5, 30);
+
+        p.noLoop(); // Draw once and stop
+      };
+    }, backgroundSketchRef.current);
+
+    return () => {
+      p5Instance.remove();
+    };
+  }, [width]);
+
+  // Effect for the foreground sketch (the moving curve)
+  useEffect(() => {
+    if (width <= 0 || !foregroundSketchRef.current) return;
+
+    const p5Instance = new p5((p: p5) => {
+      const distribution = (x: number, t: number) => {
+        if (x < 0) return 0;
+        const a = 2.5; 
+        const b = t / a;
+        return (Math.pow(x, a - 1) * Math.exp(-x / b)) / (Math.pow(b, a) * 6.5);
+      };
+
+      p.setup = () => {
+        p.createCanvas(width, CANVAS_HEIGHT);
+      };
+      
+      p.draw = () => {
+        p.clear(); // Clear only the foreground canvas
         
-        // 5. Display percentage of particles that can evaporate
+        const maxEnergy = 100;
+        const temp = temperature;
+        let maxCount = 0;
+        const energyPoints = [];
+        let totalParticles = 0;
+        let particlesAboveEa = 0;
+        
+        for (let i = 0; i <= maxEnergy; i++) {
+            const val = distribution(i, temp);
+            energyPoints.push(val);
+            if (val > maxCount) maxCount = val;
+            totalParticles += val;
+            if (i >= EVAPORATION_ENERGY) {
+              particlesAboveEa += val;
+            }
+        }
+        
+        p.beginShape();
+        p.noFill();
+        p.stroke(0);
+        p.strokeWeight(2.5);
+        for (let i = 0; i < energyPoints.length; i++) {
+          const x = p.map(i, 0, maxEnergy, LEFT_PADDING, width - 10);
+          const y = p.map(energyPoints[i], 0, maxCount, CANVAS_HEIGHT - 20, 40);
+          p.vertex(x, y);
+        }
+        p.endShape();
+        
         const percentage = totalParticles > 0 ? ((particlesAboveEa / totalParticles) * 100).toFixed(1) : '0.0';
+        p.noStroke();
         p.fill(0);
         p.textAlign(p.LEFT);
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
-    };
-    
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    }, foregroundSketchRef.current);
 
-    // Cleanup function to remove the p5 instance when the component unmounts or dependencies change
     return () => {
-      p5InstanceRef.current?.remove();
+      p5Instance.remove();
     };
-  }, [width, temperature]); // Re-create sketch if width or temperature changes
+  }, [width, temperature]);
   
   return (
     <div className="flex flex-col items-center gap-4 w-full">
       <div
-        ref={sketchRef}
-        className="rounded-lg border bg-muted w-full overflow-hidden"
+        className="relative rounded-lg border bg-muted w-full overflow-hidden"
         style={{ height: `${CANVAS_HEIGHT}px` }}
         data-ai-hint="Maxwell-Boltzmann distribution curve"
-      ></div>
+      >
+        <div ref={backgroundSketchRef} className="absolute inset-0 z-0"></div>
+        <div ref={foregroundSketchRef} className="absolute inset-0 z-10"></div>
+      </div>
 
       <Card className="p-4 w-full">
         <Label htmlFor="temp-slider" className="mb-2 block text-center">
@@ -142,8 +148,8 @@ export default function MaxwellBoltzmannDiagram() {
           <Thermometer className="text-blue-500" />
           <Slider
             id="temp-slider"
-            min={20} // Low temp
-            max={50} // High temp
+            min={20}
+            max={50}
             step={1}
             value={[temperature]}
             onValueChange={(value) => setTemperature(value[0])}
