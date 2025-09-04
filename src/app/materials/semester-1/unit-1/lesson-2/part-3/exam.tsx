@@ -69,4 +69,3 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [];
 export const staticQuizLvl3: QuizQuestion[] = [];
-

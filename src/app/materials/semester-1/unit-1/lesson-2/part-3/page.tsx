@@ -90,13 +90,13 @@ export default function LessonPartPage() {
                  <FlippableCard cardTitle="طاقة التكاثف المولية" cardIcon={<Zap className="h-6 w-6" />}>
                     <p className="text-sm mb-2">هي كمية الطاقة المنطلقة الطاردة عند تحول مول واحد من المادة من الحالة الغازية إلى السائلة عند درجة حرارة ثابتة</p>
                     <div className="my-2 text-center p-2 bg-muted rounded-lg" dir="ltr">
-                        <BlockMath math="H_2O_{(g)} \rightleftharpoons H_2O_{(l)} + 40.7 \text{ kJ/mol}" />
+                        <BlockMath math="H_2O_{(g)} \rightleftharpoons H_2O_{(l)} + 40.7kJ/mol" />
                     </div>
                     <p className="text-xs">تتساوى طاقة التكاثف المولية مع طاقة التبخر المولية في القيمة وتختلفان في الإشارة التكاثف طارد للطاقة والتبخر ماص للطاقة</p>
                 </FlippableCard>
 
                 <FlippableCard cardTitle="تفسير علمي" cardIcon={<AlertTriangle className="h-6 w-6" />}>
-                    <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة 100°C ؟</p>
+                    <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة 100°C؟</p>
                     <p className="text-xs text-muted-foreground">
                         السبب هو أن بخار الماء يختزن كمية طاقة أكبر طاقة التبخر الكامنة عندما يلامس البخار الجلد فإنه يفقد هذه الطاقة الكبيرة طاقة التكاثف ليتحول أولاً إلى ماء سائل عند 100°C ثم يبدأ هذا الماء الساخن بنقل حرارته إلى الجلد مما يسبب حرقًا أشد
                     </p>
@@ -142,15 +142,15 @@ export default function LessonPartPage() {
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="عندما يتكاثف 1 مول من بخار الماء فإن النظام"
+                  question={<><span>عندما يتكاثف 1 مول من بخار الماء فإن النظام</span></>}
                   options={[
-                      "يمتص طاقة مقدارها 40.7 kJ",
-                      "يطلق طاقة مقدارها 40.7 kJ",
+                      "يمتص طاقة مقدارها 40.7kJ",
+                      "يطلق طاقة مقدارها 40.7kJ",
                       "لا يمتص ولا يطلق طاقة",
                       "يمتص طاقة ثم يطلقها"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="عملية التكاثف هي عملية طاردة للطاقة حيث تفقد جزيئات الغاز طاقتها لتتقارب وتتحول إلى سائل طاقة التكاثف المولية للماء تساوي 40.7 kJ/mol وهي الطاقة المنطلقة"
+                  explanation="عملية التكاثف هي عملية طاردة للطاقة حيث تفقد جزيئات الغاز طاقتها لتتقارب وتتحول إلى سائل طاقة التكاثف المولية للماء تساوي 40.7kJ/mol وهي الطاقة المنطلقة"
               />
           </div>
         </div>
