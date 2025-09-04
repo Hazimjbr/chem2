@@ -41,7 +41,7 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // Important for performance, we only redraw when needed
+        p.noLoop(); // We will manually redraw when the slider changes
 
         // Create the static background graphics layer
         backgroundG = p.createGraphics(width, CANVAS_HEIGHT);
@@ -122,9 +122,10 @@ export default function MaxwellBoltzmannDiagram() {
         p.text(`جزيئات قادرة على التبخر: ${percentage}%`, LEFT_PADDING + 5, 20);
       };
 
+      // This custom function will be called by React's useEffect when the slider changes
       (p as any).updateTemperature = (newTemp: number) => {
-        sketchTemperature = newTemp;
-        p.redraw();
+        sketchTemperature = newTemp; // Update the sketch's internal temperature
+        p.redraw(); // Trigger a single redraw
       };
     };
 
