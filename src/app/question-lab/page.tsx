@@ -12,28 +12,27 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>ادرس الشكل التالي ثم أجب عن السؤال الذي يليه</p>
+            <p>1) اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/LgLw4Wf/diagram.png"
-                    alt="beakers with different liquids"
+                    src="https://i.ibb.co/v6zrQFz/diagram.png"
+                    alt="Maxwell-Boltzmann distribution curve"
                     width={400}
-                    height={150}
+                    height={250}
                     className="rounded-lg border bg-white"
-                    data-ai-hint="liquid evaporation"
+                    data-ai-hint="Maxwell-Boltzmann distribution"
                 />
             </div>
-            <p>أي السوائل الآتية هو الأسرع تبخراً عند درجة حرارة الغرفة؟</p>
         </div>
     ),
     options: [
-        "A",
-        "B",
-        "C",
-        "D"
+        "ي",
+        "و",
+        "ص",
+        "س"
     ],
     correctAnswerIndex: 0,
-    explanation: "السائل A (الإيثر) يمتلك أضعف قوى ترابط بين جزيئاته (قوى لندن بشكل أساسي) مقارنة بالأسيتون (ثنائي القطب) والإيثانول والماء (روابط هيدروجينية)، لذلك يتبخر بشكل أسرع عند نفس درجة الحرارة."
+    explanation: "الرمز (ي) يمثل طاقة التنشيط (Ea)، وهي الحد الأدنى من الطاقة الحركية التي يجب أن تمتلكها الجزيئات لتتمكن من التبخر."
 }
 
 export default function QuestionLabPage() {
