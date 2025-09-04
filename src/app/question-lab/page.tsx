@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -6,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Library } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils.tsx';
 import Image from 'next/image';
 
 export default function QuestionLabPage() {
@@ -25,22 +25,22 @@ export default function QuestionLabPage() {
                 <Card className="w-full">
                     <CardHeader>
                         <div className="flex justify-between items-start">
-                            <CardTitle className="text-lg">
-                                <div className="space-y-4">
-                                    <p>اعتمادا على الرسم المجاور والمتعلق بالمواد CH₃CH₂OH, CH₄, CH₃CH₃, CH₃Cl فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل CH₃Cl هو:</p>
-                                    <div className="flex justify-center">
-                                        <Image
-                                            src="https://i.ibb.co/hF9Fm0hw/22.png"
-                                            alt="Maxwell-Boltzmann distribution for four liquids"
-                                            width={400}
-                                            height={250}
-                                            className="rounded-lg border bg-white"
-                                            data-ai-hint="vapor pressure curves"
-                                        />
-                                    </div>
+                            <div className="space-y-4 flex-1">
+                                <CardTitle className="text-lg">
+                                    <p>اعتمادا على الرسم المجاور والمتعلق بالمواد CH3CH2OH , CH4 CH3CH3 , CH3CH3Cl فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل CH3CH3Cl هو:</p>
+                                </CardTitle>
+                                 <div className="flex justify-center">
+                                    <Image
+                                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                                        alt="Vapor Pressure vs Temperature for four liquids"
+                                        width={400}
+                                        height={250}
+                                        className="rounded-lg border bg-white"
+                                        data-ai-hint="vapor pressure curves"
+                                    />
                                 </div>
-                            </CardTitle>
-                            <Badge variant="secondary">
+                            </div>
+                            <Badge variant="secondary" className="mr-4">
                                 المستوى 2
                             </Badge>
                         </div>
@@ -68,7 +68,7 @@ export default function QuestionLabPage() {
                             <CheckCircle className="h-4 w-4 text-blue-500" />
                             <AlertTitle className="font-bold text-blue-700">الشرح</AlertTitle>
                             <AlertDescription>
-                                بترتيب قوى الترابط: الإيثانول (أقوى، روابط هيدروجينية) > كلوروميثان (أقوى، ثنائي قطب) > إيثان (أقوى، قوى لندن أكبر) > ميثان (أضعف، قوى لندن أقل). الطاقة اللازمة للتبخر (طاقة التنشيط) تتناسب طرديًا مع قوة الترابط. الرمز Q يمثل أعلى طاقة تنشيط، وهو ما يتوافق مع الإيثانول الذي يمتلك أقوى قوى ترابط.
+                                بترتيب قوى الترابط: الإيثانول (الأقوى، روابط هيدروجينية) > كلوروميثان (قوى ثنائي قطب) > إيثان (قوى لندن) > ميثان (الأضعف، قوى لندن أقل). طاقة التبخر الأعلى (Q) تمثل أقوى ترابط، وهي للإيثانول.
                             </AlertDescription>
                         </Alert>
                     </CardFooter>
