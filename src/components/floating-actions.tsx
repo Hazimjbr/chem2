@@ -57,14 +57,38 @@ export default function FloatingActions() {
   }
 
   return (
-    <div className="fixed top-1/2 -translate-y-1/2 right-0 flex flex-row-reverse items-center gap-3 z-50">
+    <div className="fixed top-1/2 -translate-y-1/2 left-0 flex items-center gap-3 z-50">
+      <motion.div
+        animate={{ x: isOpen ? 0 : '-65%' }}
+        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+      >
+        <Button
+          size="icon"
+          className="rounded-r-full rounded-l-none h-14 w-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+        >
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={isOpen ? 'close' : 'open'}
+              initial={{ rotate: 180, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -180, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isOpen ? <ChevronLeft className="h-6 w-6" /> : <ChevronRight className="h-6 w-6" />}
+            </motion.div>
+          </AnimatePresence>
+        </Button>
+      </motion.div>
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            className="flex flex-row-reverse items-center gap-3 p-2 bg-background/80 backdrop-blur-sm rounded-l-full"
+            exit={{ opacity: 0, x: -50 }}
+            className="flex items-center gap-3 p-2 bg-background/80 backdrop-blur-sm rounded-r-full"
           >
             {actions.map((action) => (
               <Dialog key={action.id}>
@@ -95,30 +119,6 @@ export default function FloatingActions() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <motion.div
-        animate={{ x: isOpen ? 0 : '65%' }}
-        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-      >
-        <Button
-          size="icon"
-          className="rounded-l-full rounded-r-none h-14 w-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-        >
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              key={isOpen ? 'close' : 'open'}
-              initial={{ rotate: -180, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 180, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {isOpen ? <ChevronRight className="h-6 w-6" /> : <ChevronLeft className="h-6 w-6" />}
-            </motion.div>
-          </AnimatePresence>
-        </Button>
-      </motion.div>
     </div>
   );
 }
