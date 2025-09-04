@@ -273,6 +273,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         options: ["A", "M", "B", "Q"],
         correctAnswerIndex: 2,
         explanation: "أعلى طاقة تبخر تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن السائل B له أقل ضغط بخاري عند أي درجة حرارة، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى، وبالتالي طاقة تبخره هي الأعلى."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH3CH2OH</span>, <span dir="ltr" className="font-mono inline-block">CH4</span>, <span dir="ltr" className="font-mono inline-block">CH3CH3</span>, <span dir="ltr" className="font-mono inline-block">CH3CH3Cl</span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block">CH3CH3Cl</span> هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        alt="Vapor Pressure vs Temperature for four liquids"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["M", "W", "R", "Q"],
+        correctAnswerIndex: 3,
+        explanation: "بناءً على الترتيب الصحيح لقوى الترابط (روابط هيدروجينية > ثنائي القطب > قوى لندن)، يكون للإيثانول (CH3CH2OH) أقوى ترابط وبالتالي أعلى طاقة تبخر (Q)."
     }
 ];
 
