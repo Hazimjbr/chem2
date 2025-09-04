@@ -114,6 +114,31 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "المنحنى الأعرض والأقل ارتفاعًا يمثل درجة الحرارة الأكبر، وقمة هذا المنحنى (التي يشير إليها الرمز 'و') تمثل الطاقة الحركية الأكثر احتمالًا، والتي ترتبط بمتوسط الطاقة الحركية."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور فإن الرمز  الذي يمثل متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأقل هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        alt="Maxwell-Boltzmann distribution curve"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="Maxwell-Boltzmann distribution"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "ع",
+            "و",
+            "ص",
+            "ك"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "المنحنى ذو القمة الأعلى (ص) يمثل درجة الحرارة الأقل. قمة هذا المنحنى على محور الطاقة الحركية (محور السينات) تمثل متوسط الطاقة الحركية، ويشار إليها بالرمز (ك)."
     }
 ];
 

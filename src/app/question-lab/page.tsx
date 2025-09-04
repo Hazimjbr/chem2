@@ -11,27 +11,27 @@ import Image from 'next/image';
 const question = {
     question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور فإن الرمز  الذي يمثل متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأقل هو:</p>
+            <p>سؤال جديد يوضع هنا</p>
             <div className="flex justify-center">
                  <Image
-                    src="https://i.ibb.co/MxNjGvNM/22.png"
-                    alt="Maxwell-Boltzmann distribution curve"
+                    src="https://picsum.photos/400/250"
+                    alt="Placeholder image"
                     width={400}
                     height={250}
                     className="rounded-lg border bg-white"
-                    data-ai-hint="Maxwell-Boltzmann distribution"
+                    data-ai-hint="placeholder image"
                 />
             </div>
         </div>
     ),
     options: [
-        "ع",
-        "و",
-        "ص",
-        "ك"
+        "الخيار أ",
+        "الخيار ب",
+        "الخيار ج",
+        "الخيار د"
     ],
-    correctAnswerIndex: 3,
-    explanation: "المنحنى ذو القمة الأعلى (ص) يمثل درجة الحرارة الأقل. قمة هذا المنحنى على محور الطاقة الحركية (محور السينات) تمثل متوسط الطاقة الحركية، ويشار إليها بالرمز (ك)."
+    correctAnswerIndex: 0,
+    explanation: "شرح الإجابة الصحيحة."
 }
 
 export default function QuestionLabPage() {
