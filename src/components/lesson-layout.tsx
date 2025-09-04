@@ -48,7 +48,7 @@ export default function LessonLayout({
     }, [lessonId]);
 
     return (
-        <div className="container mx-auto p-4 md:p-8 relative">
+        <div className="p-4 md:p-8 relative">
             <Link href="/materials/semester-1" passHref>
                 <Button variant="ghost" size="icon" className="absolute top-4 left-4">
                     <X className="h-6 w-6" />
@@ -107,10 +107,10 @@ export default function LessonLayout({
             </main>
 
             <footer className="mt-12 border-t pt-6">
-                <div className="flex justify-between">
+                <div className="flex flex-col-reverse md:flex-row md:justify-between gap-4">
                     {previousLesson ? (
                         <Link href={previousLesson} passHref>
-                            <Button size="lg" variant="outline">
+                            <Button size="lg" variant="outline" className="w-full md:w-auto">
                                 <ArrowRight className="ml-2 h-5 w-5" />
                                 {previousLessonTitle}
                             </Button>
@@ -118,7 +118,7 @@ export default function LessonLayout({
                     ) : <div />}
                     {nextLesson && (
                          <Link href={nextLesson} passHref>
-                            <Button size="lg">
+                            <Button size="lg" className="w-full md:w-auto">
                                 {nextLessonTitle}
                                 <ArrowLeft className="mr-2 h-5 w-5" />
                             </Button>
