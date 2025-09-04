@@ -111,7 +111,7 @@ export default function CoolingCurveDiagram() {
         // Draw path
         p.noFill();
         p.strokeWeight(2.5);
-        p.stroke('hsl(var(--primary))');
+        p.stroke(0);
         p.beginShape();
         path.forEach(v => p.vertex(v.x, v.y));
         p.endShape();
