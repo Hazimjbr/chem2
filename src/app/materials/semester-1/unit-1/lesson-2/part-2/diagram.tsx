@@ -73,10 +73,7 @@ export default function MaxwellBoltzmannDiagram() {
 
         backgroundG.stroke('hsl(var(--destructive))');
         backgroundG.strokeWeight(6);
-        backgroundG.drawingContext.setLineDash([5, 5]);
-        // Extend the line upwards significantly
-        backgroundG.line(startX_Ea, CANVAS_HEIGHT - 20, startX_Ea, -5); 
-        backgroundG.drawingContext.setLineDash([]);
+        backgroundG.line(startX_Ea, -5, startX_Ea, CANVAS_HEIGHT - 20); 
         
         // Draw Ea label
         backgroundG.noStroke();
