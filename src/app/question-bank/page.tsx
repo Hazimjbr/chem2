@@ -25,6 +25,7 @@ import * as part9Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-9/ex
 import * as part10Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-10/exam';
 import * as unit1Lesson2Part1Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-1/exam';
 import * as unit1Lesson2Part2Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-2/exam';
+import * as unit1Lesson2Part3Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-3/exam';
 import * as unit1Lesson2Part5Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-5/exam';
 import * as unit1ReviewExam from '@/app/materials/semester-1/unit-1/section-5/exam';
 
@@ -56,6 +57,7 @@ const examModules = {
     '/materials/semester-1/unit-1/lesson-1/part-10': part10Exam,
     '/materials/semester-1/unit-1/lesson-2/part-1': unit1Lesson2Part1Exam,
     '/materials/semester-1/unit-1/lesson-2/part-2': unit1Lesson2Part2Exam,
+    '/materials/semester-1/unit-1/lesson-2/part-3': unit1Lesson2Part3Exam,
     '/materials/semester-1/unit-1/lesson-2/part-5': unit1Lesson2Part5Exam,
     '/materials/semester-1/unit-1/section-5': unit1ReviewExam,
 };
@@ -105,6 +107,12 @@ units.forEach(unit => {
                 };
                  if (module.staticQuizLvl1) {
                     allQuestions.push(...module.staticQuizLvl1.map((q: any) => ({ ...q, source: sourceInfo, level: 1 })));
+                }
+                 if (module.staticQuizLvl2) {
+                    allQuestions.push(...module.staticQuizLvl2.map((q: any) => ({ ...q, source: sourceInfo, level: 2 })));
+                }
+                 if (module.staticQuizLvl3) {
+                    allQuestions.push(...module.staticQuizLvl3.map((q: any) => ({ ...q, source: sourceInfo, level: 3 })));
                 }
             }
         }
