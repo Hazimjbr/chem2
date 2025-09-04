@@ -77,7 +77,7 @@ export default function LessonPartPage() {
                 <FlippableCard cardTitle="تعريف وشروط التكاثف" cardIcon={<Droplets className="h-6 w-6" />}>
                     <div className="space-y-3">
                         <p className="font-semibold text-sm">التكاثف هو تحول المادة من الحالة الغازية إلى السائلة طارد للطاقة</p>
-                        <p className="text-xs font-bold text-accent">يحدث عن طريق خفض درجة الحرارة التبريد لتقليل طاقة الجزيئات وسرعتها وتقارب الجزيئات من بعضها زيادة الضغط لزيادة تأثير قوى التجاذب بينها</p>
+                        <p className="text-xs font-bold text-accent">يحدث عن طريق خفض درجة الحرارة التبريد لتقليل طاقة الجزيئات وسرعتها وتقارب الجزيئات من بعضها وزيادة الضغط لزيادة تأثير قوى التجاذب بينها</p>
                     </div>
                 </FlippableCard>
 
@@ -96,9 +96,9 @@ export default function LessonPartPage() {
                 </FlippableCard>
 
                 <FlippableCard cardTitle="تفسير علمي" cardIcon={<AlertTriangle className="h-6 w-6" />}>
-                    <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة 100°C؟</p>
+                     <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة <span dir="ltr" className="inline-block">100°C</span>؟</p>
                     <p className="text-xs text-muted-foreground">
-                        السبب هو أن بخار الماء يختزن كمية طاقة أكبر طاقة التبخر الكامنة عندما يلامس البخار الجلد فإنه يفقد هذه الطاقة الكبيرة طاقة التكاثف ليتحول أولاً إلى ماء سائل عند 100°C ثم يبدأ هذا الماء الساخن بنقل حرارته إلى الجلد مما يسبب حرقًا أشد
+                        السبب هو أن بخار الماء يختزن كمية طاقة أكبر طاقة التبخر الكامنة عندما يلامس البخار الجلد فإنه يفقد هذه الطاقة الكبيرة طاقة التكاثف ليتحول أولاً إلى ماء سائل عند <span dir="ltr" className="inline-block">100°C</span> ثم يبدأ هذا الماء الساخن بنقل حرارته إلى الجلد مما يسبب حرقًا أشد
                     </p>
                 </FlippableCard>
             </div>
