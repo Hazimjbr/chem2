@@ -42,7 +42,7 @@ export default function MaxwellBoltzmannDiagram() {
         // X-axis
         p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.9, CANVAS_HEIGHT - 30);
         // Y-axis
-        p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.1, 10);
+        p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.1, 40);
         
         p.noStroke();
         p.fill(0);
@@ -74,7 +74,7 @@ export default function MaxwellBoltzmannDiagram() {
         let totalParticles = 0;
         let particlesAboveEa = 0;
 
-        const eaLineX = width * 0.1 + (width * 0.8) * 0.7; // Ea at 70% of the plot width
+        const eaLineX = width * 0.1 + (width * 0.8) * 0.7 - 5; // Ea at 70% of the plot width, shifted left
         const energyAtEaLine = p.map(eaLineX, width * 0.1, width * 0.9, 0, MAX_ENERGY);
 
         for (let i = 0; i <= MAX_ENERGY; i++) {
