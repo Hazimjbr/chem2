@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -34,7 +35,7 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 
 
 export default function MainAppContent() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
+  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1/unit-1/lesson-1/part-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
   const { currentUser } = useApp();
 
