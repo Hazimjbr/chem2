@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -89,11 +90,11 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <VaporPressureDiagram />
-                     <ul className="list-decimal mr-4 mt-4 space-y-2 text-sm">
-                        <li><strong className="font-semibold">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة (عند درجة حرارة معينة) بينما سرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</li>
-                        <li><strong className="font-semibold">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار، فتبدأ سرعة التكاثف بالازدياد.</li>
-                        <li><strong className="font-semibold">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف، ويصل النظام إلى حالة الاتزان الديناميكي، ويثبت الضغط البخاري.</li>
-                    </ul>
+                     <div className="mr-4 mt-4 space-y-2 text-sm">
+                        <p><strong className="font-semibold">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة (عند درجة حرارة معينة) بينما سرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</p>
+                        <p><strong className="font-semibold">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار، فتبدأ سرعة التكاثف بالازدياد.</p>
+                        <p><strong className="font-semibold">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف، ويصل النظام إلى حالة الاتزان الديناميكي، ويثبت الضغط البخاري.</p>
+                    </div>
                 </CardContent>
             </Card>
 
@@ -105,11 +106,11 @@ export default function LessonPartPage() {
                     <VaporPressureCurves />
                     <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
                         <div className="p-3 rounded-lg bg-muted">
-                            <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> 1. درجة الحرارة (علاقة طردية)</h4>
+                            <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (علاقة طردية)</h4>
                             <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة، تزداد الطاقة الحركية للجزيئات، فيزداد عدد الجزيئات القادرة على التبخر، مما يزيد من الضغط البخاري.</p>
                         </div>
                          <div className="p-3 rounded-lg bg-muted">
-                            <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> 2. قوة الترابط بين الجزيئات (علاقة عكسية)</h4>
+                            <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (علاقة عكسية)</h4>
                             <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى، قل عدد الجزيئات القادرة على الإفلات من السطح، وبالتالي يقل الضغط البخاري.</p>
                         </div>
                     </div>
