@@ -52,6 +52,17 @@ export default function LessonPartPage() {
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        عند وضع سائل في وعاء مغلق، تبدأ الجزيئات ذات الطاقة الحركية العالية بالتبخر من السطح. هذه الجزيئات الغازية تتصادم مع جدران الوعاء مسببة ضغطًا. في نفس الوقت، بعض هذه الجزيئات الغازية تعود لتصطدم بسطح السائل وتتكاثف. يستمر هذا الوضع حتى تصل العمليتان إلى حالة اتزان، عندها يثبت ضغط البخار.
+                    </p>
+                </CardContent>
+            </Card>
+
             <div className="grid md:grid-cols-2 gap-6">
                  <FlippableCard cardTitle="تعريف الضغط البخاري" cardIcon={<GitCompare className="h-6 w-6" />}>
                     <p className="text-sm">
