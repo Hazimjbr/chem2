@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -8,7 +9,7 @@ interface ProgressVesselProps {
     percentage: number;
 }
 
-// Colors from the reference image
+// Colors
 const bannerIncompleteColor = '#d9534f'; // Red
 const bannerCompleteColor = 'hsl(var(--primary))'; // Blue from the theme
 const castleBaseColor = '#A98E71';
@@ -44,16 +45,18 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
                 <rect x="60" y="15" width="8" height="5" fill={castleBaseColor} />
                 <rect x="77" y="15" width="8" height="5" fill={castleBaseColor} />
 
-                {/* Banners */}
-                <polygon points="30,25 30,55 40,50 50,55 50,25" fill={bannerColor} stroke="white" strokeWidth="0.5" />
-                <polygon points="55,25 55,55 65,50 75,55 75,25" fill={bannerColor} stroke="white" strokeWidth="0.5" />
-
+                {/* Banners - Made taller */}
+                <polygon points="30,5 30,55 40,50 50,55 50,5" fill={bannerColor} stroke="white" strokeWidth="0.5" />
+                <polygon points="55,5 55,55 65,50 75,55 75,5" fill={bannerColor} stroke="white" strokeWidth="0.5" />
+                
+                {/* Unit number on the banner */}
+                <text x="40" y="25" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" className="drop-shadow-sm">{label.split(' ')[1]}</text>
             </svg>
 
             {/* Content on top */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full pb-2">
-                <span className="font-bold text-xs sm:text-sm drop-shadow-sm text-foreground px-1">{label}</span>
-                <span className="text-2xl sm:text-3xl font-bold font-mono mt-2 drop-shadow-sm text-foreground">
+                 {/* Label moved to banner */}
+                <span className="text-2xl sm:text-3xl font-bold font-mono mt-auto drop-shadow-sm text-foreground">
                     {percentage}%
                 </span>
             </div>
