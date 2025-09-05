@@ -53,6 +53,11 @@ export default function ProgressCard() {
                 newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
             });
             
+            // Temporary for demonstration
+            if (newProgress['unit-1'] !== undefined) {
+                 newProgress['unit-1'] = 100;
+            }
+            
             setProgress(newProgress);
         };
 
@@ -65,7 +70,7 @@ export default function ProgressCard() {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
-                    تقدمك في الوحدات
+                    تقدمك في وحدات الفصل الأول
                 </CardTitle>
                 <CardDescription>
                     تابع إنجازك في كل وحدة. هدفك هو الوصول إلى المستوى الذهبي في كل منها!
