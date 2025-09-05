@@ -121,7 +121,7 @@ export default function MainAppContent() {
                     أحكم سيطرتك على مملكة الكيمياء
                 </CardTitle>
                 <CardDescription>
-                    خارطتك هنا. اختر قلعة لغزوها أو ساند قواتك فيها.
+                    خارطتك هنا. اختر قلعة لغزوها أو عزز سيطرتك فيها.
                 </CardDescription>
             </CardHeader>
         </Card>
