@@ -171,6 +171,10 @@ export async function deleteStudent(studentId: string) {
         const pendingSnapshot = await getDocs(qPending);
         pendingSnapshot.forEach(doc => batch.delete(doc.ref));
 
+        // Delete user progress data
+        const progressRef = doc(db, 'user-progress', studentId);
+        batch.delete(progressRef);
+
         await batch.commit();
         
         return { success: true, message: 'تم حذف الطالب وبياناته بالكامل بنجاح.' };
