@@ -46,8 +46,9 @@ export default function MainAppContent() {
         
         const progressData = await getUserProgress(currentUser.uid);
         
-        // --- Next Step Logic ---
         const completedLessons = new Set(progressData?.completedLessons || []);
+
+        // --- Next Step Logic ---
         let firstUncompletedPart: NextStep | null = null;
         for (const unit of units) {
             for (const lesson of unit.lessons) {
@@ -192,6 +193,7 @@ export default function MainAppContent() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {unitProgress.map(unit => (
+                    unit.icon &&
                     <div key={unit.title}>
                         <div className="flex justify-between mb-1 items-center">
                             <span className="text-sm font-medium flex items-center gap-2">
