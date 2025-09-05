@@ -10,7 +10,7 @@ import { useApp } from '@/context/CurriculumContext';
 import { units } from '@/data/materials';
 import type { QuizResult } from '@/components/quiz';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
-import ProgressCard from './progress-card';
+import ProgressCard from '@/components/progress-card';
 
 interface NextStep {
     lessonTitle: string;
