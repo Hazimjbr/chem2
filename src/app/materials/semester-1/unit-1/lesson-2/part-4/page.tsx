@@ -88,16 +88,7 @@ export default function LessonPartPage() {
                     <CardTitle>مراحل الوصول للاتزان</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="flex justify-center items-center my-4">
-                        <img 
-                            src="https://i.ibb.co/p6s8gwcG/3.png"
-                            alt="منحنى الاتزان بين التبخر والتكاثف"
-                            width={400}
-                            height={250}
-                            className="rounded-lg border bg-white"
-                            data-ai-hint="vapor pressure equilibrium"
-                        />
-                    </div>
+                    <VaporPressureDiagram />
                      <div className="mr-4 mt-4 space-y-2 text-sm">
                         <p><strong className="font-semibold text-accent">عند لحظة البداية</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
                         <p><strong className="font-semibold text-accent">مع مرور الوقت</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
@@ -106,14 +97,20 @@ export default function LessonPartPage() {
                 </CardContent>
             </Card>
              <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6"/>}>
-                <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                    <div className="p-3 rounded-lg bg-muted">
-                        <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (طردي)</h4>
-                        <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري</p>
+                <div className="space-y-4 text-sm">
+                    <div className="flex items-start gap-3">
+                        <Thermometer className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                            <h4 className="font-semibold">درجة الحرارة (علاقة طردية)</h4>
+                            <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري</p>
+                        </div>
                     </div>
-                        <div className="p-3 rounded-lg bg-muted">
-                        <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (عكسي)</h4>
-                        <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري</p>
+                    <div className="flex items-start gap-3">
+                        <Zap className="h-5 w-5 text-destructive flex-shrink-0 mt-1" />
+                        <div>
+                            <h4 className="font-semibold">قوة الترابط بين الجزيئات (علاقة عكسية)</h4>
+                            <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري</p>
+                        </div>
                     </div>
                 </div>
             </FlippableCard>
