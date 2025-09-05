@@ -67,7 +67,7 @@ export default function LessonPartPage() {
             <div className="grid md:grid-cols-2 gap-6">
                  <FlippableCard cardTitle="تعريف الضغط البخاري" cardIcon={<GitCompare className="h-6 w-6" />}>
                     <p className="text-sm">
-                        هو الضغط الذي يسببه بخار السائل على سطح سائله عندما يكون البخار في حالة اتزان ديناميكي مع سائله في وعاء مغلق عند درجة حرارة وضغط ثابتين.
+                        هو الضغط الذي يسببه البخار على سطح السائل عند الاتزان عند درجة حرارة وضغط ثابتين.
                     </p>
                     <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
                         ببساطة، هو ضغط البخار فوق السائل في وعاء مغلق بعد فترة من الزمن.
@@ -91,7 +91,7 @@ export default function LessonPartPage() {
                 <CardContent>
                     <VaporPressureDiagram />
                      <div className="mr-4 mt-4 space-y-2 text-sm">
-                        <p><strong className="font-semibold text-accent">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة (عند درجة حرارة معينة) بينما سرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</p>
+                        <p><strong className="font-semibold text-accent">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</p>
                         <p><strong className="font-semibold text-accent">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار، فتبدأ سرعة التكاثف بالازدياد.</p>
                         <p><strong className="font-semibold text-accent">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف، ويصل النظام إلى حالة الاتزان الديناميكي، ويثبت الضغط البخاري.</p>
                     </div>
@@ -106,11 +106,11 @@ export default function LessonPartPage() {
                     <VaporPressureCurves />
                     <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
                         <div className="p-3 rounded-lg bg-muted">
-                            <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (علاقة طردية)</h4>
+                            <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (طردي)</h4>
                             <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة، تزداد الطاقة الحركية للجزيئات، فيزداد عدد الجزيئات القادرة على التبخر، مما يزيد من الضغط البخاري.</p>
                         </div>
                          <div className="p-3 rounded-lg bg-muted">
-                            <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (علاقة عكسية)</h4>
+                            <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (عكسي)</h4>
                             <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى، قل عدد الجزيئات القادرة على الإفلات من السطح، وبالتالي يقل الضغط البخاري.</p>
                         </div>
                     </div>
