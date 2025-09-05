@@ -67,11 +67,11 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
             </svg>
 
             {/* Content on top */}
-            <div className="relative z-10 flex flex-col items-center justify-end h-full pb-2 space-y-2">
-                 <div className="text-xl font-bold text-foreground drop-shadow-sm -mb-2">
+            <div className="relative z-10 flex flex-col items-center justify-end h-full pb-2 space-y-1">
+                 <div className="text-2xl font-bold text-foreground drop-shadow-sm">
                     {label}
                 </div>
-                <span className="text-2xl sm:text-3xl font-bold font-mono drop-shadow-sm text-foreground">
+                <span className="text-xl sm:text-2xl font-bold font-mono drop-shadow-sm text-foreground">
                     {percentage}%
                 </span>
             </div>
