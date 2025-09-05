@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -18,7 +19,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    "questionText": "السائل الذي له أقل درجة تكاثف من السوائل الآتية",
+    "options": [
+        "CH_3CH_3",
+        "CH_3CH_2Cl",
+        "CH_3COCH_3",
+        "CH_3CH_2OH"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "أقل درجة تكاثف (أو غليان) تكون للسائل الذي يمتلك أضعف قوى ترابط بين جزيئاته الإيثان (CH₃CH₃) هو جزيء غير قطبي وقوى الترابط بين جزيئاته هي قوى لندن فقط وهي الأضعف مقارنة ببقية المركبات القطبية أو التي تكون روابط هيدروجينية",
+    "level": 3,
+    "source": "درس التكاثف"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -64,7 +77,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal font-mono text-left" dir="ltr"><InlineMath math={option.replace(/(\d+)/g, '_$1')} /></span>
+                            <span className="flex-1 whitespace-normal" dir="ltr"><InlineMath math={option} /></span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
