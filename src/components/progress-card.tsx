@@ -93,7 +93,7 @@ export default function ProgressCard() {
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
                         <path 
-                            d="M -50 225 C 100 205, 300 245, 600 225"
+                            d="M -50 225 C 100 205, 300 245, 650 225"
                             stroke="black"
                             strokeWidth="42"
                             fill="none"
@@ -101,7 +101,7 @@ export default function ProgressCard() {
                         />
                         {/* River Water */}
                         <path 
-                            d="M -50 225 C 100 205, 300 245, 600 225"
+                            d="M -50 225 C 100 205, 300 245, 650 225"
                             stroke="hsl(var(--primary))" 
                             strokeWidth="40" 
                             fill="none"
