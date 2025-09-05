@@ -37,7 +37,7 @@ const topPositions = [
     { top: '5%', left: '15%' },
     { top: '15%', left: '40%' },
     { top: '5%', left: '65%' },
-    { top: '15', left: '90%' },
+    { top: '15%', left: '90%' },
 ];
 
 const bottomPositions = [
@@ -101,10 +101,10 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
 
         if (index < 4) { // Top row
             const pos = topPositions[index];
-            return { top: pos.top, left: `calc(${pos.left} + 30px)` }; // Adjust left to be beside the castle
+            return { top: `calc(${pos.top} + 20px)`, left: `calc(${pos.left} + 20px)` }; 
         } else { // Bottom row
             const pos = bottomPositions[index - 4];
-            return { bottom: `calc(${pos.bottom} + 60px)`, left: `calc(${pos.left} + 30px)` }; // Adjust to be above the castle
+            return { bottom: `calc(${pos.bottom} + 40px)`, left: `calc(${pos.left} + 20px)` };
         }
     };
     
@@ -123,7 +123,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="relative w-full h-[450px] bg-green-200/50 rounded-lg p-4 overflow-hidden" data-ai-hint="fantasy map castles">
+                 <div className="relative w-full h-[300px] md:h-[450px] bg-green-200/50 rounded-lg p-4 overflow-hidden" data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
@@ -133,13 +133,30 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                             strokeWidth="42"
                             fill="none"
                             strokeLinecap="round"
+                            className="hidden md:block"
+                        />
+                        <path 
+                            d="M -50 150 C 100 135, 300 165, 835 150"
+                            stroke="black"
+                            strokeWidth="28"
+                            fill="none"
+                            strokeLinecap="round"
+                            className="block md:hidden"
                         />
                         {/* River Water */}
-                        <path 
+                         <path 
                             d="M -50 225 C 100 205, 300 245, 835 225"
                             stroke="hsl(var(--primary))" 
                             strokeWidth="40" 
                             fill="none"
+                            className="hidden md:block"
+                        />
+                         <path 
+                            d="M -50 150 C 100 135, 300 165, 835 150"
+                            stroke="hsl(var(--primary))" 
+                            strokeWidth="26" 
+                            fill="none"
+                            className="block md:hidden"
                         />
                     </svg>
                     
@@ -148,7 +165,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                         {allUnits.slice(0, 4).map((unit, index) => (
                            <div
                                 key={`top-castle-${index}`}
-                                className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
+                                className="absolute w-16 h-24 md:w-24 md:h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={topPositions[index]}
                             >
                                 {unit && unit.id ? (
@@ -175,7 +192,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                          {allUnits.slice(4, 8).map((unit, index) => (
                            <div
                                 key={`bottom-castle-${index}`}
-                                className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
+                                className="absolute w-16 h-24 md:w-24 md:h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={bottomPositions[index]}
                            >
                                {unit && unit.id ? (
@@ -206,7 +223,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                             className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer animate-bounce"
                                             style={lastVisitedPosition}
                                         >
-                                            <MapPin className="w-8 h-8 text-destructive drop-shadow-lg" />
+                                            <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
                                         </div>
                                     </Link>
                                 </TooltipTrigger>
