@@ -20,7 +20,28 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C2H5OC2H5 عند 30 °C يساوي</p>
+            <div className="flex justify-center my-4">
+                <Image
+                    src="https://i.ibb.co/84T52SSm/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </>
+    ),
+    options: ["760", "100", "30", "650"],
+    correctAnswerIndex: 3,
+    explanation: "من خلال تتبع الخط العمودي من درجة حرارة 30°C حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم التحرك أفقيًا إلى محور الضغط نجد أن القيمة تقارب 650mmHg",
+    level: 2,
+    source: "الدرس الثاني: الحالة السائلة / درجة الغليان"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
