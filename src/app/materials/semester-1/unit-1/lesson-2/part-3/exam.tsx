@@ -253,10 +253,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: "السائل الذي له أقل طاقة تكاثف مولية من السوائل الآتية",
         options: [
-            <div dir="ltr"><InlineMath math="CH_3COCH_3" /></div>,
-            <div dir="ltr"><InlineMath math="CH_3CH_2Cl" /></div>,
-            <div dir="ltr"><InlineMath math="CH_3CH_2OH" /></div>,
-            <div dir="ltr"><InlineMath math="CH_3CH_3" /></div>
+            "CH₃COCH₃",
+            "CH₃CH₂Cl",
+            "CH₃CH₂OH",
+            "CH₃CH₃"
         ],
         correctAnswerIndex: 3,
         explanation: "طاقة التكاثف الأقل تعني أضعف قوى ترابط بين الجزيئات الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية وهي أقوى"
@@ -264,12 +264,28 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: "السائل الأسرع تكاثفا من السوائل الآتية",
         options: [
-            "CH4",
-            "CH3CH2Cl",
-            "CH3CH2OH",
-            "CH3CH3"
+            <div dir="ltr">CH4</div>,
+            <div dir="ltr">CH3CH2Cl</div>,
+            <div dir="ltr">CH3CH2OH</div>,
+            <div dir="ltr">CH3CH3</div>
         ],
         correctAnswerIndex: 2,
         explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط لأنه يتطلب فقدان طاقة أقل للتحول من غاز إلى سائل الإيثانول (CH₃CH₂OH) يكون روابط هيدروجينية وهي الأقوى بين الخيارات المتاحة لذا فهو الأسرع تكاثفا"
+    },
+    {
+        question: (
+            <div className="space-y-2">
+                <p>أي من المركبات التالية له أقل طاقة تكاثف مولية؟</p>
+                <p className="text-xs text-muted-foreground">(تلميح: طاقة التكاثف الأقل تعني قوى الترابط الأضعف)</p>
+            </div>
+        ),
+        options: [
+            "CH₃(CH₂)₃CH₃ (بنتان)",
+            "CH₃C(CH₃)₂CH₃ (نيوبنتان)",
+            "CH₃CH₂OH (إيثانول)",
+            "CH₃Cl (كلوروميثان)"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "الإيثانول (روابط هيدروجينية) والكلوروميثان (ثنائي قطب) لهما قوى ترابط قوية. البنتان والنيوبنتان كلاهما غير قطبي ولهما نفس الكتلة المولية، لكن النيوبنتان أكثر تفرعًا وشكله أقرب للكرة، مما يقلل من مساحة السطح المتاحة للتجاذب ويضعف قوى لندن بشكل كبير، وبالتالي يمتلك أقل طاقة تكاثف."
     }
 ];
