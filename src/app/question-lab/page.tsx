@@ -20,19 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "أحد العوامل الآتية لا يؤثر في الضغط البخاري للسائل:",
-    options: [
-        "قطبية الجسيمات",
-        "درجة حرارة",
-        "نوع الترابط بين الجسيمات",
-        "حجم الوعاء"
-    ],
-    correctAnswerIndex: 3,
-    explanation: "الضغط البخاري خاصية فيزيائية مميزة للمادة تعتمد فقط على درجة الحرارة وقوة الترابط بين جزيئاتها. حجم الوعاء لا يؤثر على قيمة الضغط البخاري عند الاتزان.",
-    level: 1,
-    source: "الوحدة 1 / الحالة السائلة / الضغط البخاري"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
