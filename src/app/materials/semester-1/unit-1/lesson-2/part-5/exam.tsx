@@ -1,4 +1,3 @@
-
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import Image from 'next/image';
@@ -87,6 +86,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
         explanation: "درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg) من خلال تتبع الخط الأفقي من 760mmHg حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى محور درجة الحرارة نجد أن القيمة تساوي 78°C"
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C₂H₅OC₂H₅ عند درجة حرارة <span dir="ltr" className="inline-block">30°C</span> يساوي:</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </>
+        ),
+        options: ["760", "100", "30", "650"],
+        correctAnswerIndex: 3,
+        explanation: "بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 650mmHg تقريبًا"
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];

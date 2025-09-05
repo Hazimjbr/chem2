@@ -20,28 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C₂H₅OC₂H₅ عند درجة حرارة <span dir="ltr" className="inline-block">30°C</span> يساوي:</p>
-            <div className="flex justify-center my-4">
-                <Image
-                    src="https://i.ibb.co/84T52SSm/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </>
-    ),
-    options: ["760", "100", "30", "650"],
-    correctAnswerIndex: 3,
-    explanation: <>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block">30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 650mmHg تقريبًا</>,
-    level: 2,
-    source: "الوحدة الأولى / الدرس الثاني / درجة الغليان"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -121,3 +100,4 @@ export default function QuestionLabPage() {
             </div>
         </div>
     );
+}
