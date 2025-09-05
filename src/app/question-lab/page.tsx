@@ -19,19 +19,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    "questionText": "العبارة الخاطئة فيما يلي:",
-    "options": [
-        "يقل الضغط البخاري بانخفاض درجة الحرارة",
-        "يقل الضغط البخاري بازدياد قوة الترابط",
-        "يزداد الضغط البخاري بنقصان حجم الوعاء",
-        "لا يعتمد الضغط البخاري على شكل الوعاء"
-    ],
-    "correctAnswerIndex": 2,
-    "explanation": "الضغط البخاري خاصية فيزيائية مميزة للمادة تعتمد فقط على درجة الحرارة وقوة الترابط بين جزيئاتها حجم الوعاء أو شكله لا يؤثران على قيمة الضغط البخاري عند حالة الاتزان",
-    "level": 1,
-    "source": "الدرس الثاني: الحالة السائلة / الضغط البخاري"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
