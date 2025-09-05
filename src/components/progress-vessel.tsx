@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -13,8 +12,8 @@ interface ProgressVesselProps {
 const getProgressColor = (percentage: number): string => {
     if (percentage >= 90) return '#FFD700'; // Gold
     if (percentage >= 50) return '#C0C0C0'; // Silver
-    if (percentage >= 25) return 'hsl(var(--primary))'; // Blue
-    return 'hsl(var(--destructive))'; // Red
+    if (percentage >= 25) return 'hsl(var(--primary))'; // Blue from theme
+    return 'hsl(var(--destructive))'; // Red from theme
 }
 
 export default function ProgressVessel({ label, percentage }: ProgressVesselProps) {
