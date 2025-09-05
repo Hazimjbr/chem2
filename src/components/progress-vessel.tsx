@@ -8,54 +8,46 @@ interface ProgressVesselProps {
     percentage: number;
 }
 
-const incompleteColor = 'hsl(var(--destructive))'; // Red
-const completeColor = 'hsl(var(--primary))'; // Blue
+// Colors from the reference image
+const bannerIncompleteColor = '#d9534f'; // Red
+const bannerCompleteColor = 'hsl(var(--primary))'; // Blue from the theme
+const castleBaseColor = '#A98E71';
+const castleMidColor = '#D4B996';
+const castleTopColor = '#E6D2B8';
 
 export default function ProgressVessel({ label, percentage }: ProgressVesselProps) {
-    const fillHeight = `${percentage}%`;
+    const isComplete = percentage >= 100;
+    const bannerColor = isComplete ? bannerCompleteColor : bannerIncompleteColor;
 
     return (
-        <div className="relative w-full aspect-[3/4] text-center flex flex-col justify-end items-center">
+        <div className="relative w-full aspect-[3/4] text-center flex flex-col justify-end items-center" data-ai-hint="game castle progress">
             <svg viewBox="0 0 100 120" className="absolute inset-0 w-full h-full drop-shadow-md">
-                <defs>
-                    <clipPath id="castleClip">
-                        {/* A simple castle shape path */}
-                        <path d="M 20 110 L 20 50 L 10 50 L 10 30 L 30 30 L 30 10 L 45 10 L 45 30 L 55 30 L 55 10 L 70 10 L 70 30 L 90 30 L 90 50 L 80 50 L 80 110 Z" />
-                    </clipPath>
-                </defs>
+                 {/* Base */}
+                <path d="M10 120 L10 110 L90 110 L90 120 L10 120 Z" fill={castleBaseColor} />
+                <path d="M15 110 L15 90 L85 90 L85 110 Z" fill={castleBaseColor} />
 
-                {/* The castle shapes */}
-                <g clipPath="url(#castleClip)">
-                    {/* Background (Incomplete color - Red) */}
-                    <rect 
-                        x="0" 
-                        y="0" 
-                        width="100" 
-                        height="120" 
-                        style={{ fill: incompleteColor }}
-                        className="opacity-40"
-                    />
-                    {/* Foreground fill (Complete color - Blue) */}
-                    <rect 
-                        x="0" 
-                        y="120" 
-                        width="100" 
-                        height="120" 
-                        style={{ 
-                            fill: completeColor, 
-                            transform: `translateY(-${fillHeight})`, 
-                            transition: 'transform 0.5s ease-out' 
-                        }} 
-                        className="opacity-60"
-                    />
-                </g>
+                {/* Main Body */}
+                <rect x="20" y="40" width="60" height="50" fill={castleMidColor} />
                 
-                {/* Castle outline */}
-                <path 
-                    d="M 20 110 L 20 50 L 10 50 L 10 30 L 30 30 L 30 10 L 45 10 L 45 30 L 55 30 L 55 10 L 70 10 L 70 30 L 90 30 L 90 50 L 80 50 L 80 110 Z" 
-                    className="stroke-foreground/50 fill-transparent" 
-                    strokeWidth="2"
-                />
+                {/* Arches */}
+                <path d="M30 90 L30 70 L40 70 L40 90 Z" fill={castleBaseColor} />
+                <path d="M60 90 L60 70 L70 70 L70 90 Z" fill={castleBaseColor} />
+
+                {/* Top Section */}
+                <rect x="15" y="20" width="70" height="20" fill={castleTopColor} />
+                <rect x="25" y="10" width="50" height="10" fill={castleBaseColor} />
+
+                {/* Battlements */}
+                <rect x="15" y="15" width="8" height="5" fill={castleBaseColor} />
+                <rect x="30" y="15" width="8" height="5" fill={castleBaseColor} />
+                <rect x="45" y="15" width="8" height="5" fill={castleBaseColor} />
+                <rect x="60" y="15" width="8" height="5" fill={castleBaseColor} />
+                <rect x="77" y="15" width="8" height="5" fill={castleBaseColor} />
+
+                {/* Banners */}
+                <polygon points="30,25 30,55 40,50 50,55 50,25" fill={bannerColor} stroke="white" strokeWidth="0.5" />
+                <polygon points="55,25 55,55 65,50 75,55 75,25" fill={bannerColor} stroke="white" strokeWidth="0.5" />
+
             </svg>
 
             {/* Content on top */}
