@@ -24,6 +24,7 @@
     --input: 200 30% 85%;
     --ring: 199 100% 72%;
     --radius: 0.75rem;
+    --map-background: 145 73% 58%; /* User's chosen green */
   }
 
   .dark {
@@ -46,6 +47,7 @@
     --border: 200 20% 20%;
     --input: 200 20% 20%;
     --ring: 199 100% 72%;
+    --map-background: 145 73% 58%; /* User's chosen green */
   }
 }
 
