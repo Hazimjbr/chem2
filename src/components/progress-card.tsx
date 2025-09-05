@@ -149,12 +149,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
     return (
         <Card>
             <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <Award className="h-6 w-6 text-primary" />
+                <CardTitle className="flex items-center gap-2 text-3xl font-bold">
                     أحكم سيطرتك على مملكة الكيمياء
                 </CardTitle>
                 <CardDescription>
-                    خارطتك هنا. اختر قلعة لغزوها أو ساند قواتك فيها.
+                    خارطتك هنا. اختر قلعة لغزوها أو عزز سيطرتك فيها.
                 </CardDescription>
             </CardHeader>
             <CardContent>
