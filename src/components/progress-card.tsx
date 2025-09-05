@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { useIsMobile } from '@/hooks/use-mobile';
 
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
@@ -33,19 +34,36 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 };
 
 
-const topPositions = [
-    { top: '5%', left: '15%' },
-    { top: '15%', left: '40%' },
-    { top: '5%', left: '65%' },
-    { top: '15%', left: '90%' },
-];
+const topPositions = {
+    mobile: [
+        { top: '5%', left: '15%' },
+        { top: '15%', left: '40%' },
+        { top: '5%', left: '65%' },
+        { top: '15%', left: '90%' },
+    ],
+    desktop: [
+        { top: '5%', left: '15%' },
+        { top: '15%', left: '40%' },
+        { top: '5%', left: '65%' },
+        { top: '15%', left: '90%' },
+    ]
+};
 
-const bottomPositions = [
-    { bottom: '15%', left: '10%' },
-    { bottom: '5%', left: '35%' },
-    { bottom: '15%', left: '60%' },
-    { bottom: '5%', left: '85%' },
-];
+const bottomPositions = {
+    mobile: [
+        { bottom: '15%', left: '10%' },
+        { bottom: '5%', left: '35%' },
+        { bottom: '15%', left: '60%' },
+        { bottom: '5%', left: '85%' },
+    ],
+    desktop: [
+         { bottom: '15%', left: '10%' },
+        { bottom: '5%', left: '35%' },
+        { bottom: '15%', left: '60%' },
+        { bottom: '5%', left: '85%' },
+    ]
+};
+
 
 interface ProgressCardProps {
     lastVisitedLesson: string;
@@ -54,6 +72,9 @@ interface ProgressCardProps {
 export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
     const { currentUser } = useApp();
     const [progress, setProgress] = useState<{ [key: string]: number }>({});
+    const isMobile = useIsMobile();
+    
+    const allUnits = useMemo(() => [...units, ...Array(8 - units.length).fill(null)], []);
     
     const lastVisitedUnitId = useMemo(() => {
         if (!lastVisitedLesson) return null;
@@ -93,24 +114,36 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
         fetchProgress();
     }, [currentUser]);
 
-    const allUnits = [...units, ...Array(8 - units.length).fill(null)];
     
-    const getPositionForUnit = (unitId: string) => {
+    const getPositionForUnit = useMemo(() => (unitId: string) => {
         const index = allUnits.findIndex(u => u && u.id === unitId);
         if (index === -1) return null;
 
+        const posGroup = isMobile ? 'mobile' : 'desktop';
         if (index < 4) { // Top row
-            const pos = topPositions[index];
-             // Adjust to be below the castle
-            return { top: `calc(${pos.top} + 128px)`, left: `calc(${pos.left})` };
+            return topPositions[posGroup][index];
         } else { // Bottom row
-            const pos = bottomPositions[index - 4];
-            // Adjust to be below the castle
-            return { bottom: `calc(${pos.bottom} - 20px)`, left: `calc(${pos.left})` };
+            return bottomPositions[posGroup][index - 4];
         }
-    };
+    }, [isMobile, allUnits]);
     
-    const lastVisitedPosition = lastVisitedUnitId ? getPositionForUnit(lastVisitedUnitId) : null;
+    const lastVisitedPosition = useMemo(() => {
+        if (!lastVisitedUnitId) return null;
+        
+        const basePosition = getPositionForUnit(lastVisitedUnitId);
+        if (!basePosition) return null;
+        
+        if (basePosition.top) {
+            const topValue = parseInt(basePosition.top.replace('%', ''));
+            return { ...basePosition, top: `${isMobile ? topValue + 20 : topValue + 12}%` };
+        } else if (basePosition.bottom) {
+            const bottomValue = parseInt(basePosition.bottom.replace('%', ''));
+            return { ...basePosition, bottom: `${isMobile ? bottomValue - 20 : bottomValue - 12}%` };
+        }
+        
+        return basePosition;
+
+    }, [lastVisitedUnitId, getPositionForUnit, isMobile]);
 
 
     return (
@@ -125,7 +158,10 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="relative w-full h-[300px] md:h-[450px] bg-green-200/50 rounded-lg p-4 overflow-hidden" data-ai-hint="fantasy map castles">
+                 <div className={cn(
+                    "relative w-full bg-green-200/50 rounded-lg p-4 overflow-hidden",
+                    isMobile ? "h-[250px]" : "h-[450px]"
+                 )} data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
@@ -167,11 +203,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                         {allUnits.slice(0, 4).map((unit, index) => (
                            <div
                                 key={`top-castle-${index}`}
-                                className="absolute w-16 h-24 md:w-24 md:h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
-                                style={topPositions[index]}
+                                className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
+                                style={isMobile ? topPositions.mobile[index] : topPositions.desktop[index]}
                             >
                                 {unit && unit.id ? (
-                                     <Link href="/materials/semester-1" className="cursor-pointer">
+                                      <Link href="/materials/semester-1" passHref>
                                          <ProgressVessel 
                                             label={`${index + 1}`}
                                             percentage={progress[unit.id] || 0}
@@ -192,11 +228,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                          {allUnits.slice(4, 8).map((unit, index) => (
                            <div
                                 key={`bottom-castle-${index}`}
-                                className="absolute w-16 h-24 md:w-24 md:h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
-                                style={bottomPositions[index]}
+                                className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
+                                style={isMobile ? bottomPositions.mobile[index] : bottomPositions.desktop[index]}
                            >
                                {unit && unit.id ? (
-                                    <Link href="/materials/semester-1" className="cursor-pointer">
+                                    <Link href="/materials/semester-1" passHref>
                                          <ProgressVessel 
                                             label={`${index + 5}`}
                                             percentage={progress[unit.id] || 0}
@@ -218,7 +254,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 <TooltipTrigger asChild>
                                      <Link href={lastVisitedLesson} passHref>
                                         <div
-                                            className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer animate-bounce"
+                                            className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
                                             style={lastVisitedPosition}
                                         >
                                             <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
