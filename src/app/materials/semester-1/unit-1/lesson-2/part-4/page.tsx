@@ -67,19 +67,19 @@ export default function LessonPartPage() {
             <div className="grid md:grid-cols-2 gap-6">
                  <FlippableCard cardTitle="تعريف الضغط البخاري" cardIcon={<GitCompare className="h-6 w-6" />}>
                     <p className="text-sm">
-                        هو الضغط الذي يسببه البخار على سطح السائل عند الاتزان عند درجة حرارة وضغط ثابتين.
+                        هو الضغط الذي يسببه البخار على سطح السائل عند الاتزان عند درجة حرارة وضغط ثابتين
                     </p>
                     <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
-                        ببساطة، هو ضغط البخار فوق السائل في وعاء مغلق بعد فترة من الزمن.
+                        ببساطة، هو ضغط البخار فوق السائل في وعاء مغلق بعد فترة من الزمن
                     </p>
                 </FlippableCard>
 
                 <FlippableCard cardTitle="حالة الاتزان الديناميكي" cardIcon={<Scale className="h-6 w-6" />}>
                      <p className="text-sm">
-                        هي الحالة التي يتساوى فيها معدل سرعة تبخر السائل مع معدل سرعة تكاثف بخاره في وعاء مغلق.
+                        هي الحالة التي يتساوى فيها معدل سرعة تبخر السائل مع معدل سرعة تكاثف بخاره في وعاء مغلق
                     </p>
                     <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
-                        عند الاتزان، لا تتوقف العمليتان، بل تحدثان بنفس السرعة، فيبقى عدد جزيئات البخار ثابتًا، وبالتالي يثبت الضغط البخاري.
+                        عند الاتزان، لا تتوقف العمليتان، بل تحدثان بنفس السرعة، فيبقى عدد جزيئات البخار ثابتًا، وبالتالي يثبت الضغط البخاري
                     </p>
                 </FlippableCard>
             </div>
@@ -91,9 +91,9 @@ export default function LessonPartPage() {
                 <CardContent>
                     <VaporPressureDiagram />
                      <div className="mr-4 mt-4 space-y-2 text-sm">
-                        <p><strong className="font-semibold text-accent">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</p>
-                        <p><strong className="font-semibold text-accent">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار، فتبدأ سرعة التكاثف بالازدياد.</p>
-                        <p><strong className="font-semibold text-accent">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف، ويصل النظام إلى حالة الاتزان الديناميكي، ويثبت الضغط البخاري.</p>
+                        <p><strong className="font-semibold text-accent">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
+                        <p><strong className="font-semibold text-accent">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
+                        <p><strong className="font-semibold text-accent">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف ويصل النظام إلى حالة الاتزان الديناميكي ويثبت الضغط البخاري</p>
                     </div>
                 </CardContent>
             </Card>
