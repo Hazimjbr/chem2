@@ -96,25 +96,18 @@ export default function LessonPartPage() {
                     </div>
                 </CardContent>
             </Card>
-
-            <Card>
-                 <CardHeader>
-                    <CardTitle>العوامل المؤثرة في الضغط البخاري</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                        <div className="p-3 rounded-lg bg-muted">
-                            <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (طردي)</h4>
-                            <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة، تزداد الطاقة الحركية للجزيئات، فيزداد عدد الجزيئات القادرة على التبخر، مما يزيد من الضغط البخاري.</p>
-                        </div>
-                         <div className="p-3 rounded-lg bg-muted">
-                            <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (عكسي)</h4>
-                            <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى، قل عدد الجزيئات القادرة على الإفلات من السطح، وبالتالي يقل الضغط البخاري.</p>
-                        </div>
+             <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6"/>}>
+                <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                    <div className="p-3 rounded-lg bg-muted">
+                        <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (طردي)</h4>
+                        <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة، تزداد الطاقة الحركية للجزيئات، فيزداد عدد الجزيئات القادرة على التبخر، مما يزيد من الضغط البخاري.</p>
                     </div>
-                </CardContent>
-            </Card>
-
+                        <div className="p-3 rounded-lg bg-muted">
+                        <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (عكسي)</h4>
+                        <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى، قل عدد الجزيئات القادرة على الإفلات من السطح، وبالتالي يقل الضغط البخاري.</p>
+                    </div>
+                </div>
+            </FlippableCard>
         </div>
         
         <div className="space-y-4 mt-8">
