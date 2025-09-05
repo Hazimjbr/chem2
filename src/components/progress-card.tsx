@@ -135,10 +135,10 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
         
         if (basePosition.top) {
             const topValue = parseInt(basePosition.top.replace('%', ''));
-            return { ...basePosition, top: `${isMobile ? topValue + 20 : topValue + 12}%` };
+            return { ...basePosition, top: `${isMobile ? topValue + 20 : topValue + 22}%` };
         } else if (basePosition.bottom) {
             const bottomValue = parseInt(basePosition.bottom.replace('%', ''));
-            return { ...basePosition, bottom: `${isMobile ? bottomValue + 20 : bottomValue + 13}%` };
+            return { ...basePosition, bottom: `${isMobile ? bottomValue + 20 : bottomValue + 23}%` };
         }
         
         return basePosition;
@@ -159,7 +159,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             </CardHeader>
             <CardContent>
                  <div className={cn(
-                    "relative w-full bg-[#a3e6b4] rounded-lg p-4 overflow-hidden",
+                    "relative w-full bg-[#4ade80] rounded-lg p-4 overflow-hidden",
                     isMobile ? "h-[250px]" : "h-[450px]"
                  )} data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
@@ -207,7 +207,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={isMobile ? topPositions.mobile[index] : topPositions.desktop[index]}
                             >
                                 {unit && unit.id ? (
-                                     <Link href="/materials/semester-1">
+                                    <Link href="/materials/semester-1">
                                          <ProgressVessel 
                                             label={`${index + 1}`}
                                             percentage={progress[unit.id] || 0}
@@ -255,8 +255,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                     <Link
                                         href={lastVisitedLesson}
                                         className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
-                                        style={lastVisitedPosition}
-                                    >
+                                        style={lastVisitedPosition}>
                                         <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
                                     </Link>
                                 </TooltipTrigger>
