@@ -144,31 +144,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>بالاعتماد على منحنى التبريد المجاور، ما هي المدة الزمنية التي استغرقتها عملية التجمد؟</p>
-                 <div className="flex justify-center my-4">
-                     <Image
-                        src="https://i.ibb.co/GfZ5wtqG/22.png"
-                        alt="منحنى تبريد المادة A"
-                        width={500}
-                        height={300}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="cooling curve"
-                    />
-                </div>
-            </div>
-        ),
-        options: [
-            "2 دقيقة",
-            "5 دقائق",
-            "3 دقائق",
-            "4 دقائق"
-        ],
-        correctAnswerIndex: 2,
-        explanation: "عملية التجمد تحدث على الجزء الأفقي الثاني من المنحنى، حيث تبقى درجة الحرارة ثابتة. تبدأ هذه العملية عند الزمن 5 دقائق وتنتهي عند الزمن 8 دقائق. إذن، المدة المستغرقة هي 8 - 5 = 3 دقائق."
-    },
-    {
-        question: (
-            <div className="space-y-4">
                 <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها 90°C أي العبارات التالية صحيحة</p>
                  <div className="flex justify-center my-4">
                      <Image
@@ -189,7 +164,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "المادة A لها ضغط بخاري أعلى من C عند نفس الحرارة"
         ],
         correctAnswerIndex: 1,
-        explanation: "من الرسم درجة غليان أو تكاثف المادة A هي 70°C بما أن درجة غليان المادة C وهي 90°C أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر"
+        explanation: "من الرسم درجة غليان او تكاثف المادة A هي 70°C بما أن درجة غليان المادة C وهي 90°C أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر"
     },
     {
         question: (
