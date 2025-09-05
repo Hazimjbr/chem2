@@ -200,6 +200,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 3,
         explanation: <><span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة) المنطقة الأولى عند </span><span dir="ltr" className="inline-block"><InlineMath math="100^\circ C"/></span><span> وتمثل عملية التكاثف (تحول البخار إلى سائل) والمنطقة الثانية عند </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ C"/></span><span> وتمثل عملية التجمد (تحول السائل إلى صلب) الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة</span></>
+    },
+     {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الأسرع تكاثفا هو</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/TB6RcQkw/22.png"
+                        alt="Vapor Pressure vs Temperature"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curve"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["A", "M", "B", "Q"],
+        correctAnswerIndex: 2,
+        explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
     }
 ];
 
