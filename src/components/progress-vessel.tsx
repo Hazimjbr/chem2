@@ -66,7 +66,7 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
                 </g>
                 
                 {/* Unit number on the banner */}
-                <text x="40" y="25" textAnchor="middle" fill="black" fontSize="14" fontWeight="bold" className="drop-shadow-sm">{label}</text>
+                <text x="52.5" y="30" textAnchor="middle" fill="black" fontSize="28" fontWeight="bold" className="drop-shadow-sm">{label}</text>
             </svg>
 
             {/* Content on top */}
