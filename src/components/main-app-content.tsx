@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,6 @@ import { useApp } from '@/context/CurriculumContext';
 import { units } from '@/data/materials';
 import type { QuizResult } from '@/components/quiz';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
-import { Progress } from '@/components/ui/progress';
 
 interface NextStep {
     lessonTitle: string;
@@ -37,7 +35,6 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
-  const [unitProgress, setUnitProgress] = useState<any[]>([]);
   const { currentUser } = useApp();
 
   useEffect(() => {
@@ -45,9 +42,8 @@ export default function MainAppContent() {
         if (!currentUser) return;
         
         const progressData = await getUserProgress(currentUser.uid);
-        
         const completedLessons = new Set(progressData?.completedLessons || []);
-
+        
         // --- Next Step Logic ---
         let firstUncompletedPart: NextStep | null = null;
         for (const unit of units) {
@@ -76,27 +72,6 @@ export default function MainAppContent() {
             if (firstUncompletedPart) break;
         }
         setNextStep(firstUncompletedPart);
-
-        // --- Unit Progress Logic ---
-        const progress = units.map(unit => {
-            const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
-            if (totalParts === 0) return { title: unit.title, progress: 0, icon: unit.icon };
-            
-            const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
-                const lessonCompletedParts = lesson.parts.filter(part => {
-                    const path = constructPath(unit.id, lesson, part);
-                    return completedLessons.has(path);
-                }).length;
-                return acc + lessonCompletedParts;
-            }, 0);
-            
-            return {
-                title: unit.title,
-                progress: Math.round((completedPartsInUnit / totalParts) * 100),
-                icon: unit.icon
-            };
-        });
-        setUnitProgress(progress);
     };
 
     fetchProgress();
@@ -130,7 +105,7 @@ export default function MainAppContent() {
           <Link href="/performance-analysis" passHref>
             <Button size="lg" variant="outline">
               <BarChart className="ml-2" />
-              تحليل أدائي
+              عرض لوحة معلوماتي
             </Button>
           </Link>
         </div>
@@ -182,33 +157,6 @@ export default function MainAppContent() {
               </CardContent>
             </Card>
           )}
-
-          {unitProgress.length > 0 && (
-             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Award />
-                  تقدمك في الوحدات
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {unitProgress.map(unit => (
-                    unit.icon &&
-                    <div key={unit.title}>
-                        <div className="flex justify-between mb-1 items-center">
-                            <span className="text-sm font-medium flex items-center gap-2">
-                                <unit.icon className="h-4 w-4 text-muted-foreground" />
-                                {unit.title}
-                            </span>
-                            <span className="text-sm font-mono text-muted-foreground">{unit.progress}%</span>
-                        </div>
-                        <Progress value={unit.progress} />
-                    </div>
-                  ))}
-              </CardContent>
-            </Card>
-          )}
-
         </div>
       </section>
     </div>
