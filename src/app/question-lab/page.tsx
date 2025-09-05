@@ -22,7 +22,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C₂H₅OC₂H₅ عند 30°C يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C₂H₅OC₂H₅ عند <span dir="ltr" className="inline-block">30°C</span> يساوي:</p>
             <div className="flex justify-center my-4">
                 <Image
                     src="https://i.ibb.co/84T52SSm/3.png"
