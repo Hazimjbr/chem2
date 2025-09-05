@@ -70,7 +70,13 @@ export default function QuestionLabPage() {
                         <Alert variant="default" className="border-blue-500 bg-blue-100/30 w-full">
                             <CheckCircle className="h-4 w-4 text-blue-500" />
                             <AlertTitle className="font-bold text-blue-700">الشرح</AlertTitle>
-                            <AlertDescription>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة). المنطقة الأولى عند 100°C وتمثل عملية التكاثف (تحول البخار إلى سائل)، والمنطقة الثانية عند 0°C وتمثل عملية التجمد (تحول السائل إلى صلب). الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة.</AlertDescription>
+                            <AlertDescription>
+                                <span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة). المنطقة الأولى عند </span>
+                                <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}"/></span>
+                                <span> وتمثل عملية التكاثف (تحول البخار إلى سائل)، والمنطقة الثانية عند </span>
+                                <span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span>
+                                <span> وتمثل عملية التجمد (تحول السائل إلى صلب). الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة.</span>
+                            </AlertDescription>
                         </Alert>
                     </CardFooter>
                 </Card>
