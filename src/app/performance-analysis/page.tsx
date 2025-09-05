@@ -20,45 +20,46 @@ interface WeakestLesson {
     score: number;
 }
 
-const constructPath = (unitId: string, lesson: any, part: any) => {
-    const unitNum = unitId.replace('unit-', '');
-    let path = `/materials/semester-1/unit-${unitNum}`;
-    if (lesson.lessonNum) {
-        path += `/lesson-${lesson.lessonNum}`;
-    } else if (lesson.sectionNum) {
-        path += `/section-${lesson.sectionNum}`;
-    }
-    if (part.partNum) {
-        path += `/part-${part.partNum}`;
-    }
-    return path;
-}
-
 const getLessonTitle = (lessonId: string): string => {
-    for (const unit of units) {
-        for (const lesson of unit.lessons) {
-            for (const part of lesson.parts) {
-                const path = constructPath(unit.id, lesson, part);
-                if (path === lessonId) {
-                    return `${lesson.title} / ${part.title}`;
-                }
-            }
-             if (lesson.sectionNum) {
-                 const path = constructPath(unit.id, lesson, {});
-                 if (path === lessonId) {
-                    return lesson.title;
-                 }
-            }
+    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
+    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
+    if (!unitIdentifier) return lessonId; 
+
+    const unit = units.find(u => u.id === unitIdentifier);
+    if (!unit) return lessonId;
+
+    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
+    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
+
+    if (lessonIdentifier) {
+        const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
+        const lesson = unit.lessons.find(l => l.lessonNum === lessonNum);
+        if (!lesson) return unit.title;
+
+        const partIdentifier = pathParts.find(p => p.startsWith('part-'));
+        if (partIdentifier) {
+            const partNum = parseInt(partIdentifier.replace('part-', ''), 10);
+            const part = lesson.parts.find(p => p.partNum === partNum);
+            return part ? `${lesson.title} / ${part.title}` : lesson.title;
         }
+        return lesson.title;
     }
-    return 'درس غير معروف';
+
+    if (sectionIdentifier) {
+         const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
+         const section = unit.lessons.find(l => l.sectionNum === sectionNum);
+         if (section) {
+            return `${unit.title} / ${section.title}`;
+         }
+    }
+
+    return unit.title; // Fallback to unit title
 };
 
 export default function PerformanceAnalysisPage() {
     const { currentUser } = useApp();
     const [weakestLesson, setWeakestLesson] = useState<WeakestLesson | null>(null);
     const [performanceData, setPerformanceData] = useState<any[]>([]);
-    const [unitProgress, setUnitProgress] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -69,9 +70,11 @@ export default function PerformanceAnalysisPage() {
 
             // --- Weakest Lesson Logic ---
             const allResults: QuizResult[] = progressData.quizHistory || [];
+            // Filter for actual quiz results (difficulty > 0.5)
             const studentResults = allResults.filter(r => r.difficulty > 0.5);
 
             if (studentResults.length > 0) {
+                // Find the weakest score among quizzes
                 const weakest = studentResults.reduce((min, current) => current.score < min.score ? current : min, studentResults[0]);
                 if (weakest.score < 0.7) { // Only show if score is below 70%
                     setWeakestLesson({
@@ -89,27 +92,6 @@ export default function PerformanceAnalysisPage() {
                 }));
                 setPerformanceData(chartData);
             }
-
-            // --- Unit Progress Logic ---
-            const completedLessons = new Set(progressData.completedLessons || []);
-            const progress = units.map(unit => {
-                const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
-                if (totalParts === 0) return { title: unit.title, progress: 0 };
-                
-                const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
-                    const lessonCompletedParts = lesson.parts.filter(part => {
-                        const path = constructPath(unit.id, lesson, part);
-                        return completedLessons.has(path);
-                    }).length;
-                    return acc + lessonCompletedParts;
-                }, 0);
-                
-                return {
-                    title: unit.title,
-                    progress: Math.round((completedPartsInUnit / totalParts) * 100)
-                };
-            });
-            setUnitProgress(progress);
         }
         fetchData();
     }, [currentUser]);
@@ -189,23 +171,6 @@ export default function PerformanceAnalysisPage() {
             <CardContent>
                 <PerformanceAnalysisForm />
             </CardContent>
-          </Card>
-          <Card>
-              <CardHeader>
-                <CardTitle>نسبة الإنجاز</CardTitle>
-                <CardDescription>مدى تقدمك في إكمال محتوى الوحدات الدراسية.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                  {unitProgress.map(unit => (
-                    <div key={unit.title}>
-                        <div className="flex justify-between mb-1">
-                            <span className="text-sm font-medium">{unit.title}</span>
-                            <span className="text-sm font-mono text-muted-foreground">{unit.progress}%</span>
-                        </div>
-                        <Progress value={unit.progress} />
-                    </div>
-                  ))}
-              </CardContent>
           </Card>
         </div>
 

@@ -73,7 +73,7 @@ function Logo() {
 
     const handleTextClick = () => {
         if (isSelected) {
-            router.push('/materials/semester-1');
+            router.push('/');
         } else {
             router.push('/');
         }

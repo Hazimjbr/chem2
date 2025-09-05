@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
-import MainAppContent from '@/components/main-app-content';
+import MainAppContent from './main-app-content';
 import AuthDialog from '@/components/auth-dialog';
 import AdminLoginDialog from '@/components/admin/admin-login-dialog';
 

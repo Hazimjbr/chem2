@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
 import { units } from '@/data/materials';
 import type { QuizResult } from '@/components/quiz';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
+import { Progress } from '@/components/ui/progress';
 
 interface NextStep {
     lessonTitle: string;
@@ -35,19 +37,17 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
+  const [unitProgress, setUnitProgress] = useState<any[]>([]);
   const { currentUser } = useApp();
 
   useEffect(() => {
-    const savedLesson = localStorage.getItem('lastVisitedLesson');
-    if (savedLesson) {
-      setLastVisitedLesson(savedLesson);
-    }
-    
-    try {
-        const savedProgress = localStorage.getItem('completedLessons');
-        const completedLessons = new Set(savedProgress ? JSON.parse(savedProgress) : []);
+    const fetchProgress = async () => {
+        if (!currentUser) return;
+        
+        const progressData = await getUserProgress(currentUser.uid);
         
         // --- Next Step Logic ---
+        const completedLessons = new Set(progressData?.completedLessons || []);
         let firstUncompletedPart: NextStep | null = null;
         for (const unit of units) {
             for (const lesson of unit.lessons) {
@@ -76,11 +76,33 @@ export default function MainAppContent() {
         }
         setNextStep(firstUncompletedPart);
 
-    } catch(e) {
-        console.error("Failed to calculate progress", e);
+        // --- Unit Progress Logic ---
+        const progress = units.map(unit => {
+            const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
+            if (totalParts === 0) return { title: unit.title, progress: 0, icon: unit.icon };
+            
+            const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
+                const lessonCompletedParts = lesson.parts.filter(part => {
+                    const path = constructPath(unit.id, lesson, part);
+                    return completedLessons.has(path);
+                }).length;
+                return acc + lessonCompletedParts;
+            }, 0);
+            
+            return {
+                title: unit.title,
+                progress: Math.round((completedPartsInUnit / totalParts) * 100),
+                icon: unit.icon
+            };
+        });
+        setUnitProgress(progress);
+    };
+
+    fetchProgress();
+    const savedLesson = localStorage.getItem('lastVisitedLesson');
+    if (savedLesson) {
+      setLastVisitedLesson(savedLesson);
     }
-
-
   }, [currentUser]);
   
   const studentName = currentUser?.role === 'student'
@@ -107,7 +129,7 @@ export default function MainAppContent() {
           <Link href="/performance-analysis" passHref>
             <Button size="lg" variant="outline">
               <BarChart className="ml-2" />
-              عرض لوحة معلوماتي
+              تحليل أدائي
             </Button>
           </Link>
         </div>
@@ -159,6 +181,32 @@ export default function MainAppContent() {
               </CardContent>
             </Card>
           )}
+
+          {unitProgress.length > 0 && (
+            <Card className="md:col-span-2 lg:col-span-1">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Award />
+                  تقدمك في الوحدات
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {unitProgress.map(unit => (
+                    <div key={unit.title}>
+                        <div className="flex justify-between mb-1 items-center">
+                            <span className="text-sm font-medium flex items-center gap-2">
+                                <unit.icon className="h-4 w-4 text-muted-foreground" />
+                                {unit.title}
+                            </span>
+                            <span className="text-sm font-mono text-muted-foreground">{unit.progress}%</span>
+                        </div>
+                        <Progress value={unit.progress} />
+                    </div>
+                  ))}
+              </CardContent>
+            </Card>
+          )}
+
         </div>
       </section>
     </div>
