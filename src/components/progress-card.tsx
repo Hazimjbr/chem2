@@ -119,8 +119,8 @@ export default function ProgressCard() {
                                 style={topPositions[index]}
                             >
                                 {unit ? (
-                                    <Link href={`/materials/semester-1/${unit.id}`} legacyBehavior>
-                                        <a className="cursor-pointer">
+                                    <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
+                                        <a className={cn("cursor-pointer", unit.id !== 'unit-1' && 'pointer-events-none')}>
                                              <ProgressVessel 
                                                 label={`${index + 1}`}
                                                 percentage={progress[unit.id] || 0}
@@ -146,8 +146,8 @@ export default function ProgressCard() {
                                 style={bottomPositions[index]}
                            >
                                {unit ? (
-                                    <Link href={`/materials/semester-1/${unit.id}`} legacyBehavior>
-                                        <a className="cursor-pointer">
+                                    <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
+                                        <a className={cn("cursor-pointer", unit.id !== 'unit-1' && 'pointer-events-none')}>
                                              <ProgressVessel 
                                                 label={`${index + 5}`}
                                                 percentage={progress[unit.id] || 0}
