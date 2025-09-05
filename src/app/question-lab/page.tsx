@@ -18,22 +18,10 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question = {
-    questionText: "السائل الأسرع تكاثفا من السوائل الآتية",
-    options: [
-        "CH4",
-        "CH3CH2Cl",
-        "CH3CH2OH",
-        "CH3CH3"
-    ],
-    correctAnswerIndex: 2,
-    explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط لأنه يتطلب فقدان طاقة أقل للتحول من غاز إلى سائل الإيثانول (CH₃CH₂OH) يكون روابط هيدروجينية وهي الأقوى بين الخيارات المتاحة لذا فهو الأسرع تكاثفا",
-    level: 3,
-    source: "الوحدة الأولى / الحالة السائلة / التكاثف"
-};
+const newQuestion: Question | null = null;
 
 
-const QuestionCard = ({ question }: { question?: Question }) => {
+const QuestionCard = ({ question }: { question?: Question | null }) => {
     if (!question) {
         return (
              <Card className="w-full max-w-3xl mx-auto">
