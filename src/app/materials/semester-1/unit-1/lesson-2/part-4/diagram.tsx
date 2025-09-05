@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const VaporPressureDiagram = () => (
     <div className="flex justify-center items-center my-4">
         <Image 
-            src="https://i.ibb.co/L51J2v5/1.png"
+            src="https://i.ibb.co/p6s8gwcG/3.png"
             alt="منحنى الاتزان بين التبخر والتكاثف"
             width={400}
             height={250}
