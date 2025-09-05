@@ -169,13 +169,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={topPositions[index]}
                             >
                                 {unit && unit.id ? (
-                                    <Link href="/materials/semester-1" passHref legacyBehavior>
-                                        <a className="cursor-pointer">
-                                             <ProgressVessel 
-                                                label={`${index + 1}`}
-                                                percentage={progress[unit.id] || 0}
-                                            />
-                                        </a>
+                                    <Link href="/materials/semester-1" className="cursor-pointer">
+                                         <ProgressVessel 
+                                            label={`${index + 1}`}
+                                            percentage={progress[unit.id] || 0}
+                                        />
                                     </Link>
                                 ) : (
                                     <ProgressVessel 
@@ -196,13 +194,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={bottomPositions[index]}
                            >
                                {unit && unit.id ? (
-                                    <Link href="/materials/semester-1" passHref legacyBehavior>
-                                        <a className="cursor-pointer">
-                                             <ProgressVessel 
-                                                label={`${index + 5}`}
-                                                percentage={progress[unit.id] || 0}
-                                            />
-                                        </a>
+                                    <Link href="/materials/semester-1" className="cursor-pointer">
+                                         <ProgressVessel 
+                                            label={`${index + 5}`}
+                                            percentage={progress[unit.id] || 0}
+                                        />
                                     </Link>
                                 ) : (
                                      <ProgressVessel 
