@@ -64,14 +64,14 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
                 <g clipPath={`url(#clip-right-banner-${label})`}>
                     <polygon points="55,5 55,55 65,50 75,55 75,5" fill={bannerCompleteColor} stroke="white" strokeWidth="0.5" />
                 </g>
-                
-                {/* Unit number on the banner */}
-                <text x="52.5" y="30" textAnchor="middle" fill="black" fontSize="28" fontWeight="bold" className="drop-shadow-sm">{label}</text>
             </svg>
 
             {/* Content on top */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full pb-2">
-                <span className="text-2xl sm:text-3xl font-bold font-mono mt-auto drop-shadow-sm text-foreground">
+            <div className="relative z-10 flex flex-col items-center justify-end h-full pb-2 space-y-2">
+                 <div className="text-xl font-bold text-foreground drop-shadow-sm -mb-2">
+                    {label}
+                </div>
+                <span className="text-2xl sm:text-3xl font-bold font-mono drop-shadow-sm text-foreground">
                     {percentage}%
                 </span>
             </div>
