@@ -122,8 +122,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
         }
       }
     } catch (error) {
-      console.error("Failed to load quiz state:", error);
-      // If loading fails, clear the broken state
+      console.error("Failed to load or parse quiz state from localStorage. Clearing corrupted state.", error);
+      // If loading or parsing fails, clear the broken state
       localStorage.removeItem(storageKey);
     }
   }, [storageKey]);
