@@ -1,3 +1,4 @@
+
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import Image from 'next/image';
@@ -252,10 +253,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: "السائل الذي له أقل طاقة تكاثف مولية من السوائل الآتية",
         options: [
-            <InlineMath math="CH_3COCH_3" />,
-            <InlineMath math="CH_3CH_2Cl" />,
-            <InlineMath math="CH_3CH_2OH" />,
-            <InlineMath math="CH_3CH_3" />
+            <div dir="ltr"><InlineMath math="CH_3COCH_3" /></div>,
+            <div dir="ltr"><InlineMath math="CH_3CH_2Cl" /></div>,
+            <div dir="ltr"><InlineMath math="CH_3CH_2OH" /></div>,
+            <div dir="ltr"><InlineMath math="CH_3CH_3" /></div>
         ],
         correctAnswerIndex: 3,
         explanation: "طاقة التكاثف الأقل تعني أضعف قوى ترابط بين الجزيئات الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية وهي أقوى"
