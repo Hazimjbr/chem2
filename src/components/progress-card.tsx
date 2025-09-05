@@ -25,7 +25,6 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 export default function ProgressCard() {
     const { currentUser } = useApp();
     const [progress, setProgress] = useState<{ [key: string]: number }>({});
-    const [totalProgress, setTotalProgress] = useState(0);
 
     useEffect(() => {
         const fetchProgress = async () => {
@@ -35,8 +34,6 @@ export default function ProgressCard() {
             const completedLessons = new Set(progressData?.completedLessons || []);
             
             const newProgress: { [key: string]: number } = {};
-            let totalCompleted = 0;
-            let totalParts = 0;
 
             units.forEach(unit => {
                 const totalPartsInUnit = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
@@ -51,15 +48,16 @@ export default function ProgressCard() {
                         return completedLessons.has(path);
                     }).length;
                 }, 0);
-                
-                totalCompleted += completedPartsInUnit;
-                totalParts += totalPartsInUnit;
 
                 newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
             });
             
+            // --- التجربة ---
+            // For demonstration, force unit-1 progress to 100%
+            newProgress['unit-1'] = 100;
+            // --- نهاية التجربة ---
+
             setProgress(newProgress);
-            setTotalProgress(totalParts > 0 ? Math.round((totalCompleted / totalParts) * 100) : 0);
         };
 
         fetchProgress();
