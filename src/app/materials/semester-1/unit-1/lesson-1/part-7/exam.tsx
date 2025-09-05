@@ -1,4 +1,3 @@
-
 import { InlineMath } from 'react-katex';
 import React from 'react';
 
@@ -45,7 +44,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لمبدأ أفوجادرو فإن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجزيئات (أو المولات)"
     },
     {
-        question: "وعاء يحتوي على 2mol من غاز حجمه 10L إذا أضفنا 2mol أخرى من نفس الغاز عند نفس الظروف فما هو الحجم الجديد",
+        question: <>وعاء يحتوي على <span dir="ltr">2mol</span> من غاز حجمه <span dir="ltr">10L</span> إذا أضفنا <span dir="ltr">2mol</span> أخرى من نفس الغاز عند نفس الظروف فما هو الحجم الجديد</>,
         "options": [
             "10L",
             "20L",
@@ -81,7 +80,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "في الظروف المعيارية حجم الغاز = عدد المولات × 22.4 إذن الحجم = 0.1mol × 22.4L/mol = 2.24L"
     },
     {
-        question: <>وعاء حجمه <InlineMath math="2\text{L}" /> يحتوي على <InlineMath math="0.5\text{mol}" /> من غاز الأكسجين إذا أفرغنا نصف كمية الغاز فما هو الحجم الجديد الذي سيشغله الغاز المتبقي عند نفس الظروف</>,
+        "question": <>وعاء حجمه <InlineMath math="2\text{L}" /> يحتوي على <InlineMath math="0.5\text{mol}" /> من غاز الأكسجين إذا أفرغنا نصف كمية الغاز فما هو الحجم الجديد الذي سيشغله الغاز المتبقي عند نفس الظروف</>,
         "options": [
             "2L",
             "1L",
@@ -112,6 +111,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         "correctAnswerIndex": 1,
         "explanation": "بما أن V ∝ n فإن نسبة الأحجام تساوي نسبة عدد المولات V(He)/V(N₂) = n(He)/n(N₂) إذن 20/10 = 2/1 نسبة الهيليوم إلى النيتروجين هي 2:1"
+    },
+    {
+        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
+        "options": [
+            "0.4mol",
+            "0.6mol",
+            "0.27mol",
+            "0.8mol"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
     }
 ];
 
