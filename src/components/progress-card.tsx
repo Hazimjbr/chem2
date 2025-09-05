@@ -138,7 +138,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             return { ...basePosition, top: `${isMobile ? topValue + 20 : topValue + 22}%` };
         } else if (basePosition.bottom) {
             const bottomValue = parseInt(basePosition.bottom.replace('%', ''));
-            return { ...basePosition, bottom: `${isMobile ? bottomValue + 20 : bottomValue + 23}%` };
+            return { ...basePosition, bottom: `${isMobile ? bottomValue + 23 : bottomValue + 23}%` };
         }
         
         return basePosition;
@@ -151,7 +151,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
-                    خارطة تقدمك في الوحدات
+                    خارطة تقدمك
                 </CardTitle>
                 <CardDescription>
                     تنقل بين الوحدات وتابع رحلتك في احتلال القلاع التعليمية!
