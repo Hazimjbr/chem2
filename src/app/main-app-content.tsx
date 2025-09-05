@@ -2,13 +2,14 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, BarChart, Clock, Zap, Target } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library, Zap, Target, Award, Percent, BookCheck as BookCheckIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
 import { units } from '@/data/materials';
 import type { QuizResult } from '@/components/quiz';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 interface NextStep {
     lessonTitle: string;
@@ -38,14 +39,11 @@ export default function MainAppContent() {
   const { currentUser } = useApp();
 
   useEffect(() => {
-    const savedLesson = localStorage.getItem('lastVisitedLesson');
-    if (savedLesson) {
-      setLastVisitedLesson(savedLesson);
-    }
-    
-    try {
-        const savedProgress = localStorage.getItem('completedLessons');
-        const completedLessons = new Set(savedProgress ? JSON.parse(savedProgress) : []);
+    const fetchProgress = async () => {
+        if (!currentUser) return;
+        
+        const progressData = await getUserProgress(currentUser.uid);
+        const completedLessons = new Set(progressData?.completedLessons || []);
         
         // --- Next Step Logic ---
         let firstUncompletedPart: NextStep | null = null;
@@ -75,12 +73,13 @@ export default function MainAppContent() {
             if (firstUncompletedPart) break;
         }
         setNextStep(firstUncompletedPart);
+    };
 
-    } catch(e) {
-        console.error("Failed to calculate progress", e);
+    fetchProgress();
+    const savedLesson = localStorage.getItem('lastVisitedLesson');
+    if (savedLesson) {
+      setLastVisitedLesson(savedLesson);
     }
-
-
   }, [currentUser]);
   
   const studentName = currentUser?.role === 'student'
@@ -88,7 +87,7 @@ export default function MainAppContent() {
     : currentUser?.email?.split('@')[0];
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="container mx-auto p-8">
        <section className="text-center py-10">
         <h1 className="text-5xl font-bold mb-4">
           أهلاً بك يا{' '}

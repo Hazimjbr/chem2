@@ -15,6 +15,8 @@ import { CheckCircle, Atom, FlaskConical, Beaker, FileText } from 'lucide-react'
 import { units } from '@/data/materials';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils.tsx';
+import { useApp } from '@/context/CurriculumContext';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -31,18 +33,23 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 }
 
 export default function Semester1Page() {
+  const { currentUser } = useApp();
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    try {
-      const savedProgress = localStorage.getItem('completedLessons');
-      if (savedProgress) {
-        setCompletedLessons(new Set(JSON.parse(savedProgress)));
-      }
-    } catch (error) {
-      console.error("Failed to load lesson progress:", error);
+    const fetchProgress = async () => {
+        if (!currentUser) return;
+        try {
+            const progressData = await getUserProgress(currentUser.uid);
+            if (progressData && progressData.completedLessons) {
+                setCompletedLessons(new Set(progressData.completedLessons));
+            }
+        } catch (error) {
+            console.error("Failed to load lesson progress:", error);
+        }
     }
-  }, []);
+    fetchProgress();
+  }, [currentUser]);
 
   const calculateUnitProgress = (unit: typeof units[0]) => {
     const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);

@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { analyzeStudentPerformance } from '@/ai/flows/analyze-student-performance';
 import type { QuizResult } from '@/components/quiz';
 import { useApp } from '@/context/CurriculumContext';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 export default function PerformanceAnalysisForm() {
   const [analysis, setAnalysis] = useState('');
@@ -29,13 +30,10 @@ export default function PerformanceAnalysisForm() {
     setIsLoading(true);
     setAnalysis('');
     try {
-      const historyJSON = localStorage.getItem('quizHistory');
-      const allResults: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
+      const progressData = await getUserProgress(currentUser.uid);
+      const allResults: QuizResult[] = progressData?.quizHistory || [];
       
-      const studentResults = allResults.filter(r => r.studentId === currentUser.uid);
-      
-      // Filter results include all interactive questions (diff 0.5) and quizzes up to level 3
-      const relevantResults = studentResults.filter(r => r.difficulty === 0.5 || r.difficulty <= 3);
+      const relevantResults = allResults.filter(r => r.difficulty === 0.5 || r.difficulty <= 3);
 
       const studentName = currentUser.displayName || 'الطالب';
 

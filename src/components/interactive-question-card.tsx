@@ -9,6 +9,8 @@ import { CheckCircle, HelpCircle, XCircle } from 'lucide-react';
 import { cn } from '@/lib/utils.tsx';
 import type { QuizResult } from '@/components/quiz';
 import { useApp } from '@/context/CurriculumContext';
+import { saveInteractiveResult } from '@/lib/firebase/progress.actions';
+
 
 interface InteractiveQuestionCardProps {
   question: React.ReactNode; 
@@ -22,23 +24,6 @@ interface InteractiveQuestionCardProps {
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
-const saveInteractiveResult = (result: QuizResult) => {
-    try {
-        const historyJSON = localStorage.getItem('quizHistory');
-        const history: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
-        
-        const alreadyExists = history.some(r => r.lessonId === result.lessonId && r.difficulty === 0.5 && r.studentId === result.studentId);
-        if (!alreadyExists) {
-            history.push(result);
-            if (history.length > 100) { // Limit total history size
-                history.shift();
-            }
-            localStorage.setItem('quizHistory', JSON.stringify(history));
-        }
-    } catch (error) {
-        console.error("Failed to save interactive question result:", error);
-    }
-};
 
 export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation, questionId, lessonId, onCorrect }: InteractiveQuestionCardProps) {
   const { currentUser } = useApp();
@@ -54,13 +39,14 @@ export default function InteractiveQuestionCard({ question, options, correctAnsw
       setAnswerStatus('correct');
       onCorrect(questionId); // Notify parent component on correct answer
       if (currentUser) {
-        saveInteractiveResult({
+        const result: QuizResult = {
             lessonId: lessonId,
             score: 1,
             difficulty: 0.5,
             timestamp: Date.now(),
             studentId: currentUser.uid,
-        });
+        };
+        saveInteractiveResult(currentUser.uid, result);
       }
     } else {
       setAnswerStatus('incorrect');

@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Progress } from '@/components/ui/progress';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 interface WeakestLesson {
     lessonId: string;
@@ -60,55 +61,57 @@ export default function PerformanceAnalysisPage() {
     const [unitProgress, setUnitProgress] = useState<any[]>([]);
 
     useEffect(() => {
-        if (!currentUser) return;
+        const fetchData = async () => {
+            if (!currentUser) return;
 
-        // --- Weakest Lesson Logic ---
-        const historyJSON = localStorage.getItem('quizHistory');
-        const allResults: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
-        const studentResults = allResults.filter(r => r.studentId === currentUser.uid && r.difficulty > 0.5);
+            const progressData = await getUserProgress(currentUser.uid);
+            if (!progressData) return;
 
-        if (studentResults.length > 0) {
-            const weakest = studentResults.reduce((min, current) => current.score < min.score ? current : min, studentResults[0]);
-            if (weakest.score < 0.7) { // Only show if score is below 70%
-                setWeakestLesson({
-                    lessonId: weakest.lessonId,
-                    lessonTitle: getLessonTitle(weakest.lessonId),
-                    score: Math.round(weakest.score * 100)
-                });
+            // --- Weakest Lesson Logic ---
+            const allResults: QuizResult[] = progressData.quizHistory || [];
+            const studentResults = allResults.filter(r => r.difficulty > 0.5);
+
+            if (studentResults.length > 0) {
+                const weakest = studentResults.reduce((min, current) => current.score < min.score ? current : min, studentResults[0]);
+                if (weakest.score < 0.7) { // Only show if score is below 70%
+                    setWeakestLesson({
+                        lessonId: weakest.lessonId,
+                        lessonTitle: getLessonTitle(weakest.lessonId),
+                        score: Math.round(weakest.score * 100)
+                    });
+                }
+
+                // Format data for chart
+                const chartData = studentResults.map(r => ({
+                    name: new Date(r.timestamp).toLocaleDateString('ar-JO'),
+                    score: Math.round(r.score * 100),
+                    lesson: getLessonTitle(r.lessonId),
+                }));
+                setPerformanceData(chartData);
             }
 
-            // Format data for chart
-            const chartData = studentResults.map(r => ({
-                name: new Date(r.timestamp).toLocaleDateString('ar-JO'),
-                score: Math.round(r.score * 100),
-                lesson: getLessonTitle(r.lessonId),
-            }));
-            setPerformanceData(chartData);
+            // --- Unit Progress Logic ---
+            const completedLessons = new Set(progressData.completedLessons || []);
+            const progress = units.map(unit => {
+                const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
+                if (totalParts === 0) return { title: unit.title, progress: 0 };
+                
+                const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
+                    const lessonCompletedParts = lesson.parts.filter(part => {
+                        const path = constructPath(unit.id, lesson, part);
+                        return completedLessons.has(path);
+                    }).length;
+                    return acc + lessonCompletedParts;
+                }, 0);
+                
+                return {
+                    title: unit.title,
+                    progress: Math.round((completedPartsInUnit / totalParts) * 100)
+                };
+            });
+            setUnitProgress(progress);
         }
-
-        // --- Unit Progress Logic ---
-        const savedProgress = localStorage.getItem('completedLessons');
-        const completedLessons = new Set(savedProgress ? JSON.parse(savedProgress) : []);
-
-        const progress = units.map(unit => {
-            const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
-            if (totalParts === 0) return { title: unit.title, progress: 0 };
-            
-            const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
-                const lessonCompletedParts = lesson.parts.filter(part => {
-                    const path = constructPath(unit.id, lesson, part);
-                    return completedLessons.has(path);
-                }).length;
-                return acc + lessonCompletedParts;
-            }, 0);
-            
-            return {
-                title: unit.title,
-                progress: Math.round((completedPartsInUnit / totalParts) * 100)
-            };
-        });
-        setUnitProgress(progress);
-
+        fetchData();
     }, [currentUser]);
 
   return (

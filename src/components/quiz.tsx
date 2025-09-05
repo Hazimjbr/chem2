@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import React from 'react';
 import { useApp } from '@/context/CurriculumContext';
+import { saveUserQuizResult, getUserQuizState, saveUserQuizState, clearUserQuizState } from '@/lib/firebase/progress.actions';
 
 // This is the universal QuizQuestion interface
 export interface QuizQuestion {
@@ -40,7 +41,7 @@ interface QuizProps {
     lvl2: QuizQuestion[];
     lvl3: QuizQuestion[];
   };
-  lessonId: string; // Unique ID for the lesson to manage localStorage
+  lessonId: string; // Unique ID for the lesson to manage state
 }
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
@@ -68,22 +69,6 @@ const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
 };
 
-const saveQuizResult = (result: QuizResult) => {
-  try {
-    const historyJSON = localStorage.getItem('quizHistory');
-    const history: QuizResult[] = historyJSON ? JSON.parse(historyJSON) : [];
-    // Add the new result and keep the history to a reasonable size, e.g., last 50 quizzes
-    history.push(result);
-    if (history.length > 100) { // Limit total history size
-        history.shift();
-    }
-    localStorage.setItem('quizHistory', JSON.stringify(history));
-  } catch (error) {
-    console.error("Failed to save quiz result:", error);
-  }
-};
-
-
 export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizProps) {
   const { currentUser } = useApp();
   const [quiz, setQuiz] = useState<QuizQuestion[] | null>(null);
@@ -100,46 +85,39 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [initialTime, setInitialTime] = useState<number | null>(null);
   
-  const storageKey = currentUser ? `quizState_${lessonId}_${currentUser.uid}` : `quizState_${lessonId}_guest`;
-
-  // Load state from localStorage on mount
+  // Load state from Firestore on mount
   useEffect(() => {
-    try {
-      const savedState = localStorage.getItem(storageKey);
-      if (savedState) {
-        const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime } = JSON.parse(savedState);
-        if (quiz) {
-            setQuiz(quiz);
-            setCurrentQuestionIndex(currentQuestionIndex);
-            setScore(score);
-            setDifficultyLevel(difficultyLevel);
-            setIsFinished(isFinished);
-            setAnswerStatus(answerStatus || 'unanswered');
-            setSelectedAnswer(selectedAnswer || null);
-            setUserAnswers(userAnswers || []);
-            setTimeLeft(timeLeft !== undefined ? timeLeft : null);
-            setInitialTime(initialTime !== undefined ? initialTime : null);
+    const loadState = async () => {
+        if (!currentUser) return;
+        const savedState = await getUserQuizState(currentUser.uid, lessonId);
+        if (savedState) {
+            const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime } = savedState;
+            if (quiz) {
+                setQuiz(quiz);
+                setCurrentQuestionIndex(currentQuestionIndex);
+                setScore(score);
+                setDifficultyLevel(difficultyLevel);
+                setIsFinished(isFinished);
+                setAnswerStatus(answerStatus || 'unanswered');
+                setSelectedAnswer(selectedAnswer || null);
+                setUserAnswers(userAnswers || []);
+                setTimeLeft(timeLeft !== undefined ? timeLeft : null);
+                setInitialTime(initialTime !== undefined ? initialTime : null);
+            }
         }
-      }
-    } catch (error) {
-      console.error("Failed to load or parse quiz state from localStorage. Clearing corrupted state.", error);
-      // If loading or parsing fails, clear the broken state
-      localStorage.removeItem(storageKey);
-    }
-  }, [storageKey]);
+    };
+    loadState();
+  }, [currentUser, lessonId]);
 
-  // Save state to localStorage whenever it changes
+  // Save state to Firestore whenever it changes
   useEffect(() => {
-    try {
-      // Don't save if there's no quiz active, to allow starting fresh.
-      if (!quiz || isLoading) return;
-      
-      const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime };
-      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
-    } catch (error) {
-      console.error("Failed to save quiz state:", error);
-    }
-  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, storageKey, answerStatus, selectedAnswer, isLoading, userAnswers, timeLeft, initialTime]);
+    const saveState = async () => {
+        if (!currentUser || !quiz || isLoading) return;
+        const stateToSave = { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime };
+        await saveUserQuizState(currentUser.uid, lessonId, stateToSave);
+    };
+    saveState();
+  }, [quiz, currentQuestionIndex, score, difficultyLevel, isFinished, lessonId, answerStatus, selectedAnswer, isLoading, userAnswers, timeLeft, initialTime, currentUser]);
   
   // Timer effect
   useEffect(() => {
@@ -173,9 +151,11 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     setTimeLeft(null);
     setInitialTime(null);
 
-    // Immediately clear localStorage for the new quiz
-    localStorage.removeItem(storageKey);
-
+    // Immediately clear Firestore state for the new quiz
+    if (currentUser) {
+        await clearUserQuizState(currentUser.uid, lessonId);
+    }
+    
     try {
         let generatedQuestions: QuizQuestion[] = [];
         if (level <= 3 && staticQuizzes) {
@@ -238,14 +218,14 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     }
   };
 
-  const handleNextQuestion = (forceFinish = false) => {
+  const handleNextQuestion = async (forceFinish = false) => {
     const isLastQuestion = currentQuestionIndex >= quiz!.length - 1;
 
     if (isLastQuestion || forceFinish) {
         const finalScore = score / quiz!.length;
         if (currentUser) {
             const timeTaken = initialTime !== null && timeLeft !== null ? initialTime - timeLeft : undefined;
-            saveQuizResult({
+            const resultToSave: QuizResult = {
                 lessonId: lessonId,
                 score: finalScore,
                 difficulty: difficultyLevel,
@@ -253,7 +233,8 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                 studentId: currentUser.uid,
                 timeTaken: timeTaken,
                 questionCount: quiz?.length,
-            });
+            };
+            await saveUserQuizResult(currentUser.uid, resultToSave);
         }
        setIsFinished(true);
        setTimeLeft(null); // Stop the timer
@@ -281,9 +262,11 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     handleGenerateQuiz(nextLevel);
   }
   
-  const handleStartOver = () => {
+  const handleStartOver = async () => {
       // Completely reset state and clear storage
-      localStorage.removeItem(storageKey);
+      if (currentUser) {
+        await clearUserQuizState(currentUser.uid, lessonId);
+      }
       setQuiz(null);
       setIsFinished(false);
       setCurrentQuestionIndex(0);
