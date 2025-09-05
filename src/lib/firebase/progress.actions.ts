@@ -70,6 +70,7 @@ export async function saveUserQuizResult(userId: string, result: QuizResult) {
     });
   } catch (error: any) {
      if (error.code === 'not-found') {
+        const progressRef = doc(db, 'user-progress', userId);
         await setDoc(progressRef, { quizHistory: [result] });
      } else {
         console.error("Error saving quiz result:", error);
@@ -88,6 +89,7 @@ export async function markLessonAsComplete(userId: string, lessonId: string) {
         });
     } catch (error: any) {
         if (error.code === 'not-found') {
+            const progressRef = doc(db, 'user-progress', userId);
             await setDoc(progressRef, { completedLessons: [lessonId] });
         } else {
             console.error("Error marking lesson as complete:", error);
@@ -106,6 +108,7 @@ export async function saveInteractiveResult(userId: string, result: QuizResult) 
     });
   } catch (error: any) {
      if (error.code === 'not-found') {
+        const progressRef = doc(db, 'user-progress', userId);
         await setDoc(progressRef, { interactiveHistory: [result] });
      } else {
         console.error("Error saving interactive result:", error);
