@@ -2,14 +2,21 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Award } from 'lucide-react';
+import { Award, MapPin } from 'lucide-react';
 import ProgressVessel from './progress-vessel';
 import { units } from '@/data/materials';
 import { useApp } from '@/context/CurriculumContext';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils.tsx';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -30,7 +37,7 @@ const topPositions = [
     { top: '5%', left: '15%' },
     { top: '15%', left: '40%' },
     { top: '5%', left: '65%' },
-    { top: '15%', left: '90%' },
+    { top: '15', left: '90%' },
 ];
 
 const bottomPositions = [
@@ -40,9 +47,18 @@ const bottomPositions = [
     { bottom: '5%', left: '85%' },
 ];
 
-export default function ProgressCard() {
+interface ProgressCardProps {
+    lastVisitedLesson: string;
+}
+
+export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
     const { currentUser } = useApp();
     const [progress, setProgress] = useState<{ [key: string]: number }>({});
+    
+    const lastVisitedUnitId = useMemo(() => {
+        const match = lastVisitedLesson.match(/unit-(\d+)/);
+        return match ? `unit-${match[1]}` : null;
+    }, [lastVisitedLesson]);
 
     useEffect(() => {
         const fetchProgress = async () => {
@@ -77,25 +93,41 @@ export default function ProgressCard() {
     }, [currentUser]);
 
     const allUnits = [...units, ...Array(8 - units.length).fill(null)];
+    
+    const getPositionForUnit = (unitId: string) => {
+        const index = allUnits.findIndex(u => u && u.id === unitId);
+        if (index === -1) return null;
+
+        if (index < 4) { // Top row
+            const pos = topPositions[index];
+            return { top: pos.top, left: `calc(${pos.left} + 30px)` }; // Adjust left to be beside the castle
+        } else { // Bottom row
+            const pos = bottomPositions[index - 4];
+            return { bottom: `calc(${pos.bottom} + 60px)`, left: `calc(${pos.left} + 30px)` }; // Adjust to be above the castle
+        }
+    };
+    
+    const lastVisitedPosition = lastVisitedUnitId ? getPositionForUnit(lastVisitedUnitId) : null;
+
 
     return (
         <Card className="md:col-span-2">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
-                    عدل تقدمك في الوحدات
+                    خارطة تقدمك في الوحدات
                 </CardTitle>
                 <CardDescription>
-                    تابع رحلتك في احتلال القلاع التعليمية!
+                    تنقل بين الوحدات وتابع رحلتك في احتلال القلاع التعليمية!
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="relative w-full h-[450px] bg-green-200/50 rounded-lg p-4 overflow-hidden">
+                 <div className="relative w-full h-[450px] bg-green-200/50 rounded-lg p-4 overflow-hidden" data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
                         <path 
-                            d="M -50 225 C 100 205, 300 245, 765 225"
+                            d="M -50 225 C 100 205, 300 245, 835 225"
                             stroke="black"
                             strokeWidth="42"
                             fill="none"
@@ -103,7 +135,7 @@ export default function ProgressCard() {
                         />
                         {/* River Water */}
                         <path 
-                            d="M -50 225 C 100 205, 300 245, 765 225"
+                            d="M -50 225 C 100 205, 300 245, 835 225"
                             stroke="hsl(var(--primary))" 
                             strokeWidth="40" 
                             fill="none"
@@ -163,6 +195,26 @@ export default function ProgressCard() {
                            </div>
                         ))}
                     </div>
+                    
+                    {lastVisitedPosition && (
+                         <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                     <Link href={lastVisitedLesson} passHref>
+                                        <div
+                                            className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer animate-bounce"
+                                            style={lastVisitedPosition}
+                                        >
+                                            <MapPin className="w-8 h-8 text-destructive drop-shadow-lg" />
+                                        </div>
+                                    </Link>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>أنت هنا! أكمل من حيث توقفت.</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    )}
                  </div>
             </CardContent>
         </Card>

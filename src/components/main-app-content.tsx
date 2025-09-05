@@ -117,25 +117,8 @@ export default function MainAppContent() {
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          {currentUser && <ProgressCard />}
+          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Clock />
-                أكمل من حيث توقفت
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
-                الاستمرار في آخر درس قمت بزيارته
-              </p>
-              <Link href={lastVisitedLesson} passHref>
-                <Button>متابعة الدرس</Button>
-              </Link>
-            </CardContent>
-          </Card>
-          
           {nextStep && (
             <Card>
               <CardHeader>
