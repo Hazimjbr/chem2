@@ -20,37 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="inline-block font-mono">C₂H₅OH</span>) عند درجة حرارة <span dir="ltr" className="inline-block">50°C</span>؟</p>
-            <div className="flex justify-center my-4">
-                <Image
-                    src="https://i.ibb.co/84T52SSm/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </>
-    ),
-    options: [
-        "78",
-        "400",
-        "220",
-        "760"
-    ],
-    correctAnswerIndex: 2,
-    explanation: (
-        <>
-            <span>بتتبع الخط العمودي من درجة حرارة </span><span dir="ltr" className="inline-block">50°C</span><span> على المحور السيني حتى يتقاطع مع منحنى الإيثانول، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل </span><span dir="ltr" className="inline-block">220mmHg</span><span> تقريبًا.</span>
-        </>
-    ),
-    level: 2,
-    source: "الوحدة الأولى / الدرس الثاني / درجة الغليان",
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
