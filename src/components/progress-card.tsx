@@ -92,6 +92,13 @@ export default function ProgressCard() {
                  <div className="relative w-full h-[450px] bg-green-500/10 rounded-lg p-4 overflow-hidden">
                     {/* River that spans the full width */}
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
+                         <path 
+                            d="M -10 225 C 25% 205, 75% 245, 110% 225"
+                            stroke="black"
+                            strokeWidth="42"
+                            fill="none"
+                            strokeLinecap="round"
+                        />
                         <path 
                             d="M -10 225 C 25% 205, 75% 245, 110% 225"
                             stroke="hsl(var(--primary))" 
