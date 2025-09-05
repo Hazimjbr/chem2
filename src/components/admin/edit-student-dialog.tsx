@@ -106,7 +106,7 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
             toast({ title: 'نجاح', description: result.message });
             // Update local state to reflect deletion immediately
             setCurrentDevices(prev => prev.filter(d => d.deviceId !== deviceIdString));
-            // onUpdateSuccess(); // This will refresh the student list and data in the dialog
+            // No need to call onUpdateSuccess here as it might re-fetch old data before sync
         } else {
             toast({ variant: 'destructive', title: 'فشل', description: result.message });
         }
