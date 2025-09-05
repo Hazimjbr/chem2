@@ -55,7 +55,7 @@ const QuestionCard = ({ question }: { question: Question }) => (
                         key={index}
                         variant="outline"
                         className={cn(
-                            "w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center font-mono",
+                            "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center font-mono",
                             isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
                         )}
                         disabled
