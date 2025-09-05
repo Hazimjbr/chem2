@@ -24,19 +24,19 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
     return path;
 };
 
-// Positions for the castles on the map [top, left/right]
-const semester1Positions = [
-    { top: '5%', left: '10%' },
-    { top: '50%', left: '25%' },
-    { top: '5%', right: '20%' },
-    { top: '60%', right: '5%' },
+
+const topPositions = [
+    { top: '5%', left: '5%' },
+    { top: '10%', right: '25%' },
+    { top: '5%', left: '35%' },
+    { top: '10%', right: '2%' },
 ];
 
-const semester2Positions = [
-    { top: '15%', left: '15%' },
-    { top: '5%', right: '10%' },
-    { top: '55%', right: '25%' },
-    { top: '65%', left: '5%' },
+const bottomPositions = [
+    { bottom: '5%', left: '20%' },
+    { bottom: '10%', right: '40%' },
+    { bottom: '5%', left: '55%' },
+    { bottom: '10%', right: '15%' },
 ];
 
 export default function ProgressCard() {
@@ -75,8 +75,7 @@ export default function ProgressCard() {
         fetchProgress();
     }, [currentUser]);
 
-    const semester1Units = units.slice(0, 4);
-    const semester2Units = units.slice(4); // Assuming there might be more later
+    const allUnits = [...units, ...Array(4).fill(null)];
 
     return (
         <Card className="md:col-span-2">
@@ -90,55 +89,46 @@ export default function ProgressCard() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="relative w-full h-[400px] bg-green-500/10 rounded-lg p-4 overflow-hidden">
+                 <div className="relative w-full h-[450px] bg-green-500/10 rounded-lg p-4 overflow-hidden">
                     {/* River and Bridge */}
-                    <svg className="absolute inset-0 w-full h-full" data-ai-hint="river bridge map">
+                    <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         <path 
-                            d="M 50 0 C 40 100, 60 150, 50 250 C 40 350, 60 400, 50 500" 
+                            d="M -50 225 C 100 205, 300 245, 500 225"
                             stroke="hsl(var(--primary))" 
-                            strokeWidth="20" 
-                            fill="none" 
-                            transform="translate(180, 0) scale(0.4, 0.8)"
-                        />
-                        <path
-                            d="M 180 190 C 200 170, 220 170, 240 190"
-                            stroke="#A98E71"
-                            strokeWidth="5"
+                            strokeWidth="30" 
                             fill="none"
                         />
-                         <line x1="185" y1="190" x2="185" y2="200" stroke="#A98E71" strokeWidth="2" />
-                         <line x1="235" y1="190" x2="235" y2="200" stroke="#A98E71" strokeWidth="2" />
                     </svg>
-
-                    {/* Semester 1 - Left Side */}
-                    <div className="absolute inset-y-0 left-0 w-1/2">
+                    
+                    {/* Top Castles */}
+                    <div className="absolute inset-x-0 top-0 h-1/2">
                          <h3 className="absolute top-2 right-4 text-lg font-bold text-background/80">الفصل الأول</h3>
-                        {semester1Units.map((unit, index) => (
+                        {allUnits.slice(0, 4).map((unit, index) => (
                             <div
-                                key={unit.id}
+                                key={`top-castle-${index}`}
                                 className="absolute w-24 h-32"
-                                style={semester1Positions[index]}
+                                style={topPositions[index]}
                             >
                                 <ProgressVessel 
                                     label={`${index + 1}`}
-                                    percentage={progress[unit.id] || 0}
+                                    percentage={unit ? (progress[unit.id] || 0) : 0}
                                 />
                             </div>
                         ))}
                     </div>
 
-                    {/* Semester 2 - Right Side */}
-                    <div className="absolute inset-y-0 right-0 w-1/2">
-                        <h3 className="absolute top-2 left-4 text-lg font-bold text-background/80">الفصل الثاني</h3>
-                         {semester1Units.map((_, index) => ( // Using semester1Units length to create 4 castles
+                    {/* Bottom Castles */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/2">
+                       <h3 className="absolute bottom-2 left-4 text-lg font-bold text-background/80">الفصل الثاني</h3>
+                         {allUnits.slice(4).map((unit, index) => (
                             <div
-                                key={`sem2-${index}`}
+                                key={`bottom-castle-${index}`}
                                 className="absolute w-24 h-32"
-                                style={semester2Positions[index]}
+                                style={bottomPositions[index]}
                             >
                                 <ProgressVessel 
-                                    label={`${index + 5}`} // Continue numbering
-                                    percentage={0} // Mock data for semester 2
+                                    label={`${index + 5}`}
+                                    percentage={unit ? (progress[unit.id] || 0) : 0}
                                 />
                             </div>
                         ))}
