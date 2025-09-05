@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3, Droplets, AlertTriangle, GitCompare, Balance } from 'lucide-react';
+import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3, Droplets, AlertTriangle, GitCompare, Scale } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -62,7 +62,7 @@ export default function LessonPartPage() {
                     </p>
                 </FlippableCard>
 
-                <FlippableCard cardTitle="حالة الاتزان الديناميكي" cardIcon={<Balance className="h-6 w-6" />}>
+                <FlippableCard cardTitle="حالة الاتزان الديناميكي" cardIcon={<Scale className="h-6 w-6" />}>
                      <p className="text-sm">
                         هي الحالة التي يتساوى فيها معدل سرعة تبخر السائل مع معدل سرعة تكاثف بخاره في وعاء مغلق.
                     </p>
