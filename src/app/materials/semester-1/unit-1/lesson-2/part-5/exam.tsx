@@ -133,4 +133,30 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "بتتبع الخط العمودي من درجة حرارة 50°C على المحور السيني حتى يتقاطع مع منحنى الإيثانول، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 220mmHg تقريبًا."
     }
 ];
-export const staticQuizLvl3: QuizQuestion[] = [];
+export const staticQuizLvl3: QuizQuestion[] = [
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr">°C</span> والضغط البخاري mmHg لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية:</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </>
+        ),
+        options: [
+            "الماء",
+            "الإيثانول",
+            "الثنائي إيثيل إيثر",
+            "الأسيتون"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات وهذا يؤدي إلى أعلى ضغط بخاري من الرسم البياني نجد أن ثنائي إيثيل إيثر يمتلك أعلى ضغط بخاري عند أي درجة حرارة مما يدل على أنه الأضعف في قوى الترابط والأقل في طاقة التكاثف"
+    }
+];

@@ -20,37 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr">°C</span> والضغط البخاري mmHg لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية:</p>
-            <div className="flex justify-center my-4">
-                <Image
-                    src="https://i.ibb.co/84T52SSm/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </>
-    ),
-    options: [
-        "الماء",
-        "الإيثانول",
-        "الثنائي إيثيل إيثر",
-        "الأسيتون"
-    ],
-    correctAnswerIndex: 2,
-    explanation: (
-        <>
-            <span>أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات وهذا يؤدي إلى أعلى ضغط بخاري من الرسم البياني نجد أن ثنائي إيثيل إيثر يمتلك أعلى ضغط بخاري عند أي درجة حرارة مما يدل على أنه الأضعف في قوى الترابط والأقل في طاقة التكاثف</span>
-        </>
-    ),
-    level: 3,
-    source: "الوحدة 1 / الدرس 2 / الجزء 5"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
