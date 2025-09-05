@@ -20,51 +20,9 @@ interface Question {
     source: string;
 }
 
-const originalQuestion: Question | null = {
-    questionText: (
-        <>
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة<span dir="ltr" className="inline-block">°C</span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C2H5OC2H5 عند<span dir="ltr" className="inline-block">30°C</span> يساوي</p>
-            <div className="flex justify-center my-4">
-                <Image
-                    src="https://i.ibb.co/84T52SSm/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </>
-    ),
-    options: ["760", "100", "30", "650"],
-    correctAnswerIndex: 3,
-    explanation: <>من خلال تتبع الخط العمودي من درجة حرارة<span dir="ltr" className="inline-block">30°C</span> حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم التحرك أفقيًا إلى محور الضغط نجد أن القيمة تقارب 650mmHg</>,
-    level: 2,
-    source: "الدرس الثاني: الحالة السائلة / درجة الغليان"
-};
+const originalQuestion: Question | null = null;
 
-const copiedQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن الحالة الفيزيائية للمادة A عند درجة الحرارة B هي:</p>
-            <div className="flex justify-center my-4">
-                    <Image
-                    src="https://i.ibb.co/GfZ5wtqG/22.png"
-                    alt="منحنى تبريد المادة A"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="cooling curve"
-                />
-            </div>
-        </div>
-    ),
-    options: ["صلب", "سائل", "غاز", "غاز + سائل"],
-    correctAnswerIndex: 1,
-    explanation: "يوضح الرسم البياني منحنى تبريد المادة تبدأ المادة كغاز عند درجة حرارة عالية ثم تبرد الخط الأفقي الأول يمثل عملية التكاثف التحول من غاز إلى سائل عند درجة حرارة ثابتة النقطة B تقع على الخط المائل بعد انتهاء التكاثف وقبل بدء التجمد مما يعني أن المادة في هذه المرحلة تكون في الحالة السائلة ويتم تبريدها",
-    level: 1,
-    source: "الدرس الثاني: الحالة السائلة / التكاثف"
-};
+const copiedQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
