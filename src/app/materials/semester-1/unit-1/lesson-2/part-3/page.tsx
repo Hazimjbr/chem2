@@ -113,6 +113,28 @@ export default function LessonPartPage() {
                 </CardContent>
             </Card>
 
+            <FlippableCard cardTitle="تحليل أعمق لمنحنى التبريد" cardIcon={<BarChart3 className="h-6 w-6" />}>
+                <div className="space-y-4">
+                    <div>
+                        <h4 className="font-semibold text-accent">لماذا هضبة التكاثف أطول من هضبة التجمد؟</h4>
+                        <p className="text-sm mt-1">
+                            طول الهضبة الأفقية يعتمد على كمية الطاقة الكامنة المنطلقة.
+                            <strong className="text-primary">طاقة التكاثف</strong> (تحول الغاز لسائل) أكبر بكثير من <strong className="text-secondary-foreground">طاقة التجمد</strong> (تحول السائل لصلب).
+                            لذلك، يستغرق التكاثف وقتًا أطول لفقدان كل هذه الطاقة، مما يجعل هضبته أطول.
+                        </p>
+                    </div>
+                    <div className="border-t pt-4">
+                        <h4 className="font-semibold text-accent">لماذا يختلف ميل الأجزاء المنحنية؟</h4>
+                        <p className="text-sm mt-1">
+                            الميل يعتمد على <strong className="text-primary">الحرارة النوعية</strong> للمادة في كل حالة (مقاومتها لفقدان الحرارة).
+                            كلما كانت الحرارة النوعية أكبر، كان التبريد أبطأ والميل أقل حدة (أكثر تسطحًا).
+                            ترتيب الحرارة النوعية للماء هو: <strong className="text-secondary-foreground">سائل > صلب > غاز</strong>.
+                            لذلك، يكون منحنى تبريد <strong className="text-secondary-foreground">السائل هو الأكثر تسطحًا</strong>، يليه الصلب، ثم الغاز هو الأكثر انحدارًا.
+                        </p>
+                    </div>
+                </div>
+            </FlippableCard>
+
         </div>
         
         <div className="space-y-4 mt-8">
