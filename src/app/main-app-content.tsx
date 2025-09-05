@@ -115,36 +115,40 @@ export default function MainAppContent() {
 
       <section className="pb-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           
-          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          <div className="lg:col-span-1">
+             {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          </div>
 
-          {nextStep && (
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
-                  خطوتك التالية
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {nextStep.totalParts - nextStep.completedParts === 1 ? (
-                  <p className="text-muted-foreground mb-4">
-                    رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
-                  </p>
-                ) : (
-                  <p className="text-muted-foreground mb-4">
-                    أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
-                  </p>
-                )}
-                <Link href={nextStep.nextPartPath} passHref>
-                  <Button>
-                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          )}
+          <div className="lg:col-span-1">
+            {nextStep && (
+                <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                    {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
+                    خطوتك التالية
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    {nextStep.totalParts - nextStep.completedParts === 1 ? (
+                    <p className="text-muted-foreground mb-4">
+                        رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                    </p>
+                    ) : (
+                    <p className="text-muted-foreground mb-4">
+                        أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                    </p>
+                    )}
+                    <Link href={nextStep.nextPartPath} passHref>
+                    <Button>
+                        {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                    </Button>
+                    </Link>
+                </CardContent>
+                </Card>
+            )}
+          </div>
 
         </div>
       </section>
