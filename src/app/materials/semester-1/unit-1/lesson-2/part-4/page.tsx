@@ -1,4 +1,3 @@
-
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -126,7 +125,7 @@ export default function LessonPartPage() {
                       "تبقى ثابتة",
                       "تقل تدريجيًا",
                       "تزداد حتى تتساوى مع سرعة التبخر",
-                      "تساوي صفر دائمًا"
+                      "تساوي صفرًا دائمًا"
                   ]}
                   correctAnswerIndex={2}
                   explanation="في البداية، تكون سرعة التكاثف صفرًا. مع تبخر المزيد من الجزيئات، يزداد تركيز البخار، فتزداد سرعة التكاثف حتى تصل إلى سرعة التبخر عند حالة الاتزان."
@@ -150,4 +149,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
