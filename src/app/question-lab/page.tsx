@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -20,7 +19,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    "questionText": "أي المركبات التالية له أعلى درجة غليان؟",
+    "options": [
+        "CH₃COOH",
+        "CH₃CH₂Cl",
+        "CH₃COCH₃",
+        "CH₃CH₃"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "حمض الأسيتيك (CH₃COOH) هو الوحيد القادر على تكوين روابط هيدروجينية قوية جدًا على شكل دايمر (جزيئين معًا)، مما يرفع درجة غليانه بشكل كبير مقارنة ببقية المركبات التي تمتلك قوى ثنائي القطب أو قوى لندن فقط.",
+    "level": 3,
+    "source": "الدرس الثاني: الحالة السائلة"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
