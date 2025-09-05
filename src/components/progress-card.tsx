@@ -30,7 +30,10 @@ export default function ProgressCard() {
 
     useEffect(() => {
         const fetchProgress = async () => {
-            if (!currentUser) return;
+            if (!currentUser) {
+                setIsLoading(false);
+                return;
+            };
             setIsLoading(true);
             const progressData = await getUserProgress(currentUser.uid);
             const completedLessons = new Set(progressData?.completedLessons || []);
@@ -57,23 +60,6 @@ export default function ProgressCard() {
         fetchProgress();
     }, [currentUser]);
 
-    if (isLoading) {
-        return (
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Award />
-                        تقدمك في الوحدات
-                    </CardTitle>
-                    <CardDescription>عرض مرئي لإنجازك في كل وحدة دراسية.</CardDescription>
-                </CardHeader>
-                <div className="flex justify-center items-center h-48">
-                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                </div>
-            </Card>
-        )
-    }
-
     return (
         <Card>
              <CardHeader>
@@ -83,15 +69,21 @@ export default function ProgressCard() {
                 </CardTitle>
                 <CardDescription>عرض مرئي لإنجازك في كل وحدة دراسية.</CardDescription>
             </CardHeader>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
-                {units.map(unit => (
-                    <ProgressVessel
-                        key={unit.id}
-                        label={unit.title}
-                        percentage={progress[unit.id] || 0}
-                    />
-                ))}
-            </div>
+             {isLoading ? (
+                <div className="flex justify-center items-center h-48">
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                </div>
+             ) : (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
+                    {units.map(unit => (
+                        <ProgressVessel
+                            key={unit.id}
+                            label={unit.title}
+                            percentage={progress[unit.id] || 0}
+                        />
+                    ))}
+                </div>
+             )}
         </Card>
     );
 }
