@@ -89,7 +89,7 @@ export default function ProgressCard() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="relative w-full h-[450px] bg-[#00DD00] rounded-lg p-4 overflow-hidden">
+                 <div className="relative w-full h-[450px] bg-green-500 rounded-lg p-4 overflow-hidden">
                     {/* River that spans the full width */}
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
