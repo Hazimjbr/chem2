@@ -268,7 +268,7 @@ export async function deleteDevice(deviceId: string, studentId: string) {
         const studentRef = doc(db, 'students', studentId);
         const studentDoc = await getDoc(studentRef);
         
-        // If the deleted device was the active one
+        // If the deleted device was the active one, update it
         if (studentDoc.exists() && studentDoc.data().activeDeviceId === deviceId) {
             // Find another registered device to set as active
             const remainingDevicesQuery = query(devicesRef, where("studentId", "==", studentId), limit(1));
@@ -283,6 +283,7 @@ export async function deleteDevice(deviceId: string, studentId: string) {
             }
         }
 
+        // Always revoke sessions after deleting a device
         await manageUser({ action: 'revokeSession', uid: studentId });
 
         return { success: true, message: 'تم حذف الجهاز بنجاح، وتم تسجيل خروج الطالب من جميع الجلسات.' };
