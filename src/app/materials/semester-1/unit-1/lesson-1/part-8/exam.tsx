@@ -1,4 +1,3 @@
-
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import GasLawsGraph from './diagram';
@@ -131,7 +130,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     },
     {
         question: <><span>عينة من غاز النيتروجين (N₂) حجمها 2L عند ضغط 3atm ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ\text{C}" /></span><span> ما هو عدد مولات الغاز</span></>,
-        "options": [
+        options: [
             "0.24mol",
             "2.4mol",
             "4.1mol",
