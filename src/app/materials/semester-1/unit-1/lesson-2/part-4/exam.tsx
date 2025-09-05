@@ -9,47 +9,57 @@ export interface QuizQuestion {
     explanation: string;
 }
 
-export const staticQuizLvl1: QuizQuestion[] = [];
-export const staticQuizLvl2: QuizQuestion[] = [
+export const staticQuizLvl1: QuizQuestion[] = [
     {
-        question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الذي له أضعف قوى تجاذب هو:</p>
-                 <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/TB6RcQkw/22.png"
-                        alt="Vapor Pressure vs Temperature"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curve"
-                    />
-                </div>
-            </div>
-        ),
-        options: ["A", "M", "B", "Q"],
-        correctAnswerIndex: 0,
-        explanation: "أضعف قوى تجاذب تعني أن السائل يتبخر بسهولة أكبر وبالتالي يمتلك أعلى ضغط بخاري عند درجة حرارة معينة المنحنى A يمثل السائل الذي له أعلى ضغط بخاري لذا قوى التجاذب بين جزيئاته هي الأضعف"
-    },
-    {
-        question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الذي له أقل طاقة تكاثف مولية هو:</p>
-                 <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/TB6RcQkw/22.png"
-                        alt="Vapor Pressure vs Temperature"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curve"
-                    />
-                </div>
-            </div>
-        ),
-        options: ["A", "M", "B", "Q"],
-        correctAnswerIndex: 0,
-        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات وهذا يعني أن السائل يتبخر بسهولة أكبر ويمتلك أعلى ضغط بخاري عند درجة حرارة معينة المنحنى A يمثل السائل الذي له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف"
+        question: "في حالة الاتزان الديناميكي بين السائل وبخاره في وعاء مغلق، أي العبارات التالية صحيحة؟",
+        options: [
+            "تتوقف عملية التبخر تمامًا",
+            "تتوقف عملية التكاثف تمامًا",
+            "تتساوى سرعة التبخر مع سرعة التكاثف",
+            "يكون ضغط البخار صفرًا"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الاتزان الديناميكي يعني أن عمليتي التبخر والتكاثف تحدثان بنفس السرعة، مما يؤدي إلى ثبات الضغط البخاري."
     }
 ];
-export const staticQuizLvl3: QuizQuestion[] = [];
+
+export const staticQuizLvl2: QuizQuestion[] = [
+    {
+        question: "عند مقارنة الماء (H₂O) والإيثانول (CH₃CH₂OH) عند نفس درجة الحرارة، لماذا يكون الضغط البخاري للماء أقل؟",
+        options: [
+            "لأن الكتلة المولية للماء أقل",
+            "لأن الماء يكون روابط هيدروجينية أقوى وأكثر عددًا",
+            "لأن الإيثانول غير قطبي",
+            "لأن الماء يتبخر أسرع"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
+    }
+];
+export const staticQuizLvl3: QuizQuestion[] = [
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادًا على منحنى الضغط البخاري، أي سائل لديه أضعف قوى ترابط بين جزيئاته؟</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/TB6RcQkw/22.png"
+                        alt="Vapor Pressure vs Temperature"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "H₂O",
+            "CH₃OH",
+            "CHCl₃",
+            "C₅H₁₂"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "أضعف قوى ترابط تعني أن السائل يتبخر بسهولة أكبر، وبالتالي يمتلك أعلى ضغط بخاري عند أي درجة حرارة معينة. المنحنى الخاص بـ C₅H₁₂ (البنتان) هو الأعلى على الرسم البياني، مما يدل على أنه الأسرع تبخرًا والأضعف في قوى الترابط (قوى لندن فقط)."
+    }
+];
