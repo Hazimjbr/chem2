@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Library } from 'lucide-react';
@@ -172,10 +172,30 @@ const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
     </Card>
 );
 
+const getInitialState = (key: string, defaultValue: string): string => {
+    if (typeof window !== 'undefined') {
+        return localStorage.getItem(key) || defaultValue;
+    }
+    return defaultValue;
+};
+
 export default function QuestionBankPage() {
-    const [selectedUnit, setSelectedUnit] = useState('all');
-    const [selectedLesson, setSelectedLesson] = useState('all');
-    const [selectedPart, setSelectedPart] = useState('all');
+    const [selectedUnit, setSelectedUnit] = useState(() => getInitialState('questionBank_unit', 'all'));
+    const [selectedLesson, setSelectedLesson] = useState(() => getInitialState('questionBank_lesson', 'all'));
+    const [selectedPart, setSelectedPart] = useState(() => getInitialState('questionBank_part', 'all'));
+
+    // Save filter state to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('questionBank_unit', selectedUnit);
+    }, [selectedUnit]);
+
+    useEffect(() => {
+        localStorage.setItem('questionBank_lesson', selectedLesson);
+    }, [selectedLesson]);
+
+    useEffect(() => {
+        localStorage.setItem('questionBank_part', selectedPart);
+    }, [selectedPart]);
     
     const availableLessons = useMemo(() => {
         if (selectedUnit === 'all') return [];
