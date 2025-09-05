@@ -8,11 +8,11 @@ import { TestTubeDiagonal, Target, FlaskConical, AlertTriangle, ListOrdered, Bea
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
-import CharlesLawQuiz from './quiz';
+import CharlesLawQuiz from '@/app/experiments/charles-law/quiz';
 import BoylesLawQuiz from '../boyles-law/quiz';
 import DiverBubbleDiagram from '@/components/illustrations/diver-bubble-diagram';
 
-const CharlesLawDiagram = dynamic(() => import('./diagram'), {
+const CharlesLawDiagram = dynamic(() => import('@/app/experiments/charles-law/diagram'), {
   ssr: false,
   loading: () => (
     <div className="flex flex-col items-center gap-4">
