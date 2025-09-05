@@ -15,7 +15,7 @@ interface Question {
     questionText: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: React.ReactNode;
     level: number;
     source: string;
 }
@@ -38,7 +38,7 @@ const newQuestion: Question | null = {
     ),
     options: ["760", "100", "30", "650"],
     correctAnswerIndex: 3,
-    explanation: "بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 650mmHg تقريبًا",
+    explanation: <>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block">30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 650mmHg تقريبًا</>,
     level: 2,
     source: "الوحدة الأولى / الدرس الثاني / درجة الغليان"
 };
