@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -50,7 +49,7 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
                 <polygon points="55,5 55,55 65,50 75,55 75,5" fill={bannerColor} stroke="white" strokeWidth="0.5" />
                 
                 {/* Unit number on the banner */}
-                <text x="40" y="25" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" className="drop-shadow-sm">{label.split(' ')[1]}</text>
+                <text x="40" y="25" textAnchor="middle" fill="black" fontSize="14" fontWeight="bold" className="drop-shadow-sm">{label}</text>
             </svg>
 
             {/* Content on top */}
