@@ -22,7 +22,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "قانون أفوجادرو ينص على أن حجم الغاز يتناسب طرديًا مع عدد مولاته (كميته) بشرط ثبات الضغط ودرجة الحرارة"
     },
     {
-        question: <>ما هو حجم <InlineMath math="1\text{mol}" /> من أي غاز مثالي في الظروف المعيارية (STP)?</>,
+        question: <>ما هو حجم <span dir="ltr"><InlineMath math="1\text{mol}" /></span> من أي غاز مثالي في الظروف المعيارية (STP)?</>,
         "options": [
             "1L",
             "22.4L",
@@ -44,7 +44,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لمبدأ أفوجادرو فإن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجزيئات (أو المولات)"
     },
     {
-        question: <>وعاء يحتوي على <span dir="ltr">2mol</span> من غاز حجمه <span dir="ltr">10L</span> إذا أضفنا <span dir="ltr">2mol</span> أخرى من نفس الغاز عند نفس الظروف فما هو الحجم الجديد</>,
+        question: <>وعاء يحتوي على <span dir="ltr" className="inline-block"><InlineMath math="2\text{mol}" /></span> من غاز حجمه <span dir="ltr" className="inline-block"><InlineMath math="10\text{L}" /></span> إذا أضفنا <span dir="ltr" className="inline-block"><InlineMath math="2\text{mol}" /></span> أخرى من نفس الغاز عند نفس الظروف فما هو الحجم الجديد</>,
         "options": [
             "10L",
             "20L",
@@ -102,7 +102,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "في الظروف المعيارية عدد المولات = الحجم / 22.4 إذن n = 3L / 22.4L/mol ≈ 0.13mol"
     },
     {
-        question: <><span className="inline-block">كمية من غاز النيتروجين</span><span className="inline-block" dir="ltr">(<InlineMath math="N_2" />)</span><span className="inline-block">حجمها</span><span className="inline-block" dir="ltr"><InlineMath math="10\text{L}" /></span><span className="inline-block">وكمية أخرى من غاز الهيليوم</span><span className="inline-block" dir="ltr">(<InlineMath math="He" />)</span><span className="inline-block">تشغل حجم</span><span className="inline-block" dir="ltr"><InlineMath math="20\text{L}" /></span><span className="inline-block">عند نفس الظروف ما هي نسبة عدد مولات الهيليوم إلى النيتروجين</span></>,
+        question: <>كمية من غاز النيتروجين (<span dir="ltr" className="inline-block"><InlineMath math="N_2"/></span>) حجمها <span dir="ltr" className="inline-block"><InlineMath math="10\text{L}"/></span> وكمية أخرى من غاز الهيليوم (<span dir="ltr" className="inline-block"><InlineMath math="He"/></span>) تشغل حجم <span dir="ltr" className="inline-block"><InlineMath math="20\text{L}"/></span> عند نفس الظروف ما هي نسبة عدد مولات الهيليوم إلى النيتروجين</>,
         "options": [
             "1:2",
             "2:1",
@@ -113,7 +113,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "بما أن V ∝ n فإن نسبة الأحجام تساوي نسبة عدد المولات V(He)/V(N₂) = n(He)/n(N₂) إذن 20/10 = 2/1 نسبة الهيليوم إلى النيتروجين هي 2:1"
     },
     {
-        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
+        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block"><InlineMath math="2\text{L}"/></span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block"><InlineMath math="3\text{L}"/></span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
         "options": [
             "0.4mol",
             "0.6mol",
