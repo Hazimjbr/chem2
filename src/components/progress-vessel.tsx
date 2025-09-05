@@ -20,20 +20,20 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
     const p = Math.max(0, Math.min(100, percentage)); // Clamp percentage between 0 and 100
 
     // Right Banner (0% -> 50%)
-    const rightBannerFill = Math.min(1, p / 50) * 100;
+    const rightBannerFill = Math.min(1, p / 50);
 
     // Left Banner (50% -> 100%)
-    const leftBannerFill = p > 50 ? Math.min(1, (p - 50) / 50) * 100 : 0;
+    const leftBannerFill = p > 50 ? Math.min(1, (p - 50) / 50) : 0;
 
     return (
         <div className="relative w-full aspect-[3/4] text-center flex flex-col justify-end items-center" data-ai-hint="game castle progress">
             <svg viewBox="0 0 100 120" className="absolute inset-0 w-full h-full drop-shadow-md">
                  <defs>
                     <clipPath id={`clip-right-banner-${label}`}>
-                        <rect x="55" y={55 - (50 * rightBannerFill / 100)} width="20" height={50 * rightBannerFill / 100} />
+                        <rect x="55" y={55 - (50 * rightBannerFill)} width="20" height={50 * rightBannerFill} />
                     </clipPath>
                     <clipPath id={`clip-left-banner-${label}`}>
-                         <rect x="30" y={55 - (50 * leftBannerFill / 100)} width="20" height={50 * leftBannerFill / 100} />
+                         <rect x="30" y={55 - (50 * leftBannerFill)} width="20" height={50 * leftBannerFill} />
                     </clipPath>
                 </defs>
 
