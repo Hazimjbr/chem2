@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -9,56 +8,52 @@ interface ProgressVesselProps {
     percentage: number;
 }
 
-const getProgressColor = (percentage: number): string => {
-    if (percentage >= 90) return '#FFD700'; // Gold
-    if (percentage >= 50) return '#C0C0C0'; // Silver
-    if (percentage >= 25) return 'hsl(var(--primary))'; // Blue from theme
-    return 'hsl(var(--destructive))'; // Red from theme
-}
+const incompleteColor = 'hsl(var(--destructive))'; // Red
+const completeColor = 'hsl(var(--primary))'; // Blue
 
 export default function ProgressVessel({ label, percentage }: ProgressVesselProps) {
-    const liquidColor = getProgressColor(percentage);
-    const liquidHeight = `${percentage}%`;
+    const fillHeight = `${percentage}%`;
 
     return (
         <div className="relative w-full aspect-[3/4] text-center flex flex-col justify-end items-center">
-            {/* SVG for the beaker shape */}
             <svg viewBox="0 0 100 120" className="absolute inset-0 w-full h-full drop-shadow-md">
-                {/* Liquid fill */}
                 <defs>
-                    <clipPath id="beakerClip">
-                        <path d="M 10 10 H 90 L 80 110 H 20 L 10 10 Z" />
+                    <clipPath id="castleClip">
+                        {/* A simple castle shape path */}
+                        <path d="M 20 110 L 20 50 L 10 50 L 10 30 L 30 30 L 30 10 L 45 10 L 45 30 L 55 30 L 55 10 L 70 10 L 70 30 L 90 30 L 90 50 L 80 50 L 80 110 Z" />
                     </clipPath>
                 </defs>
 
-                {/* The liquid itself */}
-                <g clipPath="url(#beakerClip)">
+                {/* The castle shapes */}
+                <g clipPath="url(#castleClip)">
+                    {/* Background (Incomplete color - Red) */}
                     <rect 
                         x="0" 
                         y="0" 
                         width="100" 
                         height="120" 
-                        className="fill-muted/20" 
+                        style={{ fill: incompleteColor }}
+                        className="opacity-40"
                     />
+                    {/* Foreground fill (Complete color - Blue) */}
                     <rect 
                         x="0" 
                         y="120" 
                         width="100" 
                         height="120" 
                         style={{ 
-                            fill: liquidColor, 
-                            transform: `translateY(-${liquidHeight})`, 
-                            transition: 'transform 0.5s ease-out, fill 0.5s ease-out' 
+                            fill: completeColor, 
+                            transform: `translateY(-${fillHeight})`, 
+                            transition: 'transform 0.5s ease-out' 
                         }} 
-                        className="opacity-40"
+                        className="opacity-60"
                     />
-                    {/* Optional: Add a wave effect later if needed */}
                 </g>
                 
-                {/* Beaker outline */}
+                {/* Castle outline */}
                 <path 
-                    d="M 10 10 H 90 L 80 110 H 20 L 10 10 Z" 
-                    className="stroke-border fill-transparent" 
+                    d="M 20 110 L 20 50 L 10 50 L 10 30 L 30 30 L 30 10 L 45 10 L 45 30 L 55 30 L 55 10 L 70 10 L 70 30 L 90 30 L 90 50 L 80 50 L 80 110 Z" 
+                    className="stroke-foreground/50 fill-transparent" 
                     strokeWidth="2"
                 />
             </svg>
