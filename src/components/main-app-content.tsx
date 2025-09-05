@@ -183,7 +183,7 @@ export default function MainAppContent() {
           )}
 
           {unitProgress.length > 0 && (
-            <Card className="md:col-span-2 lg:col-span-1">
+             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award />
