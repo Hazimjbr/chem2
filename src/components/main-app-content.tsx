@@ -159,12 +159,13 @@ export default function MainAppContent() {
               </CardContent>
             </Card>
           )}
-        </div>
-        {currentUser && (
-            <div className="max-w-4xl mx-auto mt-8">
+
+          {currentUser && (
+            <div className="md:col-span-2">
                  <ProgressCard />
             </div>
-        )}
+          )}
+        </div>
       </section>
     </div>
   );
