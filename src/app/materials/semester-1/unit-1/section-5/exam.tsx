@@ -299,8 +299,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
     }
 ];
 
-// Add more level 2 questions here
 export const staticQuizLvl2: QuizQuestion[] = [];
 
-// Add more level 3 questions here
 export const staticQuizLvl3: QuizQuestion[] = [];
