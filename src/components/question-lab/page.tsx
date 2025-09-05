@@ -22,16 +22,16 @@ interface Question {
 
 const newQuestion: Question | null = {
     questionText: "كيف حالك",
-    options: ["بخير", "لست بخير", "لا أعرف", "اسألني لاحقًا"],
+    options: [],
     correctAnswerIndex: 0,
-    explanation: "هذا مجرد مثال توضيحي.",
+    explanation: "",
     level: 1,
     source: "معمل الأسئلة"
 };
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
-    if (!question) {
+    if (!question || !question.questionText) {
         return (
              <Card className="w-full max-w-3xl mx-auto">
                 <CardHeader>
@@ -59,33 +59,37 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                     المصدر المقترح {question.source}
                 </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
-                {question.options.map((option, index) => {
-                    const isCorrect = index === question.correctAnswerIndex;
-                    return (
-                        <Button
-                            key={index}
-                            variant="outline"
-                            className={cn(
-                                "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center",
-                                isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
-                            )}
-                            disabled
-                        >
-                            <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal">{option}</span>
-                            {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
-                        </Button>
-                    );
-                })}
-            </CardContent>
-            <CardFooter>
-                <Alert variant="default" className="border-blue-500 bg-blue-100/30 w-full">
-                    <CheckCircle className="h-4 w-4 text-blue-500" />
-                    <AlertTitle className="font-bold text-blue-700">الشرح المقترح</AlertTitle>
-                    <AlertDescription>{question.explanation}</AlertDescription>
-                </Alert>
-            </CardFooter>
+            {question.options.length > 0 && (
+                <>
+                    <CardContent className="space-y-2">
+                        {question.options.map((option, index) => {
+                            const isCorrect = index === question.correctAnswerIndex;
+                            return (
+                                <Button
+                                    key={index}
+                                    variant="outline"
+                                    className={cn(
+                                        "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center",
+                                        isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
+                                    )}
+                                    disabled
+                                >
+                                    <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
+                                    <span className="flex-1 whitespace-normal">{option}</span>
+                                    {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
+                                </Button>
+                            );
+                        })}
+                    </CardContent>
+                    <CardFooter>
+                        <Alert variant="default" className="border-blue-500 bg-blue-100/30 w-full">
+                            <CheckCircle className="h-4 w-4 text-blue-500" />
+                            <AlertTitle className="font-bold text-blue-700">الشرح المقترح</AlertTitle>
+                            <AlertDescription>{question.explanation}</AlertDescription>
+                        </Alert>
+                    </CardFooter>
+                </>
+            )}
         </Card>
     )
 };
