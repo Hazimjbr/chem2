@@ -101,10 +101,12 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
 
         if (index < 4) { // Top row
             const pos = topPositions[index];
-            return { top: `calc(${pos.top} + 20px)`, left: `calc(${pos.left} + 20px)` }; 
+             // Adjust to be below the castle
+            return { top: `calc(${pos.top} + 128px)`, left: `calc(${pos.left})` };
         } else { // Bottom row
             const pos = bottomPositions[index - 4];
-            return { bottom: `calc(${pos.bottom} + 40px)`, left: `calc(${pos.left} + 20px)` };
+            // Adjust to be below the castle
+            return { bottom: `calc(${pos.bottom} - 20px)`, left: `calc(${pos.left})` };
         }
     };
     
@@ -169,7 +171,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={topPositions[index]}
                             >
                                 {unit && unit.id ? (
-                                    <Link href="/materials/semester-1" className="cursor-pointer">
+                                     <Link href="/materials/semester-1" className="cursor-pointer">
                                          <ProgressVessel 
                                             label={`${index + 1}`}
                                             percentage={progress[unit.id] || 0}
