@@ -89,20 +89,27 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
   useEffect(() => {
     const loadState = async () => {
         if (!currentUser) return;
-        const savedState = await getUserQuizState(currentUser.uid, lessonId);
-        if (savedState) {
-            const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime } = savedState;
-            if (quiz) {
-                setQuiz(quiz);
-                setCurrentQuestionIndex(currentQuestionIndex);
-                setScore(score);
-                setDifficultyLevel(difficultyLevel);
-                setIsFinished(isFinished);
-                setAnswerStatus(answerStatus || 'unanswered');
-                setSelectedAnswer(selectedAnswer || null);
-                setUserAnswers(userAnswers || []);
-                setTimeLeft(timeLeft !== undefined ? timeLeft : null);
-                setInitialTime(initialTime !== undefined ? initialTime : null);
+        try {
+            const savedState = await getUserQuizState(currentUser.uid, lessonId);
+            if (savedState) {
+                const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime } = savedState;
+                if (quiz) {
+                    setQuiz(quiz);
+                    setCurrentQuestionIndex(currentQuestionIndex);
+                    setScore(score);
+                    setDifficultyLevel(difficultyLevel);
+                    setIsFinished(isFinished);
+                    setAnswerStatus(answerStatus || 'unanswered');
+                    setSelectedAnswer(selectedAnswer || null);
+                    setUserAnswers(userAnswers || []);
+                    setTimeLeft(timeLeft !== undefined ? timeLeft : null);
+                    setInitialTime(initialTime !== undefined ? initialTime : null);
+                }
+            }
+        } catch (error) {
+            console.error("Error loading quiz state, resetting.", error);
+            if(currentUser) {
+                await clearUserQuizState(currentUser.uid, lessonId);
             }
         }
     };
@@ -222,22 +229,34 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     const isLastQuestion = currentQuestionIndex >= quiz!.length - 1;
 
     if (isLastQuestion || forceFinish) {
-        const finalScore = score / quiz!.length;
-        if (currentUser) {
-            const timeTaken = initialTime !== null && timeLeft !== null ? initialTime - timeLeft : undefined;
-            const resultToSave: QuizResult = {
-                lessonId: lessonId,
-                score: finalScore,
-                difficulty: difficultyLevel,
-                timestamp: Date.now(),
-                studentId: currentUser.uid,
-                timeTaken: timeTaken,
-                questionCount: quiz?.length,
-            };
-            await saveUserQuizResult(currentUser.uid, resultToSave);
+        setIsFinished(true);
+        setTimeLeft(null); // Stop the timer
+
+        // Attempt to save the result, but don't let it block the UI
+        try {
+            const finalScore = score / quiz!.length;
+            if (currentUser) {
+                const timeTaken = initialTime !== null && timeLeft !== null ? initialTime - timeLeft : undefined;
+                const resultToSave: QuizResult = {
+                    lessonId: lessonId,
+                    score: finalScore,
+                    difficulty: difficultyLevel,
+                    timestamp: Date.now(),
+                    studentId: currentUser.uid,
+                    timeTaken: timeTaken,
+                    questionCount: quiz?.length,
+                };
+                await saveUserQuizResult(currentUser.uid, resultToSave);
+            }
+        } catch (error) {
+            console.error("Failed to save quiz result:", error);
+            // Optionally, show a non-blocking toast to the user
+            toast({
+                variant: 'destructive',
+                title: 'فشل المزامنة',
+                description: 'لم نتمكن من حفظ نتيجتك، ولكن يمكنك رؤيتها الآن.'
+            });
         }
-       setIsFinished(true);
-       setTimeLeft(null); // Stop the timer
     } else {
        setAnswerStatus('unanswered');
        setSelectedAnswer(null);
