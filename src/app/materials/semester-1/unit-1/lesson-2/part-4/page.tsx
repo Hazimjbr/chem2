@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -96,22 +97,24 @@ export default function LessonPartPage() {
                     </div>
                 </CardContent>
             </Card>
-             <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6"/>}>
-                <div className="space-y-4 text-sm">
-                    <div className="flex items-start gap-3">
-                        <Thermometer className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className="font-semibold">درجة الحرارة (علاقة طردية)</h4>
-                            <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                        <Zap className="h-5 w-5 text-destructive flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className="font-semibold">قوة الترابط بين الجزيئات (علاقة عكسية)</h4>
-                            <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري</p>
-                        </div>
-                    </div>
+            <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6" />}>
+                <div className="w-full h-full p-4">
+                    <ul className="space-y-4 text-sm">
+                        <li className="flex flex-col items-start gap-1">
+                            <div className="flex items-center gap-2">
+                                <Thermometer className="h-5 w-5 text-primary flex-shrink-0" />
+                                <strong className="font-semibold">درجة الحرارة (علاقة طردية)</strong>
+                            </div>
+                            <p className="text-xs mt-1 text-muted-foreground mr-7">بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري</p>
+                        </li>
+                        <li className="flex flex-col items-start gap-1">
+                            <div className="flex items-center gap-2">
+                                <Zap className="h-5 w-5 text-destructive flex-shrink-0" />
+                                <strong className="font-semibold">قوة الترابط بين الجزيئات (علاقة عكسية)</strong>
+                            </div>
+                            <p className="text-xs mt-1 text-muted-foreground mr-7">كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري</p>
+                        </li>
+                    </ul>
                 </div>
             </FlippableCard>
         </div>
@@ -143,7 +146,7 @@ export default function LessonPartPage() {
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="أي السوائل التالية تتوقع أن يكون له أعلى ضغط بخاري عند 25°C؟"
+                  question={<><span>أي السوائل التالية تتوقع أن يكون له أعلى ضغط بخاري عند </span><span dir="ltr" className="inline-block">25°C</span><span>؟</span></>}
                   options={[
                       "الماء (H₂O)",
                       "الإيثانول (C₂H₅OH)",
