@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -24,11 +25,11 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
         <Card className="p-2 text-center aspect-[3/4] flex flex-col justify-end relative overflow-hidden bg-muted/20">
             <div className="absolute bottom-0 left-0 w-full" style={{ height: liquidHeight }}>
                 <div 
-                    className="absolute bottom-0 left-0 w-full h-full opacity-70"
+                    className="absolute bottom-0 left-0 w-full h-full opacity-40"
                     style={{ backgroundColor: liquidColor, transition: 'background-color 0.5s ease, height 0.5s ease' }}
                 />
                 <div 
-                    className="absolute bottom-0 left-0 w-full h-full opacity-20"
+                    className="absolute bottom-0 left-0 w-full h-full opacity-10"
                     style={{ 
                         backgroundColor: liquidColor, 
                         filter: 'blur(10px)',
@@ -38,7 +39,7 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
             </div>
             <div className="relative z-10 flex flex-col items-center justify-center h-full">
                 <span className="font-bold text-xs sm:text-sm drop-shadow-md text-foreground">{label}</span>
-                <span className="text-2xl sm:text-3xl font-bold font-mono mt-2 drop-shadow-lg" style={{ color: liquidColor, transition: 'color 0.5s ease' }}>
+                <span className="text-2xl sm:text-3xl font-bold font-mono mt-2 drop-shadow-lg text-foreground">
                     {percentage}%
                 </span>
             </div>
