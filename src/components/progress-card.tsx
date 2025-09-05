@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -52,11 +53,6 @@ export default function ProgressCard() {
                 newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
             });
             
-            // --- التجربة ---
-            // For demonstration, force unit-1 progress to 100%
-            newProgress['unit-1'] = 100;
-            // --- نهاية التجربة ---
-
             setProgress(newProgress);
         };
 
@@ -77,10 +73,10 @@ export default function ProgressCard() {
             </CardHeader>
             <CardContent>
                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {units.map(unit => (
+                    {units.map((unit, index) => (
                         <ProgressVessel 
                             key={unit.id}
-                            label={unit.title}
+                            label={`الوحدة ${index + 1}`}
                             percentage={progress[unit.id] || 0}
                         />
                     ))}
