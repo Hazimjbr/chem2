@@ -151,7 +151,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
-                    خارطة تقدمك
+                    خارطة تقدمك في الوحدات
                 </CardTitle>
                 <CardDescription>
                     تنقل بين الوحدات وتابع رحلتك في احتلال القلاع التعليمية!
@@ -159,7 +159,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             </CardHeader>
             <CardContent>
                  <div className={cn(
-                    "relative w-full bg-[#a3e635] rounded-lg p-4 overflow-hidden",
+                    "relative w-full bg-[#45d165] rounded-lg p-4 overflow-hidden",
                     isMobile ? "h-[250px]" : "h-[450px]"
                  )} data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
@@ -201,9 +201,6 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                     {/* Top Castles */}
                     <div className="absolute inset-x-0 top-0 h-1/2">
                         {allUnits.slice(0, 4).map((unit, index) => {
-                            const isReady = unit && (unit.id === 'unit-1' || unit.id === 'unit-2');
-                            const href = isReady ? `/materials/semester-1#${unit.id}` : '#';
-                           
                            return (
                            <div
                                 key={`top-castle-${index}`}
@@ -211,7 +208,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={isMobile ? topPositions.mobile[index] : topPositions.desktop[index]}
                             >
                                 {unit && unit.id ? (
-                                    <Link href={href} className={!isReady ? 'cursor-not-allowed' : ''}>
+                                    <Link href={`/materials/semester-1#${unit.id}`}>
                                          <ProgressVessel 
                                             label={`${index + 1}`}
                                             percentage={progress[unit.id] || 0}
@@ -257,11 +254,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                          <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Link
-                                        href={lastVisitedLesson}
-                                        className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
-                                        style={lastVisitedPosition}>
-                                        <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
+                                     <Link href={lastVisitedLesson} legacyBehavior>
+                                        <a className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
+                                            style={lastVisitedPosition}>
+                                            <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
+                                        </a>
                                     </Link>
                                 </TooltipTrigger>
                                 <TooltipContent>
