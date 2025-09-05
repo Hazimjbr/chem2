@@ -115,6 +115,16 @@ export default function MainAppContent() {
       </section>
 
       <section className="pb-16 pt-8">
+         <Card className="mb-8 bg-transparent border-none shadow-none text-center">
+            <CardHeader>
+                <CardTitle className="text-3xl font-bold">
+                    أحكم سيطرتك على مملكة الكيمياء
+                </CardTitle>
+                <CardDescription>
+                    خارطتك هنا. اختر قلعة لغزوها أو ساند قواتك فيها.
+                </CardDescription>
+            </CardHeader>
+        </Card>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           
           <div className="lg:col-span-1">
