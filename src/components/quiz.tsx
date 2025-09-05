@@ -173,9 +173,10 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             if (level === 2) questionPool = staticQuizzes.lvl2;
             if (level === 3) questionPool = staticQuizzes.lvl3;
             
-            // Shuffle the pool and take the first 5 questions
             const shuffledPool = shuffleArray(questionPool);
-            const selectedQuestions = shuffledPool.slice(0, 5);
+            // If pool has fewer than 5 questions, use all of them. Otherwise, take 5.
+            const questionsToTake = Math.min(shuffledPool.length, 5);
+            const selectedQuestions = shuffledPool.slice(0, questionsToTake);
 
             // Shuffle options for each selected question
             generatedQuestions = selectedQuestions.map(q => shuffleOptions(q));
