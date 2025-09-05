@@ -20,7 +20,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "أحد العوامل الآتية لا يؤثر في الضغط البخاري للسائل:",
+    options: [
+        "قطبية الجسيمات",
+        "درجة حرارة",
+        "نوع الترابط بين الجسيمات",
+        "حجم الوعاء"
+    ],
+    correctAnswerIndex: 3,
+    explanation: "الضغط البخاري خاصية فيزيائية مميزة للمادة تعتمد فقط على درجة الحرارة وقوة الترابط بين جزيئاتها. حجم الوعاء لا يؤثر على قيمة الضغط البخاري عند الاتزان.",
+    level: 1,
+    source: "الوحدة 1 / الحالة السائلة / الضغط البخاري"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -66,7 +78,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
