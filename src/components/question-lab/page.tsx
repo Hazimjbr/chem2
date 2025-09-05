@@ -20,14 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "كيف حالك",
-    options: [],
-    correctAnswerIndex: 0,
-    explanation: "",
-    level: 1,
-    source: "معمل الأسئلة"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
