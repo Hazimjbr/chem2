@@ -26,7 +26,7 @@ export default function QuestionLabPage() {
                     <Library className="inline-block h-10 w-10 mb-2" /> معمل الأسئلة
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                    هنا نقوم بصياغة ومناقشة الأسئلة قبل إضافتها بشكل نهائي.
+                    هنا نقوم بصياغة ومناقشة الأسئلة قبل إضافتها بشكل نهائي
                 </p>
             </header>
             
@@ -71,11 +71,11 @@ export default function QuestionLabPage() {
                             <CheckCircle className="h-4 w-4 text-blue-500" />
                             <AlertTitle className="font-bold text-blue-700">الشرح</AlertTitle>
                             <AlertDescription>
-                                <span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة). المنطقة الأولى عند </span>
+                                <span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة) المنطقة الأولى عند </span>
                                 <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}"/></span>
-                                <span> وتمثل عملية التكاثف (تحول البخار إلى سائل)، والمنطقة الثانية عند </span>
+                                <span> وتمثل عملية التكاثف (تحول البخار إلى سائل) والمنطقة الثانية عند </span>
                                 <span dir="ltr" className="inline-block"><InlineMath math="0^\circ\text{C}"/></span>
-                                <span> وتمثل عملية التجمد (تحول السائل إلى صلب). الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة.</span>
+                                <span> وتمثل عملية التجمد (تحول السائل إلى صلب) الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة</span>
                             </AlertDescription>
                         </Alert>
                     </CardFooter>
