@@ -8,6 +8,7 @@ import { units } from '@/data/materials';
 import { useApp } from '@/context/CurriculumContext';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils.tsx';
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
@@ -89,7 +90,7 @@ export default function ProgressCard() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="relative w-full h-[450px] bg-green-500 rounded-lg p-4 overflow-hidden">
+                 <div className="relative w-full h-[450px] bg-green-200/50 rounded-lg p-4 overflow-hidden">
                     {/* River that spans the full width */}
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
@@ -112,32 +113,54 @@ export default function ProgressCard() {
                     {/* Top Castles */}
                     <div className="absolute inset-x-0 top-0 h-1/2">
                         {allUnits.slice(0, 4).map((unit, index) => (
-                            <div
+                           <div
                                 key={`top-castle-${index}`}
-                                className="absolute w-24 h-32 transform -translate-x-1/2"
+                                className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={topPositions[index]}
                             >
-                                <ProgressVessel 
-                                    label={`${index + 1}`}
-                                    percentage={unit ? (progress[unit.id] || 0) : 0}
-                                />
-                            </div>
+                                {unit ? (
+                                    <Link href={`/materials/semester-1/${unit.id}`} legacyBehavior>
+                                        <a className="cursor-pointer">
+                                             <ProgressVessel 
+                                                label={`${index + 1}`}
+                                                percentage={progress[unit.id] || 0}
+                                            />
+                                        </a>
+                                    </Link>
+                                ) : (
+                                    <ProgressVessel 
+                                        label={`${index + 1}`}
+                                        percentage={0}
+                                    />
+                                )}
+                           </div>
                         ))}
                     </div>
 
                     {/* Bottom Castles */}
                     <div className="absolute inset-x-0 bottom-0 h-1/2">
                          {allUnits.slice(4, 8).map((unit, index) => (
-                            <div
+                           <div
                                 key={`bottom-castle-${index}`}
-                                className="absolute w-24 h-32 transform -translate-x-1/2"
+                                className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={bottomPositions[index]}
-                            >
-                                <ProgressVessel 
-                                    label={`${index + 5}`}
-                                    percentage={unit ? (progress[unit.id] || 0) : 0}
-                                />
-                            </div>
+                           >
+                               {unit ? (
+                                    <Link href={`/materials/semester-1/${unit.id}`} legacyBehavior>
+                                        <a className="cursor-pointer">
+                                             <ProgressVessel 
+                                                label={`${index + 5}`}
+                                                percentage={progress[unit.id] || 0}
+                                            />
+                                        </a>
+                                    </Link>
+                                ) : (
+                                     <ProgressVessel 
+                                        label={`${index + 5}`}
+                                        percentage={0}
+                                    />
+                                )}
+                           </div>
                         ))}
                     </div>
                  </div>
