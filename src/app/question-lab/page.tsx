@@ -11,6 +11,13 @@ import Image from 'next/image';
 import { InlineMath } from 'react-katex';
 import { cn } from '@/lib/utils.tsx';
 
+const options = [
+    { src: "https://i.ibb.co/NgZfVHmn/6.png", alt: "منحنى تبريد خاطئ 1", isCorrect: false },
+    { src: "https://i.ibb.co/prX2QBzg/5.png", alt: "منحنى تبريد خاطئ 2", isCorrect: false },
+    { src: "https://i.ibb.co/spPLvD7b/4.png", alt: "منحنى تبريد خاطئ 3", isCorrect: false },
+    { src: "https://i.ibb.co/k65TLr3M/3.png", alt: "منحنى تبريد بخار الماء الصحيح", isCorrect: true },
+]
+
 export default function QuestionLabPage() {
     return (
         <div className="p-4 md:p-8">
@@ -24,44 +31,46 @@ export default function QuestionLabPage() {
             </header>
             
             <div className="space-y-6">
-                 <Card className="w-full">
+                 <Card className="w-full max-w-3xl mx-auto">
                     <CardHeader>
                         <div className="flex justify-between items-start">
                             <CardTitle className="text-lg">
-                                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن Y هي:</p>
-                                <div className="flex justify-center my-4">
-                                     <Image
-                                        src="https://i.ibb.co/GfZ5wtqG/22.png"
-                                        alt="منحنى تبريد المادة A"
-                                        width={500}
-                                        height={300}
-                                        className="rounded-lg border bg-white"
-                                        data-ai-hint="cooling curve"
-                                    />
-                                </div>
+                                اختر الرسم الصحيح الذي يمثل منحنى تبريد بخار الماء
                             </CardTitle>
                         </div>
                     </CardHeader>
-                    <CardContent className="space-y-2">
-                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
-                            <div className="flex-1 whitespace-normal">صلب</div>
-                        </Button>
-                         <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20" disabled>
-                            <div className="flex-1 whitespace-normal">سائل</div>
-                            <CheckCircle className="h-5 w-5 text-green-600" />
-                        </Button>
-                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
-                            <div className="flex-1 whitespace-normal">غاز</div>
-                        </Button>
-                        <Button variant="outline" className="w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center" disabled>
-                            <div className="flex-1 whitespace-normal">غاز + سائل</div>
-                        </Button>
+                    <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {options.map((option, index) => (
+                             <Button
+                                key={index}
+                                variant="outline"
+                                className={cn(
+                                    "h-auto p-2 border-2 flex flex-col items-center justify-center",
+                                    option.isCorrect && "border-green-500 bg-green-500/10"
+                                )}
+                                disabled
+                            >
+                                <Image
+                                    src={option.src}
+                                    alt={option.alt}
+                                    width={300}
+                                    height={200}
+                                    className="rounded-md"
+                                    data-ai-hint="cooling curve water"
+                                />
+                                {option.isCorrect && (
+                                    <div className="absolute top-2 right-2 bg-green-500 rounded-full p-1">
+                                        <CheckCircle className="h-5 w-5 text-white" />
+                                    </div>
+                                )}
+                            </Button>
+                        ))}
                     </CardContent>
                     <CardFooter>
                         <Alert variant="default" className="border-blue-500 bg-blue-100/30 w-full">
                             <CheckCircle className="h-4 w-4 text-blue-500" />
                             <AlertTitle className="font-bold text-blue-700">الشرح</AlertTitle>
-                            <AlertDescription>الزمن Y يقع على الجزء المائل بعد انتهاء عملية التكاثف (الخط الأفقي الأول) وقبل بدء التجمد (الخط الأفقي الثاني). في هذه المرحلة تكون المادة قد تحولت بالكامل إلى الحالة السائلة ويتم تبريدها.</AlertDescription>
+                            <AlertDescription>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة). المنطقة الأولى عند 100°C وتمثل عملية التكاثف (تحول البخار إلى سائل)، والمنطقة الثانية عند 0°C وتمثل عملية التجمد (تحول السائل إلى صلب). الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة.</AlertDescription>
                         </Alert>
                     </CardFooter>
                 </Card>
