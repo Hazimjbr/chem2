@@ -92,31 +92,39 @@ export default function LessonPartPage() {
                 </FlippableCard>
             </div>
             
-            <FlippableCard cardTitle="مراحل الوصول للاتزان" cardIcon={<BarChart3 className="h-6 w-6" />}>
-                <VaporPressureDiagram />
-                <div className="mr-4 mt-4 space-y-2 text-sm">
+             <FlippableCard
+                cardTitle="مراحل الوصول للاتزان"
+                cardIcon={<BarChart3 className="h-6 w-6" />}
+                imageContent={<VaporPressureDiagram />}
+                imageCardClassName="flex items-center justify-center"
+            >
+                <div className="space-y-2 text-sm p-4">
                     <p><strong className="font-semibold text-accent">عند لحظة البداية</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
                     <p><strong className="font-semibold text-accent">مع مرور الوقت</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
                     <p><strong className="font-semibold text-accent">عند الزمن A</strong> تتساوى سرعة التبخر مع سرعة التكاثف ويصل النظام إلى حالة الاتزان الديناميكي ويثبت الضغط البخاري</p>
                 </div>
             </FlippableCard>
             
-            <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6" />}>
-                 <div className="w-full h-full p-4">
+             <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6" />}>
+                <div className="w-full h-full p-4">
                     <ul className="space-y-4 text-sm">
                         <li className="flex flex-col items-start gap-1">
                             <div className="flex items-center gap-2">
                                 <Thermometer className="h-5 w-5 text-primary flex-shrink-0" />
                                 <strong className="font-semibold">درجة الحرارة (علاقة طردية)</strong>
                             </div>
-                            <p className="text-xs mt-1 text-muted-foreground mr-7">بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري</p>
+                            <p className="text-xs mt-1 text-muted-foreground mr-7">
+                                بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري
+                            </p>
                         </li>
                         <li className="flex flex-col items-start gap-1">
                             <div className="flex items-center gap-2">
                                 <Zap className="h-5 w-5 text-destructive flex-shrink-0" />
                                 <strong className="font-semibold">قوة الترابط بين الجزيئات (علاقة عكسية)</strong>
                             </div>
-                            <p className="text-xs mt-1 text-muted-foreground mr-7">كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري</p>
+                            <p className="text-xs mt-1 text-muted-foreground mr-7">
+                                كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -155,7 +163,7 @@ export default function LessonPartPage() {
                       "الماء (H₂O)",
                       "الإيثانول (C₂H₅OH)",
                       "الأسيتون (CH₃COCH₃)",
-                      "البنتان (C₅H₁₂) "
+                      "البنتان (C₅H₁₂)"
                   ]}
                   correctAnswerIndex={3}
                   explanation="أعلى ضغط بخاري يعني أضعف قوى ترابط البنتان هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية أقوى"
@@ -165,4 +173,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-

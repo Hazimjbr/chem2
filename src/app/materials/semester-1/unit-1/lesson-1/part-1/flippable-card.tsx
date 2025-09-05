@@ -10,13 +10,15 @@ interface FlippableCardProps {
   cardTitle: string;
   cardIcon: React.ReactNode;
   children: React.ReactNode;
+  imageContent?: React.ReactNode;
+  imageCardClassName?: string;
 }
 
-export default function FlippableCard({ cardTitle, cardIcon, children }: FlippableCardProps) {
+export default function FlippableCard({ cardTitle, cardIcon, children, imageContent, imageCardClassName }: FlippableCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   // Set a fixed height for the container to prevent layout shifts during flipping
-  const cardHeight = 'h-[280px]'; // Adjust this height as needed
+  const cardHeight = imageContent ? 'h-[320px]' : 'h-[280px]'; // Adjust this height as needed
 
   return (
     <div className={cn("perspective-1000", cardHeight)} onMouseEnter={() => setIsFlipped(true)} onMouseLeave={() => setIsFlipped(false)}>
@@ -30,13 +32,20 @@ export default function FlippableCard({ cardTitle, cardIcon, children }: Flippab
         <div
           className="absolute w-full h-full backface-hidden"
         >
-          <Card className="flex items-center justify-center w-full h-full border-primary/20 shadow-xl bg-card">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-accent text-2xl">
-                {cardIcon}
-                {cardTitle}
-              </CardTitle>
-            </CardHeader>
+          <Card className={cn(
+              "flex items-center justify-center w-full h-full border-primary/20 shadow-xl bg-card",
+              imageCardClassName
+          )}>
+             {imageContent ? (
+                <CardContent className="p-2 w-full h-full flex items-center justify-center">{imageContent}</CardContent>
+             ) : (
+                <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-accent text-2xl">
+                    {cardIcon}
+                    {cardTitle}
+                </CardTitle>
+                </CardHeader>
+             )}
           </Card>
         </div>
 
@@ -49,7 +58,7 @@ export default function FlippableCard({ cardTitle, cardIcon, children }: Flippab
              <CardHeader>
               <CardTitle className="flex items-center gap-3 text-accent text-lg">
                 {cardIcon}
-                {cardTitle === "بنود نظرية الحركة الجزيئية" ? "بنود نظرية الحركة الجزيئية للغازات" : cardTitle}
+                {cardTitle}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -71,5 +80,3 @@ export default function FlippableCard({ cardTitle, cardIcon, children }: Flippab
     </div>
   );
 }
-
-    
