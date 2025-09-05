@@ -58,7 +58,7 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p>
-                        عند وضع سائل في وعاء مغلق، تبدأ الجزيئات ذات الطاقة الحركية العالية بالتبخر من السطح. هذه الجزيئات الغازية تتصادم مع جدران الوعاء مسببة ضغطًا. في نفس الوقت، بعض هذه الجزيئات الغازية تعود لتصطدم بسطح السائل وتتكاثف. يستمر هذا الوضع حتى تصل العمليتان إلى حالة اتزان، عندها يثبت ضغط البخار.
+                        عند وضع سائل في وعاء مغلق تبدأ الجزيئات ذات الطاقة الحركية العالية بالتبخر من السطح هذه الجزيئات الغازية تتصادم مع جدران الوعاء مسببة ضغطًا في نفس الوقت بعض هذه الجزيئات الغازية تعود لتصطدم بسطح السائل وتتكاثف يستمر هذا الوضع حتى تصل العمليتان إلى حالة اتزان عندها يثبت ضغط البخار
                     </p>
                 </CardContent>
             </Card>
@@ -69,7 +69,7 @@ export default function LessonPartPage() {
                         هو الضغط الذي يسببه البخار على سطح السائل عند الاتزان عند درجة حرارة وضغط ثابتين
                     </p>
                     <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
-                        ببساطة، هو ضغط البخار فوق السائل في وعاء مغلق بعد فترة من الزمن
+                        ببساطة هو ضغط البخار فوق السائل في وعاء مغلق بعد فترة من الزمن
                     </p>
                 </FlippableCard>
 
@@ -78,7 +78,7 @@ export default function LessonPartPage() {
                         هي الحالة التي يتساوى فيها معدل سرعة تبخر السائل مع معدل سرعة تكاثف بخاره في وعاء مغلق
                     </p>
                     <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
-                        عند الاتزان، لا تتوقف العمليتان، بل تحدثان بنفس السرعة، فيبقى عدد جزيئات البخار ثابتًا، وبالتالي يثبت الضغط البخاري
+                        عند الاتزان لا تتوقف العمليتان بل تحدثان بنفس السرعة فيبقى عدد جزيئات البخار ثابتًا وبالتالي يثبت الضغط البخاري
                     </p>
                 </FlippableCard>
             </div>
@@ -100,11 +100,11 @@ export default function LessonPartPage() {
                 <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
                     <div className="p-3 rounded-lg bg-muted">
                         <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (طردي)</h4>
-                        <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة، تزداد الطاقة الحركية للجزيئات، فيزداد عدد الجزيئات القادرة على التبخر، مما يزيد من الضغط البخاري.</p>
+                        <p className="text-xs mt-1 text-muted-foreground">بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري</p>
                     </div>
                         <div className="p-3 rounded-lg bg-muted">
                         <h4 className="font-semibold flex items-center gap-2"><Zap className="h-5 w-5 text-destructive" /> قوة الترابط بين الجزيئات (عكسي)</h4>
-                        <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى، قل عدد الجزيئات القادرة على الإفلات من السطح، وبالتالي يقل الضغط البخاري.</p>
+                        <p className="text-xs mt-1 text-muted-foreground">كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري</p>
                     </div>
                 </div>
             </FlippableCard>
