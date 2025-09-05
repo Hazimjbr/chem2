@@ -9,9 +9,10 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import { InlineMath } from 'react-katex';
+import Image from 'next/image';
 
 interface Question {
-    questionText: string;
+    questionText: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
     explanation: string;
@@ -20,17 +21,26 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    "questionText": "السائل الذي له أقل درجة تكاثف من السوائل الآتية",
-    "options": [
-        "CH_3CH_3",
-        "CH_3CH_2Cl",
-        "CH_3COCH_3",
-        "CH_3CH_2OH"
-    ],
-    "correctAnswerIndex": 0,
-    "explanation": "أقل درجة تكاثف (أو غليان) تكون للسائل الذي يمتلك أضعف قوى ترابط بين جزيئاته الإيثان (CH₃CH₃) هو جزيء غير قطبي وقوى الترابط بين جزيئاته هي قوى لندن فقط وهي الأضعف مقارنة ببقية المركبات القطبية أو التي تكون روابط هيدروجينية",
-    "level": 3,
-    "source": "درس التكاثف"
+    questionText: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الذي له أقل طاقة تكاثف مولية هو:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/TB6RcQkw/22.png"
+                    alt="Vapor Pressure vs Temperature"
+                    width={400}
+                    height={250}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curve"
+                />
+            </div>
+        </div>
+    ),
+    options: ["A", "M", "B", "Q"],
+    correctAnswerIndex: 0,
+    explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات وهذا يعني أن السائل يتبخر بسهولة أكبر ويمتلك أعلى ضغط بخاري عند درجة حرارة معينة المنحنى A يمثل السائل الذي له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف",
+    level: 2,
+    source: "درس الضغط البخاري"
 };
 
 
@@ -52,9 +62,9 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
         <Card className="w-full max-w-3xl mx-auto">
             <CardHeader>
                 <div className="flex justify-between items-start">
-                    <CardTitle className="text-lg">
+                    <div className="text-lg font-bold">
                         {question.questionText}
-                    </CardTitle>
+                    </div>
                     <Badge variant={question.level === 3 ? "destructive" : question.level === 2 ? "secondary" : "default"}>
                         المستوى المقترح {question.level}
                     </Badge>
@@ -77,7 +87,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr"><InlineMath math={option} /></span>
+                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
