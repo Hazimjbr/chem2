@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: React.ReactNode[];
     correctAnswerIndex: number;
     explanation: React.ReactNode;
 }
@@ -143,7 +143,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                 <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها <span dir="ltr" className="inline-block"><InlineMath math="90^\circ\text{C}"/></span> أي العبارات التالية صحيحة</p>
+                 <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها <span dir="ltr" className="inline-block"><InlineMath math="90^\circ C"/></span> أي العبارات التالية صحيحة</p>
                  <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -163,12 +163,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "المادة A لها ضغط بخاري أعلى من C عند نفس الحرارة"
         ],
         correctAnswerIndex: 1,
-        explanation: <span>من الرسم درجة غليان او تكاثف المادة A هي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ\text{C}"/></span> بما أن درجة غليان المادة C وهي <span dir="ltr" className="inline-block"><InlineMath math="90^\circ\text{C}"/></span> أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر</span>
+        explanation: <span>من الرسم درجة غليان او تكاثف المادة A هي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ C"/></span> بما أن درجة غليان المادة C وهي <span dir="ltr" className="inline-block"><InlineMath math="90^\circ C"/></span> أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر</span>
     },
      {
         question: (
             <div className="space-y-4">
-                 <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ\text{C}"/></span> أعلى</p>
+                 <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ C"/></span> أعلى</p>
                  <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -189,6 +189,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 2,
         explanation: "درجة التكاثف أو الغليان تعتمد على قوة الترابط والإيثانول يكون روابط هيدروجينية قوية بين جزيئاته وهي أقوى من قوى ثنائي القطب في الأسيتون وهذه الروابط القوية تتطلب فقدان أو اكتساب طاقة أكبر للتغلب عليها مما يرفع درجة التكاثف"
+    },
+    {
+        question: "اختر الرسم الصحيح الذي يمثل منحنى تبريد بخار الماء",
+        options: [
+            <Image src="https://i.ibb.co/NgZfVHmn/6.png" alt="منحنى تبريد خاطئ 1" width={250} height={160} className="rounded-md mx-auto" />,
+            <Image src="https://i.ibb.co/prX2QBzg/5.png" alt="منحنى تبريد خاطئ 2" width={250} height={160} className="rounded-md mx-auto" />,
+            <Image src="https://i.ibb.co/spPLvD7b/4.png" alt="منحنى تبريد خاطئ 3" width={250} height={160} className="rounded-md mx-auto" />,
+            <Image src="https://i.ibb.co/k65TLr3M/3.png" alt="منحنى تبريد بخار الماء الصحيح" width={250} height={160} className="rounded-md mx-auto" />,
+        ],
+        correctAnswerIndex: 3,
+        explanation: <><span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة) المنطقة الأولى عند </span><span dir="ltr" className="inline-block"><InlineMath math="100^\circ C"/></span><span> وتمثل عملية التكاثف (تحول البخار إلى سائل) والمنطقة الثانية عند </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ C"/></span><span> وتمثل عملية التجمد (تحول السائل إلى صلب) الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة</span></>
     }
 ];
 
