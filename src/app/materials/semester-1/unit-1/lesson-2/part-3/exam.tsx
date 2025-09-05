@@ -1,4 +1,3 @@
-
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import Image from 'next/image';
@@ -8,7 +7,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -164,12 +163,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "المادة A لها ضغط بخاري أعلى من C عند نفس الحرارة"
         ],
         correctAnswerIndex: 1,
-        explanation: "من الرسم درجة غليان او تكاثف المادة A هي 70°C بما أن درجة غليان المادة C وهي 90°C أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر"
+        explanation: <span>من الرسم درجة غليان او تكاثف المادة A هي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ\text{C}"/></span> بما أن درجة غليان المادة C وهي <span dir="ltr" className="inline-block"><InlineMath math="90^\circ\text{C}"/></span> أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر</span>
     },
-    {
+     {
         question: (
             <div className="space-y-4">
-                 <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي 70°C أعلى</p>
+                 <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ\text{C}"/></span> أعلى</p>
                  <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
