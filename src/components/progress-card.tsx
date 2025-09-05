@@ -112,7 +112,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
 
 
     return (
-        <Card className="md:col-span-2">
+        <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
@@ -152,7 +152,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={topPositions[index]}
                             >
                                 {unit && unit.id ? (
-                                    <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
+                                    <Link href="/materials/semester-1" passHref legacyBehavior>
                                         <a className="cursor-pointer">
                                              <ProgressVessel 
                                                 label={`${index + 1}`}
@@ -179,7 +179,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={bottomPositions[index]}
                            >
                                {unit && unit.id ? (
-                                    <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
+                                    <Link href="/materials/semester-1" passHref legacyBehavior>
                                         <a className="cursor-pointer">
                                              <ProgressVessel 
                                                 label={`${index + 5}`}
