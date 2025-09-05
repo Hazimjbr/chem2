@@ -15,12 +15,12 @@ import { VaporPressureDiagram, VaporPressureCurves } from './diagram';
 const lessonInfo = {
     lessonTitle: "الدرس الثاني: الحالة السائلة",
     lessonSubtitle: "الضغط البخاري",
-    mainIdea: "الضغط البخاري هو ضغط بخار السائل عندما يكون في حالة اتزان ديناميكي مع سائله في وعاء مغلق، ويعتمد على درجة الحرارة وقوة الترابط.",
+    mainIdea: "الضغط البخاري هو ضغط بخار السائل عندما يكون في حالة اتزان ديناميكي مع سائله في وعاء مغلق ويعتمد على درجة الحرارة وقوة الترابط",
     learningOutcomes: [
-        "أصف الضغط البخاري والاتزان الديناميكي.",
-        "أفسر العوامل المؤثرة في الضغط البخاري."
+        "أصف الضغط البخاري والاتزان الديناميكي",
+        "أفسر العوامل المؤثرة في الضغط البخاري"
     ],
-    lessonContent: `<p>عند وضع سائل في وعاء مغلق، تبدأ بعض الجزيئات بالتبخر. هذه الجزيئات المتبخرة تتحرك عشوائيًا وتصطدم مع جدار الوعاء ومع سطح السائل. في هذا الدرس، سنستكشف كيف ينشأ ضغط من هذا البخار وما هي العوامل التي تتحكم فيه.</p>`,
+    lessonContent: `<p>عند وضع سائل في وعاء مغلق تبدأ بعض الجزيئات بالتبخر هذه الجزيئات المتبخرة تتحرك عشوائيًا وتصطدم مع جدار الوعاء ومع سطح السائل في هذا الدرس سنستكشف كيف ينشأ ضغط من هذا البخار وما هي العوامل التي تتحكم فيه</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-2/part-4",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-2/part-3",
@@ -88,7 +88,16 @@ export default function LessonPartPage() {
                     <CardTitle>مراحل الوصول للاتزان</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <VaporPressureDiagram />
+                    <div className="flex justify-center items-center my-4">
+                        <img 
+                            src="https://i.ibb.co/p6s8gwcG/3.png"
+                            alt="منحنى الاتزان بين التبخر والتكاثف"
+                            width={400}
+                            height={250}
+                            className="rounded-lg border bg-white"
+                            data-ai-hint="vapor pressure equilibrium"
+                        />
+                    </div>
                      <div className="mr-4 mt-4 space-y-2 text-sm">
                         <p><strong className="font-semibold text-accent">عند لحظة البداية</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
                         <p><strong className="font-semibold text-accent">مع مرور الوقت</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
@@ -131,7 +140,7 @@ export default function LessonPartPage() {
                       "تساوي صفرًا دائمًا"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="في البداية، تكون سرعة التكاثف صفرًا. مع تبخر المزيد من الجزيئات، يزداد تركيز البخار، فتزداد سرعة التكاثف حتى تصل إلى سرعة التبخر عند حالة الاتزان."
+                  explanation="في البداية تكون سرعة التكاثف صفرًا مع تبخر المزيد من الجزيئات يزداد تركيز البخار فتزداد سرعة التكاثف حتى تصل إلى سرعة التبخر عند حالة الاتزان"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -145,7 +154,7 @@ export default function LessonPartPage() {
                       "البنتان (C₅H₁₂) "
                   ]}
                   correctAnswerIndex={3}
-                  explanation="أعلى ضغط بخاري يعني أضعف قوى ترابط. البنتان هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط)، بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية أقوى."
+                  explanation="أعلى ضغط بخاري يعني أضعف قوى ترابط البنتان هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية أقوى"
               />
           </div>
         </div>
