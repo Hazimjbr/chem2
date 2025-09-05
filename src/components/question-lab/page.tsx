@@ -14,14 +14,12 @@ interface Question {
     questionText: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
-    explanation: React.ReactNode;
+    explanation: string;
     level: number;
     source: string;
 }
 
-const originalQuestion: Question | null = null;
-
-const copiedQuestion: Question | null = null;
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -97,8 +95,7 @@ export default function QuestionLabPage() {
             </header>
             
             <div className="space-y-6">
-                 <QuestionCard question={originalQuestion} />
-                 <QuestionCard question={copiedQuestion} />
+                 <QuestionCard question={newQuestion} />
             </div>
         </div>
     );
