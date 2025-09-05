@@ -91,20 +91,22 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
         if (!currentUser) return;
         try {
             const savedState = await getUserQuizState(currentUser.uid, lessonId);
-            if (savedState) {
+            if (savedState && savedState.quiz && savedState.quiz[savedState.currentQuestionIndex]) {
                 const { quiz, currentQuestionIndex, score, difficultyLevel, isFinished, answerStatus, selectedAnswer, userAnswers, timeLeft, initialTime } = savedState;
-                if (quiz) {
-                    setQuiz(quiz);
-                    setCurrentQuestionIndex(currentQuestionIndex);
-                    setScore(score);
-                    setDifficultyLevel(difficultyLevel);
-                    setIsFinished(isFinished);
-                    setAnswerStatus(answerStatus || 'unanswered');
-                    setSelectedAnswer(selectedAnswer || null);
-                    setUserAnswers(userAnswers || []);
-                    setTimeLeft(timeLeft !== undefined ? timeLeft : null);
-                    setInitialTime(initialTime !== undefined ? initialTime : null);
-                }
+                setQuiz(quiz);
+                setCurrentQuestionIndex(currentQuestionIndex);
+                setScore(score);
+                setDifficultyLevel(difficultyLevel);
+                setIsFinished(isFinished);
+                setAnswerStatus(answerStatus || 'unanswered');
+                setSelectedAnswer(selectedAnswer || null);
+                setUserAnswers(userAnswers || []);
+                setTimeLeft(timeLeft !== undefined ? timeLeft : null);
+                setInitialTime(initialTime !== undefined ? initialTime : null);
+            } else if (savedState) {
+                // If state exists but is invalid (e.g., question out of bounds), clear it.
+                console.warn("Corrupted quiz state detected. Resetting quiz.", { lessonId });
+                await clearUserQuizState(currentUser.uid, lessonId);
             }
         } catch (error) {
             console.error("Error loading quiz state, resetting.", error);
