@@ -143,7 +143,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها 90°C أي العبارات التالية صحيحة</p>
+                 <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها <span dir="ltr" className="inline-block"><InlineMath math="90^\circ\text{C}"/></span> أي العبارات التالية صحيحة</p>
                  <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
