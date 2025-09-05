@@ -154,7 +154,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                     أحكم سيطرتك على مملكة الكيمياء
                 </CardTitle>
                 <CardDescription>
-                    خارطتك هنا. اختر قلعة لتبدأ غزوها أو لتتفقد قواتك فيها.
+                    خارطتك هنا. اختر قلعة لغزوها أو ساند قواتك فيها.
                 </CardDescription>
             </CardHeader>
             <CardContent>
