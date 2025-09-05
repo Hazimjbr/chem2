@@ -59,7 +59,15 @@ export default function LessonPartPage() {
                 </CardHeader>
                 <CardContent>
                     <p>
-                        عند وضع سائل في وعاء مغلق تبدأ الجزيئات ذات الطاقة الحركية العالية بالتبخر من السطح هذه الجزيئات الغازية تتصادم مع جدران الوعاء مسببة ضغطًا في نفس الوقت بعض هذه الجزيئات الغازية تعود لتصطدم بسطح السائل وتتكاثف يستمر هذا الوضع حتى تصل العمليتان إلى حالة اتزان عندها يثبت ضغط البخار
+                        عند وضع سائل في وعاء مغلق تبدأ الجزيئات ذات الطاقة الحركية العالية بالتبخر من السطح هذه الجزيئات الغازية تتصادم مع:
+                    </p>
+                    <ul className="list-disc mr-6 mt-2 space-y-1">
+                        <li><strong>جدار الوعاء</strong> مما يسبب ما يعرف بالضغط البخاري</li>
+                        <li><strong>جزيئات الغاز الأخرى</strong></li>
+                        <li><strong>سطح السائل</strong> مما قد يؤدي إلى عودتها للحالة السائلة (التكاثف)</li>
+                    </ul>
+                    <p className="mt-2">
+                        يستمر هذا الوضع حتى تتساوى سرعة التبخر مع سرعة التكاثف فيصل النظام إلى حالة اتزان ويثبت عندها الضغط البخاري
                     </p>
                 </CardContent>
             </Card>
@@ -98,7 +106,7 @@ export default function LessonPartPage() {
                 </CardContent>
             </Card>
             <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6" />}>
-                <div className="w-full h-full p-4">
+                 <div className="w-full h-full p-4">
                     <ul className="space-y-4 text-sm">
                         <li className="flex flex-col items-start gap-1">
                             <div className="flex items-center gap-2">
