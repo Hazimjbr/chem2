@@ -24,6 +24,21 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
     return path;
 };
 
+// Positions for the castles on the map [top, left/right]
+const semester1Positions = [
+    { top: '5%', left: '10%' },
+    { top: '50%', left: '25%' },
+    { top: '5%', right: '20%' },
+    { top: '60%', right: '5%' },
+]
+
+const semester2Positions = [
+    { top: '15%', left: '15%' },
+    { top: '5%', right: '10%' },
+    { top: '55%', right: '25%' },
+    { top: '65%', left: '5%' },
+]
+
 export default function ProgressCard() {
     const { currentUser } = useApp();
     const [progress, setProgress] = useState<{ [key: string]: number }>({});
@@ -54,10 +69,6 @@ export default function ProgressCard() {
                 newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
             });
             
-            if (newProgress['unit-1'] !== undefined) {
-                 newProgress['unit-1'] = 100;
-            }
-            
             setProgress(newProgress);
         };
 
@@ -70,29 +81,66 @@ export default function ProgressCard() {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
-                    تقدمك في وحدات الفصل الأول
+                    خريطة رحلتك التعليمية
                 </CardTitle>
                 <CardDescription>
                     تابع رحلتك في احتلال القلاع التعليمية!
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="flex flex-wrap items-end justify-center gap-x-4 gap-y-2 py-4">
-                    {units.map((unit, index) => (
-                        <div
-                          key={unit.id}
-                          className={cn(
-                            "w-1/4 min-w-[100px]",
-                            index === 1 && "mb-10", // Second castle lower
-                            index === 2 && "mt-5"  // Third castle higher
-                          )}
-                        >
-                            <ProgressVessel 
-                                label={`${index + 1}`}
-                                percentage={progress[unit.id] || 0}
-                            />
-                        </div>
-                    ))}
+                 <div className="relative w-full h-[400px] bg-green-500/10 rounded-lg p-4 overflow-hidden">
+                    {/* River and Bridge */}
+                    <svg className="absolute inset-0 w-full h-full" data-ai-hint="river bridge map">
+                        <path 
+                            d="M 50 0 C 40 100, 60 150, 50 250 C 40 350, 60 400, 50 500" 
+                            stroke="hsl(var(--primary))" 
+                            strokeWidth="20" 
+                            fill="none" 
+                            transform="translate(180, 0) scale(0.4, 0.8)"
+                        />
+                        <path
+                            d="M 180 190 C 200 170, 220 170, 240 190"
+                            stroke="#A98E71"
+                            strokeWidth="5"
+                            fill="none"
+                        />
+                         <line x1="185" y1="190" x2="185" y2="200" stroke="#A98E71" strokeWidth="2" />
+                         <line x1="235" y1="190" x2="235" y2="200" stroke="#A98E71" strokeWidth="2" />
+                    </svg>
+
+                    {/* Semester 1 */}
+                    <div className="absolute inset-y-0 left-0 w-1/2">
+                         <h3 className="absolute top-2 right-4 text-lg font-bold text-background/80">الفصل الأول</h3>
+                        {units.slice(0, 4).map((unit, index) => (
+                            <div
+                                key={unit.id}
+                                className="absolute w-24 h-32"
+                                style={semester1Positions[index]}
+                            >
+                                <ProgressVessel 
+                                    label={`${index + 1}`}
+                                    percentage={progress[unit.id] || 0}
+                                />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Semester 2 */}
+                    <div className="absolute inset-y-0 right-0 w-1/2">
+                        <h3 className="absolute top-2 left-4 text-lg font-bold text-background/80">الفصل الثاني</h3>
+                         {units.slice(0, 4).map((unit, index) => (
+                            <div
+                                key={unit.id}
+                                className="absolute w-24 h-32"
+                                style={semester2Positions[index]}
+                            >
+                                <ProgressVessel 
+                                    label={`${index + 1}`}
+                                    percentage={index === 0 ? 100 : 0} // Mock data for semester 2
+                                />
+                            </div>
+                        ))}
+                    </div>
                  </div>
             </CardContent>
         </Card>
