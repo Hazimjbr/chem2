@@ -35,7 +35,7 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 
 
 export default function MainAppContent() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1/unit-1/lesson-1/part-1');
+  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1/unit-1/part-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
   const { currentUser } = useApp();
 
@@ -97,15 +97,9 @@ export default function MainAppContent() {
         <p className="text-xl text-muted-foreground mb-8">
           منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
         </p>
-        <div className="flex justify-center gap-4">
-          <Link href="/materials/semester-1" passHref>
-            <Button size="lg" variant="default">
-              <BookOpen className="ml-2" />
-              ابدأ التعلم
-            </Button>
-          </Link>
-          <Link href="/performance-analysis" passHref>
-            <Button size="lg" variant="outline">
+        <div className="flex flex-col md:flex-row justify-center gap-4">
+           <Link href="/performance-analysis" passHref>
+            <Button size="lg" variant="outline" className="w-full md:w-auto">
               <BarChart className="ml-2" />
               عرض لوحة معلوماتي
             </Button>

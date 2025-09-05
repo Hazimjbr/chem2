@@ -151,15 +151,15 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Award className="h-6 w-6 text-primary" />
-                    خارطة تقدمك في الوحدات
+                    أحكم سيطرتك على مملكة الكيمياء
                 </CardTitle>
                 <CardDescription>
-                    تنقل بين الوحدات وتابع رحلتك في احتلال القلاع التعليمية!
+                    خارطتك هنا. اختر قلعة لتبدأ غزوها أو لتتفقد قواتك فيها.
                 </CardDescription>
             </CardHeader>
             <CardContent>
                  <div className={cn(
-                    "relative w-full bg-green-200/50 rounded-lg p-4 overflow-hidden",
+                    "relative w-full bg-map-background rounded-lg p-4 overflow-hidden",
                     isMobile ? "h-[250px]" : "h-[450px]"
                  )} data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
@@ -254,12 +254,9 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                          <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                     <Link
-                                        href={lastVisitedLesson}
-                                        className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
-                                        style={lastVisitedPosition}
-                                      >
-                                        <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
+                                      <Link href={lastVisitedLesson} className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
+                                            style={lastVisitedPosition}>
+                                            <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
                                       </Link>
                                 </TooltipTrigger>
                                 <TooltipContent>
