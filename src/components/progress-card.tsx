@@ -56,6 +56,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
     const [progress, setProgress] = useState<{ [key: string]: number }>({});
     
     const lastVisitedUnitId = useMemo(() => {
+        if (!lastVisitedLesson) return null;
         const match = lastVisitedLesson.match(/unit-(\d+)/);
         return match ? `unit-${match[1]}` : null;
     }, [lastVisitedLesson]);
@@ -196,7 +197,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                         ))}
                     </div>
                     
-                    {lastVisitedPosition && (
+                    {lastVisitedPosition && lastVisitedLesson && (
                          <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
