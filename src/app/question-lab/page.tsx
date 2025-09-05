@@ -18,6 +18,21 @@ interface Question {
     source: string;
 }
 
+const newQuestion: Question = {
+    questionText: "السائل الأسرع تكاثفا من السوائل الآتية",
+    options: [
+        "CH4",
+        "CH3CH2Cl",
+        "CH3CH2OH",
+        "CH3CH3"
+    ],
+    correctAnswerIndex: 2,
+    explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط لأنه يتطلب فقدان طاقة أقل للتحول من غاز إلى سائل. الإيثانول (CH₃CH₂OH) يكون روابط هيدروجينية وهي الأقوى بين الخيارات المتاحة، لذا فهو الأسرع تكاثفًا.",
+    level: 2,
+    source: "الوحدة الأولى / الحالة السائلة / التكاثف"
+};
+
+
 const QuestionCard = ({ question }: { question?: Question }) => {
     if (!question) {
         return (
@@ -60,8 +75,8 @@ const QuestionCard = ({ question }: { question?: Question }) => {
                             )}
                             disabled
                         >
-                            <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]})</span>
-                            <span className="flex-1 whitespace-normal font-mono text-left" dir="ltr"><InlineMath math={option.replace(/CH(\d)/g, 'CH_$1')} /></span>
+                            <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
+                            <span className="flex-1 whitespace-normal font-mono text-left" dir="ltr"><InlineMath math={option.replace(/(\d+)/g, '_$1')} /></span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
@@ -91,7 +106,7 @@ export default function QuestionLabPage() {
             </header>
             
             <div className="space-y-6">
-                 <QuestionCard />
+                 <QuestionCard question={newQuestion} />
             </div>
         </div>
     );
