@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { Card, CardContent } from './ui/card';
 import { cn } from '@/lib/utils.tsx';
 
 interface ProgressVesselProps {
@@ -22,27 +21,55 @@ export default function ProgressVessel({ label, percentage }: ProgressVesselProp
     const liquidHeight = `${percentage}%`;
 
     return (
-        <Card className="p-2 text-center aspect-[3/4] flex flex-col justify-end relative overflow-hidden bg-muted/20">
-            <div className="absolute bottom-0 left-0 w-full" style={{ height: liquidHeight }}>
-                <div 
-                    className="absolute bottom-0 left-0 w-full h-full opacity-40"
-                    style={{ backgroundColor: liquidColor, transition: 'background-color 0.5s ease, height 0.5s ease' }}
+        <div className="relative w-full aspect-[3/4] text-center flex flex-col justify-end items-center">
+            {/* SVG for the beaker shape */}
+            <svg viewBox="0 0 100 120" className="absolute inset-0 w-full h-full drop-shadow-md">
+                {/* Liquid fill */}
+                <defs>
+                    <clipPath id="beakerClip">
+                        <path d="M 10 10 H 90 L 80 110 H 20 L 10 10 Z" />
+                    </clipPath>
+                </defs>
+
+                {/* The liquid itself */}
+                <g clipPath="url(#beakerClip)">
+                    <rect 
+                        x="0" 
+                        y="0" 
+                        width="100" 
+                        height="120" 
+                        className="fill-muted/20" 
+                    />
+                    <rect 
+                        x="0" 
+                        y="120" 
+                        width="100" 
+                        height="120" 
+                        style={{ 
+                            fill: liquidColor, 
+                            transform: `translateY(-${liquidHeight})`, 
+                            transition: 'transform 0.5s ease-out, fill 0.5s ease-out' 
+                        }} 
+                        className="opacity-40"
+                    />
+                    {/* Optional: Add a wave effect later if needed */}
+                </g>
+                
+                {/* Beaker outline */}
+                <path 
+                    d="M 10 10 H 90 L 80 110 H 20 L 10 10 Z" 
+                    className="stroke-border fill-transparent" 
+                    strokeWidth="2"
                 />
-                <div 
-                    className="absolute bottom-0 left-0 w-full h-full opacity-10"
-                    style={{ 
-                        backgroundColor: liquidColor, 
-                        filter: 'blur(10px)',
-                        transition: 'background-color 0.5s ease, height 0.5s ease'
-                    }}
-                />
-            </div>
-            <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                <span className="font-bold text-xs sm:text-sm drop-shadow-md text-foreground">{label}</span>
-                <span className="text-2xl sm:text-3xl font-bold font-mono mt-2 drop-shadow-lg text-foreground">
+            </svg>
+
+            {/* Content on top */}
+            <div className="relative z-10 flex flex-col items-center justify-center h-full pb-2">
+                <span className="font-bold text-xs sm:text-sm drop-shadow-sm text-foreground px-1">{label}</span>
+                <span className="text-2xl sm:text-3xl font-bold font-mono mt-2 drop-shadow-sm text-foreground">
                     {percentage}%
                 </span>
             </div>
-        </Card>
+        </div>
     );
 }
