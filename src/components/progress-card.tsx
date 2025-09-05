@@ -30,14 +30,14 @@ const semester1Positions = [
     { top: '50%', left: '25%' },
     { top: '5%', right: '20%' },
     { top: '60%', right: '5%' },
-]
+];
 
 const semester2Positions = [
     { top: '15%', left: '15%' },
     { top: '5%', right: '10%' },
     { top: '55%', right: '25%' },
     { top: '65%', left: '5%' },
-]
+];
 
 export default function ProgressCard() {
     const { currentUser } = useApp();
@@ -75,6 +75,8 @@ export default function ProgressCard() {
         fetchProgress();
     }, [currentUser]);
 
+    const semester1Units = units.slice(0, 4);
+    const semester2Units = units.slice(4); // Assuming there might be more later
 
     return (
         <Card className="md:col-span-2">
@@ -108,10 +110,10 @@ export default function ProgressCard() {
                          <line x1="235" y1="190" x2="235" y2="200" stroke="#A98E71" strokeWidth="2" />
                     </svg>
 
-                    {/* Semester 1 */}
+                    {/* Semester 1 - Left Side */}
                     <div className="absolute inset-y-0 left-0 w-1/2">
                          <h3 className="absolute top-2 right-4 text-lg font-bold text-background/80">الفصل الأول</h3>
-                        {units.slice(0, 4).map((unit, index) => (
+                        {semester1Units.map((unit, index) => (
                             <div
                                 key={unit.id}
                                 className="absolute w-24 h-32"
@@ -125,18 +127,18 @@ export default function ProgressCard() {
                         ))}
                     </div>
 
-                    {/* Semester 2 */}
+                    {/* Semester 2 - Right Side */}
                     <div className="absolute inset-y-0 right-0 w-1/2">
                         <h3 className="absolute top-2 left-4 text-lg font-bold text-background/80">الفصل الثاني</h3>
-                         {units.slice(0, 4).map((unit, index) => (
+                         {semester1Units.map((_, index) => ( // Using semester1Units length to create 4 castles
                             <div
-                                key={unit.id}
+                                key={`sem2-${index}`}
                                 className="absolute w-24 h-32"
                                 style={semester2Positions[index]}
                             >
                                 <ProgressVessel 
-                                    label={`${index + 1}`}
-                                    percentage={index === 0 ? 100 : 0} // Mock data for semester 2
+                                    label={`${index + 5}`} // Continue numbering
+                                    percentage={0} // Mock data for semester 2
                                 />
                             </div>
                         ))}
