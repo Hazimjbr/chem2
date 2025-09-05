@@ -19,7 +19,7 @@ interface Question {
 }
 
 const newQuestion: Question = {
-    questionText: "السائل الذي له أقل طاقة تكاثف مولية من السوائل الآتية:",
+    questionText: "السائل الذي له أقل طاقة تكاثف مولية من السوائل الآتية",
     options: [
         "CH₃COCH₃",
         "CH₃CH₂Cl",
@@ -27,7 +27,7 @@ const newQuestion: Question = {
         "CH₃CH₃"
     ],
     correctAnswerIndex: 3,
-    explanation: "طاقة التكاثف الأقل تعني أضعف قوى ترابط بين الجزيئات. الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط)، بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية وهي أقوى.",
+    explanation: "طاقة التكاثف الأقل تعني أضعف قوى ترابط بين الجزيئات الإيثان (CH₃CH₃) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية وهي أقوى",
     level: 2,
     source: "الوحدة الأولى / الدرس الثاني / التكاثف"
 };
@@ -55,12 +55,13 @@ const QuestionCard = ({ question }: { question: Question }) => (
                         key={index}
                         variant="outline"
                         className={cn(
-                            "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center font-mono",
+                            "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center",
                             isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
                         )}
                         disabled
                     >
-                        <span><span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]})</span> <InlineMath math={option.replace(/CH(\d)/g, 'CH_$1')} /></span>
+                        <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]})</span>
+                        <span className="flex-1 whitespace-normal font-mono text-left" dir="ltr"><InlineMath math={option.replace(/CH(\d)/g, 'CH_$1')} /></span>
                         {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                     </Button>
                 );
