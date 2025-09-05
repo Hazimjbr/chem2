@@ -15,6 +15,7 @@ import ProgressCard from '@/components/progress-card';
 interface NextStep {
     lessonTitle: string;
     nextPartPath: string;
+    nextPartNum: string;
     completedParts: number;
     totalParts: number;
 }
@@ -35,7 +36,7 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 
 
 export default function MainAppContent() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1/unit-1/part-1');
+  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1/unit-1/lesson-1/part-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
   const { currentUser } = useApp();
 
@@ -53,18 +54,24 @@ export default function MainAppContent() {
                  if (lesson.parts.length === 0) continue;
                  let completedInThisLesson = 0;
                  let firstUncompletedPathInThisLesson = '';
+                 let firstUncompletedPartNum = '';
+
                  for (const part of lesson.parts) {
                     const path = constructPath(unit.id, lesson, part);
                     if (completedLessons.has(path)) {
                         completedInThisLesson++;
                     } else if (!firstUncompletedPathInThisLesson) {
                         firstUncompletedPathInThisLesson = path;
+                        if(part.partNum) {
+                            firstUncompletedPartNum = part.partNum.toString();
+                        }
                     }
                  }
                  if (firstUncompletedPathInThisLesson) {
                     firstUncompletedPart = {
                         lessonTitle: lesson.title,
                         nextPartPath: firstUncompletedPathInThisLesson,
+                        nextPartNum: firstUncompletedPartNum,
                         completedParts: completedInThisLesson,
                         totalParts: lesson.parts.length,
                     };
@@ -97,7 +104,7 @@ export default function MainAppContent() {
         <p className="text-xl text-muted-foreground mb-8">
           منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
         </p>
-        <div className="flex flex-col md:flex-row justify-center gap-4">
+         <div className="flex flex-col md:flex-row justify-center gap-4">
            <Link href="/performance-analysis" passHref>
             <Button size="lg" variant="outline" className="w-full md:w-auto">
               <BarChart className="ml-2" />
@@ -119,23 +126,23 @@ export default function MainAppContent() {
                 <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                    {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
-                    خطوتك التالية
+                    <Target />
+                    المهمة التالية
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
                     {nextStep.totalParts - nextStep.completedParts === 1 ? (
                     <p className="text-muted-foreground mb-4">
-                        رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                        <strong className="text-destructive">الهجوم الأخير!</strong> جزء واحد يفصلك عن السيطرة الكاملة على <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
                     </p>
                     ) : (
                     <p className="text-muted-foreground mb-4">
-                        أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                        استطلاعنا يكشف أن الخطوة المهمة لفرض سيطرتك على <strong className="text-foreground">"{nextStep.lessonTitle}"</strong> هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong>.
                     </p>
                     )}
                     <Link href={nextStep.nextPartPath} passHref>
                     <Button>
-                        {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                        تأمين الهدف
                     </Button>
                     </Link>
                 </CardContent>
