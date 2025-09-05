@@ -67,6 +67,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         options: [ "A", "B", "C", "D" ],
         correctAnswerIndex: 0,
         explanation: "الإيثان (CH₃CH₃) يمتلك قوى لندن وهي أقوى من قوى الميثان (C) بسبب كتلته المولية الأعلى، ولكنه أضعف من قوى كلوروميثان (D) والإيثانول (B). لذلك، ضغطه البخاري سيكون أقل من الميثان وأعلى من المركبين الآخرين، مما يجعله يمثل المنحنى A."
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل درجة الغليان المعيارية للإيثانول تساوي</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves ethanol"
+                    />
+                </div>
+            </>
+        ),
+        options: ["78", "35", "55", "760"],
+        correctAnswerIndex: 0,
+        explanation: "درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg) من خلال تتبع الخط الأفقي من 760mmHg حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى محور درجة الحرارة نجد أن القيمة تساوي 78°C"
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];
