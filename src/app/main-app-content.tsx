@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -35,7 +34,7 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 
 
 export default function MainAppContent() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState<string | undefined>(undefined);
+  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
   const { currentUser } = useApp();
 
@@ -80,8 +79,6 @@ export default function MainAppContent() {
     const savedLesson = localStorage.getItem('lastVisitedLesson');
     if (savedLesson) {
       setLastVisitedLesson(savedLesson);
-    } else {
-      setLastVisitedLesson('/materials/semester-1');
     }
   }, [currentUser]);
   
@@ -119,7 +116,7 @@ export default function MainAppContent() {
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          {currentUser && lastVisitedLesson && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
           {nextStep && (
             <Card>
