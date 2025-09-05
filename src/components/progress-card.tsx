@@ -2,12 +2,13 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Award, BookCheck } from 'lucide-react';
+import { Award } from 'lucide-react';
 import ProgressVessel from './progress-vessel';
 import { units } from '@/data/materials';
 import { useApp } from '@/context/CurriculumContext';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils.tsx';
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -53,7 +54,6 @@ export default function ProgressCard() {
                 newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
             });
             
-            // Temporary for demonstration
             if (newProgress['unit-1'] !== undefined) {
                  newProgress['unit-1'] = 100;
             }
@@ -73,17 +73,25 @@ export default function ProgressCard() {
                     تقدمك في وحدات الفصل الأول
                 </CardTitle>
                 <CardDescription>
-                    تابع إنجازك في كل وحدة. هدفك هو الوصول إلى المستوى الذهبي في كل منها!
+                    تابع رحلتك في احتلال القلاع التعليمية!
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                 <div className="flex flex-wrap items-end justify-center gap-x-4 gap-y-2 py-4">
                     {units.map((unit, index) => (
-                        <ProgressVessel 
-                            key={unit.id}
-                            label={`الوحدة ${index + 1}`}
-                            percentage={progress[unit.id] || 0}
-                        />
+                        <div
+                          key={unit.id}
+                          className={cn(
+                            "w-1/4 min-w-[100px]",
+                            index === 1 && "mb-10", // Second castle lower
+                            index === 2 && "mt-5"  // Third castle higher
+                          )}
+                        >
+                            <ProgressVessel 
+                                label={`${index + 1}`}
+                                percentage={progress[unit.id] || 0}
+                            />
+                        </div>
                     ))}
                  </div>
             </CardContent>
