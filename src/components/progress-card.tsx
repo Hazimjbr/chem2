@@ -118,9 +118,9 @@ export default function ProgressCard() {
                                 className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={topPositions[index]}
                             >
-                                {unit ? (
+                                {unit && unit.id === 'unit-1' ? (
                                     <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
-                                        <a className={cn("cursor-pointer", unit.id !== 'unit-1' && 'pointer-events-none')}>
+                                        <a className="cursor-pointer">
                                              <ProgressVessel 
                                                 label={`${index + 1}`}
                                                 percentage={progress[unit.id] || 0}
@@ -130,7 +130,7 @@ export default function ProgressCard() {
                                 ) : (
                                     <ProgressVessel 
                                         label={`${index + 1}`}
-                                        percentage={0}
+                                        percentage={unit ? progress[unit.id] || 0 : 0}
                                     />
                                 )}
                            </div>
@@ -145,9 +145,9 @@ export default function ProgressCard() {
                                 className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={bottomPositions[index]}
                            >
-                               {unit ? (
+                               {unit && unit.id === 'unit-1' ? (
                                     <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
-                                        <a className={cn("cursor-pointer", unit.id !== 'unit-1' && 'pointer-events-none')}>
+                                        <a className="cursor-pointer">
                                              <ProgressVessel 
                                                 label={`${index + 5}`}
                                                 percentage={progress[unit.id] || 0}
@@ -157,7 +157,7 @@ export default function ProgressCard() {
                                 ) : (
                                      <ProgressVessel 
                                         label={`${index + 5}`}
-                                        percentage={0}
+                                        percentage={unit ? progress[unit.id] || 0 : 0}
                                     />
                                 )}
                            </div>
