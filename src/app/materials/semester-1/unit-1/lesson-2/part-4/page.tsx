@@ -92,19 +92,15 @@ export default function LessonPartPage() {
                 </FlippableCard>
             </div>
             
-            <Card>
-                <CardHeader>
-                    <CardTitle>مراحل الوصول للاتزان</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <VaporPressureDiagram />
-                     <div className="mr-4 mt-4 space-y-2 text-sm">
-                        <p><strong className="font-semibold text-accent">عند لحظة البداية</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
-                        <p><strong className="font-semibold text-accent">مع مرور الوقت</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
-                        <p><strong className="font-semibold text-accent">عند الزمن A</strong> تتساوى سرعة التبخر مع سرعة التكاثف ويصل النظام إلى حالة الاتزان الديناميكي ويثبت الضغط البخاري</p>
-                    </div>
-                </CardContent>
-            </Card>
+            <FlippableCard cardTitle="مراحل الوصول للاتزان" cardIcon={<BarChart3 className="h-6 w-6" />}>
+                <VaporPressureDiagram />
+                <div className="mr-4 mt-4 space-y-2 text-sm">
+                    <p><strong className="font-semibold text-accent">عند لحظة البداية</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
+                    <p><strong className="font-semibold text-accent">مع مرور الوقت</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
+                    <p><strong className="font-semibold text-accent">عند الزمن A</strong> تتساوى سرعة التبخر مع سرعة التكاثف ويصل النظام إلى حالة الاتزان الديناميكي ويثبت الضغط البخاري</p>
+                </div>
+            </FlippableCard>
+            
             <FlippableCard cardTitle="العوامل المؤثرة في الضغط البخاري" cardIcon={<Zap className="h-6 w-6" />}>
                  <div className="w-full h-full p-4">
                     <ul className="space-y-4 text-sm">
@@ -169,3 +165,4 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
