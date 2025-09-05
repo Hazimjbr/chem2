@@ -118,7 +118,7 @@ export default function ProgressCard() {
                                 className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={topPositions[index]}
                             >
-                                {unit && unit.id === 'unit-1' ? (
+                                {unit && unit.id ? (
                                     <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
                                         <a className="cursor-pointer">
                                              <ProgressVessel 
@@ -145,7 +145,7 @@ export default function ProgressCard() {
                                 className="absolute w-24 h-32 transform -translate-x-1/2 transition-transform hover:scale-105"
                                 style={bottomPositions[index]}
                            >
-                               {unit && unit.id === 'unit-1' ? (
+                               {unit && unit.id ? (
                                     <Link href={`/materials/semester-1/${unit.id}`} passHref legacyBehavior>
                                         <a className="cursor-pointer">
                                              <ProgressVessel 
