@@ -57,6 +57,51 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="inline-block font-mono">C₂H₅OH</span>) عند درجة حرارة <span dir="ltr">50°C</span>؟</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </>
+        ),
+        options: [
+            "78",
+            "400",
+            "220",
+            "760"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "بتتبع الخط العمودي من درجة حرارة 50°C على المحور السيني حتى يتقاطع مع منحنى الإيثانول، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 220mmHg تقريبًا."
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C₂H₅OC₂H₅ عند درجة حرارة 30°C يساوي:</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </>
+        ),
+        options: ["760", "100", "30", "650"],
+        correctAnswerIndex: 3,
+        explanation: "بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 650mmHg تقريبًا"
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [
@@ -84,5 +129,30 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 3,
         explanation: "أضعف قوى ترابط تعني أن السائل يتبخر بسهولة أكبر، وبالتالي يمتلك أعلى ضغط بخاري عند أي درجة حرارة معينة. المنحنى الخاص بـ C₅H₁₂ (البنتان) هو الأعلى على الرسم البياني، مما يدل على أنه الأسرع تبخرًا والأضعف في قوى الترابط (قوى لندن فقط)."
+    },
+     {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية:</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </>
+        ),
+        options: [
+            "الماء",
+            "الإيثانول",
+            "الثنائي إيثيل إيثر",
+            "الأسيتون"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات وهذا يؤدي إلى أعلى ضغط بخاري من الرسم البياني نجد أن ثنائي إيثيل إيثر يمتلك أعلى ضغط بخاري عند أي درجة حرارة مما يدل على أنه الأضعف في قوى الترابط والأقل في طاقة التكاثف"
     }
 ];
