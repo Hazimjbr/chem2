@@ -26,17 +26,17 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 
 
 const topPositions = [
-    { top: '5%', left: '5%' },
-    { top: '10%', left: '35%' },
+    { top: '5%', left: '15%' },
+    { top: '15%', left: '40%' },
     { top: '5%', left: '65%' },
-    { top: '10%', left: '90%' },
+    { top: '15%', left: '90%' },
 ];
 
 const bottomPositions = [
-    { bottom: '5%', left: '15%' },
-    { bottom: '10%', left: '45%' },
-    { bottom: '5%', left: '75%' },
-    { bottom: '10%', left: '95%' },
+    { bottom: '15%', left: '10%' },
+    { bottom: '5%', left: '35%' },
+    { bottom: '15%', left: '60%' },
+    { bottom: '5%', left: '85%' },
 ];
 
 export default function ProgressCard() {
