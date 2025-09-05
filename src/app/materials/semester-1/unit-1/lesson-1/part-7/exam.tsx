@@ -140,7 +140,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً نجد عدد المولات n = الحجم / 22.4 = 44.8L / 22.4L/mol = 2mol ثم نحسب الكتلة المولية: Mr = الكتلة / n = 4g / 2mol = 2g/mol"
     },
     {
-        "question": <>عينة من غاز الميثان في الظروف المعيارية كتلتها <InlineMath math="3.2\text{g}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي</>,
+        question: <>عينة من غاز الميثان في الظروف المعيارية كتلتها <InlineMath math="3.2\text{g}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن حجمها يساوي</>,
         "options": [
             "4.48L",
             "2.24L",
@@ -151,7 +151,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً نحسب عدد المولات n = الكتلة / الكتلة المولية = 3.2g / 16g/mol = 0.2mol ثم نحسب الحجم في الظروف المعيارية: الحجم = 0.2mol × 22.4L/mol = 4.48L"
     },
     {
-        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد جزيئات الميثان يساوي</>,
+        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3\text{L}" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن عدد جزيئات الميثان يساوي</>,
         "options": [
             "8.06x10²²",
             "6.02x10²³",
@@ -173,7 +173,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "أولاً نجد عدد مولات الغاز (n) في الظروف المعيارية: n = الحجم / 22.4 = 44.8L / 22.4L/mol = 2mol ثانياً نحسب الكتلة المولية للغاز (Mr): Mr = الكتلة / n = 4g / 2mol = 2g/mol بما أن الغاز ثنائي الذرة فإن هذه هي كتلة الجزيء (مثلاً X₂) إذن الكتلة المولية للعنصر الواحد هي نصف هذه القيمة: 2g/mol / 2 = 1g/mol"
     },
     {
-        "question": <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3L" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن كثافتها بوحدة <InlineMath math="\text{g/L}" /> تساوي</>,
+        question: <>عينة من غاز الميثان في الظروف المعيارية حجمها <InlineMath math="3L" /> إذا علمت أن الكتلة المولية للميثان <InlineMath math="16\text{g/mol}" /> فإن كثافتها بوحدة <InlineMath math="\text{g/L}" /> تساوي</>,
         "options": [
             "2.1",
             "0.7",
