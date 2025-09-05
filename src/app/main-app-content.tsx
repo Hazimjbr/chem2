@@ -114,7 +114,20 @@ export default function MainAppContent() {
 
       <section className="pb-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          
+          {currentUser && (
+              <Card className="md:col-span-2">
+                <CardHeader>
+                    <CardTitle>بطاقة التقدم</CardTitle>
+                    <CardDescription>هذه بطاقة فارغة مؤقتة.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>سيتم عرض محتوى التقدم هنا قريبًا.</p>
+                </CardContent>
+              </Card>
+          )}
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -158,6 +171,7 @@ export default function MainAppContent() {
               </CardContent>
             </Card>
           )}
+
         </div>
       </section>
     </div>
