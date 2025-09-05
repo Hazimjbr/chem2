@@ -1,4 +1,3 @@
-
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -21,7 +20,7 @@ const lessonInfo = {
         "أصف الضغط البخاري والاتزان الديناميكي.",
         "أفسر العوامل المؤثرة في الضغط البخاري."
     ],
-    lessonContent: `<p>عند وضع سائل في وعاء مغلق، تبدأ بعض الجزيئات بالتبخر. هذه الجزيئات المتبخرة تتحرك عشوائيًا وتتصادم مع جدار الوعاء ومع سطح السائل. في هذا الدرس، سنستكشف كيف ينشأ ضغط من هذا البخار وما هي العوامل التي تتحكم فيه.</p>`,
+    lessonContent: `<p>عند وضع سائل في وعاء مغلق، تبدأ بعض الجزيئات بالتبخر. هذه الجزيئات المتبخرة تتحرك عشوائيًا وتصطدم مع جدار الوعاء ومع سطح السائل. في هذا الدرس، سنستكشف كيف ينشأ ضغط من هذا البخار وما هي العوامل التي تتحكم فيه.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-2/part-4",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-2/part-3",
@@ -91,9 +90,9 @@ export default function LessonPartPage() {
                 <CardContent>
                     <VaporPressureDiagram />
                      <div className="mr-4 mt-4 space-y-2 text-sm">
-                        <p><strong className="font-semibold text-accent">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
-                        <p><strong className="font-semibold text-accent">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
-                        <p><strong className="font-semibold text-accent">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف ويصل النظام إلى حالة الاتزان الديناميكي ويثبت الضغط البخاري</p>
+                        <p><strong className="font-semibold text-accent">عند لحظة البداية</strong> تكون سرعة التبخر ثابتة عند نفس درجة الحرارة وسرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار</p>
+                        <p><strong className="font-semibold text-accent">مع مرور الوقت</strong> يزداد عدد جزيئات البخار فتبدأ سرعة التكاثف بالازدياد</p>
+                        <p><strong className="font-semibold text-accent">عند الزمن A</strong> تتساوى سرعة التبخر مع سرعة التكاثف ويصل النظام إلى حالة الاتزان الديناميكي ويثبت الضغط البخاري</p>
                     </div>
                 </CardContent>
             </Card>
@@ -103,7 +102,6 @@ export default function LessonPartPage() {
                     <CardTitle>العوامل المؤثرة في الضغط البخاري</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <VaporPressureCurves />
                     <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
                         <div className="p-3 rounded-lg bg-muted">
                             <h4 className="font-semibold flex items-center gap-2"><Thermometer className="h-5 w-5 text-primary" /> درجة الحرارة (طردي)</h4>
@@ -151,7 +149,7 @@ export default function LessonPartPage() {
                       "الماء (H₂O)",
                       "الإيثانول (C₂H₅OH)",
                       "الأسيتون (CH₃COCH₃)",
-                      "البنتان (C₅H₁₂)"
+                      "البنتان (C₅H₁₂) "
                   ]}
                   correctAnswerIndex={3}
                   explanation="أعلى ضغط بخاري يعني أضعف قوى ترابط. البنتان هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط)، بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية أقوى."
