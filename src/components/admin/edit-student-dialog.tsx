@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useTransition } from 'react';
+import React, { useTransition, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -13,7 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Laptop, Loader2, Trash2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { updateStudent } from '@/lib/firebase/student.actions';
-import type { Student } from './view-students-list';
+import type { Student, Device } from './view-students-list';
 import { Label } from '@/components/ui/label';
 import { deleteDevice } from '@/lib/firebase/device.actions';
 import {
@@ -53,6 +53,8 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
   const [isLoading, setIsLoading] = React.useState(false);
   const [isDeletingDevice, startDeleteTransition] = useTransition();
   const { toast } = useToast();
+  const [currentDevices, setCurrentDevices] = useState<Device[]>(student.devices);
+
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -102,7 +104,9 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
         const result = await deleteDevice(deviceIdString, studentId);
         if (result.success) {
             toast({ title: 'نجاح', description: result.message });
-            onUpdateSuccess(); // This will refresh the student list and data in the dialog
+            // Update local state to reflect deletion immediately
+            setCurrentDevices(prev => prev.filter(d => d.deviceId !== deviceIdString));
+            // onUpdateSuccess(); // This will refresh the student list and data in the dialog
         } else {
             toast({ variant: 'destructive', title: 'فشل', description: result.message });
         }
@@ -196,11 +200,11 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
             />
 
             <div className="space-y-2">
-                <Label>الأجهزة المسجلة ({student.devices.length})</Label>
+                <Label>الأجهزة المسجلة ({currentDevices.length})</Label>
                 <div className="space-y-2 rounded-md border p-2 bg-muted max-h-32 overflow-y-auto">
-                {student.devices.length > 0 ? (
-                    student.devices.map(device => (
-                    <div key={device.id} className="flex items-center justify-between gap-2 text-sm text-muted-foreground font-mono">
+                {currentDevices.length > 0 ? (
+                    currentDevices.map(device => (
+                    <div key={device.deviceId} className="flex items-center justify-between gap-2 text-sm text-muted-foreground font-mono">
                         <div className="flex items-center gap-2 truncate">
                            <Laptop className="h-4 w-4 flex-shrink-0" />
                            <span className="truncate">{device.deviceId}</span>
