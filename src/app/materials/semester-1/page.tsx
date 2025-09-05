@@ -76,11 +76,11 @@ export default function Semester1Page() {
       </header>
 
       <main>
-        <Accordion type="single" collapsible className="w-full space-y-6">
+        <Accordion type="single" collapsible className="w-full space-y-6" defaultValue="unit-1">
           {units.map((unit) => {
             const progress = calculateUnitProgress(unit);
             return (
-                <AccordionItem key={unit.id} value={unit.id} asChild>
+                <AccordionItem key={unit.id} value={unit.id} asChild id={unit.id}>
                 <Card>
                     <AccordionTrigger className="p-6 text-xl hover:no-underline">
                     <div className="flex items-center gap-4 w-full">

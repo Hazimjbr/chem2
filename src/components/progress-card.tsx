@@ -133,9 +133,9 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
         const basePosition = getPositionForUnit(lastVisitedUnitId);
         if (!basePosition) return null;
         
-        if (basePosition.top) {
+         if (basePosition.top) {
             const topValue = parseInt(basePosition.top.replace('%', ''));
-            return { ...basePosition, top: `${isMobile ? topValue + 20 : topValue + 22}%` };
+            return { ...basePosition, top: `${isMobile ? topValue + 20 : topValue + 23}%` };
         } else if (basePosition.bottom) {
             const bottomValue = parseInt(basePosition.bottom.replace('%', ''));
             return { ...basePosition, bottom: `${isMobile ? bottomValue + 23 : bottomValue + 23}%` };
@@ -159,7 +159,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             </CardHeader>
             <CardContent>
                  <div className={cn(
-                    "relative w-full bg-[#4ade80] rounded-lg p-4 overflow-hidden",
+                    "relative w-full bg-[#a3e635] rounded-lg p-4 overflow-hidden",
                     isMobile ? "h-[250px]" : "h-[450px]"
                  )} data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
@@ -200,14 +200,18 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                     
                     {/* Top Castles */}
                     <div className="absolute inset-x-0 top-0 h-1/2">
-                        {allUnits.slice(0, 4).map((unit, index) => (
+                        {allUnits.slice(0, 4).map((unit, index) => {
+                            const isReady = unit && (unit.id === 'unit-1' || unit.id === 'unit-2');
+                            const href = isReady ? `/materials/semester-1#${unit.id}` : '#';
+                           
+                           return (
                            <div
                                 key={`top-castle-${index}`}
                                 className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
                                 style={isMobile ? topPositions.mobile[index] : topPositions.desktop[index]}
                             >
                                 {unit && unit.id ? (
-                                    <Link href="/materials/semester-1">
+                                    <Link href={href} className={!isReady ? 'cursor-not-allowed' : ''}>
                                          <ProgressVessel 
                                             label={`${index + 1}`}
                                             percentage={progress[unit.id] || 0}
@@ -220,7 +224,8 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                     />
                                 )}
                            </div>
-                        ))}
+                           )
+                        })}
                     </div>
 
                     {/* Bottom Castles */}
@@ -232,7 +237,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 style={isMobile ? bottomPositions.mobile[index] : bottomPositions.desktop[index]}
                            >
                                {unit && unit.id ? (
-                                    <Link href="/materials/semester-1">
+                                    <Link href={`/materials/semester-1#${unit.id}`}>
                                          <ProgressVessel 
                                             label={`${index + 5}`}
                                             percentage={progress[unit.id] || 0}
