@@ -159,7 +159,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
             </CardHeader>
             <CardContent>
                  <div className={cn(
-                    "relative w-full bg-[#45d165] rounded-lg p-4 overflow-hidden",
+                    "relative w-full bg-green-200/50 rounded-lg p-4 overflow-hidden",
                     isMobile ? "h-[250px]" : "h-[450px]"
                  )} data-ai-hint="fantasy map castles">
                     {/* River that spans the full width */}
@@ -201,65 +201,66 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                     {/* Top Castles */}
                     <div className="absolute inset-x-0 top-0 h-1/2">
                         {allUnits.slice(0, 4).map((unit, index) => {
-                           return (
-                           <div
-                                key={`top-castle-${index}`}
-                                className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
-                                style={isMobile ? topPositions.mobile[index] : topPositions.desktop[index]}
-                            >
-                                {unit && unit.id ? (
-                                    <Link href={`/materials/semester-1#${unit.id}`}>
-                                         <ProgressVessel 
-                                            label={`${index + 1}`}
-                                            percentage={progress[unit.id] || 0}
-                                        />
-                                    </Link>
-                                ) : (
+                           const path = unit ? `/materials/semester-1#${unit.id}` : '#';
+                           const isClickable = unit && unit.lessons.some((l: any) => l.parts.length > 0);
+                           
+                           const Castle = (
+                               <div
+                                    className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
+                                    style={isMobile ? topPositions.mobile[index] : topPositions.desktop[index]}
+                                >
                                     <ProgressVessel 
                                         label={`${index + 1}`}
                                         percentage={unit ? progress[unit.id] || 0 : 0}
                                     />
-                                )}
-                           </div>
+                               </div>
+                           );
+
+                           return (
+                               <div key={`top-castle-${index}`}>
+                                {isClickable ? <Link href={path}>{Castle}</Link> : Castle}
+                               </div>
                            )
                         })}
                     </div>
 
                     {/* Bottom Castles */}
                     <div className="absolute inset-x-0 bottom-0 h-1/2">
-                         {allUnits.slice(4, 8).map((unit, index) => (
-                           <div
-                                key={`bottom-castle-${index}`}
-                                className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
-                                style={isMobile ? bottomPositions.mobile[index] : bottomPositions.desktop[index]}
-                           >
-                               {unit && unit.id ? (
-                                    <Link href={`/materials/semester-1#${unit.id}`}>
-                                         <ProgressVessel 
-                                            label={`${index + 5}`}
-                                            percentage={progress[unit.id] || 0}
-                                        />
-                                    </Link>
-                                ) : (
+                         {allUnits.slice(4, 8).map((unit, index) => {
+                           const path = unit ? `/materials/semester-1#${unit.id}` : '#';
+                           const isClickable = unit && unit.lessons.some((l: any) => l.parts.length > 0);
+                           
+                           const Castle = (
+                               <div
+                                    className="absolute transform -translate-x-1/2 transition-transform hover:scale-105 w-16 h-24 md:w-24 md:h-32"
+                                    style={isMobile ? bottomPositions.mobile[index] : bottomPositions.desktop[index]}
+                               >
                                      <ProgressVessel 
                                         label={`${index + 5}`}
                                         percentage={unit ? progress[unit.id] || 0 : 0}
                                     />
-                                )}
-                           </div>
-                        ))}
+                               </div>
+                           );
+
+                           return (
+                               <div key={`bottom-castle-${index}`}>
+                                {isClickable ? <Link href={path}>{Castle}</Link> : Castle}
+                               </div>
+                           )
+                        })}
                     </div>
                     
                     {lastVisitedPosition && lastVisitedLesson && (
                          <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                     <Link href={lastVisitedLesson} legacyBehavior>
-                                        <a className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
-                                            style={lastVisitedPosition}>
-                                            <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
-                                        </a>
-                                    </Link>
+                                     <Link
+                                        href={lastVisitedLesson}
+                                        className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
+                                        style={lastVisitedPosition}
+                                      >
+                                        <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
+                                      </Link>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     <p>أنت هنا! أكمل من حيث توقفت.</p>
