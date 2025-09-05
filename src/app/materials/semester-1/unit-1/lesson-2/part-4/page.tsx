@@ -91,9 +91,9 @@ export default function LessonPartPage() {
                 <CardContent>
                     <VaporPressureDiagram />
                      <div className="mr-4 mt-4 space-y-2 text-sm">
-                        <p><strong className="font-semibold">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة (عند درجة حرارة معينة) بينما سرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</p>
-                        <p><strong className="font-semibold">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار، فتبدأ سرعة التكاثف بالازدياد.</p>
-                        <p><strong className="font-semibold">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف، ويصل النظام إلى حالة الاتزان الديناميكي، ويثبت الضغط البخاري.</p>
+                        <p><strong className="font-semibold text-accent">عند لحظة البداية:</strong> تكون سرعة التبخر ثابتة (عند درجة حرارة معينة) بينما سرعة التكاثف تساوي صفرًا لعدم وجود جزيئات بخار.</p>
+                        <p><strong className="font-semibold text-accent">مع مرور الوقت:</strong> يزداد عدد جزيئات البخار، فتبدأ سرعة التكاثف بالازدياد.</p>
+                        <p><strong className="font-semibold text-accent">عند الزمن A:</strong> تتساوى سرعة التبخر مع سرعة التكاثف، ويصل النظام إلى حالة الاتزان الديناميكي، ويثبت الضغط البخاري.</p>
                     </div>
                 </CardContent>
             </Card>
