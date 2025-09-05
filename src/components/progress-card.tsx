@@ -254,9 +254,11 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                          <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                      <Link href={lastVisitedLesson} className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
+                                      <Link href={lastVisitedLesson}>
+                                        <div className="absolute transform -translate-x-1/2 cursor-pointer animate-bounce"
                                             style={lastVisitedPosition}>
                                             <MapPin className="w-6 h-6 md:w-8 md:h-8 text-destructive drop-shadow-lg" />
+                                        </div>
                                       </Link>
                                 </TooltipTrigger>
                                 <TooltipContent>
