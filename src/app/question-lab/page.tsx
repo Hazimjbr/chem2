@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية <InlineMath math="75^\circ C" /> تقريبا هي:</p>
+            <p>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية <span dir="ltr" className="inline-block">75°C</span> تقريبا هي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
