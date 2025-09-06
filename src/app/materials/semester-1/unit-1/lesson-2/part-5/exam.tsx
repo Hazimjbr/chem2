@@ -180,7 +180,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "CCl₄"
         ],
         correctAnswerIndex: 3,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (<span dir="ltr">760mmHg</span>). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا، نجد أن درجة الحرارة تقابل <span dir="ltr">77°C</span> تقريبا، وهي الأقرب لـ <span dir="ltr">75°C</span>. هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون).</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (<span dir="ltr">760mmHg</span>). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى الذي يصل لهذه القيمة عند حوالي 77 درجة، نجد أنه يمثل CCl₄ (رباعي كلوريد الكربون).</span>
     },
     {
         question: <><p>اعتمادا على الرسم المجاور المادة التي لها أكبر ضغط بخاري عند نفس درجة الحرارة</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="منحنيات الضغط البخاري" width={400} height={250} className="rounded-lg border bg-white" data-ai-hint="vapor pressure curves"/></div></>,
@@ -214,3 +214,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>
     }
 ];
+
+    
