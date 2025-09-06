@@ -17,7 +17,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "درجة الحرارة التي يبدأ عندها السائل بالتبخر.",
             "درجة الحرارة التي يتحول عندها السائل إلى صلب.",
             "درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الخارجي.",
-            <>درجة الحرارة <InlineMath math="100^\circ\text{C}" /> دائمًا.</>
+            <>درجة الحرارة <span dir="ltr">100°C</span> دائمًا.</>
         ],
         correctAnswerIndex: 2,
         explanation: "الغليان يحدث تحديدًا عندما يصبح الضغط البخاري للسائل مساويًا للضغط المحيط به، مما يسمح للفقاعات بالتشكل داخل السائل."
@@ -70,7 +70,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <>لماذا يغلي الماء عند درجة حرارة أقل من <InlineMath math="100^\circ\text{C}" /> على قمة جبل مرتفع؟</>,
+        question: <>لماذا يغلي الماء عند درجة حرارة أقل من <span dir="ltr">100°C</span> على قمة جبل مرتفع؟</>,
         options: [
             "لأن الرطوبة أعلى على قمة الجبل",
             "لأن قوة الجاذبية أقل",
@@ -128,7 +128,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <>إذا كان الضغط البخاري لسائل A عند <InlineMath math="50^\circ\text{C}" /> هو 400mmHg والضغط البخاري لسائل B عند نفس درجة الحرارة هو 200mmHg، أي العبارات التالية صحيحة؟</>,
+        question: <>إذا كان الضغط البخاري لسائل A عند <span dir="ltr">50°C</span> هو 400mmHg والضغط البخاري لسائل B عند نفس درجة الحرارة هو 200mmHg، أي العبارات التالية صحيحة؟</>,
         options: [
             "السائل A له درجة غليان أعلى من B",
             "السائل B له درجة غليان أعلى من A",
@@ -150,7 +150,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "السبب الرئيسي هو قدرة الإيثانول على تكوين روابط هيدروجينية قوية بسبب وجود مجموعة (O-H). ثنائي ميثيل إيثر قطبي ولكنه لا يمتلك رابطة (O-H)، لذا فإن قوى الترابط فيه (ثنائي القطب) أضعف بكثير من الروابط الهيدروجينية."
     },
     {
-        question: <>سائل درجة غليانه الطبيعية <InlineMath math="80^\circ\text{C}" />. عند أي ضغط خارجي تقريبًا سيغلي هذا السائل عند درجة حرارة <InlineMath math="70^\circ\text{C}" />؟</>,
+        question: <>سائل درجة غليانه الطبيعية <span dir="ltr">80°C</span>. عند أي ضغط خارجي تقريبًا سيغلي هذا السائل عند درجة حرارة <span dir="ltr">70°C</span>؟</>,
         options: [
             "أعلى من 760mmHg",
             "يساوي 760mmHg",
@@ -176,7 +176,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: [
             "ترتفع",
             "تنخفض",
-            "تبقى ثابتة عند 100°C",
+            <>تبقى ثابتة عند <span dir="ltr">100°C</span></>,
             "يعتمد على كمية الملح"
         ],
         correctAnswerIndex: 0,
