@@ -191,8 +191,8 @@ export default function ViewStudentsList() {
                                         <Button variant="ghost" size="icon" onClick={() => setEditingStudent(student)}>
                                             <Pencil className="h-4 w-4" />
                                         </Button>
-                                        <Button variant="ghost" size="icon" className="text-destructive" onClick={() => setDeletingStudent(student)}>
-                                            <Trash2 className="h-4 w-4" />
+                                        <Button variant="ghost" size="icon" onClick={() => setDeletingStudent(student)}>
+                                            <Trash2 className="h-4 w-4 text-destructive" />
                                         </Button>
                                          <Button variant="ghost" size="icon" onClick={() => handleCopyCredentials(student)}>
                                             <Copy className="h-4 w-4" />
