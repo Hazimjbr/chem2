@@ -178,7 +178,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <>تبقى ثابتة عند <span dir="ltr" className="inline-block">100°C</span></>,
             "يعتمد على كمية الملح"
         ],
-        correctAnswerIndex": 0,
+        correctAnswerIndex: 0,
         explanation: "إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من 100°C هذه الظاهرة تسمى الارتفاع في درجة الغليان"
     }
 ];
