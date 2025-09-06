@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React from 'react';
@@ -156,7 +157,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                         </TableRow>
                         <TableRow>
                             <TableCell>حجم الهواء</TableCell>
-                            <TableCell className="text-center">205L</TableCell>
+                            <TableCell className="text-center">20.5L</TableCell>
                             <TableCell className="text-center">??</TableCell>
                         </TableRow>
                         <TableRow>
@@ -175,7 +176,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "50"
         ],
         correctAnswerIndex: 1,
-        explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P V T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30*205*283)/(29*300) ≈ 20L"
+        explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P V T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30*20.5*283)/(29*300) ≈ 20L"
     },
     {
         question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr"><InlineMath math="2\text{L}" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr"><InlineMath math="3\text{L}" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
@@ -255,7 +256,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لفرضية أفوجادرو فإن كميات متساوية من الغازات المختلفة (1mol لكل منهما) عند نفس درجة الحرارة والحجم تحتوي على نفس العدد من الجسيمات وبالتالي تمارس نفس الضغط"
     },
     {
-        question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 001 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها 5L تساوي</span>,
+        question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها 5L تساوي</span>,
         options: [
             "500",
             "227",
@@ -263,18 +264,18 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "773"
         ],
         correctAnswerIndex: 1,
-        explanation: "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل T(K) = V / (V/T) = 5L / 001 = 500K بالسيليزيوس T(°C) = 500 - 273 = 227°C"
+        explanation: "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل T(K) = V / (V/T) = 5L / 0.01 = 500K بالسيليزيوس T(°C) = 500 - 273 = 227°C"
     },
     {
-        question: <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها 075L وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من 225atm إلى 103atm فإن حجم فقاعة الهواء على السطح يساوي</span>,
+        question: <span>ينفخ غواص وهو على عمق 10m تحت الماء فقاعة هواء حجمها 0.75L وعندما ارتفعت فقاعة الهواء إلى السطح تغير ضغطها من 2.25atm إلى 1.03atm فإن حجم فقاعة الهواء على السطح يساوي</span>,
         options: [
-            "034",
-            "077",
-            "168",
-            "164"
+            "0.34",
+            "0.77",
+            "1.68",
+            "1.64"
         ],
         correctAnswerIndex: 3,
-        explanation: "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض V₂ = (P₁V₁)/P₂ = (225atm × 075L)/103atm ≈ 164L"
+        explanation: "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض V₂ = (P₁V₁)/P₂ = (2.25atm × 0.75L)/1.03atm ≈ 1.64L"
     },
     {
         question: <span>يكون حجم مول واحد من غاز ثاني أكسيد الكبريت <span dir="ltr">(SO₂)</span> أقل ما يمكن عند</span>,
@@ -324,15 +325,15 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية) والأسيتون يمتلك قوى متوسطة (ثنائي القطب) لذا البنتان هو الأسرع تبخرًا والأقل في درجة الغليان"
     },
     {
-        question: <><span>وعاء حجمه 2L يحتوي على خليط من 04mol من غاز N₂ و 06mol من غاز O₂ عند درجة حرارة <span dir="ltr">27°C</span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
+        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4mol من غاز N₂ و 0.6mol من غاز O₂ عند درجة حرارة <span dir="ltr">27°C</span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
         options: [
-            "738atm",
-            "123atm",
-            "492atm",
-            "06atm"
+            "7.38atm",
+            "12.3atm",
+            "4.92atm",
+            "0.6atm"
         ],
         correctAnswerIndex: 0,
-        explanation: "أولاً نحسب الضغط الكلي للخليط باستخدام قانون الغاز المثالي n_total = 04 + 06 = 10mol T = 27 + 273 = 300K P_total = (nRT)/V = (10 * 0082 * 300) / 2 = 123atm ثانيًا نحسب الضغط الجزئي للأكسجين: P_O₂ = X_O₂ * P_total = (06 / 10) * 123 = 738atm"
+        explanation: "أولاً نحسب الضغط الكلي للخليط باستخدام قانون الغاز المثالي n_total = 0.4 + 0.6 = 1.0mol T = 27 + 273 = 300K P_total = (nRT)/V = (1.0 * 0.082 * 300) / 2 = 12.3atm ثانيًا نحسب الضغط الجزئي للأكسجين: P_O₂ = X_O₂ * P_total = (0.6 / 1.0) * 12.3 = 7.38atm"
     },
     {
         question: "ماذا يحدث لكثافة غاز مثالي إذا انخفض ضغطه إلى النصف وزادت درجة حرارته المطلقة إلى الضعف؟",
@@ -369,7 +370,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://iibbco/FbjSx8p6/3png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -386,7 +387,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "الأسيتون"
         ],
         correctAnswerIndex: 2,
-        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف"
+        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف",
     },
     {
         question: (
@@ -394,7 +395,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://iibbco/FbjSx8p6/3png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -414,7 +415,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://iibbco/FbjSx8p6/3png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -434,7 +435,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr">30°C</span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://iibbco/FbjSx8p6/3png"
+                    src="https://i.ibb.co/FbjSx8p6/3.png"
                     alt="منحنيات الضغط البخاري"
                     width={500}
                     height={300}
@@ -454,7 +455,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://iibbco/FbjSx8p6/3png"
+                    src="https://i.ibb.co/FbjSx8p6/3.png"
                     alt="منحنيات الضغط البخاري"
                     width={500}
                     height={300}
@@ -474,7 +475,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للأسيتون عند درجة غليانه الطبيعية يساوي</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://iibbco/FbjSx8p6/3png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -494,11 +495,12 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>• العبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D C B A عند درجة حرارة ثابتة T هي:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://iibbco/BVCwCvTn/3png"
+                        src="https://i.ibb.co/BVCwCvTn/3.png"
                         alt="رسم بياني للطاقة"
                         width={400}
                         height={250}
                         className="rounded-lg border bg-white"
+                        data-ai-hint="energy distribution curve"
                     />
                 </div>
             </div>
@@ -513,5 +515,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "العبارة الخاطئة هي ترابط جزيئات المادة A أضعف من المادة D لأن طاقة التنشيط للمادة A أقل من D مما يعني أن ترابطها أضعف وليس العكس الخيار C لها أعلى ضغط بخاري صحيح لأن C لها أقل طاقة تنشيط مما يعني أضعف قوى ترابط وأعلى ضغط بخاري الخيار B لها أعلى طاقة تكاثف مولية صحيح لأن B لها أعلى طاقة تنشيط مما يعني أقوى قوى ترابط وأعلى طاقة تكاثف الخيار معظم جزيئات المادة C في الحالة الغازية صحيح لأنها تمتلك أضعف قوى ترابط وبالتالي معظم جزيئاتها تكون في الحالة الغازية"
     }
 ]
+
+    
 
     
