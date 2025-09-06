@@ -31,6 +31,7 @@ import * as unit1Lesson2Part5Exam from '@/app/materials/semester-1/unit-1/lesson
 import * as unit1ReviewExam from '@/app/materials/semester-1/unit-1/section-5/exam';
 
 interface SourcedQuizQuestion extends BaseQuizQuestion {
+    id: string; // Unique ID for each question
     source: {
         unitId: string;
         unitTitle: string;
@@ -85,13 +86,13 @@ units.forEach(unit => {
                         partTitle: part.title,
                     };
                     if (module.staticQuizLvl1) {
-                        allQuestions.push(...module.staticQuizLvl1.map((q: any) => ({ ...q, source: sourceInfo, level: 1 })));
+                        allQuestions.push(...module.staticQuizLvl1.map((q: any, i: number) => ({ ...q, id: `${path}-lvl1-${i}`, source: sourceInfo, level: 1 })));
                     }
                     if (module.staticQuizLvl2) {
-                        allQuestions.push(...module.staticQuizLvl2.map((q: any) => ({ ...q, source: sourceInfo, level: 2 })));
+                        allQuestions.push(...module.staticQuizLvl2.map((q: any, i: number) => ({ ...q, id: `${path}-lvl2-${i}`, source: sourceInfo, level: 2 })));
                     }
                     if (module.staticQuizLvl3) {
-                        allQuestions.push(...module.staticQuizLvl3.map((q: any) => ({ ...q, source: sourceInfo, level: 3 })));
+                        allQuestions.push(...module.staticQuizLvl3.map((q: any, i: number) => ({ ...q, id: `${path}-lvl3-${i}`, source: sourceInfo, level: 3 })));
                     }
                 }
             });
@@ -108,13 +109,13 @@ units.forEach(unit => {
                     lessonTitle: lesson.title,
                 };
                  if (module.staticQuizLvl1) {
-                    allQuestions.push(...module.staticQuizLvl1.map((q: any) => ({ ...q, source: sourceInfo, level: 1 })));
+                    allQuestions.push(...module.staticQuizLvl1.map((q: any, i: number) => ({ ...q, id: `${path}-lvl1-${i}`, source: sourceInfo, level: 1 })));
                 }
                  if (module.staticQuizLvl2) {
-                    allQuestions.push(...module.staticQuizLvl2.map((q: any) => ({ ...q, source: sourceInfo, level: 2 })));
+                    allQuestions.push(...module.staticQuizLvl2.map((q: any, i: number) => ({ ...q, id: `${path}-lvl2-${i}`, source: sourceInfo, level: 2 })));
                 }
                  if (module.staticQuizLvl3) {
-                    allQuestions.push(...module.staticQuizLvl3.map((q: any) => ({ ...q, source: sourceInfo, level: 3 })));
+                    allQuestions.push(...module.staticQuizLvl3.map((q: any, i: number) => ({ ...q, id: `${path}-lvl3-${i}`, source: sourceInfo, level: 3 })));
                 }
             }
         }
@@ -274,8 +275,8 @@ export default function QuestionBankPage() {
 
             <div className="space-y-6">
                  {filteredQuestions.length > 0 ? (
-                    filteredQuestions.map((q, index) => (
-                        <QuestionCard key={index} question={q} />
+                    filteredQuestions.map((q) => (
+                        <QuestionCard key={q.id} question={q} />
                     ))
                 ) : (
                     <Card className="text-center p-8 text-muted-foreground">
