@@ -7,7 +7,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: React.ReactNode[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: string | React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -30,7 +30,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "لا تؤثر على درجة الغليان",
             "تجعل السائل يتجمد"
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex": 0,
         explanation: "زيادة الضغط الخارجي تعني أن السائل يحتاج إلى الوصول لضغط بخاري أعلى ليغلي، وهذا يتطلب زيادة درجة حرارته. هذا هو مبدأ عمل طنجرة الضغط."
     },
     {
@@ -78,7 +78,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "لأن الضغط الجوي أقل على قمة الجبل"
         ],
         correctAnswerIndex: 3,
-        explanation: "على الارتفاعات العالية، يكون الضغط الجوي أقل. لذلك، يحتاج الماء إلى الوصول لضغط بخاري أقل ليبدأ بالغليان، وهذا يتحقق عند درجة حرارة أقل من 100°C."
+        explanation: <>على الارتفاعات العالية، يكون الضغط الجوي أقل. لذلك، يحتاج الماء إلى الوصول لضغط بخاري أقل ليبدأ بالغليان، وهذا يتحقق عند درجة حرارة أقل من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span>.</>
     },
     {
         question: "أي من السوائل التالية له أقل درجة غليان؟",
