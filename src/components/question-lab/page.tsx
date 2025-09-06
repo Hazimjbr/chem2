@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية <span dir="ltr" className="inline-block">75°C</span> تقريبا هي:</p>
+            <p>اعتمادا على الرسم المجاور، المادة التي لها أكبر ضغط بخاري عند نفس درجة الحرارة:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -37,10 +37,10 @@ const newQuestion: Question | null = {
         </div>
     ),
     options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
-    correctAnswerIndex: 3,
-    explanation: "درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (760mmHg). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا، نجد أن درجة الحرارة تقابل 77°C تقريبًا، وهي الأقرب لـ 75°C. هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون).",
+    correctAnswerIndex: 2,
+    explanation: "أكبر ضغط بخاري يعني أضعف قوى ترابط بين الجزيئات. C₆H₁₄ (الهكسان) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن) بين الخيارات، حيث أن CH₃COOH و H₂O يمتلكان روابط هيدروجينية قوية، و CCl₄ له كتلة مولية أعلى من الهكسان مما يجعل قوى لندن فيه أقوى.",
     level: 3,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 5"
+    source: "الوحدة الأولى / الدرس 2 / الجزء 4"
 };
 
 
