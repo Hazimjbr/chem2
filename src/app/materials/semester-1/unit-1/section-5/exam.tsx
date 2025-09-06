@@ -108,18 +108,18 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته) الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات) لذا فإن ضغط الغاز فيه هو الأعلى"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن عينة الغاز الأكثر كثافة هي</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
+        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أرعة أوعية لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة الأكثر كثافة هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         options: [
-            "A",
-            "B",
             "C",
+            "B",
+            "A",
             "D"
         ],
         correctAnswerIndex: 3,
-        explanation: "الكثافة (d) تساوي الكتلة (m) مقسومة على الحجم (V) بما أن الحجم ثابت لجميع العينات فإن الأعلى كثافة هي صاحبة الكتلة الأكبر بافتراض أن عدد الجسيمات يمثل عدد المولات (أو نسبة منها) نحسب كتلة نسبية A=3×18=54 B=5×20=100 C=2×46=92 D=4×32=128 العينة D لها الكتلة النسبية الأكبر وبالتالي هي الأعلى كثافة"
+        explanation: "الكثافة d = m/V وبما أن الحجم (V) ثابت لجميع العينات فإن الأعلى كثافة هي صاحبة الكتلة (m) الأكبر نحسب كتلة كل عينة m=n×Mr A=0.2×20=4g B=0.8×18=14.4g C=0.4×46=18.4g D=0.6×32=19.2g العينة D لها الكتلة الأكبر وبالتالي هي الأعلى كثافة"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -296,7 +296,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "الأسيتون"
         ],
         correctAnswerIndex: 2,
-        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف",
+        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف.",
     },
     {
         question: (
@@ -459,9 +459,30 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 1,
         explanation: "بناءً على الترتيب الصحيح لقوى الترابط (روابط هيدروجينية > ثنائي القطب > قوى لندن) يكون للمركب CH3Cl (ثنائي القطب) طاقة تبخر متوسطة ويمثله الرمز (W) الذي يتطلب طاقة أقل من الإيثانول (Q) وأكبر من الميثان والإيثان (M, E)"
     },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم البياني، المادة التي لها أعلى درجة غليان معيارية هي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
+        correctAnswerIndex: 0,
+        explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>
+    }
 ]
 
     
 
     
+
 
