@@ -146,8 +146,8 @@ export const staticQuizLvl1: QuizQuestion[] = [
                     <TableBody>
                         <TableRow>
                             <TableCell>درجة حرارة الهواء</TableCell>
-                            <TableCell className="text-center"><span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span></TableCell>
-                            <TableCell className="text-center"><span dir="ltr">10<InlineMath math="^\circ\text{C}"/></span></TableCell>
+                            <TableCell className="text-center"><span dir="ltr">27°C</span></TableCell>
+                            <TableCell className="text-center"><span dir="ltr">10°C</span></TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>ضغط الهواء</TableCell>
@@ -255,7 +255,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لفرضية أفوجادرو فإن كميات متساوية من الغازات المختلفة (1mol لكل منهما) عند نفس درجة الحرارة والحجم تحتوي على نفس العدد من الجسيمات وبالتالي تمارس نفس الضغط"
     },
     {
-        question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة <span dir="ltr" className="inline-block">°C</span> لهذه العينة عندما يكون حجمها 5L تساوي</span>,
+        question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها 5L تساوي</span>,
         "options": [
             "500",
             "227",
@@ -324,7 +324,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية) والأسيتون يمتلك قوى متوسطة (ثنائي القطب) لذا البنتان هو الأسرع تبخرًا والأقل في درجة الغليان"
     },
     {
-        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 mol من غاز N₂ و 0.6 mol من غاز O₂ عند درجة حرارة <span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
+        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 mol من غاز N₂ و 0.6 mol من غاز O₂ عند درجة حرارة <span dir="ltr">27°C</span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
         options: [
             "7.38atm",
             "12.3atm",
@@ -395,7 +395,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\\circ\text{C}" />) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -410,7 +410,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["56", "78", "35", "100"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <InlineMath math="56^\\circ\text{C}" /> تقريبًا.</span>
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة 56°C تقريبًا.</span>
     },
     {
         question: (
@@ -430,12 +430,12 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\\circ\text{C}" />.</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل 78°C.</span>
     },
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\\circ\text{C}"/>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <InlineMath math="30^\\circ\text{C}" /> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند 30°C يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -450,7 +450,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="30^\\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
     },
     {
         question: (
