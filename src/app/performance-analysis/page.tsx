@@ -6,55 +6,19 @@ import PerformanceAnalysisForm from '@/components/performance-analysis-form';
 import { useApp } from '@/context/CurriculumContext';
 import { useEffect, useState } from 'react';
 import type { QuizResult } from '@/components/quiz';
-import { units } from '@/data/materials';
 import { BarChart, BookX, Target, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Progress } from '@/components/ui/progress';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
+import { getLessonTitle } from '@/lib/utils';
 
 interface WeakestLesson {
     lessonId: string;
     lessonTitle: string;
     score: number;
 }
-
-const getLessonTitle = (lessonId: string): string => {
-    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
-    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
-    if (!unitIdentifier) return lessonId; 
-
-    const unit = units.find(u => u.id === unitIdentifier);
-    if (!unit) return lessonId;
-
-    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
-    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
-
-    if (lessonIdentifier) {
-        const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
-        const lesson = unit.lessons.find(l => l.lessonNum === lessonNum);
-        if (!lesson) return unit.title;
-
-        const partIdentifier = pathParts.find(p => p.startsWith('part-'));
-        if (partIdentifier) {
-            const partNum = parseInt(partIdentifier.replace('part-', ''), 10);
-            const part = lesson.parts.find(p => p.partNum === partNum);
-            return part ? `${lesson.title} / ${part.title}` : lesson.title;
-        }
-        return lesson.title;
-    }
-
-    if (sectionIdentifier) {
-         const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
-         const section = unit.lessons.find(l => l.sectionNum === sectionNum);
-         if (section) {
-            return `${unit.title} / ${section.title}`;
-         }
-    }
-
-    return unit.title; // Fallback to unit title
-};
 
 export default function PerformanceAnalysisPage() {
     const { currentUser } = useApp();
