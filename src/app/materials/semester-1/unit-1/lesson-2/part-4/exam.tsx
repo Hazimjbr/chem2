@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span dir="ltr" className="inline-block">50°C</span>؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span><InlineMath math="50^\circ\text{C}" /></span>؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -91,7 +91,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "760"
         ],
         correctAnswerIndex: 2,
-        explanation: "بتتبع الخط العمودي من درجة حرارة 50°C على المحور السيني حتى يتقاطع مع منحنى الإيثانول، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 220mmHg تقريبًا."
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="50^\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى الإيثانول، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 220mmHg تقريبًا.</span>
     },
     {
         question: "عند مقارنة الماء (H₂O) وثنائي إيثيل إيثر (C₂H₅OC₂H₅) عند نفس درجة الحرارة، لماذا يكون الضغط البخاري لثنائي إيثيل إيثر أعلى بكثير؟",
@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
     },
     {
-        question: <>إذا علمت أن الضغط البخاري لسائل معين عند 20°C هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند 40°C؟</>,
+        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <InlineMath math="20^\circ\text{C}" /> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <InlineMath math="40^\circ\text{C}" />؟</>,
         options: [
             "أقل من 100mmHg",
             "يساوي 100mmHg",
@@ -186,7 +186,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}" /></span>) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -201,7 +201,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["56", "78", "35", "100"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة 56°C تقريبًا.</span>
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <InlineMath math="56^\circ\text{C}" /> تقريبًا.</span>
     },
     {
         question: (
@@ -221,12 +221,12 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <span dir="ltr" className="inline-block">78°C</span>.</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\circ\text{C}" />.</span>
     },
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block">°C</span>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند 30°C يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}"/></span>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -241,7 +241,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="30^\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
     },
     {
         question: (
@@ -266,7 +266,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
      {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للماء عند درجة غليانه الطبيعية يساوي</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للأسيتون عند درجة غليانه الطبيعية يساوي</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -279,8 +279,8 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 </div>
             </div>
         ),
-        options: ["100", "760", "220", "650"],
+        options: ["56", "760", "220", "650"],
         correctAnswerIndex: 1,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760mmHg عند درجة حرارة 100°C.</span>
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760mmHg).</span>
     }
 ];
