@@ -39,10 +39,10 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 2,
     explanation: (
         <span>
-            أولاً، نحول الضغط من atm إلى mmHg: <InlineMath math="0.39 \text{ atm} \times 760 \text{ mmHg/atm} \approx 300 \text{ mmHg}" />.
-            بعد ذلك، نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D.
-            نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D، ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}" />.
-            أخيرًا، نحول درجة الحرارة إلى كلفن: <InlineMath math="T(K) = 50 + 273 = 313 \text{ K}" />.
+            أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39 \text{ atm} \times 760 \text{ mmHg/atm} \approx 300 \text{ mmHg}" />
+            بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D
+            نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr" className="inline-block">50°C</span>
+            أخيرًا نحول درجة الحرارة إلى كلفن <InlineMath math="T(K) = 50 + 273 = 313 \text{ K}" />
         </span>
     ),
     level: 3,
