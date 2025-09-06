@@ -195,7 +195,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         question: "اختر الرسم الصحيح الذي يمثل منحنى تبريد بخار الماء",
         options: [
             <Image src="https://i.ibb.co/NgZfVHmn/6.png" alt="منحنى تبريد خاطئ 1" width={250} height={160} className="rounded-md mx-auto" />,
-            <Image src="https://i.ibb.co/prX2QBzg/5.png" alt="منحنى تبريد خاطئ 2" width={250} height={160} className="rounded-md mx-auto" />,
+            <Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="منحنى تبريد خاطئ 2" width={250} height={160} className="rounded-md mx-auto" />,
             <Image src="https://i.ibb.co/spPLvD7b/4.png" alt="منحنى تبريد خاطئ 3" width={250} height={160} className="rounded-md mx-auto" />,
             <Image src="https://i.ibb.co/k65TLr3M/3.png" alt="منحنى تبريد بخار الماء الصحيح" width={250} height={160} className="rounded-md mx-auto" />,
         ],
@@ -286,7 +286,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "CH₃Cl (كلوروميثان)"
         ],
         correctAnswerIndex: 1,
-        explanation: "الإيثانول (روابط هيدروجينية) والكلوروميثان (ثنائي قطب) لهما قوى ترابط قوية. البنتان والنيوبنتان كلاهما غير قطبي ولهما نفس الكتلة المولية، لكن النيوبنتان أكثر تفرعًا وشكله أقرب للكرة، مما يقلل من مساحة السطح المتاحة للتجاذب ويضعف قوى لندن بشكل كبير، وبالتالي يمتلك أقل طاقة تكاثف."
+        explanation: "الإيثانول (روابط هيدروجينية) والكلوروميثان (ثنائي القطب) لهما قوى ترابط قوية. البنتان والنيوبنتان كلاهما غير قطبي ولهما نفس الكتلة المولية، لكن النيوبنتان أكثر تفرعًا وشكله أقرب للكرة، مما يقلل من مساحة السطح المتاحة للتجاذب ويضعف قوى لندن بشكل كبير، وبالتالي يمتلك أقل طاقة تكاثف."
     },
     {
         question: "أي المركبات التالية له أعلى درجة غليان؟",
