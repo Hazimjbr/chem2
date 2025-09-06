@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-             <p>اعتمادا على الرسم المجاور، الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة (25°C) بوحدة mmHg يساوي:</p>
+             <p>اعتمادا على الرسم المجاور، الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة (<InlineMath math="25^\circ\text{C}" />) بوحدة mmHg يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -38,7 +38,7 @@ const newQuestion: Question | null = {
     ),
     options: ["760", "25", "100", "400"],
     correctAnswerIndex: 2,
-    explanation: <span>بتتبع الخط العمودي من درجة حرارة 25°C على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.</span>,
+    explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="25^\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.</span>,
     level: 2,
     source: "الوحدة الأولى / الدرس 2 / الجزء 4"
 };
