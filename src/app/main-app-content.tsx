@@ -15,6 +15,7 @@ import ProgressCard from '@/components/progress-card';
 interface NextStep {
     lessonTitle: string;
     nextPartPath: string;
+    nextPartTitle: string;
     nextPartNum: string;
     completedParts: number;
     totalParts: number;
@@ -55,6 +56,7 @@ export default function MainAppContent() {
                  let completedInThisLesson = 0;
                  let firstUncompletedPathInThisLesson = '';
                  let firstUncompletedPartNum = '';
+                 let firstUncompletedPartTitle = '';
 
                  for (const part of lesson.parts) {
                     const path = constructPath(unit.id, lesson, part);
@@ -62,6 +64,7 @@ export default function MainAppContent() {
                         completedInThisLesson++;
                     } else if (!firstUncompletedPathInThisLesson) {
                         firstUncompletedPathInThisLesson = path;
+                        firstUncompletedPartTitle = part.title;
                         if(part.partNum) {
                             firstUncompletedPartNum = part.partNum.toString();
                         }
@@ -71,6 +74,7 @@ export default function MainAppContent() {
                     firstUncompletedPart = {
                         lessonTitle: lesson.title,
                         nextPartPath: firstUncompletedPathInThisLesson,
+                        nextPartTitle: firstUncompletedPartTitle,
                         nextPartNum: firstUncompletedPartNum,
                         completedParts: completedInThisLesson,
                         totalParts: lesson.parts.length,
@@ -130,23 +134,25 @@ export default function MainAppContent() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
+                  <Target />
                   خطوتك التالية
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {nextStep.totalParts - nextStep.completedParts === 1 ? (
-                  <p className="text-muted-foreground mb-4">
-                    رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                  </p>
-                ) : (
-                  <p className="text-muted-foreground mb-4">
-                    متابعتك مهمة! خطوتك التالية هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong> في درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                  </p>
-                )}
+                <p className="text-muted-foreground mb-4">
+                  {nextStep.nextPartNum ? (
+                    <>
+                      متابعتك مهمة! خطوتك التالية هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong> في درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
+                    </>
+                  ) : (
+                    <>
+                      خطوتك التالية هي <strong className="text-foreground">"{nextStep.nextPartTitle}"</strong> في <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
+                    </>
+                  )}
+                </p>
                 <Link href={nextStep.nextPartPath} passHref>
                   <Button>
-                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                    أكمل رحلتك
                   </Button>
                 </Link>
               </CardContent>
