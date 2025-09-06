@@ -104,7 +104,7 @@ export default function LessonPartPage() {
                 cardTitle="درجة الغليان المعيارية"
                 cardIcon={<Thermometer className="h-6 w-6" />}
             >
-                <p className="text-sm">
+                <p className="text-sm p-4">
                     هي درجة الحرارة التي يغلي عندها السائل عندما يكون الضغط الخارجي الواقع عليه يساوي 1 ضغط جوي (1atm أو 760mmHg). وهي القيمة التي نستخدمها عادةً للمقارنة بين السوائل.
                 </p>
             </FlippableCard>
@@ -112,8 +112,6 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="اتجاهات درجة الغليان في الجدول الدوري"
                 cardIcon={<BarChart3 className="h-6 w-6" />}
-                 imageContent={<BoilingPointTrends />}
-                imageCardClassName="flex items-center justify-center p-2"
             >
                 <div className="space-y-2 text-sm p-4">
                     <p className="font-semibold">تزداد درجة غليان هيدريدات عناصر المجموعات (15, 16, 17) بزيادة الكتلة المولية بسبب زيادة قوة قوى لندن.</p>
