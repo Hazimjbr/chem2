@@ -412,7 +412,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: (
             <span>
-                بتتبع الخط العمودي من درجة حرارة <InlineMath math="25^\circ\text{C}"/> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B) ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 100mmHg تقريبًا
+                بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="25^\circ\text{C}"/></span> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B) ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 100mmHg تقريبًا
             </span>
         )
     },
