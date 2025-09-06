@@ -97,7 +97,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "العبارة الخاطئة هي (يزداد الحجم وعدد الجسيمات ثابت) عند الانتقال من B إلى A نلاحظ أن الحجم يزداد (المكبس يرتفع) ولكن عدد الجسيمات يقل بشكل واضح العبارات الأخرى صحيحة يقل عدد الجسيمات فيزداد الحجم ويقل التركيز والضغط ويفترض أن الطاقة الحركية تقل (اللون تغير من الأحمر للبارد) مما يساهم في انخفاض الضغط"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div></div>,
+        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -108,7 +108,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته) الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات) لذا فإن ضغط الغاز فيه هو الأعلى"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن عينة الغاز الأكثر كثافة هي</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن عينة الغاز الأكثر كثافة هي</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -119,7 +119,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "الكثافة (d) تساوي الكتلة (m) مقسومة على الحجم (V) بما أن الحجم ثابت لجميع العينات فإن الأعلى كثافة هي صاحبة الكتلة الأكبر بافتراض أن عدد الجسيمات يمثل عدد المولات (أو نسبة منها) نحسب كتلة نسبية A=3×18=54 B=5×20=100 C=2×46=92 D=4×32=128 العينة D لها الكتلة النسبية الأكبر وبالتالي هي الأعلى كثافة"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -246,13 +246,13 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/XrFDw7Pb/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/><strong className="text-accent mt-2 block">عند أي درجة حرارة يكون انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن؟</strong></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن درجة حرارة التي يكون عندها انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: ["200K", "273K", "500K", "1000K"],
         correctAnswerIndex: 3,
         explanation: "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
     },
      {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/XrFDw7Pb/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/><strong className="text-accent mt-2 block">ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</strong></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -263,7 +263,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/XrFDw7Pb/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/><strong className="text-accent mt-2 block">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا هو</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -438,9 +438,30 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "كلا المركبين لهما نفس الكتلة المولية وهما غير قطبيين (قوى لندن فقط) النونان (سلسلة مستقيمة) أقل تفرعًا مما يعطيه مساحة سطح أكبر للتجاذب فتزداد قوة قوى لندن ويقل ضغطه البخاري"
-    }
+    },
+        {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH3CH2OH</span> <span dir="ltr" className="font-mono inline-block">CH4</span> <span dir="ltr" className="font-mono inline-block">CH3CH3</span> <span dir="ltr" className="font-mono inline-block">CH3Cl</span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block">CH3CH3Cl</span> هو:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        alt="Vapor Pressure vs Temperature for four liquids"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["M", "W", "R", "Q"],
+        correctAnswerIndex: 1,
+        explanation: "بناءً على الترتيب الصحيح لقوى الترابط (روابط هيدروجينية > ثنائي القطب > قوى لندن) يكون للمركب CH3Cl (ثنائي القطب) طاقة تبخر متوسطة ويمثله الرمز (W) الذي يتطلب طاقة أقل من الإيثانول (Q) وأكبر من الميثان والإيثان (M, E)"
+    },
 ]
 
     
 
     
+
