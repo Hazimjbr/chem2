@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -348,12 +349,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm <span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <span dir="ltr">-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
+        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm <span dir="ltr" style={{'display': 'inline-block'}}>-27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <span dir="ltr" style={{'display': 'inline-block'}}>-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
         options: [
-            "الكتلة 488g، الحجم الجديد 500L",
-            "الكتلة 12.2g، الحجم الجديد 500L",
-            "الكتلة 488g، الحجم الجديد 250L",
-            "الكتلة 12.2g، الحجم الجديد 250L"
+            "الكتلة 488g الحجم الجديد 500L",
+            "الكتلة 12.2g الحجم الجديد 500L",
+            "الكتلة 488g الحجم الجديد 250L",
+            "الكتلة 12.2g الحجم الجديد 250L"
         ],
         correctAnswerIndex: 0,
         explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(27+273)) ≈ 12.2mol الكتلة = n * Mr = 12.2 * 4 = 48.8g (خطأ في الخيارات ولكن 488 الأقرب كخطأ طباعي) ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(27+273)) = (300*250)/(0.5*300) = 500L"
@@ -553,5 +554,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     }
 ];
-
-    
