@@ -21,27 +21,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <span>
-            العبارة الخاطئة فيما يتعلق بالغازين A B إذا علمت أن سرعة تبخر A أكبر من سرعة تبخر B هي
-        </span>
-    ),
-    options: [
-        "درجة تكاثف الغاز A أكبر",
-        "الضغط البخاري للغاز A أكبر عند نفس درجة الحرارة",
-        "درجة غليان الغاز A المعيارية أقل",
-        "قوى الترابط بين جزيئات الغاز A أضعف",
-    ],
-    correctAnswerIndex: 0,
-    explanation: (
-        <span>
-            بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل وليس أكبر لذلك العبارة الخاطئة هي أ
-        </span>
-    ),
-    level: 3,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 4 و 5"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {

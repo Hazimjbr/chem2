@@ -350,6 +350,30 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["200mmHg", "760mmHg", "26.7kPa", "400mmHg"],
+        correctAnswerIndex: 2,
+        explanation: (
+            <span>
+                لكي يغلي السائل يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي من الرسم البياني نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <InlineMath math="80^\circ C"/> هو <InlineMath math="200mmHg"/> لتحويل هذه القيمة إلى kPa نستخدم العلاقة: <InlineMath math="P(kPa) = 200mmHg \times \frac{101.3kPa}{760mmHg} \approx 26.7kPa"/>
+            </span>
+        )
+    },
+    {
         question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span>, <span dir="ltr" className="inline-block">-27°C</span>) يحتوي على غاز الهيليوم (Mr=4 g/mol). ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr" className="inline-block">-23°C</span>؟</span></>,
         options: [
             "الكتلة 48.8g، الحجم الجديد 500L",
@@ -488,3 +512,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
