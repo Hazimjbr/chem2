@@ -324,7 +324,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية) والأسيتون يمتلك قوى متوسطة (ثنائي القطب) لذا البنتان هو الأسرع تبخرًا والأقل في درجة الغليان"
     },
     {
-        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 مول من غاز N₂ و 0.6 مول من غاز O₂ عند درجة حرارة <span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
+        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 mol من غاز N₂ و 0.6 mol من غاز O₂ عند درجة حرارة <span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
         options: [
             "7.38atm",
             "12.3atm",
@@ -349,7 +349,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm <span dir="ltr" style={{'display': 'inline-block'}}>-27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <span dir="ltr" style={{'display': 'inline-block'}}>-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
+        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span> <span dir="ltr">-27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr">-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
         options: [
             "الكتلة 488g الحجم الجديد 500L",
             "الكتلة 12.2g الحجم الجديد 500L",
@@ -368,7 +368,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "0.82atm"
         ],
         correctAnswerIndex: 2,
-        explanation: "1 نحسب مولات الميثان: n_CH₄ = 8g / 16g/mol = 0.5mol 2 من المعادلة 1 مول CH₄ ينتج 1 مول CO₂ و 2 مول H₂O أي 3 مول من الغازات الناتجة 3 إذن 0.5 مول CH₄ ينتج n_total = 0.5 * 3 = 1.5mol من الغازات 4 نحسب الضغط الكلي: T=127+273=400K P = nRT/V = (1.5 * 0.082 * 400) / 10 = 4.92atm"
+        explanation: "1. نحسب مولات الميثان: n_CH₄ = 8g / 16g/mol = 0.5mol. 2. من المعادلة، 1 mol من CH₄ ينتج 1 mol من CO₂ و 2 mol من H₂O، أي 3 mol من الغازات الناتجة. 3. إذن، 0.5 mol من CH₄ ينتج n_total = 0.5 * 3 = 1.5mol من الغازات. 4. نحسب الضغط الكلي: T=127+273=400K, P = nRT/V = (1.5 * 0.082 * 400) / 10 = 4.92atm."
     },
     {
         question: "سائلان A و B لهما نفس درجة الحرارة إذا كانت طاقة التنشيط للتبخر للسائل A أكبر من السائل B فأي العبارات التالية صحيحة فيما يتعلق بخصائصهما؟",
@@ -554,3 +554,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     }
 ];
+
+    
