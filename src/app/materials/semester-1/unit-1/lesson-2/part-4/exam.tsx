@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند درجة حرارة <InlineMath math="50^\circ\text{C}" />؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50^\circ\text{C}" /></span>؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
     },
     {
-        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <InlineMath math="20^\circ\text{C}" /> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <InlineMath math="40^\circ\text{C}" />؟</>,
+        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <span dir="ltr" className="inline-block"><InlineMath math="40^\circ\text{C}" /></span>؟</>,
         options: [
             "أقل من 100mmHg",
             "يساوي 100mmHg",
@@ -201,7 +201,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["100", "760", "220", "650"],
         correctAnswerIndex: 1,
-        explanation: "درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة 100°C.",
+        explanation: "درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة 100°C."
     },
     {
         question: (
@@ -221,12 +221,12 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: <>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\circ\text{C}" />.</>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <span dir="ltr" className="inline-block"><InlineMath math="78^\circ\text{C}" /></span>.</span>
     },
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <InlineMath math="^\circ\text{C}" /> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند درجة حرارة <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}" /></span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <span dir="ltr" className="inline-block"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
