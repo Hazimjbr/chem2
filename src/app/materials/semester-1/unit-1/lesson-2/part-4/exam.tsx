@@ -6,7 +6,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: string | React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -221,7 +221,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: "درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل 78°C."
+        explanation: <>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\circ\text{C}" />.</>
     },
     {
         question: (
@@ -242,5 +242,25 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
         explanation: "بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا."
+    },
+    {
+        question: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أعلى طاقة تبخر مولية هي</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/84T52SSm/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>
+        ),
+        options: ["الماء", "الإيثانول", "ثنائي إيثيل إيثر", "الأسيتون"],
+        correctAnswerIndex: 0,
+        explanation: "أعلى طاقة تبخر مولية تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند أي درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن الماء له أقل ضغط بخاري، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى."
     }
 ];
