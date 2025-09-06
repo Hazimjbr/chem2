@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React from 'react';
@@ -351,10 +352,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span>, <span dir="ltr" className="inline-block">-27°C</span>) يحتوي على غاز الهيليوم (Mr=4 g/mol). ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr" className="inline-block">-23°C</span>؟</span></>,
         options: [
-            "الكتلة 48.8g الحجم الجديد 500L",
-            "الكتلة 12.2g الحجم الجديد 500L",
-            "الكتلة 48.8g الحجم الجديد 250L",
-            "الكتلة 12.2g الحجم الجديد 250L"
+            "الكتلة 48.8g، الحجم الجديد 500L",
+            "الكتلة 12.2g، الحجم الجديد 500L",
+            "الكتلة 48.8g، الحجم الجديد 250L",
+            "الكتلة 12.2g، الحجم الجديد 250L"
         ],
         correctAnswerIndex: 0,
         explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(-27+273)) ≈ 14.95mol. الكتلة = n * Mr = 14.95 * 4 ≈ 59.8g (يوجد خطأ في الخيارات). ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(-27+273)) = (300*250)/(0.5*246) ≈ 609L. يبدو أن هناك خطأ في السؤال الأصلي أو الخيارات، لكن بناءً على المبدأ، الحسابات تؤدي إلى قيم مختلفة."
@@ -479,10 +480,32 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: ["A", "M", "B", "Q"],
         correctAnswerIndex: 2,
         explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr">80°C</span> عند ضغط مقداره يساوي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["26.7 KPa", "101.3 KPa", "760 mmHg", "0.62 atm"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <span>
+                لكي يغلي السائل، يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي. من الرسم البياني، نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <span dir="ltr">80°C</span> هو 200mmHg. لتحويل هذه القيمة إلى KPa، نستخدم العلاقة: <InlineMath math="P(\text{kPa}) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />.
+            </span>
+        )
     }
 ];
-
-    
 
     
 
