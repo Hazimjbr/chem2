@@ -168,7 +168,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "يعتمد على كمية الملح"
         ],
         correctAnswerIndex: 0,
-        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block">100°C</span> هذه الظاهرة تسمى الارتفاع في درجة الغليان</>
+        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span> هذه الظاهرة تسمى الارتفاع في درجة الغليان</>
     },
     {
         question: <><span>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية</span><span dir="ltr" className="inline-block mx-1">77°C</span><span> تقريبا هي:</span><div className="flex justify-center"><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="منحنيات الضغط البخاري" width={400} height={250} className="rounded-lg border bg-white" data-ai-hint="vapor pressure curves"/></div></>,
