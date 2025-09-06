@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="inline-block font-mono">C₂H₅OH</span>) عند درجة حرارة <InlineMath math="50^\circ\text{C}" />؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند درجة حرارة <InlineMath math="50^\circ\text{C}" />؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -226,7 +226,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <InlineMath math="^\circ\text{C}" /> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <InlineMath math="^\circ\text{C}" /> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند درجة حرارة <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
