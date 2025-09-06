@@ -23,7 +23,15 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر C₂H₅OC₂H₅ عند 30°C يساوي:</p>
+            <p>
+                اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة 
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="^\circ\text{C}" /></span>
+                والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر 
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>
+                 عند 
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="30^\circ\text{C}" /></span>
+                 يساوي:
+            </p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/84T52SSm/3.png"
@@ -38,7 +46,13 @@ const newQuestion: Question | null = {
     ),
     options: ["760", "100", "30", "650"],
     correctAnswerIndex: 3,
-    explanation: "بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.",
+    explanation: (
+        <>
+            بتتبع الخط العمودي من درجة حرارة 
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="30^\circ\text{C}" /></span>
+            على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.
+        </>
+    ),
     level: 2,
     source: "الوحدة 1 / الدرس 2 / الضغط البخاري"
 };
