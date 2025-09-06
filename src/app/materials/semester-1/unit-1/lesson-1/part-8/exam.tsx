@@ -84,7 +84,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/><strong className="text-accent mt-2 block">عند أي درجة حرارة يكون انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن؟</strong></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن درجة حرارة التي يكون عندها انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن</p><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: ["200 K", "273 K", "500 K", "1000 K"],
         correctAnswerIndex: 3,
         "explanation": "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
