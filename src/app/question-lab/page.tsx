@@ -21,32 +21,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-            <p>• العبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D , C , B , A عند درجة حرارة ثابتة T هي:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/BVCwCvTn/3.png"
-                    alt="رسم بياني للطاقة"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                />
-            </div>
-        </div>
-    ),
-    options: [
-        "المادة C لها أعلى ضغط بخاري",
-        "المادة B لها أعلى طاقة تكاثف مولية",
-        "ترابط جزيئات المادة A أضعف من المادة D",
-        "معظم جزيئات المادة C في الحالة الغازية",
-    ],
-    correctAnswerIndex: 2,
-    explanation: "العبارة الخاطئة هي ترابط جزيئات المادة A أضعف من المادة D لأن طاقة التنشيط للمادة A أقل من D مما يعني أن ترابطها أضعف وليس العكس الخيار C لها أعلى ضغط بخاري صحيح لأن C لها أقل طاقة تنشيط مما يعني أضعف قوى ترابط وأعلى ضغط بخاري الخيار B لها أعلى طاقة تكاثف مولية صحيح لأن B لها أعلى طاقة تنشيط مما يعني أقوى قوى ترابط وأعلى طاقة تكاثف الخيار معظم جزيئات المادة C في الحالة الغازية صحيح لأنها تمتلك أضعف قوى ترابط وبالتالي معظم جزيئاتها تكون في الحالة الغازية",
-    level: 3,
-    source: "مراجعة الوحدة الأولى"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
