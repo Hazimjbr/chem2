@@ -70,7 +70,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
      {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن الحالة الفيزيائية للمادة A عند درجة الحرارة B هي:</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن الحالة الفيزيائية للمادة A عند درجة الحرارة B هي:</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -90,7 +90,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن درجة التكاثف للمادة A تساوي:</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن درجة التكاثف للمادة A تساوي:</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -110,7 +110,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr" className="inline-block">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr" className="inline-block">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن X هي:</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن X هي:</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -144,7 +144,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                 <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها <span dir="ltr" className="inline-block"><InlineMath math="90^\circ C"/></span> أي العبارات التالية صحيحة</p>
+                 <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها <span dir="ltr">90°C</span> أي العبارات التالية صحيحة</p>
                  <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -164,12 +164,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "المادة A لها ضغط بخاري أعلى من C عند نفس الحرارة"
         ],
         correctAnswerIndex: 1,
-        explanation: <span>من الرسم درجة غليان او تكاثف المادة A هي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ C"/></span> بما أن درجة غليان المادة C وهي <span dir="ltr" className="inline-block"><InlineMath math="90^\circ C"/></span> أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر</span>
+        explanation: <span>من الرسم درجة غليان او تكاثف المادة A هي <span dir="ltr">70°C</span> بما أن درجة غليان المادة C وهي <span dir="ltr">90°C</span> أعلى من A فهذا يعني أن قوى الترابط بين جزيئات C أقوى من A حيث يتطلب كسرها طاقة أكبر</span>
     },
      {
         question: (
             <div className="space-y-4">
-                 <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي <span dir="ltr" className="inline-block"><InlineMath math="70^\circ C"/></span> أعلى</p>
+                 <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي <span dir="ltr">70°C</span> أعلى</p>
                  <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/GfZ5wtqG/22.png"
@@ -200,7 +200,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             <Image src="https://i.ibb.co/k65TLr3M/3.png" alt="منحنى تبريد بخار الماء الصحيح" width={250} height={160} className="rounded-md mx-auto" />,
         ],
         correctAnswerIndex: 3,
-        explanation: <><span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة) المنطقة الأولى عند </span><span dir="ltr" className="inline-block"><InlineMath math="100^\circ C"/></span><span> وتمثل عملية التكاثف (تحول البخار إلى سائل) والمنطقة الثانية عند </span><span dir="ltr" className="inline-block"><InlineMath math="0^\circ C"/></span><span> وتمثل عملية التجمد (تحول السائل إلى صلب) الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة</span></>
+        explanation: <><span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة) المنطقة الأولى عند </span><span dir="ltr">100°C</span><span> وتمثل عملية التكاثف (تحول البخار إلى سائل) والمنطقة الثانية عند </span><span dir="ltr">0°C</span><span> وتمثل عملية التجمد (تحول السائل إلى صلب) الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة</span></>
     },
      {
         question: (
@@ -300,4 +300,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "حمض الأسيتيك (CH₃COOH) هو الوحيد القادر على تكوين روابط هيدروجينية قوية جدًا على شكل دايمر (جزيئين معًا)، مما يرفع درجة غليانه بشكل كبير مقارنة ببقية المركبات التي تمتلك قوى ثنائي القطب أو قوى لندن فقط."
     }
 ];
-

@@ -178,7 +178,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P V T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30*20.5*283)/(29*300) ≈ 20L"
     },
     {
-        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3\text{L}" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr"><InlineMath math="2\text{L}" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr"><InlineMath math="3\text{L}" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
         options: [
             <InlineMath math="n_{Ne} = n_{Xe}" />,
             <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
@@ -189,7 +189,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     },
      {
-        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
+        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr">2L</span> ويحتوي على <span dir="ltr"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr">3L</span> فما عدد مولات غاز الزينون <span dir="ltr">(Xe)</span> الذي يحتويه</span>,
         options: [
             "0.4mol",
             "0.6mol",
@@ -288,7 +288,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون الغاز المثالي (V = nRT/P) يكون حجم الغاز أقل ما يمكن عندما تكون درجة الحرارة (T) أقل ما يمكن والضغط (P) أعلى ما يمكن الخيار (أ) يحقق هذه الشروط (أقل درجة حرارة وأعلى ضغط)"
     },
     {
-        question: <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <span dir="ltr" className="inline-block">25°C</span> إلى <span dir="ltr" className="inline-block">150°C</span> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
+        question: <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <span dir="ltr">25°C</span> إلى <span dir="ltr">150°C</span> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
         "options": [
             "متوسط سرعة جزيئات الغاز",
             "ضغط الغاز",
@@ -352,9 +352,9 @@ export const staticQuizLvl3: QuizQuestion[] = [
         question: (
              <>
                 <span>الضغط البخاري لنونان (</span>
-                <span dir="ltr" className="font-mono inline-block">CH₃(CH₂)₇CH₃</span>
+                <span dir="ltr" className="font-mono"><InlineMath math="CH₃(CH₂)₇CH₃</span>
                 <span>) أقل من 3،3-ثنائي إيثيل بنتان (</span>
-                <span dir="ltr" className="font-mono inline-block">C(CH₂CH₃)₄</span>
+                <span dir="ltr" className="font-mono"><InlineMath math="C(CH₂CH₃)₄</span>
                 <span>) لأن نونان:</span>
             </>
         ),

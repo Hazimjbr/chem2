@@ -47,7 +47,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
     {
         question: (
             <>
-                غاز ضغطه <span dir="ltr"><InlineMath math="100\text{kPa}" /></span> عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="27^\circ\text{C}" /></span> ما هو ضغطه إذا تم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="127^\circ\text{C}" /></span> مع ثبات الحجم
+                غاز ضغطه <span dir="ltr"><InlineMath math="100\text{kPa}" /></span> عند <span dir="ltr"><InlineMath math="27^\circ\text{C}" /></span> ما هو ضغطه إذا تم تسخينه إلى <span dir="ltr"><InlineMath math="127^\circ\text{C}" /></span> مع ثبات الحجم
             </>
         ),
         "options": [
@@ -124,7 +124,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                عينة من غاز ضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="W" /></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="35^\circ\text{C}" /></span> فإن درجة حرارتها بوحدة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="^\circ\text{C}" /></span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي
+                عينة من غاز ضغطها <span dir="ltr"><InlineMath math="W" /></span> عند درجة حرارة <span dir="ltr"><InlineMath math="35^\circ\text{C}" /></span> فإن درجة حرارتها بوحدة <span dir="ltr"><InlineMath math="^\circ\text{C}" /></span> عندما يصبح ضغطها مثلي الضغط الأصلي تساوي
             </>
         ),
         "options": [
@@ -139,14 +139,14 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                غاز ضغطه <span dir="ltr"><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة تم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr"><InlineMath math="900\text{mmHg}" /></span> ما كانت درجة الحرارة الابتدائية بالسيليزيوس
+                غاز ضغطه <span dir="ltr"><InlineMath math="700\text{mmHg}" /></span> عند درجة حرارة غير معروفة تم تسخينه إلى <span dir="ltr"><InlineMath math="150^\circ\text{C}" /></span> فأصبح ضغطه <span dir="ltr"><InlineMath math="900\text{mmHg}" /></span> ما كانت درجة الحرارة الابتدائية بالسيليزيوس
             </>
         ),
         "options": [
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="56.1^\circ\text{C}" /></span>,
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="329.1^\circ\text{C}" /></span>,
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="117^\circ\text{C}" /></span>,
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="423^\circ\text{C}" /></span>
+            <span dir="ltr"><InlineMath math="56.1^\circ\text{C}" /></span>,
+            <span dir="ltr"><InlineMath math="329.1^\circ\text{C}" /></span>,
+            <span dir="ltr"><InlineMath math="117^\circ\text{C}" /></span>,
+            <span dir="ltr"><InlineMath math="423^\circ\text{C}" /></span>
         ],
         "correctAnswerIndex": 0,
         "explanation": "P₁=700, P₂=900 T₂=150+273=423K T₁=T₂P₁/P₂ = (423 * 700) / 900 ≈ 329.1K نحول إلى سيليزيوس T₁(°C) = 329.1 - 273 ≈ 56.1°C"
@@ -161,13 +161,13 @@ export const staticQuizLvl3: QuizQuestion[] = [
             </>
         ),
         "options": [
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="0^\circ\text{C}"/></span>,
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="100^\circ\text{C}"/></span>,
-            <span dir="ltr" style={{'display': 'inline-block'}}><InlineMath math="-273.15^\circ\text{C}"/></span>,
+            <span dir="ltr"><InlineMath math="0^\circ\text{C}"/></span>,
+            <span dir="ltr"><InlineMath math="100^\circ\text{C}"/></span>,
+            <span dir="ltr"><InlineMath math="-273.15^\circ\text{C}"/></span>,
             "لا يتقاطع"
         ],
         "correctAnswerIndex": 2,
-        explanation: <><span>تمامًا مثل قانون شارل إذا تم رسم الضغط مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى ضغط صفر عند درجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="-273.15^\circ C"/></span><span> وهي قيمة الصفر المطلق</span></>
+        explanation: <><span>تمامًا مثل قانون شارل إذا تم رسم الضغط مقابل درجة الحرارة بالسيليزيوس فإن امتداد الخط المستقيم سيصل إلى ضغط صفر عند درجة حرارة </span><span dir="ltr"><InlineMath math="-273.15^\circ C"/></span><span> وهي قيمة الصفر المطلق</span></>
     },
     {
         "question": "ماذا يحدث لمتوسط المسافة بين جسيمات الغاز عند تطبيق قانون جاي-لوساك",
@@ -183,7 +183,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="298\text{K}" /></span> وضغط <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="101.3\text{kPa}" /></span> إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="596\text{K}" /></span> فما هو الضغط الجديد
+                وعاء يحتوي على غاز النيتروجين عند <span dir="ltr"><InlineMath math="298\text{K}" /></span> وضغط <span dir="ltr"><InlineMath math="101.3\text{kPa}" /></span> إذا تم نقل الغاز إلى وعاء آخر حجمه نصف حجم الوعاء الأول وتم تسخينه إلى <span dir="ltr"><InlineMath math="596\text{K}" /></span> فما هو الضغط الجديد
             </>
         ),
         "options": [
@@ -198,7 +198,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                في المحاكاة التفاعلية عندما تزيد درجة الحرارة من <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="546\text{K}" /></span> ماذا تلاحظ على قيمة الضغط
+                في المحاكاة التفاعلية عندما تزيد درجة الحرارة من <span dir="ltr"><InlineMath math="273\text{K}" /></span> إلى <span dir="ltr"><InlineMath math="546\text{K}" /></span> ماذا تلاحظ على قيمة الضغط
             </>
         ),
         "options": [
@@ -211,7 +211,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "زيادة درجة الحرارة المطلقة من 273K إلى 546K تعني مضاعفة درجة الحرارة وفقًا للعلاقة الطردية في قانون جاي-لوساك (P∝T) فإن الضغط يجب أن يتضاعف أيضًا"
     },
     {
-        "question": <span>عينة غاز نسبة ضغطها إلى درجة حرارتها المطلقة تساوي <span dir="ltr" className="inline-block">0.003atm/K</span> ما هي درجة الحرارة بالسيليزيوس (°C) لهذه العينة عندما يكون ضغطها <span dir="ltr" className="inline-block">0.9atm</span></span>,
+        question: <span>عينة غاز نسبة ضغطها إلى درجة حرارتها المطلقة تساوي <span dir="ltr">0.003atm/K</span> ما هي درجة الحرارة بالسيليزيوس (°C) لهذه العينة عندما يكون ضغطها <span dir="ltr">0.9atm</span></span>,
         "options": [
             "300",
             "27",

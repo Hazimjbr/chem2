@@ -1,3 +1,4 @@
+
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import Image from 'next/image';
@@ -16,7 +17,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "درجة الحرارة التي يبدأ عندها السائل بالتبخر",
             "درجة الحرارة التي يتحول عندها السائل إلى صلب",
             "درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الخارجي",
-            <>درجة الحرارة <span dir="ltr" className="inline-block">100°C</span> دائمًا</>
+            <>درجة الحرارة <span dir="ltr">100°C</span> دائمًا</>
         ],
         correctAnswerIndex: 2,
         explanation: "الغليان يحدث تحديدًا عندما يصبح الضغط البخاري للسائل مساويًا للضغط المحيط به مما يسمح للفقاعات بالتشكل داخل السائل"
@@ -69,7 +70,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <>لماذا يغلي الماء عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span> على قمة جبل مرتفع</>,
+        question: <>لماذا يغلي الماء عند درجة حرارة أقل من <span dir="ltr">100°C</span> على قمة جبل مرتفع</>,
         options: [
             "لأن الرطوبة أعلى على قمة الجبل",
             "لأن قوة الجاذبية أقل",
@@ -77,7 +78,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "لأن الضغط الجوي أقل على قمة الجبل"
         ],
         correctAnswerIndex: 3,
-        explanation: <>على الارتفاعات العالية يكون الضغط الجوي أقل لذلك يحتاج الماء إلى الوصول لضغط بخاري أقل ليبدأ بالغليان وهذا يتحقق عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span></>
+        explanation: <>على الارتفاعات العالية يكون الضغط الجوي أقل لذلك يحتاج الماء إلى الوصول لضغط بخاري أقل ليبدأ بالغليان وهذا يتحقق عند درجة حرارة أقل من <span dir="ltr">100°C</span></>
     },
     {
         question: "أي من السوائل التالية له أقل درجة غليان",
@@ -99,7 +100,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "يغير من نكهة الطعام فقط"
         ],
         correctAnswerIndex: 2,
-        explanation: <>الضغط المرتفع داخل الطنجرة يرفع درجة غليان الماء فوق <span dir="ltr" className="inline-block">100°C</span> الطهي عند درجة حرارة أعلى يسرع من التفاعلات الكيميائية المسؤولة عن نضج الطعام مما يقلل من وقت الطهي</>
+        explanation: <>الضغط المرتفع داخل الطنجرة يرفع درجة غليان الماء فوق <span dir="ltr">100°C</span> الطهي عند درجة حرارة أعلى يسرع من التفاعلات الكيميائية المسؤولة عن نضج الطعام مما يقلل من وقت الطهي</>
     },
     {
         question: "أي مما يلي لا يؤثر على درجة غليان سائل نقي",
@@ -110,7 +111,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "الكتلة المولية للجزيئات"
         ],
         correctAnswerIndex: 2,
-        explanation: <>درجة الغليان هي خاصية فيزيائية مميزة للمادة لا تعتمد على كميتها سواء كنت تغلي كوبًا من الماء أو لترًا منه فإنه سيغلي عند <span dir="ltr" className="inline-block">100°C</span> (عند ضغط 1atm)</>
+        explanation: <>درجة الغليان هي خاصية فيزيائية مميزة للمادة لا تعتمد على كميتها سواء كنت تغلي كوبًا من الماء أو لترًا منه فإنه سيغلي عند <span dir="ltr">100°C</span> (عند ضغط 1atm)</>
     },
     {
         question: "ما هو الترتيب الصحيح للمركبات التالية من حيث ازدياد درجة الغليان (من الأقل إلى الأعلى)",
@@ -127,7 +128,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <>إذا كان الضغط البخاري لسائل A عند <span dir="ltr" className="inline-block">50°C</span> هو 400mmHg والضغط البخاري لسائل B عند نفس درجة الحرارة هو 200mmHg أي العبارات التالية صحيحة</>,
+        question: <>إذا كان الضغط البخاري لسائل A عند <span dir="ltr">50°C</span> هو 400mmHg والضغط البخاري لسائل B عند نفس درجة الحرارة هو 200mmHg أي العبارات التالية صحيحة</>,
         options: [
             "السائل A له درجة غليان أعلى من B",
             "السائل B له درجة غليان أعلى من A",
@@ -149,7 +150,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "السبب الرئيسي هو قدرة الإيثانول على تكوين روابط هيدروجينية قوية بسبب وجود مجموعة (O-H) ثنائي ميثيل إيثر قطبي ولكنه لا يمتلك رابطة (O-H) لذا فإن قوى الترابط فيه (ثنائي القطب) أضعف بكثير من الروابط الهيدروجينية"
     },
     {
-        question: <>سائل درجة غليانه الطبيعية <span dir="ltr" className="inline-block">80°C</span> عند أي ضغط خارجي تقريبًا سيغلي هذا السائل عند درجة حرارة <span dir="ltr" className="inline-block">70°C</span></>,
+        question: <>سائل درجة غليانه الطبيعية <span dir="ltr">80°C</span> عند أي ضغط خارجي تقريبًا سيغلي هذا السائل عند درجة حرارة <span dir="ltr">70°C</span></>,
         options: [
             "أعلى من 760mmHg",
             "يساوي 760mmHg",
@@ -164,14 +165,14 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: [
             "ترتفع",
             "تنخفض",
-            <>تبقى ثابتة عند <span dir="ltr" className="inline-block">100°C</span></>,
+            <>تبقى ثابتة عند <span dir="ltr">100°C</span></>,
             "يعتمد على كمية الملح"
         ],
         correctAnswerIndex: 0,
-        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء، ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي)، يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}"/></span>. هذه الظاهرة تسمى الارتفاع في درجة الغليان.</>
+        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء، ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي)، يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr"><InlineMath math="100^\circ\text{C}"/></span>. هذه الظاهرة تسمى الارتفاع في درجة الغليان.</>
     },
     {
-        question: <><span>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية</span><span dir="ltr" className="inline-block mx-1">77°C</span><span> تقريبا هي:</span><div className="flex justify-center"><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="منحنيات الضغط البخاري" width={400} height={250} className="rounded-lg border bg-white" data-ai-hint="vapor pressure curves"/></div></>,
+        question: <><span>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية</span><span dir="ltr">77°C</span><span> تقريبا هي:</span><div className="flex justify-center"><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="منحنيات الضغط البخاري" width={400} height={250} className="rounded-lg border bg-white" data-ai-hint="vapor pressure curves"/></div></>,
         options: [
             "CH₃COOH",
             "H₂O",
@@ -179,7 +180,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "CCl₄"
         ],
         correctAnswerIndex: 3,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (760mmHg). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا، نجد أن درجة الحرارة تقابل <span dir="ltr" className="inline-block">77°C</span> تقريبا، وهي الأقرب لـ <span dir="ltr" className="inline-block">75°C</span>. هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون).</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (760mmHg). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا، نجد أن درجة الحرارة تقابل 77°C تقريبا، وهي الأقرب لـ 75°C. هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون).</span>
     },
     {
         question: <><p>اعتمادا على الرسم المجاور المادة التي لها أكبر ضغط بخاري عند نفس درجة الحرارة</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="منحنيات الضغط البخاري" width={400} height={250} className="rounded-lg border bg-white" data-ai-hint="vapor pressure curves"/></div></>,
