@@ -49,7 +49,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "بما أن جميع الغازات لها نفس الحجم والضغط ودرجة الحرارة فإن لها نفس عدد المولات n وفقا لقانون الغاز المثالي الكتلة m = n × الكتلة المولية Mr لذلك الغاز الذي له أكبر كتلة مولية سيكون له أكبر كتلة الكتل المولية H₂=2 و O₂=32 و F₂=38 و Ar=40 إذن Ar هو صاحب الكتلة الأكبر"
     },
     {
-        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span>. إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
+        question: <div><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span> إذا تم تسخين وعاء الغاز F₂ وتبريد وعاء الغاز H₂ فأي وعاء سيكون ضغط الغاز فيه هو الأعلى</span></div>,
         "options": [
             "F₂",
             "Ar",
@@ -60,7 +60,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون جاي-لوساك يتناسب الضغط طرديًا مع درجة الحرارة عند ثبات الحجم بما أن وعاء F₂ تم تسخينه (زيادة الحرارة) فسيكون ضغطه هو الأعلى بينما وعاء H₂ تم تبريده فسيكون ضغطه هو الأقل"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات متساوية الحجم عند نفس درجة الحرارة ثم أجب:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /><strong className="text-accent mt-2 block">أي عينة غاز لها الضغط الأكبر</strong></div>,
+        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /><strong className="text-accent mt-2 block">أي عينة غاز لها الضغط الأكبر</strong></div>,
         "options": [
             "D",
             "B",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون الغاز المثالي (PV=nRT) عند ثبات الحجم (V) والحرارة (T) فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n) العينة B تحتوي على أكبر عدد من المولات (0.8mol) لذا فهي الأعلى ضغطًا"
     },
     {
-        question: <div><p>ادرس الرسم البياني للغازات إذا كانت الكتل المولية للغازات (D:32, C:46, B:18, A:20)g/mol فأي عينة هي الأكثر كثافة?</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
+        question: <div><p>اعتمادا على الرسم البياني للغازات إذا كانت الكتل المولية للغازات (D:32, C:46, B:18, A:20)g/mol فأي عينة هي الأكثر كثافة?</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         "options": [
             "C",
             "B",
@@ -203,3 +203,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     }
 ];
 
+    
