@@ -20,7 +20,28 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
+            <div className="flex justify-center my-4">
+                <Image
+                    src="https://i.ibb.co/84T52SSm/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </>
+    ),
+    options: ["78", "35", "55", "760"],
+    correctAnswerIndex: 0,
+    explanation: "درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل 78°C.",
+    level: 2,
+    source: "الوحدة 1 / الدرس 2 / الضغط البخاري"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
