@@ -20,28 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية <span dir="ltr" className="inline-block"><InlineMath math="75^\circ C" /></span> تقريبا هي:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/dwTN2WHw/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>
-    ),
-    options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
-    correctAnswerIndex: 3,
-    explanation: <><span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (760mmHg). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا، نجد أن درجة الحرارة تقابل </span><span dir="ltr" className="inline-block"><InlineMath math="77^\circ\text{C}" /></span><span> تقريبًا، وهي الأقرب لـ </span><span dir="ltr" className="inline-block"><InlineMath math="75^\circ\text{C}" /></span><span>. هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون).</span></>,
-    level: 3,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 5"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
