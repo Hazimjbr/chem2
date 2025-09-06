@@ -128,31 +128,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [
-    {
-        question: (
-            <div className="space-y-4">
-                <p>اعتمادًا على منحنى الضغط البخاري، أي سائل لديه أضعف قوى ترابط بين جزيئاته؟</p>
-                <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/TB6RcQkw/22.png"
-                        alt="Vapor Pressure vs Temperature"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curves"
-                    />
-                </div>
-            </div>
-        ),
-        options: [
-            "H₂O",
-            "CH₃OH",
-            "CHCl₃",
-            "C₅H₁₂"
-        ],
-        correctAnswerIndex: 3,
-        explanation: "أضعف قوى ترابط تعني أن السائل يتبخر بسهولة أكبر، وبالتالي يمتلك أعلى ضغط بخاري عند أي درجة حرارة معينة. المنحنى الخاص بـ C₅H₁₂ (البنتان) هو الأعلى على الرسم البياني، مما يدل على أنه الأسرع تبخرًا والأضعف في قوى الترابط (قوى لندن فقط)."
-    },
      {
         question: (
             <>
