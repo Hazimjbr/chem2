@@ -147,23 +147,23 @@ export const staticQuizLvl1: QuizQuestion[] = [
                     <TableBody>
                         <TableRow>
                             <TableCell>درجة حرارة الهواء</TableCell>
-                            <TableCell className="text-center">27°C</TableCell>
-                            <TableCell className="text-center">10°C</TableCell>
+                            <TableCell className="text-center"><InlineMath math="27^\circ\text{C}"/></TableCell>
+                            <TableCell className="text-center"><InlineMath math="10^\circ\text{C}"/></TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>ضغط الهواء</TableCell>
-                            <TableCell className="text-center">30 atm</TableCell>
-                            <TableCell className="text-center">29 atm</TableCell>
+                            <TableCell className="text-center">30atm</TableCell>
+                            <TableCell className="text-center">29atm</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>حجم الهواء</TableCell>
-                            <TableCell className="text-center">20.5 L</TableCell>
+                            <TableCell className="text-center">20.5L</TableCell>
                             <TableCell className="text-center">??</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>عدد مولات الهواء</TableCell>
-                            <TableCell className="text-center">25 mol</TableCell>
-                            <TableCell className="text-center">25 mol</TableCell>
+                            <TableCell className="text-center">25mol</TableCell>
+                            <TableCell className="text-center">25mol</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
@@ -179,7 +179,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P V T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30 * 20.5 * 283)/(29 * 300) ≈ 20L"
     },
     {
-        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3\text{L}" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
         options: [
             <InlineMath math="n_{Ne} = n_{Xe}" />,
             <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
@@ -256,7 +256,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لفرضية أفوجادرو فإن كميات متساوية من الغازات المختلفة (1mol لكل منهما) عند نفس درجة الحرارة والحجم تحتوي على نفس العدد من الجسيمات وبالتالي تمارس نفس الضغط"
     },
     {
-        question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة °C لهذه العينة عندما يكون حجمها 5L تساوي</span>,
+        question: <span>عينة غاز نسبة حجمها إلى درجة حرارتها المطلقة تساوي 0.01 فإن درجة الحرارة <InlineMath math="^\circ\text{C}"/> لهذه العينة عندما يكون حجمها 5L تساوي</span>,
         "options": [
             "500",
             "227",
@@ -275,21 +275,21 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "1.64"
         ],
         correctAnswerIndex: 3,
-        explanation: "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض V₂ = (P₁V₁) / P₂ = (2.25 atm × 0.75 L) / 1.03 atm ≈ 1.64 L"
+        explanation: "هذا تطبيق مباشر لقانون بويل (P₁V₁ = P₂V₂) بالتعويض V₂ = (P₁V₁) / P₂ = (2.25atm × 0.75L) / 1.03atm ≈ 1.64L"
     },
     {
         question: <span>يكون حجم مول واحد من غاز ثاني أكسيد الكبريت <span dir="ltr">(SO₂)</span> أقل ما يمكن عند</span>,
         "options": [
-            <span><span dir="ltr">2 atm</span> و <span dir="ltr">273 K</span></span>,
-            <span><span dir="ltr">1 atm</span> و <span dir="ltr">273 K</span></span>,
-            <span><span dir="ltr">1 atm</span> و <span dir="ltr">546 K</span></span>,
-            <span><span dir="ltr">2 atm</span> و <span dir="ltr">546 K</span></span>
+            <span><span dir="ltr">2atm</span> و <span dir="ltr">273K</span></span>,
+            <span><span dir="ltr">1atm</span> و <span dir="ltr">273K</span></span>,
+            <span><span dir="ltr">1atm</span> و <span dir="ltr">546K</span></span>,
+            <span><span dir="ltr">2atm</span> و <span dir="ltr">546K</span></span>
         ],
         "correctAnswerIndex": 0,
         explanation: "وفقًا لقانون الغاز المثالي (V = nRT/P) يكون حجم الغاز أقل ما يمكن عندما تكون درجة الحرارة (T) أقل ما يمكن والضغط (P) أعلى ما يمكن الخيار (أ) يحقق هذه الشروط (أقل درجة حرارة وأعلى ضغط)"
     },
     {
-        question: <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <span dir="ltr">25°C</span> إلى <span dir="ltr">150°C</span> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
+        question: <span>أسطوانة تحتوي عينة من غاز محصور حجمه (V) سخن من درجة حرارة <InlineMath math="25^\circ\text{C}"/> إلى <InlineMath math="150^\circ\text{C}"/> فإن أحد خصائص الغاز الآتية تبقى ثابتة</span>,
         "options": [
             "متوسط سرعة جزيئات الغاز",
             "ضغط الغاز",
@@ -311,7 +311,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "يحتوي الوعاءان على نفس كتلة الغاز"
         ],
         correctAnswerIndex: 1,
-        explanation: "بما أن الظروف (P, V, T) متساوية، فإن عدد مولات الغازين متساوٍ (قانون أفوجادرو). الكثافة d = m/V = (n×Mr)/V. بما أن n و V متساويان، فإن الكثافة تتناسب طرديًا مع الكتلة المولية (Mr). لذا، كثافة الغاز A هي ضعف كثافة الغاز B."
+        explanation: "بما أن الظروف (P V T) متساوية فإن عدد مولات الغازين متساوٍ (قانون أفوجادرو) الكثافة d = m/V = (n×Mr)/V بما أن n و V متساويان فإن الكثافة تتناسب طرديًا مع الكتلة المولية (Mr) لذا كثافة الغاز A هي ضعف كثافة الغاز B"
     },
     {
         question: "أي سائل مما يلي هو الأسرع تبخرًا والأقل في درجة الغليان؟",
@@ -322,18 +322,18 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "الإيثانول (CH₃CH₂OH) - روابط هيدروجينية"
         ],
         correctAnswerIndex: 2,
-        explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط. البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط)، بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية)، والأسيتون يمتلك قوى متوسطة (ثنائي القطب). لذا، البنتان هو الأسرع تبخرًا والأقل في درجة الغليان."
+        explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية) والأسيتون يمتلك قوى متوسطة (ثنائي القطب) لذا البنتان هو الأسرع تبخرًا والأقل في درجة الغليان"
     },
     {
-        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 مول من غاز N₂ و 0.6 مول من غاز O₂ عند درجة حرارة 27°C. ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
+        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 مول من غاز N₂ و 0.6 مول من غاز O₂ عند درجة حرارة <InlineMath math="27^\circ\text{C}"/> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
         options: [
-            "7.38 atm",
-            "12.3 atm",
-            "4.92 atm",
-            "0.6 atm"
+            "7.38atm",
+            "12.3atm",
+            "4.92atm",
+            "0.6atm"
         ],
         correctAnswerIndex: 0,
-        explanation: "أولاً، نحسب الضغط الكلي للخليط باستخدام قانون الغاز المثالي. n_total = 0.4 + 0.6 = 1.0 mol. T = 27 + 273 = 300K. P_total = (nRT)/V = (1.0 * 0.082 * 300) / 2 = 12.3 atm. ثانياً، نحسب الضغط الجزئي للأكسجين: P_O₂ = X_O₂ * P_total = (0.6 / 1.0) * 12.3 = 7.38 atm."
+        explanation: "أولاً نحسب الضغط الكلي للخليط باستخدام قانون الغاز المثالي n_total = 0.4 + 0.6 = 1.0mol T = 27 + 273 = 300K P_total = (nRT)/V = (1.0 * 0.082 * 300) / 2 = 12.3atm ثانيًا نحسب الضغط الجزئي للأكسجين: P_O₂ = X_O₂ * P_total = (0.6 / 1.0) * 12.3 = 7.38atm"
     },
     {
         question: "ماذا يحدث لكثافة غاز مثالي إذا انخفض ضغطه إلى النصف وزادت درجة حرارته المطلقة إلى الضعف؟",
@@ -344,13 +344,13 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "تقل إلى النصف"
         ],
         correctAnswerIndex: 0,
-        explanation: "من قانون الغاز المثالي، يمكن اشتقاق علاقة الكثافة: d = (P × Mr) / (R × T). الكثافة (d) تتناسب طرديًا مع الضغط وعكسيًا مع الحرارة. إذا أصبح الضغط P/2 والحرارة 2T، فإن الكثافة الجديدة ستتناسب مع (P/2)/(2T) = P/(4T)، أي أنها ستقل إلى الربع."
+        explanation: "من قانون الغاز المثالي يمكن اشتقاق علاقة الكثافة: d = (P × Mr) / (R × T) الكثافة (d) تتناسب طرديًا مع الضغط وعكسيًا مع الحرارة إذا أصبح الضغط P/2 والحرارة 2T فإن الكثافة الجديدة ستتناسب مع (P/2)/(2T) = P/(4T) أي أنها ستقل إلى الربع"
     }
 ];
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm, 27°C) يحتوي على غاز الهيليوم (Mr=4 g/mol). ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة -23°C؟</span></>,
+        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm <InlineMath math="27^\circ\text{C}"/>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <InlineMath math="-23^\circ\text{C}"/>؟</span></>,
         options: [
             "الكتلة 488g، الحجم الجديد 500L",
             "الكتلة 12.2g، الحجم الجديد 500L",
@@ -358,21 +358,21 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "الكتلة 12.2g، الحجم الجديد 250L"
         ],
         correctAnswerIndex: 0,
-        explanation: "أولاً، نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(27+273)) ≈ 12.2 mol. الكتلة = n * Mr = 12.2 * 4 = 48.8g (خطأ في الخيارات، ولكن 488 الأقرب كخطأ طباعي). ثانياً، نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(27+273)) = (300*250)/(0.5*300) = 500L."
+        explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(27+273)) ≈ 12.2mol الكتلة = n * Mr = 12.2 * 4 = 48.8g (خطأ في الخيارات ولكن 488 الأقرب كخطأ طباعي) ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(27+273)) = (300*250)/(0.5*300) = 500L"
     },
     {
-        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة 127°C، حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g). ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
+        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة <InlineMath math="127^\circ\text{C}"/> حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
         options: [
-            "1.64 atm",
-            "3.28 atm",
-            "4.92 atm",
-            "0.82 atm"
+            "1.64atm",
+            "3.28atm",
+            "4.92atm",
+            "0.82atm"
         ],
         correctAnswerIndex: 2,
-        explanation: "1. نحسب مولات الميثان: n_CH₄ = 8g / 16g/mol = 0.5 mol. 2. من المعادلة، 1 مول CH₄ ينتج 1 مول CO₂ و 2 مول H₂O، أي 3 مول من الغازات الناتجة. 3. إذن 0.5 مول CH₄ ينتج n_total = 0.5 * 3 = 1.5 mol من الغازات. 4. نحسب الضغط الكلي: T=127+273=400K. P = nRT/V = (1.5 * 0.082 * 400) / 10 = 4.92 atm."
+        explanation: "1 نحسب مولات الميثان: n_CH₄ = 8g / 16g/mol = 0.5mol 2 من المعادلة 1 مول CH₄ ينتج 1 مول CO₂ و 2 مول H₂O أي 3 مول من الغازات الناتجة 3 إذن 0.5 مول CH₄ ينتج n_total = 0.5 * 3 = 1.5mol من الغازات 4 نحسب الضغط الكلي: T=127+273=400K P = nRT/V = (1.5 * 0.082 * 400) / 10 = 4.92atm"
     },
     {
-        question: "سائلان A و B لهما نفس درجة الحرارة. إذا كانت طاقة التنشيط للتبخر للسائل A أكبر من السائل B، فأي العبارات التالية صحيحة فيما يتعلق بخصائصهما؟",
+        question: "سائلان A و B لهما نفس درجة الحرارة إذا كانت طاقة التنشيط للتبخر للسائل A أكبر من السائل B فأي العبارات التالية صحيحة فيما يتعلق بخصائصهما؟",
         options: [
             "السائل A له ضغط بخاري أعلى ودرجة غليان أقل",
             "السائل B له ضغط بخاري أعلى وقوى ترابط أضعف",
@@ -380,23 +380,23 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "السائل A يتبخر أسرع من B"
         ],
         correctAnswerIndex: 1,
-        explanation: "طاقة تنشيط أعلى للسائل A تعني أن قوى الترابط فيه أقوى. السائل B بقوى ترابط أضعف سيتبخر بسهولة أكبر (سرعة تبخر أعلى) ويمتلك ضغطًا بخاريًا أعلى عند نفس درجة الحرارة."
+        explanation: "طاقة تنشيط أعلى للسائل A تعني أن قوى الترابط فيه أقوى السائل B بقوى ترابط أضعف سيتبخر بسهولة أكبر (سرعة تبخر أعلى) ويمتلك ضغطًا بخاريًا أعلى عند نفس درجة الحرارة"
     },
     {
-        question: <><span>وعاءان متصلان بصمام. الأول حجمه 3L ويحتوي غاز بضغط 4atm، والثاني حجمه 5L ويحتوي غازًا آخر بضغط 2atm. إذا تم فتح الصمام، ما هو الضغط النهائي للخليط؟ (افترض ثبات الحرارة)</span></>,
+        question: <><span>وعاءان متصلان بصمام الأول حجمه 3L ويحتوي غاز بضغط 4atm والثاني حجمه 5L ويحتوي غازًا آخر بضغط 2atm إذا تم فتح الصمام ما هو الضغط النهائي للخليط؟ (افترض ثبات الحرارة)</span></>,
         options: [
-            "2.75 atm",
-            "3.0 atm",
-            "6.0 atm",
-            "2.25 atm"
+            "2.75atm",
+            "3.0atm",
+            "6.0atm",
+            "2.25atm"
         ],
         correctAnswerIndex: 0,
-        explanation: "نستخدم قانون دالتون مع قانون بويل. الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5 atm. الضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25 atm. الضغط الكلي هو مجموع الضغوط الجزئية: P_total = 1.5 + 1.25 = 2.75 atm."
+        explanation: "نستخدم قانون دالتون مع قانون بويل الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5atm الضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25atm الضغط الكلي هو مجموع الضغوط الجزئية: P_total = 1.5 + 1.25 = 2.75atm"
     },
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور، الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة بوحدة mmHg يساوي:</p>
+                <p>اعتمادا على الرسم المجاور الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة بوحدة mmHg يساوي:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -413,14 +413,14 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: (
             <span>
-                بتتبع الخط العمودي من درجة حرارة <InlineMath math="25^\circ\text{C}"/> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.
+                بتتبع الخط العمودي من درجة حرارة <InlineMath math="25^\circ\text{C}"/> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B) ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 100mmHg تقريبًا
             </span>
         )
     },
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور، المادة التي لها أعلى درجة غليان معيارية:</p>
+                <p>اعتمادا على الرسم المجاور المادة التي لها أعلى درجة غليان معيارية:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -435,9 +435,9 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
         correctAnswerIndex: 0,
-        explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>
+        explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات وبالتالي أقل ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى</span>
     },
-    {
+     {
         question: (
             <div className="space-y-4">
                 <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39\text{atm}" /> يساوي:</p>
@@ -457,11 +457,69 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: (
             <span>
-                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}" />  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}" />
+                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}"/> أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
+            </span>
+        ),
+    },
+    {
+        questionText: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["26.7KPa", "101.3KPa", "760mmHg", "0.62atm"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <span>
+                لكي يغلي السائل يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي من الرسم البياني نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <InlineMath math="80^\circ C"/> هو 200mmHg لتحويل هذه القيمة إلى KPa نستخدم العلاقة: <InlineMath math="P(kPa) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{KPa}" />
+            </span>
+        ),
+        level: 3,
+        source: "الوحدة الأولى / الدرس 2 / الجزء 5",
+        question: <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+    },
+    {
+        question: <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39atm" /> يساوي:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/dwTN2WHw/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={400}
+                    height={250}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>,
+        options: ["78°C", "50K", "313K", "351K"],
+        correctAnswerIndex: 2,
+        explanation: (
+            <span>
+                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}"/>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
             </span>
         ),
     }
 ];
-
-
-    

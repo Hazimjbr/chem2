@@ -21,24 +21,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-            <p>
-                <span>وعاءان متصلان بصمام الأول حجمه 3L ويحتوي غاز بضغط 4atm والثاني حجمه 5L ويحتوي غازًا آخر بضغط 2atm إذا تم فتح الصمام ما هو الضغط النهائي للخليط (افترض ثبات الحرارة)</span>
-            </p>
-        </div>
-    ),
-    options: ["2.75atm", "3.0atm", "6.0atm", "2.25atm"],
-    correctAnswerIndex: 0,
-    explanation: (
-        <span>
-            نستخدم قانون دالتون مع قانون بويل الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5atm والضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25atm الضغط الكلي هو مجموع الضغوط الجزئية P_total = 1.5 + 1.25 = 2.75atm
-        </span>
-    ),
-    level: 3,
-    source: "الوحدة الأولى / الدرس 3 / الجزء 3"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
