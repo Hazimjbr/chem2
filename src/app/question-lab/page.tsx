@@ -20,28 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-             <p>3) اعتمادا على الرسم المجاور المادة التي لها أكبر ضغط بخاري عند نفس درجة الحرارة</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/dwTN2WHw/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>
-    ),
-    options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
-    correctAnswerIndex: 2,
-    explanation: <span>أكبر ضغط بخاري يعني أضعف قوى ترابط بين الجزيئات. C₆H₁₄ (الهكسان) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن) بين الخيارات، حيث أن CH₃COOH و H₂O يمتلكان روابط هيدروجينية قوية، و CCl₄ له كتلة مولية أعلى من الهكسان مما يجعل قوى لندن فيه أقوى.</span>,
-    level: 3,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 4"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {

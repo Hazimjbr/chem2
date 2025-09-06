@@ -178,7 +178,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <>تبقى ثابتة عند <span dir="ltr" className="inline-block">100°C</span></>,
             "يعتمد على كمية الملح"
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex": 0,
         explanation: "إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من 100°C هذه الظاهرة تسمى الارتفاع في درجة الغليان"
     },
     {
@@ -189,7 +189,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "C₆H₁₄",
             "CCl₄"
         ],
-        correctAnswerIndex: 3,
-        explanation: <><span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (760mmHg) بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا نجد أن درجة الحرارة تقابل</span><span dir="ltr" className="inline-block mx-1">77°C</span><span> تقريبا وهي الأقرب لـ</span><span dir="ltr" className="inline-block mx-1">75°C</span><span> هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون)</span></>
+        correctAnswerIndex": 3,
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري مع الضغط الجوي (760mmHg). بتتبع الخط الأفقي من 760mmHg حتى يتقاطع مع المنحنى (C) ثم النزول عموديًا، نجد أن درجة الحرارة تقابل <span dir="ltr" className="inline-block">77°C</span> تقريبا، وهي الأقرب لـ <span dir="ltr" className="inline-block">75°C</span>. هذا المنحنى يمثل CCl₄ (رباعي كلوريد الكربون).</span>
     }
 ];
