@@ -20,7 +20,23 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            أي المركبات التالية له أعلى درجة غليان ولماذا (البنتان) <InlineMath math="CH_3(CH_2)_3CH_3" /> أو (النيوبنتان) <InlineMath math="C(CH_3)_4" />؟
+        </>
+    ),
+    options: [
+        "النيوبنتان لأن تفرعه يجعله أكثر استقرارًا",
+        "البنتان لأن شكله المستقيم يسمح بقوى لندن أقوى",
+        "كلاهما لهما نفس درجة الغليان لأن لهما نفس الكتلة المولية",
+        "البنتان لأنه مركب قطبي"
+    ],
+    correctAnswerIndex: 1,
+    explanation: "كلا المركبين لهما نفس الكتلة المولية وهما غير قطبيين لكن البنتان (سلسلة مستقيمة) له مساحة سطح أكبر من النيوبنتان المتفرع والكروي الشكل مساحة السطح الأكبر تسمح بتكون قوى لندن للتشتت بشكل أقوى مما يرفع درجة الغليان",
+    level: 3,
+    source: "الوحدة الأولى / الدرس 2 / الجزء 5"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -66,7 +82,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
