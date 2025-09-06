@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-             <p>اعتمادا على الرسم المجاور، المادة التي لها أعلى درجة غليان معيارية:</p>
+             <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -36,9 +36,13 @@ const newQuestion: Question | null = {
             </div>
         </div>
     ),
-    options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
+    options: ["26.7 KPa", "101.3 KPa", "760 mmHg", "0.62 atm"],
     correctAnswerIndex: 0,
-    explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>,
+    explanation: (
+        <span>
+            لكي يغلي السائل، يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي. من الرسم البياني، نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <InlineMath math="80^\circ C"/> هو 200mmHg. لتحويل هذه القيمة إلى KPa، نستخدم العلاقة: <InlineMath math="P(kPa) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />.
+        </span>
+    ),
     level: 3,
     source: "الوحدة الأولى / الدرس 2 / الجزء 5"
 };
