@@ -24,7 +24,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr" className="inline-block">80°C</span> عند ضغط مقداره يساوي:</p>
+            <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr">80°C</span> عند ضغط مقداره يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
