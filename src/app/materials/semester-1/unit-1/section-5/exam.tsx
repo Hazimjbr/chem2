@@ -351,10 +351,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span>, <span dir="ltr" className="inline-block">-27°C</span>) يحتوي على غاز الهيليوم (Mr=4 g/mol). ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr" className="inline-block">-23°C</span>؟</span></>,
         options: [
-            "الكتلة 48.8g، الحجم الجديد 500L",
-            "الكتلة 12.2g، الحجم الجديد 500L",
-            "الكتلة 48.8g، الحجم الجديد 250L",
-            "الكتلة 12.2g، الحجم الجديد 250L"
+            "الكتلة 48.8g الحجم الجديد 500L",
+            "الكتلة 12.2g الحجم الجديد 500L",
+            "الكتلة 48.8g الحجم الجديد 250L",
+            "الكتلة 12.2g الحجم الجديد 250L"
         ],
         correctAnswerIndex: 0,
         explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(-27+273)) ≈ 14.95mol. الكتلة = n * Mr = 14.95 * 4 ≈ 59.8g (يوجد خطأ في الخيارات). ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(-27+273)) = (300*250)/(0.5*246) ≈ 609L. يبدو أن هناك خطأ في السؤال الأصلي أو الخيارات، لكن بناءً على المبدأ، الحسابات تؤدي إلى قيم مختلفة."
@@ -461,50 +461,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
     },
     {
-        question: <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr" className="inline-block">80°C</span> عند ضغط مقداره يساوي:</p>
-                <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
-                        alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curves"
-                    />
-                </div>
-            </div>,
-        options: ["26.7KPa", "101.3KPa", "760mmHg", "0.62atm"],
-        correctAnswerIndex: 0,
-        explanation: (
-            <span>
-                لكي يغلي السائل يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي من الرسم البياني نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="80^\circ C"/></span> هو 200mmHg لتحويل هذه القيمة إلى KPa نستخدم العلاقة: <InlineMath math="P(kPa) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />
-            </span>
-        )
-    },
-    {
-        question: <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39atm" /> يساوي:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/dwTN2WHw/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>,
-        options: ["78°C", "50K", "313K", "351K"],
-        correctAnswerIndex: 2,
-        explanation: (
-            <span>
-                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr" className="inline-block">50<InlineMath math="^\circ\text{C}"/></span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
-            </span>
-        ),
-    },
-    {
         question: (
             <div className="space-y-4">
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الأسرع تكاثفا هو</p>
@@ -523,37 +479,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: ["A", "M", "B", "Q"],
         correctAnswerIndex: 2,
         explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
-    },
-    {
-        question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr" className="inline-block">80°C</span> عند ضغط مقداره يساوي</p>
-                <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
-                        alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curves"
-                    />
-                </div>
-            </div>
-        ),
-        options: [
-            "26.7KPa",
-            "101.3KPa",
-            "760mmHg",
-            "0.62atm"
-        ],
-        correctAnswerIndex: 0,
-        explanation: (
-            <span>
-                لكي يغلي السائل يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي من الرسم البياني نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="80^\circ C"/></span> هو 200mmHg لتحويل هذه القيمة إلى KPa نستخدم العلاقة: <InlineMath math="P(kPa) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />
-            </span>
-        )
     }
 ];
+
+    
 
     
 
