@@ -351,11 +351,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
              <>
-                <span>الضغط البخاري لنونان (</span>
-                <span dir="ltr" className="font-mono"><InlineMath math="CH₃(CH₂)₇CH₃</span>
-                <span>) أقل من 3،3-ثنائي إيثيل بنتان (</span>
-                <span dir="ltr" className="font-mono"><InlineMath math="C(CH₂CH₃)₄</span>
-                <span>) لأن نونان:</span>
+                <span>الضغط البخاري لنونان (<span dir="ltr" className="font-mono"><InlineMath math="CH₃(CH₂)₇CH₃"/></span>) أقل من 3،3-ثنائي إيثيل بنتان (<span dir="ltr" className="font-mono"><InlineMath math="C(CH₂CH₃)₄"/></span>) لأن نونان:</span>
             </>
         ),
         options: [
