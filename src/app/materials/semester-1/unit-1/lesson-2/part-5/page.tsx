@@ -67,8 +67,6 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="تعريف الغليان"
                 cardIcon={<BookCopy className="h-6 w-6" />}
-                imageContent={<BoilingCurve />}
-                imageCardClassName="flex items-center justify-center"
             >
                 <div className="space-y-2 text-sm p-4">
                     <p className="font-semibold">الغليان: تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه.</p>
@@ -96,7 +94,7 @@ export default function LessonPartPage() {
                             <strong className="font-semibold">الضغط الخارجي (علاقة طردية)</strong>
                         </div>
                         <p className="text-xs mt-1 text-muted-foreground mr-7">
-                            زيادة الضغط الخارجي (مثل الطبخ في طنجرة الضغط) تجبر السائل على الوصول لدرجة حرارة أعلى ليغلي. والعكس صحيح، حيث يغلي الماء عند درجة حرارة أقل من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}"/></span> على قمم الجبال بسبب انخفاض الضغط الجوي.
+                            زيادة الضغط الخارجي (مثل الطبخ في طنجرة الضغط) تجبر السائل على الوصول لدرجة حرارة أعلى ليغلي. والعكس صحيح، حيث يغلي الماء عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span> على قمم الجبال بسبب انخفاض الضغط الجوي.
                         </p>
                     </li>
                 </ul>
