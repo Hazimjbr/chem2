@@ -351,164 +351,152 @@ export const staticQuizLvl2: QuizQuestion[] = [
 export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
-                <div className="flex justify-center">
+             <>
+                <span>الضغط البخاري لنونان (</span>
+                <span dir="ltr" className="font-mono inline-block">CH₃(CH₂)₇CH₃</span>
+                <span>) أقل من 3،3-ثنائي إيثيل بنتان (</span>
+                <span dir="ltr" className="font-mono inline-block">C(CH₂CH₃)₄</span>
+                <span>) لأن نونان:</span>
+            </>
+        ),
+        options: [
+            "أقل تفرعات",
+            "أقل كتلة مولية",
+            "ترابطه ثنائي قطب",
+            "ترابطه هيدروجيني"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "كلا المركبين لهما نفس الكتلة المولية وهما غير قطبيين (قوى لندن فقط). النونان (سلسلة مستقيمة) أقل تفرعًا، مما يعطيه مساحة سطح أكبر للتجاذب، فتزداد قوة قوى لندن، ويقل ضغطه البخاري."
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أقل طاقة تكاثف مولية</p>
+                <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
+                        width={500}
+                        height={300}
                         className="rounded-lg border bg-white"
                         data-ai-hint="vapor pressure curves"
                     />
                 </div>
-            </div>
+            </>
         ),
-        options: ["200mmHg", "760mmHg", "26.7kPa", "400mmHg"],
-        correctAnswerIndex: 2,
-        explanation: (
-            <span>
-                لكي يغلي السائل يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي من الرسم البياني نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <InlineMath math="80^\circ C"/> هو <InlineMath math="200mmHg"/> لتحويل هذه القيمة إلى kPa نستخدم العلاقة: <InlineMath math="P(kPa) = 200mmHg \times \frac{101.3kPa}{760mmHg} \approx 26.7kPa"/>
-            </span>
-        )
-    },
-    {
-        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span>, <span dir="ltr" className="inline-block">-27°C</span>) يحتوي على غاز الهيليوم (Mr=4 g/mol). ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr" className="inline-block">-23°C</span>؟</span></>,
         options: [
-            "الكتلة 48.8g، الحجم الجديد 500L",
-            "الكتلة 12.2g، الحجم الجديد 500L",
-            "الكتلة 48.8g، الحجم الجديد 250L",
-            "الكتلة 12.2g، الحجم الجديد 250L"
-        ],
-        correctAnswerIndex: 0,
-        explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(-27+273)) ≈ 14.95mol. الكتلة = n * Mr = 14.95 * 4 ≈ 59.8g (يوجد خطأ في الخيارات). ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(-27+273)) = (300*250)/(0.5*246) ≈ 609L. يبدو أن هناك خطأ في السؤال الأصلي أو الخيارات، لكن بناءً على المبدأ، الحسابات تؤدي إلى قيم مختلفة."
-    },
-    {
-        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة <span dir="ltr" className="inline-block">127°C</span> حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g). ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
-        options: [
-            "1.64atm",
-            "3.28atm",
-            "4.92atm",
-            "0.82atm"
+            "الماء",
+            "الإيثانول",
+            "ثنائي إيثيل إيثر",
+            "الأسيتون"
         ],
         correctAnswerIndex: 2,
-        explanation: "1. نحسب مولات الميثان: n_CH₄ = 8g / 16g/mol = 0.5mol. 2. من المعادلة، 1 mol من CH₄ ينتج 1 mol من CO₂ و 2 mol من H₂O، أي 3 mol من الغازات الناتجة. 3. إذن، 0.5 mol من CH₄ ينتج n_total = 0.5 * 3 = 1.5mol من الغازات. 4. نحسب الضغط الكلي: T=127+273=400K, P = nRT/V = (1.5 * 0.082 * 400) / 10 = 4.92atm."
-    },
-    {
-        question: "سائلان A و B لهما نفس درجة الحرارة إذا كانت طاقة التنشيط للتبخر للسائل A أكبر من السائل B فأي العبارات التالية صحيحة فيما يتعلق بخصائصهما؟",
-        options: [
-            "السائل A له ضغط بخاري أعلى ودرجة غليان أقل",
-            "السائل B له ضغط بخاري أعلى وقوى ترابط أضعف",
-            "كلا السائلين لهما نفس درجة الغليان",
-            "السائل A يتبخر أسرع من B"
-        ],
-        correctAnswerIndex: 1,
-        explanation: "طاقة تنشيط أعلى للسائل A تعني أن قوى الترابط فيه أقوى السائل B بقوى ترابط أضعف سيتبخر بسهولة أكبر (سرعة تبخر أعلى) ويمتلك ضغطًا بخاريًا أعلى عند نفس درجة الحرارة"
-    },
-    {
-        question: <><span>وعاءان متصلان بصمام الأول حجمه 3L ويحتوي غاز بضغط 4atm والثاني حجمه 5L ويحتوي غازًا آخر بضغط 2atm. إذا تم فتح الصمام ما هو الضغط النهائي للخليط؟ (افترض ثبات الحرارة)</span></>,
-        options: [
-            "2.75atm",
-            "3.0atm",
-            "6.0atm",
-            "2.25atm"
-        ],
-        correctAnswerIndex: 0,
-        explanation: "نستخدم قانون دالتون مع قانون بويل. الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5atm. الضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25atm. الضغط الكلي هو مجموع الضغوط الجزئية: P_total = 1.5 + 1.25 = 2.75atm"
+        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات. السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة. من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف.",
     },
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة بوحدة mmHg يساوي:</p>
-                <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\circ\text{C}" />) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
+                <div className="flex justify-center my-4">
+                     <Image
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
+                        width={500}
+                        height={300}
                         className="rounded-lg border bg-white"
                         data-ai-hint="vapor pressure curves"
                     />
                 </div>
             </div>
         ),
-        options: ["760", "25", "100", "400"],
-        correctAnswerIndex: 2,
-        explanation: (
-            <span>
-                بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="25^\circ\text{C}"/></span> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B) ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي نجد أن القيمة تقابل 100mmHg تقريبًا
-            </span>
-        )
+        options: ["56", "78", "35", "100"],
+        correctAnswerIndex: 0,
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <InlineMath math="56^\circ\text{C}" /> تقريبًا.</span>
     },
     {
         question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور المادة التي لها أعلى درجة غليان معيارية:</p>
-                <div className="flex justify-center">
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
+                <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
+                        width={500}
+                        height={300}
                         className="rounded-lg border bg-white"
                         data-ai-hint="vapor pressure curves"
                     />
                 </div>
-            </div>
+            </>
         ),
-        options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
+        options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات وبالتالي أقل ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\circ\text{C}" />.</span>
+    },
+    {
+        question: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\circ\text{C}"/>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/FbjSx8p6/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>
+        ),
+        options: ["760", "100", "30", "650"],
+        correctAnswerIndex: 3,
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="30^\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+    },
+    {
+        question: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/FbjSx8p6/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>
+        ),
+        options: ["الماء", "الإيثانول", "ثنائي إيثيل إيثر", "الأسيتون"],
+        correctAnswerIndex: 0,
+        explanation: "أعلى طاقة تكاثف مولية (وهي تساوي طاقة التبخر بالقيمة) تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند أي درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن الماء له أقل ضغط بخاري، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى."
     },
      {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39atm" /> يساوي:</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للأسيتون عند درجة غليانه الطبيعية يساوي</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
+                        width={500}
+                        height={300}
                         className="rounded-lg border bg-white"
                         data-ai-hint="vapor pressure curves"
                     />
                 </div>
             </div>
         ),
-        options: ["78°C", "50K", "313K", "351K"],
-        correctAnswerIndex: 2,
-        explanation: (
-            <span>
-                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr" className="inline-block">50<InlineMath math="^\circ\text{C}"/></span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
-            </span>
-        ),
+        options: ["56", "760", "220", "650"],
+        correctAnswerIndex: 1,
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760mmHg).</span>
     },
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الأسرع تكاثفا هو</p>
-                <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/TB6RcQkw/22.png"
-                        alt="Vapor Pressure vs Temperature"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curve"
-                    />
-                </div>
-            </div>
-        ),
-        options: ["A", "M", "B", "Q"],
-        correctAnswerIndex: 2,
-        explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
-    },
-    {
-        question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور إذا علمت أن سرعة تبخر السائل A أكبر من سرعة تبخر السائل B فإن العبارة الخاطئة فيما يتعلق بالسائل A هي:</p>
+                <p>االعبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D , C , B , A عند درجة حرارة ثابتة T</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/BVCwCvTn/3.png"
