@@ -19,28 +19,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-             <p>اعتمادا على الرسم المجاور، الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة بوحدة mmHg يساوي:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/dwTN2WHw/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>
-    ),
-    options: ["760", "25", "100", "400"],
-    correctAnswerIndex: 2,
-    explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="25^\circ\text{C}"/></span> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.</span>,
-    level: 2,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 4"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {

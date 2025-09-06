@@ -5,13 +5,14 @@ import React from 'react';
 import { cn } from '@/lib/utils.tsx';
 import { InlineMath } from 'react-katex';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Image from 'next/image';
 
 
 export interface QuizQuestion {
     question: React.ReactNode;
     options: React.ReactNode[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: string | React.ReactNode;
 }
 
 export const GasSamplesGraph = () => (
@@ -250,7 +251,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "الضغطان متساويان",
             "لا يمكن تحديد ذلك بدون معرفة الكتلة المولية"
         ],
-        "correctAnswerIndex": 2,
+        correctAnswerIndex: 2,
         explanation: "وفقًا لفرضية أفوجادرو فإن كميات متساوية من الغازات المختلفة (1mol لكل منهما) عند نفس درجة الحرارة والحجم تحتوي على نفس العدد من الجسيمات وبالتالي تمارس نفس الضغط"
     },
     {
@@ -390,5 +391,29 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "نستخدم قانون دالتون مع قانون بويل. الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5 atm. الضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25 atm. الضغط الكلي هو مجموع الضغوط الجزئية: P_total = 1.5 + 1.25 = 2.75 atm."
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور، الضغط البخاري لرباعي كلوريد الكربون عند درجة حرارة الغرفة بوحدة mmHg يساوي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["760", "25", "100", "400"],
+        correctAnswerIndex: 2,
+        explanation: (
+            <span>
+                بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="25^\circ\text{C}"/></span> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.
+            </span>
+        )
     }
 ];
