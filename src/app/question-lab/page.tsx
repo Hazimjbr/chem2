@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -19,7 +20,28 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للماء عند درجة غليانه الطبيعية يساوي</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/84T52SSm/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>
+    ),
+    options: ["100", "760", "220", "650"],
+    correctAnswerIndex: 1,
+    explanation: "درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة 100°C.",
+    level: 2,
+    source: "درجة الغليان"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
