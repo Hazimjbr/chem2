@@ -20,23 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            أي المركبات التالية له أعلى درجة غليان ولماذا (البنتان) <InlineMath math="CH_3(CH_2)_3CH_3" /> أو (النيوبنتان) <InlineMath math="C(CH_3)_4" />؟
-        </>
-    ),
-    options: [
-        "النيوبنتان لأن تفرعه يجعله أكثر استقرارًا",
-        "البنتان لأن شكله المستقيم يسمح بقوى لندن أقوى",
-        "كلاهما لهما نفس درجة الغليان لأن لهما نفس الكتلة المولية",
-        "البنتان لأنه مركب قطبي"
-    ],
-    correctAnswerIndex: 1,
-    explanation: "كلا المركبين لهما نفس الكتلة المولية وهما غير قطبيين لكن البنتان (سلسلة مستقيمة) له مساحة سطح أكبر من النيوبنتان المتفرع والكروي الشكل مساحة السطح الأكبر تسمح بتكون قوى لندن للتشتت بشكل أقوى مما يرفع درجة الغليان",
-    level: 3,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 5"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
