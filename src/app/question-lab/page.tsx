@@ -19,7 +19,35 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره 0.39 atm يساوي:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/dwTN2WHw/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={400}
+                    height={250}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>
+    ),
+    options: ["78 °C", "50 K", "313 K", "351 K"],
+    correctAnswerIndex: 2,
+    explanation: (
+        <span>
+            أولاً، نحول الضغط من atm إلى mmHg: <InlineMath math="0.39 \text{ atm} \times 760 \text{ mmHg/atm} \approx 300 \text{ mmHg}" />.
+            بعد ذلك، نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D.
+            نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D، ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}" />.
+            أخيرًا، نحول درجة الحرارة إلى كلفن: <InlineMath math="T(K) = 50 + 273 = 313 \text{ K}" />.
+        </span>
+    ),
+    level: 3,
+    source: "الوحدة الأولى / الدرس 2 / الجزء 5"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -65,7 +93,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
