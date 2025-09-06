@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="inline-block font-mono">C₂H₅OH</span>) عند درجة حرارة 50°C؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="inline-block font-mono">C₂H₅OH</span>) عند درجة حرارة <InlineMath math="50^\circ\text{C}" />؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -206,7 +206,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -226,7 +226,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr" className="inline-block mx-1"><InlineMath math="^\circ\text{C}" /></span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <span dir="ltr" className="inline-block mx-1"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <InlineMath math="^\circ\text{C}" /> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -241,7 +241,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="30^\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="30^\circ\text{C}" /></span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
     },
     {
         question: (
