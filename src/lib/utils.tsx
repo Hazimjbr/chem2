@@ -11,6 +11,8 @@ export function cn(...inputs: ClassValue[]) {
 // Helper function to map lessonId (which is a URL path) to a human-readable title
 export const getLessonTitle = (lessonId: string): string => {
     // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
+    if (!lessonId) return "درس غير معروف";
+    
     const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
 
     const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
