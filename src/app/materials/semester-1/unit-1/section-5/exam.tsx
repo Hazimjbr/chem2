@@ -17,71 +17,16 @@ export interface QuizQuestion {
 }
 
 export const GasSamplesGraph = () => (
-     <svg width="300" height="200" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
-        {/* Container A */}
-        <rect x="10" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
-        <g>
-            {/* Adjusted positions for A */}
-            <g transform="translate(35 80) scale(15)">
-                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
-                <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
-                <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
-            </g>
-            <g transform="translate(65 140) scale(15)">
-                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
-                <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
-                <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
-            </g>
-             <g transform="translate(50 110) scale(15)">
-                 <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--primary))"/>
-                <circle cx="-10" cy="0" r="4" fill="hsl(var(--accent))"/>
-                <circle cx="10" cy="0" r="4" fill="hsl(var(--accent))"/>
-            </g>
-        </g>
-        <text x="50" y="190" textAnchor="middle" fontSize="16">A</text>
-        
-        {/* Container B */}
-        <rect x="120" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
-        <g fill="hsl(var(--destructive))">
-            {/* Adjusted positions for B */}
-            <rect x="130" y="70" width="10" height="10" />
-            <rect x="170" y="140" width="10" height="10" />
-            <rect x="160" y="95" width="10" height="10" />
-            <rect x="140" y="125" width="10" height="10" />
-            <rect x="150" y="60" width="10" height="10" />
-        </g>
-        <text x="160" y="190" textAnchor="middle" fontSize="16">B</text>
-
-        {/* Container C */}
-        <rect x="230" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
-        <g>
-             {/* Adjusted positions for C */}
-             <g transform="translate(260 85) scale(15)">
-                <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--accent))"/>
-                <polygon points="0-12 -5-7 5-7" fill="hsl(var(--destructive))"/>
-                <polygon points="-125 -70 -710" fill="hsl(var(--destructive))"/>
-                <polygon points="125 70 710" fill="hsl(var(--destructive))"/>
-            </g>
-            <g transform="translate(280 130) scale(15)">
-                <rect x="-5" y="-5" width="10" height="10" fill="hsl(var(--accent))"/>
-                <polygon points="0-12 -5-7 5-7" fill="hsl(var(--destructive))"/>
-                <polygon points="-125 -70 -710" fill="hsl(var(--destructive))"/>
-                <polygon points="125 70 710" fill="hsl(var(--destructive))"/>
-            </g>
-        </g>
-        <text x="270" y="190" textAnchor="middle" fontSize="16">C</text>
-        
-        {/* Container D */}
-        <rect x="340" y="50" width="80" height="120" fill="white" stroke="black" strokeWidth="1"/>
-        <g fill="#facc15">
-            {/* Adjusted positions for D */}
-            <g transform="translate(365 75) scale(15)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(395 145) scale(15)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(360 120) scale(15)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-            <g transform="translate(390 95) scale(15)"><circle cx="-4" cy="0" r="4" /><circle cx="4" cy="0" r="4" /></g>
-        </g>
-        <text x="380" y="190" textAnchor="middle" fontSize="16">D</text>
-    </svg>
+    <div className="flex justify-center my-4">
+        <Image
+            src="https://i.ibb.co/Cpn3JgfY/3.png"
+            alt="أربع عينات من الغازات"
+            width={300}
+            height={200}
+            className="rounded-lg border bg-white"
+            data-ai-hint="gas samples experiment"
+        />
+    </div>
 );
 
 
@@ -405,7 +350,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 </div>
             </div>
         ),
-        options: ["56", "760", "220", "650"],
+        options: ["56°C", "760°C", "220°C", "650°C"],
         correctAnswerIndex: 0,
         explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg) من الرسم البياني نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <span dir="ltr">56°C</span> تقريبًا</span>
     },
@@ -425,7 +370,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 </div>
             </>
         ),
-        options: ["78", "35", "55", "760"],
+        options: ["78°C", "35°C", "55°C", "760°C"],
         correctAnswerIndex: 0,
         explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg) بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <span dir="ltr">78°C</span></span>
     },
@@ -445,7 +390,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             </div>
         </div>
         ),
-        options: ["760", "100", "30", "650"],
+        options: ["760mmHg", "100mmHg", "30mmHg", "650mmHg"],
         correctAnswerIndex: 3,
         explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr">30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا</span>
     },
@@ -485,7 +430,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 </div>
             </div>
         ),
-        options: ["56", "760", "220", "650"],
+        options: ["56mmHg", "760mmHg", "220mmHg", "650mmHg"],
         correctAnswerIndex: 1,
         explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1atm أو 760mmHg)</span>
     },
