@@ -16,20 +16,6 @@ export interface QuizQuestion {
     explanation: string | React.ReactNode;
 }
 
-export const GasSamplesGraph = () => (
-    <div className="flex justify-center my-4">
-        <Image
-            src="https://i.ibb.co/Cpn3JgfY/3.png"
-            alt="أربع عينات من الغازات"
-            width={300}
-            height={200}
-            className="rounded-lg border bg-white"
-            data-ai-hint="gas samples experiment"
-        />
-    </div>
-);
-
-
 const PistonDiagram = () => (
     <div className="flex justify-center items-center gap-8 my-4">
         {/* Container B (Start) */}
@@ -157,7 +143,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "العبارة الخاطئة هي (يزداد الحجم وعدد الجسيمات ثابت) عند الانتقال من B إلى A نلاحظ أن الحجم يزداد (المكبس يرتفع) ولكن عدد الجسيمات يقل بشكل واضح العبارات الأخرى صحيحة يقل عدد الجسيمات فيزداد الحجم ويقل التركيز والضغط ويفترض أن الطاقة الحركية تقل (اللون تغير من الأحمر للبارد) مما يساهم في انخفاض الضغط"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><GasSamplesGraph /></div>,
+        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div></div>,
         options: [
             "A",
             "B",
@@ -168,7 +154,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته) الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات) لذا فإن ضغط الغاز فيه هو الأعلى"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن عينة الغاز الأكثر كثافة هي</p><GasSamplesGraph /></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن عينة الغاز الأكثر كثافة هي</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div></div>,
         options: [
             "A",
             "B",
@@ -179,7 +165,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "الكثافة (d) تساوي الكتلة (m) مقسومة على الحجم (V) بما أن الحجم ثابت لجميع العينات فإن الأعلى كثافة هي صاحبة الكتلة الأكبر بافتراض أن عدد الجسيمات يمثل عدد المولات (أو نسبة منها) نحسب كتلة نسبية A=3×18=54 B=5×20=100 C=2×46=92 D=4×32=128 العينة D لها الكتلة النسبية الأكبر وبالتالي هي الأعلى كثافة"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><GasSamplesGraph /></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><div className="flex justify-center my-4"><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div></div>,
         options: [
             "A",
             "B",
@@ -270,7 +256,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية) والأسيتون يمتلك قوى متوسطة (ثنائي القطب) لذا البنتان هو الأسرع تبخرًا والأقل في درجة الغليان"
     },
     {
-        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4mol من غاز N₂ و 0.6mol من غاز O₂ عند درجة حرارة <span dir="ltr">27°C</span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
+        question: <><span>وعاء حجمه 2L يحتوي على خليط من 04mol من غاز N₂ و 06mol من غاز O₂ عند درجة حرارة <span dir="ltr">27°C</span> ما هو الضغط الجزئي لغاز الأكسجين (O₂؟)</span></>,
         options: [
             "7.38atm",
             "12.3atm",
@@ -352,7 +338,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["56°C", "760°C", "220°C", "650°C"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg) من الرسم البياني نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <span dir="ltr">56°C</span> تقريبًا</span>
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg) من الرسم البياني نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <span dir="ltr">56°C</span></span>
     },
     {
         question: (
@@ -392,7 +378,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760mmHg", "100mmHg", "30mmHg", "650mmHg"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr">30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr">30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg</span>
     },
     {
         question: (
