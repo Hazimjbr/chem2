@@ -101,7 +101,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>ادرس الرسم البياني الذي يمثل العلاقة بين الضغط وقيمة PV/nRT لغاز النيتروجين عند درجات حرارة مختلفة:</p><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/><strong className="text-accent mt-2 block">ما سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا؟</strong></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا هو</p><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         "options": [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -202,3 +202,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الظروف المعيارية T₁=273K, V₁=20L, الحرارة الجديدة T₂=273+273=546K باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L"
     }
 ];
+
