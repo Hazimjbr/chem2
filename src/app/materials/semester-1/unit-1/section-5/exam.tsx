@@ -395,7 +395,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\circ\text{C}" />) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\\circ\text{C}" />) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -410,7 +410,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["56", "78", "35", "100"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <InlineMath math="56^\circ\text{C}" /> تقريبًا.</span>
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة <InlineMath math="56^\\circ\text{C}" /> تقريبًا.</span>
     },
     {
         question: (
@@ -430,12 +430,12 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\circ\text{C}" />.</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <InlineMath math="78^\\circ\text{C}" />.</span>
     },
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\circ\text{C}"/>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\\circ\text{C}"/>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <InlineMath math="30^\\circ\text{C}" /> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -450,7 +450,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="30^\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <InlineMath math="30^\\circ\text{C}" /> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
     },
     {
         question: (
@@ -495,14 +495,14 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>االعبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D , C , B , A عند درجة حرارة ثابتة T</p>
+                <p>• العبارة الخاطئة فيما يتعلق بالغازين A , B إذا علمت أن سرعة تبخر A أكبر  من سرعة تبخر B</p>
             </div>
         ),
         options: [
             "درجة تكاثف الغاز A أكبر",
             "الضغط البخاري للغاز A أكبر عند نفس درجة الحرارة",
-            "قوى الترابط بين جزيئات الغاز A أضعف",
-            "درجة غليان الغاز A المعيارية أقل"
+            "درجة غليان الغاز A المعيارية أقل",
+            "ترابط جزيئات المادة A أضعف من المادة D",
         ],
         correctAnswerIndex: 0,
         explanation: "بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل وليس أكبر"
@@ -511,27 +511,15 @@ export const staticQuizLvl3: QuizQuestion[] = [
         question: (
             <div className="space-y-4">
                 <p>العبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D , C , B , A عند درجة حرارة ثابتة T</p>
-                <div className="flex justify-center">
-                    <Image
-                        src="https://i.ibb.co/BVCwCvTn/3.png"
-                        alt="منحنيات الضغط البخاري"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curves"
-                    />
-                </div>
             </div>
         ),
         options: [
-            "ترابط جزيئات المادة A أضعف من المادة D",
             "المادة C لها أعلى ضغط بخاري",
             "المادة B لها أعلى طاقة تكاثف مولية",
+            "ترابط جزيئات المادة A أضعف من المادة D",
             "معظم جزيئات المادة C في الحالة الغازية",
         ],
         correctAnswerIndex: 3,
         explanation: "بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل وليس أكبر"
     }
 ];
-
-    
