@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50^\circ\text{C}" /></span>؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span dir="ltr" className="inline-block"><InlineMath math="50^\circ\text{C}" /></span>؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -201,7 +201,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["100", "760", "220", "650"],
         correctAnswerIndex: 1,
-        explanation: "درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة 100°C."
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span>.</span>
     },
     {
         question: (
@@ -226,7 +226,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}" /></span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <span dir="ltr" className="inline-block"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}"/></span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <span dir="ltr" className="inline-block"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
