@@ -147,8 +147,8 @@ export const staticQuizLvl1: QuizQuestion[] = [
                     <TableBody>
                         <TableRow>
                             <TableCell>درجة حرارة الهواء</TableCell>
-                            <TableCell className="text-center"><span dir="ltr">27°C</span></TableCell>
-                            <TableCell className="text-center"><span dir="ltr">10°C</span></TableCell>
+                            <TableCell className="text-center"><span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span></TableCell>
+                            <TableCell className="text-center"><span dir="ltr">10<InlineMath math="^\circ\text{C}"/></span></TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>ضغط الهواء</TableCell>
@@ -176,10 +176,10 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "50"
         ],
         correctAnswerIndex: 1,
-        explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P V T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30 * 20.5 * 283)/(29 * 300) ≈ 20L"
+        explanation: "بما أن عدد المولات ثابت والمتغيرات الثلاثة (P V T) تتغير فإننا نستخدم القانون الجامع للغازات (P₁V₁)/T₁ = (P₂V₂)/T₂ أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=10+273=283K ثم نعوض V₂ = (P₁V₁T₂)/(P₂T₁) = (30*20.5*283)/(29*300) ≈ 20L"
     },
     {
-        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2L" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3L" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
+        question: <><span>دورق محكم الإغلاق حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحوي غاز النيون Ne وآخر حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="3\text{L}" /></span><span> يحوي غاز الزينون Xe وكلاهما له درجة الحرارة والضغط نفسه فإن العلاقة بين عدد مولات الغاز (n) في كل منهما هي</span></>,
         options: [
             <InlineMath math="n_{Ne} = n_{Xe}" />,
             <InlineMath math="n_{Xe} = 1.5 n_{Ne}" />,
@@ -190,7 +190,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     },
      {
-        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4mol"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
+        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr" className="inline-block">2L</span> ويحتوي على <span dir="ltr" className="inline-block"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr" className="inline-block">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr" className="inline-block">3L</span> فما عدد مولات غاز الزينون <span dir="ltr" className="inline-block">(Xe)</span> الذي يحتويه</span>,
         options: [
             "0.4mol",
             "0.6mol",
@@ -263,7 +263,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "273",
             "773"
         ],
-        "correctAnswerIndex": 1,
+        correctAnswerIndex: 1,
         explanation: "نسبة الحجم إلى الحرارة المطلقة (V/T) هي ثابت قانون شارل T(K) = V / (V/T) = 5L / 0.01 = 500K بالسيليزيوس T(°C) = 500 - 273 = 227°C"
     },
     {
@@ -325,7 +325,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "سرعة التبخر ودرجة الغليان تعتمدان عكسيًا على قوة الترابط البنتان جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما الماء والإيثانول يمتلكان أقوى الروابط (هيدروجينية) والأسيتون يمتلك قوى متوسطة (ثنائي القطب) لذا البنتان هو الأسرع تبخرًا والأقل في درجة الغليان"
     },
     {
-        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 مول من غاز N₂ و 0.6 مول من غاز O₂ عند درجة حرارة <InlineMath math="27^\circ\text{C}"/> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
+        question: <><span>وعاء حجمه 2L يحتوي على خليط من 0.4 مول من غاز N₂ و 0.6 مول من غاز O₂ عند درجة حرارة <span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span> ما هو الضغط الجزئي لغاز الأكسجين (O₂)؟</span></>,
         options: [
             "7.38atm",
             "12.3atm",
@@ -440,7 +440,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
      {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39\text{atm}" /> يساوي:</p>
+                <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39atm" /> يساوي:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -457,7 +457,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: (
             <span>
-                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr">50°C</span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
+                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr">50<InlineMath math="^\circ\text{C}"/></span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
             </span>
         ),
     },
@@ -501,8 +501,30 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: (
             <span>
-                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr">50°C</span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
+                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr">50<InlineMath math="^\circ\text{C}"/></span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}"/>
             </span>
         ),
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل السائل الأسرع تكاثفا هو</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/TB6RcQkw/22.png"
+                        alt="Vapor Pressure vs Temperature"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curve"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["A", "M", "B", "Q"],
+        correctAnswerIndex: 2,
+        explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
     }
 ];
+
+```
