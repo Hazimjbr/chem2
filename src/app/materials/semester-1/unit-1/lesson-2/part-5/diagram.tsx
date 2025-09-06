@@ -19,7 +19,7 @@ export const BoilingCurve = () => (
 export const BoilingPointTrends = () => (
     <div className="flex justify-center items-center p-2" data-ai-hint="boiling point periodic trend">
         <Image
-            src="https://i.ibb.co/3WZX9vC/4.png"
+            src="https://i.ibb.co/hF9Fm0hw/22.png"
             alt="اتجاهات درجة الغليان في الجدول الدوري"
             width={400}
             height={300}
