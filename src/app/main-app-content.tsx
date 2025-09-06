@@ -36,7 +36,7 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 
 
 export default function MainAppContent() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1/unit-1/lesson-1/part-1');
+  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
   const { currentUser } = useApp();
 
@@ -102,11 +102,17 @@ export default function MainAppContent() {
           <span className="text-accent">{studentName}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
-          تعزيزاً لقدراتك، خططنا لك، والالتزام قرارك.
+          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
         </p>
-         <div className="flex flex-col md:flex-row justify-center gap-4">
-           <Link href="/performance-analysis" passHref>
-            <Button size="lg" variant="outline" className="w-full md:w-auto">
+        <div className="flex justify-center gap-4">
+          <Link href="/materials/semester-1" passHref>
+            <Button size="lg" variant="default">
+              <BookOpen className="ml-2" />
+              ابدأ التعلم
+            </Button>
+          </Link>
+          <Link href="/performance-analysis" passHref>
+            <Button size="lg" variant="outline">
               <BarChart className="ml-2" />
               عرض لوحة معلوماتي
             </Button>
@@ -114,41 +120,38 @@ export default function MainAppContent() {
         </div>
       </section>
 
-      <section className="pb-16 pt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <section className="pb-16">
+        <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          <div className="lg:col-span-1">
-             {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
-          </div>
+          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
-          <div className="lg:col-span-1">
-            {nextStep && (
-                <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                    <Target />
-                    المهمة التالية
-                    </CardTitle>
-                </CardHeader>
-                <CardContent>
-                    {nextStep.totalParts - nextStep.completedParts === 1 ? (
-                    <p className="text-muted-foreground mb-4">
-                        <strong className="text-destructive">الهجوم الأخير!</strong> جزء واحد يفصلك عن السيطرة الكاملة على <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                    </p>
-                    ) : (
-                    <p className="text-muted-foreground mb-4">
-                        استطلاعنا يكشف أن الخطوة المهمة لفرض سيطرتك على <strong className="text-foreground">"{nextStep.lessonTitle}"</strong> هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong>.
-                    </p>
-                    )}
-                    <Link href={nextStep.nextPartPath} passHref>
-                    <Button>
-                        تأمين الهدف
-                    </Button>
-                    </Link>
-                </CardContent>
-                </Card>
-            )}
-          </div>
+          {nextStep && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
+                  خطوتك التالية
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {nextStep.totalParts - nextStep.completedParts === 1 ? (
+                  <p className="text-muted-foreground mb-4">
+                    رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
+                  </p>
+                ) : (
+                  <p className="text-muted-foreground mb-4">
+                    متابعتك مهمة! خطوتك التالية هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong> في درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
+                  </p>
+                )}
+                <Link href={nextStep.nextPartPath} passHref>
+                  <Button>
+                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          )}
 
         </div>
       </section>
