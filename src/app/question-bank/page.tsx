@@ -4,13 +4,15 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Library } from 'lucide-react';
+import { CheckCircle, Library, Loader2, ShieldAlert } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils.tsx';
 import type { QuizQuestion as BaseQuizQuestion } from '@/components/quiz';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { units } from '@/data/materials';
+import { useApp } from '@/context/CurriculumContext';
+import Link from 'next/link';
 
 // Import all exam files
 import * as part1Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-1/exam';
@@ -183,6 +185,7 @@ const getInitialState = (key: string, defaultValue: string): string => {
 };
 
 export default function QuestionBankPage() {
+    const { currentUser, isLoading } = useApp();
     const [selectedUnit, setSelectedUnit] = useState(() => getInitialState('questionBank_unit', 'all'));
     const [selectedLesson, setSelectedLesson] = useState(() => getInitialState('questionBank_lesson', 'all'));
     const [selectedPart, setSelectedPart] = useState(() => getInitialState('questionBank_part', 'all'));
@@ -229,6 +232,37 @@ export default function QuestionBankPage() {
             return unitMatch && lessonMatch && partMatch;
         });
     }, [selectedUnit, selectedLesson, selectedPart]);
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center h-[calc(100vh-200px)]">
+                <Loader2 className="h-16 w-16 animate-spin text-primary" />
+            </div>
+        )
+    }
+
+    if (!currentUser || currentUser.role !== 'admin') {
+         return (
+             <div className="p-4 md:p-8 text-center">
+                 <Card className="max-w-md mx-auto">
+                     <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-destructive">
+                            <ShieldAlert />
+                            الوصول مرفوض
+                        </CardTitle>
+                        <CardDescription>
+                            هذه الصفحة مخصصة للمسؤولين فقط.
+                        </CardDescription>
+                     </CardHeader>
+                     <CardContent>
+                         <Link href="/" passHref>
+                            <Button>العودة إلى الصفحة الرئيسية</Button>
+                         </Link>
+                     </CardContent>
+                 </Card>
+            </div>
+        )
+    }
 
     return (
         <div className="p-4 md:p-8">
