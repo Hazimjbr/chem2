@@ -86,7 +86,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p><div className="flex justify-center items-center gap-8 my-4"><div className="text-center"><svg width="100" height="150" viewBox="0 0 100 150"><rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"></rect><rect x="5" y="80" width="90" height="10" fill="hsl(var(--muted))" stroke="black"></rect><rect x="45" y="70" width="10" height="10" fill="hsl(var(--muted))" stroke="black"></rect><circle cx="30" cy="100" r="3" fill="hsl(var(--destructive))"></circle><circle cx="50" cy="120" r="3" fill="hsl(var(--destructive))"></circle><circle cx="70" cy="95" r="3" fill="hsl(var(--destructive))"></circle><circle cx="40" cy="130" r="3" fill="hsl(var(--destructive))"></circle><circle cx="60" cy="110" r="3" fill="hsl(var(--destructive))"></circle><circle cx="25" cy="115" r="3" fill="hsl(var(--destructive))"></circle><circle cx="80" cy="125" r="3" fill="hsl(var(--destructive))"></circle><circle cx="55" cy="105" r="3" fill="hsl(var(--destructive))"></circle></svg><p className="font-bold">الحالة B</p></div><svg width="40" height="40" viewBox="0 0 40 40"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"></path></marker></defs><line x2="5" y2="20" x1="35" y1="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"></line></svg><div className="text-center"><svg width="100" height="150" viewBox="0 0 100 150"><rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"></rect><rect x="5" y="40" width="90" height="10" fill="hsl(var(--muted))" stroke="black"></rect><rect x="45" y="30" width="10" height="10" fill="hsl(var(--muted))" stroke="black"></rect><circle cx="30" cy="60" r="3" fill="hsl(var(--primary))"></circle><circle cx="50" cy="90" r="3" fill="hsl(var(--primary))"></circle><circle cx="70" cy="75" r="3" fill="hsl(var(--primary))"></circle><circle cx="40" cy="110" r="3" fill="hsl(var(--primary))"></circle></svg><p className="font-bold">الحالة A</p></div></div></div>,
+        question: <div><p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p><div className="flex justify-center items-center my-4"><Image src="https://i.ibb.co/Xxd9x9gK/3.png" alt="Piston states" width={300} height={150} className="rounded-lg" /></div></div>,
         options: [
             "تقل الطاقة الحركية ويقل الضغط",
             "يزداد الحجم ويقل عدد الجسيمات",
@@ -484,5 +484,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
 
 
