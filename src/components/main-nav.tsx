@@ -124,7 +124,7 @@ function DesktopNav() {
                  <Link href="/question-bank" passHref>
                     <Button variant="ghost" className="font-medium">
                        <Library className="ml-2 h-4 w-4" />
-                        بنك الأسئلة
+                        البنك
                     </Button>
                 </Link>
                  <Link href="/question-lab" passHref>
@@ -194,7 +194,7 @@ function MobileNav() {
                                 </SheetClose>
                                 <SheetClose asChild>
                                 <Link href="/question-bank" className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2">
-                                   <Library /> بنك الأسئلة
+                                   <Library /> البنك
                                 </Link>
                                 </SheetClose>
                                 <SheetClose asChild>
