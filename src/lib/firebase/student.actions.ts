@@ -183,3 +183,13 @@ export async function deleteStudent(studentId: string) {
         return { success: false, message: 'فشل في حذف بيانات الطالب.' };
     }
 }
+
+export async function revokeStudentSessions(studentId: string) {
+    try {
+        const result: any = await manageUser({ action: 'revokeSession', uid: studentId });
+        return { success: true, message: result.data.message };
+    } catch (error: any) {
+        console.error("Error revoking sessions:", error);
+        return { success: false, message: error.message || 'فشل في إبطال الجلسات' };
+    }
+}

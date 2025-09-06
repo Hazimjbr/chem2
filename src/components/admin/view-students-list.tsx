@@ -2,10 +2,10 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { getStudents } from '@/lib/firebase/student.actions';
+import { getStudents, revokeStudentSessions } from '@/lib/firebase/student.actions';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, ServerCrash, UserSearch, Pencil, Trash2, Copy, Smartphone } from 'lucide-react';
+import { Loader2, ServerCrash, UserSearch, Pencil, Trash2, Copy, Smartphone, LogOut } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -18,6 +18,17 @@ import { Badge } from '@/components/ui/badge';
 import EditStudentDialog from './edit-student-dialog';
 import DeleteStudentDialog from './delete-student-dialog';
 import { Input } from '@/components/ui/input';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 export interface Device {
     id: string;
@@ -44,6 +55,8 @@ export default function ViewStudentsList() {
     const [error, setError] = useState<string | null>(null);
     const [editingStudent, setEditingStudent] = useState<Student | null>(null);
     const [deletingStudent, setDeletingStudent] = useState<Student | null>(null);
+    const [revokingStudent, setRevokingStudent] = useState<Student | null>(null);
+    const [isProcessing, startTransition] = React.useTransition();
     const [searchTerm, setSearchTerm] = useState('');
     const { toast } = useToast();
 
@@ -94,6 +107,18 @@ export default function ViewStudentsList() {
             });
         });
     };
+    
+    const handleRevokeSession = (student: Student) => {
+        startTransition(async () => {
+            const result = await revokeStudentSessions(student.id);
+            if (result.success) {
+                toast({ title: 'نجاح', description: result.message });
+            } else {
+                toast({ variant: 'destructive', title: 'فشل', description: result.message });
+            }
+            setRevokingStudent(null);
+        });
+    }
 
     const filteredStudents = allStudents.filter(student => 
         student.studentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -145,6 +170,26 @@ export default function ViewStudentsList() {
                     onDeleteSuccess={handleDeleteSuccess}
                 />
             )}
+             {revokingStudent && (
+                 <AlertDialog open={revokingStudent !== null} onOpenChange={() => setRevokingStudent(null)}>
+                     <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>إبطال جميع الجلسات؟</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                سيؤدي هذا الإجراء إلى تسجيل خروج الطالب <strong className="text-primary">{revokingStudent.studentName}</strong> من جميع الأجهزة التي سجل الدخول إليها. لن يتمكن من استخدام التطبيق حتى يقوم بتسجيل الدخول مرة أخرى.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>إلغاء</AlertDialogCancel>
+                            <AlertDialogAction onClick={() => handleRevokeSession(revokingStudent)} disabled={isProcessing}>
+                                {isProcessing && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
+                                تأكيد الإبطال
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                 </AlertDialog>
+            )}
+
             <div className="mb-4">
                 <Input 
                     placeholder="ابحث عن اسم طالب أو اسم مستخدم..."
@@ -197,6 +242,9 @@ export default function ViewStudentsList() {
                                         </Button>
                                          <Button variant="ghost" size="icon" onClick={() => handleCopyCredentials(student)}>
                                             <Copy className="h-4 w-4" />
+                                        </Button>
+                                         <Button variant="ghost" size="icon" onClick={() => setRevokingStudent(student)}>
+                                            <LogOut className="h-4 w-4 text-amber-600" />
                                         </Button>
                                     </div>
                                 </TableCell>
