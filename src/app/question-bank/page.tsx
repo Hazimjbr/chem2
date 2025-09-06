@@ -161,7 +161,7 @@ const QuestionCard = ({ question }: { question: SourcedQuizQuestion }) => (
                         )}
                         disabled
                     >
-                        <div className="flex-1 whitespace-normal">{option}</div>
+                        <div className="flex-1 whitespace-normal" dir="ltr">{option}</div>
                         {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                     </Button>
                 );
