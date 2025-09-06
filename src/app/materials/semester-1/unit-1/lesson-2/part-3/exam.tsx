@@ -191,17 +191,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: "درجة التكاثف أو الغليان تعتمد على قوة الترابط والإيثانول يكون روابط هيدروجينية قوية بين جزيئاته وهي أقوى من قوى ثنائي القطب في الأسيتون وهذه الروابط القوية تتطلب فقدان أو اكتساب طاقة أكبر للتغلب عليها مما يرفع درجة التكاثف"
     },
-    {
-        question: "اختر الرسم الصحيح الذي يمثل منحنى تبريد بخار الماء",
-        options: [
-            <Image src="https://i.ibb.co/NgZfVHmn/6.png" alt="منحنى تبريد خاطئ 1" width={250} height={160} className="rounded-md mx-auto" />,
-            <Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="منحنى تبريد خاطئ 2" width={250} height={160} className="rounded-md mx-auto" />,
-            <Image src="https://i.ibb.co/spPLvD7b/4.png" alt="منحنى تبريد خاطئ 3" width={250} height={160} className="rounded-md mx-auto" />,
-            <Image src="https://i.ibb.co/k65TLr3M/3.png" alt="منحنى تبريد بخار الماء الصحيح" width={250} height={160} className="rounded-md mx-auto" />,
-        ],
-        correctAnswerIndex: 3,
-        explanation: <><span>منحنى تبريد الماء النقي يتميز بوجود منطقتين أفقيتين (ثبات في درجة الحرارة) المنطقة الأولى عند </span><span dir="ltr">100°C</span><span> وتمثل عملية التكاثف (تحول البخار إلى سائل) والمنطقة الثانية عند </span><span dir="ltr">0°C</span><span> وتمثل عملية التجمد (تحول السائل إلى صلب) الرسم الصحيح هو الوحيد الذي يوضح هاتين المرحلتين عند درجات الحرارة الصحيحة</span></>
-    },
      {
         question: (
             <div className="space-y-4">
