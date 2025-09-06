@@ -6,7 +6,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: React.ReactNode[];
     correctAnswerIndex: number;
-    explanation: string | React.ReactNode;
+    explanation: React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -77,7 +77,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "لأن الضغط الجوي أقل على قمة الجبل"
         ],
         correctAnswerIndex: 3,
-        explanation: <>على الارتفاعات العالية يكون الضغط الجوي أقل لذلك يحتاج الماء إلى الوصول لضغط بخاري أقل ليبدأ بالغليان وهذا يتحقق عند درجة حرارة أقل من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span></>
+        explanation: <>على الارتفاعات العالية يكون الضغط الجوي أقل لذلك يحتاج الماء إلى الوصول لضغط بخاري أقل ليبدأ بالغليان وهذا يتحقق عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span></>
     },
     {
         question: "أي من السوائل التالية له أقل درجة غليان؟",
@@ -99,7 +99,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "يغير من نكهة الطعام فقط"
         ],
         correctAnswerIndex: 2,
-        explanation: <>الضغط المرتفع داخل الطنجرة يرفع درجة غليان الماء فوق <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span> الطهي عند درجة حرارة أعلى يسرّع من التفاعلات الكيميائية المسؤولة عن نضج الطعام مما يقلل من وقت الطهي</>
+        explanation: <>الضغط المرتفع داخل الطنجرة يرفع درجة غليان الماء فوق <span dir="ltr" className="inline-block">100°C</span> الطهي عند درجة حرارة أعلى يسرّع من التفاعلات الكيميائية المسؤولة عن نضج الطعام مما يقلل من وقت الطهي</>
     },
     {
         question: "أي مما يلي لا يؤثر على درجة غليان سائل نقي؟",
@@ -110,7 +110,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "الكتلة المولية للجزيئات"
         ],
         correctAnswerIndex: 2,
-        explanation: <>درجة الغليان هي خاصية فيزيائية مميزة للمادة لا تعتمد على كميتها سواء كنت تغلي كوبًا من الماء أو لترًا منه فإنه سيغلي عند <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span> (عند ضغط 1atm)</>
+        explanation: <>درجة الغليان هي خاصية فيزيائية مميزة للمادة لا تعتمد على كميتها سواء كنت تغلي كوبًا من الماء أو لترًا منه فإنه سيغلي عند <span dir="ltr" className="inline-block">100°C</span> (عند ضغط 1atm)</>
     },
     {
         question: "ما هو الترتيب الصحيح للمركبات التالية من حيث ازدياد درجة الغليان؟ (من الأقل إلى الأعلى)",
@@ -179,6 +179,26 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "يعتمد على كمية الملح"
         ],
         correctAnswerIndex: 0,
-        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span> هذه الظاهرة تسمى الارتفاع في درجة الغليان</>
+        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block">100°C</span> هذه الظاهرة تسمى الارتفاع في درجة الغليان</>
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور المادة التي لها أعلى درجة غليان معيارية:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
+        correctAnswerIndex: 0,
+        explanation: "أعلى درجة غليان تعني أقوى قوى ترابط وأقل ضغط بخاري حمض الإيثانويك (المنحنى D) له أقل ضغط بخاري لأنه يكون رابطتين هيدروجينيتين لكل جزيء (دايمر)، مما يجعله يمتلك أقوى قوى ترابط وأعلى درجة غليان",
     }
 ];
