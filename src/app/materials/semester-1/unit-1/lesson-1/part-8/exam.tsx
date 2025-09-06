@@ -38,7 +38,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "الكثافة d = (P × Mr) / (R × T) في الظروف المعيارية P=1atm و T=273K الكتلة المولية للهيليوم (He) هي 4g/mol إذن d = (1 × 4) / (0.082 × 273) ≈ 0.18 g/L"
     },
     {
-        question: <><span>أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
+        question: <><span className="inline-block">أربعة أوعية محكمة الإغلاق حجم كل منها </span><span dir="ltr" className="inline-block"><InlineMath math="2\text{L}" /></span><span className="inline-block"> يحتوي كل منها على غازات بضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.15\text{atm}" /></span><span className="inline-block"> عند حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="7^\circ\text{C}" /></span><span className="inline-block"> أي وعاء يحتوي على أكبر كتلة من الغاز (الكتل المولية: H=1, O=16, F=19, Ar=40)</span></>,
         "options": [
             "Ar",
             "H₂",
@@ -60,7 +60,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون جاي-لوساك يتناسب الضغط طرديًا مع درجة الحرارة عند ثبات الحجم بما أن وعاء F₂ تم تسخينه (زيادة الحرارة) فسيكون ضغطه هو الأعلى بينما وعاء H₂ تم تبريده فسيكون ضغطه هو الأقل"
     },
     {
-        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /><strong className="text-accent mt-2 block">أي عينة غاز لها الضغط الأكبر</strong></div>,
+        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         "options": [
             "D",
             "B",
@@ -123,7 +123,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "أولاً نحسب الكتلة المولية لـ CO₂ = 12 + (2*16) = 44 g/mol ثم نحسب عدد المولات n = 11g / 44g/mol = 0.25 mol حجم الغاز في الظروف المعيارية = 0.25 mol * 22.4 L/mol = 5.6 L"
     },
     {
-        question: <><span>عينة من غاز النيتروجين (N₂) حجمها 2L عند ضغط 3atm ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ\text{C}" /></span><span> ما هو عدد مولات الغاز</span></>,
+        question: <><span className="inline-block">عينة من غاز النيتروجين (N₂) حجمها 2L عند ضغط 3atm ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ\text{C}" /></span><span className="inline-block"> ما هو عدد مولات الغاز</span></>,
         options: [
             "0.24mol",
             "2.4mol",
@@ -134,7 +134,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "نستخدم قانون الغاز المثالي PV=nRT نحول الحرارة إلى كلفن T = 27 + 273 = 300K نعيد ترتيب المعادلة n = PV/RT = (3 atm * 2 L) / (0.082 L·atm/mol·K * 300 K) ≈ 0.24 mol"
     },
     {
-        question: <><span>غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز</span></>,
+        question: <><span className="inline-block">غازان A و B في وعاءين منفصلين متطابقين في الحجم إذا كان ضغط الغاز A ضعف ضغط الغاز B عند نفس درجة الحرارة فماذا يعني ذلك بالنسبة لكمية الغاز</span></>,
         options: [
             "كمية A نصف كمية B",
             "كمية A ضعف كمية B",
@@ -169,7 +169,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "باستخدام القانون الجامع (P₁V₁/T₁ = P₂V₂/T₂) فإن P₂ = P₁ * (V₁/V₂) * (T₂/T₁) لدينا V₂=2V₁ و T₂=T₁/2 إذن P₂ = P₁ * (V₁/2V₁) * ((T₁/2)/T₁) = P₁ * (1/2) * (1/2) = P₁/4 يقل الضغط إلى الربع"
     },
     {
-        question: <><span>ما هي كثافة غاز النيون (Ne) عند ضغط 900mmHg ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="127^\circ\text{C}" /></span><span> (الكتلة المولية لـ Ne=20g/mol)</span></>,
+        question: <><span className="inline-block">ما هي كثافة غاز النيون (Ne) عند ضغط 900mmHg ودرجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="127^\circ\text{C}" /></span><span className="inline-block"> (الكتلة المولية لـ Ne=20g/mol)</span></>,
         "options": [
             "0.72g/L",
             "7.2g/L",
@@ -191,7 +191,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "نستخدم قانون دالتون مع قانون بويل n_total = n₁ + n₂ بما أن n ∝ PV يمكننا القول P_final * V_final = P₁V₁ + P₂V₂ الحجم النهائي V_final = 3+5=8L إذن P_final * 8 = (4*3) + (2*5) = 12 + 10 = 22 P_final = 22/8 = 2.75atm"
     },
     {
-        question: <><span>غاز حجمه 20L في الظروف المعيارية إذا تم تسخينه إلى </span><span dir="ltr" className="inline-block"><InlineMath math="273^\circ\text{C}" /></span><span> مع الحفاظ على الضغط ثابتًا ما هو حجمه الجديد</span></>,
+        question: <><span className="inline-block">غاز حجمه 20L في الظروف المعيارية إذا تم تسخينه إلى </span><span dir="ltr" className="inline-block"><InlineMath math="273^\circ\text{C}" /></span><span className="inline-block"> مع الحفاظ على الضغط ثابتًا ما هو حجمه الجديد</span></>,
         "options": [
             "20L",
             "10L",
