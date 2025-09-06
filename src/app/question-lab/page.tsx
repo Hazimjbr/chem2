@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -20,27 +19,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <span>الضغط البخاري لنونان (</span>
-            <span dir="ltr" className="font-mono inline-block">CH₃(CH₂)₇CH₃</span>
-            <span>) أقل من 3،3-ثنائي إيثيل بنتان (</span>
-            <span dir="ltr" className="font-mono inline-block">C(CH₂CH₃)₄</span>
-            <span>) لأن نونان:</span>
-        </>
-    ),
-    options: [
-        "أقل تفرعات",
-        "أقل كتلة مولية",
-        "ترابطه ثنائي قطب",
-        "ترابطه هيدروجيني"
-    ],
-    correctAnswerIndex: 0,
-    explanation: "كلا المركبين لهما نفس الكتلة المولية وهما غير قطبيين (قوى لندن فقط). النونان (سلسلة مستقيمة) أقل تفرعًا، مما يعطيه مساحة سطح أكبر للتجاذب، فتزداد قوة قوى لندن، ويقل ضغطه البخاري.",
-    level: 3,
-    source: "مراجعة الضغط البخاري وقوى الترابط"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
