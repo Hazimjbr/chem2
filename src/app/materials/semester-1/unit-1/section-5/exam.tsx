@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React from 'react';
@@ -350,7 +348,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm <InlineMath math="27^\circ\text{C}"/>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <InlineMath math="-23^\circ\text{C}"/>؟</span></>,
+        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (1atm <span dir="ltr">27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط 0.5atm ودرجة الحرارة <span dir="ltr">-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
         options: [
             "الكتلة 488g، الحجم الجديد 500L",
             "الكتلة 12.2g، الحجم الجديد 500L",
@@ -361,7 +359,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(27+273)) ≈ 12.2mol الكتلة = n * Mr = 12.2 * 4 = 48.8g (خطأ في الخيارات ولكن 488 الأقرب كخطأ طباعي) ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(27+273)) = (300*250)/(0.5*300) = 500L"
     },
     {
-        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة <InlineMath math="127^\circ\text{C}"/> حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
+        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة <span dir="ltr">127<InlineMath math="^\circ\text{C}"/></span> حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
         options: [
             "1.64atm",
             "3.28atm",
@@ -555,3 +553,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     }
 ];
+
+    
