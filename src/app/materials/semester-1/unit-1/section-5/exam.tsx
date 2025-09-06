@@ -349,7 +349,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span> <span dir="ltr">-27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol) ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr">-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
+        question: <><span>منطاد طقس حجمه 300L عند سطح الأرض (<span dir="ltr">1atm</span>, <span dir="ltr">-27<InlineMath math="^\circ\text{C}"/></span>) يحتوي على غاز الهيليوم (Mr=4 g/mol). ما هي كتلة الهيليوم داخل المنطاد؟ ثم ما هو حجم المنطاد على ارتفاع حيث الضغط <span dir="ltr">0.5atm</span> ودرجة الحرارة <span dir="ltr">-23<InlineMath math="^\circ\text{C}"/></span>؟</span></>,
         options: [
             "الكتلة 488g الحجم الجديد 500L",
             "الكتلة 12.2g الحجم الجديد 500L",
@@ -357,10 +357,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "الكتلة 12.2g الحجم الجديد 250L"
         ],
         correctAnswerIndex: 0,
-        explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(27+273)) ≈ 12.2mol الكتلة = n * Mr = 12.2 * 4 = 48.8g (خطأ في الخيارات ولكن 488 الأقرب كخطأ طباعي) ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(27+273)) = (300*250)/(0.5*300) = 500L"
+        explanation: "أولاً نحسب عدد المولات عند سطح الأرض: n = PV/RT = (1*300)/(0.082*(27+273)) ≈ 12.2mol. الكتلة = n * Mr = 12.2 * 4 = 48.8g (خطأ في الخيارات ولكن 488 الأقرب كخطأ طباعي). ثانيًا نستخدم القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1*300*(-23+273))/(0.5*(27+273)) = (300*250)/(0.5*300) = 500L"
     },
     {
-        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة <span dir="ltr">127<InlineMath math="^\circ\text{C}"/></span> حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
+        question: <><span>يتفاعل 8 جرام من غاز الميثان (CH₄) مع كمية وافرة من الأكسجين في وعاء حجمه 10L عند درجة حرارة <span dir="ltr">127<InlineMath math="^\circ\text{C}"/></span> حسب المعادلة: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g). ما هو الضغط الكلي في الوعاء بعد انتهاء التفاعل؟ (Mr for CH₄=16)</span></>,
         options: [
             "1.64atm",
             "3.28atm",
@@ -382,7 +382,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "طاقة تنشيط أعلى للسائل A تعني أن قوى الترابط فيه أقوى السائل B بقوى ترابط أضعف سيتبخر بسهولة أكبر (سرعة تبخر أعلى) ويمتلك ضغطًا بخاريًا أعلى عند نفس درجة الحرارة"
     },
     {
-        question: <><span>وعاءان متصلان بصمام الأول حجمه 3L ويحتوي غاز بضغط 4atm والثاني حجمه 5L ويحتوي غازًا آخر بضغط 2atm إذا تم فتح الصمام ما هو الضغط النهائي للخليط؟ (افترض ثبات الحرارة)</span></>,
+        question: <><span>وعاءان متصلان بصمام الأول حجمه 3L ويحتوي غاز بضغط 4atm والثاني حجمه 5L ويحتوي غازًا آخر بضغط 2atm. إذا تم فتح الصمام ما هو الضغط النهائي للخليط؟ (افترض ثبات الحرارة)</span></>,
         options: [
             "2.75atm",
             "3.0atm",
@@ -390,7 +390,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "2.25atm"
         ],
         correctAnswerIndex: 0,
-        explanation: "نستخدم قانون دالتون مع قانون بويل الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5atm الضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25atm الضغط الكلي هو مجموع الضغوط الجزئية: P_total = 1.5 + 1.25 = 2.75atm"
+        explanation: "نستخدم قانون دالتون مع قانون بويل. الضغط الجزئي للغاز الأول في الحجم الجديد (8L) هو P₁ = (4*3)/8 = 1.5atm. الضغط الجزئي للغاز الثاني هو P₂ = (2*5)/8 = 1.25atm. الضغط الكلي هو مجموع الضغوط الجزئية: P_total = 1.5 + 1.25 = 2.75atm"
     },
     {
         question: (
@@ -462,7 +462,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
     {
         question: <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
+                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr">80<InlineMath math="^\circ C"/></span> عند ضغط مقداره يساوي:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -554,5 +554,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     }
 ];
+
+    
 
     
