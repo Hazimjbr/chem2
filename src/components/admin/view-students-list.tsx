@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useTransition } from 'react';
 import { getStudents, revokeStudentSessions } from '@/lib/firebase/student.actions';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -27,7 +27,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
 export interface Device {
@@ -56,7 +55,7 @@ export default function ViewStudentsList() {
     const [editingStudent, setEditingStudent] = useState<Student | null>(null);
     const [deletingStudent, setDeletingStudent] = useState<Student | null>(null);
     const [revokingStudent, setRevokingStudent] = useState<Student | null>(null);
-    const [isProcessing, startTransition] = React.useTransition();
+    const [isProcessing, startTransition] = useTransition();
     const [searchTerm, setSearchTerm] = useState('');
     const { toast } = useToast();
 
@@ -81,15 +80,15 @@ export default function ViewStudentsList() {
         fetchStudents();
     }, [fetchStudents]);
     
-    const handleUpdateSuccess = () => {
+    const handleUpdateSuccess = useCallback(() => {
         setEditingStudent(null);
         fetchStudents(); // Refresh the list
-    }
+    }, [fetchStudents]);
     
-    const handleDeleteSuccess = () => {
+    const handleDeleteSuccess = useCallback(() => {
         setDeletingStudent(null);
         fetchStudents(); // Refresh the list
-    }
+    }, [fetchStudents]);
 
     const handleCopyCredentials = (student: Student) => {
         const credentialsText = `اسم المستخدم: ${student.username}\nكلمة المرور: ${student.password_clear}`;
