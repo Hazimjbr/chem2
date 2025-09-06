@@ -168,7 +168,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "يعتمد على كمية الملح"
         ],
         correctAnswerIndex: 0,
-        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي) يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span> هذه الظاهرة تسمى الارتفاع في درجة الغليان</>
+        explanation: <>إضافة مذاب غير متطاير (مثل الملح) يقلل من الضغط البخاري للماء، ولكي يصل المحلول إلى نقطة الغليان (حيث يتساوى ضغطه البخاري مع الضغط الجوي)، يجب تسخينه إلى درجة حرارة أعلى من <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}"/></span>. هذه الظاهرة تسمى الارتفاع في درجة الغليان.</>
     },
     {
         question: <><span>اعتمادا على الرسم المجاور المادة التي درجة غليانها المعيارية</span><span dir="ltr" className="inline-block mx-1">77°C</span><span> تقريبا هي:</span><div className="flex justify-center"><Image src="https://i.ibb.co/dwTN2WHw/3.png" alt="منحنيات الضغط البخاري" width={400} height={250} className="rounded-lg border bg-white" data-ai-hint="vapor pressure curves"/></div></>,
@@ -191,5 +191,25 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 2,
         explanation: <span>أكبر ضغط بخاري يعني أضعف قوى ترابط بين الجزيئات. C₆H₁₄ (الهكسان) هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن) بين الخيارات، حيث أن CH₃COOH و H₂O يمتلكان روابط هيدروجينية قوية، و CCl₄ له كتلة مولية أعلى من الهكسان مما يجعل قوى لندن فيه أقوى.</span>
+    },
+     {
+        question: (
+            <div className="space-y-4">
+                 <p>اعتمادا على الرسم المجاور، المادة التي لها أعلى درجة غليان معيارية:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
+        correctAnswerIndex: 0,
+        explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>
     }
 ];

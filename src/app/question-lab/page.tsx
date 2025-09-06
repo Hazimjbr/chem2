@@ -20,28 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-4">
-             <p>اعتمادا على الرسم المجاور، المادة التي لها أعلى درجة غليان معيارية:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/dwTN2WHw/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={400}
-                    height={250}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>
-    ),
-    options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
-    correctAnswerIndex: 0,
-    explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>,
-    level: 3,
-    source: "الوحدة الأولى / الدرس 2 / الجزء 5"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
