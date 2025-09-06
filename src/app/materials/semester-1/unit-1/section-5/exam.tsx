@@ -524,7 +524,34 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: ["A", "M", "B", "Q"],
         correctAnswerIndex: 2,
         explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة 80°C عند ضغط مقداره يساوي</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "26.7KPa",
+            "101.3KPa",
+            "760mmHg",
+            "0.62atm"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <span>
+                لكي يغلي السائل يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي من الرسم البياني نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <InlineMath math="80^\circ C"/> هو 200mmHg لتحويل هذه القيمة إلى KPa نستخدم العلاقة: <InlineMath math="P(kPa) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />
+            </span>
+        )
     }
 ];
-
-```
