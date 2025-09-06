@@ -284,7 +284,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             <span><span dir="ltr">1atm</span> و <span dir="ltr">546K</span></span>,
             <span><span dir="ltr">2atm</span> و <span dir="ltr">546K</span></span>
         ],
-        "correctAnswerIndex": 0,
+        correctAnswerIndex: 0,
         explanation: "وفقًا لقانون الغاز المثالي (V = nRT/P) يكون حجم الغاز أقل ما يمكن عندما تكون درجة الحرارة (T) أقل ما يمكن والضغط (P) أعلى ما يمكن الخيار (أ) يحقق هذه الشروط (أقل درجة حرارة وأعلى ضغط)"
     },
     {
@@ -295,7 +295,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "متوسط الطاقة الحركية والجزيئات",
             "حجم الغاز"
         ],
-        "correctAnswerIndex": 3,
+        correctAnswerIndex: 3,
         explanation: "الأسطوانة هي وعاء صلب حجمه ثابت لذلك يبقى حجم الغاز ثابتًا بينما يؤدي التسخين إلى زيادة درجة الحرارة مما يزيد من متوسط الطاقة الحركية ومتوسط سرعة الجزيئات وبالتالي يزداد ضغط الغاز وفقًا لقانون جاي لوساك"
     }
 ];
@@ -495,26 +495,16 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>العبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D , C , B , A عند درجة حرارة ثابتة T</p>
-                <div className="flex justify-center my-4">
-                    <Image
-                        src="https://i.ibb.co/BVCwCvTn/3.png"
-                        alt="منحنى طاقة التنشيط"
-                        width={400}
-                        height={250}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="activation energy curve"
-                    />
-                </div>
+                <p>العبارة الخاطئة فيما يتعلق بالغازين A, B إذا علمت أن سرعة تبخر A أكبر من سرعة تبخر B</p>
             </div>
         ),
         options: [
-            "المادة C لها أعلى ضغط بخاري",
-            "المادة B لها أعلى طاقة تكاثف مولية",
-            "ترابط جزيئات المادة A أضعف من المادة D",
-            "معظم جزيئات المادة C في الحالة الغازية",
+            "درجة تكاثف الغاز A أكبر",
+            "له ضغط بخاري أعلى",
+            "قوى الترابط بين جزيئاته أضعف",
+            "درجة غليانه أقل"
         ],
-        correctAnswerIndex: 3,
+        correctAnswerIndex: 0,
         explanation: "بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل"
     },
     {
