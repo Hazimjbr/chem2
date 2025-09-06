@@ -21,7 +21,27 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <span>
+            العبارة الخاطئة فيما يتعلق بالغازين A B إذا علمت أن سرعة تبخر A أكبر من سرعة تبخر B هي
+        </span>
+    ),
+    options: [
+        "درجة تكاثف الغاز A أكبر",
+        "الضغط البخاري للغاز A أكبر عند نفس درجة الحرارة",
+        "درجة غليان الغاز A المعيارية أقل",
+        "قوى الترابط بين جزيئات الغاز A أضعف",
+    ],
+    correctAnswerIndex: 0,
+    explanation: (
+        <span>
+            بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل وليس أكبر لذلك العبارة الخاطئة هي أ
+        </span>
+    ),
+    level: 3,
+    source: "الوحدة الأولى / الدرس 2 / الجزء 4 و 5"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -61,13 +81,13 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             key={index}
                             variant="outline"
                             className={cn(
-                                "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center",
+                                "w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center",
                                 isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
                             )}
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
