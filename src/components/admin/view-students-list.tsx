@@ -48,6 +48,8 @@ export interface Student {
     devices: Device[];
 }
 
+const ADMIN_EMAIL = 'h75jbr@gmail.com';
+
 export default function ViewStudentsList() {
     const [allStudents, setAllStudents] = useState<Student[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -236,9 +238,11 @@ export default function ViewStudentsList() {
                                         <Button variant="ghost" size="icon" onClick={() => setEditingStudent(student)}>
                                             <Pencil className="h-4 w-4" />
                                         </Button>
-                                        <Button variant="ghost" size="icon" onClick={() => setDeletingStudent(student)}>
-                                            <Trash2 className="h-4 w-4 text-destructive" />
-                                        </Button>
+                                        {student.email !== ADMIN_EMAIL && (
+                                            <Button variant="ghost" size="icon" onClick={() => setDeletingStudent(student)}>
+                                                <Trash2 className="h-4 w-4 text-destructive" />
+                                            </Button>
+                                        )}
                                          <Button variant="ghost" size="icon" onClick={() => handleCopyCredentials(student)}>
                                             <Copy className="h-4 w-4" />
                                         </Button>
