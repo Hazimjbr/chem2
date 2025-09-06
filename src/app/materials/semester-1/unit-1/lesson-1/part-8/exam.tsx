@@ -1,6 +1,7 @@
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import GasLawsGraph from './diagram';
+import Image from 'next/image';
 
 
 export interface QuizQuestion {
@@ -11,23 +12,16 @@ export interface QuizQuestion {
 }
 
 const GasSamplesGraph = () => (
-     <svg width="300" height="200" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="mx-auto my-2 bg-white p-4 rounded-lg border">
-        {/* Beakers */}
-        <rect x="30" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        <rect x="120" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        <rect x="210" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        <rect x="300" y="100" width="60" height="100" fill="hsl(var(--muted))" stroke="black" strokeWidth="1"/>
-        {/* Labels */}
-        <text x="60" y="220" textAnchor="middle">A</text>
-        <text x="150" y="220" textAnchor="middle">B</text>
-        <text x="240" y="220" textAnchor="middle">C</text>
-        <text x="330" y="220" textAnchor="middle">D</text>
-        {/* Moles info */}
-        <text x="60" y="90" textAnchor="middle" fontSize="14">0.2mol</text>
-        <text x="150" y="90" textAnchor="middle" fontSize="14">0.8mol</text>
-        <text x="240" y="90" textAnchor="middle" fontSize="14">0.4mol</text>
-        <text x="330" y="90" textAnchor="middle" fontSize="14">0.6mol</text>
-    </svg>
+    <div className="flex justify-center my-4">
+        <Image 
+            src="https://i.ibb.co/nXTGRLs/3.png" 
+            alt="أربع عينات من الغازات"
+            width={300}
+            height={200}
+            className="rounded-lg border bg-white"
+            data-ai-hint="gas samples experiment"
+        />
+    </div>
 );
 
 
