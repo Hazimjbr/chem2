@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
     },
     {
-        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <span dir="ltr" className="inline-block"><InlineMath math="40^\circ\text{C}" /></span>؟</>,
+        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <InlineMath math="20^\circ\text{C}" /> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <InlineMath math="40^\circ\text{C}" />؟</>,
         options: [
             "أقل من 100mmHg",
             "يساوي 100mmHg",
@@ -157,5 +157,31 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "كلا المركبين لهما نفس الكتلة المولية وهما غير قطبيين (قوى لندن فقط). النونان (سلسلة مستقيمة) أقل تفرعًا، مما يعطيه مساحة سطح أكبر للتجاذب، فتزداد قوة قوى لندن، ويقل ضغطه البخاري."
-    }
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية</p>
+                <div className="flex justify-center my-4">
+                    <Image
+                        src="https://i.ibb.co/84T52SSm/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </>
+        ),
+        options: [
+            "الماء",
+            "الإيثانول",
+            "ثنائي إيثيل إيثر",
+            "الأسيتون"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات. السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة. من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف.",
+    },
 ];
+
