@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React from 'react';
@@ -23,7 +24,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-             <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <InlineMath math="80^\circ C"/> عند ضغط مقداره يساوي:</p>
+            <p>اعتمادا على الرسم المجاور يمكن أن يغلي حمض الإيثانويك على درجة حرارة <span dir="ltr" className="inline-block">80°C</span> عند ضغط مقداره يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -40,7 +41,7 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 0,
     explanation: (
         <span>
-            لكي يغلي السائل، يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي. من الرسم البياني، نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <InlineMath math="80^\circ C"/> هو 200mmHg. لتحويل هذه القيمة إلى KPa، نستخدم العلاقة: <InlineMath math="P(kPa) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />.
+            لكي يغلي السائل، يجب أن يتساوى ضغطه البخاري مع الضغط الخارجي. من الرسم البياني، نجد أن الضغط البخاري لحمض الإيثانويك (المنحنى A) عند درجة حرارة <span dir="ltr">80°C</span> هو 200mmHg. لتحويل هذه القيمة إلى KPa، نستخدم العلاقة: <InlineMath math="P(\text{kPa}) = 200 \text{mmHg} \times \frac{101.3 \text{kPa}}{760 \text{mmHg}} \approx 26.7 \text{kPa}" />.
         </span>
     ),
     level: 3,
