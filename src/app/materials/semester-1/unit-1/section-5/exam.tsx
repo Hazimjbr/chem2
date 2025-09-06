@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React from 'react';
@@ -412,8 +413,55 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: (
             <span>
-                بتتبع الخط العمودي من درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="25^\circ\text{C}"/></span> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.
+                بتتبع الخط العمودي من درجة حرارة <InlineMath math="25^\circ\text{C}"/> على المحور السيني حتى يتقاطع مع منحنى CCl₄ (المنحنى B)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 100mmHg تقريبًا.
             </span>
         )
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور، المادة التي لها أعلى درجة غليان معيارية:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["CH₃COOH", "H₂O", "C₆H₁₄", "CCl₄"],
+        correctAnswerIndex: 0,
+        explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39\text{atm}" /> يساوي:</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["78°C", "50K", "313K", "351K"],
+        correctAnswerIndex: 2,
+        explanation: (
+            <span>
+                أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}" />  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}" />
+            </span>
+        ),
     }
 ];
+
+
+    
