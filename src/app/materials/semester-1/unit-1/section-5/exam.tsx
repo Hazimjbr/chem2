@@ -74,17 +74,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
         correctAnswerIndex: 1,
         explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     },
-     {
-        question: <span>وعاءان منفصلان لهما نفس الضغط ودرجة الحرارة الأول حجمه <span dir="ltr">2L</span> ويحتوي على <span dir="ltr"><InlineMath math="0.4\text{mol}"/></span> من غاز النيون <span dir="ltr">(Ne)</span> فإذا كان حجم الوعاء الثاني <span dir="ltr">3L</span> فما عدد مولات غاز الزينون <span dir="ltr">(Xe)</span> الذي يحتويه</span>,
-        options: [
-            "0.4mol",
-            "0.6mol",
-            "0.27mol",
-            "0.8mol"
-        ],
-        correctAnswerIndex: 1,
-        explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
-    },
     {
         question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
@@ -95,17 +84,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "وفقًا لقانون أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته) الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات) لذا فإن ضغط الغاز فيه هو الأعلى"
-    },
-    {
-        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أرعة أوعية لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة الأكثر كثافة هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
-        options: [
-            "C",
-            "B",
-            "A",
-            "D"
-        ],
-        correctAnswerIndex: 3,
-        explanation: "الكثافة d = m/V وبما أن الحجم (V) ثابت لجميع العينات فإن الأعلى كثافة هي صاحبة الكتلة (m) الأكبر نحسب كتلة كل عينة m=n×Mr A=0.2×20=4g B=0.8×18=14.4g C=0.4×46=18.4g D=0.6×32=19.2g العينة D لها الكتلة الأكبر وبالتالي هي الأعلى كثافة"
     },
     {
         question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
@@ -280,31 +258,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
     {
         question: (
-            <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية</p>
-                <div className="flex justify-center my-4">
-                    <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
-                        alt="منحنيات الضغط البخاري"
-                        width={500}
-                        height={300}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curves"
-                    />
-                </div>
-            </>
-        ),
-        options: [
-            "الماء",
-            "الإيثانول",
-            "ثنائي إيثيل إيثر",
-            "الأسيتون"
-        ],
-        correctAnswerIndex: 2,
-        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف.",
-    },
-    {
-        question: (
             <div className="space-y-4">
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
@@ -325,9 +278,9 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
     {
         question: (
-            <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
-                <div className="flex justify-center my-4">
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
+                <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
@@ -337,47 +290,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                         data-ai-hint="vapor pressure curves"
                     />
                 </div>
-            </>
-        ),
-        options: ["78°C", "35°C", "55°C", "760°C"],
-        correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg) بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <span dir="ltr">78°C</span></span>
-    },
-    {
-        question: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr">30°C</span> يساوي:</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/FbjSx8p6/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
             </div>
-        </div>
-        ),
-        options: ["760mmHg", "100mmHg", "30mmHg", "650mmHg"],
-        correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr">30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg</span>
-    },
-    {
-        question: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/FbjSx8p6/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
-            </div>
-        </div>
         ),
         options: ["الماء", "الإيثانول", "ثنائي إيثيل إيثر", "الأسيتون"],
         correctAnswerIndex: 0,
@@ -447,7 +360,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH3CH2OH</span> <span dir="ltr" className="font-mono inline-block">CH4</span> <span dir="ltr" className="font-mono inline-block">CH3CH3</span> <span dir="ltr" className="font-mono inline-block">CH3Cl</span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block">CH3CH3Cl</span> هو:</p>
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_2OH"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_4"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_3"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> هو:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/hF9Fm0hw/22.png"
@@ -489,6 +402,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
 
 
 
