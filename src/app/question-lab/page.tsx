@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <span dir="ltr" className="inline-block"><InlineMath math="0.39\text{atm}" /></span> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور درجة غليان الهكسان عند ضغط مقداره <InlineMath math="0.39atm" /> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/dwTN2WHw/3.png"
@@ -40,7 +40,7 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 2,
     explanation: (
         <span>
-            أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <InlineMath math="50^\circ\text{C}" />  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}" />
+            أولاً نحول الضغط من atm إلى mmHg <InlineMath math="0.39\text{atm} \times 760\text{mmHg/atm} \approx 300\text{mmHg}" /> بعد ذلك نجد منحنى الهكسان (C₆H₁₄) وهو المنحنى D نتتبع الخط الأفقي من 300mmHg حتى يتقاطع مع المنحنى D ثم ننزل عموديًا لنجد درجة الحرارة المقابلة وهي <span dir="ltr" className="inline-block"><InlineMath math="50^\circ\text{C}" /></span>  أخيراً نحول درجة الحرارة إلى كلفن <InlineMath math="T(K)=50+273=313\text{K}" />
         </span>
     ),
     level: 3,
