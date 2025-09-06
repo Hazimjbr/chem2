@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span dir="ltr" className="inline-block"><InlineMath math="50^\circ\text{C}" /></span>؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span dir="ltr" className="inline-block">50°C</span>؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
     },
     {
-        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <span dir="ltr" className="inline-block"><InlineMath math="40^\circ\text{C}" /></span>؟</>,
+        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <span dir="ltr" className="inline-block">20°C</span> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <span dir="ltr" className="inline-block">40°C</span>؟</>,
         options: [
             "أقل من 100mmHg",
             "يساوي 100mmHg",
@@ -201,7 +201,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["100", "760", "220", "650"],
         correctAnswerIndex: 1,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="100^\circ\text{C}" /></span>.</span>
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة <span dir="ltr" className="inline-block">100°C</span>.</span>
     },
     {
         question: (
@@ -221,12 +221,12 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
-        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <span dir="ltr" className="inline-block"><InlineMath math="78^\circ\text{C}" /></span>.</span>
+        explanation: <span>درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل <span dir="ltr" className="inline-block">78°C</span>.</span>
     },
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}"/></span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <span dir="ltr" className="inline-block"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block">°C</span>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr" className="inline-block">30°C</span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -241,7 +241,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}><InlineMath math="30^\circ\text{C}" /></span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}>30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
     },
     {
         question: (
