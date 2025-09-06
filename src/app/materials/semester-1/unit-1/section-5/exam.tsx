@@ -86,17 +86,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو فإن النسبة بين الحجم وعدد المولات ثابتة للغازات عند نفس الضغط والحرارة (V₁/n₁ = V₂/n₂) يمكننا حساب عدد مولات الزينون n₂ = (V₂ × n₁) / V₁ = (3L × 0.4mol) / 2L = 0.6mol"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p><div className="flex justify-center items-center my-4"><Image src="https://i.ibb.co/Xxd9x9gK/3.png" alt="Piston states" width={300} height={150} className="rounded-lg" /></div></div>,
-        options: [
-            "تقل الطاقة الحركية ويقل الضغط",
-            "يزداد الحجم ويقل عدد الجسيمات",
-            "يقل التركيز والضغط",
-            "يزداد الحجم وعدد الجسيمات ثابت"
-        ],
-        correctAnswerIndex: 3,
-        explanation: "العبارة الخاطئة هي (يزداد الحجم وعدد الجسيمات ثابت) عند الانتقال من B إلى A نلاحظ أن الحجم يزداد (المكبس يرتفع) ولكن عدد الجسيمات يقل بشكل واضح العبارات الأخرى صحيحة يقل عدد الجسيمات فيزداد الحجم ويقل التركيز والضغط ويفترض أن الطاقة الحركية تقل (اللون تغير من الأحمر للبارد) مما يساهم في انخفاض الضغط"
-    },
-    {
         question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
@@ -279,7 +268,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -304,7 +293,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/FbjSx8p/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -324,7 +313,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -344,7 +333,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr">30°C</span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/FbjSx8p/3.png"
+                    src="https://i.ibb.co/FbjSx8p6/3.png"
                     alt="منحنيات الضغط البخاري"
                     width={500}
                     height={300}
@@ -364,7 +353,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/FbjSx8p/3.png"
+                    src="https://i.ibb.co/FbjSx8p6/3.png"
                     alt="منحنيات الضغط البخاري"
                     width={500}
                     height={300}
@@ -384,7 +373,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للأسيتون عند درجة غليانه الطبيعية يساوي</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p/3.png"
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -484,6 +473,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
 
 
 
