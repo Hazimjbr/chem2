@@ -161,7 +161,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أقل طاقة تكاثف مولية</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/84T52SSm/3.png"
@@ -222,5 +222,25 @@ export const staticQuizLvl3: QuizQuestion[] = [
         options: ["78", "35", "55", "760"],
         correctAnswerIndex: 0,
         explanation: "درجة الغليان المعيارية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي المعياري (760mmHg). بتتبع الخط الأفقي من 760mmHg على المحور الصادي حتى يتقاطع مع منحنى الإيثانول ثم النزول عموديًا إلى المحور السيني نجد أن درجة الحرارة تقابل 78°C."
+    },
+    {
+        question: (
+        <div className="space-y-4">
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة <span dir="ltr" className="inline-block mx-1"><InlineMath math="^\circ\text{C}" /></span> والضغط البخاري mmHg لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر <span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span> عند <span dir="ltr" className="inline-block mx-1"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
+            <div className="flex justify-center">
+                <Image
+                    src="https://i.ibb.co/84T52SSm/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </div>
+        ),
+        options: ["760", "100", "30", "650"],
+        correctAnswerIndex: 3,
+        explanation: "بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا."
     }
 ];
