@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
     },
     {
-        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <span dir="ltr" className="inline-block">20°C</span> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <span dir="ltr" className="inline-block">40°C</span>؟</>,
+        question: <>إذا علمت أن الضغط البخاري لسائل معين عند 20°C هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند 40°C؟</>,
         options: [
             "أقل من 100mmHg",
             "يساوي 100mmHg",
@@ -185,23 +185,23 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
     {
         question: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للماء عند درجة غليانه الطبيعية يساوي</p>
-            <div className="flex justify-center">
-                <Image
-                    src="https://i.ibb.co/FbjSx8p6/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
+                <div className="flex justify-center my-4">
+                     <Image
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
             </div>
-        </div>
         ),
-        options: ["100", "760", "220", "650"],
-        correctAnswerIndex: 1,
-        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760 mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760 mmHg عند درجة حرارة <span dir="ltr" className="inline-block">100°C</span>.</span>
+        options: ["56", "78", "35", "100"],
+        correctAnswerIndex: 0,
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760mmHg عند درجة حرارة 56°C تقريبًا.</span>
     },
     {
         question: (
@@ -226,7 +226,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block">°C</span>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr" className="inline-block">30°C</span> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block">°C</span>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند 30°C يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -241,7 +241,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["760", "100", "30", "650"],
         correctAnswerIndex: 3,
-        explanation: <span>بتتبع الخط العمودي من درجة حرارة <span dir="ltr" style={{display: 'inline-block'}}>30°C</span> على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
+        explanation: <span>بتتبع الخط العمودي من درجة حرارة 30°C على المحور السيني حتى يتقاطع مع منحنى ثنائي إيثيل إيثر (المنحنى الأعلى)، ثم تتبع الخط الأفقي من نقطة التقاطع إلى المحور الصادي، نجد أن القيمة تقابل 650mmHg تقريبًا.</span>
     },
     {
         question: (
@@ -265,22 +265,22 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
      {
         question: (
-        <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
-            <div className="flex justify-center my-4">
-                <Image
-                    src="https://i.ibb.co/FbjSx8p6/3.png"
-                    alt="منحنيات الضغط البخاري"
-                    width={500}
-                    height={300}
-                    className="rounded-lg border bg-white"
-                    data-ai-hint="vapor pressure curves"
-                />
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للماء عند درجة غليانه الطبيعية يساوي</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
             </div>
-        </div>
         ),
-        options: ["56", "78", "35", "100"],
-        correctAnswerIndex: 0,
-        explanation: "درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (760 mmHg). من الرسم البياني، نجد أن ضغط بخار الأسيتون يصل إلى 760 mmHg عند درجة حرارة 56°C تقريبًا."
+        options: ["100", "760", "220", "650"],
+        correctAnswerIndex: 1,
+        explanation: <span>درجة الغليان الطبيعية هي درجة الحرارة التي يتساوى عندها الضغط البخاري للسائل مع الضغط الجوي الطبيعي (1 atm أو 760mmHg). من الرسم البياني نلاحظ أن ضغط الماء البخاري يصل إلى 760mmHg عند درجة حرارة 100°C.</span>
     }
 ];
