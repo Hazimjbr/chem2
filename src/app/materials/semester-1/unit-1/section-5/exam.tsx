@@ -177,6 +177,22 @@ export const staticQuizLvl1: QuizQuestion[] = [
 
 export const staticQuizLvl2: QuizQuestion[] = [
     {
+        question: (
+            <div>
+                <p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p>
+                <Image src="https://i.ibb.co/Xxd9x9gK/3.png" alt="Piston states" width={300} height={150} className="mx-auto my-2 rounded-lg" data-ai-hint="gas piston" />
+            </div>
+        ),
+        options: [
+            "تقل الطاقة الحركية ويقل الضغط",
+            "يزداد الحجم ويقل عدد الجسيمات",
+            "يقل التركيز والضغط",
+            "يزداد الحجم وعدد الجسيمات ثابت"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "العبارة الخاطئة هي (يزداد الحجم وعدد الجسيمات ثابت) لأن الرسم يوضح أن عدد الجسيمات يقل (من 5 إلى 4) عند الانتقال من B إلى A"
+    },
+    {
         question: "العبارة الخاطئة فيما يتعلق بالغازين A , B إذا علمت أن سرعة تبخر A أكبر من سرعة تبخر B :",
         options: [
             "درجة تكاثف الغاز A أكبر",
@@ -473,6 +489,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
 
 
 
