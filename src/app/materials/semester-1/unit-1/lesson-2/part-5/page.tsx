@@ -53,6 +53,17 @@ export default function LessonPartPage() {
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
+             <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        عند تسخين سائل، تزداد الطاقة الحركية لجزيئاته ويزداد ضغطه البخاري. الغليان هو نقطة التحول الحرجة التي تصبح فيها طاقة الجزيئات عالية بما يكفي لتكوين فقاعات من البخار داخل السائل نفسه، وليس فقط على السطح. هذه العملية لا تحدث إلا عندما يتغلب ضغط البخار الداخلي على الضغط الجوي الخارجي.
+                    </p>
+                </CardContent>
+            </Card>
+
             <FlippableCard
                 cardTitle="تعريف الغليان"
                 cardIcon={<BookCopy className="h-6 w-6" />}
