@@ -1,3 +1,4 @@
+
 import { InlineMath } from 'react-katex';
 import React from 'react';
 import Image from 'next/image';
@@ -272,12 +273,12 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ),
         options: ["A", "M", "B", "Q"],
         correctAnswerIndex: 2,
-        explanation: "أعلى طاقة تبخر تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن السائل B له أقل ضغط بخاري عند أي درجة حرارة، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى، وبالتالي طاقة تبخره هي الأعلى."
+        explanation: "أعلى طاقة تبخر تعني أقوى قوى ترابط بين جزيئاته، وهذا يؤدي إلى أقل ضغط بخاري عند درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن السائل B له أقل ضغط بخاري عند أي درجة حرارة، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى، وبالتالي طاقة تبخره هي الأعلى."
     },
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH3CH2OH</span>, <span dir="ltr" className="font-mono inline-block">CH4</span>, <span dir="ltr" className="font-mono inline-block">CH3CH3</span>, <span dir="ltr" className="font-mono inline-block">CH3CH3Cl</span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block">CH3CH3Cl</span> هو:</p>
+                <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_2OH"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_4"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_3"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> هو:</p>
                 <div className="flex justify-center">
                     <Image
                         src="https://i.ibb.co/hF9Fm0hw/22.png"
@@ -370,6 +371,8 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["W", "E", "Y", "M"],
         correctAnswerIndex: 3,
-        explanation: "السائل الذي له أضعف قوى تجاذب هو الميثان (CH₄) لأنه غير قطبي وله أقل كتلة مولية. السائل ذو القوى الأضعف هو الأسرع تبخرًا والأعلى في الضغط البخاري، ويمثله المنحنى (C). الرمز (M) يمثل عدد الجسيمات التي تمتلك طاقة التبخر لهذا السائل، وهي أكبر كمية مقارنة بالسوائل الأخرى."
+        explanation: "السائل الذي له أضعف قوى تجاذب هو الميثان (CH₄) لأنه غير قطبي وله أقل كتلة مولية. السائل ذو القوى الأضعف هو الأسرع تبخرًا والأعلى في الضغط البخاري، ويمثله المنحنى (C). الرمز (M) يمثل عدد الجسيئات التي تمتلك طاقة التبخر لهذا السائل، وهي أكبر كمية مقارنة بالسوائل الأخرى."
     }
 ];
+
+    
