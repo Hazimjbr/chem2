@@ -71,7 +71,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: (
             <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span><InlineMath math="50^\circ\text{C}" /></span>؟</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono inline-block">C₂H₅OH</span>) عند <span>50°C</span>؟</p>
                 <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -186,7 +186,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}" /></span>) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
+                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\circ\text{C}" />) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
                         src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -226,7 +226,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<span dir="ltr" className="inline-block"><InlineMath math="^\circ\text{C}"/></span>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr"><InlineMath math="30^\circ\text{C}" /></span> يساوي:</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (<InlineMath math="^\circ\text{C}"/>) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <InlineMath math="30^\circ\text{C}" /> يساوي:</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -246,7 +246,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
         <div className="space-y-4">
-            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أعلى طاقة تبخر مولية هي</p>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
             <div className="flex justify-center">
                 <Image
                     src="https://i.ibb.co/FbjSx8p6/3.png"
@@ -261,7 +261,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ),
         options: ["الماء", "الإيثانول", "ثنائي إيثيل إيثر", "الأسيتون"],
         correctAnswerIndex: 0,
-        explanation: "أعلى طاقة تبخر مولية تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند أي درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن الماء له أقل ضغط بخاري، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى."
+        explanation: "أعلى طاقة تكاثف مولية (وهي تساوي طاقة التبخر بالقيمة) تعني أقوى قوى ترابط بين الجزيئات، وهذا يؤدي إلى أقل ضغط بخاري عند أي درجة حرارة معينة. بالنظر إلى الرسم البياني، نجد أن الماء له أقل ضغط بخاري، مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى."
     },
      {
         question: (
