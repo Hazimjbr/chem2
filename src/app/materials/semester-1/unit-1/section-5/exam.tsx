@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React from 'react';
@@ -517,5 +516,32 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل وليس أكبر"
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>االعبارة الخاطئة فيما يتعلق بالرسم المجاور والذي يمثل الحد الأدنى من الطاقة اللازمة للتغلب على قوى تجاذب جزيئات المواد السائلة D , C , B , A عند درجة حرارة ثابتة T</p>
+                <div className="flex justify-center">
+                    <Image
+                        src="https://i.ibb.co/BVCwCvTn/3.png"
+                        alt="منحنيات الضغط البخاري"
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="vapor pressure curves"
+                    />
+                </div>
+            </div>
+        ),
+        options: [
+            "‌أ) معظم جزيئات المادة C في الحالة الغازية",
+            "‌ب) المادة C لها أعلى ضغط بخاري",
+            "‌ج) المادة B لها أعلى طاقة تكاثف مولية",
+            "‌د) ترابط جزيئات المادة A أضعف من المادة D"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "بما أن سرعة تبخر A أكبر فهذا يعني أن قوى الترابط بين جزيئاته أضعف وضغطه البخاري أعلى ودرجة غليانه أقل ودرجة تكاثفه أقل وليس أكبر"
     }
 ];
+
+    
