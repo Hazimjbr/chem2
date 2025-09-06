@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { GraphCurveDown, GraphLineDown, GraphLineUp, GraphCurveUp, GraphLineHorizontal, GraphLineVertical } from '@/components/illustrations/graphs';
+import Image from 'next/image';
+
 
 export interface QuizQuestion {
     question: React.ReactNode;
@@ -10,47 +12,15 @@ export interface QuizQuestion {
 }
 
 const PistonDiagram = () => (
-    <div className="flex justify-center items-center gap-8 my-4">
-        {/* Container A */}
-        <div className="text-center">
-            <svg width="100" height="150" viewBox="0 0 100 150">
-                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
-                <rect x="5" y="40" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                <rect x="45" y="30" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                 {/* Particles */}
-                <circle cx="30" cy="60" r="3" fill="hsl(var(--primary))" />
-                <circle cx="50" cy="90" r="3" fill="hsl(var(--primary))" />
-                <circle cx="70" cy="75" r="3" fill="hsl(var(--primary))" />
-                <circle cx="40" cy="110" r="3" fill="hsl(var(--primary))" />
-                <circle cx="60" cy="130" r="3" fill="hsl(var(--primary))" />
-            </svg>
-             <p className="font-bold">الحالة A</p>
-        </div>
-        {/* Arrow */}
-        <svg width="40" height="40" viewBox="0 0 40 40">
-            <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" />
-                </marker>
-            </defs>
-            {/* Arrow pointing right (A -> B) */}
-            <line x1="5" y1="20" x2="35" y2="20" stroke="black" strokeWidth="2" markerEnd="url(#arrow)"/>
-        </svg>
-        {/* Container B */}
-        <div className="text-center">
-            <svg width="100" height="150" viewBox="0 0 100 150">
-                <rect x="10" y="30" width="80" height="110" fill="hsl(var(--card))" stroke="black" strokeWidth="1"/>
-                <rect x="5" y="80" width="90" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                <rect x="45" y="70" width="10" height="10" fill="hsl(var(--muted))" stroke="black"/>
-                {/* Particles */}
-                <circle cx="30" cy="100" r="3" fill="hsl(var(--primary))" />
-                <circle cx="50" cy="120" r="3" fill="hsl(var(--primary))" />
-                <circle cx="70" cy="95" r="3" fill="hsl(var(--primary))" />
-                <circle cx="40" cy="130" r="3" fill="hsl(var(--primary))" />
-                <circle cx="60" cy="110" r="3" fill="hsl(var(--primary))" />
-            </svg>
-            <p className="font-bold">الحالة B</p>
-        </div>
+    <div className="flex justify-center items-center my-4">
+         <Image 
+            src="https://i.ibb.co/Xxd9x9gK/3.png" 
+            alt="Piston Diagram"
+            width={300}
+            height={150}
+            className="rounded-lg border bg-white"
+            data-ai-hint="piston pressure"
+        />
     </div>
 );
 
