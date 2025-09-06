@@ -39,7 +39,7 @@ export interface Student {
 }
 
 export default function ViewStudentsList() {
-    const [students, setStudents] = useState<Student[]>([]);
+    const [allStudents, setAllStudents] = useState<Student[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [editingStudent, setEditingStudent] = useState<Student | null>(null);
@@ -53,7 +53,7 @@ export default function ViewStudentsList() {
         try {
             const result = await getStudents();
             if (result.success && result.data) {
-                setStudents(result.data);
+                setAllStudents(result.data);
             } else {
                 setError(result.message || 'فشل في تحميل البيانات');
             }
@@ -79,7 +79,7 @@ export default function ViewStudentsList() {
     }
 
     const handleCopyCredentials = (student: Student) => {
-        const credentialsText = `اسم المستخدم: ${student.email}\nكلمة المرور: ${student.password_clear}`;
+        const credentialsText = `اسم المستخدم: ${student.username}\nكلمة المرور: ${student.password_clear}`;
         navigator.clipboard.writeText(credentialsText).then(() => {
             toast({
                 title: 'تم النسخ بنجاح',
@@ -95,8 +95,9 @@ export default function ViewStudentsList() {
         });
     };
 
-    const filteredStudents = students.filter(student => 
-        student.studentName.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredStudents = allStudents.filter(student => 
+        student.studentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.username.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     if (isLoading) {
@@ -119,7 +120,7 @@ export default function ViewStudentsList() {
         );
     }
 
-    if (students.length === 0) {
+    if (allStudents.length === 0) {
         return (
             <div className="flex flex-col justify-center items-center h-40 text-muted-foreground">
                 <UserSearch className="h-8 w-8 mb-2" />
@@ -146,7 +147,7 @@ export default function ViewStudentsList() {
             )}
             <div className="mb-4">
                 <Input 
-                    placeholder="ابحث عن اسم طالب..."
+                    placeholder="ابحث عن اسم طالب أو اسم مستخدم..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="max-w-sm"
@@ -203,6 +204,11 @@ export default function ViewStudentsList() {
                         ))}
                     </TableBody>
                 </Table>
+                 {filteredStudents.length === 0 && (
+                    <div className="text-center p-8 text-muted-foreground">
+                        لا توجد نتائج مطابقة للبحث.
+                    </div>
+                )}
             </div>
         </>
     );

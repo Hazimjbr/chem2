@@ -53,8 +53,6 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
   const [isLoading, setIsLoading] = React.useState(false);
   const [isDeletingDevice, startDeleteTransition] = useTransition();
   const { toast } = useToast();
-  const [currentDevices, setCurrentDevices] = useState<Device[]>(student.devices);
-
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -199,10 +197,10 @@ export default function EditStudentDialog({ student, onOpenChange, onUpdateSucce
             />
 
             <div className="space-y-2">
-                <Label>الأجهزة المسجلة ({currentDevices.length})</Label>
+                <Label>الأجهزة المسجلة ({student.devices.length})</Label>
                 <div className="space-y-2 rounded-md border p-2 bg-muted max-h-32 overflow-y-auto">
-                {currentDevices.length > 0 ? (
-                    currentDevices.map(device => (
+                {student.devices.length > 0 ? (
+                    student.devices.map(device => (
                     <div key={device.deviceId} className="flex items-center justify-between gap-2 text-sm text-muted-foreground font-mono">
                         <div className="flex items-center gap-2 truncate">
                            <Laptop className="h-4 w-4 flex-shrink-0" />
