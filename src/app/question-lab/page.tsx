@@ -19,7 +19,33 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية</p>
+            <div className="flex justify-center my-4">
+                <Image
+                    src="https://i.ibb.co/84T52SSm/3.png"
+                    alt="منحنيات الضغط البخاري"
+                    width={500}
+                    height={300}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="vapor pressure curves"
+                />
+            </div>
+        </>
+    ),
+    options: [
+        "الماء",
+        "الإيثانول",
+        "ثنائي إيثيل إيثر",
+        "الأسيتون"
+    ],
+    correctAnswerIndex: 2,
+    explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات. السائل ذو قوى الترابط الأضعف يكون الأسهل تبخرًا وبالتالي له أعلى ضغط بخاري عند درجة حرارة معينة. من الرسم البياني نجد أن ثنائي إيثيل إيثر له أعلى ضغط بخاري لذا هو صاحب أقل طاقة تكاثف.",
+    level: 3,
+    source: "الوحدة الأولى - الحالة السائلة - الضغط البخاري"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
