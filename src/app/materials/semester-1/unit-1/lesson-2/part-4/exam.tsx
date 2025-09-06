@@ -127,7 +127,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "جزيء الماء صغير الحجم ويمكنه تكوين شبكة معقدة من الروابط الهيدروجينية القوية، وهي أقوى من الروابط الهيدروجينية في الإيثانول. هذه القوى القوية تجعل تبخر الماء أصعب، وبالتالي ضغطه البخاري أقل."
     },
     {
-        question: "إذا علمت أن الضغط البخاري لسائل معين عند 20°C هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند 40°C؟",
+        question: <>إذا علمت أن الضغط البخاري لسائل معين عند <span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span> هو 100mmHg. ماذا تتوقع أن تكون قيمة ضغطه البخاري عند <span dir="ltr" className="inline-block"><InlineMath math="40^\circ\text{C}" /></span>؟</>,
         options: [
             "أقل من 100mmHg",
             "يساوي 100mmHg",
@@ -139,31 +139,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [
-     {
-        question: (
-            <>
-                <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة °C والضغط البخاري mmHg لأربعة سوائل فإن المادة التي لها أقل طاقة تكاثف مولية:</p>
-                <div className="flex justify-center my-4">
-                    <Image
-                        src="https://i.ibb.co/84T52SSm/3.png"
-                        alt="منحنيات الضغط البخاري"
-                        width={500}
-                        height={300}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="vapor pressure curves"
-                    />
-                </div>
-            </>
-        ),
-        options: [
-            "الماء",
-            "الإيثانول",
-            "الثنائي إيثيل إيثر",
-            "الأسيتون"
-        ],
-        correctAnswerIndex: 2,
-        explanation: "أقل طاقة تكاثف مولية تعني أضعف قوى ترابط بين الجزيئات وهذا يؤدي إلى أعلى ضغط بخاري من الرسم البياني نجد أن ثنائي إيثيل إيثر يمتلك أعلى ضغط بخاري عند أي درجة حرارة مما يدل على أنه الأضعف في قوى الترابط والأقل في طاقة التكاثف"
-    },
     {
         question: (
              <>
