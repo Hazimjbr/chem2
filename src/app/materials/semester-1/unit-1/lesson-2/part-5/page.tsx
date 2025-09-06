@@ -103,7 +103,7 @@ export default function LessonPartPage() {
             </FlippableCard>
 
             <FlippableCard
-                cardTitle="درجة الغليان الطبيعية"
+                cardTitle="درجة الغليان المعيارية"
                 cardIcon={<Thermometer className="h-6 w-6" />}
             >
                 <p className="text-sm">
