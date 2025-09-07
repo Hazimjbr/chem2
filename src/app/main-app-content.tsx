@@ -110,7 +110,7 @@ export default function MainAppContent() {
         </p>
         <div className="flex justify-center gap-4 mt-8">
           <Link href="/performance-analysis" passHref>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="default">
               <BarChart className="ml-2" />
               عرض لوحة معلوماتي
             </Button>
