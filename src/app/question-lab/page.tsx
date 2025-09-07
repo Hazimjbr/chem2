@@ -21,7 +21,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "أي من المواد الصلبة التالية تتكون وحداتها الأساسية من جزيئات تساهمية غير قطبية وترتبط فيما بينها بقوى لندن؟",
+    options: [
+        "S₈(s)",
+        "H₂O(s)",
+        "Ar(s)",
+        "NaCl(s)"
+    ],
+    correctAnswerIndex: 0,
+    explanation: "الكبريت (S₈) هو مركب صلب يتكون من جزيئات S₈ غير القطبية، والتي ترتبط ببعضها بقوى لندن. الماء (H₂O) يرتبط بروابط هيدروجينية، والأرجون (Ar) يتكون من ذرات منفصلة، وكلوريد الصوديوم (NaCl) مركب أيوني.",
+    level: 1,
+    source: "الوحدة 1 / الدرس 3 / المواد الصلبة البلورية الجزيئية"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -61,7 +73,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             key={index}
                             variant="outline"
                             className={cn(
-                                "w-full justify-between text-right h-auto py-2 px-3 text-sm flex items-center",
+                                "w-full justify-between text-left h-auto py-2 px-3 text-sm flex items-center",
                                 isCorrect && "border-green-500 bg-green-500/10 text-green-700 hover:bg-green-500/20"
                             )}
                             disabled
