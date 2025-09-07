@@ -119,6 +119,7 @@ export default function LessonPartPage() {
                         <div className="p-3 bg-background rounded-lg border">
                              <h4 className="font-bold text-accent">مواد صلبة بلورية</h4>
                              <p className="text-xs mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وترتيب متكرر للجسيمات</p>
+                             <p className="text-xs mt-1 text-muted-foreground">وتصنف بناء على خصائصها الفيزيائية (نوع جسيماتها وقوى الترابط)</p>
                              <ul className="text-xs mt-2 space-y-1">
                                 <li>‌أ) جزيئية مثل السكر</li>
                                 <li>‌ب) شبكية تساهمية مثل الماس</li>
