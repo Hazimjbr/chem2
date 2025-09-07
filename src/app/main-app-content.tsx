@@ -55,8 +55,8 @@ export default function MainAppContent() {
                  if (lesson.parts.length === 0) continue;
                  let completedInThisLesson = 0;
                  let firstUncompletedPathInThisLesson = '';
-                 let firstUncompletedPartNum = '';
                  let firstUncompletedPartTitle = '';
+                 let firstUncompletedPartNum = '';
 
                  for (const part of lesson.parts) {
                     const path = constructPath(unit.id, lesson, part);
@@ -124,9 +124,7 @@ export default function MainAppContent() {
         </div>
       </section>
 
-      <section className="pb-16">
-        <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <section className="py-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
           {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
@@ -159,7 +157,6 @@ export default function MainAppContent() {
             </Card>
           )}
 
-        </div>
       </section>
     </div>
   );
