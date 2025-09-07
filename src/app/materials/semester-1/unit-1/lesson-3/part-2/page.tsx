@@ -2,7 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Waves, HelpCircle } from 'lucide-react';
+import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Waves, HelpCircle, GitCommitHorizontal, CheckCircle, Boxes, Move, Thermometer } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
@@ -95,7 +95,8 @@ export default function LessonPartPage() {
                     <div className="space-y-2">
                         <p className="font-semibold text-sm text-left" dir="ltr">H<span className="align-sub text-xs">2</span>O(s)</p>
                         <p className="text-xs text-muted-foreground">الجليد يرتبط كل جزيء ماء بأربع جزيئات أخرى ويكون مركزا لرباعي الأوجه منتظم</p>
-                        <p className="font-semibold text-sm text-left border-t pt-2" dir="ltr">C<span className="align-sub text-xs">8</span>H<span className="align-sub text-xs">17</span>COOH</p>
+                        <p className="font-semibold text-sm border-t pt-2">الأحماض الكربوكسيلية</p>
+                        <p className="font-semibold text-sm text-left" dir="ltr">C<span className="align-sub text-xs">8</span>H<span className="align-sub text-xs">17</span>COOH</p>
                     </div>
                 </FlippableCard>
 
