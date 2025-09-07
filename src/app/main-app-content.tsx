@@ -124,7 +124,8 @@ export default function MainAppContent() {
         </div>
       </section>
 
-      <section className="py-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <section className="pb-16">
+        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
           
           {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
@@ -132,31 +133,30 @@ export default function MainAppContent() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Target />
+                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
                   خطوتك التالية
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  {nextStep.nextPartNum ? (
-                    <>
+                {nextStep.nextPartNum ? (
+                    <p className="text-muted-foreground mb-4">
                       متابعتك مهمة! خطوتك التالية هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong> في درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                    </>
+                    </p>
                   ) : (
-                    <>
+                    <p className="text-muted-foreground mb-4">
                       خطوتك التالية هي <strong className="text-foreground">"{nextStep.nextPartTitle}"</strong> في <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                    </>
+                    </p>
                   )}
-                </p>
                 <Link href={nextStep.nextPartPath} passHref>
                   <Button>
-                    أكمل رحلتك
+                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
                   </Button>
                 </Link>
               </CardContent>
             </Card>
           )}
 
+        </div>
       </section>
     </div>
   );
