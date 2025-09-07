@@ -84,7 +84,7 @@ export default function LessonPartPage() {
                     cardIcon={<Binary className="h-6 w-6" />}
                 >
                     <p className="font-semibold text-sm mb-2 text-left" dir="ltr">
-                        SO<span className="align-sub text-xs">3</span>, Cl<span className="align-sub text-xs">2</span>O, SO<span className="align-sub text-xs">2</span>, C<span className="align-sub text-xs">8</span>H<span className="align-sub text-xs">17</span>Br
+                        SO<span className="align-sub text-xs">3</span> , Cl<span className="align-sub text-xs">2</span>O , SO<span className="align-sub text-xs">2</span> , C<span className="align-sub text-xs">8</span>H<span className="align-sub text-xs">17</span>Br
                     </p>
                 </FlippableCard>
 
@@ -106,9 +106,9 @@ export default function LessonPartPage() {
                 >
                     <div className="space-y-2">
                         <p className="font-semibold text-sm">ذرات الغازات النبيلة في الحالة الصلبة</p>
-                        <p className="font-mono text-xs text-left" dir="ltr">Ne, Ar</p>
+                        <p className="font-mono text-xs text-left" dir="ltr">Ne , Ar</p>
                         <p className="font-semibold text-sm border-t pt-2">جزيئات متعادلة</p>
-                        <p className="font-mono text-xs text-left" dir="ltr">I<span className="align-sub text-xs">2</span>, P<span className="align-sub text-xs">4</span>, S<span className="align-sub text-xs">8</span>, C<span className="align-sub text-xs">60</span>, SiF<span className="align-sub text-xs">4</span>, C<span className="align-sub text-xs">6</span>H<span className="align-sub text-xs">12</span>O<span className="align-sub text-xs">6</span></p>
+                        <p className="font-mono text-xs text-left" dir="ltr">I<span className="align-sub text-xs">2</span> , P<span className="align-sub text-xs">4</span> , S<span className="align-sub text-xs">8</span> , C<span className="align-sub text-xs">60</span> , SiF<span className="align-sub text-xs">4</span> , C<span className="align-sub text-xs">6</span>H<span className="align-sub text-xs">12</span>O<span className="align-sub text-xs">6</span></p>
                     </div>
                 </FlippableCard>
             </div>
