@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -105,6 +104,9 @@ export default function MainAppContent() {
           أهلاً بك يا{' '}
           <span className="text-accent">{studentName}</span>
         </h1>
+        <p className="text-xl text-muted-foreground mb-8">
+          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
+        </p>
         <div className="flex justify-center gap-4 mt-8">
           <Link href="/materials/semester-1" passHref>
             <Button size="lg" variant="default">
@@ -122,35 +124,41 @@ export default function MainAppContent() {
       </section>
 
       <section className="pb-16">
-        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+        <div className="space-y-8">
           
-          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          {currentUser && (
+            <div className="max-w-4xl mx-auto">
+                <ProgressCard lastVisitedLesson={lastVisitedLesson} />
+            </div>
+          )}
 
           {nextStep && (
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
-                  خطوتك التالية
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {nextStep.nextPartNum ? (
-                    <p className="text-muted-foreground mb-4">
-                      متابعتك مهمة! خطوتك التالية هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong> في درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                    </p>
-                  ) : (
-                    <p className="text-muted-foreground mb-4">
-                      خطوتك التالية هي <strong className="text-foreground">"{nextStep.nextPartTitle}"</strong> في <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
-                    </p>
-                  )}
-                <Link href={nextStep.nextPartPath} passHref>
-                  <Button>
-                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+            <div className="max-w-4xl mx-auto">
+                <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                    {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
+                    خطوتك التالية
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    {nextStep.nextPartNum ? (
+                        <p className="text-muted-foreground mb-4">
+                        متابعتك مهمة! خطوتك التالية هي الجزء رقم <strong className="text-foreground">{nextStep.nextPartNum}</strong> في درس <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
+                        </p>
+                    ) : (
+                        <p className="text-muted-foreground mb-4">
+                        خطوتك التالية هي <strong className="text-foreground">"{nextStep.nextPartTitle}"</strong> في <strong className="text-foreground">"{nextStep.lessonTitle}"</strong>.
+                        </p>
+                    )}
+                    <Link href={nextStep.nextPartPath} passHref>
+                    <Button>
+                        {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                    </Button>
+                    </Link>
+                </CardContent>
+                </Card>
+            </div>
           )}
 
         </div>
