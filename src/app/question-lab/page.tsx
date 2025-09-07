@@ -21,14 +21,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question = {
-    questionText: "أي من المواد الصلبة التالية تتكون وحداتها الأساسية من ذرات وترتبط بقوى لندن؟",
-    options: ["S₈(s)", "H₂O(s)", "Ar(s)", "CO₂(s)"],
-    correctAnswerIndex: 2,
-    explanation: "الأرجون (Ar) هو غاز نبيل، وفي حالته الصلبة يتكون من ذرات منفصلة ترتبط ببعضها عن طريق قوى لندن الضعيفة. بينما S₈ و CO₂ و H₂O تتكون من جزيئات وليس ذرات منفصلة.",
-    level: 1,
-    source: "الوحدة الأولى / الدرس الثالث / المواد الصلبة الجزيئية"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
