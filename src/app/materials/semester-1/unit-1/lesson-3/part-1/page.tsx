@@ -95,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Thermometer className="h-6 w-6" />}
                 >
                     <div className="space-y-3 text-sm">
-                        <p className="font-semibold">درجة الانصهار هي درجة الحرارة التي تتحول عندها المادة من الحالة الصلبة إلى السائلة</p>
+                        <p className="font-semibold">درجة الانصهار هي درجة الحرارة التي تتحول عندها المادة من الحالة الصلبة إلى الحالة السائلة</p>
                         <div>
                              <strong className="font-semibold text-accent text-xs">آلية الانصهار</strong>
                              <p className="text-xs mt-1 text-muted-foreground">عند تسخين المادة الصلبة تزداد الطاقة الحركية لجسيماتها ويزداد اهتزازها فيضعف التجاذب بينها وعند درجة الانصهار تكون الطاقة كافية للتغلب على قوى التجاذب فتتحول المادة إلى سائل</p>
@@ -118,8 +118,13 @@ export default function LessonPartPage() {
                         </div>
                         <div className="p-3 bg-background rounded-lg border">
                              <h4 className="font-bold text-accent">مواد صلبة بلورية</h4>
-                             <p className="text-xs mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وترتيب متكرر للجسيمات</p>
-                             <p className="text-xs mt-2">تصنف إلى جزيئية شبكية تساهمية فلزية أيونية</p>
+                             <p className="text-xs mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وتصنف بناء على خصائصها الفيزيائية (نوع جسيماتها وقوى الترابط)</p>
+                             <ul className="text-xs mt-2 space-y-1">
+                                <li>‌أ) جزيئية مثل السكر</li>
+                                <li>‌ب) شبكية تساهمية مثل الماس</li>
+                                <li>‌ج) فلزية مثل الحديد</li>
+                                <li>‌د) أيونية مثل ملح الطعام</li>
+                             </ul>
                         </div>
                    </div>
               </div>
