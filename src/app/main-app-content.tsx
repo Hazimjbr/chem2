@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -105,7 +106,7 @@ export default function MainAppContent() {
           <span className="text-accent">{studentName}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
-          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
+          خططك أمامك التزامك قرارك
         </p>
         <div className="flex justify-center gap-4 mt-8">
           <Link href="/materials/semester-1" passHref>
@@ -126,11 +127,12 @@ export default function MainAppContent() {
       <section className="pb-16">
         <div className="space-y-8">
           
-          {currentUser && (
-            <div className="max-w-4xl mx-auto">
-                <ProgressCard lastVisitedLesson={lastVisitedLesson} />
-            </div>
-          )}
+          <div className="max-w-4xl mx-auto">
+              {currentUser && (
+                  <ProgressCard lastVisitedLesson={lastVisitedLesson} />
+              )}
+          </div>
+          
 
           {nextStep && (
             <div className="max-w-4xl mx-auto">
