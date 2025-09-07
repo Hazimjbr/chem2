@@ -21,19 +21,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "• أي من المواد الآتية تعتبر مركب صلب جزيئي ترتبط جسيماته بقوى لندن",
-    options: [
-        "CO₂(s)",
-        "H₂O(s)",
-        "Ar(s)",
-        "NaCl(s)"
-    ],
-    correctAnswerIndex: 0,
-    explanation: "ثاني أكسيد الكربون (CO₂) هو مركب صلب يتكون من جزيئات CO₂ غير القطبية، والتي ترتبط ببعضها بقوى لندن. الماء (H₂O) يرتبط بروابط هيدروجينية، والأرجون (Ar) يتكون من ذرات منفصلة، وكلوريد الصوديوم (NaCl) مركب أيوني.",
-    level: 3,
-    source: "الوحدة 1 / الدرس 3 / المواد الصلبة البلورية الجزيئية"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -114,3 +102,5 @@ export default function QuestionLabPage() {
         </div>
     );
 }
+
+    
