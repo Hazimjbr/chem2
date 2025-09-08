@@ -8,7 +8,6 @@ import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
-import { DiamondStructure, GraphiteStructure, SiliconDioxideStructure } from './diagram';
 import Image from 'next/image';
 
 const lessonInfo = {
@@ -125,7 +124,7 @@ export default function LessonPartPage() {
                     <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة</li>
                 </ul>
             </FlippableCard>
-
+            
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
