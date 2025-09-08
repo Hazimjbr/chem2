@@ -129,7 +129,7 @@ export default function LessonPartPage() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Diamond className="h-6 w-6 text-primary" />
-                        أشكال متآصلات الكربون
+                        أمثلة المواد الصلبة الشبكية التساهمية
                     </CardTitle>
                     <CardDescription>
                         صور توضح البنية البلورية المختلفة لكل من الألماس، الجرافيت، وثاني أكسيد السيليكون.
