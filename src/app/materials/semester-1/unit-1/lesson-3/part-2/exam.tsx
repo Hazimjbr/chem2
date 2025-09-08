@@ -1,7 +1,6 @@
 
 import { InlineMath } from 'react-katex';
 import React from 'react';
-import Image from 'next/image';
 
 export interface QuizQuestion {
     question: React.ReactNode;
