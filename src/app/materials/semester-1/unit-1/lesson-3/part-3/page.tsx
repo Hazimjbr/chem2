@@ -18,7 +18,7 @@ const lessonInfo = {
         "أصف خصائص المواد الصلبة الشبكية التساهمية",
         "أقارن بين الألماس والجرافيت من حيث البنية والخصائص"
     ],
-    lessonContent: `<p>ننتقل الآن إلى أقوى أنواع المواد الصلبة على الإطلاق وهي المواد الصلبة الشبكية التساهمية التي تتميز بصلابتها الشديدة ودرجات انصهارها الخيالية فما سر هذه القوة؟ دعنا نكتشف ذلك</p>`,
+    lessonContent: `<p>ننتقل الآن إلى أقوى أنواع المواد الصلبة على الإطلاق وهي المواد الصلبة الشبكية التساهمية التي تتميز بصلابتها الشديدة ودرجات انصهارها الخيالية فما سر هذه القوة دعنا نكتشف ذلك</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-3",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-2",
@@ -50,6 +50,17 @@ export default function LessonPartPage() {
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
+             <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p>
+                        على عكس المواد الصلبة الجزيئية التي ترتبط جزيئاتها بقوى ضعيفة تتكون المواد الصلبة الشبكية التساهمية من شبكة عملاقة من الذرات المترابطة بروابط تساهمية قوية جدًا لا يوجد هنا جزيئات منفصلة بل البلورة كلها تعتبر جزيئًا واحدًا ضخمًا وهذا هو سر قوتها وصلابتها الاستثنائية
+                    </p>
+                </CardContent>
+            </Card>
+
             <FlippableCard
                 cardTitle="خصائص المواد الصلبة الشبكية التساهمية"
                 cardIcon={<Layers className="h-6 w-6" />}
@@ -133,7 +144,7 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="لماذا يعتبر الألماس شديد الصلابة بينما الجرافيت هش؟"
+                  question="لماذا يعتبر الألماس شديد الصلابة بينما الجرافيت هش"
                   options={[
                       "لأن الألماس يتكون من ذرات أكبر",
                       "لأن الروابط في الألماس أيونية",
@@ -147,7 +158,7 @@ export default function LessonPartPage() {
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="ما هو السبب الرئيسي لكون الجرافيت موصلًا للكهرباء بينما الألماس عازل؟"
+                  question="ما هو السبب الرئيسي لكون الجرافيت موصلًا للكهرباء بينما الألماس عازل"
                   options={[
                       "لأن الجرافيت أسود اللون",
                       "لأن الألماس أكثر كثافة",
@@ -162,5 +173,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
