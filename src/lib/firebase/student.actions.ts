@@ -16,6 +16,7 @@ const firebaseConfig = {
   "messagingSenderId": "478091867826"
 };
 
+// A function to safely get or create the secondary app
 const getSecondaryApp = (): FirebaseApp => {
     const appName = "secondary-admin-app";
     const existingApp = getApps().find(app => app.name === appName);
@@ -24,6 +25,20 @@ const getSecondaryApp = (): FirebaseApp => {
     }
     return initializeApp(firebaseConfig, appName);
 }
+
+// A function to safely delete the secondary app
+const deleteSecondaryApp = async () => {
+    const appName = "secondary-admin-app";
+    const existingApp = getApps().find(app => app.name === appName);
+    if (existingApp) {
+        try {
+            await deleteApp(existingApp);
+        } catch (e) {
+            console.error("Could not delete secondary app instance:", e);
+        }
+    }
+}
+
 
 export async function addStudent(studentData: {
     studentName: string,
@@ -37,16 +52,17 @@ export async function addStudent(studentData: {
 }) {
     const { studentName, username, email, password_clear, courses, courseIds, phone1, phone2 } = studentData;
 
-    let secondaryApp: FirebaseApp | null = null;
     let user: User | null = null;
     try {
-        secondaryApp = getSecondaryApp();
+        const secondaryApp = getSecondaryApp();
         const secondaryAuth = getAuth(secondaryApp);
         
         const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, password_clear);
         user = userCredential.user;
         
+        // It's important to sign out from the secondary app to avoid conflicts
         await signOut(secondaryAuth);
+        await deleteSecondaryApp(); // Clean up the app after successful creation
 
         await setDoc(doc(db, 'students', user.uid), {
             studentName,
@@ -66,6 +82,9 @@ export async function addStudent(studentData: {
     } catch (error: any) {
         console.error("Error creating student:", error);
         
+        // Ensure cleanup happens even on error
+        await deleteSecondaryApp();
+
         let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
         if (error.code === 'auth/email-already-in-use') {
             errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
@@ -75,10 +94,6 @@ export async function addStudent(studentData: {
              errorMessage = 'تم إنشاء الحساب في نظام المصادقة ولكن فشل حفظه في قاعدة البيانات.';
         }
         
-        if(secondaryApp){
-             try { await deleteApp(secondaryApp); } catch(e) { console.error("Could not delete secondary app", e); }
-        }
-
         return { success: false, message: errorMessage };
     }
 }
