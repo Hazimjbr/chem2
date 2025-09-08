@@ -89,8 +89,6 @@ export default function LessonPartPage() {
                 <FlippableCard
                     cardTitle="متآصلات الكربون: الألماس"
                     cardIcon={<Diamond className="h-6 w-6" />}
-                    imageContent={<DiamondStructure />}
-                    imageCardClassName="bg-cyan-50"
                 >
                     <ul className="space-y-2 text-xs">
                         <li>ترتبط كل ذرة كربون بـ <strong>4</strong> ذرات أخرى بروابط تساهمية قوية</li>
@@ -103,8 +101,6 @@ export default function LessonPartPage() {
                 <FlippableCard
                     cardTitle="متآصلات الكربون: الجرافيت"
                     cardIcon={<Diamond className="h-6 w-6" />}
-                    imageContent={<GraphiteStructure />}
-                    imageCardClassName="bg-gray-200"
                 >
                     <ul className="space-y-2 text-xs">
                         <li>ترتبط كل ذرة كربون بـ <strong>3</strong> ذرات أخرى بروابط تساهمية قوية في نفس الطبقة</li>
@@ -119,8 +115,6 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="مثال آخر: ثاني أكسيد السيليكون"
                 cardIcon={<Cpu className="h-6 w-6" />}
-                imageContent={<SiliconDioxideStructure />}
-                imageCardClassName="bg-yellow-50"
             >
                <p className="text-sm">يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج</p>
                 <ul className="space-y-2 text-xs mt-2">
