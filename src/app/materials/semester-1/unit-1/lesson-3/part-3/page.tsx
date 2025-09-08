@@ -9,6 +9,7 @@ import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import { DiamondStructure, GraphiteStructure, SiliconDioxideStructure } from './diagram';
+import Image from 'next/image';
 
 const lessonInfo = {
     lessonTitle: "الدرس الثالث: الحالة الصلبة",
@@ -86,10 +87,10 @@ export default function LessonPartPage() {
             </FlippableCard>
 
             <div className="grid md:grid-cols-2 gap-6">
-                <FlippableCard
+                 <FlippableCard
                     cardTitle="متآصلات الكربون: الألماس"
                     cardIcon={<Diamond className="h-6 w-6" />}
-                >
+                 >
                     <ul className="space-y-2 text-xs">
                         <li>ترتبط كل ذرة كربون بـ <strong>4</strong> ذرات أخرى بروابط تساهمية قوية</li>
                         <li>التهجين من نوع <strong>sp³</strong> والشكل الهندسي <strong>رباعي الأوجه منتظم</strong></li>
@@ -98,6 +99,7 @@ export default function LessonPartPage() {
                         <li>يعتبر أقسى مادة طبيعية وله درجة انصهار عالية جدًا</li>
                     </ul>
                 </FlippableCard>
+
                 <FlippableCard
                     cardTitle="متآصلات الكربون: الجرافيت"
                     cardIcon={<Diamond className="h-6 w-6" />}
@@ -112,7 +114,7 @@ export default function LessonPartPage() {
                 </FlippableCard>
             </div>
             
-            <FlippableCard
+             <FlippableCard
                 cardTitle="مثال آخر: ثاني أكسيد السيليكون"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
@@ -123,6 +125,54 @@ export default function LessonPartPage() {
                     <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة</li>
                 </ul>
             </FlippableCard>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Diamond className="h-6 w-6 text-primary" />
+                        أشكال متآصلات الكربون
+                    </CardTitle>
+                    <CardDescription>
+                        صور توضح البنية البلورية المختلفة لكل من الألماس، الجرافيت، وثاني أكسيد السيليكون.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <div className="flex flex-col items-center">
+                        <h4 className="font-bold mb-2">الألماس</h4>
+                         <Image
+                            src="https://i.ibb.co/68B1w2t/4.png"
+                            alt="بنية الألماس"
+                            width={150}
+                            height={150}
+                            className="rounded-lg border bg-white object-contain"
+                            data-ai-hint="diamond crystal lattice"
+                        />
+                    </div>
+                     <div className="flex flex-col items-center">
+                        <h4 className="font-bold mb-2">الجرافيت</h4>
+                         <Image
+                            src="https://i.ibb.co/VMy4Yh3/graphite.png"
+                            alt="بنية الجرافيت"
+                             width={150}
+                            height={150}
+                            className="rounded-lg border bg-white object-contain"
+                            data-ai-hint="graphite layers structure"
+                        />
+                    </div>
+                     <div className="flex flex-col items-center">
+                        <h4 className="font-bold mb-2">ثاني أكسيد السيليكون</h4>
+                         <Image
+                            src="https://i.ibb.co/XzCHd71/silicon-dioxide.png"
+                            alt="بنية ثاني أكسيد السيليكون"
+                             width={150}
+                            height={150}
+                            className="rounded-lg border bg-white object-contain"
+                            data-ai-hint="silicon dioxide lattice"
+                        />
+                    </div>
+                </CardContent>
+            </Card>
+
         </div>
         
         <div className="space-y-4 mt-8">
