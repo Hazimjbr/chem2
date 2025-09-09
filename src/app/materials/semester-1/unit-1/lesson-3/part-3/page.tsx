@@ -9,6 +9,37 @@ import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+const DiamondStructureSvg = () => (
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="w-[150px] h-[150px] rounded-lg border bg-white object-contain p-2" data-ai-hint="diamond crystal lattice">
+        <defs>
+            <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="2" dy="2" stdDeviation="2" floodColor="#000000" floodOpacity="0.2" />
+            </filter>
+        </defs>
+        <g filter="url(#shadow)">
+            {/* Central atom */}
+            <circle cx="60" cy="60" r="8" fill="hsl(var(--foreground))" />
+
+            {/* Top atom */}
+            <circle cx="60" cy="25" r="8" fill="hsl(var(--foreground))" />
+            <line x1="60" y1="60" x2="60" y2="25" stroke="hsl(var(--border))" strokeWidth="2" />
+
+            {/* Bottom-left atom */}
+            <circle cx="25" cy="95" r="8" fill="hsl(var(--foreground))" />
+            <line x1="60" y1="60" x2="25" y2="95" stroke="hsl(var(--border))" strokeWidth="2" />
+
+            {/* Bottom-right atom */}
+            <circle cx="95" cy="95" r="8" fill="hsl(var(--foreground))" />
+            <line x1="60" y1="60" x2="95" y2="95" stroke="hsl(var(--border))" strokeWidth="2" />
+
+            {/* Back atom (perspective) */}
+            <circle cx="45" cy="55" r="5" fill="hsl(var(--muted-foreground))" />
+            <line x1="60" y1="60" x2="45" y2="55" stroke="hsl(var(--border))" strokeWidth="1.5" />
+        </g>
+    </svg>
+);
+
+
 const lessonInfo = {
     lessonTitle: "الدرس الثالث: الحالة الصلبة",
     lessonSubtitle: "المواد الصلبة الشبكية التساهمية",
@@ -103,7 +134,7 @@ export default function LessonPartPage() {
                     <div className="space-y-3 text-sm">
                         <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة</p>
                         <div className="text-sm">
-                            <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
+                             <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
                              <ol className="list-decimal mr-6 mt-2 space-y-1">
                                 <li>موصلا للكهرباء فيستخدم كأقطاب في الخلايا الغلفانية والتحليل الكهربائي</li>
                                 <li>سهل الانزلاق (انزلاق الطبقات فوق بعضها) فيستخدم في صناعة أقلام الرصاص</li>
@@ -140,14 +171,7 @@ export default function LessonPartPage() {
                 <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                     <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الألماس</h4>
-                         <Image
-                            src="https://i.ibb.co/xLjgPZx/4.png"
-                            alt="بنية الألماس"
-                            width={150}
-                            height={150}
-                            className="rounded-lg border bg-white object-contain"
-                            data-ai-hint="diamond crystal lattice"
-                        />
+                         <DiamondStructureSvg />
                     </div>
                      <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الجرافيت</h4>
