@@ -27,8 +27,8 @@ const newQuestion: Question | null = {
             <p>ادرس بنية الألماس المجاورة. ما هو نوع التهجين في ذرة الكربون؟</p>
             <div className="flex justify-center">
                  <Image
-                    src="https://i.ibb.co/VWyJQ6Y/4.png"
-                    alt="بنية الألماس"
+                    src="https://i.ibb.co/cKDz8LLB/graphite.png"
+                    alt="بنية الجرافيت (للتجربة)"
                     width={150}
                     height={150}
                     className="rounded-lg border bg-white"
