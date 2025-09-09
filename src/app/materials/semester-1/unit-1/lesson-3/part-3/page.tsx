@@ -120,7 +120,7 @@ export default function LessonPartPage() {
             >
                <div className="text-sm">
                 <p>يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج</p>
-                    <ul className="space-y-2 mt-2">
+                    <ul className="space-y-2 mt-2 text-sm">
                         <li>ترتبط كل ذرة سيليكون بـ <strong>4</strong> ذرات أكسجين</li>
                         <li>ترتبط كل ذرة أكسجين بـ <strong>2</strong> ذرة سيليكون</li>
                         <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة</li>
