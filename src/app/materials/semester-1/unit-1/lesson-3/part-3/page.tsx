@@ -83,7 +83,7 @@ export default function LessonPartPage() {
                         <p><strong>غير موصلة للكهرباء</strong> بشكل عام لعدم وجود إلكترونات حرة (باستثناء الجرافيت)</p>
                     </li>
                     <li>
-                        <p><strong>ظاهرة التآصل:</strong> وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين</p>
+                        <p>ظاهرة التآصل: وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين</p>
                     </li>
                  </ul>
             </FlippableCard>
@@ -119,17 +119,27 @@ export default function LessonPartPage() {
             </div>
             
              <FlippableCard
-                cardTitle="مثال آخر: ثاني أكسيد السيليكون"
+                cardTitle="أمثلة أخرى"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
-               <div className="text-sm">
-                <p>يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج</p>
-                    <ul className="space-y-2 mt-2 text-sm">
-                        <li>ترتبط كل ذرة سيليكون بـ <strong>4</strong> ذرات أكسجين</li>
-                        <li>ترتبط كل ذرة أكسجين بـ <strong>2</strong> ذرة سيليكون</li>
-                        <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة</li>
+               <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-accent">ثاني أكسيد السيليكون (SiO₂)</h4>
+                    <ul className="space-y-1 text-sm mt-1">
+                        <li>يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج.</li>
+                        <li>ترتبط كل ذرة سيليكون بـ <strong>4</strong> ذرات أكسجين.</li>
+                        <li>ترتبط كل ذرة أكسجين بـ <strong>2</strong> ذرة سيليكون.</li>
+                        <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة.</li>
                     </ul>
-                </div>
+                  </div>
+                  <div className="border-t pt-3">
+                    <h4 className="font-semibold text-accent">أمثلة إضافية</h4>
+                    <ul className="space-y-1 text-sm mt-1">
+                        <li>السيلكون (Si)</li>
+                        <li>كربيد السيليكون (SiC)</li>
+                    </ul>
+                  </div>
+               </div>
             </FlippableCard>
             
             <Card>
