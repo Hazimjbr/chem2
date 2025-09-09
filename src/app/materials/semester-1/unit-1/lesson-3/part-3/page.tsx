@@ -153,7 +153,7 @@ export default function LessonPartPage() {
                      <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الجرافيت</h4>
                          <Image
-                            src="https://i.ibb.co/cKDz8LLB/graphite.png"
+                            src="https://i.ibb.co/hxDpdff6/image.png"
                             alt="بنية الجرافيت"
                              width={150}
                             height={150}
