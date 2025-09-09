@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -119,12 +118,14 @@ export default function LessonPartPage() {
                 cardTitle="مثال آخر: ثاني أكسيد السيليكون"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
-               <p className="text-sm">يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج</p>
-                <ul className="space-y-2 text-sm mt-2">
-                    <li>ترتبط كل ذرة سيليكون بـ <strong>4</strong> ذرات أكسجين</li>
-                    <li>ترتبط كل ذرة أكسجين بـ <strong>2</strong> ذرة سيليكون</li>
-                    <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة</li>
-                </ul>
+               <div className="text-sm">
+                <p>يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج</p>
+                    <ul className="space-y-2 mt-2">
+                        <li>ترتبط كل ذرة سيليكون بـ <strong>4</strong> ذرات أكسجين</li>
+                        <li>ترتبط كل ذرة أكسجين بـ <strong>2</strong> ذرة سيليكون</li>
+                        <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة</li>
+                    </ul>
+                </div>
             </FlippableCard>
             
             <Card>
@@ -142,8 +143,8 @@ export default function LessonPartPage() {
                          <Image
                             src="https://i.ibb.co/zTNFq9v/4.png"
                             alt="بنية الألماس"
-                            width={100}
-                            height={100}
+                            width={150}
+                            height={150}
                             className="rounded-lg border bg-white object-contain"
                             data-ai-hint="diamond crystal lattice"
                         />
