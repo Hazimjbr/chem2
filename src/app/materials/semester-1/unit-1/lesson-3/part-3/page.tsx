@@ -124,19 +124,19 @@ export default function LessonPartPage() {
             >
                <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-accent">ثاني أكسيد السيليكون (SiO₂)</h4>
-                    <ul className="space-y-1 text-sm mt-1">
-                        <li>يعرف أيضًا بالكوارتز أو الرمل وهو المكون الأساسي للزجاج.</li>
-                        <li>ترتبط كل ذرة سيليكون بـ <strong>4</strong> ذرات أكسجين.</li>
-                        <li>ترتبط كل ذرة أكسجين بـ <strong>2</strong> ذرة سيليكون.</li>
-                        <li>الروابط تساهمية قوية جدًا مما يجعله شديد الصلابة وذا درجة انصهار مرتفعة.</li>
+                    <h4 className="font-semibold text-accent">3) الكوارتز SiO2 (مركب شفاف)</h4>
+                     <ul className="space-y-1 text-sm mt-1">
+                        <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
+                        <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
+                        <li>‌ج) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
+                        <li>‌د) قاس جدا (أقل من الماس)</li>
                     </ul>
                   </div>
                   <div className="border-t pt-3">
                     <h4 className="font-semibold text-accent">أمثلة إضافية</h4>
                     <ul className="space-y-1 text-sm mt-1">
-                        <li>السيلكون (Si)</li>
-                        <li>كربيد السيليكون (SiC)</li>
+                        <li>4) السيلكون Si</li>
+                        <li>كبريتيد السيلكون SiC</li>
                     </ul>
                   </div>
                </div>
