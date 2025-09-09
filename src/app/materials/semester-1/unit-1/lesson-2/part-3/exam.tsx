@@ -73,7 +73,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن الحالة الفيزيائية للمادة A عند درجة الحرارة B هي:</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/GfZ5wtq/22.png"
+                        src="https://i.ibb.co/3WSp4yv/22.png"
                         alt="منحنى تبريد المادة A"
                         width={500}
                         height={300}
@@ -93,7 +93,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن درجة التكاثف للمادة A تساوي:</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/GfZ5wtq/22.png"
+                        src="https://i.ibb.co/3WSp4yv/22.png"
                         alt="منحنى تبريد المادة A"
                         width={500}
                         height={300}
@@ -113,7 +113,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن X هي:</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/GfZ5wtq/22.png"
+                        src="https://i.ibb.co/3WSp4yv/22.png"
                         alt="منحنى تبريد المادة A"
                         width={500}
                         height={300}
@@ -147,7 +147,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                  <p>ادرس الرسم البياني الذي يمثل منحنى تبريد المادة A ثم قارنها بالمادة C التي درجة غليانها <span dir="ltr">90°C</span> أي العبارات التالية صحيحة</p>
                  <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/GfZ5wtq/22.png"
+                        src="https://i.ibb.co/3WSp4yv/22.png"
                         alt="منحنى تبريد المادة A"
                         width={500}
                         height={300}
@@ -172,7 +172,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                  <p>بالاعتماد على الرسم البياني إذا علمت أن المادة A هي الإيثانول (<span dir="ltr">CH₃CH₂OH</span>) والمادة B هي الأسيتون (<span dir="ltr">CH₃COCH₃</span>) فأي العبارات التالية تفسر سبب كون درجة تكاثف المادة A وهي <span dir="ltr">70°C</span> أعلى</p>
                  <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/GfZ5wtq/22.png"
+                        src="https://i.ibb.co/3WSp4yv/22.png"
                         alt="منحنى تبريد المادة A"
                         width={500}
                         height={300}
@@ -220,7 +220,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>بالاعتماد على منحنى التبريد المجاور، إذا كانت الحرارة النوعية للمادة في الحالة السائلة أكبر منها في الحالة الغازية، فأي العبارات التالية صحيحة حول ميل المنحنى؟</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/GfZ5wtq/22.png"
+                        src="https://i.ibb.co/3WSp4yv/22.png"
                         alt="منحنى تبريد المادة A"
                         width={500}
                         height={300}

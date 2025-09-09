@@ -39,7 +39,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvM/22.png"
+                        src="https://i.ibb.co/ZJpPq6f/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -97,7 +97,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأكبر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvM/22.png"
+                        src="https://i.ibb.co/ZJpPq6f/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -122,7 +122,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز  الذي يمثل متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأقل هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvM/22.png"
+                        src="https://i.ibb.co/ZJpPq6f/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -216,7 +216,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك الحد الأدنى من الطاقة للتغلب على قوى التجاذب عند درجة الحرارة الأقل هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvM/22.png"
+                        src="https://i.ibb.co/ZJpPq6f/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -236,7 +236,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور، زيادة درجة حرارة منحنى د2 ستؤدي إلى الآتي:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvM/22.png"
+                        src="https://i.ibb.co/ZJpPq6f/22.png"
                         alt="مخطط توزيع ماكسويل-بولتزمان"
                         width={400}
                         height={250}
@@ -292,8 +292,8 @@ export const staticQuizLvl2: QuizQuestion[] = [
             </div>
         ),
         options: ["M", "W", "R", "Q"],
-        correctAnswerIndex: 3,
-        explanation: "بناءً على الترتيب الصحيح لقوى الترابط (روابط هيدروجينية > ثنائي القطب > قوى لندن)، يكون للإيثانول (CH3CH2OH) أقوى ترابط وبالتالي أعلى طاقة تبخر (Q)."
+        correctAnswerIndex: 1,
+        explanation: "بناءً على الترتيب الصحيح لقوى الترابط (روابط هيدروجينية > ثنائي القطب > قوى لندن)، يكون للمركب CH3Cl (ثنائي القطب) طاقة تبخر متوسطة ويمثله الرمز (W) الذي يتطلب طاقة أقل من الإيثانول (Q) وأكبر من الميثان والإيثان (M, E)."
     }
 ];
 
@@ -374,5 +374,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "السائل الذي له أضعف قوى تجاذب هو الميثان (CH₄) لأنه غير قطبي وله أقل كتلة مولية. السائل ذو القوى الأضعف هو الأسرع تبخرًا والأعلى في الضغط البخاري، ويمثله المنحنى (C). الرمز (M) يمثل عدد الجسيئات التي تمتلك طاقة التبخر لهذا السائل، وهي أكبر كمية مقارنة بالسوائل الأخرى."
     }
 ];
-
-    

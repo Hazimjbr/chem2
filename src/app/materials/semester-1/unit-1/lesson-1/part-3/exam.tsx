@@ -14,7 +14,7 @@ export interface QuizQuestion {
 const PistonDiagram = () => (
     <div className="flex justify-center items-center my-4">
          <Image 
-            src="https://i.ibb.co/Xxd9x9gK/3.png" 
+            src="https://i.ibb.co/Xxd9x9K/3.png" 
             alt="Piston Diagram"
             width={300}
             height={150}

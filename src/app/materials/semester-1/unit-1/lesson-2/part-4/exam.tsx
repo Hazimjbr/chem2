@@ -75,7 +75,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، ما قيمة الضغط البخاري للإيثانول (<span dir="ltr" className="font-mono">C₂H₅OH</span>) عند <span dir="ltr">50°C</span>؟</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -161,7 +161,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أقل طاقة تكاثف مولية</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -186,7 +186,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -206,7 +206,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن درجة الغليان المعيارية للإيثانول تساوي</p>
                 <div className="flex justify-center my-4">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -226,7 +226,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن الضغط البخاري لثنائي إيثيل إيثر (<span dir="ltr" className="inline-block mx-1"><InlineMath math="C_2H_5OC_2H_5" /></span>) عند <span dir="ltr">30°C</span> يساوي:</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/FbjSx8p6/3.png"
+                    src="https://i.ibb.co/CBrq0Yd/3.png"
                     alt="منحنيات الضغط البخاري"
                     width={500}
                     height={300}
@@ -246,7 +246,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل، فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
             <div className="flex justify-center">
                 <Image
-                    src="https://i.ibb.co/FbjSx8p6/3.png"
+                    src="https://i.ibb.co/CBrq0Yd/3.png"
                     alt="منحنيات الضغط البخاري"
                     width={500}
                     height={300}
@@ -266,7 +266,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للأسيتون عند درجة غليانه الطبيعية يساوي</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}

@@ -75,7 +75,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
+        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -86,7 +86,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته) الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات) لذا فإن ضغط الغاز فيه هو الأعلى"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -158,7 +158,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         question: (
             <div>
                 <p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p>
-                <Image src="https://i.ibb.co/Xxd9x9gK/3.png" alt="Piston states" width={300} height={150} className="mx-auto my-2 rounded-lg" data-ai-hint="gas piston" />
+                <Image src="https://i.ibb.co/Xxd9x9K/3.png" alt="Piston states" width={300} height={150} className="mx-auto my-2 rounded-lg" data-ai-hint="gas piston" />
             </div>
         ),
         options: [
@@ -229,13 +229,13 @@ export const staticQuizLvl2: QuizQuestion[] = [
 
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <div><p>اعتمادا على الرسم البياني فإن درجة حرارة التي يكون عندها انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن درجة حرارة التي يكون عندها انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن</p><Image src="https://i.ibb.co/RckzWJb/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: ["200K", "273K", "500K", "1000K"],
         correctAnswerIndex: 3,
         explanation: "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
     },
      {
-        question: <div><p>اعتمادا على الرسم البياني فإن ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/RckzWJb/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -246,7 +246,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>اعتمادا على الرسم البياني فإن سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا هو</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا هو</p><Image src="https://i.ibb.co/RckzWJb/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -262,7 +262,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة (°C) والضغط البخاري (mmHg) لأربعة سوائل فإن درجة الغليان الطبيعية للأسيتون تساوي</p>
                 <div className="flex justify-center my-4">
                      <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -282,7 +282,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن المادة التي لها أعلى طاقة تكاثف مولية هي</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -302,7 +302,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والذي يمثل العلاقة بين درجة الحرارة والضغط البخاري لأربعة سوائل فإن الضغط البخاري للأسيتون عند درجة غليانه الطبيعية يساوي</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/FbjSx8p6/3.png"
+                        src="https://i.ibb.co/CBrq0Yd/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={500}
                         height={300}
@@ -363,7 +363,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_2OH"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_4"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_3"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        src="https://i.ibb.co/hF9Fm0h/22.png"
                         alt="Vapor Pressure vs Temperature for four liquids"
                         width={400}
                         height={250}
@@ -383,7 +383,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم البياني، المادة التي لها أعلى درجة غليان معيارية هي:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/dwTN2WHw/3.png"
+                        src="https://i.ibb.co/PggW2Lh/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={400}
                         height={250}
@@ -398,5 +398,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: <span>أعلى درجة غليان معيارية تعني أقوى قوى ترابط بين الجزيئات، وبالتالي أقل ضغط بخاري عند درجة حرارة معينة. من الرسم البياني، نجد أن CH₃COOH (حمض الخل) يمتلك أقل ضغط بخاري ويتطلب أعلى درجة حرارة ليصل ضغطه البخاري إلى 760mmHg، مما يدل على أن قوى الترابط (الروابط الهيدروجينية على شكل دايمر) هي الأقوى.</span>
     }
 ]
-
-    

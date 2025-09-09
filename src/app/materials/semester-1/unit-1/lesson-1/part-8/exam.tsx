@@ -14,7 +14,7 @@ export interface QuizQuestion {
 const GasSamplesGraph = () => (
     <div className="flex justify-center my-4">
         <Image 
-            src="https://i.ibb.co/nXTGRLs/3.png" 
+            src="https://i.ibb.co/VMy4Yh3/graphite.png" 
             alt="أربع عينات من الغازات"
             width={300}
             height={200}
@@ -60,7 +60,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون جاي-لوساك يتناسب الضغط طرديًا مع درجة الحرارة عند ثبات الحجم بما أن وعاء F₂ تم تسخينه (زيادة الحرارة) فسيكون ضغطه هو الأعلى بينما وعاء H₂ تم تبريده فسيكون ضغطه هو الأقل"
     },
     {
-        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
+        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         "options": [
             "D",
             "B",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون الغاز المثالي (PV=nRT) عند ثبات الحجم (V) والحرارة (T) فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n) العينة B تحتوي على أكبر عدد من المولات (0.8mol) لذا فهي الأعلى ضغطًا"
     },
     {
-        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر كثافة هي:</p><Image src="https://i.ibb.co/nXTGRLs/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
+        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر كثافة هي:</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         "options": [
             "C",
             "B",
@@ -84,13 +84,13 @@ export const staticQuizLvl1: QuizQuestion[] = [
 ];
 export const staticQuizLvl2: QuizQuestion[] = [
     {
-        question: <div><p>اعتمادا على الرسم البياني فإن درجة حرارة التي يكون عندها انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن درجة حرارة التي يكون عندها انحراف غاز النيتروجين عن السلوك المثالي أقل ما يمكن</p><Image src="https://i.ibb.co/RckzWJb/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         options: ["200 K", "273 K", "500 K", "1000 K"],
         correctAnswerIndex: 3,
         "explanation": "الخط المتقطع عند القيمة 1 يمثل سلوك الغاز المثالي المنحنى الأقرب لهذا الخط يمثل أقل انحراف منحنى درجة الحرارة 1000K هو الأقرب للخط المثالي مما يعني أن سلوك الغاز يكون أقرب للمثالي عند درجات الحرارة المرتفعة"
     },
      {
-        question: <div><p>اعتمادا على الرسم البياني فإن ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن ما سبب انخفاض قيمة PV/nRT عن 1 عند درجة حرارة 200K وضغط 200atm؟</p><Image src="https://i.ibb.co/RckzWJb/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         "options": [
             "زيادة قوى التجاذب بين جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -101,7 +101,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         "explanation": "عند درجات الحرارة المنخفضة والضغوط المعتدلة تصبح قوى التجاذب بين الجسيمات مؤثرة هذه القوى تجذب الجسيمات لبعضها مما يقلل من تصادمها مع جدار الوعاء وبالتالي يقلل الضغط الفعلي للغاز عن الضغط المثالي فتصبح قيمة PV/nRT أقل من 1"
     },
      {
-        question: <div><p>اعتمادا على الرسم البياني فإن سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا هو</p><Image src="https://i.ibb.co/rRgwmZcY/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
+        question: <div><p>اعتمادا على الرسم البياني فإن سبب ارتفاع قيمة PV/nRT عن 1 عند قيم الضغط المرتفعة جدًا هو</p><Image src="https://i.ibb.co/RckzWJb/5.png" alt="Gas Laws Graph" width={400} height={250} className="rounded-lg border bg-white mx-auto" data-ai-hint="gas laws graph"/></div>,
         "options": [
             "زيادة حجم الغاز وتباعد جسيمات الغاز",
             "زيادة حجم الغاز ونقصان طاقة جسيماته الحركية",
@@ -202,6 +202,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
         "explanation": "الظروف المعيارية T₁=273K, V₁=20L, الحرارة الجديدة T₂=273+273=546K باستخدام قانون شارل V₂=V₁T₂/T₁ = 20 * (546/273) = 20 * 2 = 40L"
     }
 ];
-
-    
-    
