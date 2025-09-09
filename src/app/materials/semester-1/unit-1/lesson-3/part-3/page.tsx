@@ -82,8 +82,7 @@ export default function LessonPartPage() {
                          <span className="font-bold text-primary">4</span>
                         <p><strong>غير موصلة للكهرباء</strong> بشكل عام لعدم وجود إلكترونات حرة (باستثناء الجرافيت)</p>
                     </li>
-                    <li className="flex items-start gap-3">
-                         <span className="font-bold text-primary">5</span>
+                    <li>
                         <p><strong>ظاهرة التآصل:</strong> وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين</p>
                     </li>
                  </ul>
