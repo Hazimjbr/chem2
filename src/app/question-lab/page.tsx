@@ -21,27 +21,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <div className="space-y-2">
-            <p>ادرس بنية الألماس المجاورة. ما هو نوع التهجين في ذرة الكربون؟</p>
-            <div className="flex justify-center">
-                 <Image
-                    src="https://i.ibb.co/cKDz8LLB/graphite.png"
-                    alt="بنية الجرافيت (للتجربة)"
-                    width={150}
-                    height={150}
-                    className="rounded-lg border bg-white"
-                />
-            </div>
-        </div>
-    ),
-    options: ["sp", "sp²", "sp³", "sp³d"],
-    correctAnswerIndex: 2,
-    explanation: "في الألماس، ترتبط كل ذرة كربون بأربع ذرات أخرى بروابط تساهمية أحادية، مما يتطلب تهجين من نوع sp³ لتكوين بنية رباعية الأوجه.",
-    level: 2,
-    source: "الدرس الثالث: المواد الصلبة الشبكية التساهمية"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
