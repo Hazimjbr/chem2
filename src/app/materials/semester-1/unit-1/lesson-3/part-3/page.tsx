@@ -124,7 +124,7 @@ export default function LessonPartPage() {
             >
                <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-accent">3) الكوارتز SiO2 (مركب شفاف)</h4>
+                    <h4 className="font-semibold text-accent">الكوارتز SiO2 (مركب شفاف)</h4>
                      <ul className="space-y-1 text-sm mt-1">
                         <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
                         <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
