@@ -102,9 +102,9 @@ export default function LessonPartPage() {
                 >
                     <div className="space-y-3 text-sm">
                         <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة</p>
-                        <div>
-                            <p className="text-sm">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
-                             <ol className="list-decimal mr-6 mt-2 text-sm space-y-1">
+                        <div className="text-sm">
+                            <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
+                             <ol className="list-decimal mr-6 mt-2 space-y-1">
                                 <li>موصلا للكهرباء فيستخدم كأقطاب في الخلايا الغلفانية والتحليل الكهربائي</li>
                                 <li>سهل الانزلاق (انزلاق الطبقات فوق بعضها) فيستخدم في صناعة أقلام الرصاص</li>
                                 <li>هشا جدا</li>
@@ -141,7 +141,7 @@ export default function LessonPartPage() {
                     <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الألماس</h4>
                          <Image
-                            src="https://i.ibb.co/68B1w2t/4.png"
+                            src="https://i.ibb.co/xLjgPZx/4.png"
                             alt="بنية الألماس"
                             width={150}
                             height={150}
