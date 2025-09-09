@@ -21,7 +21,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "خاصية يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت:",
+    options: [
+        "الشكل",
+        "القساوة",
+        "التوصيل الكهربائي",
+        "التآصل"
+    ],
+    correctAnswerIndex: 2,
+    explanation: "الألماس وثاني أكسيد السيليكون كلاهما مواد عازلة للكهرباء بسبب ارتباط جميع إلكترونات التكافؤ بقوة في روابط تساهمية. أما الجرافيت فهو موصل جيد للكهرباء لوجود إلكترونات حرة الحركة بين طبقاته.",
+    level: 3,
+    source: "مقترح - مراجعة الوحدة الأولى"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
