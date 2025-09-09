@@ -142,7 +142,7 @@ export default function LessonPartPage() {
                     <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الألماس</h4>
                          <Image
-                            src="https://ibb.co/gFvkRvB1"
+                            src="https://i.ibb.co/68B1w2t/4.png"
                             alt="بنية الألماس"
                             width={150}
                             height={150}
@@ -219,6 +219,8 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
 
     
 
