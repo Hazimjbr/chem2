@@ -9,10 +9,11 @@ import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { InlineMath } from 'react-katex';
 
 const lessonInfo = {
     lessonTitle: "الدرس الثالث: الحالة الصلبة",
-    lessonSubtitle: "المواد الصلبة الشبكية التساهمية",
+    lessonSubtitle: "المواد الصلبة البلورية الشبكية التساهمية",
     mainIdea: "تتكون المواد الصلبة الشبكية التساهمية من ذرات ترتبط ببعضها بروابط تساهمية قوية جدًا تمتد في جميع الاتجاهات لتشكل شبكة بلورية ثلاثية الأبعاد مما يكسبها صلابة استثنائية ودرجات انصهار وغليان هي الأعلى على الإطلاق",
     learningOutcomes: [
         "أصف خصائص المواد الصلبة الشبكية التساهمية",
@@ -94,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                     imageContent={
                         <Image
-                            src="https://i.ibb.co/YTDHLDq9/image.jpg"
+                            src="https://i.ibb.co/YTDHLDq/image.png"
                             alt="بنية الألماس"
                             width={150}
                             height={150}
@@ -115,7 +116,7 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                      imageContent={
                         <Image
-                            src="https://i.ibb.co/hxDpdff6/image.png"
+                            src="https://i.ibb.co/hxDpdff/image.png"
                             alt="بنية الجرافيت"
                             width={150}
                             height={150}
@@ -143,7 +144,7 @@ export default function LessonPartPage() {
                 cardIcon={<Cpu className="h-6 w-6" />}
                 imageContent={
                      <Image
-                        src="https://i.ibb.co/4gWnRHKQ/image.png"
+                        src="https://i.ibb.co/4gWnRHK/image.png"
                         alt="بنية ثاني أكسيد السيليكون"
                         width={150}
                         height={150}
@@ -154,7 +155,7 @@ export default function LessonPartPage() {
             >
                <div className="space-y-4 p-4">
                   <div>
-                    <h4 className="font-semibold text-accent">(الكوارتز) SiO2 (مركب شفاف)</h4>
+                    <h4 className="font-semibold text-accent">الكوارتز (SiO2) السيليكا أو ثاني أكسيد السيليكون مركب شفاف</h4>
                      <ul className="space-y-1 text-sm mt-1">
                         <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
                         <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
