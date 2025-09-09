@@ -119,21 +119,18 @@ export default function LessonPartPage() {
             </div>
             
              <FlippableCard
-                cardTitle="أمثلة أخرى"
+                cardTitle="الكوارتز"
                 cardIcon={<Cpu className="h-6 w-6" />}
             >
                <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-accent">الكوارتز SiO2 (مركب شفاف)</h4>
+                    <h4 className="font-semibold text-accent">(الكوارتز) SiO2 (مركب شفاف)</h4>
                      <ul className="space-y-1 text-sm mt-1">
                         <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
                         <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
                         <li>‌ج) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
                         <li>‌د) قاس جدا (أقل من الماس)</li>
                     </ul>
-                  </div>
-                  <div className="border-t pt-3">
-                    <p className="text-sm"><strong className="font-semibold text-accent">أمثلة إضافية:</strong> السيلكون Si / كبريتيد السيلكون SiC</p>
                   </div>
                </div>
             </FlippableCard>
