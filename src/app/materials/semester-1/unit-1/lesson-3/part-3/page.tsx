@@ -89,9 +89,19 @@ export default function LessonPartPage() {
             </FlippableCard>
 
             <div className="grid md:grid-cols-2 gap-6">
-                 <FlippableCard
+                <FlippableCard
                     cardTitle="متآصلات الكربون: الألماس"
                     cardIcon={<Diamond className="h-6 w-6" />}
+                    imageContent={
+                        <Image
+                            src="https://i.ibb.co/YTDHLDq9/image.jpg"
+                            alt="بنية الألماس"
+                            width={150}
+                            height={150}
+                            className="rounded-lg border bg-white object-contain"
+                            data-ai-hint="diamond crystal lattice"
+                        />
+                    }
                  >
                     <ul className="space-y-2 text-sm">
                         <li>‌أ) ترتبط كل ذرة كربون تساهميا بأربع ذرات كربون أخرى في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
@@ -103,6 +113,16 @@ export default function LessonPartPage() {
                 <FlippableCard
                     cardTitle="متآصلات الكربون: الجرافيت"
                     cardIcon={<Diamond className="h-6 w-6" />}
+                     imageContent={
+                        <Image
+                            src="https://i.ibb.co/hxDpdff6/image.png"
+                            alt="بنية الجرافيت"
+                            width={150}
+                            height={150}
+                            className="rounded-lg border bg-white object-contain"
+                            data-ai-hint="graphite layers structure"
+                        />
+                    }
                 >
                     <div className="space-y-3 text-sm">
                         <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة</p>
@@ -121,8 +141,18 @@ export default function LessonPartPage() {
              <FlippableCard
                 cardTitle="الكوارتز"
                 cardIcon={<Cpu className="h-6 w-6" />}
+                imageContent={
+                     <Image
+                        src="https://i.ibb.co/4gWnRHKQ/image.png"
+                        alt="بنية ثاني أكسيد السيليكون"
+                        width={150}
+                        height={150}
+                        className="rounded-lg border bg-white object-contain"
+                        data-ai-hint="silicon dioxide lattice"
+                    />
+                }
             >
-               <div className="space-y-4">
+               <div className="space-y-4 p-4">
                   <div>
                     <h4 className="font-semibold text-accent">(الكوارتز) SiO2 (مركب شفاف)</h4>
                      <ul className="space-y-1 text-sm mt-1">
@@ -132,55 +162,11 @@ export default function LessonPartPage() {
                         <li>‌د) قاس جدا (أقل من الماس)</li>
                     </ul>
                   </div>
+                  <div className="border-t pt-2">
+                     <p className="text-sm font-semibold">أمثلة إضافية: السيلكون Si / كبريتيد السيلكون SiC</p>
+                  </div>
                </div>
             </FlippableCard>
-            
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        أمثلة المواد الصلبة الشبكية التساهمية
-                    </CardTitle>
-                    <CardDescription>
-                        صور توضح البنية البلورية المختلفة لكل من الألماس، الجرافيت، وثاني أكسيد السيليكون.
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <div className="flex flex-col items-center">
-                        <h4 className="font-bold mb-2">الألماس</h4>
-                         <Image
-                            src="https://i.ibb.co/YTDHLDq9/image.jpg"
-                            alt="بنية الألماس"
-                            width={150}
-                            height={150}
-                            className="rounded-lg border bg-white object-contain"
-                            data-ai-hint="diamond crystal lattice"
-                        />
-                    </div>
-                     <div className="flex flex-col items-center">
-                        <h4 className="font-bold mb-2">الجرافيت</h4>
-                         <Image
-                            src="https://i.ibb.co/hxDpdff6/image.png"
-                            alt="بنية الجرافيت"
-                             width={150}
-                            height={150}
-                            className="rounded-lg border bg-white object-contain"
-                            data-ai-hint="graphite layers structure"
-                        />
-                    </div>
-                     <div className="flex flex-col items-center">
-                        <h4 className="font-bold mb-2">ثاني أكسيد السيليكون</h4>
-                         <Image
-                            src="https://i.ibb.co/4gWnRHKQ/image.png"
-                            alt="بنية ثاني أكسيد السيليكون"
-                             width={150}
-                            height={150}
-                            className="rounded-lg border bg-white object-contain"
-                            data-ai-hint="silicon dioxide lattice"
-                        />
-                    </div>
-                </CardContent>
-            </Card>
-
         </div>
         
         <div className="space-y-4 mt-8">
