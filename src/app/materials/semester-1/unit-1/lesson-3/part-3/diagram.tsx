@@ -3,22 +3,9 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils.tsx';
-import type { SVGProps } from "react";
 import Image from 'next/image';
 
-const SvgDiagram = ({ children, className, ...props }: { children: React.ReactNode } & SVGProps<SVGSVGElement>) => (
-    <div className="flex justify-center items-center my-4">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={cn("w-full h-auto max-w-xs rounded-lg border p-2 bg-white", className)}
-            {...props}
-        >
-            {children}
-        </svg>
-    </div>
-);
-
-export const DiamondStructure = (props: Partial<SVGProps<SVGSVGElement>>) => (
+export const DiamondStructure = () => (
     <div className="flex justify-center items-center my-4">
         <Image
             src="https://i.ibb.co/68B1w2t/4.png"
@@ -32,7 +19,7 @@ export const DiamondStructure = (props: Partial<SVGProps<SVGSVGElement>>) => (
 );
 
 
-export const GraphiteStructure = (props: Partial<SVGProps<SVGSVGElement>>) => (
+export const GraphiteStructure = () => (
     <div className="flex justify-center items-center my-4">
         <Image
             src="https://i.ibb.co/VMy4Yh3/graphite.png"
@@ -45,7 +32,7 @@ export const GraphiteStructure = (props: Partial<SVGProps<SVGSVGElement>>) => (
     </div>
 );
 
-export const SiliconDioxideStructure = (props: Partial<SVGProps<SVGSVGElement>>) => (
+export const SiliconDioxideStructure = () => (
     <div className="flex justify-center items-center my-4">
          <Image
             src="https://i.ibb.co/XzCHd71/silicon-dioxide.png"
