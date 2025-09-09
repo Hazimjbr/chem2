@@ -219,9 +219,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
-
-    
-
-    
