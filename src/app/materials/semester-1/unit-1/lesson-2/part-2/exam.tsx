@@ -39,7 +39,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        src="https://i.ibb.co/MxNjGvM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -97,7 +97,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأكبر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        src="https://i.ibb.co/MxNjGvM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -122,7 +122,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز  الذي يمثل متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأقل هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        src="https://i.ibb.co/MxNjGvM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -216,7 +216,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك الحد الأدنى من الطاقة للتغلب على قوى التجاذب عند درجة الحرارة الأقل هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        src="https://i.ibb.co/MxNjGvM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -236,7 +236,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور، زيادة درجة حرارة منحنى د2 ستؤدي إلى الآتي:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        src="https://i.ibb.co/MxNjGvM/22.png"
                         alt="مخطط توزيع ماكسويل-بولتزمان"
                         width={400}
                         height={250}
@@ -281,7 +281,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_2OH"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_4"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_3"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        src="https://i.ibb.co/hF9Fm0h/22.png"
                         alt="Vapor Pressure vs Temperature for four liquids"
                         width={400}
                         height={250}
@@ -359,7 +359,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل عدد الجسيمات التي تمتلك الطاقة اللازمة لتبخر السائل الذي له أضعف قوى تجاذب هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/hF9Fm0hw/22.png"
+                        src="https://i.ibb.co/hF9Fm0h/22.png"
                         alt="Vapor Pressure vs Temperature for four liquids"
                         width={400}
                         height={250}

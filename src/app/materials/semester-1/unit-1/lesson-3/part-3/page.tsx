@@ -128,7 +128,6 @@ export default function LessonPartPage() {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                        <Diamond className="h-6 w-6 text-primary" />
                         أمثلة المواد الصلبة الشبكية التساهمية
                     </CardTitle>
                     <CardDescription>
@@ -150,7 +149,7 @@ export default function LessonPartPage() {
                      <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الجرافيت</h4>
                          <Image
-                            src="https://i.ibb.co/VMy4Yh3/graphite.png"
+                            src="https://i.ibb.co/cKDz8LLB/graphite.png"
                             alt="بنية الجرافيت"
                              width={150}
                             height={150}
