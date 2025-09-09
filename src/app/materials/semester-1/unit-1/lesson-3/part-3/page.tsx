@@ -133,11 +133,7 @@ export default function LessonPartPage() {
                     </ul>
                   </div>
                   <div className="border-t pt-3">
-                    <h4 className="font-semibold text-accent">أمثلة إضافية</h4>
-                    <ul className="space-y-1 text-sm mt-1">
-                        <li>4) السيلكون Si</li>
-                        <li>كبريتيد السيلكون SiC</li>
-                    </ul>
+                    <p className="text-sm"><strong className="font-semibold text-accent">أمثلة إضافية:</strong> السيلكون Si / كبريتيد السيلكون SiC</p>
                   </div>
                </div>
             </FlippableCard>
