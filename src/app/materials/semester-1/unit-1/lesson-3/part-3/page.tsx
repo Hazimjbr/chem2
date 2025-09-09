@@ -153,7 +153,7 @@ export default function LessonPartPage() {
                      <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">الجرافيت</h4>
                          <Image
-                            src="https://i.ibb.co/hxDpdff6/image.png"
+                            src="https://i.ibb.co/4gWnRHKQ/image.png"
                             alt="بنية الجرافيت"
                              width={150}
                             height={150}
@@ -164,7 +164,7 @@ export default function LessonPartPage() {
                      <div className="flex flex-col items-center">
                         <h4 className="font-bold mb-2">ثاني أكسيد السيليكون</h4>
                          <Image
-                            src="https://i.ibb.co/pr2BjSbm/silicon-dioxide.png"
+                            src="https://i.ibb.co/4gWnRHKQ/image.png"
                             alt="بنية ثاني أكسيد السيليكون"
                              width={150}
                             height={150}
