@@ -90,13 +90,11 @@ export default function LessonPartPage() {
                     cardTitle="متآصلات الكربون: الألماس"
                     cardIcon={<Diamond className="h-6 w-6" />}
                  >
-                    <ul className="space-y-2 text-xs">
-                        <li>ترتبط كل ذرة كربون بـ <strong>4</strong> ذرات أخرى بروابط تساهمية قوية</li>
-                        <li>التهجين من نوع <strong>sp³</strong> والشكل الهندسي <strong>رباعي الأوجه منتظم</strong></li>
-                        <li>يشكل شبكة ثلاثية الأبعاد شديدة الصلابة</li>
-                        <li><strong>غير موصل للكهرباء</strong> لأن جميع إلكترونات التكافؤ مرتبطة</li>
-                        <li>يعتبر أقسى مادة طبيعية وله درجة انصهار عالية جدًا</li>
-                    </ul>
+                    <div className="space-y-2 text-sm">
+                        <p>‌أ) ترتبط كل ذرة كربون تساهميا بأربع ذرات كربون أخرى في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</p>
+                        <p>‌ب) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</p>
+                        <p>‌ج) أقسى المواد الطبيعية لذلك يستخدم في صناعة أدوات القطع والقص</p>
+                    </div>
                 </FlippableCard>
 
                 <FlippableCard
@@ -144,8 +142,8 @@ export default function LessonPartPage() {
                          <Image
                             src="https://i.ibb.co/zTNFq9v/4.png"
                             alt="بنية الألماس"
-                            width={150}
-                            height={150}
+                            width={100}
+                            height={100}
                             className="rounded-lg border bg-white object-contain"
                             data-ai-hint="diamond crystal lattice"
                         />
