@@ -1,4 +1,4 @@
-itfosh  # Firebase Studio
+fitfosh  # Firebase Studio
 
 This is a NextJS starter in Firebase Studio.
 
