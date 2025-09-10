@@ -95,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                     imageContent={
                         <Image
-                            src="https://i.ibb.co/YTDHLDq/image.png"
+                            src="https://i.ibb.co/68B1w2t/4.png"
                             alt="بنية الألماس"
                             width={150}
                             height={150}
@@ -144,7 +144,7 @@ export default function LessonPartPage() {
                 cardIcon={<Cpu className="h-6 w-6" />}
                 imageContent={
                      <Image
-                        src="https://i.ibb.co/4gWnRHK/image.png"
+                        src="https://i.ibb.co/XzCHd71/silicon-dioxide.png"
                         alt="بنية ثاني أكسيد السيليكون"
                         width={150}
                         height={150}
@@ -153,7 +153,7 @@ export default function LessonPartPage() {
                     />
                 }
             >
-               <div className="space-y-4 p-4">
+               <CardContent className="p-4">
                   <div>
                     <h4 className="font-semibold text-accent">الكوارتز (SiO2) السيليكا أو ثاني أكسيد السيليكون مركب شفاف</h4>
                      <ul className="space-y-1 text-sm mt-1">
@@ -163,10 +163,10 @@ export default function LessonPartPage() {
                         <li>‌د) قاس جدا (أقل من الماس)</li>
                     </ul>
                   </div>
-                  <div className="border-t pt-2">
+                  <div className="border-t pt-2 mt-2">
                      <p className="text-sm font-semibold">أمثلة إضافية: السيلكون Si / كبريتيد السيلكون SiC</p>
                   </div>
-               </div>
+               </CardContent>
             </FlippableCard>
         </div>
         
@@ -212,3 +212,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
