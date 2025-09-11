@@ -85,7 +85,9 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="خصائص المواد الصلبة الأيونية"
                 cardIcon={<Layers className="h-6 w-6" />}
-                hasImage={true}
+                imageContent={
+                    <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto" />
+                }
             >
                  <ul className="space-y-3 text-sm p-4">
                     <li><strong className="text-accent">صلبة جدا</strong> بسبب قوة الرابطة الأيونية</li>
@@ -94,7 +96,6 @@ export default function LessonPartPage() {
                     <li><strong className="text-accent">لا توصل الكهرباء (صلبة)</strong> لأن أيوناتها مقيدة الحركة</li>
                     <li><strong className="text-accent">توصل الكهرباء (محلول/مصهور)</strong> لأن أيوناتها تصبح حرة الحركة</li>
                  </ul>
-                 <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto" />
             </FlippableCard>
         </div>
         
@@ -140,8 +141,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-
-
-
-
