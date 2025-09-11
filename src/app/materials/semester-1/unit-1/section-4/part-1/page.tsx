@@ -7,6 +7,7 @@ import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
+import { InlineMath } from 'react-katex';
 
 const lessonInfo = {
     lessonTitle: "الإثراء والتوسع",
@@ -100,7 +101,7 @@ export default function LessonPartPage() {
                       "لأن الصمام يمنع خروج الحرارة"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="العلاقة بين الضغط ودرجة الغليان طردية. في طنجرة الضغط، يزداد الضغط مما يرفع درجة غليان الماء، والطهي عند درجة حرارة أعلى يسرّع من نضج الطعام."
+                  explanation={<>العلاقة بين الضغط ودرجة الغليان طردية في طنجرة الضغط يزداد الضغط مما يرفع درجة غليان الماء والطهي عند درجة حرارة أعلى يسرّع من نضج الطعام</>}
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -114,7 +115,7 @@ export default function LessonPartPage() {
                       "قانون أفوجادرو (العلاقة بين الحجم والمولات)"
                   ]}
                   correctAnswerIndex={1}
-                  explanation="عند الارتفاعات العالية، يقل الضغط الجوي الخارجي بشكل كبير. ووفقًا لقانون بويل، يتناسب حجم الغاز عكسيًا مع الضغط، لذا يتمدد الغاز داخل البالون بشكل هائل حتى ينفجر."
+                  explanation="عند الارتفاعات العالية يقل الضغط الجوي الخارجي بشكل كبير ووفقًا لقانون بويل يتناسب حجم الغاز عكسيًا مع الضغط لذا يتمدد الغاز داخل البالون بشكل هائل حتى ينفجر"
               />
           </div>
         </div>
