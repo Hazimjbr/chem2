@@ -118,8 +118,8 @@ export default function LessonPartPage() {
                         <Image
                             src="https://i.ibb.co/hxDpdff/image.png"
                             alt="بنية الجرافيت"
-                            width={150}
-                            height={150}
+                            width={200}
+                            height={200}
                             className="rounded-lg border bg-white object-contain"
                             data-ai-hint="graphite layers structure"
                         />
@@ -212,5 +212,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
