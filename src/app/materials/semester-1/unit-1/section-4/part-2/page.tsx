@@ -47,7 +47,7 @@ export default function LessonPartPage() {
                 cardTitle="ما هي البلازما (الحالة الرابعة للمادة)"
                 cardIcon={<Star className="h-6 w-6 text-primary" />}
             >
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                     <p>
                         هي خليط غازي لأيونات الغاز الموجبة وإلكتروناتها حرة الحركة المنفصلة عنها تتكون بسبب درجات الحرارة العالية جدا في النجوم أو بفعل البرق في الهواء الجوي أو صناعيا في المختبرات
                     </p>
@@ -66,12 +66,12 @@ export default function LessonPartPage() {
                 cardTitle="تطبيق محول النفايات البلازمي"
                 cardIcon={<Recycle className="h-6 w-6 text-primary" />}
             >
-                <CardContent>
+                <CardContent className="p-4">
                     <CardDescription className="mb-4">أحد الاستخدامات الواعدة للبلازما هو معالجة النفايات</CardDescription>
                     <h4 className="font-semibold text-accent mb-2">آلية العمل</h4>
                     <ul className="list-decimal mr-6 space-y-3">
                         <li>
-                            <strong>تكسير الروابط</strong> تعمل الطاقة الهائلة المختزنة في البلازما على تكسير روابط جميع أنواع النفايات وتفكيكها إلى عناصرها الأولية
+                            تعمل الطاقة الهائلة المختزنة في البلازما على تكسير روابط جميع أنواع النفايات وتفكيكها إلى عناصرها الأولية
                         </li>
                          <li>
                             <strong>النواتج النهائية (تعتمد على نوع النفايات)</strong>
