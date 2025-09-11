@@ -12,13 +12,14 @@ interface FlippableCardProps {
   children: React.ReactNode;
   imageContent?: React.ReactNode;
   imageCardClassName?: string;
+  hasImage?: boolean;
 }
 
-export default function FlippableCard({ cardTitle, cardIcon, children, imageContent, imageCardClassName }: FlippableCardProps) {
+export default function FlippableCard({ cardTitle, cardIcon, children, imageContent, imageCardClassName, hasImage }: FlippableCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Set a fixed height for the container to prevent layout shifts during flipping
-  const cardHeight = imageContent ? 'h-[320px]' : 'h-[280px]'; // Adjust this height as needed
+  // Set a dynamic height for the container to prevent layout shifts during flipping
+  const cardHeight = hasImage ? 'h-[400px]' : (imageContent ? 'h-[320px]' : 'h-[280px]');
 
   return (
     <div className={cn("perspective-1000", cardHeight)} onMouseEnter={() => setIsFlipped(true)} onMouseLeave={() => setIsFlipped(false)}>
