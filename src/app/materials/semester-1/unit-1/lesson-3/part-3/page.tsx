@@ -95,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                     imageContent={
                         <Image
-                            src="https://i.ibb.co/68B1w2t/4.png"
+                            src="https://i.ibb.co/YTDHLDq9/image.jpg"
                             alt="بنية الألماس"
                             width={200}
                             height={200}
