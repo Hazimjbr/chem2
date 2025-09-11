@@ -69,7 +69,7 @@ export default function LessonPartPage() {
                 <div className="flex flex-col items-center justify-center p-2 text-center h-full">
                     <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
                     <Image 
-                        src="https://i.ibb.co/DPXZq5v/image.jpg" 
+                        src="https://i.ibb.co/3W6xSvB/1.jpg" 
                         alt="الرابطة الفلزية" 
                         width={96} 
                         height={69} 
