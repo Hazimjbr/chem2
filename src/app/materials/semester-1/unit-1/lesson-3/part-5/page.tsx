@@ -62,12 +62,12 @@ export default function LessonPartPage() {
                 </CardContent>
             </Card>
             
-             <FlippableCard
+            <FlippableCard
                 cardTitle="الرابطة الأيونية"
                 cardIcon={<Atom className="h-6 w-6" />}
                 imageContent={
-                    <Image 
-                        src="https://i.ibb.co/L60Twm4/ionic-bond.png"
+                    <Image
+                        src="https://i.ibb.co/rGJN0yG/1.jpg"
                         alt="الرابطة الأيونية"
                         width={150}
                         height={100}
@@ -123,7 +123,7 @@ export default function LessonPartPage() {
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="أي المركبين التاليين له درجة انصهار أعلى: KCl أم CaO؟"
+                  question={<><span>أي المركبين التاليين له درجة انصهار أعلى: KCl أم CaO؟</span></>}
                   options={[
                       "KCl",
                       "CaO",
