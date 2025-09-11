@@ -95,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                     imageContent={
                         <Image
-                            src="https://i.ibb.co/YTDHLDq9/image.jpg"
+                            src="https://i.ibb.co/YTDHLDq/image.jpg"
                             alt="بنية الألماس"
                             width={200}
                             height={200}
@@ -144,7 +144,7 @@ export default function LessonPartPage() {
                 cardIcon={<Cpu className="h-6 w-6" />}
                 imageContent={
                      <Image
-                        src="https://i.ibb.co/XzCHd71/silicon-dioxide.png"
+                        src="https://i.ibb.co/4gWnRHK/image.png"
                         alt="بنية ثاني أكسيد السيليكون"
                         width={200}
                         height={200}
