@@ -78,7 +78,7 @@ export default function LessonPartPage() {
             >
                 <div className="p-4 text-center">
                     <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات مختلفة الشحنة</p>
-                    <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl CaO</p>
+                    <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl, CaO</p>
                 </div>
             </FlippableCard>
 
@@ -93,7 +93,7 @@ export default function LessonPartPage() {
                     <li><strong className="text-accent">لا توصل الكهرباء (صلبة)</strong> لأن أيوناتها مقيدة الحركة</li>
                     <li><strong className="text-accent">توصل الكهرباء (محلول/مصهور)</strong> لأن أيوناتها تصبح حرة الحركة</li>
                  </ul>
-                 <Image src="https://i.ibb.co/ZRYj1CS/2.png" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto" />
+                 <Image src="https://i.ibb.co/bgnDmdgw/2.png" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto" />
             </FlippableCard>
         </div>
         
@@ -139,5 +139,6 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
 
 
