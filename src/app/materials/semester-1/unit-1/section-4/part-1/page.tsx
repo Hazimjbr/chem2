@@ -4,8 +4,9 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, FlaskConical, Stethoscope, Cloud, CookingPot } from 'lucide-react';
 import LessonLayout from '@/components/lesson-layout';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 
 const lessonInfo = {
     lessonTitle: "الإثراء والتوسع",
@@ -26,6 +27,20 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
+     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    useEffect(() => {
+        // This is a placeholder for future logic.
+        // For now, it doesn't do anything besides satisfying the component's need for this state.
+        if (completedInteractive.size > 0) {
+            // console.log('Interactive questions completed:', completedInteractive);
+        }
+    }, [completedInteractive]);
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -62,6 +77,46 @@ export default function LessonPartPage() {
                     </p>
                 </CardContent>
             </FlippableCard>
+        </div>
+
+         <div className="space-y-4 mt-8">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  questionId="q1"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={handleCorrectAnswer}
+                  question="لماذا يطهى الطعام بشكل أسرع في طنجرة الضغط؟"
+                  options={[
+                      "لأن الضغط المنخفض يقلل من درجة الغليان",
+                      "لأن الضغط المرتفع يرفع درجة غليان الماء فوق 100°C",
+                      "لأن البخار يتركز في الأعلى فقط",
+                      "لأن الصمام يمنع خروج الحرارة"
+                  ]}
+                  correctAnswerIndex={1}
+                  explanation="العلاقة بين الضغط ودرجة الغليان طردية. في طنجرة الضغط، يزداد الضغط مما يرفع درجة غليان الماء، والطهي عند درجة حرارة أعلى يسرّع من نضج الطعام."
+              />
+               <InteractiveQuestionCard 
+                  questionId="q2"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={handleCorrectAnswer}
+                  question="أي قانون من قوانين الغازات يفسر بشكل أساسي سبب انفجار بالون الطقس عند وصوله لارتفاعات عالية؟"
+                  options={[
+                      "قانون شارل (العلاقة بين الحجم والحرارة)",
+                      "قانون بويل (العلاقة بين الحجم والضغط)",
+                      "قانون جاي لوساك (العلاقة بين الضغط والحرارة)",
+                      "قانون أفوجادرو (العلاقة بين الحجم والمولات)"
+                  ]}
+                  correctAnswerIndex={1}
+                  explanation="عند الارتفاعات العالية، يقل الضغط الجوي الخارجي بشكل كبير. ووفقًا لقانون بويل، يتناسب حجم الغاز عكسيًا مع الضغط، لذا يتمدد الغاز داخل البالون بشكل هائل حتى ينفجر."
+              />
+          </div>
         </div>
     </LessonLayout>
   );
