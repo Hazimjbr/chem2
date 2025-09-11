@@ -100,12 +100,9 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 2,
         explanation: "بسبب قوة الرابطة الأيونية، تتميز المركبات الأيونية مثل KCl بدرجات انصهار مرتفعة جدًا، وليست منخفضة."
-    }
-];
-
-export const staticQuizLvl3: QuizQuestion[] = [
+    },
     {
-        question: "عند مقارنة NaCl و MgO، لماذا درجة انصهار MgO (2852°C) أعلى بكثير من درجة انصهار NaCl (801°C)؟",
+        question: <>عند مقارنة NaCl و MgO، لماذا درجة انصهار MgO (2852°C) أعلى بكثير من درجة انصهار NaCl (801°C)؟</>,
         options: [
             "لأن أيونات الصوديوم أصغر من أيونات المغنيسيوم",
             "لأن الرابطة في MgO تساهمية",
@@ -127,3 +124,5 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "شرط توصيل الكهرباء هو وجود جسيمات مشحونة حرة الحركة. في الحالة الصلبة، تكون الأيونات موجودة ولكنها مقيدة في أماكنها ولا تستطيع الحركة لنقل التيار."
     }
 ];
+
+export const staticQuizLvl3: QuizQuestion[] = [];
