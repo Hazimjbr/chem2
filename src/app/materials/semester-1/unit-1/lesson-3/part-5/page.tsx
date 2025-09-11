@@ -67,11 +67,11 @@ export default function LessonPartPage() {
                 cardIcon={<Atom className="h-6 w-6" />}
                 imageContent={
                     <Image
-                        src="https://i.ibb.co/VMy4Yh3/graphite.png"
+                        src="https://i.ibb.co/bgnDmdgw/1.jpg"
                         alt="الرابطة الأيونية"
-                        width={150}
-                        height={100}
-                        className="rounded-lg"
+                        width={200}
+                        height={133}
+                        className="rounded-lg object-contain"
                         data-ai-hint="ionic bond NaCl"
                     />
                 }
