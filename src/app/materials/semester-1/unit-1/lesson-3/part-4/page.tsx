@@ -62,15 +62,12 @@ export default function LessonPartPage() {
                 </CardContent>
             </Card>
             
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Atom className="h-6 w-6" />
-                        الرابطة الفلزية
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col items-center justify-center p-2">
-                    <p className="text-center font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
+            <FlippableCard
+                cardTitle="الرابطة الفلزية"
+                cardIcon={<Atom className="h-6 w-6" />}
+            >
+                <div className="flex flex-col items-center justify-center p-2 text-center">
+                    <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
                     <Image 
                         src="https://i.ibb.co/DPXZq5v8/image.jpg" 
                         alt="الرابطة الفلزية" 
@@ -79,8 +76,8 @@ export default function LessonPartPage() {
                         className="rounded-lg mt-2 object-contain" 
                         data-ai-hint="metallic bond sea of electrons"
                     />
-                </CardContent>
-            </Card>
+                </div>
+            </FlippableCard>
 
             <FlippableCard
                 cardTitle="خصائص المواد الصلبة الفلزية"
@@ -138,3 +135,4 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
