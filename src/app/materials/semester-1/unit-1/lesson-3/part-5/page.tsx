@@ -78,7 +78,7 @@ export default function LessonPartPage() {
             >
                 <div className="p-4 text-center">
                     <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات مختلفة الشحنة</p>
-                    <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl CaO</p>
+                    <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl, CaO</p>
                 </div>
             </FlippableCard>
 
@@ -87,7 +87,7 @@ export default function LessonPartPage() {
                 cardIcon={<Layers className="h-6 w-6" />}
             >
                  <ul className="space-y-3 text-sm p-4">
-                    <li><strong className="text-accent">صلبة جداً</strong> بسبب قوة الرابطة الأيونية</li>
+                    <li><strong className="text-accent">صلبة جدا</strong> بسبب قوة الرابطة الأيونية</li>
                     <li><strong className="text-accent">درجات انصهارها مرتفعة</strong> تتطلب طاقة عالية للتغلب على قوى التجاذب في الشبكة البلورية</li>
                     <li><strong className="text-accent">هشة</strong> تتكسر عند الطرق بسبب انزلاق الطبقات وتنافر الأيونات المتشابهة</li>
                     <li><strong className="text-accent">لا توصل الكهرباء (صلبة)</strong> لأن أيوناتها مقيدة الحركة</li>
@@ -109,7 +109,7 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="لماذا لا توصل بلورة ملح الطعام (NaCl) الكهرباء في حالتها الصلبة؟"
+                  question="لماذا لا توصل بلورة ملح الطعام (NaCl) الكهرباء في حالتها الصلبة"
                   options={[
                       "لأنها لا تحتوي على أيونات",
                       "لأن أيوناتها مقيدة الحركة في الشبكة البلورية",
@@ -123,7 +123,7 @@ export default function LessonPartPage() {
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question={<><span>أي المركبين التاليين له درجة انصهار أعلى: KCl أم CaO؟</span></>}
+                  question={<><span>أي المركبين التاليين له درجة انصهار أعلى: KCl أم CaO</span></>}
                   options={[
                       "KCl",
                       "CaO",
