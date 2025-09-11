@@ -86,7 +86,7 @@ export default function LessonPartPage() {
                 cardTitle="خصائص المواد الصلبة الأيونية"
                 cardIcon={<Layers className="h-6 w-6" />}
                 imageContent={
-                    <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-48 w-auto object-contain" />
+                    <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-full w-auto object-contain p-2" />
                 }
             >
                  <ul className="space-y-3 text-sm p-4">
@@ -95,6 +95,7 @@ export default function LessonPartPage() {
                     <li><strong className="text-accent">هشة</strong> تتكسر عند الطرق بسبب انزلاق الطبقات وتنافر الأيونات المتشابهة</li>
                     <li><strong className="text-accent">لا توصل الكهرباء (صلبة)</strong> لأن أيوناتها مقيدة الحركة</li>
                     <li><strong className="text-accent">توصل الكهرباء (محلول/مصهور)</strong> لأن أيوناتها تصبح حرة الحركة</li>
+                    <li className="border-t pt-2"><strong className="text-primary">تزداد قوة الرابطة الأيونية بازدياد شحنة الأيونات وعددها</strong></li>
                  </ul>
             </FlippableCard>
         </div>
@@ -141,4 +142,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
