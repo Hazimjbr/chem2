@@ -7,6 +7,7 @@ import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
+import Image from 'next/image';
 
 
 const lessonInfo = {
@@ -46,6 +47,16 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="ما هي البلازما (الحالة الرابعة للمادة)"
                 cardIcon={<Star className="h-6 w-6 text-primary" />}
+                 imageContent={
+                    <Image
+                        src="https://i.ibb.co/67zRnBqJ/image.jpg"
+                        alt="حالة البلازما"
+                        width={300}
+                        height={200}
+                        className="rounded-lg object-contain h-48 w-auto"
+                        data-ai-hint="plasma state"
+                    />
+                }
             >
                 <CardContent className="space-y-4 p-4">
                     <p>
@@ -71,7 +82,7 @@ export default function LessonPartPage() {
                     <h4 className="font-semibold text-accent mb-2">آلية العمل</h4>
                     <ul className="list-decimal mr-6 space-y-3">
                         <li>
-                            تعمل الطاقة الهائلة المختزنة في البلازما على تكسير روابط جميع أنواع النفايات وتفكيكها إلى عناصرها الأولية
+                           تعمل الطاقة الهائلة المختزنة في البلازما على تكسير روابط جميع أنواع النفايات وتفكيكها إلى عناصرها الأولية
                         </li>
                          <li>
                             <strong>النواتج النهائية (تعتمد على نوع النفايات)</strong>
