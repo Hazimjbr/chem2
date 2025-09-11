@@ -65,6 +65,16 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="الرابطة الفلزية"
                 cardIcon={<Atom className="h-6 w-6" />}
+                imageContent={
+                    <Image
+                        src="https://i.ibb.co/DPXZq5v/image.jpg"
+                        alt="الرابطة الفلزية"
+                        width={200}
+                        height={200}
+                        className="rounded-lg object-contain h-48 w-auto"
+                        data-ai-hint="metallic bond sea of electrons"
+                    />
+                }
             >
                 <div className="flex flex-col items-center justify-center p-2 text-center h-full">
                     <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
