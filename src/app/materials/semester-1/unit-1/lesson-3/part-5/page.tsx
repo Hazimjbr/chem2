@@ -67,7 +67,7 @@ export default function LessonPartPage() {
                 cardIcon={<Atom className="h-6 w-6" />}
                 imageContent={
                     <Image
-                        src="https://i.ibb.co/bgnDmdgw/1.jpg"
+                        src="https://i.ibb.co/DPXZq5v8/image.jpg"
                         alt="الرابطة الأيونية"
                         width={200}
                         height={133}
@@ -86,7 +86,7 @@ export default function LessonPartPage() {
                 cardTitle="خصائص المواد الصلبة الأيونية"
                 cardIcon={<Layers className="h-6 w-6" />}
                 imageContent={
-                    <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto" />
+                    <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-48 w-auto object-contain" />
                 }
             >
                  <ul className="space-y-3 text-sm p-4">
@@ -141,3 +141,4 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
