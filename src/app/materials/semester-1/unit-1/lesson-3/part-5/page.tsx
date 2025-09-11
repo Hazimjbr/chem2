@@ -76,7 +76,7 @@ export default function LessonPartPage() {
                     />
                 }
             >
-                <div className="p-4 text-center">
+                <div className="flex flex-col items-center justify-center p-2 text-center h-full">
                     <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات مختلفة الشحنة</p>
                     <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl, CaO</p>
                 </div>
@@ -86,7 +86,7 @@ export default function LessonPartPage() {
                 cardTitle="خصائص المواد الصلبة الأيونية"
                 cardIcon={<Layers className="h-6 w-6" />}
                 imageContent={
-                    <Image src="https://i.ibb.co/4wYqgx2/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-full w-auto object-contain p-2" />
+                    <Image src="https://i.ibb.co/4wYqgx2v/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-full w-auto object-contain p-2" />
                 }
             >
                  <ul className="space-y-3 text-sm p-4">
@@ -142,3 +142,4 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
