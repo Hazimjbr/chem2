@@ -97,8 +97,8 @@ export default function LessonPartPage() {
                         <Image
                             src="https://i.ibb.co/YTDHLDq/image.jpg"
                             alt="بنية الألماس"
-                            width={150}
-                            height={150}
+                            width={180}
+                            height={180}
                             className="rounded-lg border bg-white object-contain"
                             data-ai-hint="diamond crystal lattice"
                         />
