@@ -168,27 +168,6 @@ export default function LessonPartPage() {
                   </div>
                </CardContent>
             </FlippableCard>
-            <Card>
-                <CardHeader>
-                    <CardTitle>مقارنة بصرية</CardTitle>
-                    <CardDescription>لاحظ الفروقات في البنية البلورية للمواد الشبكية التساهمية</CardDescription>
-                </CardHeader>
-                <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center">
-                    <div className="text-center">
-                        <Image src="https://i.ibb.co/YTDHLDq/image.jpg" alt="بنية الألماس" width={150} height={150} className="rounded-lg border bg-white object-contain mx-auto" data-ai-hint="diamond crystal lattice" />
-                        <p className="mt-2 font-semibold">الألماس</p>
-                    </div>
-                    <div className="text-center">
-                        <Image src="https://i.ibb.co/hxDpdff6/image.png" alt="بنية الجرافيت" width={150} height={150} className="rounded-lg border bg-white object-contain mx-auto" data-ai-hint="graphite layers structure" />
-                        <p className="mt-2 font-semibold">الجرافيت</p>
-                    </div>
-                    <div className="text-center">
-                        <Image src="https://i.ibb.co/4gWnRHKQ/image.png" alt="بنية الكوارتز" width={150} height={150} className="rounded-lg border bg-white object-contain mx-auto" data-ai-hint="silicon dioxide lattice" />
-                        <p className="mt-2 font-semibold">الكوارتز</p>
-                    </div>
-                </CardContent>
-            </Card>
-
         </div>
         
         <div className="space-y-4 mt-8">
