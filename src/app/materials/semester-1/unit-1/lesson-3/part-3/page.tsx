@@ -146,8 +146,8 @@ export default function LessonPartPage() {
                      <Image
                         src="https://i.ibb.co/XzCHd71/silicon-dioxide.png"
                         alt="بنية ثاني أكسيد السيليكون"
-                        width={150}
-                        height={150}
+                        width={200}
+                        height={200}
                         className="rounded-lg border bg-white object-contain"
                         data-ai-hint="silicon dioxide lattice"
                     />
