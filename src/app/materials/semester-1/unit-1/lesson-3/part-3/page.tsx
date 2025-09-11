@@ -95,10 +95,10 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                     imageContent={
                         <Image
-                            src="https://ibb.co/gFvkRvB1"
+                            src="https://i.ibb.co/YTDHLDq/image.jpg"
                             alt="بنية الألماس"
-                            width={180}
-                            height={180}
+                            width={150}
+                            height={150}
                             className="rounded-lg border bg-white object-contain"
                             data-ai-hint="diamond crystal lattice"
                         />
@@ -171,7 +171,7 @@ export default function LessonPartPage() {
             <Card>
                 <CardHeader>
                     <CardTitle>مقارنة بصرية</CardTitle>
-                    <CardDescription>لاحظ الفروقات في البنية البلورية للمواد الشبكية التساهمية.</CardDescription>
+                    <CardDescription>لاحظ الفروقات في البنية البلورية للمواد الشبكية التساهمية</CardDescription>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center">
                     <div className="text-center">
