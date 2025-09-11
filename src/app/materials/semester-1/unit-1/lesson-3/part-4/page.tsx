@@ -71,8 +71,8 @@ export default function LessonPartPage() {
                     <Image 
                         src="https://i.ibb.co/DPXZq5v8/image.jpg" 
                         alt="الرابطة الفلزية" 
-                        width={250} 
-                        height={180} 
+                        width={200} 
+                        height={144} 
                         className="rounded-lg mt-2 object-contain" 
                         data-ai-hint="metallic bond sea of electrons"
                     />
@@ -136,3 +136,6 @@ export default function LessonPartPage() {
   );
 }
 
+
+
+    
