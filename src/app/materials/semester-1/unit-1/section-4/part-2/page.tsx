@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import Image from 'next/image';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 
 const lessonInfo = {
@@ -20,7 +21,7 @@ const lessonInfo = {
     ],
     lessonContent: `<p>إلى جانب الحالات الثلاث التي درسناها توجد حالة رابعة ومثيرة للمادة تسمى البلازما على الرغم من أنها قد تبدو غريبة إلا أنها الحالة الأكثر شيوعًا في الكون حيث تشكل النجوم والشمس</p>`,
     lessonId: "/materials/semester-1/unit-1/section-4/part-2",
-    staticQuizzes: { lvl1: [], lvl2: [], lvl3: [] }, // No quiz for this section
+    staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/section-4/part-1",
     nextLesson: "/materials/semester-1/unit-1/section-5",
     previousLessonTitle: "الجزء السابق: الربط بالعلوم",
@@ -31,9 +32,8 @@ export default function LessonPartPage() {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
      useEffect(() => {
-        // This is a placeholder for future logic.
-        if (completedInteractive.size > 0) {
-            // console.log('Interactive questions completed:', completedInteractive);
+        if (completedInteractive.size >= 2) {
+            // Logic to mark lesson as complete can go here
         }
     }, [completedInteractive]);
 
@@ -49,7 +49,7 @@ export default function LessonPartPage() {
                 cardIcon={<Star className="h-6 w-6 text-primary" />}
                  imageContent={
                     <Image
-                        src="https://i.ibb.co/67zRnBqJ/image.jpg"
+                        src="https://i.ibb.co/67zRnBq/image.jpg"
                         alt="حالة البلازما"
                         width={300}
                         height={200}
@@ -116,29 +116,19 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="ما هي الخاصية الأساسية للبلازما التي تجعلها فعالة في تكسير روابط النفايات؟"
-                  options={[
-                      "لونها المميز",
-                      "قدرتها على توصيل الكهرباء",
-                      "الطاقة الهائلة التي تختزنها",
-                      "شكلها وحجمها المتغيران"
-                  ]}
-                  correctAnswerIndex={2}
-                  explanation="الطاقة الهائلة المختزنة في البلازما هي التي تسمح بتكسير الروابط الكيميائية القوية في جميع أنواع النفايات وتحويلها إلى عناصرها الأولية"
+                  question={staticQuizLvl1[0].question}
+                  options={staticQuizLvl1[0].options as string[]}
+                  correctAnswerIndex={staticQuizLvl1[0].correctAnswerIndex}
+                  explanation={staticQuizLvl1[0].explanation as string}
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="ما هي السلبية الرئيسية المذكورة لتقنية محول النفايات البلازمي؟"
-                  options={[
-                      "تنتج غازات دفيئة أكثر من الحرق",
-                      "تحتاج إلى مساحات واسعة جدًا",
-                      "لا يمكنها معالجة النفايات العضوية",
-                      "ارتفاع تكلفة الإنشاء الأولية"
-                  ]}
-                  correctAnswerIndex={3}
-                  explanation="ذكر النص أن من أهم سلبيات تقنية محول النفايات البلازمي هو ارتفاع التكلفة الأولية لإنشاء المحولات"
+                  question={staticQuizLvl1[1].question}
+                  options={staticQuizLvl1[1].options as string[]}
+                  correctAnswerIndex={staticQuizLvl1[1].correctAnswerIndex}
+                  explanation={staticQuizLvl1[1].explanation as string}
               />
           </div>
         </div>

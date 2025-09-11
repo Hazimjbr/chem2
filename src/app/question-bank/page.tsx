@@ -37,6 +37,9 @@ import * as unit1Lesson3Part3Exam from '@/app/materials/semester-1/unit-1/lesson
 import * as unit1Lesson3Part4Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-4/exam';
 import * as unit1Lesson3Part5Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-5/exam';
 import * as unit1ReviewExam from '@/app/materials/semester-1/unit-1/section-5/exam';
+import * as enrichmentPart1Exam from '@/app/materials/semester-1/unit-1/section-4/part-1/exam';
+import * as enrichmentPart2Exam from '@/app/materials/semester-1/unit-1/section-4/part-2/exam';
+
 
 interface SourcedQuizQuestion extends BaseQuizQuestion {
     id: string; // Unique ID for each question
@@ -75,6 +78,8 @@ const examModules = {
     '/materials/semester-1/unit-1/lesson-3/part-3': unit1Lesson3Part3Exam,
     '/materials/semester-1/unit-1/lesson-3/part-4': unit1Lesson3Part4Exam,
     '/materials/semester-1/unit-1/lesson-3/part-5': unit1Lesson3Part5Exam,
+    '/materials/semester-1/unit-1/section-4/part-1': enrichmentPart1Exam,
+    '/materials/semester-1/unit-1/section-4/part-2': enrichmentPart2Exam,
     '/materials/semester-1/unit-1/section-5': unit1ReviewExam,
 };
 

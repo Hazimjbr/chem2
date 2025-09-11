@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 const lessonInfo = {
     lessonTitle: "الإثراء والتوسع",
@@ -20,7 +21,7 @@ const lessonInfo = {
     ],
     lessonContent: `<p>في هذا القسم سنرى كيف أن المفاهيم النظرية التي درسناها في هذه الوحدة لها تطبيقات عملية ومباشرة في عالمنا من التنبؤ بالطقس إلى طهي الطعام وحتى إنقاذ حياة البشر</p>`,
     lessonId: "/materials/semester-1/unit-1/section-4/part-1",
-    staticQuizzes: { lvl1: [], lvl2: [], lvl3: [] }, // No quiz for this section
+    staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-5",
     nextLesson: "/materials/semester-1/unit-1/section-4/part-2",
     previousLessonTitle: "الجزء السابق: المواد الصلبة البلورية الأيونية",
@@ -31,10 +32,8 @@ export default function LessonPartPage() {
      const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     useEffect(() => {
-        // This is a placeholder for future logic.
-        // For now, it doesn't do anything besides satisfying the component's need for this state.
-        if (completedInteractive.size > 0) {
-            // console.log('Interactive questions completed:', completedInteractive);
+        if (completedInteractive.size >= 2) {
+            // Logic to mark lesson as complete can go here
         }
     }, [completedInteractive]);
 
@@ -93,29 +92,19 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="لماذا يطهى الطعام بشكل أسرع في طنجرة الضغط؟"
-                  options={[
-                      "لأن الضغط المنخفض يقلل من درجة الغليان",
-                      "لأن الضغط المرتفع يرفع درجة غليان الماء فوق 100°C",
-                      "لأن البخار يتركز في الأعلى فقط",
-                      "لأن الصمام يمنع خروج الحرارة"
-                  ]}
-                  correctAnswerIndex={1}
-                  explanation={<>العلاقة بين الضغط ودرجة الغليان طردية في طنجرة الضغط يزداد الضغط مما يرفع درجة غليان الماء والطهي عند درجة حرارة أعلى يسرّع من نضج الطعام</>}
+                  question={staticQuizLvl1[0].question}
+                  options={staticQuizLvl1[0].options as string[]}
+                  correctAnswerIndex={staticQuizLvl1[0].correctAnswerIndex}
+                  explanation={staticQuizLvl1[0].explanation as string}
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="أي قانون من قوانين الغازات يفسر بشكل أساسي سبب انفجار بالون الطقس عند وصوله لارتفاعات عالية؟"
-                  options={[
-                      "قانون شارل (العلاقة بين الحجم والحرارة)",
-                      "قانون بويل (العلاقة بين الحجم والضغط)",
-                      "قانون جاي لوساك (العلاقة بين الضغط والحرارة)",
-                      "قانون أفوجادرو (العلاقة بين الحجم والمولات)"
-                  ]}
-                  correctAnswerIndex={1}
-                  explanation="عند الارتفاعات العالية يقل الضغط الجوي الخارجي بشكل كبير ووفقًا لقانون بويل يتناسب حجم الغاز عكسيًا مع الضغط لذا يتمدد الغاز داخل البالون بشكل هائل حتى ينفجر"
+                  question={staticQuizLvl1[1].question}
+                  options={staticQuizLvl1[1].options as string[]}
+                  correctAnswerIndex={staticQuizLvl1[1].correctAnswerIndex}
+                  explanation={staticQuizLvl1[1].explanation as string}
               />
           </div>
         </div>
