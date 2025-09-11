@@ -67,7 +67,7 @@ export default function LessonPartPage() {
                 cardIcon={<Atom className="h-6 w-6" />}
                 imageContent={
                     <Image
-                        src="https://i.ibb.co/DPXZq5v/image.jpg"
+                        src="https://i.ibb.co/DPXZq5v8/image.jpg"
                         alt="الرابطة الفلزية"
                         width={200}
                         height={200}
