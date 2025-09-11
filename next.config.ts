@@ -44,6 +44,12 @@ const nextConfig: NextConfig = {
         hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hazim-jaber.imgbb.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
