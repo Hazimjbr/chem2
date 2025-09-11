@@ -95,10 +95,10 @@ export default function LessonPartPage() {
                     cardIcon={<Diamond className="h-6 w-6" />}
                     imageContent={
                         <Image
-                            src="https://ibb.co/gFvkRvB"
+                            src="https://ibb.co/gFvkRvB1"
                             alt="بنية الألماس"
-                            width={200}
-                            height={200}
+                            width={180}
+                            height={180}
                             className="rounded-lg border bg-white object-contain"
                             data-ai-hint="diamond crystal lattice"
                         />
