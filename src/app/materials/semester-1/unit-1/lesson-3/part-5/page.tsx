@@ -67,7 +67,7 @@ export default function LessonPartPage() {
                 cardIcon={<Atom className="h-6 w-6" />}
                 imageContent={
                     <Image
-                        src="https://i.ibb.co/DPXZq5v8/image.jpg"
+                        src="https://i.ibb.co/rGJN0yG8/1.jpg"
                         alt="الرابطة الأيونية"
                         width={200}
                         height={133}
@@ -143,3 +143,6 @@ export default function LessonPartPage() {
   );
 }
 
+
+
+    
