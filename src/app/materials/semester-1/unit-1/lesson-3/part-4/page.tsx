@@ -72,7 +72,7 @@ export default function LessonPartPage() {
                 <CardContent className="flex flex-col items-center justify-center p-2">
                     <p className="text-center font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
                     <Image 
-                        src="https://i.ibb.co/DPXZq5v/image.png" 
+                        src="https://i.ibb.co/DPXZq5v8/image.jpg" 
                         alt="الرابطة الفلزية" 
                         width={250} 
                         height={180} 
