@@ -19,7 +19,7 @@ const lessonInfo = {
         "أصف الرابطة الأيونية وخصائص المواد الصلبة الأيونية.",
         "أفسر سبب هشاشة المواد الأيونية وقدرة مصاهيرها ومحاليلها على توصيل الكهرباء."
     ],
-    lessonContent: `<p>الآن ننتقل إلى نوع آخر من المواد الصلبة البلورية، وهي المواد الأيونية. تتشكل هذه المواد عادة من تفاعل الفلزات مع اللافلزات، حيث تنتقل الإلكترونات لتكوين أيونات موجبة وسالبة ترتبط بقوى تجاذب كهربائي قوية جدًا.</p>`,
+    lessonContent: `<p>نصل الآن إلى نوع آخر من المواد الصلبة البلورية، وهي المواد الأيونية. تتشكل هذه المواد عادة من تفاعل الفلزات مع اللافلزات، حيث تنتقل الإلكترونات لتكوين أيونات موجبة وسالبة ترتبط بقوى تجاذب كهربائي قوية جدًا.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-5",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-4",
@@ -71,14 +71,14 @@ export default function LessonPartPage() {
                         alt="الرابطة الأيونية"
                         width={200}
                         height={133}
-                        className="rounded-lg object-contain"
+                        className="rounded-lg object-contain h-48 w-auto"
                         data-ai-hint="ionic bond NaCl"
                     />
                 }
             >
                 <div className="p-4 text-center">
                     <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات مختلفة الشحنة</p>
-                    <p className="text-xs text-muted-foreground">تنشأ من تفاعل فلز مع لافلز مثل: KCl , CaO</p>
+                    <p className="text-sm text-foreground">تنشأ من تفاعل فلز مع لافلز مثل: KCl , CaO</p>
                 </div>
             </FlippableCard>
 
