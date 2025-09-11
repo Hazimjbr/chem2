@@ -4,8 +4,9 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, FlaskConical, Stethoscope, Cloud, CookingPot, Zap, Recycle, Building, Star } from 'lucide-react';
 import LessonLayout from '@/components/lesson-layout';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 
 
 const lessonInfo = {
@@ -26,6 +27,19 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+     useEffect(() => {
+        // This is a placeholder for future logic.
+        if (completedInteractive.size > 0) {
+            // console.log('Interactive questions completed:', completedInteractive);
+        }
+    }, [completedInteractive]);
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -76,6 +90,46 @@ export default function LessonPartPage() {
                     </ul>
                 </CardContent>
             </FlippableCard>
+        </div>
+
+        <div className="space-y-4 mt-8">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  questionId="q1"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={handleCorrectAnswer}
+                  question="ما هي الخاصية الأساسية للبلازما التي تجعلها فعالة في تكسير روابط النفايات؟"
+                  options={[
+                      "لونها المميز",
+                      "قدرتها على توصيل الكهرباء",
+                      "الطاقة الهائلة التي تختزنها",
+                      "شكلها وحجمها المتغيران"
+                  ]}
+                  correctAnswerIndex={2}
+                  explanation="الطاقة الهائلة المختزنة في البلازما هي التي تسمح بتكسير الروابط الكيميائية القوية في جميع أنواع النفايات وتحويلها إلى عناصرها الأولية"
+              />
+               <InteractiveQuestionCard 
+                  questionId="q2"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={handleCorrectAnswer}
+                  question="ما هي السلبية الرئيسية المذكورة لتقنية محول النفايات البلازمي؟"
+                  options={[
+                      "تنتج غازات دفيئة أكثر من الحرق",
+                      "تحتاج إلى مساحات واسعة جدًا",
+                      "لا يمكنها معالجة النفايات العضوية",
+                      "ارتفاع تكلفة الإنشاء الأولية"
+                  ]}
+                  correctAnswerIndex={3}
+                  explanation="ذكر النص أن من أهم سلبيات تقنية محول النفايات البلازمي هو ارتفاع التكلفة الأولية لإنشاء المحولات"
+              />
+          </div>
         </div>
     </LessonLayout>
   );
