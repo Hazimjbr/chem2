@@ -23,53 +23,29 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <span>وعاء حجمه </span>
-            <span dir="ltr" className="inline-block mx-1">1.64L</span>
-            <span> يحتوي على </span>
-            <span dir="ltr" className="inline-block mx-1">1.1g</span>
-            <span> من </span>
-            <span dir="ltr" className="inline-block mx-1"><InlineMath math="CO_2"/></span>
-            <span> و </span>
-            <span dir="ltr" className="inline-block mx-1">1.6g</span>
-            <span> من </span>
-            <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
-            <span> وكتلة مجهولة من </span>
-            <span dir="ltr" className="inline-block mx-1"><InlineMath math="N_2"/></span>
-            <span> عند درجة حرارة </span>
-            <span dir="ltr" className="inline-block mx-1">27^\circ C</span>
-            <span> وضغط </span>
-            <span dir="ltr" className="inline-block mx-1">1.5atm</span>
-            <span> إذا علمت أن الكتل المولية </span>
-            <span dir="ltr" className="inline-block mx-1">C=12 N=14 O=16</span>
-            <span> فإن الضغوط الجزئية للغازات (</span>
-            <span dir="ltr" className="inline-block mx-1">O_2 / CO_2</span>
-            <span>) على الترتيب هي</span>
+            <span>إذا كانت درجة تجمد محلول A تساوي </span>
+            <span dir="ltr" className="inline-block mx-1">-372C</span>
+            <span> ودرجة تجمد B تساوي </span>
+            <span dir="ltr" className="inline-block mx-1">-558C</span>
+            <span> فإن العبارة الصحيحة</span>
         </>
     ),
     options: [
-        "0.025 / 0.050",
-        "0.050 / 0.025",
-        "0.750 / 0.375",
-        "0.5 / 0.5"
+        "الضغط البخاري للمحلول A > الضغط البخاري للمحلول B",
+        "درجة غليان المحلول A > درجة غليان المحلول B",
+        "تركيز المحلول A > تركيز المحلول B",
+        "جميع ما ذكر صحيح"
     ],
-    correctAnswerIndex: 2,
+    correctAnswerIndex: 0,
     explanation: (
         <>
-            <span>نحسب عدد مولات الغازات المعلومة</span>
-            <span dir="ltr" className="block text-left"><InlineMath math="n_{CO_2} = \frac{1.1g}{44g/mol} = 0.025mol"/></span>
-            <span dir="ltr" className="block text-left"><InlineMath math="n_{O_2} = \frac{1.6g}{32g/mol} = 0.050mol"/></span>
-            <span>نحسب عدد المولات الكلي من قانون الغاز المثالي</span>
-            <span dir="ltr" className="block text-left"><InlineMath math="n_{total} = \frac{PV}{RT} = \frac{1.5 \times 1.64}{0.0821 \times 300} \approx 0.1mol"/></span>
-            <span>نحسب عدد مولات النيتروجين</span>
-            <span dir="ltr" className="block text-left"><InlineMath math="n_{N_2} = n_{total} - n_{CO_2} - n_{O_2} = 0.1 - 0.025 - 0.050 = 0.025mol"/></span>
-            <span>نحسب الضغوط الجزئية باستخدام قانون دالتون</span>
-            <span dir="ltr" className="block text-left"><InlineMath math="P_{CO_2} = \frac{0.025}{0.1} \times 1.5 = 0.375atm"/></span>
-            <span dir="ltr" className="block text-left"><InlineMath math="P_{O_2} = \frac{0.050}{0.1} \times 1.5 = 0.750atm"/></span>
-            <span>الترتيب المطلوب هو (O₂ / CO₂) أي (0750 / 0375)</span>
+            <span>الانخفاض في درجة التجمد يتناسب طرديًا مع التركيز ودرجة الغليان وعكسيًا مع الضغط البخاري</span>
+            <span>بما أن الانخفاض في درجة تجمد B أكبر فإن تركيزه أعلى ودرجة غليانه أعلى وضغطه البخاري أقل</span>
+            <span>وبالتالي فإن المحلول A له ضغط بخاري أعلى وهو الخيار الصحيح</span>
         </>
     ),
     level: 3,
-    source: "مقترح - الوحدة 1 / قانون دالتون والغاز المثالي"
+    source: "مقترح - الوحدة 2 / الخصائص الجامعة"
 };
 
 
@@ -116,7 +92,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal" dir="rtl">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
