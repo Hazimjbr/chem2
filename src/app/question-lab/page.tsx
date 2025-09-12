@@ -20,27 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <span>إذا علمت أن كثافة الماس</span>
-            <span dir="ltr" className="inline-block mx-1">3.5g/ml</span>
-            <span>وكثافة الغرافيت</span>
-            <span dir="ltr" className="inline-block mx-1">2.3g/ml</span>
-            <span>فإن كثافة بكمنسترفولرين</span>
-        </>
-    ),
-    options: [
-        "أكبر لأنه يحتوي عدد ذرات C أكبر في جزئياته",
-        "أقل لأنه يحتوي عدد ذرات C أقل في جزئياته",
-        "أكبر لأنه يحتوي عدد ذرات C أكبر في بنائه الشبكي",
-        "أقل لأنه يحتوي عدد ذرات C أقل في بنائه الشبكي"
-    ],
-    correctAnswerIndex: 1,
-    explanation: "كثافة البكمنسترفولرين أقل من الماس والغرافيت لأن جزيئاته الكروية (C60) ترتبط بقوى لندن الضعيفة مما يؤدي إلى وجود فراغات أكبر بينها في البناء البلوري على عكس الألماس والغرافيت اللذين يمتلكان بنى شبكية تساهمية أكثر تراصا وقوة",
-    level: 3,
-    source: "الوحدة 1 / الدرس 3 / الجزء 3 المواد الصلبة الشبكية التساهمية"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
