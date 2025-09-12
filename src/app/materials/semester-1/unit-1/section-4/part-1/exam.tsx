@@ -54,7 +54,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             <>نسبة التنتاليوم في السبيكة <span dir="ltr">77%</span></>
         ],
         correctAnswerIndex: 3,
-        explanation: <>العبارة الخاطئة هي أن نسبة التنتاليوم <span dir="ltr">77%</span>. وفقًا للنص نسبة التيتانيوم (Ti) هي <span dir="ltr">77%</span>، بينما نسبة التنتاليوم (Ta) هي <span dir="ltr">6%</span>، والنيوبيوم (Nb) هي <span dir="ltr">17%</span>.</>
+        explanation: <>العبارة الخاطئة هي أن نسبة التنتاليوم <span dir="ltr">77%</span> وفقًا للنص نسبة التيتانيوم (Ti) هي <span dir="ltr">77%</span>، بينما نسبة التنتاليوم (Ta) هي <span dir="ltr">6%</span>، والنيوبيوم (Nb) هي <span dir="ltr">17%</span></>
     }
 ];
 
