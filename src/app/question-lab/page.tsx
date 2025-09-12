@@ -20,19 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "العبارة التي تتفق مع نظرية الحركة الجزيئية",
-    options: [
-        "جزيئات الغاز في حركة مستمرة منتظمة",
-        "تتصادم الجزيئات تصادمات مرنة مع نفسها فقط",
-        "متوسط طاقة الجزيئات ثابت عند نفس الحرارة",
-        "سرعة الجزيئات ثابتة عند نفس الحرارة"
-    ],
-    correctAnswerIndex: 2,
-    explanation: "وفقا لنظرية الحركة الجزيئية فإن متوسط الطاقة الحركية لجسيمات الغاز يتناسب طرديا مع درجة الحرارة المطلقة وبالتالي يكون ثابتًا عند نفس درجة الحرارة بينما سرعات الجسيمات الفردية تكون مختلفة وليست ثابتة",
-    level: 1,
-    source: "الوحدة 1 / الدرس 1 / الجزء 1"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
