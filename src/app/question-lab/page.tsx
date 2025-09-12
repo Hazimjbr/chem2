@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <p>ادرس الرسم المجاور والذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية: H=1, N=14, Cl=35. إذا تم تسخين وعاء التفاعل قبل إجراء التجربة، فإن موقع الغاز الأبيض الجديد سوف يكون:</p>
+            <p>ادرس الرسم المجاور والذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية: H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون:</p>
             <div className="flex justify-center my-2">
                 <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
             </div>
@@ -38,9 +38,9 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 2,
     explanation: (
         <>
-            <span>وفقًا لقانون جراهام، تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
+            <span>وفقًا لقانون جراهام تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
             <span dir="ltr" className="inline-block"><InlineMath math="r_1/r_2 = \sqrt{Mr_2/Mr_1}"/></span>
-            <span>). هذه النسبة لا تعتمد على درجة الحرارة. تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة، لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع.</span>
+            <span>) هذه النسبة لا تعتمد على درجة الحرارة تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع</span>
         </>
     ),
     level: 3,
