@@ -14,7 +14,7 @@ export interface QuizQuestion {
 const GasSamplesGraph = () => (
     <div className="flex justify-center my-4">
         <Image 
-            src="https://i.ibb.co/VMy4Yh3/graphite.png" 
+            src="https://i.ibb.co/Cpn3JgfY/3.png" 
             alt="أربع عينات من الغازات"
             width={300}
             height={200}
@@ -60,7 +60,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون جاي-لوساك يتناسب الضغط طرديًا مع درجة الحرارة عند ثبات الحجم بما أن وعاء F₂ تم تسخينه (زيادة الحرارة) فسيكون ضغطه هو الأعلى بينما وعاء H₂ تم تبريده فسيكون ضغطه هو الأقل"
     },
     {
-        question: <div><p>اعتمادا على الرسم المجاور الذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
+        question: <div><p>اعتمادا على الرسم المجاور الذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر ضغط هي:</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         "options": [
             "D",
             "B",
@@ -71,7 +71,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         "explanation": "وفقًا لقانون الغاز المثالي (PV=nRT) عند ثبات الحجم (V) والحرارة (T) فإن الضغط (P) يتناسب طرديًا مع عدد المولات (n) العينة B تحتوي على أكبر عدد من المولات (0.8mol) لذا فهي الأعلى ضغطًا"
     },
     {
-        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر كثافة هي:</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
+        question: <div><p>اعتمادا على الرسم المجاور والذي يمثل أوعية متساوية الحجم لغازات كتلها المولية (D:32, C:46, B:18, A:20)g/mol فإن العينة التي لها أكبر كثافة هي:</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment" /></div>,
         "options": [
             "C",
             "B",
