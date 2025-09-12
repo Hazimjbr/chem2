@@ -97,7 +97,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك متوسط الطاقة الحركية للجزيئات عند درجة الحرارة الأكبر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/ZJpPq6f/22.png"
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -381,4 +381,3 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
-
