@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -33,10 +32,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "عند الارتفاعات العالية يقل الضغط الجوي الخارجي بشكل كبير ووفقًا لقانون بويل يتناسب حجم الغاز عكسيًا مع الضغط لذا يتمدد الغاز داخل البالون بشكل هائل حتى ينفجر"
-    }
-];
-
-export const staticQuizLvl2: QuizQuestion[] = [
+    },
     {
         question: "لا تنفجر أواني الضغط بسبب:",
         options: [
@@ -60,4 +56,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
         explanation: "العبارة الخاطئة هي أن نسبة التنتاليوم 77% وفقًا للنص نسبة التيتانيوم (Ti) هي 77% بينما نسبة التنتاليوم (Ta) هي 6% والنيوبيوم (Nb) هي 17%"
     }
 ];
+
+export const staticQuizLvl2: QuizQuestion[] = [];
 export const staticQuizLvl3: QuizQuestion[] = [];
