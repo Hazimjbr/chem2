@@ -20,33 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <span>إذا كانت درجة تجمد محلول A تساوي </span>
-            <span dir="ltr" className="inline-block mx-1">-372C</span>
-            <span> ودرجة تجمد B تساوي </span>
-            <span dir="ltr" className="inline-block mx-1">-558C</span>
-            <span> فإن العبارة الصحيحة</span>
-        </>
-    ),
-    options: [
-        "الضغط البخاري للمحلول A > الضغط البخاري للمحلول B",
-        "درجة غليان المحلول A > درجة غليان المحلول B",
-        "تركيز المحلول A > تركيز المحلول B",
-        "جميع ما ذكر صحيح"
-    ],
-    correctAnswerIndex: 0,
-    explanation: (
-        <>
-            <span>الانخفاض في درجة التجمد يتناسب طرديًا مع التركيز ودرجة الغليان وعكسيًا مع الضغط البخاري</span>
-            <span>بما أن الانخفاض في درجة تجمد B أكبر فإن تركيزه أعلى ودرجة غليانه أعلى وضغطه البخاري أقل</span>
-            <span>وبالتالي فإن المحلول A له ضغط بخاري أعلى وهو الخيار الصحيح</span>
-        </>
-    ),
-    level: 3,
-    source: "مقترح - الوحدة 2 / الخصائص الجامعة"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
