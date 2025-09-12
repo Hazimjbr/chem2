@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -54,6 +55,28 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 3,
         explanation: "العبارة الخاطئة هي أن نسبة التنتاليوم 77% وفقًا للنص نسبة التيتانيوم (Ti) هي 77% بينما نسبة التنتاليوم (Ta) هي 6% والنيوبيوم (Nb) هي 17%"
+    },
+    {
+        question: <><span>غاز ضغطه </span><span dir="ltr"><InlineMath math="100kPa" /></span><span> عند </span><span dir="ltr"><InlineMath math="27^\circ\text{C}" /></span><span> ما هو ضغطه إذا تم تسخينه إلى </span><span dir="ltr"><InlineMath math="127^\circ\text{C}" /></span><span> مع ثبات الحجم</span></>,
+        options: [
+            "133.3kPa",
+            "75kPa",
+            "470kPa",
+            "100kPa"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "أولاً نحول الحرارة إلى كلفن T₁=27+273=300K و T₂=127+273=400K ثم نستخدم P₂ = P₁T₂/T₁ = (100 * 400) / 300 ≈ 133.3kPa"
+    },
+    {
+        question: <><span>يحتوي وعاء على خليط من غاز النيتروجين والأكسجين والهيدروجين إذا كان الضغط الجزئي لغاز النيتروجين يساوي </span><span dir="ltr"><InlineMath math="0.2atm" /></span><span> والضغط الكلي للخليط يساوي </span><span dir="ltr"><InlineMath math="0.9atm" /></span><span> والكسر المولي لغاز الأكسجين يساوي </span><span dir="ltr"><InlineMath math="0.4" /></span><span> فإن الكسر المولي لغاز الهيدروجين يساوي:</span></>,
+        options: [
+            "0.38",
+            "0.22",
+            "0.4",
+            "0.6"
+        ],
+        correctAnswerIndex: 0,
+        explanation: <><span>أولاً، نجد الكسر المولي للنيتروجين: X_N₂ = P_N₂ / P_Total = 0.2atm / 0.9atm ≈ 0.22. بما أن مجموع الكسور المولية يساوي 1، فإن X_H₂ = 1 - X_N₂ - X_O₂ = 1 - 0.22 - 0.4 = 0.38.</span></>
     }
 ];
 
