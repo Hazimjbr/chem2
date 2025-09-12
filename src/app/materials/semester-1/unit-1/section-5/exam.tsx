@@ -287,6 +287,25 @@ export const staticQuizLvl2: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: "يتفاعل 1mol من A مع 1mol من B لإنتاج 3mol من C. بما أن الضغط يتناسب طرديًا مع عدد المولات عند ثبات الحجم والحرارة والعدد الكلي للمولات أصبح 3 فإن الضغط الكلي سيصبح 3atm"
     },
+    {
+        question: (
+            <>
+                <span>إذا خلط </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}" /></span><span> من الغاز A ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}" /></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}" /></span><span> مع </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}" /></span><span> من الغاز B ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}" /></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}" /></span><span> في وعاء حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}" /></span><span> فحدث التفاعل </span><span dir="ltr" className="inline-block"><InlineMath math="A(g) + 2B(g) \rightarrow 3C(g)" /></span><span> فإن الضغط الكلي بعد انتهاء التفاعل</span>
+            </>
+        ),
+        options: [
+            "2atm",
+            "4atm",
+            "3atm",
+            "1atm"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>المادة المحددة للتفاعل هي B (نحتاج 2 مول ولدينا 1 مول فقط) سيتفاعل 05 مول من A مع 1 مول من B وينتج 15 مول من C سيتبقى 05 مول من A العدد الكلي للمولات النهائية = 15 (C) + 05 (A) = 2 مول إذن الضغط النهائي سيكون 2atm</span>
+            </>
+        ),
+    }
 ];
 
 export const staticQuizLvl3: QuizQuestion[] = [
