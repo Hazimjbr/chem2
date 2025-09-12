@@ -362,7 +362,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_2OH"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_4"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_3"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/jkmRgLPw/3.jpg"
+                        src="https://i.ibb.co/hF9Fm0hw/22.png"
                         alt="Vapor Pressure vs Temperature for four liquids"
                         width={400}
                         height={250}
