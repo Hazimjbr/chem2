@@ -39,7 +39,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/MxNjGvNM/22.png"
+                        src="https://i.ibb.co/v6zrQFzZ/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -359,7 +359,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل عدد الجسيمات التي تمتلك الطاقة اللازمة لتبخر السائل الذي له أضعف قوى تجاذب هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/hF9Fm0h/22.png"
+                        src="https://i.ibb.co/hF9Fm0hw/22.png"
                         alt="Vapor Pressure vs Temperature for four liquids"
                         width={400}
                         height={250}
@@ -375,5 +375,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     }
 ];
 
+
+    
 
     
