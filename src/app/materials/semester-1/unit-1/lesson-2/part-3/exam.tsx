@@ -106,26 +106,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
         options: ["70", "100", "25", "0"],
         correctAnswerIndex: 0,
         explanation: "درجة التكاثف هي درجة الحرارة الثابتة التي يتحول عندها الغاز إلى سائل من الرسم البياني نلاحظ أن درجة الحرارة تثبت عند 70°C أثناء عملية التكاثف الخط الأفقي الأول"
-    },
-    {
-        question: (
-            <div className="space-y-4">
-                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن X هي:</p>
-                <div className="flex justify-center my-4">
-                     <Image
-                        src="https://i.ibb.co/GfZ5wtqG/22.png"
-                        alt="منحنى تبريد المادة A"
-                        width={500}
-                        height={300}
-                        className="rounded-lg border bg-white"
-                        data-ai-hint="cooling curve"
-                    />
-                </div>
-            </div>
-        ),
-        options: ["صلب", "سائل", "غاز", "غاز + سائل"],
-        correctAnswerIndex: 3,
-        explanation: "الزمن X يقع على الجزء الأفقي من المنحنى والذي يمثل عملية التكاثف حيث تتحول المادة من غاز إلى سائل وتوجد في الحالتين معًا"
     }
 ];
 
@@ -210,6 +190,26 @@ export const staticQuizLvl2: QuizQuestion[] = [
         options: ["A", "M", "B", "Q"],
         correctAnswerIndex: 2,
         explanation: "التكاثف الأسرع يحدث للسائل الذي يمتلك أقوى قوى ترابط بين جزيئاته وهذا يعني أنه يمتلك أقل ضغط بخاري عند أي درجة حرارة معينة بالنظر إلى الرسم البياني نجد أن السائل B له أقل ضغط بخاري مما يدل على أن قوى الترابط بين جزيئاته هي الأقوى وبالتالي هو الأسرع تكاثفا"
+    },
+    {
+        question: (
+            <div className="space-y-4">
+                <p>اعتمادا على الرسم المجاور والذي يمثل تبريد الغاز A من درجة حرارة <span dir="ltr">100°C</span> إلى درجة حرارة الغرفة <span dir="ltr">25°C</span> فإن الحالة الفيزيائية للمادة A عند الزمن X هي:</p>
+                <div className="flex justify-center my-4">
+                     <Image
+                        src="https://i.ibb.co/GfZ5wtqG/22.png"
+                        alt="منحنى تبريد المادة A"
+                        width={500}
+                        height={300}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="cooling curve"
+                    />
+                </div>
+            </div>
+        ),
+        options: ["صلب", "سائل", "غاز", "غاز + سائل"],
+        correctAnswerIndex: 3,
+        explanation: "الزمن X يقع على الجزء الأفقي من المنحنى والذي يمثل عملية التكاثف حيث تتحول المادة من غاز إلى سائل وتوجد في الحالتين معًا"
     }
 ];
 
