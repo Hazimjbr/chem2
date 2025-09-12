@@ -214,7 +214,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         question: (
             <div className="space-y-4">
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل عدد الجزيئات التي تمتلك الحد الأدنى من الطاقة للتغلب على قوى التجاذب عند درجة الحرارة الأقل هو:</p>
-                <div className="flex justify-center">
+                <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/MxNjGvNM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
@@ -357,7 +357,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         question: (
             <div className="space-y-4">
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block">CH₃CH₂OH</span>, <span dir="ltr" className="font-mono inline-block">CH₄</span>, <span dir="ltr" className="font-mono inline-block">CH₃CH₃</span>, <span dir="ltr" className="font-mono inline-block">CH₃Cl</span> فإن الرمز الذي يمثل عدد الجسيمات التي تمتلك الطاقة اللازمة لتبخر السائل الذي له أضعف قوى تجاذب هو:</p>
-                <div className="flex justify-center">
+                <div className="flex justify-center my-4">
                     <Image
                         src="https://i.ibb.co/hF9Fm0hw/22.png"
                         alt="Vapor Pressure vs Temperature for four liquids"
