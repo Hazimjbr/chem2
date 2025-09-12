@@ -20,7 +20,35 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <span>عينة من غاز محصور عند درجة حرارة</span>
+            <span dir="ltr" className="inline-block mx-1">35°C</span>
+            <span>فإن درجة الحرارة بوحدة</span>
+            <span dir="ltr" className="inline-block mx-1">°C</span>
+            <span>التي يصبح عندها حجمها مثلي حجمه الأصلي عند ثبات الضغط:</span>
+        </>
+    ),
+    options: ["343", "70", "308", "17.5"],
+    correctAnswerIndex: 0,
+    explanation: (
+        <>
+            <span>أولاً، نحول درجة الحرارة الابتدائية إلى كلفن:</span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_1 = 35 + 273 = 308\text{K}"/></span>
+            <span>. حسب قانون شارل، العلاقة بين الحجم والحرارة طردية:</span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="V_1/T_1 = V_2/T_2"/></span>
+            <span>. بما أن الحجم النهائي مثلي الحجم الأصلي</span>
+            <span dir="ltr" className="inline-block mx-1">(<InlineMath math="V_2 = 2V_1"/>)</span>
+            <span>، فإن درجة الحرارة المطلقة يجب أن تتضاعف أيضًا:</span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_2 = 2 \times T_1 = 2 \times 308 = 616\text{K}"/></span>
+            <span>. أخيرًا، نحول درجة الحرارة النهائية مرة أخرى إلى سيليزيوس:</span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_2(^\circ\text{C}) = 616 - 273 = 343^\circ\text{C}"/></span>
+        </>
+    ),
+    level: 2,
+    source: "قانون شارل",
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -101,7 +129,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
-    
-
-    
