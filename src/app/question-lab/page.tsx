@@ -32,7 +32,7 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 2,
     explanation: "الألماس وثاني أكسيد السيليكون كلاهما مواد عازلة للكهرباء بسبب ارتباط جميع إلكترونات التكافؤ بقوة في روابط تساهمية. أما الجرافيت فهو موصل جيد للكهرباء لوجود إلكترونات حرة الحركة بين طبقاته.",
     level: 3,
-    source: "مقترح - مراجعة الوحدة الأولى"
+    source: "مقترح - الوحدة 1 / المواد الصلبة الشبكية التساهمية"
 };
 
 
@@ -79,7 +79,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
