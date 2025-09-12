@@ -6,7 +6,7 @@ import { InlineMath } from 'react-katex';
 
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: (string | React.ReactNode)[];
     correctAnswerIndex: number;
     explanation: React.ReactNode;
 }
@@ -16,7 +16,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         question: "لماذا يطهى الطعام بشكل أسرع في طنجرة الضغط",
         options: [
             "لأن الضغط المنخفض يقلل من درجة الغليان",
-            "لأن الضغط المرتفع يرفع درجة غليان الماء فوق 100°C",
+            <>لأن الضغط المرتفع يرفع درجة غليان الماء فوق <span dir="ltr">100°C</span></>,
             "لأن البخار يتركز في الأعلى فقط",
             "لأن الصمام يمنع خروج الحرارة"
         ],
