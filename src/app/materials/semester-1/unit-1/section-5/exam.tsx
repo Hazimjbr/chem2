@@ -157,7 +157,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
         question: (
             <div>
                 <p>ادرس الرسم المجاور الذي يمثل تغيرات على غاز محصور أي العبارات الآتية لا تصف التغير الحاصل من الحالة B إلى الحالة A بشكل صحيح</p>
-                <Image src="https://i.ibb.co/Xxd9x9gK/3.png" alt="Piston states" width={300} height={150} className="mx-auto my-2 rounded-lg" data-ai-hint="gas piston" />
+                <Image src="https://i.ibb.co/Xxd9x9K/3.png" alt="Piston states" width={300} height={150} className="mx-auto my-2 rounded-lg" data-ai-hint="gas piston" />
             </div>
         ),
         options: [
@@ -362,7 +362,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور والمتعلق بالمواد <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_2OH"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_4"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3CH_3"/></span>, <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> فإن الرمز الذي يمثل الطاقة اللازمة لتبخر السائل <span dir="ltr" className="font-mono inline-block"><InlineMath math="CH_3Cl"/></span> هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/hF9Fm0h/22.png"
+                        src="https://i.ibb.co/jkmRgLPw/3.jpg"
                         alt="Vapor Pressure vs Temperature for four liquids"
                         width={400}
                         height={250}
