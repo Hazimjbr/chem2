@@ -49,7 +49,7 @@ export default function LessonPartPage() {
                 cardIcon={<Star className="h-6 w-6 text-primary" />}
                  imageContent={
                     <Image
-                        src="https://i.ibb.co/67zRnBq/image.jpg"
+                        src="https://i.ibb.co/67zRnBqJ/image.jpg"
                         alt="حالة البلازما"
                         width={300}
                         height={200}
