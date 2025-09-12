@@ -276,7 +276,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <span> أي أن الحجم يبقى ثابتًا</span>
             </>
         )
-    }
+    },
+    {
+        question: (
+            <>
+                <span>إذا خلط </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}"/></span><span> من الغاز A ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}"/></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}"/></span><span> مع </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}"/></span><span> من الغاز B ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}"/></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}"/></span><span> في وعاء حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}"/></span><span> فحدث التفاعل </span><span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow 3C(g)"/></span><span> فإن الضغط الكلي بعد انتهاء التفاعل:</span>
+            </>
+        ),
+        options: ["2", "4", "3", "1"],
+        correctAnswerIndex: 2,
+        explanation: "يتفاعل 1mol من A مع 1mol من B لإنتاج 3mol من C. بما أن الضغط يتناسب طرديًا مع عدد المولات عند ثبات الحجم والحرارة والعدد الكلي للمولات أصبح 3 فإن الضغط الكلي سيصبح 3atm"
+    },
 ];
 
 export const staticQuizLvl3: QuizQuestion[] = [
@@ -568,7 +578,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     },
     {
-        "questionText": (
+        questionText: (
             <>
                 <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
             </>
@@ -658,5 +668,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
 
 
 
+
+    
 
     
