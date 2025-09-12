@@ -20,7 +20,27 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <span>إذا خلط </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}" /></span><span> من الغاز A ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}" /></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}" /></span><span> مع </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}" /></span><span> من الغاز B ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}" /></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}" /></span><span> في وعاء حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}" /></span><span> فحدث التفاعل </span><span dir="ltr" className="inline-block"><InlineMath math="A(g) + 2B(g) \rightarrow 3C(g)" /></span><span> فإن الضغط الكلي بعد انتهاء التفاعل</span>
+        </>
+    ),
+    options: [
+        "2atm",
+        "4atm",
+        "3atm",
+        "1atm"
+    ],
+    correctAnswerIndex: 0,
+    explanation: (
+        <>
+            <span>المادة المحددة للتفاعل هي B (نحتاج 2 مول ولدينا 1 مول فقط). سيتفاعل 0.5 مول من A مع 1 مول من B، وينتج 1.5 مول من C. سيتبقى 0.5 مول من A. العدد الكلي للمولات النهائية = 1.5 (C) + 0.5 (A) = 2 مول. إذن الضغط النهائي سيكون 2atm.</span>
+        </>
+    ),
+    level: 2,
+    source: "مراجعة الوحدة الأولى"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
