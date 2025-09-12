@@ -32,7 +32,7 @@ const newQuestion: Question | null = {
         "1.4g",
         "2.8g"
     ],
-    correctAnswerIndex: 2,
+    correctAnswerIndex: 0,
     explanation: (
         <>
             <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
@@ -46,8 +46,6 @@ const newQuestion: Question | null = {
             <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
             <br />
             <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
-            <br />
-            <span className="text-destructive font-bold">ملاحظة هناك خطأ في الخيارات الصحيحة والصواب هو 0.7g</span>
         </>
     ),
     level: 3,
