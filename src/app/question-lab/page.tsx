@@ -29,33 +29,33 @@ const newQuestion: Question | null = {
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C" /></span>
             <span> وضغط </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm" /></span>
-            <span>. إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
+            <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol" /></span>
-            <span>، فإن كتلة الأكسجين في الوعاء تساوي:</span>
+            <span> فإن كتلة الأكسجين في الوعاء تساوي:</span>
         </>
     ),
     options: [
-        "5 g",
-        "10 g",
-        "10.7 g",
-        "5.4 g"
+        "5g",
+        "10g",
+        "10.7g",
+        "5.4g"
     ],
     correctAnswerIndex: 1,
     explanation: (
         <>
-            <span>أولاً، نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
+            <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
-            <span>. يجب تحويل الحرارة إلى كلفن: </span>
+            <span> يجب تحويل الحرارة إلى كلفن: </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
-            <span>. إذن، </span>
+            <span> إذن </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
-            <span>. ثانياً، نحسب الكتلة. انتبه إلى أن غاز الأكسجين هو </span>
+            <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
-            <span>، لذا كتلته المولية </span>
+            <span> لذا كتلته المولية </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
-            <span>. الكتلة = </span>
+            <span> الكتلة = </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
-            <span>، وهي الأقرب إلى 10g.</span>
+            <span> وهي الأقرب إلى 10g</span>
         </>
     ),
     level: 3,
