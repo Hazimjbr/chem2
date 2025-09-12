@@ -223,6 +223,33 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "من قانون الغاز المثالي يمكن اشتقاق علاقة الكثافة: d = (P × Mr) / (R × T) الكثافة (d) تتناسب طرديًا مع الضغط وعكسيًا مع الحرارة إذا أصبح الضغط P/2 والحرارة 2T فإن الكثافة الجديدة ستتناسب مع (P/2)/(2T) = P/(4T) أي أنها ستقل إلى الربع"
+    },
+    {
+        question: (
+            <>
+                <span>عينة من غاز محصور عند درجة حرارة</span>
+                <span dir="ltr" className="inline-block mx-1">35°C</span>
+                <span>فإن درجة الحرارة بوحدة</span>
+                <span dir="ltr" className="inline-block mx-1">°C</span>
+                <span>التي يصبح عندها حجمها مثلي حجمه الأصلي عند ثبات الضغط:</span>
+            </>
+        ),
+        options: ["343", "70", "308", "17.5"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولاً، نحول درجة الحرارة الابتدائية إلى كلفن:</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_1 = 35 + 273 = 308\text{K}"/></span>
+                <span>. حسب قانون شارل، العلاقة بين الحجم والحرارة طردية:</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="V_1/T_1 = V_2/T_2"/></span>
+                <span>. بما أن الحجم النهائي مثلي الحجم الأصلي</span>
+                <span dir="ltr" className="inline-block mx-1">(<InlineMath math="V_2 = 2V_1"/>)</span>
+                <span>، فإن درجة الحرارة المطلقة يجب أن تتضاعف أيضًا:</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_2 = 2 \times T_1 = 2 \times 308 = 616\text{K}"/></span>
+                <span>. أخيرًا، نحول درجة الحرارة النهائية مرة أخرى إلى سيليزيوس:</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_2(^\circ\text{C}) = 616 - 273 = 343^\circ\text{C}"/></span>
+            </>
+        ),
     }
 ];
 
@@ -482,7 +509,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     {
         question: (
             <>
-                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="27^\circ C"/></span><span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
             </>
         ),
         options: [
@@ -576,3 +603,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
