@@ -382,7 +382,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <p>اعتمادا على الرسم البياني، المادة التي لها أعلى درجة غليان معيارية هي:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/PggW2Lh/3.png"
+                        src="https://i.ibb.co/dwTN2WHw/3.png"
                         alt="منحنيات الضغط البخاري"
                         width={400}
                         height={250}
