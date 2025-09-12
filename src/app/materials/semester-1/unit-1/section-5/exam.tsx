@@ -597,19 +597,19 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     },
     {
-        questionText: (
+        question: (
             <>
                 <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
             </>
         ),
-        "options": [
+        options: [
             "0.7g",
             "1.4g",
             "0.35g",
             "2.8g"
         ],
-        "correctAnswerIndex": 0,
-        "explanation": (
+        correctAnswerIndex: 0,
+        explanation: (
             <>
                 <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
                 <br />
@@ -622,11 +622,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
                 <br />
                 <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
-            </>
-        ),
-        "question": (
-            <>
-                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
             </>
         )
     },
@@ -650,7 +645,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "كثافة البكمنسترفولرين أقل من الماس والغرافيت لأن جزيئاته الكروية (C60) ترتبط بقوى لندن الضعيفة مما يؤدي إلى وجود فراغات أكبر بينها في البناء البلوري على عكس الألماس والغرافيت اللذين يمتلكان بنى شبكية تساهمية أكثر تراصا وقوة"
     },
     {
-        questionText: (
+        question: (
             <>
                 <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
                 <div className="flex justify-center my-2">
@@ -664,16 +659,27 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <>
                 <span>أولاً نوحد وحدات الضغط إلى atm P(A) = 350kPa / 101.3kPa/atm ≈ 3.455atm P(W) = 350mmHg / 760mmHg/atm ≈ 0.46atm الحجم الكلي بعد الخلط V(total) = 1L + 2L = 3L ثانياً نستخدم قانون بويل لحساب الضغط الجزئي لكل غاز في الحجم الجديد P_final = (P_initial * V_initial) / V_total P_A_final = (3.455 * 1) / 3 ≈ 1.15atm P_W_final = (0.46 * 2) / 3 ≈ 0.31atm أخيراً نستخدم قانون دالتون P(total) = P_A_final + P_W_final = 1.15 + 0.31 ≈ 1.46atm أقرب إجابة هي 1.5</span>
             </>
-        ),
-        level: 3,
-        question: (
-            <>
-                <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
-                <div className="flex justify-center my-2">
-                    <Image src="https://i.ibb.co/Hpf0bLw3/3.jpg" alt="Connected Vessels" width={250} height={100} />
-                </div>
-            </>
-        ),
+        )
+    },
+    {
+        question: <>
+            <p>ادرس الرسم المجاور والذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
+            <div className="flex justify-center my-2">
+                <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
+            </div>
+        </>,
+        options: [
+            "بين C و D",
+            "على يسار A",
+            "لا يتغير",
+            "على يمين D"
+        ],
+        correctAnswerIndex: 2,
+        explanation: <>
+            <span>وفقًا لقانون جراهام تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
+            <span dir="ltr" className="inline-block"><InlineMath math="r_1/r_2 = \sqrt{Mr_2/Mr_1}"/></span>
+            <span>) هذه النسبة لا تعتمد على درجة الحرارة تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع</span>
+        </>
     }
 ]
     
@@ -691,3 +697,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
     
+
