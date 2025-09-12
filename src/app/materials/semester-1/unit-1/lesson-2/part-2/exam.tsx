@@ -39,7 +39,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور فإن الرمز الذي يمثل الحد الأدنى من الطاقة اللازمة للتبخر هو:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/v6zrQFzZ/22.png"
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
                         alt="Maxwell-Boltzmann distribution curve"
                         width={400}
                         height={250}
@@ -236,7 +236,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <p>اعتمادا على الرسم المجاور، زيادة درجة حرارة منحنى د2 ستؤدي إلى الآتي:</p>
                 <div className="flex justify-center">
                     <Image
-                        src="https://i.ibb.co/ZJpPq6f/22.png"
+                        src="https://i.ibb.co/MxNjGvNM/22.png"
                         alt="مخطط توزيع ماكسويل-بولتزمان"
                         width={400}
                         height={250}
