@@ -23,7 +23,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <span>عينة غاز محصور حجمها</span>
+            <span>عينة من غاز محصور حجمها</span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="1L"/></span>
             <span>، إذا أصبحت قيمة كل من درجة حرارتها المطلقة وضغطها 3 أمثال قيمها الأصلية، فإن حجمها بوحدة L يصبح:</span>
         </>
@@ -34,15 +34,15 @@ const newQuestion: Question | null = {
         <>
             <span>وفقًا للقانون الجامع للغازات:</span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}"/></span>
-            <span>. لدينا</span>
+            <span> لدينا</span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="P_2 = 3P_1"/></span>
             <span> و </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="T_2 = 3T_1"/></span>
-            <span>. بالتعويض: </span>
+            <span> بالتعويض: </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="\frac{P_1 \times 1}{T_1} = \frac{(3P_1) \times V_2}{3T_1}"/></span>
-            <span>. بعد الاختصار، نجد أن </span>
+            <span> بعد الاختصار نجد أن </span>
             <span dir="ltr" className="inline-block mx-1"><InlineMath math="V_2 = 1L"/></span>
-            <span>، أي أن الحجم يبقى ثابتًا.</span>
+            <span> أي أن الحجم يبقى ثابتًا</span>
         </>
     ),
     level: 2,
