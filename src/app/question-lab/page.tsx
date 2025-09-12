@@ -20,7 +20,18 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <span>إذا خلط </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}"/></span><span> من الغاز A ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}"/></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}"/></span><span> مع </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{mol}"/></span><span> من الغاز B ضغطه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{atm}"/></span><span> وحجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}"/></span><span> في وعاء حجمه </span><span dir="ltr" className="inline-block"><InlineMath math="1\text{L}"/></span><span> فحدث التفاعل </span><span dir="ltr" className="inline-block"><InlineMath math="A(g) + B(g) \rightarrow 3C(g)"/></span><span> فإن الضغط الكلي بعد انتهاء التفاعل:</span>
+        </>
+    ),
+    options: ["2", "4", "3", "1"],
+    correctAnswerIndex: 2,
+    explanation: "يتفاعل 1mol من A مع 1mol من B لإنتاج 3mol من C. بما أن الضغط يتناسب طرديًا مع عدد المولات عند ثبات الحجم والحرارة، والعدد الكلي للمولات أصبح 3، فإن الضغط الكلي سيصبح 3atm.",
+    level: 2,
+    source: "قانون دالتون للضغوط الجزئية"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
