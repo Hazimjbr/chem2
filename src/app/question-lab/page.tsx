@@ -23,13 +23,13 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة 27°C وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
         </>
     ),
     options: [
         "0.7g",
-        "0.35g",
         "1.4g",
+        "0.35g",
         "2.8g"
     ],
     correctAnswerIndex: 0,
