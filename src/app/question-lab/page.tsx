@@ -20,25 +20,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
-            <div className="flex justify-center my-2">
-                <Image src="https://i.ibb.co/Hpf0bLw3/3.jpg" alt="Connected Vessels" width={250} height={100} />
-            </div>
-        </>
-    ),
-    options: ["1.5", "0.5", "2", "3"],
-    correctAnswerIndex: 0,
-    explanation: (
-        <>
-            <span>أولاً نوحد وحدات الضغط إلى atm P(A) = 350kPa / 101.3kPa/atm ≈ 3.455atm P(W) = 350mmHg / 760mmHg/atm ≈ 0.46atm الحجم الكلي بعد الخلط V(total) = 1L + 2L = 3L ثانياً نستخدم قانون بويل لحساب الضغط الجزئي لكل غاز في الحجم الجديد P_final = (P_initial * V_initial) / V_total P_A_final = (3.455 * 1) / 3 ≈ 1.15atm P_W_final = (0.46 * 2) / 3 ≈ 0.31atm أخيراً نستخدم قانون دالتون P(total) = P_A_final + P_W_final = 1.15 + 0.31 ≈ 1.46atm أقرب إجابة هي 1.5</span>
-        </>
-    ),
-    level: 3,
-    source: "مراجعة الوحدة الأولى"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -119,3 +101,5 @@ export default function QuestionLabPage() {
         </div>
     );
 }
+
+    
