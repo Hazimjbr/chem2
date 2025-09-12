@@ -20,7 +20,39 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة 27°C وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+        </>
+    ),
+    options: [
+        "0.7g",
+        "0.35g",
+        "1.4g",
+        "2.8g"
+    ],
+    correctAnswerIndex: 2,
+    explanation: (
+        <>
+            <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+            <br />
+            <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+            <br />
+            <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+            <br />
+            <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+            <br />
+            <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+            <br />
+            <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            <br />
+            <span className="text-destructive font-bold">ملاحظة هناك خطأ في الخيارات الصحيحة والصواب هو 0.7g</span>
+        </>
+    ),
+    level: 3,
+    source: "مراجعة الوحدة الأولى"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
