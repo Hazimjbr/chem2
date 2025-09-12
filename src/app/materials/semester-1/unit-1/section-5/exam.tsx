@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React from 'react';
@@ -75,7 +74,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو يتناسب الحجم طرديًا مع عدد المولات (V/n = k) عند ثبات الضغط والحرارة V_Ne / n_Ne = V_Xe / n_Xe بالتعويض 2 / n_Ne = 3 / n_Xe بإعادة ترتيب المعادلة نحصل على n_Xe = (3/2) * n_Ne أي n_Xe = 1.5n_Ne"
     },
     {
-        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
+        question: <div><p>ادرس الرسم المجاور الذي يمثل أربع عينات من الغازات المختلفة في أوعية متساوية الحجم عند نفس درجة الحرارة فإن الوعاء الذي له الضغط الأعلى هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="3" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -86,7 +85,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "وفقًا لقانون أفوجادرو عند ثبات الحجم ودرجة الحرارة يتناسب ضغط الغاز طرديًا مع عدد جسيماته (أو مولاته) الوعاء B يحتوي على أكبر عدد من الجسيمات (5 جسيمات) لذا فإن ضغط الغاز فيه هو الأعلى"
     },
     {
-        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="أربع عينات من الغازات" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
+        question: <div><p>إذا كانت الكتل المولية للغازات (D : 32 C : 46 B : 20 A : 18) فإن الغاز الأبطأ تدفقا هو</p><Image src="https://i.ibb.co/Cpn3JgfY/3.png" alt="3" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="gas samples experiment"/></div>,
         options: [
             "A",
             "B",
@@ -432,5 +431,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     }
 ]
 
-
-
+    
