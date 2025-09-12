@@ -25,7 +25,7 @@ const newQuestion: Question | null = {
         <>
             <p>ادرس الرسم المجاور والذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية: H=1, N=14, Cl=35. إذا تم تسخين وعاء التفاعل قبل إجراء التجربة، فإن موقع الغاز الأبيض الجديد سوف يكون:</p>
             <div className="flex justify-center my-2">
-                <Image src="https://i.ibb.co/C0c9p96/image.png" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
+                <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
             </div>
         </>
     ),
