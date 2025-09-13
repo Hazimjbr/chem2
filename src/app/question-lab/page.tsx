@@ -27,12 +27,7 @@ const newQuestion: Question | null = {
         <>
             <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة؟</p>
             <div className="flex justify-center items-center gap-4 my-2">
-                <Image src="https://i.ibb.co/VMy4Yh3/graphite.png" alt="متآصل 1" width={120} height={120} className="rounded border bg-white" />
-                <Image src="https://i.ibb.co/68B1w2t/4.png" alt="متآصل 2" width={120} height={120} className="rounded border bg-white" />
-            </div>
-             <div className="flex justify-around items-center text-sm font-bold">
-                <span>(1)</span>
-                <span>(2)</span>
+                 <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
             </div>
         </>
     ),
