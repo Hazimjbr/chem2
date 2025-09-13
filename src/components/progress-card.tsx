@@ -154,7 +154,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                     <svg className="absolute inset-0 w-full h-full" data-ai-hint="river path map">
                         {/* River Border */}
                         <path 
-                            d="M -50 225 C 100 205, 300 245, 835 225"
+                            d="M -80 225 C 100 205, 300 245, 835 225"
                             stroke="black"
                             strokeWidth="42"
                             fill="none"
@@ -162,7 +162,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                             className="hidden md:block"
                         />
                         <path 
-                            d="M -50 150 C 100 135, 300 165, 835 150"
+                            d="M -80 150 C 100 135, 300 165, 835 150"
                             stroke="black"
                             strokeWidth="28"
                             fill="none"
@@ -171,14 +171,14 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                         />
                         {/* River Water */}
                          <path 
-                            d="M -50 225 C 100 205, 300 245, 835 225"
+                            d="M -80 225 C 100 205, 300 245, 835 225"
                             stroke="hsl(var(--primary))" 
                             strokeWidth="40" 
                             fill="none"
                             className="hidden md:block"
                         />
                          <path 
-                            d="M -50 150 C 100 135, 300 165, 835 150"
+                            d="M -80 150 C 100 135, 300 165, 835 150"
                             stroke="hsl(var(--primary))" 
                             strokeWidth="26" 
                             fill="none"
