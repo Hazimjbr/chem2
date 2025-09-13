@@ -48,7 +48,7 @@ export const quizStatistics: UnitStats[] = [
         parts: [
           { title: 'مقدمة عن المواد السائلة', stats: { lvl1: 5, lvl2: 5, lvl3: 6 } },
           { title: 'التبخر', stats: { lvl1: 8, lvl2: 10, lvl3: 6 } },
-          { title: 'التكاثف', stats: { lvl1: 8, lvl2: 4, lvl3: 5 } },
+          { title: 'التكاثف', stats: { lvl1: 7, lvl2: 5, lvl3: 5 } },
           { title: 'الضغط البخاري', stats: { lvl1: 5, lvl2: 5, lvl3: 7 } },
           { title: 'درجة الغليان', stats: { lvl1: 5, lvl2: 5, lvl3: 7 } },
         ],
