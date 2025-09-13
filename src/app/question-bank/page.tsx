@@ -18,32 +18,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-// Import all exam files
-import * as part1Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-1/exam';
-import * as part2Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-2/exam';
-import * as part3Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-3/exam';
-import * as part4Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-4/exam';
-import * as part5Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-5/exam';
-import * as part6Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-6/exam';
-import * as part7Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-7/exam';
-import * as part8Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-8/exam';
-import * as part9Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-9/exam';
-import * as part10Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-10/exam';
-import * as unit1Lesson2Part1Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-1/exam';
-import * as unit1Lesson2Part2Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-2/exam';
-import * as unit1Lesson2Part3Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-3/exam';
-import * as unit1Lesson2Part4Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-4/exam';
-import * as unit1Lesson2Part5Exam from '@/app/materials/semester-1/unit-1/lesson-2/part-5/exam';
-import * as unit1Lesson3Part1Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-1/exam';
-import * as unit1Lesson3Part2Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-2/exam';
-import * as unit1Lesson3Part3Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-3/exam';
-import * as unit1Lesson3Part4Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-4/exam';
-import * as unit1Lesson3Part5Exam from '@/app/materials/semester-1/unit-1/lesson-3/part-5/exam';
-import * as unit1ReviewExam from '@/app/materials/semester-1/unit-1/section-5/exam';
-import * as enrichmentPart1Exam from '@/app/materials/semester-1/unit-1/section-4/part-1/exam';
-import * as enrichmentPart2Exam from '@/app/materials/semester-1/unit-1/section-4/part-2/exam';
-
-
 interface SourcedQuizQuestion extends BaseQuizQuestion {
     id: string; // Unique ID for each question
     source: {
@@ -78,91 +52,9 @@ export interface UnitStats {
   lessons: LessonStats[];
 }
 
-const allQuestions: SourcedQuizQuestion[] = [];
-
-// A map to associate path parts with exam modules
-const examModules = {
-    '/materials/semester-1/unit-1/lesson-1/part-1': part1Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-2': part2Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-3': part3Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-4': part4Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-5': part5Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-6': part6Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-7': part7Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-8': part8Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-9': part9Exam,
-    '/materials/semester-1/unit-1/lesson-1/part-10': part10Exam,
-    '/materials/semester-1/unit-1/lesson-2/part-1': unit1Lesson2Part1Exam,
-    '/materials/semester-1/unit-1/lesson-2/part-2': unit1Lesson2Part2Exam,
-    '/materials/semester-1/unit-1/lesson-2/part-3': unit1Lesson2Part3Exam,
-    '/materials/semester-1/unit-1/lesson-2/part-4': unit1Lesson2Part4Exam,
-    '/materials/semester-1/unit-1/lesson-2/part-5': unit1Lesson2Part5Exam,
-    '/materials/semester-1/unit-1/lesson-3/part-1': unit1Lesson3Part1Exam,
-    '/materials/semester-1/unit-1/lesson-3/part-2': unit1Lesson3Part2Exam,
-    '/materials/semester-1/unit-1/lesson-3/part-3': unit1Lesson3Part3Exam,
-    '/materials/semester-1/unit-1/lesson-3/part-4': unit1Lesson3Part4Exam,
-    '/materials/semester-1/unit-1/lesson-3/part-5': unit1Lesson3Part5Exam,
-    '/materials/semester-1/unit-1/section-4/part-1': enrichmentPart1Exam,
-    '/materials/semester-1/unit-1/section-4/part-2': enrichmentPart2Exam,
-    '/materials/semester-1/unit-1/section-5': unit1ReviewExam,
-};
-
 // Helper function to construct a unique ID for a lesson or section
 const getLessonId = (lesson: any) => lesson.lessonNum ? `lesson-${lesson.lessonNum}` : `section-${lesson.sectionNum}`;
 
-// Populate allQuestions from imported modules based on the materials structure
-units.forEach(unit => {
-    unit.lessons.forEach(lesson => {
-        if (lesson.parts.length > 0) {
-            lesson.parts.forEach(part => {
-                const path = `/materials/semester-1/${unit.id}/${getLessonId(lesson)}${part.partNum ? `/part-${part.partNum}` : ''}`;
-                // @ts-ignore
-                const module = examModules[path];
-                if (module) {
-                    const sourceInfo = {
-                        unitId: unit.id,
-                        unitTitle: unit.title,
-                        lessonId: getLessonId(lesson),
-                        lessonTitle: lesson.title,
-                        partId: part.partNum ? `part-${part.partNum}` : undefined,
-                        partTitle: part.title,
-                    };
-                    if (module.staticQuizLvl1) {
-                        allQuestions.push(...module.staticQuizLvl1.map((q: any, i: number) => ({ ...q, id: `${path}-lvl1-${i}`, source: sourceInfo, level: 1 })));
-                    }
-                    if (module.staticQuizLvl2) {
-                        allQuestions.push(...module.staticQuizLvl2.map((q: any, i: number) => ({ ...q, id: `${path}-lvl2-${i}`, source: sourceInfo, level: 2 })));
-                    }
-                    if (module.staticQuizLvl3) {
-                        allQuestions.push(...module.staticQuizLvl3.map((q: any, i: number) => ({ ...q, id: `${path}-lvl3-${i}`, source: sourceInfo, level: 3 })));
-                    }
-                }
-            });
-        } else {
-             // Handle lessons without parts (like reviews)
-            const path = `/materials/semester-1/${unit.id}/${getLessonId(lesson)}`;
-             // @ts-ignore
-            const module = examModules[path];
-            if (module) {
-                 const sourceInfo = {
-                    unitId: unit.id,
-                    unitTitle: unit.title,
-                    lessonId: getLessonId(lesson),
-                    lessonTitle: lesson.title,
-                };
-                 if (module.staticQuizLvl1) {
-                    allQuestions.push(...module.staticQuizLvl1.map((q: any, i: number) => ({ ...q, id: `${path}-lvl1-${i}`, source: sourceInfo, level: 1 })));
-                }
-                 if (module.staticQuizLvl2) {
-                    allQuestions.push(...module.staticQuizLvl2.map((q: any, i: number) => ({ ...q, id: `${path}-lvl2-${i}`, source: sourceInfo, level: 2 })));
-                }
-                 if (module.staticQuizLvl3) {
-                    allQuestions.push(...module.staticQuizLvl3.map((q: any, i: number) => ({ ...q, id: `${path}-lvl3-${i}`, source: sourceInfo, level: 3 })));
-                }
-            }
-        }
-    });
-});
 
 const getSourceString = (source: SourcedQuizQuestion['source']) => {
     let str = `${source.unitTitle} / ${source.lessonTitle}`;
@@ -289,22 +181,95 @@ const StatisticsDialog = ({ stats }: { stats: UnitStats[] }) => (
 
 export default function QuestionBankPage() {
     const { currentUser, isLoading } = useApp();
+    const [allQuestions, setAllQuestions] = useState<SourcedQuizQuestion[]>([]);
+    const [questionsLoading, setQuestionsLoading] = useState(true);
     const [selectedUnit, setSelectedUnit] = useState(() => getInitialState('questionBank_unit', 'all'));
     const [selectedLesson, setSelectedLesson] = useState(() => getInitialState('questionBank_lesson', 'all'));
     const [selectedPart, setSelectedPart] = useState(() => getInitialState('questionBank_part', 'all'));
 
+
+    useEffect(() => {
+        const loadQuestions = async () => {
+            setQuestionsLoading(true);
+
+            const examModulesMap = {
+                '/materials/semester-1/unit-1/lesson-1/part-1': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-1/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-2': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-2/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-3': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-3/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-4': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-4/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-5': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-5/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-6': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-6/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-7': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-7/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-8': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-8/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-9': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-9/exam'),
+                '/materials/semester-1/unit-1/lesson-1/part-10': () => import('@/app/materials/semester-1/unit-1/lesson-1/part-10/exam'),
+                '/materials/semester-1/unit-1/lesson-2/part-1': () => import('@/app/materials/semester-1/unit-1/lesson-2/part-1/exam'),
+                '/materials/semester-1/unit-1/lesson-2/part-2': () => import('@/app/materials/semester-1/unit-1/lesson-2/part-2/exam'),
+                '/materials/semester-1/unit-1/lesson-2/part-3': () => import('@/app/materials/semester-1/unit-1/lesson-2/part-3/exam'),
+                '/materials/semester-1/unit-1/lesson-2/part-4': () => import('@/app/materials/semester-1/unit-1/lesson-2/part-4/exam'),
+                '/materials/semester-1/unit-1/lesson-2/part-5': () => import('@/app/materials/semester-1/unit-1/lesson-2/part-5/exam'),
+                '/materials/semester-1/unit-1/lesson-3/part-1': () => import('@/app/materials/semester-1/unit-1/lesson-3/part-1/exam'),
+                '/materials/semester-1/unit-1/lesson-3/part-2': () => import('@/app/materials/semester-1/unit-1/lesson-3/part-2/exam'),
+                '/materials/semester-1/unit-1/lesson-3/part-3': () => import('@/app/materials/semester-1/unit-1/lesson-3/part-3/exam'),
+                '/materials/semester-1/unit-1/lesson-3/part-4': () => import('@/app/materials/semester-1/unit-1/lesson-3/part-4/exam'),
+                '/materials/semester-1/unit-1/lesson-3/part-5': () => import('@/app/materials/semester-1/unit-1/lesson-3/part-5/exam'),
+                '/materials/semester-1/unit-1/section-4/part-1': () => import('@/app/materials/semester-1/unit-1/section-4/part-1/exam'),
+                '/materials/semester-1/unit-1/section-4/part-2': () => import('@/app/materials/semester-1/unit-1/section-4/part-2/exam'),
+                '/materials/semester-1/unit-1/section-5': () => import('@/app/materials/semester-1/unit-1/section-5/exam'),
+            };
+
+            const loadedQuestions: SourcedQuizQuestion[] = [];
+            
+            for (const unit of units) {
+                for (const lesson of unit.lessons) {
+                    const lessonId = getLessonId(lesson);
+                    if (lesson.parts.length > 0) {
+                        for (const part of lesson.parts) {
+                            const path = `/materials/semester-1/${unit.id}/${lessonId}${part.partNum ? `/part-${part.partNum}` : ''}`;
+                            // @ts-ignore
+                            const moduleLoader = examModulesMap[path];
+                            if (moduleLoader) {
+                                const module = await moduleLoader();
+                                const sourceInfo = {
+                                    unitId: unit.id, unitTitle: unit.title,
+                                    lessonId: lessonId, lessonTitle: lesson.title,
+                                    partId: part.partNum ? `part-${part.partNum}` : undefined, partTitle: part.title,
+                                };
+                                if (module.staticQuizLvl1) loadedQuestions.push(...module.staticQuizLvl1.map((q: any, i: number) => ({ ...q, id: `${path}-lvl1-${i}`, source: sourceInfo, level: 1 })));
+                                if (module.staticQuizLvl2) loadedQuestions.push(...module.staticQuizLvl2.map((q: any, i: number) => ({ ...q, id: `${path}-lvl2-${i}`, source: sourceInfo, level: 2 })));
+                                if (module.staticQuizLvl3) loadedQuestions.push(...module.staticQuizLvl3.map((q: any, i: number) => ({ ...q, id: `${path}-lvl3-${i}`, source: sourceInfo, level: 3 })));
+                            }
+                        }
+                    } else {
+                        const path = `/materials/semester-1/${unit.id}/${lessonId}`;
+                        // @ts-ignore
+                        const moduleLoader = examModulesMap[path];
+                        if (moduleLoader) {
+                            const module = await moduleLoader();
+                            const sourceInfo = { unitId: unit.id, unitTitle: unit.title, lessonId: lessonId, lessonTitle: lesson.title };
+                            if (module.staticQuizLvl1) loadedQuestions.push(...module.staticQuizLvl1.map((q: any, i: number) => ({ ...q, id: `${path}-lvl1-${i}`, source: sourceInfo, level: 1 })));
+                            if (module.staticQuizLvl2) loadedQuestions.push(...module.staticQuizLvl2.map((q: any, i: number) => ({ ...q, id: `${path}-lvl2-${i}`, source: sourceInfo, level: 2 })));
+                            if (module.staticQuizLvl3) loadedQuestions.push(...module.staticQuizLvl3.map((q: any, i: number) => ({ ...q, id: `${path}-lvl3-${i}`, source: sourceInfo, level: 3 })));
+                        }
+                    }
+                }
+            }
+            setAllQuestions(loadedQuestions);
+            setQuestionsLoading(false);
+        };
+
+        if (currentUser?.role === 'admin') {
+            loadQuestions();
+        } else {
+            setQuestionsLoading(false);
+        }
+    }, [currentUser]);
+
+
     // Save filter state to localStorage whenever it changes
-    useEffect(() => {
-        localStorage.setItem('questionBank_unit', selectedUnit);
-    }, [selectedUnit]);
-
-    useEffect(() => {
-        localStorage.setItem('questionBank_lesson', selectedLesson);
-    }, [selectedLesson]);
-
-    useEffect(() => {
-        localStorage.setItem('questionBank_part', selectedPart);
-    }, [selectedPart]);
+    useEffect(() => { localStorage.setItem('questionBank_unit', selectedUnit); }, [selectedUnit]);
+    useEffect(() => { localStorage.setItem('questionBank_lesson', selectedLesson); }, [selectedLesson]);
+    useEffect(() => { localStorage.setItem('questionBank_part', selectedPart); }, [selectedPart]);
     
     const availableLessons = useMemo(() => {
         if (selectedUnit === 'all') return [];
@@ -334,9 +299,10 @@ export default function QuestionBankPage() {
             const partMatch = selectedPart === 'all' || q.source.partId === selectedPart;
             return unitMatch && lessonMatch && partMatch;
         });
-    }, [selectedUnit, selectedLesson, selectedPart]);
+    }, [allQuestions, selectedUnit, selectedLesson, selectedPart]);
 
     const quizStatistics = useMemo((): UnitStats[] => {
+        if (allQuestions.length === 0) return [];
         return units.map(unit => ({
             title: unit.title,
             lessons: unit.lessons.map(lesson => ({
@@ -345,22 +311,13 @@ export default function QuestionBankPage() {
                     const partId = part.partNum ? `part-${part.partNum}` : undefined;
                     const lessonId = getLessonId(lesson);
                     
-                    const getCount = (level: number) => {
-                        return allQuestions.filter(q => 
-                            q.source.unitId === unit.id && 
-                            q.source.lessonId === lessonId &&
-                            q.source.partId === partId && 
-                            q.level === level
-                        ).length;
-                    };
-                     const getCountForLessonWithoutParts = (level: number) => {
-                         return allQuestions.filter(q =>
-                             q.source.unitId === unit.id &&
-                             q.source.lessonId === lessonId &&
-                             !q.source.partId &&
-                             q.level === level
-                         ).length;
-                    }
+                    const getCount = (level: number) => allQuestions.filter(q => 
+                        q.source.unitId === unit.id && q.source.lessonId === lessonId && q.source.partId === partId && q.level === level
+                    ).length;
+                    
+                    const getCountForLessonWithoutParts = (level: number) => allQuestions.filter(q =>
+                        q.source.unitId === unit.id && q.source.lessonId === lessonId && !q.source.partId && q.level === level
+                    ).length;
 
                     if (lesson.parts.length === 1 && !part.partNum) {
                          return {
@@ -375,19 +332,15 @@ export default function QuestionBankPage() {
 
                     return {
                         title: part.title,
-                        stats: {
-                            lvl1: getCount(1),
-                            lvl2: getCount(2),
-                            lvl3: getCount(3),
-                        }
+                        stats: { lvl1: getCount(1), lvl2: getCount(2), lvl3: getCount(3) }
                     };
                 }),
             })),
         }));
-    }, []);
+    }, [allQuestions]);
 
 
-    if (isLoading) {
+    if (isLoading || (currentUser?.role === 'admin' && questionsLoading)) {
         return (
             <div className="flex justify-center items-center h-[calc(100vh-200px)]">
                 <Loader2 className="h-16 w-16 animate-spin text-primary" />
@@ -462,7 +415,7 @@ export default function QuestionBankPage() {
                     </Select>
                 </div>
                 <div className="flex justify-center">
-                    <StatisticsDialog stats={quizStatistics} />
+                    {quizStatistics.length > 0 && <StatisticsDialog stats={quizStatistics} />}
                 </div>
             </div>
 
@@ -483,4 +436,3 @@ export default function QuestionBankPage() {
         </div>
     );
 }
-
