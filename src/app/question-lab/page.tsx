@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -20,19 +19,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: <><span>إذا علمت أن عنصر البورون شديد الصلابة ودرجة انصهاره </span><span dir="ltr">2300°C</span><span> ورديء التوصيل للكهرباء على درجة الحرارة العادية فإنه يصنف مادة صلبة بلورية</span></>,
-    options: [
-        "جزيئية",
-        "أيونية",
-        "شبكية تساهمية",
-        "فلزية"
-    ],
-    correctAnswerIndex: 2,
-    explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد.",
-    level: 3,
-    source: "الدرس 3: المواد الصلبة الشبكية التساهمية"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
