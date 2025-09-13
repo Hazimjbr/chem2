@@ -3,16 +3,14 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library, Zap, Target, Award, Percent, BookCheck as BookCheckIcon } from 'lucide-react';
+import { BookOpen, BarChart, Zap, Target } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
-import type { QuizResult } from '@/components/quiz';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
-import ProgressCard from '@/components/progress-card';
 import { calculateNextStep } from '@/lib/utils';
 import type { NextStep } from '@/lib/utils';
-
+import ProgressCard from '@/components/progress-card';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
@@ -53,7 +51,7 @@ export default function MainAppContent() {
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/performance-analysis" passHref>
-            <Button size="lg" variant="outline">
+            <Button size="lg">
               <BarChart className="ml-2" />
               عرض لوحة معلوماتي
             </Button>
@@ -63,9 +61,9 @@ export default function MainAppContent() {
 
       <section className="pb-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
           
-          <ProgressCard lastVisitedLesson={lastVisitedLesson} />
+          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
           {nextStep && (
             <Card>
