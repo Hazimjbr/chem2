@@ -10,6 +10,8 @@ import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
 import { InlineMath } from 'react-katex';
 import Image from 'next/image';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 interface Question {
     questionText: React.ReactNode;
@@ -20,7 +22,41 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <div className="space-y-4">
+            <p>يوضح الجدول الضغط البخاري بوحدة (mmHg) لعدد من السوائل أعطيت الرموز الإفتراضية A, B, C, D عند درجة حرارة معينة؛ فإن العلاقة غير الصحيحة التي تربط سرعة تبخر هذه السوائل هي:</p>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="text-center">A</TableHead>
+                        <TableHead className="text-center">B</TableHead>
+                        <TableHead className="text-center">C</TableHead>
+                        <TableHead className="text-center">D</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    <TableRow>
+                        <TableCell className="text-center font-mono">400</TableCell>
+                        <TableCell className="text-center font-mono">55</TableCell>
+                        <TableCell className="text-center font-mono">210</TableCell>
+                        <TableCell className="text-center font-mono">40</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </div>
+    ),
+    options: [
+        "B < D",
+        "C < A",
+        "B < C",
+        "D < A"
+    ],
+    correctAnswerIndex: 0,
+    explanation: "سرعة التبخر تتناسب طرديًا مع الضغط البخاري. ترتيب سرعة التبخر من الأبطأ إلى الأسرع هو D < B < C < A. العلاقة (أ) B < D غير صحيحة لأن الضغط البخاري لـ B (55) أكبر من D (40)، مما يعني أن سرعة تبخر B أكبر من D.",
+    level: 3,
+    source: "مراجعة الوحدة الأولى"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
