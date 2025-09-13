@@ -691,14 +691,41 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 2,
         explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد",
+    },
+     {
+        question: (
+            <div className="space-y-4">
+                <p>يوضح الجدول الضغط البخاري بوحدة mmHg لعدد من السوائل أعطيت الرموز الإفتراضية A B C D عند درجة حرارة معينة فإن العلاقة غير الصحيحة التي تربط سرعة تبخر هذه السوائل هي</p>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="text-center">A</TableHead>
+                            <TableHead className="text-center">B</TableHead>
+                            <TableHead className="text-center">C</TableHead>
+                            <TableHead className="text-center">D</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell className="text-center font-mono">400</TableCell>
+                            <TableCell className="text-center font-mono">55</TableCell>
+                            <TableCell className="text-center font-mono">210</TableCell>
+                            <TableCell className="text-center font-mono">40</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </div>
+        ),
+        options: [
+            "B < D",
+            "C < A",
+            "B < C",
+            "D < A"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "سرعة التبخر تتناسب طرديًا مع الضغط البخاري وترتيب سرعة التبخر من الأبطأ إلى الأسرع هو D < B < C < A والعلاقة (أ) B < D غير صحيحة لأن الضغط البخاري لـ B (55) أكبر من D (40) مما يعني أن سرعة تبخر B أكبر من D"
     }
-]
-    
-
-
-
-
-    
+];
 
     
 
@@ -710,3 +737,13 @@ export const staticQuizLvl3: QuizQuestion[] = [
     
 
 
+
+
+    
+
+    
+
+
+
+
+    
