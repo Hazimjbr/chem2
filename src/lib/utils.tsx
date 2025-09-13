@@ -2,6 +2,8 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import React from "react";
 import { units } from "@/data/materials";
+import type { DocumentData } from 'firebase/firestore';
+import type { QuizResult } from "@/components/quiz";
 
 
 export function cn(...inputs: ClassValue[]) {
@@ -51,10 +53,14 @@ export const getLessonTitle = (lessonId: string): string => {
 
 
 export interface NextStep {
+    type: 'next' | 'weak';
     lessonTitle: string;
-    nextPartPath: string;
-    completedParts: number;
-    totalParts: number;
+    path: string;
+    // For 'next' type
+    completedParts?: number;
+    totalParts?: number;
+    // For 'weak' type
+    score?: number;
 }
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
@@ -72,8 +78,29 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 }
 
 
-export function calculateNextStep(completedLessons: Set<string>): NextStep | null {
-    let firstUncompletedPart: NextStep | null = null;
+export function calculateNextStep(progressData: DocumentData | null): NextStep | null {
+    if (!progressData) return null;
+
+    const completedLessons: Set<string> = new Set(progressData.completedLessons || []);
+    const quizHistory: QuizResult[] = progressData.quizHistory || [];
+
+    // 1. Find the weakest lesson from quiz history (difficulty > 0.5)
+    const studentQuizzes = quizHistory.filter(r => r.difficulty > 0.5);
+    if (studentQuizzes.length > 0) {
+        const weakestQuiz = studentQuizzes.reduce((min, current) => (current.score < min.score) ? current : min);
+        
+        // If the weakest score is below a threshold (e.g., 70%), recommend reviewing it.
+        if (weakestQuiz.score < 0.7) {
+            return {
+                type: 'weak',
+                lessonTitle: getLessonTitle(weakestQuiz.lessonId),
+                path: weakestQuiz.lessonId,
+                score: Math.round(weakestQuiz.score * 100),
+            };
+        }
+    }
+
+    // 2. If all scores are good, find the next uncompleted lesson
     for (const unit of units) {
         for (const lesson of unit.lessons) {
              if (lesson.parts.length === 0) continue;
@@ -88,16 +115,16 @@ export function calculateNextStep(completedLessons: Set<string>): NextStep | nul
                 }
              }
              if (firstUncompletedPathInThisLesson) {
-                firstUncompletedPart = {
+                return {
+                    type: 'next',
                     lessonTitle: lesson.title,
-                    nextPartPath: firstUncompletedPathInThisLesson,
+                    path: firstUncompletedPathInThisLesson,
                     completedParts: completedInThisLesson,
                     totalParts: lesson.parts.length,
                 };
-                break;
              }
         }
-        if (firstUncompletedPart) break;
     }
-    return firstUncompletedPart;
+
+    return null; // All lessons are completed
 }

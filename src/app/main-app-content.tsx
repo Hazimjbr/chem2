@@ -22,9 +22,7 @@ export default function MainAppContent() {
         if (!currentUser) return;
         
         const progressData = await getUserProgress(currentUser.uid);
-        const completedLessons = new Set(progressData?.completedLessons || []);
-        
-        const nextStepInfo = calculateNextStep(completedLessons);
+        const nextStepInfo = calculateNextStep(progressData);
         setNextStep(nextStepInfo);
     };
 
@@ -66,28 +64,46 @@ export default function MainAppContent() {
           {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
           {nextStep && (
-            <Card>
+            <Card className={nextStep.type === 'weak' ? 'bg-yellow-50 border-yellow-300' : ''}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  {nextStep.totalParts - nextStep.completedParts === 1 ? <Zap /> : <Target />}
-                  خطوتك التالية
+                    {nextStep.type === 'weak' ? (
+                        <><Target className="text-yellow-800" /> <span className="text-yellow-800">نقطة للتركيز</span></>
+                    ) : (
+                        <>{nextStep.totalParts! - nextStep.completedParts! === 1 ? <Zap /> : <Target />} <span>خطوتك التالية</span></>
+                    )}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {nextStep.totalParts - nextStep.completedParts === 1 ? (
-                  <p className="text-muted-foreground mb-4">
-                    رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
-                  </p>
+                {nextStep.type === 'weak' ? (
+                    <>
+                        <p className="text-yellow-700 mb-4">
+                            لاحظنا أن أداءك كان ضعيفًا في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>. لم لا تراجعه؟ نتيجتك كانت <strong className="font-mono">{nextStep.score}%</strong>.
+                        </p>
+                         <Link href={nextStep.path} passHref>
+                            <Button variant="default" className="bg-yellow-500 hover:bg-yellow-600 text-white">
+                                راجع الدرس الآن
+                            </Button>
+                        </Link>
+                    </>
                 ) : (
-                  <p className="text-muted-foreground mb-4">
-                    أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
-                  </p>
+                    <>
+                         {nextStep.totalParts! - nextStep.completedParts! === 1 ? (
+                            <p className="text-muted-foreground mb-4">
+                                رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                            </p>
+                        ) : (
+                            <p className="text-muted-foreground mb-4">
+                                أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
+                            </p>
+                        )}
+                        <Link href={nextStep.path} passHref>
+                            <Button>
+                                {nextStep.totalParts! - nextStep.completedParts! === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
+                            </Button>
+                        </Link>
+                    </>
                 )}
-                <Link href={nextStep.nextPartPath} passHref>
-                  <Button>
-                    {nextStep.totalParts - nextStep.completedParts === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
-                  </Button>
-                </Link>
               </CardContent>
             </Card>
           )}
