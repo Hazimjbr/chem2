@@ -125,6 +125,12 @@ export default function ViewStudentsList() {
         student.studentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         student.username.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    
+    const formatPhoneNumber = (phone?: string) => {
+        if (!phone) return '';
+        return phone.replace(/[.,\s-]/g, '');
+    }
+
 
     if (isLoading) {
         return (
@@ -230,8 +236,8 @@ export default function ViewStudentsList() {
                                     </div>
                                 </TableCell>
                                 <TableCell>
-                                    {student.phone1 && <p className="text-sm">{student.phone1}</p>}
-                                    {student.phone2 && <p className="text-sm text-muted-foreground">{student.phone2}</p>}
+                                    {student.phone1 && <p className="text-sm">{formatPhoneNumber(student.phone1)}</p>}
+                                    {student.phone2 && <p className="text-sm text-muted-foreground">{formatPhoneNumber(student.phone2)}</p>}
                                 </TableCell>
                                 <TableCell className="text-left">
                                     <div className="flex gap-1">

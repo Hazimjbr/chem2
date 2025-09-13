@@ -44,7 +44,11 @@ export const getLessonTitle = (lessonId: string): string => {
         const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
         const section = unit.lessons.find(l => l.sectionNum === sectionNum);
          if (section) {
-            return `${unit.title} / ${section.title}`;
+            // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
+            if (section.title.includes(unit.title.split(':')[0])) {
+                return section.title;
+            }
+            return `${unit.title.split(':')[0]} / ${section.title}`;
         }
     }
 
