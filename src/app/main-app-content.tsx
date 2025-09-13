@@ -50,7 +50,7 @@ export default function MainAppContent() {
           <span className="text-accent">{studentName}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
-          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
+          خططك أمامك التزامك قرارك
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/materials/semester-1" passHref>
