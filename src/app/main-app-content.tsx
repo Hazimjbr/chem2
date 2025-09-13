@@ -7,7 +7,6 @@ import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library, Zap, Targ
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
-import { units } from '@/data/materials';
 import type { QuizResult } from '@/components/quiz';
 import { getUserProgress } from '@/lib/firebase/progress.actions';
 import ProgressCard from '@/components/progress-card';
@@ -53,12 +52,6 @@ export default function MainAppContent() {
           خططك أمامك التزامك قرارك
         </p>
         <div className="flex justify-center gap-4">
-          <Link href="/materials/semester-1" passHref>
-            <Button size="lg" variant="default">
-              <BookOpen className="ml-2" />
-              ابدأ التعلم
-            </Button>
-          </Link>
           <Link href="/performance-analysis" passHref>
             <Button size="lg" variant="outline">
               <BarChart className="ml-2" />
@@ -70,9 +63,9 @@ export default function MainAppContent() {
 
       <section className="pb-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+        <div className="space-y-6">
           
-          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          <ProgressCard lastVisitedLesson={lastVisitedLesson} />
 
           {nextStep && (
             <Card>
