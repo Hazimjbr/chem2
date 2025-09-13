@@ -46,7 +46,7 @@ export default function MainAppContent() {
     <div className="container mx-auto p-8">
        <section className="text-center py-10">
         <h1 className="text-5xl font-bold mb-4">
-          أهلاً بك يا{' '}
+          أهلاً بك{' '}
           <span className="text-accent">{studentName}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
