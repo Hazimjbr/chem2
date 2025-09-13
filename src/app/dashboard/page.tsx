@@ -1,23 +1,21 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, BarChart, Zap, Target } from 'lucide-react';
+import { BarChart, Zap, Target } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
 import { calculateNextStep } from '@/lib/utils';
 import type { NextStep } from '@/lib/utils';
 import ProgressCard from '@/components/progress-card';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
 export default function DashboardPage() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
-  const { currentUser, isLoading: isAppLoading } = useApp();
+  const { currentUser, isLoading: isAppLoading, userProgress } = useApp();
   const router = useRouter();
 
   useEffect(() => {
@@ -26,20 +24,16 @@ export default function DashboardPage() {
         return;
     }
 
-    const fetchProgress = async () => {
-        if (!currentUser) return;
-        
-        const progressData = await getUserProgress(currentUser.uid);
-        const nextStepInfo = calculateNextStep(progressData);
-        setNextStep(nextStepInfo);
-    };
-
-    fetchProgress();
+    if (currentUser && userProgress) {
+      const nextStepInfo = calculateNextStep(userProgress);
+      setNextStep(nextStepInfo);
+    }
+    
     const savedLesson = localStorage.getItem('lastVisitedLesson');
     if (savedLesson) {
       setLastVisitedLesson(savedLesson);
     }
-  }, [currentUser, isAppLoading, router]);
+  }, [currentUser, isAppLoading, router, userProgress]);
   
   if (isAppLoading || !currentUser) {
      return (
@@ -77,7 +71,7 @@ export default function DashboardPage() {
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
         <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
           
-          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          <ProgressCard lastVisitedLesson={lastVisitedLesson} />
 
           {nextStep && (
             <Card className={nextStep.type === 'weak' ? 'bg-yellow-50 border-yellow-300' : ''}>

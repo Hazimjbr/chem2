@@ -16,9 +16,6 @@ import { units } from '@/data/materials';
 import { useMemo, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils.tsx';
 import { useApp } from '@/context/CurriculumContext';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
-import type { DocumentData } from 'firebase/firestore';
-
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -35,18 +32,7 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 }
 
 export default function Semester1Page() {
-  const { currentUser } = useApp();
-  const [userProgress, setUserProgress] = useState<DocumentData | null>(null);
-
-  useEffect(() => {
-    const fetchProgress = async () => {
-        if (!currentUser) return;
-        const progress = await getUserProgress(currentUser.uid);
-        setUserProgress(progress);
-    };
-    fetchProgress();
-  }, [currentUser]);
-
+  const { userProgress } = useApp();
 
   const completedLessons = useMemo(() => new Set(userProgress?.completedLessons || []), [userProgress]);
 

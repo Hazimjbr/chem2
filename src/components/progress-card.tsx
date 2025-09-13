@@ -16,9 +16,6 @@ import {
 } from "@/components/ui/tooltip"
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useApp } from '@/context/CurriculumContext';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
-import type { DocumentData } from 'firebase/firestore';
-
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -71,19 +68,9 @@ interface ProgressCardProps {
 }
 
 export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
-    const { currentUser } = useApp();
-    const [userProgress, setUserProgress] = useState<DocumentData | null>(null);
+    const { userProgress } = useApp();
     const isMobile = useIsMobile();
     
-    useEffect(() => {
-        const fetchProgress = async () => {
-            if (!currentUser) return;
-            const progress = await getUserProgress(currentUser.uid);
-            setUserProgress(progress);
-        };
-        fetchProgress();
-    }, [currentUser]);
-
     const allUnits = useMemo(() => [...units, ...Array(8 - units.length).fill(null)], []);
     
     const lastVisitedUnitId = useMemo(() => {
