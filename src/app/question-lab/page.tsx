@@ -22,7 +22,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "المادة الصُّلْبة التي لها أعلى درجة انصهار",
+    options: [
+        "AlF₃",
+        "SiF₄",
+        "NH₃",
+        "P₄"
+    ],
+    correctAnswerIndex: 0,
+    explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
+    level: 3,
+    source: "مراجعة الوحدة الأولى"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -103,5 +115,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
-    
