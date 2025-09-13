@@ -17,8 +17,6 @@ import Link from 'next/link';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { quizStatistics } from '@/data/quiz_statistics';
-import type { UnitStats } from '@/data/quiz_statistics';
 
 // Import all exam files
 import * as part1Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-1/exam';
@@ -57,6 +55,27 @@ interface SourcedQuizQuestion extends BaseQuizQuestion {
         partTitle?: string;
     };
     level: number;
+}
+
+export interface LevelStats {
+  lvl1: number;
+  lvl2: number;
+  lvl3: number;
+}
+
+export interface PartStats {
+  title: string;
+  stats: LevelStats;
+}
+
+export interface LessonStats {
+  title: string;
+  parts: PartStats[];
+}
+
+export interface UnitStats {
+  title: string;
+  lessons: LessonStats[];
 }
 
 const allQuestions: SourcedQuizQuestion[] = [];
@@ -206,7 +225,7 @@ const getInitialState = (key: string, defaultValue: string): string => {
 };
 
 
-const StatisticsDialog = () => (
+const StatisticsDialog = ({ stats }: { stats: UnitStats[] }) => (
     <Dialog>
         <DialogTrigger asChild>
             <Button variant="outline"><BarChart3 className="ml-2 h-4 w-4" /> عرض إحصائيات الأسئلة</Button>
@@ -219,7 +238,7 @@ const StatisticsDialog = () => (
                 </DialogDescription>
             </DialogHeader>
             <Accordion type="single" collapsible className="w-full">
-                {quizStatistics.map((unit, unitIndex) => (
+                {stats.map((unit, unitIndex) => (
                     <AccordionItem key={`unit-${unitIndex}`} value={`unit-${unitIndex}`}>
                         <AccordionTrigger>{unit.title}</AccordionTrigger>
                         <AccordionContent>
@@ -317,6 +336,57 @@ export default function QuestionBankPage() {
         });
     }, [selectedUnit, selectedLesson, selectedPart]);
 
+    const quizStatistics = useMemo((): UnitStats[] => {
+        return units.map(unit => ({
+            title: unit.title,
+            lessons: unit.lessons.map(lesson => ({
+                title: lesson.title,
+                parts: lesson.parts.map(part => {
+                    const partId = part.partNum ? `part-${part.partNum}` : undefined;
+                    const lessonId = getLessonId(lesson);
+                    
+                    const getCount = (level: number) => {
+                        return allQuestions.filter(q => 
+                            q.source.unitId === unit.id && 
+                            q.source.lessonId === lessonId &&
+                            q.source.partId === partId && 
+                            q.level === level
+                        ).length;
+                    };
+                     const getCountForLessonWithoutParts = (level: number) => {
+                         return allQuestions.filter(q =>
+                             q.source.unitId === unit.id &&
+                             q.source.lessonId === lessonId &&
+                             !q.source.partId &&
+                             q.level === level
+                         ).length;
+                    }
+
+                    if (lesson.parts.length === 1 && !part.partNum) {
+                         return {
+                            title: part.title,
+                            stats: {
+                                lvl1: getCountForLessonWithoutParts(1),
+                                lvl2: getCountForLessonWithoutParts(2),
+                                lvl3: getCountForLessonWithoutParts(3),
+                            }
+                        }
+                    }
+
+                    return {
+                        title: part.title,
+                        stats: {
+                            lvl1: getCount(1),
+                            lvl2: getCount(2),
+                            lvl3: getCount(3),
+                        }
+                    };
+                }),
+            })),
+        }));
+    }, []);
+
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-[calc(100vh-200px)]">
@@ -392,7 +462,7 @@ export default function QuestionBankPage() {
                     </Select>
                 </div>
                 <div className="flex justify-center">
-                    <StatisticsDialog />
+                    <StatisticsDialog stats={quizStatistics} />
                 </div>
             </div>
 
@@ -413,3 +483,4 @@ export default function QuestionBankPage() {
         </div>
     );
 }
+
