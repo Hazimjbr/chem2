@@ -22,26 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: (
-        <>
-            <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة؟</p>
-            <div className="flex justify-center items-center gap-4 my-2">
-                 <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
-            </div>
-        </>
-    ),
-    options: [
-        "يشبه المتآصل (1) في تركيبه البنائي الغرافيت ويشبه المتآصل (2) الماس",
-        "يوصل المتآصل (1) التيار الكهربائي",
-        "المتآصل (2) عالي القساوة",
-        "يُصنَّف كُلٌّ من المتأصلين على أنه صلب جزيئي"
-    ],
-    correctAnswerIndex: 3,
-    explanation: "العبارة غير الصحيحة هي (د) كلا الشكلين هما مواد صلبة شبكية تساهمية وليست جزيئية لأن الذرات ترتبط في شبكة ضخمة وممتدة (ملاحظة: العبارة ب أيضًا غير صحيحة لأن نيتريد البورون الشبيه بالغرافيت عازل)",
-    level: 3,
-    source: "الدرس 3 / المواد الصلبة الشبكية التساهمية"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -122,3 +103,5 @@ export default function QuestionLabPage() {
         </div>
     );
 }
+
+    

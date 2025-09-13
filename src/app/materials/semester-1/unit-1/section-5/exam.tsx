@@ -326,6 +326,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 1,
         explanation: "أقل طاقة تبخر مولية تعني أضعف قوى ترابط بين الجزيئات مركب البوتان (ب) هو مركب غير قطبي يمتلك أضعف أنواع القوى (قوى لندن فقط) مقارنة بالمركبات الأخرى التي تمتلك قوى ثنائية القطب أو روابط هيدروجينية أقوى",
+    },
+    {
+        question: "يوضح الجدول الضغط البخاري بوحدة mmHg لعدد من السوائل أعطيت الرموز الإفتراضية A B C D عند درجة حرارة معينة فإن العلاقة غير الصحيحة التي تربط سرعة تبخر هذه السوائل هي",
+        options: [
+            "B < D",
+            "C < A",
+            "B < C",
+            "D < A"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "سرعة التبخر تتناسب طرديًا مع الضغط البخاري وترتيب سرعة التبخر من الأبطأ إلى الأسرع هو D < B < C < A والعلاقة (أ) B < D غير صحيحة لأن الضغط البخاري لـ B (55) أكبر من D (40) مما يعني أن سرعة تبخر B أكبر من D"
     }
 ];
 
@@ -713,38 +724,23 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 2,
         explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد",
     },
-     {
-        question: (
-            <div className="space-y-4">
-                <p>يوضح الجدول الضغط البخاري بوحدة mmHg لعدد من السوائل أعطيت الرموز الإفتراضية A B C D عند درجة حرارة معينة فإن العلاقة غير الصحيحة التي تربط سرعة تبخر هذه السوائل هي</p>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead className="text-center">A</TableHead>
-                            <TableHead className="text-center">B</TableHead>
-                            <TableHead className="text-center">C</TableHead>
-                            <TableHead className="text-center">D</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell className="text-center font-mono">400</TableCell>
-                            <TableCell className="text-center font-mono">55</TableCell>
-                            <TableCell className="text-center font-mono">210</TableCell>
-                            <TableCell className="text-center font-mono">40</TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </div>
+    {
+        questionText: (
+            <>
+                <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة</p>
+                <div className="flex justify-center items-center gap-4 my-2">
+                     <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
+                </div>
+            </>
         ),
         options: [
-            "B < D",
-            "C < A",
-            "B < C",
-            "D < A"
+            "يشبه المتآصل (1) في تركيبه البنائي الغرافيت ويشبه المتآصل (2) الماس",
+            "يوصل المتآصل (1) التيار الكهربائي",
+            "المتآصل (2) عالي القساوة",
+            "يُصنَّف كُلٌّ من المتأصلين على أنه صلب جزيئي"
         ],
-        correctAnswerIndex: 0,
-        explanation: "سرعة التبخر تتناسب طرديًا مع الضغط البخاري وترتيب سرعة التبخر من الأبطأ إلى الأسرع هو D < B < C < A والعلاقة (أ) B < D غير صحيحة لأن الضغط البخاري لـ B (55) أكبر من D (40) مما يعني أن سرعة تبخر B أكبر من D"
+        correctAnswerIndex: 3,
+        explanation: "العبارة غير الصحيحة هي (د) كلا الشكلين هما مواد صلبة شبكية تساهمية وليست جزيئية لأن الذرات ترتبط في شبكة ضخمة وممتدة (ملاحظة: العبارة ب أيضًا غير صحيحة لأن نيتريد البورون الشبيه بالغرافيت عازل)",
     }
 ];
 
@@ -759,6 +755,8 @@ export const staticQuizLvl3: QuizQuestion[] = [
 
 
 
+
+    
 
     
 
