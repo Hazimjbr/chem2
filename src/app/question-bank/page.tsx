@@ -5,7 +5,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Library, Loader2, ShieldAlert } from 'lucide-react';
+import { CheckCircle, Library, Loader2, ShieldAlert, BarChart3 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils.tsx';
@@ -14,6 +14,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { units } from '@/data/materials';
 import { useApp } from '@/context/CurriculumContext';
 import Link from 'next/link';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { quizStatistics } from '@/data/quiz_statistics';
+import type { UnitStats } from '@/data/quiz_statistics';
 
 // Import all exam files
 import * as part1Exam from '@/app/materials/semester-1/unit-1/lesson-1/part-1/exam';
@@ -200,6 +205,69 @@ const getInitialState = (key: string, defaultValue: string): string => {
     return defaultValue;
 };
 
+
+const StatisticsDialog = () => (
+    <Dialog>
+        <DialogTrigger asChild>
+            <Button variant="outline"><BarChart3 className="ml-2 h-4 w-4" /> عرض إحصائيات الأسئلة</Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+                <DialogTitle>إحصائيات بنك الأسئلة</DialogTitle>
+                <DialogDescription>
+                    نظرة شاملة على توزيع الأسئلة حسب الوحدة والدرس ومستوى الصعوبة.
+                </DialogDescription>
+            </DialogHeader>
+            <Accordion type="single" collapsible className="w-full">
+                {quizStatistics.map((unit, unitIndex) => (
+                    <AccordionItem key={`unit-${unitIndex}`} value={`unit-${unitIndex}`}>
+                        <AccordionTrigger>{unit.title}</AccordionTrigger>
+                        <AccordionContent>
+                            <div className="space-y-4">
+                                {unit.lessons.map((lesson, lessonIndex) => (
+                                     <Card key={`lesson-${lessonIndex}`} className="bg-muted/50">
+                                         <CardHeader className="p-3">
+                                             <CardTitle className="text-base">{lesson.title}</CardTitle>
+                                         </CardHeader>
+                                         <CardContent className="p-3">
+                                            <Table>
+                                                <TableHeader>
+                                                    <TableRow>
+                                                        <TableHead>الجزء</TableHead>
+                                                        <TableHead className="text-center">المستوى 1</TableHead>
+                                                        <TableHead className="text-center">المستوى 2</TableHead>
+                                                        <TableHead className="text-center">المستوى 3</TableHead>
+                                                        <TableHead className="text-center font-bold">المجموع</TableHead>
+                                                    </TableRow>
+                                                </TableHeader>
+                                                <TableBody>
+                                                    {lesson.parts.map((part, partIndex) => {
+                                                        const total = part.stats.lvl1 + part.stats.lvl2 + part.stats.lvl3;
+                                                        return (
+                                                            <TableRow key={`part-${partIndex}`}>
+                                                                <TableCell className="font-medium">{part.title}</TableCell>
+                                                                <TableCell className="text-center">{part.stats.lvl1}</TableCell>
+                                                                <TableCell className="text-center">{part.stats.lvl2}</TableCell>
+                                                                <TableCell className="text-center">{part.stats.lvl3}</TableCell>
+                                                                <TableCell className="text-center font-bold">{total}</TableCell>
+                                                            </TableRow>
+                                                        )
+                                                    })}
+                                                </TableBody>
+                                            </Table>
+                                         </CardContent>
+                                     </Card>
+                                ))}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+                ))}
+            </Accordion>
+        </DialogContent>
+    </Dialog>
+);
+
+
 export default function QuestionBankPage() {
     const { currentUser, isLoading } = useApp();
     const [selectedUnit, setSelectedUnit] = useState(() => getInitialState('questionBank_unit', 'all'));
@@ -291,36 +359,41 @@ export default function QuestionBankPage() {
                 </p>
             </header>
             
-            <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto" dir="rtl">
-                <Select onValueChange={handleUnitChange} value={selectedUnit}>
-                    <SelectTrigger><SelectValue placeholder="اختر الوحدة" /></SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">كل الوحدات</SelectItem>
-                        {units.map(unit => (
-                            <SelectItem key={unit.id} value={unit.id}>{unit.title}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+            <div className="mb-6 space-y-2 max-w-4xl mx-auto" dir="rtl">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Select onValueChange={handleUnitChange} value={selectedUnit}>
+                        <SelectTrigger><SelectValue placeholder="اختر الوحدة" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">كل الوحدات</SelectItem>
+                            {units.map(unit => (
+                                <SelectItem key={unit.id} value={unit.id}>{unit.title}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
 
-                <Select onValueChange={handleLessonChange} value={selectedLesson} disabled={selectedUnit === 'all'}>
-                    <SelectTrigger><SelectValue placeholder="اختر الدرس" /></SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">كل الدروس</SelectItem>
-                        {availableLessons.map(lesson => (
-                            <SelectItem key={getLessonId(lesson)} value={getLessonId(lesson)}>{lesson.title}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-                
-                <Select onValueChange={setSelectedPart} value={selectedPart} disabled={selectedLesson === 'all'}>
-                    <SelectTrigger><SelectValue placeholder="اختر الجزء" /></SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">كل الأجزاء</SelectItem>
-                        {availableParts.map(part => (
-                           part.partNum && <SelectItem key={part.partNum} value={`part-${part.partNum}`}>{part.title}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                    <Select onValueChange={handleLessonChange} value={selectedLesson} disabled={selectedUnit === 'all'}>
+                        <SelectTrigger><SelectValue placeholder="اختر الدرس" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">كل الدروس</SelectItem>
+                            {availableLessons.map(lesson => (
+                                <SelectItem key={getLessonId(lesson)} value={getLessonId(lesson)}>{lesson.title}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    
+                    <Select onValueChange={setSelectedPart} value={selectedPart} disabled={selectedLesson === 'all'}>
+                        <SelectTrigger><SelectValue placeholder="اختر الجزء" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">كل الأجزاء</SelectItem>
+                            {availableParts.map(part => (
+                            part.partNum && <SelectItem key={part.partNum} value={`part-${part.partNum}`}>{part.title}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="flex justify-center">
+                    <StatisticsDialog />
+                </div>
             </div>
 
             <div className="space-y-6">
