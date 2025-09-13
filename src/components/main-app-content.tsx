@@ -10,6 +10,7 @@ import { useApp } from '@/context/CurriculumContext';
 import { calculateNextStep } from '@/lib/utils';
 import type { NextStep } from '@/lib/utils';
 import ProgressCard from '@/components/progress-card';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
@@ -17,17 +18,22 @@ export default function MainAppContent() {
   const { currentUser, userProgress } = useApp();
 
   useEffect(() => {
-    if (!currentUser) return;
-    
-    const completedLessons = new Set(userProgress?.completedLessons || []);
-    const nextStepInfo = calculateNextStep(completedLessons);
-    setNextStep(nextStepInfo);
+    const fetchProgress = async () => {
+        if (!currentUser) return;
+        
+        const progressData = await getUserProgress(currentUser.uid);
+        const completedLessons = new Set(progressData?.completedLessons || []);
+        
+        const nextStepInfo = calculateNextStep(completedLessons);
+        setNextStep(nextStepInfo);
+    };
 
+    fetchProgress();
     const savedLesson = localStorage.getItem('lastVisitedLesson');
     if (savedLesson) {
       setLastVisitedLesson(savedLesson);
     }
-  }, [currentUser, userProgress]);
+  }, [currentUser]);
   
   const studentName = currentUser?.role === 'student'
     ? currentUser.displayName
@@ -63,7 +69,7 @@ export default function MainAppContent() {
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
         <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
           
-          {currentUser && <ProgressCard userProgress={userProgress} lastVisitedLesson={lastVisitedLesson} />}
+          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
 
           {nextStep && (
             <Card>

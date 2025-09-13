@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { MapPin } from 'lucide-react';
 import ProgressVessel from './progress-vessel';
 import { units } from '@/data/materials';
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils.tsx';
 import {
@@ -15,6 +15,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useApp } from '@/context/CurriculumContext';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
 import type { DocumentData } from 'firebase/firestore';
 
 
@@ -65,13 +67,23 @@ const bottomPositions = {
 
 
 interface ProgressCardProps {
-    userProgress: DocumentData | null;
     lastVisitedLesson: string;
 }
 
-export default function ProgressCard({ userProgress, lastVisitedLesson }: ProgressCardProps) {
+export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
+    const { currentUser } = useApp();
+    const [userProgress, setUserProgress] = useState<DocumentData | null>(null);
     const isMobile = useIsMobile();
     
+    useEffect(() => {
+        const fetchProgress = async () => {
+            if (!currentUser) return;
+            const progress = await getUserProgress(currentUser.uid);
+            setUserProgress(progress);
+        };
+        fetchProgress();
+    }, [currentUser]);
+
     const allUnits = useMemo(() => [...units, ...Array(8 - units.length).fill(null)], []);
     
     const lastVisitedUnitId = useMemo(() => {

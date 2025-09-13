@@ -13,9 +13,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle } from 'lucide-react';
 import { units } from '@/data/materials';
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils.tsx';
 import { useApp } from '@/context/CurriculumContext';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
+import type { DocumentData } from 'firebase/firestore';
+
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -32,7 +35,19 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 }
 
 export default function Semester1Page() {
-  const { userProgress } = useApp();
+  const { currentUser } = useApp();
+  const [userProgress, setUserProgress] = useState<DocumentData | null>(null);
+
+  useEffect(() => {
+    const fetchProgress = async () => {
+        if (!currentUser) return;
+        const progress = await getUserProgress(currentUser.uid);
+        setUserProgress(progress);
+    };
+    fetchProgress();
+  }, [currentUser]);
+
+
   const completedLessons = useMemo(() => new Set(userProgress?.completedLessons || []), [userProgress]);
 
   const calculateUnitProgress = (unit: typeof units[0]) => {
