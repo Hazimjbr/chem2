@@ -16,15 +16,16 @@ import ChatAssistant from './chat-assistant';
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import PeriodicTableIcon from './periodic-table-icon';
+import { useApp } from '@/context/CurriculumContext';
 
 export default function FloatingActions() {
+  const { isSelected } = useApp();
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
 
   const actions = [
     {
@@ -52,7 +53,7 @@ export default function FloatingActions() {
     },
   ];
 
-  if (!isMounted) {
+  if (!isMounted || !isSelected) {
     return null;
   }
 

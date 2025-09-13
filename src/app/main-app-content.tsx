@@ -1,115 +1,119 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, BarChart, Zap, Target } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
-import { calculateNextStep } from '@/lib/utils';
-import type { NextStep } from '@/lib/utils';
-import ProgressCard from '@/components/progress-card';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
+import AuthDialog from '@/components/auth-dialog';
+import AdminLoginDialog from '@/components/admin/admin-login-dialog';
+import { useRouter } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 
-export default function MainAppContent() {
-  const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
-  const [nextStep, setNextStep] = useState<NextStep | null>(null);
-  const { currentUser } = useApp();
+export default function HomePage() {
+  const { isSelected, selectCurriculum, currentUser, isLoading } = useApp();
+  const [authOpen, setAuthOpen] = useState(false);
+  const [adminLoginOpen, setAdminLoginOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    const fetchProgress = async () => {
-        if (!currentUser) return;
-        
-        const progressData = await getUserProgress(currentUser.uid);
-        const nextStepInfo = calculateNextStep(progressData);
-        setNextStep(nextStepInfo);
-    };
-
-    fetchProgress();
-    const savedLesson = localStorage.getItem('lastVisitedLesson');
-    if (savedLesson) {
-      setLastVisitedLesson(savedLesson);
+    // If a curriculum is already selected, redirect to the dashboard.
+    if (isSelected) {
+      router.push('/dashboard');
     }
-  }, [currentUser]);
+  }, [isSelected, router]);
+
+  const handleTawjihiCardClick = () => {
+    // If admin is logged in, select curriculum and redirect.
+    if (currentUser?.role === 'admin') {
+      selectCurriculum('tawjihi');
+      router.push('/dashboard');
+    } else {
+      // For students, open the login dialog.
+      setAuthOpen(true);
+    }
+  };
+
+  const handleAdminLoginSuccess = () => {
+    // Admin is now logged in. We just close the dialog.
+    // The UI will update based on the new `currentUser` state.
+    setAdminLoginOpen(false);
+  };
+
+  const handleStudentAuthSuccess = () => {
+    // This is for students, automatically select curriculum after login.
+    selectCurriculum('tawjihi');
+    setAuthOpen(false);
+    // The useEffect will handle the redirect to /dashboard
+  };
   
-  const studentName = currentUser?.role === 'student'
-    ? currentUser.displayName
-    : currentUser?.email?.split('@')[0];
+  if (isLoading) {
+    return (
+        <div className="flex justify-center items-center min-h-screen">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+        </div>
+    )
+  }
 
+  // If already selected, this will be briefly rendered before redirect.
+  // We can show a loader or nothing.
+  if (isSelected) {
+     return (
+        <div className="flex justify-center items-center min-h-screen">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+            <p className="mr-4">جاري التوجيه...</p>
+        </div>
+    )
+  }
+
+  // Default view for guests or for an admin who has just logged in but hasn't selected a course to preview.
   return (
-    <div className="container mx-auto p-8">
-       <section className="text-center py-10">
-        <h1 className="text-5xl font-bold mb-4">
-          أهلاً بك{' '}
-          <span className="text-accent">{studentName}</span>
-        </h1>
-        <p className="text-xl text-muted-foreground mb-8">
-          خططك أمامك التزامك قرارك
-        </p>
-        <div className="flex justify-center gap-4">
-          <Link href="/performance-analysis" passHref>
-            <Button size="lg">
-              <BarChart className="ml-2" />
-              عرض لوحة معلوماتي
-            </Button>
-          </Link>
+    <>
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} onAuthSuccess={handleStudentAuthSuccess} />
+      <AdminLoginDialog open={adminLoginOpen} onOpenChange={setAdminLoginOpen} onLoginSuccess={handleAdminLoginSuccess} />
+      
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
+        <div className="text-center mb-12">
+            <h1 className="text-5xl font-bold mb-4">
+              <span className="text-accent">Chem</span>
+              <span className="text-foreground">Zim</span>
+            </h1>
+            <button onClick={() => setAdminLoginOpen(true)} className="text-xl text-muted-foreground hover:text-primary transition-colors">
+              Choose your path
+            </button>
         </div>
-      </section>
-
-      <section className="pb-16">
-        <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
-          
-          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
-
-          {nextStep && (
-            <Card className={nextStep.type === 'weak' ? 'bg-yellow-50 border-yellow-300' : ''}>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    {nextStep.type === 'weak' ? (
-                        <><Target className="text-yellow-800" /> <span className="text-yellow-800">نقطة للتركيز</span></>
-                    ) : (
-                        <>{nextStep.totalParts! - nextStep.completedParts! === 1 ? <Zap /> : <Target />} <span>خطوتك التالية</span></>
-                    )}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {nextStep.type === 'weak' ? (
-                    <>
-                        <p className="text-yellow-700 mb-4">
-                            لاحظنا أن أداءك كان ضعيفًا في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>. لم لا تراجعه؟ نتيجتك كانت <strong className="font-mono">{nextStep.score}%</strong>.
-                        </p>
-                         <Link href={nextStep.path} passHref>
-                            <Button variant="default" className="bg-yellow-500 hover:bg-yellow-600 text-white">
-                                راجع الدرس الآن
-                            </Button>
-                        </Link>
-                    </>
-                ) : (
-                    <>
-                         {nextStep.totalParts! - nextStep.completedParts! === 1 ? (
-                            <p className="text-muted-foreground mb-4">
-                                رائع! تبقى لك جزء واحد فقط لإتمام درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
-                            </p>
-                        ) : (
-                            <p className="text-muted-foreground mb-4">
-                                أكملت <strong className="text-foreground">{nextStep.completedParts}</strong> من <strong className="text-foreground">{nextStep.totalParts}</strong> أجزاء في درس <strong className="text-foreground">{nextStep.lessonTitle}</strong>.
-                            </p>
-                        )}
-                        <Link href={nextStep.path} passHref>
-                            <Button>
-                                {nextStep.totalParts! - nextStep.completedParts! === 1 ? 'إنجاز المهمة' : 'أكمل الدرس'}
-                            </Button>
-                        </Link>
-                    </>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
+          <Card className="hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="items-center text-center">
+              <CardTitle className="text-3xl">توجيهي 2008</CardTitle>
+              <CardDescription>المنهاج الأردني الجديد</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground mb-6">
+                شرح شامل للمادة تجارب تفاعلية أسئلة وامتحانات متنوعة
+              </p>
+              <Button size="lg" className="w-full" onClick={handleTawjihiCardClick}>
+                {currentUser?.role === 'admin' ? 'معاينة الدورة' : 'ابدأ رحلتك'}
+                <ArrowLeft className="mr-2 h-5 w-5" />
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+             <CardHeader className="items-center text-center">
+              <CardTitle className="text-3xl">IGCSE 0620</CardTitle>
+               <CardDescription>Cambridge Curriculum</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+                <p className="text-muted-foreground mb-6">
+                This section is currently under development and will be available soon
+              </p>
+              <Button size="lg" className="w-full" disabled>
+                Coming Soon
+              </Button>
+            </CardContent>
+          </Card>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 }

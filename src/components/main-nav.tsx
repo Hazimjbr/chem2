@@ -70,34 +70,26 @@ function AuthSection() {
 function Logo() {
     const { isSelected, clearCurriculum, currentUser } = useApp();
     const router = useRouter();
-
-    const handleTextClick = () => {
-        if (isSelected) {
+    
+    const handleLogoClick = () => {
+        if (currentUser?.role === 'admin') {
+            clearCurriculum();
             router.push('/');
+        } else if (isSelected) {
+            router.push('/dashboard');
         } else {
             router.push('/');
         }
     };
     
-    const handleIconClick = () => {
-        if (currentUser?.role === 'admin') {
-            clearCurriculum();
-        }
-        router.push('/');
-    };
-    
     return (
         <div className="flex items-center space-x-2 rtl:space-x-reverse">
-             <Button
-                onClick={handleIconClick}
-                variant="ghost"
-                size="icon"
-                className="h-9 w-9"
+             <button
+                onClick={handleLogoClick}
                 aria-label={'العودة إلى الواجهة الرئيسية'}
+                className="flex items-center gap-2"
             >
                 <Image src="https://i.ibb.co/ccxLc5NK/2.png" alt="ChemZim Logo" width={28} height={28} data-ai-hint="chemistry logo" />
-            </Button>
-            <button onClick={handleTextClick} className="flex items-baseline">
                 <span className="text-xl font-bold">
                     <span className="text-accent">Chem</span>
                     <span className="text-foreground">Zim</span>

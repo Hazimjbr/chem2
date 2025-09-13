@@ -6,21 +6,31 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
-import MainAppContent from './main-app-content';
 import AuthDialog from '@/components/auth-dialog';
 import AdminLoginDialog from '@/components/admin/admin-login-dialog';
+import { useRouter } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 
 export default function HomePage() {
-  const { selectCurriculum, isSelected, currentUser } = useApp();
+  const { isSelected, selectCurriculum, currentUser, isLoading } = useApp();
   const [authOpen, setAuthOpen] = useState(false);
   const [adminLoginOpen, setAdminLoginOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    // If a curriculum is already selected, redirect to the dashboard.
+    if (isSelected) {
+      router.push('/dashboard');
+    }
+  }, [isSelected, router]);
 
   const handleTawjihiCardClick = () => {
-    // If admin is logged in, select curriculum directly to preview it.
+    // If admin is logged in, select curriculum and redirect.
     if (currentUser?.role === 'admin') {
       selectCurriculum('tawjihi');
+      router.push('/dashboard');
     } else {
-      // Otherwise, open the standard student login dialog.
+      // For students, open the login dialog.
       setAuthOpen(true);
     }
   };
@@ -35,11 +45,26 @@ export default function HomePage() {
     // This is for students, automatically select curriculum after login.
     selectCurriculum('tawjihi');
     setAuthOpen(false);
+    // The useEffect will handle the redirect to /dashboard
   };
+  
+  if (isLoading) {
+    return (
+        <div className="flex justify-center items-center min-h-screen">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+        </div>
+    )
+  }
 
-  // If a curriculum is selected (either by student or admin), show the main content.
+  // If already selected, this will be briefly rendered before redirect.
+  // We can show a loader or nothing.
   if (isSelected) {
-    return <MainAppContent />;
+     return (
+        <div className="flex justify-center items-center min-h-screen">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+            <p className="mr-4">جاري التوجيه...</p>
+        </div>
+    )
   }
 
   // Default view for guests or for an admin who has just logged in but hasn't selected a course to preview.

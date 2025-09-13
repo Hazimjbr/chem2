@@ -1,21 +1,34 @@
-
-'use client';
-
-import React from 'react';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 import Header from '@/components/header';
 import FloatingActions from '@/components/floating-actions';
 import { Toaster } from '@/components/ui/toaster';
-import { useApp } from '@/context/CurriculumContext';
+import 'katex/dist/katex.min.css';
+import { AppProvider } from '@/context/CurriculumContext';
 
-export default function AppContent({ children }: { children: React.ReactNode }) {
-    const { isSelected } = useApp();
+const inter = Inter({ subsets: ['latin'] });
 
-    return (
-        <>
+export const metadata: Metadata = {
+  title: 'Chemzim',
+  description: 'Interactive Chemistry Learning Platform',
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ar" dir="rtl">
+      <body className={inter.className}>
+        <AppProvider>
             <Header />
             <main>{children}</main>
-            {isSelected && <FloatingActions />}
+            <FloatingActions />
             <Toaster />
-        </>
-    );
+        </AppProvider>
+      </body>
+    </html>
+  );
 }
