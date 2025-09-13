@@ -22,7 +22,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "يستغرق نضج الطعام في المناطق المرتفعة زمنا أطول منه في المناطق المنخفضة وذلك لأن",
+    options: [
+        "نسبة الأكسجين في المناطق المرتفعة أقل فيحتاج زمنا أطول",
+        "الضغط الجوي في المناطق المرتفعة أكبر فتزيد درجة الغليان فيحتاج زمنا أطول",
+        "الضغط الجوي في المناطق المرتفعة أقل فتقل درجة الغليان فيحتاج زمنا أطول",
+        "الضغط الجوي في المناطق المنخفضة أكبر فتزيد درجة الغليان فيحتاج زمنا أطول"
+    ],
+    correctAnswerIndex: 2,
+    explanation: "في المناطق المرتفعة يكون الضغط الجوي أقل مما يجعل الماء يغلي عند درجة حرارة أقل من 100 درجة مئوية والطهي عند درجة حرارة منخفضة يستغرق وقتا أطول لنضج الطعام",
+    level: 2,
+    source: "الدرس الثاني / درجة الغليان"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -68,7 +80,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
+                            <span className="flex-1 whitespace-normal" dir="rtl">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
@@ -103,5 +115,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
-    
