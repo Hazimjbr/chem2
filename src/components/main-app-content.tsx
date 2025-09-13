@@ -3,85 +3,31 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, CheckSquare, Clock, ShieldCheck, BarChart, Library, Zap, Target, Award, Percent, BookCheck as BookCheckIcon } from 'lucide-react';
+import { BookOpen, BarChart, Zap, Target } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useApp } from '@/context/CurriculumContext';
-import { units } from '@/data/materials';
-import type { QuizResult } from '@/components/quiz';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
+import { calculateNextStep } from '@/lib/utils';
+import type { NextStep } from '@/lib/utils';
 import ProgressCard from '@/components/progress-card';
-
-interface NextStep {
-    lessonTitle: string;
-    nextPartPath: string;
-    completedParts: number;
-    totalParts: number;
-}
-
-const constructPath = (unitId: string, lesson: any, part: any) => {
-    const unitNum = unitId.replace('unit-', '');
-    let path = `/materials/semester-1/unit-${unitNum}`;
-    if (lesson.lessonNum) {
-        path += `/lesson-${lesson.lessonNum}`;
-    } else if (lesson.sectionNum) {
-        path += `/section-${lesson.sectionNum}`;
-    }
-    if (part.partNum) {
-        path += `/part-${part.partNum}`;
-    }
-    return path;
-}
-
 
 export default function MainAppContent() {
   const [lastVisitedLesson, setLastVisitedLesson] = useState('/materials/semester-1');
   const [nextStep, setNextStep] = useState<NextStep | null>(null);
-  const { currentUser } = useApp();
+  const { currentUser, userProgress } = useApp();
 
   useEffect(() => {
-    const fetchProgress = async () => {
-        if (!currentUser) return;
-        
-        const progressData = await getUserProgress(currentUser.uid);
-        const completedLessons = new Set(progressData?.completedLessons || []);
-        
-        // --- Next Step Logic ---
-        let firstUncompletedPart: NextStep | null = null;
-        for (const unit of units) {
-            for (const lesson of unit.lessons) {
-                 if (lesson.parts.length === 0) continue;
-                 let completedInThisLesson = 0;
-                 let firstUncompletedPathInThisLesson = '';
-                 for (const part of lesson.parts) {
-                    const path = constructPath(unit.id, lesson, part);
-                    if (completedLessons.has(path)) {
-                        completedInThisLesson++;
-                    } else if (!firstUncompletedPathInThisLesson) {
-                        firstUncompletedPathInThisLesson = path;
-                    }
-                 }
-                 if (firstUncompletedPathInThisLesson) {
-                    firstUncompletedPart = {
-                        lessonTitle: lesson.title,
-                        nextPartPath: firstUncompletedPathInThisLesson,
-                        completedParts: completedInThisLesson,
-                        totalParts: lesson.parts.length,
-                    };
-                    break;
-                 }
-            }
-            if (firstUncompletedPart) break;
-        }
-        setNextStep(firstUncompletedPart);
-    };
+    if (!currentUser) return;
+    
+    const completedLessons = new Set(userProgress?.completedLessons || []);
+    const nextStepInfo = calculateNextStep(completedLessons);
+    setNextStep(nextStepInfo);
 
-    fetchProgress();
     const savedLesson = localStorage.getItem('lastVisitedLesson');
     if (savedLesson) {
       setLastVisitedLesson(savedLesson);
     }
-  }, [currentUser]);
+  }, [currentUser, userProgress]);
   
   const studentName = currentUser?.role === 'student'
     ? currentUser.displayName
@@ -91,11 +37,11 @@ export default function MainAppContent() {
     <div className="container mx-auto p-8">
        <section className="text-center py-10">
         <h1 className="text-5xl font-bold mb-4">
-          أهلاً بك يا{' '}
+          أهلاً بك{' '}
           <span className="text-accent">{studentName}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
-          منصتك التفاعلية لإتقان الكيمياء بأقوى الطرق التعلمية
+          خططك أمامك التزامك قرارك
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/materials/semester-1" passHref>
@@ -115,9 +61,9 @@ export default function MainAppContent() {
 
       <section className="pb-16">
         <h2 className="text-3xl font-bold text-center mb-8">لوحة تحكم سريعة</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
           
-          {currentUser && <ProgressCard lastVisitedLesson={lastVisitedLesson} />}
+          {currentUser && <ProgressCard userProgress={userProgress} lastVisitedLesson={lastVisitedLesson} />}
 
           {nextStep && (
             <Card>

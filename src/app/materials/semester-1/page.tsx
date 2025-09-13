@@ -11,12 +11,11 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, Atom, FlaskConical, Beaker, FileText } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { units } from '@/data/materials';
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import { cn } from '@/lib/utils.tsx';
 import { useApp } from '@/context/CurriculumContext';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
     const unitNum = unitId.replace('unit-', '');
@@ -33,23 +32,8 @@ const constructPath = (unitId: string, lesson: any, part: any) => {
 }
 
 export default function Semester1Page() {
-  const { currentUser } = useApp();
-  const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    const fetchProgress = async () => {
-        if (!currentUser) return;
-        try {
-            const progressData = await getUserProgress(currentUser.uid);
-            if (progressData && progressData.completedLessons) {
-                setCompletedLessons(new Set(progressData.completedLessons));
-            }
-        } catch (error) {
-            console.error("Failed to load lesson progress:", error);
-        }
-    }
-    fetchProgress();
-  }, [currentUser]);
+  const { userProgress } = useApp();
+  const completedLessons = useMemo(() => new Set(userProgress?.completedLessons || []), [userProgress]);
 
   const calculateUnitProgress = (unit: typeof units[0]) => {
     const totalParts = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);

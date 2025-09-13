@@ -8,6 +8,9 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase/config';
 import { getOrCreateDeviceId } from '@/lib/device-id';
 import { registerDevice } from '@/lib/firebase/device.actions';
+import { getUserProgress } from '@/lib/firebase/progress.actions';
+import type { DocumentData } from 'firebase/firestore';
+
 
 type Curriculum = 'tawjihi' | 'igcse' | null;
 
@@ -32,6 +35,7 @@ interface AppContextType {
   selectCurriculum: (curriculum: NonNullable<Curriculum>) => void;
   clearCurriculum: () => void;
   currentUser: AppUser | null;
+  userProgress: DocumentData | null;
   isLoading: boolean;
   handleLogin: (user: FirebaseUser) => Promise<VerificationResult>;
 }
@@ -43,6 +47,7 @@ const ADMIN_EMAIL = 'h75jbr@gmail.com';
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [curriculum, setCurriculum] = useState<Curriculum>(null);
   const [currentUser, setCurrentUser] = useState<AppUser | null>(null);
+  const [userProgress, setUserProgress] = useState<DocumentData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -99,21 +104,28 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                         console.log('Device mismatch, signing out.');
                         await signOutUser();
                         setCurrentUser(null);
+                        setUserProgress(null);
                         clearCurriculum();
                     } else {
                         setCurrentUser(appUser);
+                        const progress = await getUserProgress(appUser.uid);
+                        setUserProgress(progress);
                     }
                 } else {
                     // For admin or student without an active device yet
                     setCurrentUser(appUser);
+                    const progress = await getUserProgress(appUser.uid);
+                    setUserProgress(progress);
                 }
              } else {
                 // If fetchAppUser returns null (not a known user), sign them out.
                 await signOutUser();
                 setCurrentUser(null);
+                setUserProgress(null);
              }
         } else {
             setCurrentUser(null);
+            setUserProgress(null);
             clearCurriculum();
         }
         setIsLoading(false);
@@ -152,6 +164,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       // If user is admin, bypass device checks.
       if (appUser.role === 'admin') {
           setCurrentUser(appUser);
+          const progress = await getUserProgress(appUser.uid);
+          setUserProgress(progress);
           return { success: true, message: `أهلاً بك أيها المدير!` };
       }
 
@@ -162,11 +176,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
       if (verificationResult.status === 'registered' || verificationResult.status === 'already-exists') {
           setCurrentUser(appUser);
+          const progress = await getUserProgress(appUser.uid);
+          setUserProgress(progress);
           return { success: true, message: `أهلاً بك، ${appUser.displayName}!` };
       } else {
           // This handles 'pending' or 'error' statuses
           await signOutUser();
           setCurrentUser(null);
+          setUserProgress(null);
           return { 
               success: false, 
               title: verificationResult.status === 'pending' ? 'جهازك قيد المراجعة' : 'خطأ في التحقق',
@@ -187,6 +204,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         selectCurriculum, 
         clearCurriculum,
         currentUser,
+        userProgress,
         isLoading,
         handleLogin,
     }}>

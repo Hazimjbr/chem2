@@ -2,12 +2,10 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Award, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import ProgressVessel from './progress-vessel';
 import { units } from '@/data/materials';
-import { useApp } from '@/context/CurriculumContext';
-import { getUserProgress } from '@/lib/firebase/progress.actions';
-import { useEffect, useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils.tsx';
 import {
@@ -17,6 +15,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useIsMobile } from '@/hooks/use-mobile';
+import type { DocumentData } from 'firebase/firestore';
 
 
 const constructPath = (unitId: string, lesson: any, part: any) => {
@@ -66,12 +65,11 @@ const bottomPositions = {
 
 
 interface ProgressCardProps {
+    userProgress: DocumentData | null;
     lastVisitedLesson: string;
 }
 
-export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
-    const { currentUser } = useApp();
-    const [progress, setProgress] = useState<{ [key: string]: number }>({});
+export default function ProgressCard({ userProgress, lastVisitedLesson }: ProgressCardProps) {
     const isMobile = useIsMobile();
     
     const allUnits = useMemo(() => [...units, ...Array(8 - units.length).fill(null)], []);
@@ -81,38 +79,30 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
         const match = lastVisitedLesson.match(/unit-(\d+)/);
         return match ? `unit-${match[1]}` : null;
     }, [lastVisitedLesson]);
+    
+    const progressPercentages = useMemo(() => {
+        const completedLessons = new Set(userProgress?.completedLessons || []);
+        const newProgress: { [key: string]: number } = {};
 
-    useEffect(() => {
-        const fetchProgress = async () => {
-            if (!currentUser) return;
+        units.forEach(unit => {
+            const totalPartsInUnit = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
+            if (totalPartsInUnit === 0) {
+                newProgress[unit.id] = 0;
+                return;
+            };
 
-            const progressData = await getUserProgress(currentUser.uid);
-            const completedLessons = new Set(progressData?.completedLessons || []);
-            
-            const newProgress: { [key: string]: number } = {};
+            const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
+                return acc + lesson.parts.filter(part => {
+                    const path = constructPath(unit.id, lesson, part);
+                    return completedLessons.has(path);
+                }).length;
+            }, 0);
 
-            units.forEach(unit => {
-                const totalPartsInUnit = unit.lessons.reduce((acc, lesson) => acc + lesson.parts.length, 0);
-                if (totalPartsInUnit === 0) {
-                    newProgress[unit.id] = 0;
-                    return;
-                };
-
-                const completedPartsInUnit = unit.lessons.reduce((acc, lesson) => {
-                    return acc + lesson.parts.filter(part => {
-                        const path = constructPath(unit.id, lesson, part);
-                        return completedLessons.has(path);
-                    }).length;
-                }, 0);
-
-                newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
-            });
-            
-            setProgress(newProgress);
-        };
-
-        fetchProgress();
-    }, [currentUser]);
+            newProgress[unit.id] = Math.round((completedPartsInUnit / totalPartsInUnit) * 100);
+        });
+        
+        return newProgress;
+    }, [userProgress]);
 
     
     const getPositionForUnit = useMemo(() => (unitId: string) => {
@@ -210,7 +200,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                 >
                                     <ProgressVessel 
                                         label={`${index + 1}`}
-                                        percentage={unit ? progress[unit.id] || 0 : 0}
+                                        percentage={unit ? progressPercentages[unit.id] || 0 : 0}
                                     />
                                </div>
                            );
@@ -236,7 +226,7 @@ export default function ProgressCard({ lastVisitedLesson }: ProgressCardProps) {
                                >
                                      <ProgressVessel 
                                         label={`${index + 5}`}
-                                        percentage={unit ? progress[unit.id] || 0 : 0}
+                                        percentage={unit ? progressPercentages[unit.id] || 0 : 0}
                                     />
                                </div>
                            );
