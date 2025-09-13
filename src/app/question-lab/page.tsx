@@ -22,7 +22,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "السائل الذي له أقل طاقة تبخر مولية هو",
+    options: [
+        "CH₃CH₂CH₂F",
+        "CH₃CH₂CH₂CH₃",
+        "CH₃COCH₃",
+        "CH₃CH₂CH₂OH"
+    ],
+    correctAnswerIndex: 1,
+    explanation: "أقل طاقة تبخر مولية تعني أضعف قوى ترابط بين الجزيئات مركب البوتان (ب) هو مركب غير قطبي يمتلك أضعف أنواع القوى (قوى لندن فقط) مقارنة بالمركبات الأخرى التي تمتلك قوى ثنائية القطب أو روابط هيدروجينية أقوى",
+    level: 2,
+    source: "الحالة السائلة / التبخر"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -68,7 +80,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="rtl">{option}</span>
+                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
@@ -103,6 +115,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
-
-    
