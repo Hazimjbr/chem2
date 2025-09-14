@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -51,14 +50,11 @@ export default function LessonPartPage() {
                 cardIcon={<Workflow className="h-6 w-6" />}
             >
                 <div className="space-y-4">
-                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى</p>
-                    <ul className="list-decimal mr-4">
-                        <li>المواد النقية</li>
-                        <li>المخاليط</li>
-                    </ul>
-
+                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى
+1) المواد النقية
+2) المخاليط</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
-                        <h4 className='font-bold text-accent mb-2'>1) المواد النقية</h4>
+                        <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
                         <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
                          <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                             <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
@@ -71,7 +67,7 @@ export default function LessonPartPage() {
                         </div>
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
-                        <h4 className='font-bold text-accent mb-2'>2) المخاليط</h4>
+                        <h4 className='font-bold text-accent mb-2'>المخاليط</h4>
                         <p className='text-sm text-muted-foreground'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
                         <p className='text-muted-foreground' style={{fontSize: '14px'}}>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                     </div>
@@ -86,7 +82,7 @@ export default function LessonPartPage() {
                     cardIcon={<Layers className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>لا تمتزج مكوناته تمامًا</li>
+                        <li>لا تمتزج مكوناته امتزاجا تاما وتبقى متمايزة عن غيرها (غير متجانسة)</li>
                         <li>قطر جسيماته يزيد عن <InlineMath math="1000nm"/></li>
                         <li>يمكن فصله بالترشيح أو الترسيب</li>
                         <li>بعضها يشتت الضوء (ظاهرة تندال)</li>
