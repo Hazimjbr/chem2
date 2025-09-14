@@ -9,6 +9,7 @@ import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/fli
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import Image from 'next/image';
 
 const lessonInfo = {
     lessonTitle: "الدرس الأول تصنيف المحاليل",
@@ -84,7 +85,7 @@ export default function LessonPartPage() {
                         <li>لا تمتزج مكوناته امتزاجا تاما وتبقى متمايزة عن غيرها (غير متجانسة)</li>
                         <li>قطر جسيماته يزيد عن <InlineMath math="1000nm"/></li>
                         <li>يمكن فصله بالترشيح أو الترسيب</li>
-                        <li>بعضها يشتت الضوء (ظاهرة تندال)</li>
+                        <li>بعضها يمتاز بظاهرة تندال</li>
                         <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> تراب وماء أو عصير برتقال طبيعي أو زيت وماء</li>
                     </ul>
                 </FlippableCard>
@@ -94,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Beaker className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>تتكون من جسيمات يتراوح قطرها بين (<InlineMath math="1-1000"/>)nm منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>تتكون من جسيمات يتراوح قطرها بين (<span dir="ltr">1-1000</span>)nm منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
                         <li>تتحرك جسيماتها حركة عشوائية في جميع الاتجاهات (الحركة البراونية) ما يمنع ترسبها</li>
                         <li>تمتاز بظاهرة تندال وهي تشتيت الضوء المار من خلالها ويزداد التشتيت بزيادة حجم الجسيمات وتركيزها</li>
                         <li>تتدرج بالوصف من الشفافة حتى العكرة والمعتمة</li>
@@ -115,11 +116,24 @@ export default function LessonPartPage() {
                     cardIcon={<Package className="h-6 w-6" />}
                 >
                    <ul className="space-y-2 text-sm">
-                        <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها</li>
-                        <li>يتراوح قطر الجزيئات بين <InlineMath math="0.1-1 nm"/> فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
+                        <li>يتراوح قطر الجزيئات بين <span dir="ltr">0.1-1</span> nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
                         <li>لا يشتت الضوء</li>
-                        <li>يصنف حسب حالة الإشباع أو القدرة على توصيل الكهرباء</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> ماء وسكر أو الهواء الجوي</li>
+                        <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
+                        <ul className="list-decimal mr-4 text-xs">
+                            <li>غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                            <li>مشبعة لا يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                            <li>فوق مشبعة تحتوي كمية إضافية من المذاب أكثر مما يمكن أن تستوعبها عند ظروف معينة</li>
+                        </ul>
+                         <li className="font-semibold text-accent">يصنف حسب قابلية التوصيل الكهربائي إلى</li>
+                         <ul className="list-decimal mr-4 text-xs">
+                            <li>كهرلية (قوية أو ضعيفة) توصل التيار الكهربائي لاحتوائها على أيونات حرة الحركة</li>
+                            <li>لا كهرلية لا توصل التيار الكهربائي لعدم احتوائها على أيونات حرة الحركة</li>
+                        </ul>
+                         <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
+                         <li className="flex justify-center">
+                            <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="تصنيف المحاليل حسب حالة المذيب" width={250} height={150} className="rounded-lg" />
+                        </li>
                     </ul>
                 </FlippableCard>
             </div>
