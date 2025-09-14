@@ -139,7 +139,7 @@ export default function LessonPartPage() {
                         </ul>
                          <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
                          <li className="flex justify-center">
-                            <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="3" width={250} height={150} className="rounded-lg" />
+                            <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="3" width={250} height={150} className="rounded-lg w-full h-auto" />
                         </li>
                     </ul>
                 </FlippableCard>
