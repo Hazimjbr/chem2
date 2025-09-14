@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -64,7 +65,7 @@ export default function LessonPartPage() {
             </FlippableCard>
 
             <FlippableCard
-                cardTitle="2 المخاليط"
+                cardTitle="المخاليط"
                 cardIcon={<Blend className="h-6 w-6" />}
             >
                  <div className="space-y-3">
@@ -107,8 +108,8 @@ export default function LessonPartPage() {
                     cardIcon={<Package className="h-6 w-6" />}
                 >
                    <ul className="space-y-2 text-sm">
-                        <li>تمتزج مكوناته تمامًا وبشكل منتظم</li>
-                        <li>قطر جسيماته أصغر من <InlineMath math="1nm"/></li>
+                        <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها</li>
+                        <li>يتراوح قطر الجزيئات بين <InlineMath math="0.1-1 nm"/> فلا ترى بالعين أو المجهر</li>
                         <li>لا يمكن فصله بالترشيح أو الترسيب ولا يشتت الضوء</li>
                         <li>يصنف حسب حالة الإشباع أو القدرة على توصيل الكهرباء</li>
                         <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> ماء وسكر أو الهواء الجوي</li>
@@ -159,5 +160,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
