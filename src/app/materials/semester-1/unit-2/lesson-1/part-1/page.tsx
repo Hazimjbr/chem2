@@ -11,8 +11,8 @@ import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
 const lessonInfo = {
-    lessonTitle: "الدرس الأول: تصنيف المحاليل",
-    lessonSubtitle: "تصنيف المواد",
+    lessonTitle: "الدرس الأول تصنيف المحاليل",
+    lessonSubtitle: "الجزء الأول تصنيف المواد",
     mainIdea: "تقسم المواد حسب تركيبها إلى مواد نقية (عناصر ومركبات) ومخاليط (متجانسة وغير متجانسة) ولكل منها خصائصها التي تميزها",
     learningOutcomes: [
         "أصنف المواد إلى نقية ومخاليط",
@@ -24,7 +24,7 @@ const lessonInfo = {
     previousLesson: "/materials/semester-1/unit-1/section-5",
     nextLesson: "/materials/semester-1/unit-2/lesson-1/part-2",
     previousLessonTitle: "مراجعة الوحدة الأولى",
-    nextLessonTitle: "الجزء التالي: تكون المحاليل"
+    nextLessonTitle: "الجزء التالي تكون المحاليل"
 };
 
 export default function LessonPartPage() {
@@ -51,7 +51,7 @@ export default function LessonPartPage() {
                 cardIcon={<CircleDot className="h-6 w-6" />}
             >
                 <div className="space-y-3">
-                    <p className='font-semibold'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم</p>
+                    <p className='font-semibold'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>أ) العناصر</h4>
                         <p className='text-xs text-muted-foreground'>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
@@ -70,7 +70,7 @@ export default function LessonPartPage() {
             >
                  <div className="space-y-3">
                     <p className='font-semibold'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
-                    <p className='text-xs text-muted-foreground'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
+                    <p className='text-sm text-muted-foreground'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                 </div>
             </FlippableCard>
 
