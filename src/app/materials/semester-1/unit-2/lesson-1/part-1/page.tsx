@@ -13,12 +13,12 @@ import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 const lessonInfo = {
     lessonTitle: "الدرس الأول: تصنيف المحاليل",
     lessonSubtitle: "تصنيف المواد",
-    mainIdea: "تقسم المواد حسب تركيبها إلى مواد نقية (عناصر ومركبات) ومخاليط (متجانسة وغير متجانسة)، ولكل منها خصائصها التي تميزها.",
+    mainIdea: "تقسم المواد حسب تركيبها إلى مواد نقية (عناصر ومركبات) ومخاليط (متجانسة وغير متجانسة) ولكل منها خصائصها التي تميزها",
     learningOutcomes: [
-        "أصنف المواد إلى نقية ومخاليط.",
-        "أقارن بين أنواع المخاليط المختلفة."
+        "أصنف المواد إلى نقية ومخاليط",
+        "أقارن بين أنواع المخاليط المختلفة"
     ],
-    lessonContent: `<p>كل شيء حولنا يتكون من مادة، ولكن هل جميع المواد متشابهة؟ في هذا الدرس، سنتعلم كيف يصنف الكيميائيون المواد بناءً على تركيبها الأساسي، مما يساعدنا على فهم خصائصها وسلوكها بشكل أفضل.</p>`,
+    lessonContent: `<p>كل شيء حولنا يتكون من مادة ولكن هل جميع المواد متشابهة في هذا الدرس سنتعلم كيف يصنف الكيميائيون المواد بناءً على تركيبها الأساسي مما يساعدنا على فهم خصائصها وسلوكها بشكل أفضل</p>`,
     lessonId: "/materials/semester-1/unit-2/lesson-1/part-1",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/section-5",
@@ -47,31 +47,31 @@ export default function LessonPartPage() {
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
             <FlippableCard
-                cardTitle="1. المواد النقية"
+                cardTitle="1 المواد النقية"
                 cardIcon={<CircleDot className="h-6 w-6" />}
             >
                 <div className="space-y-3">
-                    <p className='font-semibold'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم.</p>
+                    <p className='font-semibold'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>أ) العناصر (Elements)</h4>
-                        <p className='text-xs text-muted-foreground'>أبسط أشكال المادة النقية، لا يمكن تحليلها إلى مواد أبسط. أمثلة:</p>
-                        <p className='text-xs font-mono text-left mt-1' dir="ltr">Cu(s), Ag(s), Au(s), H₂(g), N₂(g), O₂(g), F₂(g), Cl₂(g), Br₂(l), I₂(s), P₄(s), S₈(s)</p>
+                        <p className='text-xs text-muted-foreground'>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
+                        <p className='text-xs font-mono text-left mt-1' dir="ltr">Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>ب) المركبات (Compounds)</h4>
-                        <p className='text-xs text-muted-foreground'>ناتجة من اتحاد عنصرين أو أكثر بنسب ثابتة. أمثلة:</p>
-                        <p className='text-xs font-mono text-left mt-1' dir="ltr">H₂O (الماء), Fe₂O₃·2H₂O (الصدأ)</p>
+                        <p className='text-xs text-muted-foreground'>ناتجة من اتحاد عنصرين أو أكثر</p>
+                        <p className='text-xs text-muted-foreground'>أمثلة الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
                     </div>
                 </div>
             </FlippableCard>
 
             <FlippableCard
-                cardTitle="2. المخاليط (Mixtures)"
+                cardTitle="2 المخاليط (Mixtures)"
                 cardIcon={<Blend className="h-6 w-6" />}
             >
                  <div className="space-y-3">
-                    <p className='font-semibold'>مزيج من مادتين نقيتين أو أكثر، حيث تحتفظ كل مادة بخصائصها الكيميائية (لا تتفاعل).</p>
-                    <p className='text-xs text-muted-foreground'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات.</p>
+                    <p className='font-semibold'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
+                    <p className='text-xs text-muted-foreground'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                 </div>
             </FlippableCard>
 
@@ -83,11 +83,11 @@ export default function LessonPartPage() {
                     cardIcon={<Layers className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>لا تمتزج مكوناته تمامًا.</li>
-                        <li>قطر جسيماته يزيد عن <InlineMath math="1000nm"/>.</li>
-                        <li>يمكن فصله بالترشيح أو الترسيب.</li>
-                        <li>بعضها يشتت الضوء (ظاهرة تندال).</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة:</strong> تراب وماء، عصير برتقال طبيعي، زيت وماء.</li>
+                        <li>لا تمتزج مكوناته تمامًا</li>
+                        <li>قطر جسيماته يزيد عن <InlineMath math="1000nm"/></li>
+                        <li>يمكن فصله بالترشيح أو الترسيب</li>
+                        <li>بعضها يشتت الضوء (ظاهرة تندال)</li>
+                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> تراب وماء أو عصير برتقال طبيعي أو زيت وماء</li>
                     </ul>
                 </FlippableCard>
 
@@ -96,11 +96,11 @@ export default function LessonPartPage() {
                     cardIcon={<Beaker className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>حالة وسط بين المتجانس والمعلق.</li>
-                        <li>قطر جسيماته يتراوح بين <InlineMath math="1-1000nm"/>.</li>
-                        <li>لا يمكن فصله بالترشيح أو الترسيب.</li>
-                        <li>يشتت الضوء (ظاهرة تندال) وتتحرك جسيماته حركة براونية.</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة:</strong> الحليب، الضباب، الدهان، الدخان.</li>
+                        <li>حالة وسط بين المتجانس والمعلق</li>
+                        <li>قطر جسيماته يتراوح بين <InlineMath math="1-1000nm"/></li>
+                        <li>لا يمكن فصله بالترشيح أو الترسيب</li>
+                        <li>يشتت الضوء (ظاهرة تندال) وتتحرك جسيماته حركة براونية</li>
+                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> الحليب والضباب والدهان والدخان</li>
                     </ul>
                 </FlippableCard>
 
@@ -109,11 +109,11 @@ export default function LessonPartPage() {
                     cardIcon={<Package className="h-6 w-6" />}
                 >
                    <ul className="space-y-2 text-sm">
-                        <li>تمتزج مكوناته تمامًا وبشكل منتظم.</li>
-                        <li>قطر جسيماته أصغر من <InlineMath math="1nm"/>.</li>
-                        <li>لا يمكن فصله بالترشيح أو الترسيب ولا يشتت الضوء.</li>
-                        <li>يصنف حسب حالة الإشباع أو القدرة على توصيل الكهرباء.</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة:</strong> ماء وسكر، الهواء الجوي.</li>
+                        <li>تمتزج مكوناته تمامًا وبشكل منتظم</li>
+                        <li>قطر جسيماته أصغر من <InlineMath math="1nm"/></li>
+                        <li>لا يمكن فصله بالترشيح أو الترسيب ولا يشتت الضوء</li>
+                        <li>يصنف حسب حالة الإشباع أو القدرة على توصيل الكهرباء</li>
+                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> ماء وسكر أو الهواء الجوي</li>
                     </ul>
                 </FlippableCard>
             </div>
@@ -132,7 +132,7 @@ export default function LessonPartPage() {
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="أي من الخيارات التالية يمثل مادة نقية؟"
+                  question="أي من الخيارات التالية يمثل مادة نقية"
                   options={[
                       "عصير البرتقال",
                       "الهواء",
@@ -140,13 +140,13 @@ export default function LessonPartPage() {
                       "الحليب"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="الذهب (Au) هو عنصر، والعناصر تعتبر مواد نقية. الخيارات الأخرى هي مخاليط."
+                  explanation="الذهب (Au) هو عنصر والعناصر تعتبر مواد نقية الخيارات الأخرى هي مخاليط"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={handleCorrectAnswer}
-                  question="ما هي الخاصية التي تسمح بالتمييز بين محلول حقيقي ومخلوط غروي شفاف؟"
+                  question="ما هي الخاصية التي تسمح بالتمييز بين محلول حقيقي ومخلوط غروي شفاف"
                   options={[
                       "اللون",
                       "الكثافة",
@@ -154,10 +154,12 @@ export default function LessonPartPage() {
                       "ظاهرة تندال (تشتيت الضوء)"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="المخلوط الغروي يشتت الضوء المار من خلاله (ظاهرة تندال)، بينما المحلول الحقيقي لا يشتت الضوء."
+                  explanation="المخلوط الغروي يشتت الضوء المار من خلاله (ظاهرة تندال) بينما المحلول الحقيقي لا يشتت الضوء"
               />
           </div>
         </div>
     </LessonLayout>
   );
 }
+
+    
