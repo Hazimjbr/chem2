@@ -52,7 +52,7 @@ export default function LessonPartPage() {
                 cardIcon={<Workflow className="h-6 w-6" />}
             >
                 <div className="space-y-4">
-                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى<br />1) المواد النقية<br />2) المخاليط</p>
+                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
                         <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
@@ -68,7 +68,7 @@ export default function LessonPartPage() {
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المخاليط</h4>
-                        <p className='text-sm text-muted-foreground'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
+                        <p className='text-muted-foreground' style={{fontSize: '14px'}}>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
                         <p className='text-muted-foreground' style={{fontSize: '14px'}}>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ export default function LessonPartPage() {
                     cardIcon={<Beaker className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>تتكون من جسيمات يتراوح قطرها بين (<span dir="ltr">1-1000</span>)nm منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>تتكون من جسيمات يتراوح قطرها بين (1-1000)nm منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
                         <li>تتحرك جسيماتها حركة عشوائية في جميع الاتجاهات (الحركة البراونية) ما يمنع ترسبها</li>
                         <li>تمتاز بظاهرة تندال وهي تشتيت الضوء المار من خلالها ويزداد التشتيت بزيادة حجم الجسيمات وتركيزها</li>
                         <li>تتدرج بالوصف من الشفافة حتى العكرة والمعتمة</li>
@@ -117,8 +117,8 @@ export default function LessonPartPage() {
                 >
                    <ul className="space-y-2 text-sm">
                         <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
-                        <li>يتراوح قطر الجزيئات بين <span dir="ltr">0.1-1</span> nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
-                        <li>لا يشتت الضوء</li>
+                        <li>يتراوح قطر الجزيئات بين 0.1-1 nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>من أمثلتها الماء الحلو (سكر في ماء) والهواء الجوي</li>
                         <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
                         <ul className="list-decimal mr-4 text-xs">
                             <li>غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
@@ -132,7 +132,7 @@ export default function LessonPartPage() {
                         </ul>
                          <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
                          <li className="flex justify-center">
-                            <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="تصنيف المحاليل حسب حالة المذيب" width={250} height={150} className="rounded-lg" />
+                            <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="3" width={250} height={150} className="rounded-lg" />
                         </li>
                     </ul>
                 </FlippableCard>
