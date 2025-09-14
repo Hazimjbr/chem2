@@ -124,7 +124,7 @@ export default function LessonPartPage() {
                 >
                    <ul className="space-y-2 text-sm">
                         <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
-                        <li>يتراوح قطر الجزيئات بين 0.1-1 nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>يتراوح قطر الجزيئات بين (0.1-1)nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
                         <li>من أمثلتها الماء الحلو (سكر في ماء) والهواء الجوي</li>
                         <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
                         <ul className="list-decimal mr-4 text-xs">
@@ -188,3 +188,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
