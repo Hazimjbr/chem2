@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -47,26 +46,25 @@ export default function LessonPartPage() {
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
             <FlippableCard
-                cardTitle="1 المواد النقية"
+                cardTitle="المواد النقية"
                 cardIcon={<CircleDot className="h-6 w-6" />}
             >
                 <div className="space-y-3">
                     <p className='font-semibold'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
-                        <h4 className='font-bold text-accent mb-2'>أ) العناصر (Elements)</h4>
+                        <h4 className='font-bold text-accent mb-2'>أ) العناصر</h4>
                         <p className='text-xs text-muted-foreground'>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
                         <p className='text-xs font-mono text-left mt-1' dir="ltr">Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
-                        <h4 className='font-bold text-accent mb-2'>ب) المركبات (Compounds)</h4>
-                        <p className='text-xs text-muted-foreground'>ناتجة من اتحاد عنصرين أو أكثر</p>
-                        <p className='text-xs text-muted-foreground'>أمثلة الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
+                        <h4 className='font-bold text-accent mb-2'>ب) المركبات</h4>
+                        <p className='text-xs text-muted-foreground'>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
                     </div>
                 </div>
             </FlippableCard>
 
             <FlippableCard
-                cardTitle="2 المخاليط (Mixtures)"
+                cardTitle="2 المخاليط"
                 cardIcon={<Blend className="h-6 w-6" />}
             >
                  <div className="space-y-3">
