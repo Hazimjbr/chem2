@@ -4,7 +4,7 @@ import React from 'react';
 
 export interface QuizQuestion {
     question: React.ReactNode;
-    options: string[];
+    options: string[] | React.ReactNode[];
     correctAnswerIndex: number;
     explanation: string;
 }
@@ -93,7 +93,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: "أي من الخصائص التالية لا تنطبق على المحاليل الحقيقية (المخاليط المتجانسة)",
         options: [
-            "قطر جسيماتها أقل من 1nm",
+            <>قطر جسيماتها أقل من <span dir="ltr">1nm</span></>,
             "لا يمكن فصل مكوناتها بالترشيح",
             "تشتت الضوء (ظاهرة تندال)",
             "تمتزج مكوناتها بشكل منتظم"
@@ -126,5 +126,3 @@ export const staticQuizLvl2: QuizQuestion[] = [
 ];
 
 export const staticQuizLvl3: QuizQuestion[] = [];
-
-    
