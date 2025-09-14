@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -50,20 +51,18 @@ export default function LessonPartPage() {
                 cardIcon={<Workflow className="h-6 w-6" />}
             >
                 <div className="space-y-4">
-                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى
-1) المواد النقية
-2) المخاليط</p>
+                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى 1) المواد النقية 2) المخاليط</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
                         <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
                          <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                             <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
-                            <p className='text-sm text-muted-foreground' style={{fontSize: '14px'}}>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
-                            <p className='text-sm font-mono text-left' dir="ltr" style={{fontSize: '14px'}}>Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
+                            <p className='text-muted-foreground' style={{fontSize: '14px'}}>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
+                            <p className='font-mono text-left' dir="ltr" style={{fontSize: '14px'}}>Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
                         </div>
                         <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                             <h5 className='font-semibold text-accent/80 text-sm'>ب) مركبات</h5>
-                            <p className='text-sm text-muted-foreground' style={{fontSize: '14px'}}>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
+                            <p className='text-muted-foreground' style={{fontSize: '14px'}}>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
                         </div>
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
@@ -90,16 +89,24 @@ export default function LessonPartPage() {
                     </ul>
                 </FlippableCard>
 
-                <FlippableCard
+                 <FlippableCard
                     cardTitle="المخلوط الغروي"
                     cardIcon={<Beaker className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>حالة وسط بين المتجانس والمعلق</li>
-                        <li>قطر جسيماته يتراوح بين <InlineMath math="1-1000nm"/></li>
-                        <li>لا يمكن فصله بالترشيح أو الترسيب</li>
-                        <li>يشتت الضوء (ظاهرة تندال) وتتحرك جسيماته حركة براونية</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> الحليب والضباب والدهان والدخان</li>
+                        <li>تتكون من جسيمات يتراوح قطرها بين <InlineMath math="1-1000nm"/> منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>تتحرك جسيماتها حركة عشوائية في جميع الاتجاهات (الحركة البراونية) ما يمنع ترسبها</li>
+                        <li>تمتاز بظاهرة تندال وهي تشتيت الضوء المار من خلالها ويزداد التشتيت بزيادة حجم الجسيمات وتركيزها</li>
+                        <li>تتدرج بالوصف من الشفافة حتى العكرة والمعتمة</li>
+                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>تصنف حسب حالة كل من الجسيمات المنتشرة ووسط الانتشار ومن أمثلتها</strong>
+                            <ul className="list-disc mr-4 mt-2">
+                                <li>الضباب والغيوم والرذاذ (سائل في غاز)</li>
+                                <li>الدخان والرماد والغبار (صلب في غاز)</li>
+                                <li>الحليب والمايونيز (سائل في سائل)</li>
+                                <li>الدهان (صلب في سائل)</li>
+                                <li>حجر الخفاف البركاني (غاز في صلب)</li>
+                            </ul>
+                        </li>
                     </ul>
                 </FlippableCard>
 
@@ -109,8 +116,8 @@ export default function LessonPartPage() {
                 >
                    <ul className="space-y-2 text-sm">
                         <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها</li>
-                        <li>يتراوح قطر الجزيئات بين <InlineMath math="0.1-1 nm"/> فلا ترى بالعين أو المجهر</li>
-                        <li>لا يمكن فصله بالترشيح أو الترسيب ولا يشتت الضوء</li>
+                        <li>يتراوح قطر الجزيئات بين <InlineMath math="0.1-1 nm"/> فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>لا يشتت الضوء</li>
                         <li>يصنف حسب حالة الإشباع أو القدرة على توصيل الكهرباء</li>
                         <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> ماء وسكر أو الهواء الجوي</li>
                     </ul>
