@@ -55,7 +55,7 @@ export default function LessonPartPage() {
                     <p className="font-semibold">تقسم المواد حسب تركيبها إلى</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
-                        <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
+                        <p className='text-sm text-muted-foreground' style={{fontSize: '14px'}}>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
                          <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                             <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
                             <p className='text-muted-foreground' style={{fontSize: '14px'}}>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
@@ -86,7 +86,14 @@ export default function LessonPartPage() {
                         <li>قطر جسيماته يزيد عن <InlineMath math="1000nm"/></li>
                         <li>يمكن فصله بالترشيح أو الترسيب</li>
                         <li>بعضها يمتاز بظاهرة تندال</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>أمثلة</strong> تراب وماء أو عصير برتقال طبيعي أو زيت وماء</li>
+                         <li className='border-t pt-2 mt-2'>
+                            <strong className='text-accent text-xs'>من أمثلتها</strong>
+                             <ul className="list-disc mr-4 mt-2">
+                                <li>تراب + ماء (طبقتين منفصلتين صلب + سائل)</li>
+                                <li>عصير البرتقال الطبيعي (طبقتين منفصلتين صلب + سائل)</li>
+                                <li>ماء + زيت أو ماء + بنزين (طبقتين سائلتين منفصلتين)</li>
+                             </ul>
+                        </li>
                     </ul>
                 </FlippableCard>
 
