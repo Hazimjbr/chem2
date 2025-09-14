@@ -55,7 +55,7 @@ export default function LessonPartPage() {
                     <p className="font-semibold">تقسم المواد حسب تركيبها إلى</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
-                        <p className='text-sm text-muted-foreground' style={{fontSize: '14px'}}>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
+                        <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
                          <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                             <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
                             <p className='text-muted-foreground' style={{fontSize: '14px'}}>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
@@ -68,7 +68,7 @@ export default function LessonPartPage() {
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المخاليط</h4>
-                        <p className='text-muted-foreground' style={{fontSize: '14px'}}>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
+                        <p className='text-muted-foreground'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
                         <p className='text-muted-foreground' style={{fontSize: '14px'}}>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ export default function LessonPartPage() {
             
             <h3 className="text-2xl font-bold text-center">أنواع المخاليط</h3>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
                 <FlippableCard
                     cardTitle="المخلوط المعلق"
                     cardIcon={<Layers className="h-6 w-6" />}
@@ -117,33 +117,32 @@ export default function LessonPartPage() {
                         </li>
                     </ul>
                 </FlippableCard>
-
-                <FlippableCard
-                    cardTitle="المخلوط المتجانس (المحلول)"
-                    cardIcon={<Package className="h-6 w-6" />}
-                >
-                   <ul className="space-y-2 text-sm">
-                        <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
-                        <li>يتراوح قطر الجزيئات بين (0.1-1)nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
-                        <li>من أمثلتها الماء الحلو (سكر في ماء) والهواء الجوي</li>
-                        <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
-                        <ul className="list-decimal mr-4">
-                            <li style={{fontSize: '14px'}}>غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
-                            <li style={{fontSize: '14px'}}>مشبعة لا يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
-                            <li style={{fontSize: '14px'}}>فوق مشبعة تحتوي كمية إضافية من المذاب أكثر مما يمكن أن تستوعبها عند ظروف معينة</li>
-                        </ul>
-                         <li className="font-semibold text-accent">يصنف حسب قابلية التوصيل الكهربائي إلى</li>
-                         <ul className="list-decimal mr-4">
-                            <li style={{fontSize: '14px'}}>كهرلية (قوية أو ضعيفة) توصل التيار الكهربائي لاحتوائها على أيونات حرة الحركة</li>
-                            <li style={{fontSize: '14px'}}>لا كهرلية لا توصل التيار الكهربائي لعدم احتوائها على أيونات حرة الحركة</li>
-                        </ul>
-                         <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
-                         <li className="flex justify-center">
-                            <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="3" width={250} height={150} className="rounded-lg w-full h-auto" />
-                        </li>
-                    </ul>
-                </FlippableCard>
             </div>
+            <FlippableCard
+                cardTitle="المخلوط المتجانس (المحلول)"
+                cardIcon={<Package className="h-6 w-6" />}
+            >
+               <ul className="space-y-2 text-sm">
+                    <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
+                    <li>يتراوح قطر الجزيئات بين (0.1-1)nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
+                    <li>من أمثلتها الماء الحلو (سكر في ماء) والهواء الجوي</li>
+                    <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
+                    <ul className="list-decimal mr-4">
+                        <li style={{fontSize: '14px'}}>غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                        <li style={{fontSize: '14px'}}>مشبعة لا يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                        <li style={{fontSize: '14px'}}>فوق مشبعة تحتوي كمية إضافية من المذاب أكثر مما يمكن أن تستوعبها عند ظروف معينة</li>
+                    </ul>
+                     <li className="font-semibold text-accent">يصنف حسب قابلية التوصيل الكهربائي إلى</li>
+                     <ul className="list-decimal mr-4">
+                        <li style={{fontSize: '14px'}}>كهرلية (قوية أو ضعيفة) توصل التيار الكهربائي لاحتوائها على أيونات حرة الحركة</li>
+                        <li style={{fontSize: '14px'}}>لا كهرلية لا توصل التيار الكهربائي لعدم احتوائها على أيونات حرة الحركة</li>
+                    </ul>
+                     <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
+                     <li className="flex justify-center">
+                        <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="3" width={250} height={150} className="rounded-lg w-full h-auto" />
+                    </li>
+                </ul>
+            </FlippableCard>
         </div>
         
         <div className="space-y-4 mt-8">
@@ -188,5 +187,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
