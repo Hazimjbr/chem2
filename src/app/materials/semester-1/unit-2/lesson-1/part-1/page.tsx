@@ -47,33 +47,37 @@ export default function LessonPartPage() {
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
             <FlippableCard
-                cardTitle="المواد النقية"
-                cardIcon={<CircleDot className="h-6 w-6" />}
+                cardTitle="تصنيف المواد"
+                cardIcon={<Workflow className="h-6 w-6" />}
             >
-                <div className="space-y-3">
-                    <p className='font-semibold'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
+                <div className="space-y-4">
+                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى</p>
+                    <ul className="list-decimal mr-4">
+                        <li>المواد النقية</li>
+                        <li>المخاليط</li>
+                    </ul>
+
                     <div className='p-3 bg-muted/50 rounded-lg'>
-                        <h4 className='font-bold text-accent mb-2'>أ) العناصر</h4>
-                        <p className='text-sm text-muted-foreground'>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
-                        <p className='text-sm font-mono text-left mt-1' dir="ltr">Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
+                        <h4 className='font-bold text-accent mb-2'>1) المواد النقية</h4>
+                        <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
+                         <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
+                            <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
+                            <p className='text-sm text-muted-foreground' style={{fontSize: '14px'}}>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
+                            <p className='text-sm font-mono text-left' dir="ltr" style={{fontSize: '14px'}}>Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
+                        </div>
+                        <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
+                            <h5 className='font-semibold text-accent/80 text-sm'>ب) مركبات</h5>
+                            <p className='text-sm text-muted-foreground' style={{fontSize: '14px'}}>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
+                        </div>
                     </div>
                      <div className='p-3 bg-muted/50 rounded-lg'>
-                        <h4 className='font-bold text-accent mb-2'>ب) المركبات</h4>
-                        <p className='text-sm text-muted-foreground'>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
+                        <h4 className='font-bold text-accent mb-2'>2) المخاليط</h4>
+                        <p className='text-sm text-muted-foreground'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
+                        <p className='text-muted-foreground' style={{fontSize: '14px'}}>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                     </div>
                 </div>
             </FlippableCard>
-
-            <FlippableCard
-                cardTitle="المخاليط"
-                cardIcon={<Blend className="h-6 w-6" />}
-            >
-                 <div className="space-y-3">
-                    <p className='font-semibold'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
-                    <p className='text-sm text-muted-foreground'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
-                </div>
-            </FlippableCard>
-
+            
             <h3 className="text-2xl font-bold text-center">أنواع المخاليط</h3>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
