@@ -51,7 +51,7 @@ export default function LessonPartPage() {
                 cardIcon={<Workflow className="h-6 w-6" />}
             >
                 <div className="space-y-4">
-                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى 1) المواد النقية 2) المخاليط</p>
+                    <p className="font-semibold">تقسم المواد حسب تركيبها إلى<br />1) المواد النقية<br />2) المخاليط</p>
                     <div className='p-3 bg-muted/50 rounded-lg'>
                         <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
                         <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
@@ -94,7 +94,7 @@ export default function LessonPartPage() {
                     cardIcon={<Beaker className="h-6 w-6" />}
                 >
                     <ul className="space-y-2 text-sm">
-                        <li>تتكون من جسيمات يتراوح قطرها بين <InlineMath math="1-1000nm"/> منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
+                        <li>تتكون من جسيمات يتراوح قطرها بين (<InlineMath math="1-1000"/>)nm منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
                         <li>تتحرك جسيماتها حركة عشوائية في جميع الاتجاهات (الحركة البراونية) ما يمنع ترسبها</li>
                         <li>تمتاز بظاهرة تندال وهي تشتيت الضوء المار من خلالها ويزداد التشتيت بزيادة حجم الجسيمات وتركيزها</li>
                         <li>تتدرج بالوصف من الشفافة حتى العكرة والمعتمة</li>
