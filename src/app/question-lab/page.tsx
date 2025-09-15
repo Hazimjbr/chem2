@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "العبارة الصحيحة:",
-    options: [
-        "لا يذوب حمض الإيثانويك في الماء",
-        "يمتزج سائل CCl₄ في الماء ويشكلان طبقة واحدة",
-        "يكون الكحول والماء طبقتين منفصلتين",
-        "يكون البنزين والماء طبقتين منفصلتين"
-    ],
-    correctAnswerIndex: 3,
-    explanation: "البنزين مركب غير قطبي بينما الماء مركب قطبي. وفقًا لمبدأ 'الشبيه يذيب شبيهه'، فإنهما لا يمتزجان ويشكلان طبقتين منفصلتين.",
-    level: 2,
-    source: "مراجعة الوحدة الثانية / تكون المحاليل"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
