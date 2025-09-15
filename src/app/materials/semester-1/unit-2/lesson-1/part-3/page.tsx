@@ -50,19 +50,21 @@ export default function LessonPartPage() {
         <div className="space-y-8">
             <FlippableCard cardTitle="الذائبية والعوامل المؤثرة فيها" cardIcon={<FlaskConical className="h-6 w-6" />}>
                 <div className="p-4 space-y-4">
-                    <p className="font-semibold">الذائبية أكبر كتلة من المذاب يمكن أن تذوب في <span dir="ltr" className="inline-block">100g</span> من الماء عند درجة حرارة معينة</p>
+                    <p className="font-semibold">الذائبية أكبر كتلة من المذاب يمكن أن تذوب في <span dir="ltr">100g</span> من الماء عند درجة حرارة معينة</p>
                     
                     <div>
                         <h4 className="font-bold text-accent">تعتمد ذائبية المركبات الأيونية الصلبة على</h4>
                         <ul className="list-decimal mr-4 mt-2 text-sm space-y-1">
                             <li>طبيعة المادة لكل مادة ذائبية تعتمد على قوى الترابط بين الجسيمات</li>
-                            <li>درجة الحرارة (علاقة طردية) باستثناء كبريتات السيريوم <span dir="ltr" className="inline-block">Ce2(SO4)3</span> (علاقة عكسية)</li>
+                            <li>درجة الحرارة (علاقة طردية) باستثناء كبريتات السيريوم <span dir="ltr">Ce2(SO4)3</span> (علاقة عكسية)</li>
                         </ul>
                     </div>
 
                     <div className="border-t pt-3">
                         <h4 className="font-bold text-accent">ذائبية المركبات الأيونية (الصلبة) في الماء</h4>
-                        {/* Placeholder for table image */}
+                         <div className="flex justify-center my-2">
+                            <Image src="https://i.ibb.co/gbWxHr6K/image.jpg" alt="جدول الذائبية" width={400} height={300} className="rounded-lg border" data-ai-hint="solubility rules table" />
+                        </div>
                     </div>
                      <div className="border-t pt-3 text-sm" dir="rtl">
                         <p>أيونات المجموعة الأولى (<span dir="ltr">Li⁺ Na⁺ K⁺ Rb⁺</span>)</p>
@@ -77,7 +79,7 @@ export default function LessonPartPage() {
                     <div className="border-t pt-3">
                         <h4 className="font-bold text-accent">ذائبية الغازات في الماء قليلة عموما وتعتمد على</h4>
                         <ul className="list-decimal mr-4 mt-2 text-sm space-y-2">
-                            <li><strong className="font-semibold">طبيعة المادة</strong> (علاقة طردية مع قوى الترابط) كلما زادت الكتلة المولية للغاز زادت قوى لندن وزادت الذائبية</li>
+                            <li><strong className="font-semibold">طبيعة المادة</strong> (علاقة طردية مع قوى الترابط بين الجسيمات) كلما زادت الكتلة المولية للغاز زادت قوى لندن وزادت الذائبية</li>
                             <li><strong className="font-semibold">درجة الحرارة</strong> (علاقة عكسية) لأن زيادة الحرارة تزيد الطاقة الحركية لجسيمات الغاز فتتغلب على قوى التجاذب مع الماء وتفلت من المحلول وتغادره</li>
                             <li><strong className="font-semibold">الضغط الخارجي أو الجزئي</strong> (علاقة طردية خطية)</li>
                         </ul>
@@ -96,13 +98,15 @@ export default function LessonPartPage() {
                     <div>
                         <h4 className="font-semibold text-accent">حيث</h4>
                         <ul className="list-decimal mr-4 mt-2 text-sm space-y-1">
-                             <li><span dir="ltr" className="inline-block font-mono">S</span> الذائبية بوحدة <span dir="ltr" className="inline-block">g/L</span></li>
-                             <li><span dir="ltr" className="inline-block font-mono">P</span> الضغط الجزئي للغاز بوحدة <span dir="ltr" className="inline-block">atm</span></li>
-                             <li><span dir="ltr" className="inline-block font-mono">KH</span> ثابت هنري بوحدة <span dir="ltr" className="inline-block">g/L.atm</span> (قيمته تتغير بتغير نوع الغاز ودرجة الحرارة)</li>
-                             <li><span dir="ltr" className="inline-block font-mono">T = 0°C = 273K</span></li>
+                             <li><span dir="ltr">S</span> الذائبية بوحدة <span dir="ltr">g/L</span></li>
+                             <li><span dir="ltr">P</span> الضغط الجزئي للغاز بوحدة <span dir="ltr">atm</span></li>
+                             <li><span dir="ltr">KH</span> ثابت هنري بوحدة <span dir="ltr">g/L.atm</span> (قيمته تتغير بتغير نوع الغاز ودرجة الحرارة)</li>
+                             <li><span dir="ltr">T = 0°C = 273K</span></li>
                         </ul>
                     </div>
-                     {/* Placeholder for graph image */}
+                     <div className="flex justify-center my-2">
+                        <Image src="https://i.ibb.co/Sw69HrHr/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border" data-ai-hint="Henry's law graph" />
+                    </div>
                 </div>
             </FlippableCard>
 
