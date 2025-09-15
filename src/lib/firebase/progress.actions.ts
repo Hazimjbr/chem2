@@ -7,7 +7,7 @@ import type { QuizResult } from '@/components/quiz';
 
 // --- User Progress Structure ---
 // /user-progress/{userId}
-//   - completedLessons: Set<string>
+//   - completedLessons: string[] (array of lessonIds)
 //   - quizHistory: QuizResult[]
 //   - quizStates: { [lessonId]: QuizState }
 
@@ -65,36 +65,31 @@ export async function clearUserQuizState(userId: string, lessonId: string) {
 export async function saveUserQuizResult(userId: string, result: QuizResult) {
   try {
     const progressRef = doc(db, 'user-progress', userId);
+    
+    // Atomically add the new result to the 'quizHistory' array.
     await updateDoc(progressRef, {
       quizHistory: arrayUnion(result)
     });
+
+    // If the quiz score is 80% or higher, also mark the lesson as complete.
+    if (result.score >= 0.8) {
+      await updateDoc(progressRef, {
+        completedLessons: arrayUnion(result.lessonId)
+      });
+    }
+
   } catch (error: any) {
      if (error.code === 'not-found') {
         const progressRef = doc(db, 'user-progress', userId);
-        await setDoc(progressRef, { quizHistory: [result] });
+        const dataToSet: any = { quizHistory: [result] };
+        if (result.score >= 0.8) {
+          dataToSet.completedLessons = [result.lessonId];
+        }
+        await setDoc(progressRef, dataToSet);
      } else {
         console.error("Error saving quiz result:", error);
      }
   }
-}
-
-
-// --- Lesson Completion Tracking ---
-
-export async function markLessonAsComplete(userId: string, lessonId: string) {
-    try {
-        const progressRef = doc(db, 'user-progress', userId);
-        await updateDoc(progressRef, {
-            completedLessons: arrayUnion(lessonId)
-        });
-    } catch (error: any) {
-        if (error.code === 'not-found') {
-            const progressRef = doc(db, 'user-progress', userId);
-            await setDoc(progressRef, { completedLessons: [lessonId] });
-        } else {
-            console.error("Error marking lesson as complete:", error);
-        }
-    }
 }
 
 

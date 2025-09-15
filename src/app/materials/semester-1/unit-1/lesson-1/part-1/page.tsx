@@ -6,9 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import FlippableCard from './flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import { useEffect, useState } from 'react';
 import LessonLayout from '@/components/lesson-layout';
 
 const Diagram = dynamic(() => import('./diagram'), {
@@ -41,25 +40,6 @@ const lessonInfo = {
 }
 
 export default function LessonPartPage() {
-  const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    try {
-      const savedProgress = localStorage.getItem('completedLessons') || '[]';
-      const completedLessons = new Set(JSON.parse(savedProgress));
-      if (completedInteractive.size >= 2) {
-        completedLessons.add(lessonInfo.lessonId);
-        localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-      }
-    } catch (error) {
-      console.error("Failed to save lesson progress:", error);
-    }
-  }, [completedInteractive]);
-
-  const handleCorrectAnswer = (questionId: string) => {
-    setCompletedInteractive(prev => new Set(prev.add(questionId)));
-  };
-
   return (
     <LessonLayout {...lessonInfo}>
       <Card>
@@ -256,7 +236,6 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
                   question="الغاز A محصور في وعاء عند درجة حرارة ثابتة فإن العبارة الخاطئة:"
                   options={[
                       "حركة جسيمات الغاز مستمرة وعشوائية وفي خط مستقيم",
@@ -270,7 +249,6 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
                   question="أحد الغازات الآتية لا يمكن إسالته على جميع قيم الضغط ودرجات الحرارة:"
                   options={[
                       "الغاز المثالي",
