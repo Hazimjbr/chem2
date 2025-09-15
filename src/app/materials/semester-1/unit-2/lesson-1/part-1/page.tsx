@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 const lessonInfo = {
     lessonTitle: "الدرس الأول تصنيف المحاليل",
-    lessonSubtitle: "الجزء الأول تصنيف المواد",
+    lessonSubtitle: "تصنيف المواد",
     mainIdea: "تقسم المواد حسب تركيبها إلى مواد نقية (عناصر ومركبات) ومخاليط (متجانسة وغير متجانسة) ولكل منها خصائصها التي تميزها",
     learningOutcomes: [
         "أصنف المواد إلى نقية ومخاليط",
@@ -121,11 +121,11 @@ export default function LessonPartPage() {
             <FlippableCard
                 cardTitle="المخلوط المتجانس (المحلول)"
                 cardIcon={<Package className="h-6 w-6" />}
+                 className="md:col-span-2"
             >
                <ul className="space-y-2 text-sm">
                     <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
                     <li>يتراوح قطر الجزيئات بين (0.1-1)nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
-                    <li>من أمثلتها الماء الحلو (سكر في ماء) والهواء الجوي</li>
                     <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
                     <ul className="list-decimal mr-4">
                         <li style={{fontSize: '14px'}}>غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
