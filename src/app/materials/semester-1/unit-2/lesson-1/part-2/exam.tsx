@@ -125,4 +125,16 @@ export const staticQuizLvl2: QuizQuestion[] = [
     }
 ];
 
-export const staticQuizLvl3: QuizQuestion[] = [];
+export const staticQuizLvl3: QuizQuestion[] = [
+    {
+        question: "أي من المركبات التساهمية الآتية لا يوصل محلوله المائي التيار الكهربائي؟",
+        options: [
+            "HCl",
+            "NH₃",
+            "CH₃COOH",
+            "CCl₄"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "مركب رابع كلوريد الكربون (CCl₄) هو مركب تساهمي غير قطبي لا يذوب في الماء ولا يتأين، وبالتالي لا يحتوي محلوله على أيونات حرة الحركة اللازمة لتوصيل التيار الكهربائي. بينما المركبات الأخرى تتأين في الماء بدرجات متفاوتة (HCl حمض قوي، NH₃ قاعدة ضعيفة، CH₃COOH حمض ضعيف)."
+    }
+];
