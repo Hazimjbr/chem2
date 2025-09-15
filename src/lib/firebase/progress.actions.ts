@@ -67,29 +67,38 @@ export async function saveUserQuizResult(userId: string, result: QuizResult) {
     const progressRef = doc(db, 'user-progress', userId);
     
     // Atomically add the new result to the 'quizHistory' array.
+    // This action is now ONLY for performance tracking.
     await updateDoc(progressRef, {
       quizHistory: arrayUnion(result)
     });
 
-    // If the quiz score is 80% or higher, also mark the lesson as complete.
-    if (result.score >= 0.8) {
-      await updateDoc(progressRef, {
-        completedLessons: arrayUnion(result.lessonId)
-      });
-    }
-
   } catch (error: any) {
      if (error.code === 'not-found') {
         const progressRef = doc(db, 'user-progress', userId);
-        const dataToSet: any = { quizHistory: [result] };
-        if (result.score >= 0.8) {
-          dataToSet.completedLessons = [result.lessonId];
-        }
-        await setDoc(progressRef, dataToSet);
+        await setDoc(progressRef, { quizHistory: [result] });
      } else {
         console.error("Error saving quiz result:", error);
      }
   }
+}
+
+// Function to explicitly mark a lesson as complete
+export async function markLessonAsComplete(userId: string, lessonId: string) {
+    try {
+        const progressRef = doc(db, 'user-progress', userId);
+        // Atomically add the lessonId to the 'completedLessons' array.
+        await updateDoc(progressRef, {
+            completedLessons: arrayUnion(lessonId)
+        });
+    } catch (error: any) {
+        // If the document doesn't exist, create it with the completed lesson.
+        if (error.code === 'not-found') {
+            const progressRef = doc(db, 'user-progress', userId);
+            await setDoc(progressRef, { completedLessons: [lessonId] }, { merge: true });
+        } else {
+            console.error("Error marking lesson as complete:", error);
+        }
+    }
 }
 
 

@@ -40,24 +40,6 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-  const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        try {
-            const savedProgress = localStorage.getItem('completedLessons') || '[]';
-            const completedLessons = new Set(JSON.parse(savedProgress));
-            if (completedInteractive.size >= 2) {
-                completedLessons.add(lessonInfo.lessonId);
-                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            }
-        } catch (error) {
-            console.error("Failed to save lesson progress:", error);
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev.add(questionId)));
-    };
 
   return (
     <LessonLayout {...lessonInfo}>
@@ -245,7 +227,7 @@ export default function LessonPartPage() {
                   <InteractiveQuestionCard 
                       questionId="q1"
                       lessonId={lessonInfo.lessonId}
-                      onCorrect={handleCorrectAnswer}
+                      onCorrect={() => {}}
                       question="أي من المتغيرات التالية يجب أن تبقى ثابتة عند تطبيق قانون بويل؟"
                       options={[
                           "الضغط والحجم",
@@ -259,7 +241,7 @@ export default function LessonPartPage() {
                    <InteractiveQuestionCard 
                       questionId="q2"
                       lessonId={lessonInfo.lessonId}
-                      onCorrect={handleCorrectAnswer}
+                      onCorrect={() => {}}
                       question="إذا ضغطنا مكبسًا يحتوي على غاز إلى نصف حجمه الأصلي (مع ثبات الحرارة)، ماذا يحدث للضغط؟"
                       options={[
                           "يقل إلى النصف",

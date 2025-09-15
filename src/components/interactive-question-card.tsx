@@ -19,12 +19,13 @@ interface InteractiveQuestionCardProps {
   explanation: string;
   questionId: string;
   lessonId: string;
+  onCorrect: (questionId: string) => void;
 }
 
 type AnswerStatus = 'unanswered' | 'correct' | 'incorrect';
 
 
-export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation, questionId, lessonId }: InteractiveQuestionCardProps) {
+export default function InteractiveQuestionCard({ question, options, correctAnswerIndex, explanation, questionId, lessonId, onCorrect }: InteractiveQuestionCardProps) {
   const { currentUser } = useApp();
   const [isFlipped, setIsFlipped] = useState(false);
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>('unanswered');
@@ -36,11 +37,14 @@ export default function InteractiveQuestionCard({ question, options, correctAnsw
     setSelectedAnswer(index);
     if (index === correctAnswerIndex) {
       setAnswerStatus('correct');
+      onCorrect(questionId); // Notify parent component
+      
+      // Also save the quick check result for performance analysis
       if (currentUser) {
         const result: QuizResult = {
             lessonId: lessonId,
             score: 1,
-            difficulty: 0.5,
+            difficulty: 0.5, // Special difficulty to distinguish it
             timestamp: Date.now(),
             studentId: currentUser.uid,
         };

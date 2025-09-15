@@ -6,9 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, ArrowRight } from 'lucide-react';
 import Quiz from '@/components/quiz';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { QuizQuestion } from '@/components/quiz';
 import { useApp } from '@/context/CurriculumContext';
+import { markLessonAsComplete } from '@/lib/firebase/progress.actions';
+
 
 interface LessonLayoutProps {
     lessonTitle: string;
@@ -43,11 +45,54 @@ export default function LessonLayout({
     nextLessonTitle = 'الجزء التالي',
     children
 }: LessonLayoutProps) {
-    
+    const { currentUser } = useApp();
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
     useEffect(() => {
         // Save to local storage for guest/quick access
         localStorage.setItem('lastVisitedLesson', lessonId);
     }, [lessonId]);
+    
+    // Effect to mark lesson as complete when 2 interactive questions are answered correctly
+    useEffect(() => {
+        if (currentUser && completedInteractive.size >= 2) {
+            markLessonAsComplete(currentUser.uid, lessonId);
+        }
+    }, [completedInteractive, currentUser, lessonId]);
+    
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+
+    // This function will wrap the children and inject the `onCorrect` prop into InteractiveQuestionCard components.
+    const childrenWithProps = React.Children.map(children, child => {
+        if (React.isValidElement(child)) {
+            // @ts-ignore
+            if (child.type.name === 'InteractiveQuestionCard' || (child.props.mdxType === 'InteractiveQuestionCard') || (child.props.originalType === 'InteractiveQuestionCard')) {
+                 // @ts-ignore
+                return React.cloneElement(child, { onCorrect: handleCorrectAnswer });
+            }
+             // Handle nested components
+            if (child.props.children) {
+                const newChild = React.cloneElement(child, {
+                    // @ts-ignore
+                    children: React.Children.map(child.props.children, grandChild => {
+                         if (React.isValidElement(grandChild)) {
+                             // @ts-ignore
+                            if (grandChild.type.name === 'InteractiveQuestionCard' || (grandChild.props.mdxType === 'InteractiveQuestionCard')) {
+                                // @ts-ignore
+                                return React.cloneElement(grandChild, { onCorrect: handleCorrectAnswer });
+                            }
+                         }
+                         return grandChild;
+                    })
+                });
+                return newChild;
+            }
+        }
+        return child;
+    });
+
 
     return (
         <div className="p-4 md:p-8 relative">
@@ -93,7 +138,7 @@ export default function LessonLayout({
                     dangerouslySetInnerHTML={{ __html: lessonContent }}
                 />
 
-                {children}
+                {childrenWithProps}
 
                 <Card>
                     <CardHeader>

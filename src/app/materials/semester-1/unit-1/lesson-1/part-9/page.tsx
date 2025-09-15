@@ -28,25 +28,7 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        try {
-            const savedProgress = localStorage.getItem('completedLessons') || '[]';
-            const completedLessons = new Set(JSON.parse(savedProgress));
-            if (completedInteractive.size >= 2) {
-                completedLessons.add(lessonInfo.lessonId);
-                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            }
-        } catch (error) {
-            console.error("Failed to save lesson progress:", error);
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev.add(questionId)));
-    };
-
+    
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -100,7 +82,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2L"/></span><span> ثلاث غازات A, B, C عدد مولاتها على التوالي 2, 3, 1 mol عند حرارة </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ C"/></span><span> فإن قيمة الضغط في الوعاء تساوي:</span></>}
                   options={[
                       "295.2atm",
@@ -114,7 +96,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>يحتوي وعاء حجمه </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="1L"/></span><span> غازين A, B في الظروف المعيارية، حيث يشكل الغاز B 70%. فإن قيمة ضغط الغاز A تساوي:</span></>}
                   options={[
                       "0.7atm",

@@ -40,24 +40,6 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        try {
-            const savedProgress = localStorage.getItem('completedLessons') || '[]';
-            const completedLessons = new Set(JSON.parse(savedProgress));
-            if (completedInteractive.size >= 2) {
-                completedLessons.add(lessonInfo.lessonId);
-                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            }
-        } catch (error) {
-            console.error("Failed to save lesson progress:", error);
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev.add(questionId)));
-    };
 
   return (
     <LessonLayout {...lessonInfo}>
@@ -226,7 +208,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> عند درجة حرارة <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="200^\circ\text{C}"/></span>، فإن حجمها عندما تصبح درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="250^\circ\text{C}"/></span> وضغطها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="2\text{atm}"/></span> يساوي:</>}
                   options={[
                       "5",
@@ -240,7 +222,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<>عينة من غاز محصور حجمها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="4\text{L}"/></span> درجة حرارتها <span dir="ltr" style={{ display: 'inline-block' }}><InlineMath math="400\text{K}"/></span>. عند مضاعفة حرارتها وثبات ضغطها، فإن حجمها:</>}
                   options={[
                       "يصبح 5L",

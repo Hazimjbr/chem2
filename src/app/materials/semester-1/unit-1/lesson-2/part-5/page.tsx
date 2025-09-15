@@ -31,25 +31,7 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        try {
-            const savedProgress = localStorage.getItem('completedLessons') || '[]';
-            const completedLessons = new Set(JSON.parse(savedProgress));
-            if (completedInteractive.size >= 2) {
-                completedLessons.add(lessonInfo.lessonId);
-                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            }
-        } catch (error) {
-            console.error("Failed to save lesson progress:", error);
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev.add(questionId)));
-    };
-
+    
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -134,7 +116,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question="ما الفرق الجوهري بين التبخر والغليان؟"
                   options={[
                       "التبخر طارد للطاقة والغليان ماص",
@@ -148,7 +130,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>لماذا درجة غليان الماء (<InlineMath math="H_2O"/>) أعلى بكثير من درجة غليان كبريتيد الهيدروجين (<InlineMath math="H_2S"/>) على الرغم من أن H₂S له كتلة مولية أكبر؟</span></>}
                   options={[
                       "لأن الماء أكثر تطايرًا",

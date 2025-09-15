@@ -28,24 +28,7 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        try {
-            const savedProgress = localStorage.getItem('completedLessons') || '[]';
-            const completedLessons = new Set(JSON.parse(savedProgress));
-            if (completedInteractive.size >= 2) {
-                completedLessons.add(lessonInfo.lessonId);
-                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            }
-        } catch (error) {
-            console.error("Failed to save lesson progress:", error);
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev.add(questionId)));
-    };
+    
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -108,7 +91,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>عينة من غاز تحتوي </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2\text{mol}"/></span><span>، حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2000\text{ml}"/></span><span>، حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20^\circ\text{C}"/></span><span>، فإن ضغطها يساوي:</span></>}
                   options={[
                       "24atm",
@@ -122,7 +105,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>عينة من غاز الهيليوم كتلتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20\text{g}"/></span><span>، حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="3\text{L}"/></span><span>، حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ\text{C}"/></span><span>، فإن ضغطها يساوي:</span></>}
                   options={[
                       "41atm",

@@ -28,24 +28,6 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        try {
-            const savedProgress = localStorage.getItem('completedLessons') || '[]';
-            const completedLessons = new Set(JSON.parse(savedProgress));
-            if (completedInteractive.size >= 2) {
-                completedLessons.add(lessonInfo.lessonId);
-                localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            }
-        } catch (error) {
-            console.error("Failed to save lesson progress:", error);
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev.add(questionId)));
-    };
 
   return (
     <LessonLayout {...lessonInfo}>
@@ -115,7 +97,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>أي الغازين أسرع انتشارًا: الأمونيا (<span dir="ltr" className="inline-block"><InlineMath math="NH_3"/></span>) أم كلوريد الهيدروجين (<span dir="ltr" className="inline-block"><InlineMath math="HCl"/></span>)؟ (الكتل المولية: N=14, H=1, Cl=35.5)</span></>}
                   options={[
                       "الأمونيا أسرع",
@@ -129,7 +111,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={<><span>إذا كان معدل انتشار غاز مجهول هو نصف معدل انتشار غاز الميثان (<span dir="ltr" className="inline-block"><InlineMath math="CH_4"/></span>، كتلته المولية 16g/mol)، فما هي الكتلة المولية للغاز المجهول؟</span></>}
                   options={[
                       "8g/mol",

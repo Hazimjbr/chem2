@@ -29,21 +29,7 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        if (typeof window !== 'undefined' && completedInteractive.size >= 2) {
-            const savedProgress = JSON.parse(localStorage.getItem('completedLessons') || '[]');
-            const completedLessons = new Set(savedProgress);
-            completedLessons.add(lessonInfo.lessonId);
-            localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev).add(questionId));
-    };
-
+    
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -157,7 +143,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question="أي من الخيارات التالية يمثل مادة نقية"
                   options={[
                       "عصير البرتقال",
@@ -171,7 +157,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question="ما هي الخاصية التي تسمح بالتمييز بين محلول حقيقي ومخلوط غروي شفاف"
                   options={[
                       "اللون",

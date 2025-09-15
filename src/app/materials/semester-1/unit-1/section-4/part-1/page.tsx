@@ -29,18 +29,7 @@ const lessonInfo = {
 };
 
 export default function LessonPartPage() {
-     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
-
-    useEffect(() => {
-        if (completedInteractive.size >= 2) {
-            // Logic to mark lesson as complete can go here
-        }
-    }, [completedInteractive]);
-
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev).add(questionId));
-    };
-
+     
   return (
     <LessonLayout {...lessonInfo}>
         <div className="space-y-8">
@@ -91,7 +80,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={staticQuizLvl1[0].question}
                   options={staticQuizLvl1[0].options as string[]}
                   correctAnswerIndex={staticQuizLvl1[0].correctAnswerIndex}
@@ -100,7 +89,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={handleCorrectAnswer}
+                  onCorrect={() => {}}
                   question={staticQuizLvl1[1].question}
                   options={staticQuizLvl1[1].options as string[]}
                   correctAnswerIndex={staticQuizLvl1[1].correctAnswerIndex}

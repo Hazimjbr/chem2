@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import FlippableCard from './flippable-card';
-import InteractiveQuestionCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/interactive-question-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 
@@ -236,6 +236,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
+                  onCorrect={() => {}}
                   question="الغاز A محصور في وعاء عند درجة حرارة ثابتة فإن العبارة الخاطئة:"
                   options={[
                       "حركة جسيمات الغاز مستمرة وعشوائية وفي خط مستقيم",
@@ -249,6 +250,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
+                  onCorrect={() => {}}
                   question="أحد الغازات الآتية لا يمكن إسالته على جميع قيم الضغط ودرجات الحرارة:"
                   options={[
                       "الغاز المثالي",
