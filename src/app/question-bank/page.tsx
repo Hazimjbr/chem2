@@ -217,6 +217,7 @@ export default function QuestionBankPage() {
                 '/materials/semester-1/unit-1/section-4/part-2': () => import('@/app/materials/semester-1/unit-1/section-4/part-2/exam'),
                 '/materials/semester-1/unit-1/section-5': () => import('@/app/materials/semester-1/unit-1/section-5/exam'),
                 '/materials/semester-1/unit-2/lesson-1/part-1': () => import('@/app/materials/semester-1/unit-2/lesson-1/part-1/exam'),
+                '/materials/semester-1/unit-2/lesson-1/part-2': () => import('@/app/materials/semester-1/unit-2/lesson-1/part-2/exam'),
             };
 
             const loadedQuestions: SourcedQuizQuestion[] = [];
