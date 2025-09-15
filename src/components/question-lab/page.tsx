@@ -22,7 +22,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "أي المركبات التالية هو الأقل ذائبية في الماء والأعلى ذائبية في الهكسان (C₆H₁₄)؟",
+    options: [
+        "CH₃OH (الميثانول)",
+        "NaBr (بروميد الصوديوم)",
+        "CH₃(CH₂)₅CH₃ (الهبتان)",
+        "CH₃COCH₃ (الأسيتون)"
+    ],
+    correctAnswerIndex: 2,
+    explanation: "الماء مذيب قطبي والهكسان مذيب غير قطبي. نبحث عن مركب غير قطبي ليكون الأقل ذائبية في الماء والأعلى في الهكسان. الهبتان هو هيدروكربون غير قطبي، مما يجعله الخيار الأمثل. الميثانول والأسيتون قطبيان، وبروميد الصوديوم أيوني، وجميعها تذوب في الماء بدرجات متفاوتة ولا تذوب جيدًا في الهكسان.",
+    level: 3,
+    source: "الوحدة 2 / الدرس 1 / الجزء 2"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
