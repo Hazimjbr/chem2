@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "إحدى العبارات الآتية تعبر عن عملية إذابة ملح كلوريد البوتاسيوم KCl في الماء",
-    options: [
-        "تجاذب جزيئات الماء مع الأيونات في بلورة الملح دون أن تتفاعل معها أو تتسبب في انفصالها",
-        "تفاعل أيونات الملح مع الماء لتصبح حرة الحركة",
-        "انفصال الأيونات عن بلورة الملح وإحاطتها بجزيئات الماء",
-        "انصهار أيونات الملح في المحلول لتصبح حرة الحركة"
-    ],
-    correctAnswerIndex: 2,
-    explanation: "عملية الإذابة للمركبات الأيونية تتضمن تفكك الشبكة البلورية وانفصال الأيونات، ثم إحاطة كل أيون بجزيئات المذيب (في هذه الحالة الماء) لتكوين أيونات مميهة حرة الحركة.",
-    level: 1,
-    source: "الوحدة 2 / الدرس 1 / تكون المحاليل"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
@@ -115,5 +103,3 @@ export default function QuestionLabPage() {
         </div>
     );
 }
-
-    
