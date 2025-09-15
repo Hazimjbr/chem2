@@ -58,8 +58,8 @@ export default function LessonPartPage() {
                         <h4 className="font-bold text-accent">الشبيه يذيب شبيهه</h4>
                         <p className="text-sm mt-1">أي أن المذيبات:</p>
                         <ul className="list-decimal mr-4 mt-2 text-sm space-y-1">
-                            <li><strong>القطبية</strong> تذيب المركبات الأيونية والجزيئات القطبية</li>
-                            <li><strong>غير القطبية</strong> تذيب المركبات غير القطبية</li>
+                            <li><strong>المواد القطبية</strong> تذيب المركبات الأيونية والجزيئات القطبية</li>
+                            <li><strong>المواد غير القطبية</strong> تذيب المركبات غير القطبية</li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,10 @@ export default function LessonPartPage() {
                 <div className="p-4 space-y-4 text-sm">
                     <ol className="list-decimal mr-4 space-y-3">
                         <li>
-                            <p>في المركبات الأيونية كملح الطعام NaCl تحيط جزيئات الماء أيونات ⁺Na من طرف ذرة الأكسجين (δ⁻) وأيونات <span dir="ltr">Cl⁻</span> من طرف ذرة الهيدروجين (δ⁺) لينتج من ذلك قوة تجاذب بين جزيئات الماء القطبية والأيونات أقوى من قوى التجاذب بين الأيونات في البلورة فتتغلب عليها وتتحرر الأيونات من البلورة</p>
+                            <p>في المركبات الأيونية كملح الطعام NaCl تحيط جزيئات الماء أيونات ⁺Na من طرف ذرة الأكسجين (δ⁻) وأيونات ⁻Cl من طرف ذرة الهيدروجين (δ⁺) لينتج من ذلك قوة تجاذب بين جزيئات الماء القطبية والأيونات أقوى من قوى التجاذب بين الأيونات في البلورة فتتغلب عليها وتتحرر الأيونات من البلورة</p>
+                             <div className="flex justify-center my-2">
+                                <Image src="https://i.ibb.co/G4t9Fhb6/3.jpg" alt="Dissolving NaCl in water" width={300} height={200} className="rounded-lg border bg-white" data-ai-hint="dissolving salt water" />
+                            </div>
                         </li>
                         <li>
                             <p>في المركبات التساهمية (الجزيئية) مثل سكر المائدة السكروز (C₆H₁₂O₆) أو الكحول كالإيثانول (CH₃CH₂OH) فيحتوي كل منها على مجموعة الهيدروكسيل OH التي تكون روابط هيدروجينية مع جزيئات الماء</p>
