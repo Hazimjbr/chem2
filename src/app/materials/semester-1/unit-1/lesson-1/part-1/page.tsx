@@ -4,7 +4,7 @@
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen, X, ArrowLeft } from 'lucide-react';
+import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen, X, ArrowLeft, Check, ArrowRight } from 'lucide-react';
 import FlippableCard from './flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
@@ -346,3 +346,6 @@ export default function LessonPartPage() {
     );
 }
 
+
+
+    
