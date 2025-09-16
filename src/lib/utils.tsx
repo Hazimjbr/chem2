@@ -136,5 +136,3 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     
     return null;
 }
-
-    

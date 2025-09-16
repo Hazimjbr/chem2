@@ -56,7 +56,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 };
 
 
-// Helper function to shuffle an array and return the new index of the correct answer
+// الحل الجذري: إعادة كتابة دالة shuffleOptions بالكامل
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     // التحقق من الخيارات التي لا ينبغي خلطها
     const shouldNotShuffle = question.options.every(option => 
