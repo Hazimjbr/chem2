@@ -89,7 +89,7 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     const completedLessons: Set<string> = new Set(progressData.completedLessons || []);
     const quizHistory: QuizResult[] = progressData.quizHistory || [];
 
-    // 1. Find the weakest lesson from quiz history (difficulty > 0.5)
+    // 1. Find the weakest lesson from official quizzes (difficulty > 0.5)
     const studentQuizzes = quizHistory.filter(r => r.difficulty > 0.5);
     if (studentQuizzes.length > 0) {
         const weakestQuiz = studentQuizzes.reduce((min, current) => (current.score < min.score) ? current : min);
@@ -105,25 +105,30 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
         }
     }
 
-    // 2. If all scores are good, find the next uncompleted lesson
+    // 2. If all quiz scores are good, find the next sequential uncompleted lesson
     for (const unit of units) {
         for (const lesson of unit.lessons) {
-             if (lesson.parts.length === 0) continue;
+             if (!lesson.parts || lesson.parts.length === 0) continue;
+             
              let completedInThisLesson = 0;
-             let firstUncompletedPathInThisLesson = '';
+             let firstUncompletedPath = '';
+
              for (const part of lesson.parts) {
                 const path = constructPath(unit.id, lesson, part);
                 if (completedLessons.has(path)) {
                     completedInThisLesson++;
-                } else if (!firstUncompletedPathInThisLesson) {
-                    firstUncompletedPathInThisLesson = path;
+                } else if (firstUncompletedPath === '') {
+                    // Capture the very first uncompleted path we find
+                    firstUncompletedPath = path;
                 }
              }
-             if (firstUncompletedPathInThisLesson) {
+
+             // If we found an uncompleted part in this lesson, this is our next step.
+             if (firstUncompletedPath) {
                 return {
                     type: 'next',
                     lessonTitle: lesson.title,
-                    path: firstUncompletedPathInThisLesson,
+                    path: firstUncompletedPath,
                     completedParts: completedInThisLesson,
                     totalParts: lesson.parts.length,
                 };
