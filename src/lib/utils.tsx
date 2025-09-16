@@ -16,16 +16,16 @@ export const getLessonTitle = (lessonId: string): string => {
     // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
     if (!lessonId) return "درس غير معروف";
     
-    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
+    const pathParts = lessonId.split('/').filter(part => part); // remove empty parts
 
-    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
+    const unitIdentifier = pathParts.find(part => part.startsWith('unit-'));
     if (!unitIdentifier) return lessonId; // Return raw path if no unit found
 
-    const unit = units.find(u => u.id === unitIdentifier);
+    const unit = units.find(unit => unit.id === unitIdentifier);
     if (!unit) return lessonId;
 
-    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
-    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
+    const lessonIdentifier = pathParts.find(part => part.startsWith('lesson-'));
+    const sectionIdentifier = pathParts.find(part => part.startsWith('section-'));
 
     if (lessonIdentifier) {
         const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
@@ -90,9 +90,9 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     const quizHistory: QuizResult[] = progressData.quizHistory || [];
 
     // 1. Find the weakest lesson from quiz history (difficulty > 0.5)
-    const studentQuizzes = quizHistory.filter(r => r.difficulty > 0.5);
+    const studentQuizzes = quizHistory.filter(result => result.difficulty > 0.5);
     if (studentQuizzes.length > 0) {
-        const weakestQuiz = studentQuizzes.reduce((min, current) => (current.score < min.score) ? current : min);
+        const weakestQuiz = studentQuizzes.reduce((minResult, currentResult) => (currentResult.score < minResult.score) ? currentResult : minResult);
         
         if (weakestQuiz.score < 0.7) {
             return {
@@ -107,7 +107,6 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     // 2. If all scores are good, find the next uncompleted lesson part
     for (const unit of units) {
         for (const lesson of unit.lessons) {
-            // Skip lessons without parts (like review sections that are just a quiz)
             if (!lesson.parts || lesson.parts.length === 0 || !lesson.parts[0].partNum) {
                 continue;
             }
@@ -125,12 +124,11 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
                 }
             }
 
-            // If there's an uncompleted part in this lesson, recommend it.
             if (firstUncompletedPath) {
                 return {
                     type: 'next',
                     lessonTitle: lesson.title,
-                    path: firstUncompletedPath, // Keep path for consistency, but use nextPartPath
+                    path: firstUncompletedPath,
                     nextPartPath: firstUncompletedPath,
                     completedParts: completedPartsInThisLesson,
                     totalParts: totalParts,
