@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -250,5 +251,4 @@ export default function Diagram() {
     </div>
   );
 }
-
     

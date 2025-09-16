@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import p5 from 'p5';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -20,25 +21,41 @@ export default function Diagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
   const [pressure, setPressure] = useState(INITIAL_PRESSURE);
+  const [width, setWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    if (sketchRef.current) {
+      setWidth(sketchRef.current.offsetWidth);
+    }
+    const handleResize = () => {
+      if (sketchRef.current) {
+        setWidth(sketchRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!sketchRef.current) return;
-    
-    let canvasWidth = sketchRef.current.offsetWidth;
+    if (width <= 0 || !sketchRef.current) return;
+
+    p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       let currentGasHeight = INITIAL_GAS_HEIGHT;
       let targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
 
       p.setup = () => {
-        p.createCanvas(canvasWidth, CANVAS_HEIGHT);
+        p.createCanvas(width, CANVAS_HEIGHT);
         p.noStroke();
       };
       
       p.windowResized = () => {
           if (sketchRef.current) {
-            canvasWidth = sketchRef.current.offsetWidth;
-            p.resizeCanvas(canvasWidth, CANVAS_HEIGHT);
+            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            setWidth(sketchRef.current.offsetWidth);
           }
       }
 
@@ -48,7 +65,7 @@ export default function Diagram() {
 
         currentGasHeight = p.lerp(currentGasHeight, targetGasHeight, 0.1);
         
-        const centerX = canvasWidth / 2 - 40;
+        const centerX = width / 2 - 40;
         const tubeBottomY = CANVAS_HEIGHT - 50;
         const tubeTopY = tubeBottomY - 200; 
         const tubeCapY = tubeTopY;
@@ -119,41 +136,39 @@ export default function Diagram() {
       };
     };
 
-    p5InstanceRef.current = new p5(sketch, sketchRef.current);
+    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
 
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [pressure]);
+  }, [pressure, width]);
 
   return (
-     <div className="flex flex-col items-center gap-4 w-full">
-        <div
-            ref={sketchRef}
-            className="rounded-lg border bg-muted w-full overflow-hidden"
-            style={{ height: `${CANVAS_HEIGHT}px` }}
-            data-ai-hint="Boyle's law J-tube experiment"
-        >
-        </div>
+    <div className="flex flex-col items-center gap-4 w-full">
+      <div
+        ref={sketchRef}
+        className="rounded-lg border bg-muted w-full overflow-hidden"
+        style={{ height: `${CANVAS_HEIGHT}px` }}
+        data-ai-hint="Boyle's law J-tube experiment"
+      >
+      </div>
 
-        <Card className="p-4 w-full">
-            <Label htmlFor="pressure-slider" className="mb-2 block text-center">الضغط (atm)</Label>
-            <div className="flex items-center gap-4">
-                <span className="text-sm font-mono">3.5</span>
-                <Slider
-                id="pressure-slider"
-                min={1}
-                max={3.5}
-                step={0.1}
-                value={[pressure]}
-                onValueChange={(value) => setPressure(value[0])}
-                dir="ltr"
-                />
-                <span className="text-sm font-mono">1.0</span>
-            </div>
+       <Card className="p-4 w-full">
+          <Label htmlFor="pressure-slider" className="mb-2 block text-center">الضغط (atm)</Label>
+          <div className="flex items-center gap-4">
+            <span className="text-sm font-mono">3.5</span>
+            <Slider
+              id="pressure-slider"
+              min={1}
+              max={3.5}
+              step={0.1}
+              value={[pressure]}
+              onValueChange={(value) => setPressure(value[0])}
+              dir="ltr"
+            />
+            <span className="text-sm font-mono">1.0</span>
+          </div>
         </Card>
     </div>
   );
 }
-
-    
