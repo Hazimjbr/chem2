@@ -192,8 +192,8 @@ export default function LessonPartPage() {
                         <div>
                             <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
                             <ul className="mt-2 space-y-2 mr-4 text-xs">
-                                <li><span className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</span> (هيدروجيني مثل HF > ثنائي قطب مثل NH3 > قوى لندن مثل Ne)</li>
-                                <li><span className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</span> (مثلًا Cl2 > F2) لأن زيادة الكتلة المولية تزيد من قوى لندن</li>
+                                <li><span className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</span> (هيدروجيني مثل HF {'>'} ثنائي قطب مثل NH3 {'>'} قوى لندن مثل Ne)</li>
+                                <li><span className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</span> (مثلًا Cl2 {'>'} F2) لأن زيادة الكتلة المولية تزيد من قوى لندن</li>
                             </ul>
                         </div>
                     </li>
