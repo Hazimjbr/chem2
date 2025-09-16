@@ -28,7 +28,7 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: قانون بويل"
 }
 
-const LessonContent = () => (
+const LessonContent = ({ onCorrect }: { onCorrect: (questionId: string) => void; }) => (
     <>
         <h3 className="text-2xl font-bold text-center">المتغيرات الأربعة لوصف الغاز المحصور</h3>
           <div className="grid md:grid-cols-2 gap-6">
@@ -153,7 +153,7 @@ const LessonContent = () => (
                 <InteractiveQuestionCard 
                     questionId="q1"
                     lessonId={lessonInfo.lessonId}
-                    onCorrect={() => {}}
+                    onCorrect={onCorrect}
                     question="بالون يحتوي على غاز الهيليوم ضغطه 900mmHg فإن قيمة ضغطه بوحدة atm تساوي"
                     options={[
                         "1.18",
@@ -167,8 +167,8 @@ const LessonContent = () => (
                  <InteractiveQuestionCard 
                     questionId="q2"
                     lessonId={lessonInfo.lessonId}
-                    onCorrect={() => {}}
-                    question="بالون درجة حرارته 20°C فإن حرارته المطلقة تساوي"
+                    onCorrect={onCorrect}
+                    question={<>بالون درجة حرارته <span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span> فإن حرارته المطلقة تساوي</>}
                     options={[
                         "13.75",
                         "253",
@@ -184,11 +184,19 @@ const LessonContent = () => (
 );
 
 export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+
   return (
-    <LessonLayout {...lessonInfo}>
-        <LessonContent />
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }
+
+    
 
     
