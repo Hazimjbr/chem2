@@ -31,7 +31,7 @@ const lessonInfo = {
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
     <div className="space-y-8">
-        <FlippableCard cardTitle="الذائبية والعوامل المؤثرة فيها" cardIcon={<FlaskConical className="h-6 w-6" />}>
+        <FlippableCard cardTitle="ذائبية المواد الصلبة" cardIcon={<FlaskConical className="h-6 w-6" />}>
             <div className="p-4 space-y-4">
                 <p className="font-semibold">الذائبية أكبر كتلة من المذاب يمكن أن تذوب في <span dir="ltr">100g</span> من الماء عند درجة حرارة معينة</p>
                 
@@ -59,6 +59,11 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard 
             cardTitle="ذائبية السوائل والغازات" 
             cardIcon={<Layers className="h-6 w-6" />}
+            imageContent={
+                 <div className="flex justify-center my-2 p-4">
+                     <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
+                 </div>
+            }
         >
              <div className="p-4 space-y-4">
                 <p className="text-sm">تعتمد ذائبية المواد السائلة على تشابه قوى الترابط بين كل من المذاب السائل والماء</p>
@@ -69,9 +74,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                         <li><strong className="font-semibold">درجة الحرارة</strong> (علاقة عكسية) لأن زيادة الحرارة تزيد الطاقة الحركية لجسيمات الغاز فتتغلب على قوى التجاذب مع الماء وتفلت من المحلول وتغادره</li>
                         <li><strong className="font-semibold">الضغط الخارجي أو الجزئي</strong> (علاقة طردية خطية)</li>
                     </ul>
-                     <div className="flex justify-center my-2">
-                         <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
-                     </div>
                 </div>
             </div>
         </FlippableCard>
