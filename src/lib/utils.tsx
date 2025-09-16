@@ -16,16 +16,16 @@ export const getLessonTitle = (lessonId: string): string => {
     // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
     if (!lessonId) return "درس غير معروف";
     
-    const pathParts = lessonId.split('/').filter(part => part); // remove empty parts
+    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
 
-    const unitIdentifier = pathParts.find(part => part.startsWith('unit-'));
+    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
     if (!unitIdentifier) return lessonId; // Return raw path if no unit found
 
-    const unit = units.find(unit => unit.id === unitIdentifier);
+    const unit = units.find(u => u.id === unitIdentifier);
     if (!unit) return lessonId;
 
-    const lessonIdentifier = pathParts.find(part => part.startsWith('lesson-'));
-    const sectionIdentifier = pathParts.find(part => part.startsWith('section-'));
+    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
+    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
 
     if (lessonIdentifier) {
         const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
@@ -107,6 +107,7 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     // 2. If all scores are good, find the next uncompleted lesson part
     for (const unit of units) {
         for (const lesson of unit.lessons) {
+            // Skip lessons that don't have structured parts (like review sections)
             if (!lesson.parts || lesson.parts.length === 0 || !lesson.parts[0].partNum) {
                 continue;
             }
@@ -124,12 +125,13 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
                 }
             }
 
+            // If we found an uncompleted part in this lesson, recommend it.
             if (firstUncompletedPath) {
                 return {
                     type: 'next',
                     lessonTitle: lesson.title,
-                    path: firstUncompletedPath,
-                    nextPartPath: firstUncompletedPath,
+                    path: firstUncompletedPath, // This is the path to the lesson's main page or first part
+                    nextPartPath: firstUncompletedPath, // Direct link to the next part
                     completedParts: completedPartsInThisLesson,
                     totalParts: totalParts,
                 };
