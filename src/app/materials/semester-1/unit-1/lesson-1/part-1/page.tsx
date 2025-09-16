@@ -2,7 +2,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import FlippableCard from './flippable-card';
@@ -28,22 +28,24 @@ const lessonInfo = {
   lessonContent: "أنت مساعد تعليمي خبير في الكيمياء مهمتك هي إنشاء اختبار قصير (كويز) من 5 أسئلة اختيار من متعدد بناءً على محتوى الدرس التالي ومستوى الصعوبة المحدد. مستوى الصعوبة الحالي: {{difficultyLevel}}. بنود نظرية الحركة الجزيئية للغازات: يتكون الغاز من جسيمات صغيرة جدا (مهملة الحجم) ومتباعدة وقوى التجاذب بينها شبه معدومة. حركة الجسيمات: مستمرة عشوائية وسريعة في خطوط مستقيمة. التصادمات المرنة: لا تفقد فيها الطاقة الحركية الكلية. الطاقة والحرارة: متوسط الطاقة الحركية للجسيمات يتناسب طرديًا مع درجة الحرارة المطلقة. الغاز المثالي: غاز افتراضي حجم جسيماته وقوى التجاذب بينها تساوي صفر. الغاز الحقيقي: يسلك سلوكًا قريبًا من المثالي في الضغط المنخفض والحرارة المرتفعة."
 }
 
+// Dynamically import the Diagram component
+const Diagram = dynamic(() => import('./diagram'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex flex-col items-center gap-4">
+      <Skeleton className="h-[250px] w-full rounded-lg" />
+       <div className="w-full grid grid-cols-2 gap-4">
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
+      </div>
+      <Skeleton className="h-24 w-full" />
+    </div>
+  ),
+});
+
+
 // Create a separate component for the lesson's main content
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
-    const Diagram = dynamic(() => import('./diagram'), {
-      ssr: false,
-      loading: () => (
-        <div className="flex flex-col items-center gap-4">
-          <Skeleton className="h-[250px] w-full rounded-lg" />
-           <div className="w-full grid grid-cols-2 gap-4">
-            <Skeleton className="h-20 w-full" />
-            <Skeleton className="h-20 w-full" />
-          </div>
-          <Skeleton className="h-24 w-full" />
-        </div>
-      ),
-    });
-
     return (
       <>
         <Card>
@@ -218,12 +220,10 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
               <Card>
                   <CardHeader>
                       <CardTitle>محاكاة سلوك الغاز</CardTitle>
+                       <CardDescription>تحكم في درجة الحرارة والضغط ولاحظ كيف يتغير سلوك الغاز بين المثالي والحقيقي</CardDescription>
                   </CardHeader>
                   <CardContent>
                       <Diagram />
-                      <p className="text-sm text-muted-foreground mt-4 text-center">
-                      تحكم في درجة الحرارة والضغط ولاحظ كيف يتغير سلوك الغاز بين المثالي والحقيقي
-                      </p>
                   </CardContent>
               </Card>
         </div>
