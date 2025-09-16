@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -17,41 +17,25 @@ export default function Diagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
   const [environment, setEnvironment] = useState<Environment>('ice');
-  const [width, setWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    if (sketchRef.current) {
-      setWidth(sketchRef.current.offsetWidth);
-    }
-    const handleResize = () => {
-      if (sketchRef.current) {
-        setWidth(sketchRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   useEffect(() => {
-    if (width <= 0 || !sketchRef.current) return;
-
-    p5InstanceRef.current?.remove();
+    if (!sketchRef.current) return;
+    
+    let canvasWidth = sketchRef.current.offsetWidth;
 
     const sketch = (p: p5) => {
       let currentRadius = INITIAL_RADIUS;
       let targetRadius: number;
 
       p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
+        p.createCanvas(canvasWidth, CANVAS_HEIGHT);
         p.noStroke();
       };
       
       p.windowResized = () => {
         if (sketchRef.current) {
-            setWidth(sketchRef.current.offsetWidth);
-            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            canvasWidth = sketchRef.current.offsetWidth;
+            p.resizeCanvas(canvasWidth, CANVAS_HEIGHT);
         }
       };
 
@@ -66,9 +50,9 @@ export default function Diagram() {
 
         currentRadius = p.lerp(currentRadius, targetRadius, 0.05);
 
-        const beakerWidth = width * 0.6;
+        const beakerWidth = canvasWidth * 0.6;
         const beakerHeight = CANVAS_HEIGHT * 0.8;
-        const beakerX = (width - beakerWidth) / 2;
+        const beakerX = (canvasWidth - beakerWidth) / 2;
         const beakerY = CANVAS_HEIGHT - beakerHeight;
         
         p.stroke('hsl(var(--border))');
@@ -90,24 +74,24 @@ export default function Diagram() {
         p.fill(220, 50, 50);
         p.stroke(150, 0, 0);
         p.strokeWeight(2);
-        p.ellipse(width / 2, balloonY, currentRadius * 2, currentRadius * 2.2);
+        p.ellipse(canvasWidth / 2, balloonY, currentRadius * 2, currentRadius * 2.2);
         
         p.noStroke();
         p.fill(220, 50, 50);
         p.triangle(
-            width/2 - 10, balloonY + currentRadius * 1.1,
-            width/2 + 10, balloonY + currentRadius * 1.1,
-            width/2, balloonY + currentRadius * 1.1 + 15
+            canvasWidth/2 - 10, balloonY + currentRadius * 1.1,
+            canvasWidth/2 + 10, balloonY + currentRadius * 1.1,
+            canvasWidth/2, balloonY + currentRadius * 1.1 + 15
         )
       };
     };
 
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    p5InstanceRef.current = new p5(sketch, sketchRef.current);
 
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [environment, width]);
+  }, [environment]);
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
@@ -143,3 +127,5 @@ export default function Diagram() {
     </div>
   );
 }
+
+    

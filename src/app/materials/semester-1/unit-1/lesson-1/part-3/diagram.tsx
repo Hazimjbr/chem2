@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -20,41 +20,25 @@ export default function Diagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
   const [pressure, setPressure] = useState(INITIAL_PRESSURE);
-  const [width, setWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    if (sketchRef.current) {
-      setWidth(sketchRef.current.offsetWidth);
-    }
-    const handleResize = () => {
-      if (sketchRef.current) {
-        setWidth(sketchRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   useEffect(() => {
-    if (width <= 0 || !sketchRef.current) return;
-
-    p5InstanceRef.current?.remove();
+    if (!sketchRef.current) return;
+    
+    let canvasWidth = sketchRef.current.offsetWidth;
 
     const sketch = (p: p5) => {
       let currentGasHeight = INITIAL_GAS_HEIGHT;
       let targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
 
       p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
+        p.createCanvas(canvasWidth, CANVAS_HEIGHT);
         p.noStroke();
       };
       
       p.windowResized = () => {
           if (sketchRef.current) {
-            setWidth(sketchRef.current.offsetWidth);
-            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            canvasWidth = sketchRef.current.offsetWidth;
+            p.resizeCanvas(canvasWidth, CANVAS_HEIGHT);
           }
       }
 
@@ -64,7 +48,7 @@ export default function Diagram() {
 
         currentGasHeight = p.lerp(currentGasHeight, targetGasHeight, 0.1);
         
-        const centerX = width / 2 - 40;
+        const centerX = canvasWidth / 2 - 40;
         const tubeBottomY = CANVAS_HEIGHT - 50;
         const tubeTopY = tubeBottomY - 200; 
         const tubeCapY = tubeTopY;
@@ -135,12 +119,12 @@ export default function Diagram() {
       };
     };
 
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    p5InstanceRef.current = new p5(sketch, sketchRef.current);
 
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [pressure, width]);
+  }, [pressure]);
 
   return (
      <div className="flex flex-col items-center gap-4 w-full">
@@ -171,3 +155,5 @@ export default function Diagram() {
     </div>
   );
 }
+
+    

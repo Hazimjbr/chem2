@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -15,27 +15,11 @@ export default function Diagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
   const [temperature, setTemperature] = useState(298);
-  const [width, setWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    if (sketchRef.current) {
-      setWidth(sketchRef.current.offsetWidth);
-    }
-    const handleResize = () => {
-      if (sketchRef.current) {
-        setWidth(sketchRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   useEffect(() => {
-    if (width <= 0 || !sketchRef.current) return;
-
-    p5InstanceRef.current?.remove();
+    if (!sketchRef.current) return;
+    
+    let canvasWidth = sketchRef.current.offsetWidth;
 
     const sketch = (p: p5) => {
       let particles: Particle[] = [];
@@ -50,7 +34,7 @@ export default function Diagram() {
 
         constructor() {
           this.pos = p.createVector(
-            p.random(this.radius, width - this.radius),
+            p.random(this.radius, canvasWidth - this.radius),
             p.random(this.radius, CANVAS_HEIGHT - this.radius)
           );
           this.vel = p5.Vector.random2D().mult(baseSpeed * 2);
@@ -63,7 +47,7 @@ export default function Diagram() {
         }
 
         checkBoundaries() {
-          if (this.pos.x <= this.radius || this.pos.x >= width - this.radius) {
+          if (this.pos.x <= this.radius || this.pos.x >= canvasWidth - this.radius) {
             this.vel.x *= -1;
           }
           if (this.pos.y <= this.radius || this.pos.y >= CANVAS_HEIGHT - this.radius) {
@@ -79,7 +63,7 @@ export default function Diagram() {
       }
       
       p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
+        p.createCanvas(canvasWidth, CANVAS_HEIGHT);
         for (let i = 0; i < NUM_PARTICLES; i++) {
           particles.push(new Particle());
         }
@@ -87,8 +71,8 @@ export default function Diagram() {
       
       p.windowResized = () => {
         if (sketchRef.current) {
-            setWidth(sketchRef.current.offsetWidth);
-            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            canvasWidth = sketchRef.current.offsetWidth;
+            p.resizeCanvas(canvasWidth, CANVAS_HEIGHT);
         }
       }
 
@@ -98,7 +82,7 @@ export default function Diagram() {
         p.stroke('hsl(var(--border))');
         p.strokeWeight(4);
         p.noFill();
-        p.rect(2, 2, width - 4, CANVAS_HEIGHT - 4, 8);
+        p.rect(2, 2, canvasWidth - 4, CANVAS_HEIGHT - 4, 8);
 
         particles.forEach(particle => {
           particle.update();
@@ -109,11 +93,10 @@ export default function Diagram() {
         p.fill('hsl(var(--foreground))');
         p.textSize(16);
         p.textAlign(p.CENTER, p.CENTER);
-        p.text(`الضغط: ${pressure} atm`, width / 2, 20);
+        p.text(`الضغط: ${pressure} atm`, canvasWidth / 2, 20);
       };
 
       (p as any).updateTemperature = (newTemp: number) => {
-        temperature = newTemp;
         baseSpeed = newTemp / 298;
         const newColor = p.lerpColor(p.color(0, 0, 255), p.color(255, 0, 0), (newTemp - 273) / (673 - 273));
         particles.forEach(particle => {
@@ -124,12 +107,12 @@ export default function Diagram() {
       };
     };
 
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    p5InstanceRef.current = new p5(sketch, sketchRef.current);
     
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
+  }, []);
 
   useEffect(() => {
     if (p5InstanceRef.current && (p5InstanceRef.current as any).updateTemperature) {
@@ -167,3 +150,5 @@ export default function Diagram() {
     </div>
   );
 }
+
+    

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, RefreshCw } from 'lucide-react';
@@ -16,36 +16,11 @@ export default function CoolingCurveDiagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [time, setTime] = useState(0);
-  const [width, setWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    if (sketchRef.current) {
-      setWidth(sketchRef.current.offsetWidth);
-    }
-     const handleResize = () => {
-      if (sketchRef.current) {
-        setWidth(sketchRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const resetAnimation = () => {
-    setTime(0);
-    setIsPlaying(true);
-    if (p5InstanceRef.current) {
-      (p5InstanceRef.current as any).reset();
-    }
-  };
 
   useEffect(() => {
-    if (width <= 0 || !sketchRef.current) return;
+    if (!sketchRef.current) return;
     
-    p5InstanceRef.current?.remove();
+    let canvasWidth = sketchRef.current.offsetWidth;
 
     const sketch = (p: p5) => {
       let localTime = 0;
@@ -60,7 +35,7 @@ export default function CoolingCurveDiagram() {
       };
       
       p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
+        p.createCanvas(canvasWidth, CANVAS_HEIGHT);
         (p as any).playPause = (play: boolean) => {
           localIsPlaying = play;
           if (play) p.loop();
@@ -71,8 +46,8 @@ export default function CoolingCurveDiagram() {
       
       p.windowResized = () => {
         if (sketchRef.current) {
-            setWidth(sketchRef.current.offsetWidth);
-            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            canvasWidth = sketchRef.current.offsetWidth;
+            p.resizeCanvas(canvasWidth, CANVAS_HEIGHT);
         }
       }
 
@@ -86,12 +61,12 @@ export default function CoolingCurveDiagram() {
         const xAxisY = CANVAS_HEIGHT - 40;
         const yAxisX = 40;
         p.line(yAxisX, 20, yAxisX, xAxisY);
-        p.line(yAxisX, xAxisY, width - 20, xAxisY);
+        p.line(yAxisX, xAxisY, canvasWidth - 20, xAxisY);
 
         p.noStroke();
         p.fill(0);
         p.textAlign(p.CENTER, p.CENTER);
-        p.text('الزمن', width / 2, xAxisY + 15);
+        p.text('الزمن', canvasWidth / 2, xAxisY + 15);
         p.push();
         p.translate(15, CANVAS_HEIGHT / 2);
         p.rotate(-p.HALF_PI);
@@ -123,7 +98,7 @@ export default function CoolingCurveDiagram() {
             currentPhase = 'صلب';
         }
 
-        const x = p.map(localTime, 0, TOTAL_TIME, yAxisX, width - 20);
+        const x = p.map(localTime, 0, TOTAL_TIME, yAxisX, canvasWidth - 20);
         const y = p.map(currentTemp, END_TEMP, START_TEMP, xAxisY, 20);
         
         if (localTime < TOTAL_TIME) {
@@ -150,12 +125,12 @@ export default function CoolingCurveDiagram() {
       };
     };
     
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    p5InstanceRef.current = new p5(sketch, sketchRef.current);
 
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
+  }, []);
 
    const handlePlayPause = () => {
         const newIsPlaying = !isPlaying;
@@ -163,6 +138,13 @@ export default function CoolingCurveDiagram() {
         if (p5InstanceRef.current && (p5InstanceRef.current as any).playPause) {
             (p5InstanceRef.current as any).playPause(newIsPlaying);
         }
+    };
+
+    const resetAnimation = () => {
+      setIsPlaying(true);
+      if (p5InstanceRef.current) {
+        (p5InstanceRef.current as any).reset();
+      }
     };
     
     return (
@@ -185,3 +167,5 @@ export default function CoolingCurveDiagram() {
         </div>
     );
 }
+
+    
