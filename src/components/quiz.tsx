@@ -56,33 +56,35 @@ interface QuizState {
     startTime: number | null;
 }
 
-// Helper function to shuffle an array and return the new index of the correct answer
-const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    // This function can cause hydration errors if not handled carefully, 
-    // but we will call it on the client side only after a user action, so it's safe.
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    
-    const indices = [0, 1, 2, 3];
-    for (let i = indices.length - 1; i > 0; i--) {
+const shuffleArray = <T,>(array: T[]): T[] => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-
-    const shuffledOptions = indices.map(i => question.options[i]);
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
-
-    return {
-        ...question,
-        options: shuffledOptions,
-        correctAnswerIndex: newCorrectAnswerIndex,
-    };
+    return newArray;
 };
 
+
+const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
+    const correctAnswerValue = question.options[question.correctAnswerIndex];
+    const shuffledOptions = shuffleArray(question.options);
+    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
+    return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
+};
+
+
 const getStaticQuestionsForLevel = (level: number, staticQuizzes: QuizProps['staticQuizzes']) => {
-    if (level === 1) return staticQuizzes.lvl1;
-    if (level === 2) return staticQuizzes.lvl2;
-    if (level === 3) return staticQuizzes.lvl3;
-    return [];
+    let questions: QuizQuestion[] = [];
+    if (level === 1) questions = staticQuizzes.lvl1;
+    else if (level === 2) questions = staticQuizzes.lvl2;
+    else if (level === 3) questions = staticQuizzes.lvl3;
+    
+    // Shuffle the array of questions first
+    const shuffledQuestions = shuffleArray(questions);
+    
+    // Take the first 5 and shuffle their options
+    return shuffledQuestions.slice(0, 5).map(q => shuffleOptions(q));
 }
 
 
@@ -133,10 +135,10 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
         const staticQs = getStaticQuestionsForLevel(level, staticQuizzes);
 
         if (staticQs && staticQs.length > 0) {
-            questions = staticQs.map(q => shuffleOptions(q));
+            questions = staticQs;
         } else {
             const result: GenerateQuizOutput = await generateQuiz(lessonContent, level);
-            questions = result.quiz;
+            questions = result.quiz.map(q => shuffleOptions(q));
         }
 
         setQuizState({
@@ -184,7 +186,6 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
            currentQuestionIndex: prev.currentQuestionIndex + 1,
        }));
     } else {
-        // Quiz is finished
         const finalScore = quizState.score / (quizState.quiz?.length || 1);
         
         if (currentUser) {
@@ -212,7 +213,9 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             });
         }
        setQuizState(prev => ({ ...prev, isFinished: true }));
-       await clearUserQuizState(currentUser!.uid, lessonId);
+       if (currentUser) {
+         await clearUserQuizState(currentUser.uid, lessonId);
+       }
     }
   };
   
@@ -320,7 +323,7 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
                 disabled={answerStatus !== 'unanswered'}
               >
                   <span className="ml-3 font-bold">{["أ", "ب", "ج", "د"][index]}</span>
-                  <span className="flex-1 whitespace-normal">{typeof option === 'string' ? <InlineMath math={option}/> : option}</span>
+                  <div className="flex-1 whitespace-normal text-right">{typeof option === 'string' ? option.split(" ").map((word, i) => <span key={i} className="inline-block">{word}&nbsp;</span>) : option}</div>
               </Button>
             );
           })}
