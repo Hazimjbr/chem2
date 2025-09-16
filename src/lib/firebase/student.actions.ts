@@ -53,13 +53,14 @@ export async function addStudent(studentData: {
         console.error("Error creating student:", error);
         
         let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
+        // Cloud functions wrap auth errors, so we check the message string
         if (error.message) {
-            if (error.message.includes('auth/email-already-exists')) {
+            if (error.message.includes('EMAIL_EXISTS')) {
                 errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
-            } else if (error.message.includes('auth/weak-password')){
+            } else if (error.message.includes('WEAK_PASSWORD')){
                  errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
             } else {
-                 errorMessage = error.message;
+                 errorMessage = 'فشل إنشاء المستخدم. تأكد أن البريد الإلكتروني وكلمة المرور صالحان.';
             }
         }
         
