@@ -188,6 +188,16 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
             if (level === 2) questionPool = staticQuizzes.lvl2;
             if (level === 3) questionPool = staticQuizzes.lvl3;
             
+            if (questionPool.length === 0) {
+                 toast({
+                    variant: 'destructive',
+                    title: 'لا توجد أسئلة',
+                    description: `لا توجد أسئلة ثابتة متاحة للمستوى ${level} في هذا الدرس.`,
+                });
+                setIsLoading(false);
+                return;
+            }
+
             const shuffledPool = shuffleArray(questionPool);
             // If pool has fewer than 5 questions, use all of them. Otherwise, take 5.
             const questionsToTake = Math.min(shuffledPool.length, 5);
@@ -519,3 +529,5 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
+
+    
