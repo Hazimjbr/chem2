@@ -59,11 +59,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard 
             cardTitle="ذائبية السوائل والغازات" 
             cardIcon={<Layers className="h-6 w-6" />}
-            imageContent={
-                 <div className="flex justify-center my-2 p-4">
-                     <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
-                 </div>
-            }
         >
              <div className="p-4 space-y-4">
                 <p className="text-sm">تعتمد ذائبية المواد السائلة على تشابه قوى الترابط بين كل من المذاب السائل والماء</p>
@@ -75,6 +70,9 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                         <li><strong className="font-semibold">الضغط الخارجي أو الجزئي</strong> (علاقة طردية خطية)</li>
                     </ul>
                 </div>
+                 <div className="flex justify-center my-2 p-4">
+                     <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
+                 </div>
             </div>
         </FlippableCard>
         
