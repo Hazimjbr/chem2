@@ -133,8 +133,10 @@ export async function deleteStudent(studentId: string) {
     try {
         // Step 1: Delete the user from Firebase Authentication via the Cloud Function
         const deleteAuthResult: any = await manageUser({ action: 'deleteUser', uid: studentId });
-        if (deleteAuthResult.data.message.includes('Error')) {
-             console.warn(`Could not delete user from Auth: ${deleteAuthResult.data.message}. Continuing with Firestore deletion.`);
+        
+        // Check for explicit success from the cloud function before proceeding
+        if (!deleteAuthResult.data.success) {
+             throw new Error(deleteAuthResult.data.message || 'Failed to delete user from Authentication.');
         }
 
         // Step 2: Delete Firestore data in a batch
@@ -163,16 +165,20 @@ export async function deleteStudent(studentId: string) {
         await batch.commit();
         
         return { success: true, message: 'تم حذف الطالب وبياناته بالكامل بنجاح.' };
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error deleting student data:", error);
-        return { success: false, message: 'فشل في حذف بيانات الطالب.' };
+        return { success: false, message: error.message || 'فشل في حذف بيانات الطالب.' };
     }
 }
 
 export async function revokeStudentSessions(studentId: string) {
     try {
         const result: any = await manageUser({ action: 'revokeSession', uid: studentId });
-        return { success: true, message: result.data.message };
+        if (result.data.success) {
+            return { success: true, message: result.data.message };
+        } else {
+            throw new Error(result.data.message || 'فشل في إبطال الجلسات');
+        }
     } catch (error: any) {
         console.error("Error revoking sessions:", error);
         return { success: false, message: error.message || 'فشل في إبطال الجلسات' };

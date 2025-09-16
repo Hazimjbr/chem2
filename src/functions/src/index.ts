@@ -56,6 +56,7 @@ export const manageUser = functions.https.onCall(
         const user = await admin.auth().getUserByEmail(email);
         await admin.auth().setCustomUserClaims(user.uid, {admin: true});
         return {
+          success: true,
           message: `Success! ${email} has been made an admin.`,
         };
       } catch (error) {
@@ -85,6 +86,7 @@ export const manageUser = functions.https.onCall(
           );
         }
         return {
+          success: true,
           message: `Successfully revoked sessions for user ${uid}.`,
         };
       } catch (error) {
@@ -104,12 +106,14 @@ export const manageUser = functions.https.onCall(
       try {
         await admin.auth().deleteUser(uid);
         return {
+          success: true,
           message: `Successfully deleted user ${uid} from Authentication.`,
         };
       } catch (error: any) {
         console.error("Error deleting user:", error);
         if (error.code === "auth/user-not-found") {
           return {
+            success: true, // It's a success in the sense that the user doesn't exist to be deleted.
             message: "User not found in Authentication, may have been already deleted.",
           };
         }
