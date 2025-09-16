@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -72,7 +71,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         
         <FlippableCard cardTitle="قانون هنري" cardIcon={<Cpu className="h-6 w-6" />}
              imageContent={
-                <Image src="https://i.ibb.co/3mrGjzn/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border" data-ai-hint="Henry's law graph" />
+                <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border" data-ai-hint="Henry's law graph" />
             }
         >
              <div className="p-4 space-y-3">
@@ -147,7 +146,7 @@ export default function LessonPartPage() {
     
   return (
     <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
-        <LessonContent onCorrect={handleCorrectAnswer} />
+        <LessonContent onCorrect={onCorrect} />
     </LessonLayout>
   );
 }
