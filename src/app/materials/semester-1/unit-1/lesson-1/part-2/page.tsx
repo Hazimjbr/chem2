@@ -25,8 +25,9 @@ const lessonInfo = {
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-1",
     nextLesson: "/materials/semester-1/unit-1/lesson-1/part-3",
     previousLessonTitle: "الجزء السابق: نظرية الحركة الجزيئية",
-    nextLessonTitle: "الجزء التالي: قانون بويل"
-}
+    nextLessonTitle: "الجزء التالي: قانون بويل",
+    lessonContent: "المتغيرات الأربعة لوصف الغاز المحصور: 1. الضغط (P): القوة المؤثرة على وحدة المساحة. وحداته: atm, mmHg, kPa. (1 atm = 760 mmHg = 101.3 kPa). 2. الحجم (V): الحيز الذي يشغله الغاز. وحداته: L, mL. (1 L = 1000 mL). 3. درجة الحرارة (T): مقياس لمتوسط الطاقة الحركية. يجب استخدام الكلفن (K). (T(K) = T(°C) + 273). 4. كمية الغاز (n): عدد جسيمات الغاز. وحدته: مول (mol). الظروف المعيارية (STP) هي: 1atm و 273K."
+};
 
 const LessonContent = ({ onCorrect }: { onCorrect: (questionId: string) => void; }) => (
     <>
@@ -191,7 +192,7 @@ export default function LessonPartPage() {
     };
 
   return (
-    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+    <LessonLayout {...lessonInfo}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );

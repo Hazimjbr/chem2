@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, ArrowRight } from 'lucide-react';
 import React, { useEffect } from 'react';
 import type { QuizQuestion } from '@/components/quiz';
+import Quiz from '@/components/quiz';
 
 interface LessonLayoutProps {
     lessonTitle: string;
@@ -23,7 +24,8 @@ interface LessonLayoutProps {
     previousLessonTitle?: string;
     nextLessonTitle?: string;
     children?: React.ReactNode;
-    completedInteractiveCount?: number; // Keep this for future use if needed
+    lessonContent?: string;
+    completedInteractiveCount?: number;
 }
 
 export default function LessonLayout({
@@ -31,12 +33,14 @@ export default function LessonLayout({
     lessonSubtitle,
     mainIdea,
     learningOutcomes,
+    staticQuizzes,
     lessonId,
     previousLesson,
     nextLesson,
     previousLessonTitle = 'الجزء السابق',
     nextLessonTitle = 'الجزء التالي',
     children,
+    lessonContent = '',
 }: LessonLayoutProps) {
     useEffect(() => {
         localStorage.setItem('lastVisitedLesson', lessonId);
@@ -82,6 +86,22 @@ export default function LessonLayout({
                 </Card>
 
                 {children}
+                
+                <Card>
+                    <CardHeader>
+                        <CardTitle>اختبر فهمك</CardTitle>
+                        <CardDescription>
+                           اختر مستوى الصعوبة المناسب لك. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Quiz 
+                            lessonContent={lessonContent} 
+                            staticQuizzes={staticQuizzes} 
+                            lessonId={lessonId}
+                        />
+                    </CardContent>
+                </Card>
 
             </main>
 

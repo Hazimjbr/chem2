@@ -24,7 +24,8 @@ const lessonInfo = {
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-5",
     nextLesson: "/materials/semester-1/unit-1/section-4/part-2",
     previousLessonTitle: "الجزء السابق: المواد الصلبة البلورية الأيونية",
-    nextLessonTitle: "الإثراء والتوسع"
+    nextLessonTitle: "الإثراء والتوسع",
+    lessonContent: "تطبيقات حالات المادة: بالونات الطقس تنفجر بسبب تمدد الغاز (قانون بويل) في الارتفاعات لانخفاض الضغط. أواني الضغط تسرع الطهي برفع درجة الغليان نتيجة زيادة الضغط. الدعامات القلبية تصنع من سبائك التيتانيوم لقوتها ومرونتها."
 };
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
@@ -104,7 +105,7 @@ export default function LessonPartPage() {
     };
      
   return (
-    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+    <LessonLayout {...lessonInfo}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );

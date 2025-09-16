@@ -24,7 +24,8 @@ const lessonInfo = {
     previousLesson: "/materials/semester-1/unit-1/section-4/part-1",
     nextLesson: "/materials/semester-1/unit-1/section-5",
     previousLessonTitle: "الجزء السابق: الربط بالعلوم",
-    nextLessonTitle: "مراجعة الوحدة"
+    nextLessonTitle: "مراجعة الوحدة",
+    lessonContent: "البلازما هي حالة رابعة للمادة، غاز متأين من أيونات موجبة وإلكترونات حرة. توجد في النجوم والبرق. تختزن طاقة هائلة وتوصل الكهرباء. تستخدم في محولات النفايات البلازمية لتكسير النفايات وتحويلها إلى غاز وقود ومواد بناء، وهي تقنية صديقة للبيئة لكنها مكلفة."
 };
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
@@ -128,10 +129,8 @@ export default function LessonPartPage() {
     };
     
   return (
-    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+    <LessonLayout {...lessonInfo}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }
-
-    
