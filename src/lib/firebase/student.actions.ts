@@ -1,43 +1,9 @@
 
 'use server';
 
-import { initializeApp, getApps, deleteApp, FirebaseApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp, updateDoc, writeBatch, where, deleteDoc } from 'firebase/firestore';
 import { db } from './config';
 import { manageUser } from './functions';
-
-const secondaryAppConfig = {
-  "projectId": "chem1-93ct1",
-  "appId": "1:478091867826:web:52e564e2a5b42f70ed7bab",
-  "storageBucket": "chem1-93ct1.appspot.com",
-  "apiKey": "AIzaSyD5meKUxkfCEJJ9n6Mi-LdXmBtRmT76xy8",
-  "authDomain": "chem1-93ct1.firebaseapp.com",
-  "messagingSenderId": "478091867826"
-};
-
-// A function to safely get or create the secondary app
-const getSecondaryApp = (): FirebaseApp => {
-    const appName = "secondary-admin-app";
-    const existingApp = getApps().find(app => app.name === appName);
-    if (existingApp) {
-        return existingApp;
-    }
-    return initializeApp(secondaryAppConfig, appName);
-}
-
-// A function to safely delete the secondary app
-const deleteSecondaryApp = async () => {
-    const appName = "secondary-admin-app";
-    const existingApp = getApps().find(app => app.name === appName);
-    if (existingApp) {
-        try {
-            await deleteApp(existingApp);
-        } catch (e) {
-            console.error("Could not delete secondary app instance:", e);
-        }
-    }
-}
 
 
 export async function addStudent(studentData: {
@@ -52,19 +18,23 @@ export async function addStudent(studentData: {
 }) {
     const { studentName, username, email, password_clear, courses, courseIds, phone1, phone2 } = studentData;
 
-    let user: User | null = null;
     try {
-        const secondaryApp = getSecondaryApp();
-        const secondaryAuth = getAuth(secondaryApp);
-        
-        const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, password_clear);
-        user = userCredential.user;
-        
-        // It's important to sign out from the secondary app to avoid conflicts
-        await signOut(secondaryAuth);
-        await deleteSecondaryApp(); // Clean up the app after successful creation
+        // Use the Cloud Function to create the user in Firebase Auth
+        const result: any = await manageUser({
+            action: 'createUser',
+            email,
+            password: password_clear,
+            displayName: studentName,
+        });
 
-        await setDoc(doc(db, 'students', user.uid), {
+        if (!result.data.success) {
+            throw new Error(result.data.message || 'Failed to create user in Auth.');
+        }
+
+        const userId = result.data.uid;
+
+        // Save the rest of the student data to Firestore
+        await setDoc(doc(db, 'students', userId), {
             studentName,
             username,
             email,
@@ -77,21 +47,20 @@ export async function addStudent(studentData: {
             createdAt: Timestamp.now(),
         });
         
-        return { success: true, message: 'تم إنشاء حساب الطالب بنجاح', userId: user.uid };
+        return { success: true, message: 'تم إنشاء حساب الطالب بنجاح', userId: userId };
 
     } catch (error: any) {
         console.error("Error creating student:", error);
         
-        // Ensure cleanup happens even on error
-        await deleteSecondaryApp();
-
         let errorMessage = 'حدث خطأ غير متوقع أثناء إنشاء الحساب.';
-        if (error.code === 'auth/email-already-in-use') {
-            errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
-        } else if (error.code === 'auth/weak-password') {
-            errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
-        } else if (user) {
-             errorMessage = 'تم إنشاء الحساب في نظام المصادقة ولكن فشل حفظه في قاعدة البيانات.';
+        if (error.message) {
+            if (error.message.includes('auth/email-already-exists')) {
+                errorMessage = 'اسم المستخدم هذا موجود بالفعل. الرجاء اختيار اسم آخر.';
+            } else if (error.message.includes('auth/weak-password')){
+                 errorMessage = 'كلمة المرور ضعيفة جدًا. يجب أن تكون 6 أحرف على الأقل.';
+            } else {
+                 errorMessage = error.message;
+            }
         }
         
         return { success: false, message: errorMessage };

@@ -18,9 +18,34 @@ export const manageUser = functions.https.onCall(
       );
     }
 
-    const {action, email, uid} = data;
+    const {action, email, uid, password, displayName} = data;
 
-    if (action === "grantAdmin") {
+    if (action === "createUser") {
+      if (!email || !password || !displayName) {
+        throw new functions.https.HttpsError(
+          "invalid-argument",
+          "Email, password, and displayName are required to create a user.",
+        );
+      }
+      try {
+        const userRecord = await admin.auth().createUser({
+          email: email,
+          password: password,
+          displayName: displayName,
+        });
+        return {
+          success: true,
+          message: `Successfully created new user: ${userRecord.displayName}`,
+          uid: userRecord.uid,
+        };
+      } catch (error: any) {
+        console.error("Error creating new user:", error);
+        throw new functions.https.HttpsError(
+          "internal",
+          error.message || "An error occurred while creating the user.",
+        );
+      }
+    } else if (action === "grantAdmin") {
       if (typeof email !== "string" || email.length === 0) {
         throw new functions.https.HttpsError(
           "invalid-argument",
