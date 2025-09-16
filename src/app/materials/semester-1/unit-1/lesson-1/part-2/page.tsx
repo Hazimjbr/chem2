@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -167,7 +168,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (questionId: string) => void;
                     questionId="q2"
                     lessonId={lessonInfo.lessonId}
                     onCorrect={onCorrect}
-                    question={<>بالون درجة حرارته <span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span> فإن حرارته المطلقة تساوي</>}
+                    question={<><span>بالون درجة حرارته </span><span dir="ltr" className="inline-block"><InlineMath math="20^\circ\text{C}" /></span><span> فإن حرارته المطلقة تساوي</span></>}
                     options={[
                         "13.75",
                         "253",
@@ -195,7 +196,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
-
-    

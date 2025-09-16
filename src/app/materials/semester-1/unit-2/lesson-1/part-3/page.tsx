@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -32,10 +33,10 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
     <div className="space-y-8">
         <FlippableCard cardTitle="ذائبية المواد الصلبة" cardIcon={<FlaskConical className="h-6 w-6" />}>
             <div className="p-4 space-y-4">
-                <p className="font-semibold">الذائبية أكبر كتلة من المذاب يمكن أن تذوب في <span dir="ltr">100g</span> من الماء عند درجة حرارة معينة</p>
+                <p className="font-semibold text-sm">الذائبية أكبر كتلة من المذاب يمكن أن تذوب في <span dir="ltr">100g</span> من الماء عند درجة حرارة معينة</p>
                 
                 <div>
-                    <h4 className="font-bold text-accent">تعتمد ذائبية المركبات الأيونية الصلبة على</h4>
+                    <h4 className="font-bold text-accent text-sm">تعتمد ذائبية المركبات الأيونية الصلبة على</h4>
                     <ul className="list-decimal mr-4 mt-2 text-sm space-y-1">
                         <li>طبيعة المادة لكل مادة ذائبية تعتمد على قوى الترابط بين الجسيمات</li>
                         <li>درجة الحرارة (علاقة طردية) باستثناء كبريتات السيريوم <span dir="ltr">Ce2(SO4)3</span> (علاقة عكسية)</li>
@@ -43,7 +44,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 </div>
 
                 <div className="border-t pt-3">
-                    <h4 className="font-bold text-accent">ذائبية المركبات الأيونية (الصلبة) في الماء</h4>
+                    <h4 className="font-bold text-accent text-sm">ذائبية المركبات الأيونية (الصلبة) في الماء</h4>
                      <div className="flex justify-center my-2">
                         <Image src="https://i.ibb.co/gbWxHr6K/image.jpg" alt="جدول الذائبية" width={400} height={300} className="rounded-lg border" data-ai-hint="solubility rules table" />
                     </div>
@@ -62,14 +63,14 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
              <div className="p-4 space-y-4">
                 <p className="text-sm">تعتمد ذائبية المواد السائلة على تشابه قوى الترابط بين كل من المذاب السائل والماء</p>
                 <div className="border-t pt-3">
-                    <h4 className="font-bold text-accent">ذائبية الغازات في الماء قليلة عموما وتعتمد على</h4>
+                    <h4 className="font-bold text-accent text-sm">ذائبية الغازات في الماء قليلة عموما وتعتمد على</h4>
                     <ul className="list-decimal mr-4 mt-2 text-sm space-y-2">
                         <li><strong className="font-semibold">طبيعة المادة</strong> (علاقة طردية مع قوى الترابط بين الجسيمات) كلما زادت الكتلة المولية للغاز زادت قوى لندن وزادت الذائبية</li>
                         <li><strong className="font-semibold">درجة الحرارة</strong> (علاقة عكسية) لأن زيادة الحرارة تزيد الطاقة الحركية لجسيمات الغاز فتتغلب على قوى التجاذب مع الماء وتفلت من المحلول وتغادره</li>
                         <li><strong className="font-semibold">الضغط الخارجي أو الجزئي</strong> (علاقة طردية خطية)</li>
                     </ul>
                 </div>
-                <div className="flex justify-center my-2">
+                 <div className="flex justify-center my-2">
                     <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
                 </div>
             </div>
@@ -77,14 +78,14 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         
         <FlippableCard cardTitle="قانون هنري" cardIcon={<Cpu className="h-6 w-6" />}>
              <div className="p-4 space-y-3">
-                <blockquote className="border-r-4 border-primary pr-4">
+                <blockquote className="border-r-4 border-primary pr-4 text-sm">
                    تتناسب ذائبية الغاز في سائل ما تناسبا طرديا مع الضغط الجزئي المؤثر في سطح السائل عند ثبات درجة الحرارة
                 </blockquote>
                 <div className="text-center" dir="ltr">
                     <BlockMath math="S = K_H P \quad \text{أو} \quad \frac{S_1}{P_1} = \frac{S_2}{P_2}" />
                 </div>
                 <div>
-                    <h4 className="font-semibold text-accent">حيث</h4>
+                    <h4 className="font-semibold text-accent text-sm">حيث</h4>
                     <ul className="list-decimal mr-4 mt-2 text-sm space-y-1">
                          <li><span dir="ltr">S</span> الذائبية بوحدة <span dir="ltr">g/L</span></li>
                          <li><span dir="ltr">P</span> الضغط الجزئي للغاز بوحدة <span dir="ltr">atm</span></li>
@@ -152,5 +153,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

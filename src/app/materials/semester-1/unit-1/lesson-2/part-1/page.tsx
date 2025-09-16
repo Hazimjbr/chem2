@@ -2,146 +2,169 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Waves, HelpCircle, GitCommitHorizontal, CheckCircle, Boxes, Move, Thermometer, Beaker, Package, Workflow, Blend } from 'lucide-react';
-import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
-import { InlineMath, BlockMath } from 'react-katex';
-import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import { BookCopy, Lightbulb, Beaker, GitCommitHorizontal, CircleDot, Workflow, Blend, Package, Layers } from 'lucide-react';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
+import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
+import { InlineMath } from 'react-katex';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import Image from 'next/image';
 
-
 const lessonInfo = {
-    lessonTitle: "الدرس الثاني: الحالة السائلة",
-    lessonSubtitle: "مقدمة عن المواد السائلة",
-    mainIdea: "تتميز السوائل بخصائص فريدة مثل حجمها الثابت وشكلها المتغير وتعتمد هذه الخصائص بشكل أساسي على طبيعة قوى الترابط بين جزيئاتها وأنواعها",
+    lessonTitle: "الدرس الأول تصنيف المحاليل",
+    lessonSubtitle: "تصنيف المواد",
+    mainIdea: "تقسم المواد حسب تركيبها إلى مواد نقية (عناصر ومركبات) ومخاليط (متجانسة وغير متجانسة) ولكل منها خصائصها التي تميزها",
     learningOutcomes: [
-        "أصف الخصائص الفيزيائية للمواد السائلة",
-        "أقارن بين أنواع قوى الترابط بين الجزيئات"
+        "أصنف المواد إلى نقية ومخاليط",
+        "أقارن بين أنواع المخاليط المختلفة"
     ],
-    lessonId: "/materials/semester-1/unit-1/lesson-2/part-1",
+    lessonId: "/materials/semester-1/unit-2/lesson-1/part-1",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
-    previousLesson: "/materials/semester-1/unit-1/lesson-1/part-10",
-    nextLesson: "/materials/semester-1/unit-1/lesson-2/part-2",
-    previousLessonTitle: "الجزء السابق: قانون جراهام",
-    nextLessonTitle: "الجزء التالي: التبخر"
+    previousLesson: "/materials/semester-1/unit-1/section-5",
+    nextLesson: "/materials/semester-1/unit-2/lesson-1/part-2",
+    previousLessonTitle: "مراجعة الوحدة الأولى",
+    nextLessonTitle: "الجزء التالي تكون المحاليل"
 };
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
     <div className="space-y-8">
-         <Card>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <p>
-                    تعتمد خصائص المادة في الحالة السائلة مثل كثافتها وقابليتها للجريان على طبيعة الجسيمات المكونة لها وقوى الترابط بينها السوائل على عكس الغازات تمتلك حجمًا ثابتًا لأن جسيماتها متقاربة لكنها تأخذ شكل الوعاء لأن هذه الجسيمات قادرة على الحركة والانزلاق فوق بعضها البعض
-                </p>
-            </CardContent>
-        </Card>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-             <FlippableCard
-                cardTitle="ترابط قوى لندن"
-                cardIcon={<Atom className="h-6 w-6" />}
-            >
-                 <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
-                <ul className="list-disc mr-4 text-sm space-y-1 text-muted-foreground">
-                    <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية مثل CH₄ CO₂</li>
-                    <li>تزداد قوته بازدياد الكتلة المولية وقلة تفرعات السلاسل</li>
-                </ul>
-            </FlippableCard>
-
-            <FlippableCard
-                cardTitle="ترابط ثنائي القطب"
-                cardIcon={<Binary className="h-6 w-6" />}
-            >
-                <p className="font-semibold text-sm mb-2">ينشأ بين الجزيئات القطبية</p>
-                 <ul className="list-disc mr-4 text-sm space-y-1 text-muted-foreground">
-                    <li>يحدث تجاذب بين الشحنات الجزئية المختلفة δ+ و δ-</li>
-                    <li>مثال هاليد الألكيل الإيثر الألدهيد الكيتون</li>
-                    <li>أقوى من قوى لندن للجزيئات المتقاربة في الكتلة المولية</li>
-                </ul>
-            </FlippableCard>
-
-            <FlippableCard
-                cardTitle="ترابط هيدروجيني"
-                cardIcon={<Waves className="h-6 w-6" />}
-            >
-                <p className="font-semibold text-sm mb-2">أقوى أنواع الترابط بين الجزيئات</p>
-                 <ul className="list-disc mr-4 text-sm space-y-1 text-muted-foreground">
-                    <li>نوع خاص من ترابط ثنائي القطب</li>
-                    <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية N O F</li>
-                    <li>مثال الماء H₂O الكحول R-OH الأمونيا NH₃</li>
-                </ul>
-            </FlippableCard>
-        </div>
+        <FlippableCard
+            cardTitle="تصنيف المواد"
+            cardIcon={<Workflow className="h-6 w-6" />}
+        >
+            <div className="space-y-4">
+                <p className="font-semibold text-sm">تقسم المواد حسب تركيبها إلى</p>
+                <div className='p-3 bg-muted/50 rounded-lg'>
+                    <h4 className='font-bold text-accent mb-2 text-sm'>المواد النقية</h4>
+                    <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
+                     <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
+                        <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
+                        <p className='text-muted-foreground text-sm'>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
+                        <p className='font-mono text-left text-sm' dir="ltr">Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
+                    </div>
+                    <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
+                        <h5 className='font-semibold text-accent/80 text-sm'>ب) مركبات</h5>
+                        <p className='text-muted-foreground text-sm'>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
+                    </div>
+                </div>
+                 <div className='p-3 bg-muted/50 rounded-lg'>
+                    <h4 className='font-bold text-accent mb-2 text-sm'>المخاليط</h4>
+                    <p className='text-muted-foreground text-sm'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
+                    <p className='text-muted-foreground text-sm'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
+                </div>
+            </div>
+        </FlippableCard>
+        
+        <h3 className="text-2xl font-bold text-center">أنواع المخاليط</h3>
         
         <div className="grid md:grid-cols-2 gap-6">
             <FlippableCard
-                cardTitle="خصائص المواد السائلة"
+                cardTitle="المخلوط المعلق"
                 cardIcon={<Layers className="h-6 w-6" />}
             >
-                <p className="text-sm font-bold mb-4">تمتاز السوائل بخصائص محددة اعتمادا على قوى التجاذب بين جزيئاتها</p>
-                <ul className="space-y-3 text-sm">
-                    <li className="flex items-start gap-3"><span className="font-bold text-primary">1</span><div><strong>حجمها ثابت</strong> غير قابلة للانضغاط لأن جزيئاتها متقاربة</div></li>
-                    <li className="flex items-start gap-3"><span className="font-bold text-primary">2</span><div><strong>شكلها متغير</strong> تأخذ شكل حيز الوعاء الذي توضع فيه وتملأ قاعه</div></li>
-                    <li className="flex items-start gap-3"><span className="font-bold text-primary">3</span><div><strong>جسيماتها متحركة</strong> في حركة مستمرة وعشوائية لكن طاقتها الحركية أقل من الغازات</div></li>
-                    <li className="flex items-start gap-3"><span className="font-bold text-primary">4</span><div><strong>قوى ترابط متوسطة</strong> أضعف من المواد الصلبة ولكنها أقوى من الغازية</div></li>
-                     <li className="flex items-start gap-3"><span className="font-bold text-primary">5</span><div><strong>كثافتها أكبر</strong> بشكل عام كثافة السوائل أكبر من كثافة الغازات</div></li>
+                <ul className="space-y-2 text-sm">
+                    <li>لا تمتزج مكوناته امتزاجا تاما وتبقى متمايزة عن غيرها (غير متجانسة)</li>
+                    <li>قطر جسيماته يزيد عن 1000nm</li>
+                    <li>يمكن فصله بالترشيح أو الترسيب</li>
+                    <li>بعضها يمتاز بظاهرة تندال</li>
+                     <li className='border-t pt-2 mt-2'>
+                        <strong className='text-accent text-sm'>من أمثلتها</strong>
+                         <ul className="list-disc mr-4 mt-2">
+                            <li>تراب + ماء (طبقتين منفصلتين صلب + سائل)</li>
+                            <li>عصير البرتقال الطبيعي (طبقتين منفصلتين صلب + سائل)</li>
+                            <li>ماء + زيت أو ماء + بنزين (طبقتين سائلتين منفصلتين)</li>
+                         </ul>
+                    </li>
                 </ul>
             </FlippableCard>
 
              <FlippableCard
-                cardTitle="ما هو المائع؟"
-                cardIcon={<HelpCircle className="h-6 w-6" />}
+                cardTitle="المخلوط الغروي"
+                cardIcon={<Beaker className="h-6 w-6" />}
             >
-               <CardContent>
-                    <p className="text-sm">المائع هو أي مادة لها القدرة على الجريان أو الانسياب والانتشار وتأخذ شكل الإناء الذي توضع فيه بناءً على هذا التعريف تعتبر كل من السوائل والغازات موائع</p>
-               </CardContent>
+                <ul className="space-y-2 text-sm">
+                    <li>تتكون من جسيمات يتراوح قطرها بين (1-1000)nm منتشرة خلال مادة أخرى (وسط الانتشار) لذلك لا يمكن فصلها بالترشيح أو الترسيب</li>
+                    <li>تتحرك جسيماتها حركة عشوائية في جميع الاتجاهات (الحركة البراونية) ما يمنع ترسبها</li>
+                    <li>تمتاز بظاهرة تندال وهي تشتيت الضوء المار من خلالها ويزداد التشتيت بزيادة حجم الجسيمات وتركيزها</li>
+                    <li>تتدرج بالوصف من الشفافة حتى العكرة والمعتمة</li>
+                    <li className='border-t pt-2 mt-2'><strong className='text-accent text-sm'>تصنف حسب حالة كل من الجسيمات المنتشرة ووسط الانتشار ومن أمثلتها</strong>
+                        <ul className="list-disc mr-4 mt-2">
+                            <li>الضباب والغيوم والرذاذ (سائل في غاز)</li>
+                            <li>الدخان والرماد والغبار (صلب في غاز)</li>
+                            <li>الحليب والمايونيز (سائل في سائل)</li>
+                            <li>الدهان (صلب في سائل)</li>
+                            <li>حجر الخفاف البركاني (غاز في صلب)</li>
+                        </ul>
+                    </li>
+                </ul>
             </FlippableCard>
         </div>
+        <FlippableCard
+            cardTitle="المخلوط المتجانس (المحلول)"
+            cardIcon={<Package className="h-6 w-6" />}
+             className="md:col-span-2"
+        >
+           <ul className="space-y-2 text-sm">
+                <li>تمتزج مكوناته مع بعضها امتزاجا تاما بشكل منتظم ولا يمكن تمييزها عن بعضها (تجانس في التركيب والقوام)</li>
+                <li>يتراوح قطر الجزيئات بين (0.1-1)nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
+                <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
+                <ul className="list-decimal mr-4">
+                    <li className="text-sm">غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                    <li className="text-sm">مشبعة لا يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                    <li className="text-sm">فوق مشبعة تحتوي كمية إضافية من المذاب أكثر مما يمكن أن تستوعبها عند ظروف معينة</li>
+                </ul>
+                 <li className="font-semibold text-accent">يصنف حسب قابلية التوصيل الكهربائي إلى</li>
+                 <ul className="list-decimal mr-4">
+                    <li className="text-sm">كهرلية (قوية أو ضعيفة) توصل التيار الكهربائي لاحتوائها على أيونات حرة الحركة</li>
+                    <li className="text-sm">لا كهرلية لا توصل التيار الكهربائي لعدم احتوائها على أيونات حرة الحركة</li>
+                </ul>
+                 <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
+                 <li className="flex justify-center">
+                    <Image src="https://i.ibb.co/gLWhqy1V/3.jpg" alt="3" width={250} height={150} className="rounded-lg w-full h-auto" />
+                </li>
+            </ul>
+        </FlippableCard>
+    </div>
     
-        <div className="space-y-4 mt-8">
-          <div className="flex items-center gap-3">
-            <Lightbulb className="h-7 w-7 text-yellow-400" />
-            <div>
-              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-              <InteractiveQuestionCard 
-                  questionId="q1"
-                  lessonId={lessonInfo.lessonId}
-                  onCorrect={onCorrect}
-                  question="السائل الذي تترابط جزيئاته بقوى ترابط هيدروجينية من السوائل الآتية"
-                  options={[
-                      "CH₃OH",
-                      "CH₃CH₂Cl",
-                      "CH₃COCH₃",
-                      "CH₃CH₃"
-                  ]}
-                  correctAnswerIndex={0}
-                  explanation="الترابط الهيدروجيني يحدث عند ارتباط ذرة H مباشرة بذرة ذات كهروسلبية عالية (مثل O N F) وهذا الشرط ينطبق فقط على الميثانول (CH₃OH) الذي يحتوي على رابطة O-H"
-              />
-               <InteractiveQuestionCard 
-                  questionId="q2"
-                  lessonId={lessonInfo.lessonId}
-                  onCorrect={onCorrect}
-                  question="لماذا تأخذ السوائل شكل الوعاء الذي توضع فيه بينما يبقى حجمها ثابتًا"
-                  options={[
-                      "لأن جزيئاتها لا تتحرك أبدًا",
-                      "لأن قوى الترابط بينها قوية جدًا كالمواد الصلبة",
-                      "لأن جزيئاتها متباعدة جدًا كالغازات",
-                      "لأن جزيئاتها قادرة على الحركة والانزلاق فوق بعضها ولكنها تبقى متقاربة"
-                  ]}
-                  correctAnswerIndex={3}
-                  explanation="جزيئات السائل تمتلك طاقة حركية كافية للتغلب جزئيًا على قوى التجاذب والانزلاق فوق بعضها البعض مما يمنحها شكلاً متغيرًا لكن هذه القوى لا تزال قوية بما يكفي لإبقائها متقاربة مما يحافظ على حجم ثابت"
-              />
-          </div>
+    <div className="space-y-4 mt-8">
+      <div className="flex items-center gap-3">
+        <Lightbulb className="h-7 w-7 text-yellow-400" />
+        <div>
+          <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+          <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
         </div>
+      </div>
+      <div className="grid md:grid-cols-2 gap-6">
+          <InteractiveQuestionCard 
+              questionId="q1"
+              lessonId={lessonInfo.lessonId}
+              onCorrect={() => {}}
+              question="أي من الخيارات التالية يمثل مادة نقية"
+              options={[
+                  "عصير البرتقال",
+                  "الهواء",
+                  "الذهب (Au)",
+                  "الحليب"
+              ]}
+              correctAnswerIndex={2}
+              explanation="الذهب (Au) هو عنصر والعناصر تعتبر مواد نقية الخيارات الأخرى هي مخاليط"
+          />
+           <InteractiveQuestionCard 
+              questionId="q2"
+              lessonId={lessonInfo.lessonId}
+              onCorrect={() => {}}
+              question="ما هي الخاصية التي تسمح بالتمييز بين محلول حقيقي ومخلوط غروي شفاف"
+              options={[
+                  "اللون",
+                  "الكثافة",
+                  "القدرة على الترشيح",
+                  "ظاهرة تندال (تشتيت الضوء)"
+              ]}
+              correctAnswerIndex={3}
+              explanation="المخلوط الغروي يشتت الضوء المار من خلاله (ظاهرة تندال) بينما المحلول الحقيقي لا يشتت الضوء"
+          />
+      </div>
     </div>
 );
 
@@ -159,5 +182,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
