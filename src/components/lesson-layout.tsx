@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -6,11 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, ArrowRight } from 'lucide-react';
 import Quiz from '@/components/quiz';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import type { QuizQuestion } from '@/components/quiz';
-import { useApp } from '@/context/CurriculumContext';
-import { markLessonAsComplete } from '@/lib/firebase/progress.actions';
-
 
 interface LessonLayoutProps {
     lessonTitle: string;
@@ -28,7 +24,6 @@ interface LessonLayoutProps {
     previousLessonTitle?: string;
     nextLessonTitle?: string;
     children?: React.ReactNode;
-    completedInteractiveCount?: number;
 }
 
 export default function LessonLayout({
@@ -43,21 +38,11 @@ export default function LessonLayout({
     previousLessonTitle = 'الجزء السابق',
     nextLessonTitle = 'الجزء التالي',
     children,
-    completedInteractiveCount
 }: LessonLayoutProps) {
-    const { currentUser } = useApp();
-
     useEffect(() => {
         // Save to local storage for guest/quick access
         localStorage.setItem('lastVisitedLesson', lessonId);
     }, [lessonId]);
-    
-    // Effect to mark lesson as complete when 2 interactive questions are answered correctly
-    useEffect(() => {
-        if (currentUser && completedInteractiveCount && completedInteractiveCount >= 2) {
-            markLessonAsComplete(currentUser.uid, lessonId);
-        }
-    }, [completedInteractiveCount, currentUser, lessonId]);
 
     return (
         <div className="p-4 md:p-8 relative">

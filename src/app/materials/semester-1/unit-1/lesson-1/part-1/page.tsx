@@ -1,4 +1,3 @@
-
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -6,10 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
 import FlippableCard from './flippable-card';
-import InteractiveQuestionCard from './interactive-question-card';
+import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
-import React from 'react';
+import React, { useState } from 'react';
+import { useApp } from '@/context/CurriculumContext';
+import { markLessonAsComplete } from '@/lib/firebase/progress.actions';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
@@ -267,15 +268,20 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
 );
 
 export default function LessonPartPage() {
-  const [completedInteractive, setCompletedInteractive] = React.useState<Set<string>>(new Set());
+    const { currentUser } = useApp();
+    const [completedInteractive, setCompletedInteractive] = React.useState<Set<string>>(new Set());
 
-  const handleCorrectAnswer = (questionId: string) => {
-      setCompletedInteractive(prev => new Set(prev).add(questionId));
-  };
+    const handleCorrectAnswer = (questionId: string) => {
+        const newSet = new Set(completedInteractive).add(questionId);
+        setCompletedInteractive(newSet);
+        if (newSet.size >= 2 && currentUser) {
+            markLessonAsComplete(currentUser.uid, lessonInfo.lessonId);
+        }
+    };
   
-  return (
-    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
-      <LessonContent onCorrect={handleCorrectAnswer} />
-    </LessonLayout>
-  );
+    return (
+        <LessonLayout {...lessonInfo}>
+            <LessonContent onCorrect={handleCorrectAnswer} />
+        </LessonLayout>
+    );
 }
