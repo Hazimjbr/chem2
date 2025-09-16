@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -59,9 +58,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard 
             cardTitle="ذائبية السوائل والغازات" 
             cardIcon={<Layers className="h-6 w-6" />}
-             imageContent={
-                <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
-            }
         >
              <div className="p-4 space-y-4">
                 <p className="text-sm">تعتمد ذائبية المواد السائلة على تشابه قوى الترابط بين كل من المذاب السائل والماء</p>
@@ -72,6 +68,9 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                         <li><strong className="font-semibold">درجة الحرارة</strong> (علاقة عكسية) لأن زيادة الحرارة تزيد الطاقة الحركية لجسيمات الغاز فتتغلب على قوى التجاذب مع الماء وتفلت من المحلول وتغادره</li>
                         <li><strong className="font-semibold">الضغط الخارجي أو الجزئي</strong> (علاقة طردية خطية)</li>
                     </ul>
+                </div>
+                <div className="flex justify-center my-2">
+                    <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
                 </div>
             </div>
         </FlippableCard>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { InlineMath } from 'react-katex';
@@ -48,7 +47,7 @@ export function CalculationTriangles() {
                     top="n" topUnit="(mole)" 
                     bottomLeft="C" bottomLeftUnit="(mole/L)" 
                     bottomRight="V" bottomRightUnit="(L)"
-                    formula="n = C \times V"
+                    formula="C = \frac{n}{V}"
                 />
                 <Triangle 
                     top="m" topUnit="(g)"
