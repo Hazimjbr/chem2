@@ -7,7 +7,7 @@ import { doc, setDoc, collection, getDocs, query, orderBy, Timestamp, updateDoc,
 import { db } from './config';
 import { manageUser } from './functions';
 
-const firebaseConfig = {
+const secondaryAppConfig = {
   "projectId": "chem1-93ct1",
   "appId": "1:478091867826:web:52e564e2a5b42f70ed7bab",
   "storageBucket": "chem1-93ct1.appspot.com",
@@ -23,7 +23,7 @@ const getSecondaryApp = (): FirebaseApp => {
     if (existingApp) {
         return existingApp;
     }
-    return initializeApp(firebaseConfig, appName);
+    return initializeApp(secondaryAppConfig, appName);
 }
 
 // A function to safely delete the secondary app
