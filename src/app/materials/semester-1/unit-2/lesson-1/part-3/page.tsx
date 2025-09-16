@@ -56,7 +56,13 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </div>
         </FlippableCard>
 
-        <FlippableCard cardTitle="ذائبية السوائل والغازات" cardIcon={<Layers className="h-6 w-6" />}>
+        <FlippableCard 
+            cardTitle="ذائبية السوائل والغازات" 
+            cardIcon={<Layers className="h-6 w-6" />}
+            imageContent={
+                <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border object-contain h-full w-auto" data-ai-hint="Henry's law graph" />
+            }
+        >
              <div className="p-4 space-y-4">
                 <p className="text-sm">تعتمد ذائبية المواد السائلة على تشابه قوى الترابط بين كل من المذاب السائل والماء</p>
                 <div className="border-t pt-3">
@@ -70,11 +76,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </div>
         </FlippableCard>
         
-        <FlippableCard cardTitle="قانون هنري" cardIcon={<Cpu className="h-6 w-6" />}
-             imageContent={
-                <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border" data-ai-hint="Henry's law graph" />
-            }
-        >
+        <FlippableCard cardTitle="قانون هنري" cardIcon={<Cpu className="h-6 w-6" />}>
              <div className="p-4 space-y-3">
                 <blockquote className="border-r-4 border-primary pr-4">
                    تتناسب ذائبية الغاز في سائل ما تناسبا طرديا مع الضغط الجزئي المؤثر في سطح السائل عند ثبات درجة الحرارة
