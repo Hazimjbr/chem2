@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
@@ -58,6 +57,15 @@ export default function Diagram() {
     if (sketchRef.current) {
       setWidth(sketchRef.current.offsetWidth);
     }
+    const handleResize = () => {
+      if (sketchRef.current) {
+        setWidth(sketchRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {

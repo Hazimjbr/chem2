@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
@@ -69,9 +68,11 @@ export default function MaxwellBoltzmannDiagram() {
       };
       
       p.windowResized = () => {
-          p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
-          setWidth(sketchRef.current!.offsetWidth);
+        if (sketchRef.current) {
+          setWidth(sketchRef.current.offsetWidth);
+          p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
           p.redraw();
+        }
       }
 
       p.draw = () => {

@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
@@ -27,6 +26,15 @@ export default function Diagram() {
     if (sketchRef.current) {
       setWidth(sketchRef.current.offsetWidth);
     }
+    const handleResize = () => {
+      if (sketchRef.current) {
+        setWidth(sketchRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -44,8 +52,10 @@ export default function Diagram() {
       };
       
       p.windowResized = () => {
-          p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
-          setWidth(sketchRef.current!.offsetWidth);
+          if (sketchRef.current) {
+            setWidth(sketchRef.current.offsetWidth);
+            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+          }
       }
 
       p.draw = () => {
