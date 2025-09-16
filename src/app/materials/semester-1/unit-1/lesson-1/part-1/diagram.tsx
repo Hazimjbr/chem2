@@ -1,8 +1,8 @@
 
 'use client';
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -189,7 +189,13 @@ export default function Diagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width, temp, press]);
+  }, [width]);
+
+  useEffect(() => {
+    if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
+      (p5InstanceRef.current as any).customPropsChange(temp, press);
+    }
+  }, [temp, press]);
 
 
   return (
