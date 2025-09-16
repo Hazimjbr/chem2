@@ -15,24 +15,24 @@ const PARTICLE_RADIUS = 3;
 export default function Diagram() {
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
-  const [temperature, setTemperature] = useState(298); // Initial temp in Kelvin (25°C)
+  const [temperature, setTemperature] = useState(298);
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
     if (sketchRef.current) {
-      setWidth(sketchRef.current.clientWidth);
+      setWidth(sketchRef.current.offsetWidth);
     }
   }, []);
 
   useEffect(() => {
-    if (width <= 0) return;
+    if (width <= 0 || !sketchRef.current) return;
 
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       let particles: Particle[] = [];
-      const baseSpeed = temperature / 298; // Scale speed with temp
-      const pressure = (temperature / 298).toFixed(2); // Pressure is proportional to temp
+      let baseSpeed = temperature / 298;
+      let pressure = (temperature / 298).toFixed(2);
 
       class Particle {
         pos: p5.Vector;
@@ -69,15 +69,21 @@ export default function Diagram() {
           p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
         }
       }
-
+      
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
         for (let i = 0; i < NUM_PARTICLES; i++) {
           particles.push(new Particle());
         }
       };
+      
+      p.windowResized = () => {
+        p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
+        setWidth(sketchRef.current!.offsetWidth);
+      }
 
       p.draw = () => {
+        pressure = (temperature / 298).toFixed(2);
         p.background('hsl(var(--card))');
         p.stroke('hsl(var(--border))');
         p.strokeWeight(4);
@@ -89,7 +95,6 @@ export default function Diagram() {
           particle.show();
         });
 
-        // Display Pressure
         p.noStroke();
         p.fill('hsl(var(--foreground))');
         p.textSize(16);
@@ -98,12 +103,14 @@ export default function Diagram() {
       };
 
       (p as any).updateTemperature = (newTemp: number) => {
-        const newSpeed = newTemp / 298;
+        temperature = newTemp;
+        baseSpeed = newTemp / 298;
         const newColor = p.lerpColor(p.color(0, 0, 255), p.color(255, 0, 0), (newTemp - 273) / (673 - 273));
         particles.forEach(particle => {
-           particle.vel.setMag(newSpeed * 2);
+           particle.vel.setMag(baseSpeed * 2);
            particle.color = newColor;
         });
+        p.loop();
       };
     };
 
@@ -137,8 +144,8 @@ export default function Diagram() {
           <Thermometer className="text-blue-500" />
           <Slider
             id="temp-slider"
-            min={273} // 0°C
-            max={673} // 400°C
+            min={273}
+            max={673}
             step={1}
             value={[temperature]}
             onValueChange={(value) => setTemperature(value[0])}

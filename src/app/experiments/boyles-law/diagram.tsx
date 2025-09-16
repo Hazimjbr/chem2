@@ -25,90 +25,79 @@ export default function Diagram() {
 
   useLayoutEffect(() => {
     if (sketchRef.current) {
-      setWidth(sketchRef.current.clientWidth);
+      setWidth(sketchRef.current.offsetWidth);
     }
   }, []);
 
   useEffect(() => {
-    if (width <= 0) return;
+    if (width <= 0 || !sketchRef.current) return;
 
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       let currentGasHeight = INITIAL_GAS_HEIGHT;
-      const targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
+      let targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
         p.noStroke();
       };
+      
+      p.windowResized = () => {
+          p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
+          setWidth(sketchRef.current!.offsetWidth);
+      }
 
       p.draw = () => {
+        targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
         p.background('hsl(var(--card))');
 
-        // Lerp for smooth animation
         currentGasHeight = p.lerp(currentGasHeight, targetGasHeight, 0.1);
         
-        const centerX = width / 2 - 40; // Shift the drawing to the left
-        // Position the drawing at the bottom
+        const centerX = width / 2 - 40;
         const tubeBottomY = CANVAS_HEIGHT - 50;
         const tubeTopY = tubeBottomY - 200; 
         const tubeCapY = tubeTopY;
         const innerTubeWidth = TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2);
 
-        // --- Calculate Mercury Levels ---
         const gasVolumeBottomY = tubeCapY + currentGasHeight;
         const leftMercuryTopY = gasVolumeBottomY;
         const rightMercuryTopY = leftMercuryTopY - (pressure - 1) * PRESSURE_TO_HEIGHT_SCALE;
 
-        // --- Draw Gas ---
-        p.fill(173, 216, 230, 150); // Light blue for gas
+        p.fill(173, 216, 230, 150);
         p.noStroke();
         p.rect(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH + TUBE_WALL_THICKNESS, tubeCapY, innerTubeWidth, currentGasHeight);
 
-        // --- Draw Mercury ---
-        p.fill(180, 180, 180); // Silver-gray for mercury
-        // Left arm mercury
+        p.fill(180, 180, 180);
         p.rect(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH + TUBE_WALL_THICKNESS, leftMercuryTopY, innerTubeWidth, tubeBottomY - leftMercuryTopY);
-        // Right arm mercury
         p.rect(centerX + TUBE_BEND_RADIUS + TUBE_WALL_THICKNESS, rightMercuryTopY, innerTubeWidth, tubeBottomY - rightMercuryTopY);
-        // U-bend mercury
         p.arc(centerX, tubeBottomY, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH, 0, p.PI);
         p.fill('hsl(var(--card))');
         p.arc(centerX, tubeBottomY, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2), (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2), 0, p.PI);
         
-
-        // --- Draw J-Tube Glass ---
         p.noFill();
-        p.stroke(0); // Set stroke to black
+        p.stroke(0);
         p.strokeWeight(TUBE_WALL_THICKNESS);
         
-        // Left arm (closed)
         p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeBottomY, centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY);
         p.line(centerX - TUBE_BEND_RADIUS, tubeBottomY, centerX - TUBE_BEND_RADIUS, tubeCapY);
-        p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY, centerX - TUBE_BEND_RADIUS, tubeCapY); // top cap
+        p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY, centerX - TUBE_BEND_RADIUS, tubeCapY);
         
-        // Right arm (open) - Make it taller
         p.line(centerX + TUBE_BEND_RADIUS, tubeBottomY, centerX + TUBE_BEND_RADIUS, 10);
         p.line(centerX + TUBE_BEND_RADIUS + TUBE_WIDTH, tubeBottomY, centerX + TUBE_BEND_RADIUS + TUBE_WIDTH, 10);
         
-        // Bend
         p.noFill();
         p.strokeWeight(TUBE_WALL_THICKNESS);
         p.arc(centerX, tubeBottomY, TUBE_BEND_RADIUS * 2, TUBE_BEND_RADIUS * 2, 0, p.PI, p.OPEN);
         p.arc(centerX, tubeBottomY, TUBE_BEND_RADIUS * 2 + TUBE_WIDTH * 2, TUBE_BEND_RADIUS * 2 + TUBE_WIDTH * 2, 0, p.PI, p.OPEN);
 
-
-        // --- Draw Labels ---
         p.noStroke();
-        p.fill(0); // Set fill to black for text
+        p.fill(0);
         
-        // Volume Label
         p.textSize(18);
         p.textAlign(p.CENTER, p.CENTER);
         p.text('V', centerX - TUBE_BEND_RADIUS - (TUBE_WIDTH/2), tubeCapY + (currentGasHeight / 2));
         
-        // Pressure Label (Replicated from image)
         const pressureTextX = centerX + TUBE_BEND_RADIUS + (TUBE_WIDTH / 2);
         const pressureTextY = rightMercuryTopY - 5;
         p.textSize(18);
@@ -117,17 +106,15 @@ export default function Diagram() {
         p.textAlign(p.LEFT, p.BOTTOM);
         p.text('atm', pressureTextX + (innerTubeWidth/2) + 5, pressureTextY);
 
-        
-        // Mercury Height (h) Label
         if (pressure > 1.0) {
             const hLineX = centerX + TUBE_BEND_RADIUS + TUBE_WIDTH + 20;
             const h_in_mmHg = ((pressure - 1) * 760).toFixed(0);
 
             p.stroke(0);
             p.strokeWeight(1);
-            p.line(hLineX, leftMercuryTopY, hLineX, rightMercuryTopY); // Vertical line for h
-            p.line(hLineX - 3, leftMercuryTopY, hLineX + 3, leftMercuryTopY); // Top tick
-            p.line(hLineX - 3, rightMercuryTopY, hLineX + 3, rightMercuryTopY); // Bottom tick
+            p.line(hLineX, leftMercuryTopY, hLineX, rightMercuryTopY);
+            p.line(hLineX - 3, leftMercuryTopY, hLineX + 3, leftMercuryTopY);
+            p.line(hLineX - 3, rightMercuryTopY, hLineX + 3, rightMercuryTopY);
 
             p.noStroke();
             p.fill(0);
@@ -135,7 +122,6 @@ export default function Diagram() {
             p.textAlign(p.LEFT, p.CENTER);
             p.text(`h = ${h_in_mmHg} mmHg`, hLineX + 8, (leftMercuryTopY + rightMercuryTopY) / 2);
         }
-
       };
     };
 

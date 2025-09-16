@@ -56,28 +56,25 @@ export default function Diagram() {
 
   useLayoutEffect(() => {
     if (sketchRef.current) {
-      setWidth(sketchRef.current.clientWidth);
+      setWidth(sketchRef.current.offsetWidth);
     }
   }, []);
 
   useEffect(() => {
-    if (width <= 0) return;
+    if (width <= 0 || !sketchRef.current) return;
 
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       let particles: Particle[] = [];
       
-      const boxHeight = CANVAS_HEIGHT;
-      const speedMultiplier = temperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-      const particleColor = temperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+      let boxHeight = CANVAS_HEIGHT;
+      let speedMultiplier = temperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+      let particleColor = temperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
       
-      // Calculate piston position based on pressure
-      // High pressure -> piston moves down -> smaller volume
-      // Low pressure -> piston at the top -> larger volume
-      const pistonY = pressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
-      const topBoundary = pistonY + PISTON_THICKNESS;
-      const bottomBoundary = boxHeight;
+      let pistonY = pressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
+      let topBoundary = pistonY + PISTON_THICKNESS;
+      let bottomBoundary = boxHeight;
 
       class Particle {
         pos: p5.Vector;
@@ -104,7 +101,6 @@ export default function Diagram() {
           }
           if (this.pos.y <= topBoundary + this.radius || this.pos.y >= bottomBoundary - this.radius) {
             this.vel.y *= -1;
-            // Prevent particles from getting stuck in the piston
             this.pos.y = p.constrain(this.pos.y, topBoundary + this.radius, bottomBoundary - this.radius);
           }
         }
@@ -115,63 +111,75 @@ export default function Diagram() {
           p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
         }
       }
+      
+      const reinitializeSketch = () => {
+        p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
+        setWidth(sketchRef.current!.offsetWidth);
+        
+        boxHeight = CANVAS_HEIGHT;
+        speedMultiplier = temperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+        particleColor = temperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+        
+        pistonY = pressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
+        topBoundary = pistonY + PISTON_THICKNESS;
+        bottomBoundary = boxHeight;
 
-      p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
-        particles = []; // Clear particles on setup
+        particles = [];
         for (let i = 0; i < NUM_PARTICLES; i++) {
           particles.push(new Particle());
         }
       };
 
+      p.setup = () => {
+        p.createCanvas(width, CANVAS_HEIGHT);
+        reinitializeSketch();
+      };
+      
+      p.windowResized = () => {
+        reinitializeSketch();
+      }
+
       p.draw = () => {
         p.background('hsl(var(--card))');
 
-        // Draw dashed border for the container
         p.stroke('hsl(var(--border))');
         p.strokeWeight(2);
         p.drawingContext.setLineDash([5, 5]);
         p.noFill();
         p.rect(1, 1, width-2, CANVAS_HEIGHT-2);
-        p.drawingContext.setLineDash([]); // Reset line dash
+        p.drawingContext.setLineDash([]);
 
-        // Draw particles
         for (const particle of particles) {
           particle.update();
           particle.show();
         }
 
-        // Draw piston
         p.fill(200);
         p.noStroke();
         p.rect(1, pistonY, width-2, PISTON_THICKNESS);
-        // Piston handle
         p.fill(150);
         p.rect(width/2 - 20, pistonY - 5, 40, 5);
       };
-      
-      // A custom function to be called when props change
-      (p as any).customPropsChange = (props: { temp: Temperature, press: Pressure }) => {
-          // Re-initialize particles when conditions change to avoid them getting stuck
-          particles = [];
-          for (let i = 0; i < NUM_PARTICLES; i++) {
-            particles.push(new Particle());
-          }
+
+      (p as any).customPropsChange = (newTemp: Temperature, newPress: Pressure) => {
+          temperature = newTemp;
+          pressure = newPress;
+          reinitializeSketch();
           p.loop();
       };
     };
 
     p5InstanceRef.current = new p5(sketch, sketchRef.current!);
-
-    // This part is a bit of a hack to force re-creation of particles
-    // when the state changes, addressing the "stuck particles" issue.
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
-        (p5InstanceRef.current as any).customPropsChange({ temp: temperature, press: pressure });
-    }
-
+    
     return () => {
       p5InstanceRef.current?.remove();
     };
+  }, [width]);
+
+  useEffect(() => {
+      if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
+        (p5InstanceRef.current as any).customPropsChange(temperature, pressure);
+      }
   }, [temperature, pressure, width]);
 
   return (

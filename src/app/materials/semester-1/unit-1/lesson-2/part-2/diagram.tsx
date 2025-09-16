@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
@@ -18,30 +19,22 @@ export default function MaxwellBoltzmannDiagram() {
 
   useLayoutEffect(() => {
     if (sketchRef.current) {
-      setWidth(sketchRef.current.clientWidth);
+        setWidth(sketchRef.current.offsetWidth);
     }
-  }, []);
-  
-  useEffect(() => {
     const handleResize = () => {
       if (sketchRef.current) {
-        setWidth(sketchRef.current.clientWidth);
+        setWidth(sketchRef.current.offsetWidth);
       }
     };
-    
     window.addEventListener('resize', handleResize);
-    
-    // Initial call to set size
-    handleResize();
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-
   useEffect(() => {
-    if (width <= 0) return;
+    if (width <= 0 || !sketchRef.current) return;
+    
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
@@ -57,19 +50,12 @@ export default function MaxwellBoltzmannDiagram() {
       const drawAxesAndLabels = () => {
         p.stroke(0);
         p.strokeWeight(1);
-        // X-axis
         p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.95, CANVAS_HEIGHT - 30);
-        // Y-axis
         p.line(width * 0.1, CANVAS_HEIGHT - 30, width * 0.1, 45);
-        
         p.noStroke();
         p.fill(0);
         p.textAlign(p.CENTER, p.CENTER);
-        
-        // X-axis Label
         p.text('الطاقة الحركية', width / 2 + 10, CANVAS_HEIGHT - 15);
-        
-        // Y-axis Label
         p.push();
         p.translate(width * 0.05, CANVAS_HEIGHT / 2);
         p.rotate(-p.HALF_PI);
@@ -79,8 +65,14 @@ export default function MaxwellBoltzmannDiagram() {
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        p.noLoop(); // Redraw only when temperature changes
+        p.noLoop();
       };
+      
+      p.windowResized = () => {
+          p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
+          setWidth(sketchRef.current!.offsetWidth);
+          p.redraw();
+      }
 
       p.draw = () => {
         p.background('hsl(var(--card))');
@@ -100,13 +92,11 @@ export default function MaxwellBoltzmannDiagram() {
             energyPoints.push(val);
             if (val > maxCount) maxCount = val;
             totalParticles += val;
-            
             if (i >= energyAtEaLine) {
               particlesAboveEa += val;
             }
         }
         
-        // Draw the shaded area for Ea
         p.fill(255, 0, 0, 50);
         p.stroke(255, 0, 0, 100);
         p.strokeWeight(1);
@@ -120,7 +110,6 @@ export default function MaxwellBoltzmannDiagram() {
         p.vertex(p.map(MAX_ENERGY, 0, MAX_ENERGY, width * 0.1, width * 0.95), CANVAS_HEIGHT - 30);
         p.endShape(p.CLOSE);
 
-        // Draw the main distribution curve
         p.noFill();
         p.stroke(0);
         p.strokeWeight(2.5);
@@ -132,7 +121,6 @@ export default function MaxwellBoltzmannDiagram() {
         }
         p.endShape();
         
-        // Draw Ea line and label
         p.stroke('red');
         p.strokeWeight(1.5);
         p.drawingContext.setLineDash([4, 4]);

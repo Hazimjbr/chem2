@@ -23,31 +23,39 @@ export default function Diagram() {
 
   useLayoutEffect(() => {
     if (sketchRef.current) {
-      setWidth(sketchRef.current.clientWidth);
+      setWidth(sketchRef.current.offsetWidth);
     }
   }, []);
 
   useEffect(() => {
-    if (width <= 0) return;
+    if (width <= 0 || !sketchRef.current) return;
 
     p5InstanceRef.current?.remove();
 
     const sketch = (p: p5) => {
       let currentRadius = INITIAL_RADIUS;
-      const targetRadius = environment === 'ice' ? INITIAL_RADIUS * 0.75 : INITIAL_RADIUS * 1.25;
+      let targetRadius: number;
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
         p.noStroke();
       };
 
-      p.draw = () => {
-        p.background('hsl(var(--card))');
+      p.windowResized = () => {
+          p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
+          setWidth(sketchRef.current!.offsetWidth);
+      }
 
-        // Lerp the radius for a smooth animation
+      p.draw = () => {
+        if (environment === 'ice') {
+            targetRadius = INITIAL_RADIUS * 0.75;
+        } else {
+            targetRadius = INITIAL_RADIUS * 1.25;
+        }
+
+        p.background('hsl(var(--card))');
         currentRadius = p.lerp(currentRadius, targetRadius, 0.05);
 
-        // Draw Beaker
         const beakerWidth = width * 0.6;
         const beakerHeight = CANVAS_HEIGHT * 0.8;
         const beakerX = (width - beakerWidth) / 2;
@@ -63,20 +71,17 @@ export default function Diagram() {
         p.vertex(beakerX + beakerWidth, beakerY);
         p.endShape();
         
-        // Draw Water
         const waterColor = environment === 'ice' ? p.color(173, 216, 230) : p.color(255, 165, 0);
         p.fill(waterColor);
         p.noStroke();
         p.rect(beakerX + 2, beakerY + beakerHeight * 0.2, beakerWidth - 4, beakerHeight * 0.8 - 2);
 
-        // Draw Balloon
         const balloonY = CANVAS_HEIGHT - currentRadius - 20;
-        p.fill(220, 50, 50); // Red balloon
+        p.fill(220, 50, 50);
         p.stroke(150, 0, 0);
         p.strokeWeight(2);
         p.ellipse(width / 2, balloonY, currentRadius * 2, currentRadius * 2.2);
         
-        // Balloon knot
         p.noStroke();
         p.fill(220, 50, 50);
         p.triangle(
@@ -102,7 +107,6 @@ export default function Diagram() {
         style={{ height: `${CANVAS_HEIGHT}px` }}
         data-ai-hint="balloon temperature experiment"
       >
-        {/* p5 canvas is injected here */}
       </div>
 
       <RadioGroup
