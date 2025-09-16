@@ -4,14 +4,17 @@
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen } from 'lucide-react';
+import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen, X, ArrowLeft } from 'lucide-react';
 import FlippableCard from './flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import LessonLayout from '@/components/lesson-layout';
 import React, { useState } from 'react';
 import { useApp } from '@/context/CurriculumContext';
 import { markLessonAsComplete } from '@/lib/firebase/progress.actions';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import Quiz from '@/components/quiz';
+
 
 const lessonInfo = {
   lessonTitle: "الدرس الأول: الحالة الغازية",
@@ -24,6 +27,7 @@ const lessonInfo = {
   staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
   previousLesson: null,
   nextLesson: "/materials/semester-1/unit-1/lesson-1/part-2",
+  previousLessonTitle: "الجزء السابق: نظرية الحركة الجزيئية",
   nextLessonTitle: "الجزء التالي: مقدمة قوانين الغازات",
   lessonContent: "أنت مساعد تعليمي خبير في الكيمياء مهمتك هي إنشاء اختبار قصير (كويز) من 5 أسئلة اختيار من متعدد بناءً على محتوى الدرس التالي ومستوى الصعوبة المحدد. مستوى الصعوبة الحالي: {{difficultyLevel}}. بنود نظرية الحركة الجزيئية للغازات: يتكون الغاز من جسيمات صغيرة جدا (مهملة الحجم) ومتباعدة وقوى التجاذب بينها شبه معدومة. حركة الجسيمات: مستمرة عشوائية وسريعة في خطوط مستقيمة. التصادمات المرنة: لا تفقد فيها الطاقة الحركية الكلية. الطاقة والحرارة: متوسط الطاقة الحركية للجسيمات يتناسب طرديًا مع درجة الحرارة المطلقة. الغاز المثالي: غاز افتراضي حجم جسيماته وقوى التجاذب بينها تساوي صفر. الغاز الحقيقي: يسلك سلوكًا قريبًا من المثالي في الضغط المنخفض والحرارة المرتفعة."
 }
@@ -44,11 +48,45 @@ const Diagram = dynamic(() => import('./diagram'), {
 });
 
 
-// Create a separate component for the lesson's main content
-const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = React.useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        const newSet = new Set(completedInteractive).add(questionId);
+        setCompletedInteractive(newSet);
+    };
+  
     return (
-      <>
-        <Card>
+        <div className="p-4 md:p-8 relative">
+            <Link href="/materials/semester-1" passHref>
+                <Button variant="ghost" size="icon" className="absolute top-4 left-4">
+                    <X className="h-6 w-6" />
+                    <span className="sr-only">إغلاق</span>
+                </Button>
+            </Link>
+            <header className="mb-10 text-center">
+                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">{lessonInfo.lessonTitle}</h1>
+                <p className="text-base md:text-lg text-muted-foreground">{lessonInfo.lessonSubtitle}</p>
+            </header>
+
+            <main className="space-y-8">
+                 <Card>
+                    <CardHeader>
+                        <CardTitle>{lessonInfo.mainIdea}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <ul className="space-y-3">
+                            {lessonInfo.learningOutcomes.map((outcome, index) => (
+                                <li key={index} className="flex items-start">
+                                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
+                                    <span>{outcome}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardContent>
+                </Card>
+
+                <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2"><BookOpen className="h-6 w-6 text-primary" /> مصطلحات أساسية</CardTitle>
             </CardHeader>
@@ -240,7 +278,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                 <InteractiveQuestionCard 
                     questionId="q1"
                     lessonId={lessonInfo.lessonId}
-                    onCorrect={onCorrect}
+                    onCorrect={handleCorrectAnswer}
                     question="الغاز A محصور في وعاء عند درجة حرارة ثابتة فإن العبارة الخاطئة:"
                     options={[
                         "حركة جسيمات الغاز مستمرة وعشوائية وفي خط مستقيم",
@@ -254,7 +292,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                  <InteractiveQuestionCard 
                     questionId="q2"
                     lessonId={lessonInfo.lessonId}
-                    onCorrect={onCorrect}
+                    onCorrect={handleCorrectAnswer}
                     question="أحد الغازات الآتية لا يمكن إسالته على جميع قيم الضغط ودرجات الحرارة:"
                     options={[
                         "الغاز المثالي",
@@ -267,21 +305,44 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                 />
             </div>
           </div>
-      </>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>اختبر فهمك</CardTitle>
+                        <CardDescription>
+                           اختر مستوى الصعوبة المناسب لك. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Quiz 
+                            lessonContent={lessonInfo.lessonContent} 
+                            staticQuizzes={lessonInfo.staticQuizzes} 
+                            lessonId={lessonInfo.lessonId}
+                        />
+                    </CardContent>
+                </Card>
+            </main>
+
+            <footer className="mt-12 border-t pt-6">
+                <div className="flex justify-between">
+                    {lessonInfo.previousLesson ? (
+                        <Link href={lessonInfo.previousLesson} passHref>
+                            <Button size="lg" variant="outline">
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                                {lessonInfo.previousLessonTitle}
+                            </Button>
+                        </Link>
+                    ) : <div />}
+                    {lessonInfo.nextLesson && (
+                         <Link href={lessonInfo.nextLesson} passHref>
+                            <Button size="lg">
+                                {lessonInfo.nextLessonTitle}
+                                <ArrowLeft className="mr-2 h-5 w-5" />
+                            </Button>
+                        </Link>
+                    )}
+                </div>
+            </footer>
+        </div>
     );
 }
 
-export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = React.useState<Set<string>>(new Set());
-
-    const handleCorrectAnswer = (questionId: string) => {
-        const newSet = new Set(completedInteractive).add(questionId);
-        setCompletedInteractive(newSet);
-    };
-  
-    return (
-        <LessonLayout {...lessonInfo}>
-            <LessonContent onCorrect={handleCorrectAnswer} />
-        </LessonLayout>
-    );
-}
