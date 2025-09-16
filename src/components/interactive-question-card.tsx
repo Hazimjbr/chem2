@@ -16,7 +16,7 @@ interface InteractiveQuestionCardProps {
   question: React.ReactNode; 
   options: string[];
   correctAnswerIndex: number;
-  explanation: string;
+  explanation: React.ReactNode;
   questionId: string;
   lessonId: string;
   onCorrect: (questionId: string) => void;
@@ -37,7 +37,10 @@ export default function InteractiveQuestionCard({ question, options, correctAnsw
     setSelectedAnswer(index);
     if (index === correctAnswerIndex) {
       setAnswerStatus('correct');
-      onCorrect(questionId); // Notify parent component
+      // Notify parent component that a correct answer was given.
+      if (onCorrect) {
+          onCorrect(questionId);
+      }
       
       // Also save the quick check result for performance analysis
       if (currentUser) {

@@ -64,34 +64,31 @@ export default function LessonLayout({
         setCompletedInteractive(prev => new Set(prev).add(questionId));
     };
 
-    // This function will wrap the children and inject the `onCorrect` prop into InteractiveQuestionCard components.
-    const childrenWithProps = React.Children.map(children, child => {
-        if (React.isValidElement(child)) {
-            // @ts-ignore
-            if (child.type.name === 'InteractiveQuestionCard' || (child.props.mdxType === 'InteractiveQuestionCard') || (child.props.originalType === 'InteractiveQuestionCard')) {
-                 // @ts-ignore
-                return React.cloneElement(child, { onCorrect: handleCorrectAnswer });
-            }
-             // Handle nested components
-            if (child.props.children) {
-                const newChild = React.cloneElement(child, {
-                    // @ts-ignore
-                    children: React.Children.map(child.props.children, grandChild => {
-                         if (React.isValidElement(grandChild)) {
-                             // @ts-ignore
-                            if (grandChild.type.name === 'InteractiveQuestionCard' || (grandChild.props.mdxType === 'InteractiveQuestionCard')) {
-                                // @ts-ignore
-                                return React.cloneElement(grandChild, { onCorrect: handleCorrectAnswer });
-                            }
-                         }
-                         return grandChild;
-                    })
-                });
-                return newChild;
-            }
+    // Recursive function to find and clone InteractiveQuestionCard with the correct prop
+    const childrenWithProps = (children: React.ReactNode): React.ReactNode => {
+      return React.Children.map(children, child => {
+        if (!React.isValidElement(child)) {
+          return child;
         }
+
+        // Direct match
+        // @ts-ignore
+        if (child.type.name === 'InteractiveQuestionCard' || child.props.mdxType === 'InteractiveQuestionCard') {
+             // @ts-ignore
+           return React.cloneElement(child, { onCorrect: handleCorrectAnswer });
+        }
+
+        // Recursive search in children
+        if (child.props.children) {
+          return React.cloneElement(child, {
+            ...child.props,
+            children: childrenWithProps(child.props.children)
+          });
+        }
+        
         return child;
-    });
+      });
+    };
 
 
     return (
@@ -138,7 +135,7 @@ export default function LessonLayout({
                     dangerouslySetInnerHTML={{ __html: lessonContent }}
                 />
 
-                {childrenWithProps}
+                {childrenWithProps(children)}
 
                 <Card>
                     <CardHeader>
