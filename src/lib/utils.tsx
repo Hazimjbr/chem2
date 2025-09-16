@@ -64,6 +64,7 @@ export interface NextStep {
     // For 'next' type
     completedParts?: number;
     totalParts?: number;
+    nextPartPath?: string; // Add this to directly link to the next part
     // For 'weak' type
     score?: number;
 }
@@ -93,7 +94,6 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     if (studentQuizzes.length > 0) {
         const weakestQuiz = studentQuizzes.reduce((min, current) => (current.score < min.score) ? current : min);
         
-        // If the weakest score is below a threshold (e.g., 70%), recommend reviewing it.
         if (weakestQuiz.score < 0.7) {
             return {
                 type: 'weak',
@@ -104,27 +104,34 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
         }
     }
 
-    // 2. If all scores are good, find the next uncompleted lesson
+    // 2. If all scores are good, find the next uncompleted lesson part
     for (const unit of units) {
         for (const lesson of unit.lessons) {
+            // Skip lessons without parts (like review sections that are just a quiz)
+            if (!lesson.parts || lesson.parts.length === 0 || !lesson.parts[0].partNum) {
+                continue;
+            }
+
             const totalParts = lesson.parts.length;
             let completedPartsInThisLesson = 0;
-            let firstUncompletedPathInThisLesson = '';
+            let firstUncompletedPath = '';
 
             for (const part of lesson.parts) {
                 const path = constructPath(unit.id, lesson, part);
                 if (completedLessons.has(path)) {
                     completedPartsInThisLesson++;
-                } else if (!firstUncompletedPathInThisLesson) {
-                    firstUncompletedPathInThisLesson = path;
+                } else if (!firstUncompletedPath) {
+                    firstUncompletedPath = path;
                 }
             }
 
-            if (firstUncompletedPathInThisLesson) {
+            // If there's an uncompleted part in this lesson, recommend it.
+            if (firstUncompletedPath) {
                 return {
                     type: 'next',
                     lessonTitle: lesson.title,
-                    path: firstUncompletedPathInThisLesson,
+                    path: firstUncompletedPath, // Keep path for consistency, but use nextPartPath
+                    nextPartPath: firstUncompletedPath,
                     completedParts: completedPartsInThisLesson,
                     totalParts: totalParts,
                 };
