@@ -1,12 +1,12 @@
 
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import p5 from 'p5';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { motion, AnimatePresence } from 'framer-motion';
+import type p5 from 'p5';
 
 // --- Types ---
 type Temperature = 'low' | 'high';
@@ -49,134 +49,147 @@ export default function Diagram() {
 
   const [temp, setTemp] = useState<Temperature>('low');
   const [press, setPress] = useState<Pressure>('low');
+  const [width, setWidth] = useState(0);
 
   const explanation = explanations[press][temp];
   const explanationKey = `${press}-${temp}`;
 
-  useEffect(() => {
-    if (!sketchRef.current) return;
-    
-    let canvasWidth = sketchRef.current.offsetWidth;
-
-    const sketch = (p: p5) => {
-      let particles: Particle[] = [];
-      let currentTemperature = temp;
-      let currentPressure = press;
-      let boxHeight: number;
-      let speedMultiplier: number;
-      let particleColor: p5.Color;
-      let pistonY: number;
-      let topBoundary: number;
-      let bottomBoundary: number;
-
-      class Particle {
-        pos: p5.Vector;
-        vel: p5.Vector;
-        radius: number = PARTICLE_RADIUS;
-
-        constructor() {
-          this.pos = p.createVector(
-            p.random(this.radius, canvasWidth - this.radius),
-            p.random(topBoundary + this.radius, bottomBoundary - this.radius)
-          );
-          this.vel = p5.Vector.random2D().mult(speedMultiplier);
-        }
-
-        update() {
-          this.pos.add(this.vel);
-          this.checkBoundaries();
-        }
-
-        checkBoundaries() {
-          if (this.pos.x <= this.radius || this.pos.x >= canvasWidth - this.radius) {
-            this.vel.x *= -1;
-            this.pos.x = p.constrain(this.pos.x, this.radius, canvasWidth - this.radius);
-          }
-          if (this.pos.y <= topBoundary + this.radius || this.pos.y >= bottomBoundary - this.radius) {
-            this.vel.y *= -1;
-            this.pos.y = p.constrain(this.pos.y, topBoundary + this.radius, bottomBoundary - this.radius);
-          }
-        }
-
-        show() {
-          p.noStroke();
-          p.fill(particleColor);
-          p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
-        }
+  useLayoutEffect(() => {
+    if (sketchRef.current) {
+      setWidth(sketchRef.current.offsetWidth);
+    }
+    const handleResize = () => {
+      if (sketchRef.current) {
+        setWidth(sketchRef.current.offsetWidth);
       }
-      
-      const reinitializeSketch = () => {
-        if (!sketchRef.current) return;
-        
-        boxHeight = CANVAS_HEIGHT;
-        speedMultiplier = currentTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-        particleColor = currentTemperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
-        
-        pistonY = currentPressure === 'low' ? 0 : (boxHeight * (1/3));
-        topBoundary = pistonY + PISTON_THICKNESS;
-        bottomBoundary = boxHeight;
-
-        particles = [];
-        for (let i = 0; i < NUM_PARTICLES; i++) {
-          particles.push(new Particle());
-        }
-      };
-
-      p.setup = () => {
-        p.createCanvas(canvasWidth, CANVAS_HEIGHT);
-        reinitializeSketch();
-      };
-      
-      p.windowResized = () => {
-        if (sketchRef.current) {
-            canvasWidth = sketchRef.current.offsetWidth;
-            p.resizeCanvas(canvasWidth, CANVAS_HEIGHT);
-            reinitializeSketch();
-        }
-      }
-
-      p.draw = () => {
-        p.background('hsl(var(--card))');
-
-        p.stroke('hsl(var(--border))');
-        p.strokeWeight(2);
-        p.drawingContext.setLineDash([5, 5]);
-        p.noFill();
-        p.rect(1, 1, canvasWidth-2, CANVAS_HEIGHT-2);
-        p.drawingContext.setLineDash([]);
-
-        for (const particle of particles) {
-          particle.update();
-          particle.show();
-        }
-
-        p.fill(200);
-        p.noStroke();
-        p.rect(1, pistonY, canvasWidth-2, PISTON_THICKNESS);
-        p.fill(150);
-        p.rect(canvasWidth/2 - 20, pistonY - 5, 40, 5);
-      };
-
-      (p as any).customPropsChange = (newTemp: Temperature, newPress: Pressure) => {
-          currentTemperature = newTemp;
-          currentPressure = newPress;
-          reinitializeSketch();
-          p.loop();
-      };
     };
-
-    p5InstanceRef.current = new p5(sketch, sketchRef.current);
-    
+    window.addEventListener('resize', handleResize);
     return () => {
-      p5InstanceRef.current?.remove();
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
-      (p5InstanceRef.current as any).customPropsChange(temp, press);
-    }
-  }, [temp, press]);
+    if (width <= 0 || !sketchRef.current) return;
+    p5InstanceRef.current?.remove();
+
+    import('p5').then(p5Module => {
+        const p5 = p5Module.default;
+        
+        const sketch = (p: p5) => {
+          let particles: Particle[] = [];
+          let currentTemperature = temp;
+          let currentPressure = press;
+          let boxHeight: number;
+          let speedMultiplier: number;
+          let particleColor: p5.Color;
+          let pistonY: number;
+          let topBoundary: number;
+          let bottomBoundary: number;
+
+          class Particle {
+            pos: p5.Vector;
+            vel: p5.Vector;
+            radius: number = PARTICLE_RADIUS;
+
+            constructor() {
+              this.pos = p.createVector(
+                p.random(this.radius, width - this.radius),
+                p.random(topBoundary + this.radius, bottomBoundary - this.radius)
+              );
+              this.vel = p5.Vector.random2D().mult(speedMultiplier);
+            }
+
+            update() {
+              this.pos.add(this.vel);
+              this.checkBoundaries();
+            }
+
+            checkBoundaries() {
+              if (this.pos.x <= this.radius || this.pos.x >= width - this.radius) {
+                this.vel.x *= -1;
+                this.pos.x = p.constrain(this.pos.x, this.radius, width - this.radius);
+              }
+              if (this.pos.y <= topBoundary + this.radius || this.pos.y >= bottomBoundary - this.radius) {
+                this.vel.y *= -1;
+                this.pos.y = p.constrain(this.pos.y, topBoundary + this.radius, bottomBoundary - this.radius);
+              }
+            }
+
+            show() {
+              p.noStroke();
+              p.fill(particleColor);
+              p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
+            }
+          }
+          
+          const reinitializeSketch = () => {
+            if (!sketchRef.current) return;
+            
+            boxHeight = CANVAS_HEIGHT;
+            speedMultiplier = currentTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+            particleColor = currentTemperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+            
+            pistonY = currentPressure === 'low' ? 0 : (boxHeight * (1/3));
+            topBoundary = pistonY + PISTON_THICKNESS;
+            bottomBoundary = boxHeight;
+
+            particles = [];
+            for (let i = 0; i < NUM_PARTICLES; i++) {
+              particles.push(new Particle());
+            }
+          };
+
+          p.setup = () => {
+            p.createCanvas(width, CANVAS_HEIGHT);
+            reinitializeSketch();
+          };
+          
+          p.windowResized = () => {
+            if (sketchRef.current) {
+                p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+                setWidth(sketchRef.current.offsetWidth);
+                reinitializeSketch();
+            }
+          }
+
+          p.draw = () => {
+            p.background('hsl(var(--card))');
+
+            p.stroke('hsl(var(--border))');
+            p.strokeWeight(2);
+            p.drawingContext.setLineDash([5, 5]);
+            p.noFill();
+            p.rect(1, 1, width-2, CANVAS_HEIGHT-2);
+            p.drawingContext.setLineDash([]);
+
+            for (const particle of particles) {
+              particle.update();
+              particle.show();
+            }
+
+            p.fill(200);
+            p.noStroke();
+            p.rect(1, pistonY, width-2, PISTON_THICKNESS);
+            p.fill(150);
+            p.rect(width/2 - 20, pistonY - 5, 40, 5);
+          };
+
+          (p as any).customPropsChange = (newTemp: Temperature, newPress: Pressure) => {
+              currentTemperature = newTemp;
+              currentPressure = newPress;
+              reinitializeSketch();
+              p.loop();
+          };
+        };
+
+        p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    });
+    
+    return () => {
+      p5InstanceRef.current?.remove();
+    };
+  }, [width, temp, press]);
 
 
   return (
@@ -187,7 +200,6 @@ export default function Diagram() {
         style={{ height: `${CANVAS_HEIGHT}px` }}
         data-ai-hint="gas particles piston simulation"
       >
-        {/* p5 canvas is injected here */}
       </div>
 
       <div className="w-full grid grid-cols-2 gap-4">
@@ -251,4 +263,3 @@ export default function Diagram() {
     </div>
   );
 }
-    

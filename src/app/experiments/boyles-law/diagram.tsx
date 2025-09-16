@@ -1,10 +1,11 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import p5 from 'p5';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
+import type p5 from 'p5';
 
 // --- Constants ---
 const CANVAS_HEIGHT = 350; 
@@ -39,103 +40,105 @@ export default function Diagram() {
 
   useEffect(() => {
     if (width <= 0 || !sketchRef.current) return;
-
     p5InstanceRef.current?.remove();
 
-    const sketch = (p: p5) => {
-      let currentGasHeight = INITIAL_GAS_HEIGHT;
-      let targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
+    import('p5').then(p5Module => {
+        const p5 = p5Module.default;
+        const sketch = (p: p5) => {
+          let currentGasHeight = INITIAL_GAS_HEIGHT;
+          let targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
 
-      p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
-        p.noStroke();
-      };
-      
-      p.windowResized = () => {
-          if (sketchRef.current) {
-            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
-            setWidth(sketchRef.current.offsetWidth);
+          p.setup = () => {
+            p.createCanvas(width, CANVAS_HEIGHT);
+            p.noStroke();
+          };
+          
+          p.windowResized = () => {
+              if (sketchRef.current) {
+                p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+                setWidth(sketchRef.current.offsetWidth);
+              }
           }
-      }
 
-      p.draw = () => {
-        targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
-        p.background('hsl(var(--card))');
+          p.draw = () => {
+            targetGasHeight = INITIAL_GAS_HEIGHT / pressure;
+            p.background('hsl(var(--card))');
 
-        currentGasHeight = p.lerp(currentGasHeight, targetGasHeight, 0.1);
-        
-        const centerX = width / 2 - 40;
-        const tubeBottomY = CANVAS_HEIGHT - 50;
-        const tubeTopY = tubeBottomY - 200; 
-        const tubeCapY = tubeTopY;
-        const innerTubeWidth = TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2);
+            currentGasHeight = p.lerp(currentGasHeight, targetGasHeight, 0.1);
+            
+            const centerX = width / 2 - 40;
+            const tubeBottomY = CANVAS_HEIGHT - 50;
+            const tubeTopY = tubeBottomY - 200; 
+            const tubeCapY = tubeTopY;
+            const innerTubeWidth = TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2);
 
-        const gasVolumeBottomY = tubeCapY + currentGasHeight;
-        const leftMercuryTopY = gasVolumeBottomY;
-        const rightMercuryTopY = leftMercuryTopY - (pressure - 1) * PRESSURE_TO_HEIGHT_SCALE;
+            const gasVolumeBottomY = tubeCapY + currentGasHeight;
+            const leftMercuryTopY = gasVolumeBottomY;
+            const rightMercuryTopY = leftMercuryTopY - (pressure - 1) * PRESSURE_TO_HEIGHT_SCALE;
 
-        p.fill(173, 216, 230, 150);
-        p.noStroke();
-        p.rect(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH + TUBE_WALL_THICKNESS, tubeCapY, innerTubeWidth, currentGasHeight);
+            p.fill(173, 216, 230, 150);
+            p.noStroke();
+            p.rect(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH + TUBE_WALL_THICKNESS, tubeCapY, innerTubeWidth, currentGasHeight);
 
-        p.fill(180, 180, 180);
-        p.rect(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH + TUBE_WALL_THICKNESS, leftMercuryTopY, innerTubeWidth, tubeBottomY - leftMercuryTopY);
-        p.rect(centerX + TUBE_BEND_RADIUS + TUBE_WALL_THICKNESS, rightMercuryTopY, innerTubeWidth, tubeBottomY - rightMercuryTopY);
-        p.arc(centerX, tubeBottomY, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH, 0, p.PI);
-        p.fill('hsl(var(--card))');
-        p.arc(centerX, tubeBottomY, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2), (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2), 0, p.PI);
-        
-        p.noFill();
-        p.stroke(0);
-        p.strokeWeight(TUBE_WALL_THICKNESS);
-        
-        p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeBottomY, centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY);
-        p.line(centerX - TUBE_BEND_RADIUS, tubeBottomY, centerX - TUBE_BEND_RADIUS, tubeCapY);
-        p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY, centerX - TUBE_BEND_RADIUS, tubeCapY);
-        
-        p.line(centerX + TUBE_BEND_RADIUS, tubeBottomY, centerX + TUBE_BEND_RADIUS, 10);
-        p.line(centerX + TUBE_BEND_RADIUS + TUBE_WIDTH, tubeBottomY, centerX + TUBE_BEND_RADIUS + TUBE_WIDTH, 10);
-        
-        p.noFill();
-        p.strokeWeight(TUBE_WALL_THICKNESS);
-        p.arc(centerX, tubeBottomY, TUBE_BEND_RADIUS * 2, TUBE_BEND_RADIUS * 2, 0, p.PI, p.OPEN);
-        p.arc(centerX, tubeBottomY, TUBE_BEND_RADIUS * 2 + TUBE_WIDTH * 2, TUBE_BEND_RADIUS * 2 + TUBE_WIDTH * 2, 0, p.PI, p.OPEN);
-
-        p.noStroke();
-        p.fill(0);
-        
-        p.textSize(18);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text('V', centerX - TUBE_BEND_RADIUS - (TUBE_WIDTH/2), tubeCapY + (currentGasHeight / 2));
-        
-        const pressureTextX = centerX + TUBE_BEND_RADIUS + (TUBE_WIDTH / 2);
-        const pressureTextY = rightMercuryTopY - 5;
-        p.textSize(18);
-        p.textAlign(p.CENTER, p.BOTTOM);
-        p.text(pressure.toFixed(1), pressureTextX, pressureTextY);
-        p.textAlign(p.LEFT, p.BOTTOM);
-        p.text('atm', pressureTextX + (innerTubeWidth/2) + 5, pressureTextY);
-
-        if (pressure > 1.0) {
-            const hLineX = centerX + TUBE_BEND_RADIUS + TUBE_WIDTH + 20;
-            const h_in_mmHg = ((pressure - 1) * 760).toFixed(0);
-
+            p.fill(180, 180, 180);
+            p.rect(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH + TUBE_WALL_THICKNESS, leftMercuryTopY, innerTubeWidth, tubeBottomY - leftMercuryTopY);
+            p.rect(centerX + TUBE_BEND_RADIUS + TUBE_WALL_THICKNESS, rightMercuryTopY, innerTubeWidth, tubeBottomY - rightMercuryTopY);
+            p.arc(centerX, tubeBottomY, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH, 0, p.PI);
+            p.fill('hsl(var(--card))');
+            p.arc(centerX, tubeBottomY, (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2), (TUBE_BEND_RADIUS * 2) + TUBE_WIDTH - (TUBE_WALL_THICKNESS * 2), 0, p.PI);
+            
+            p.noFill();
             p.stroke(0);
-            p.strokeWeight(1);
-            p.line(hLineX, leftMercuryTopY, hLineX, rightMercuryTopY);
-            p.line(hLineX - 3, leftMercuryTopY, hLineX + 3, leftMercuryTopY);
-            p.line(hLineX - 3, rightMercuryTopY, hLineX + 3, rightMercuryTopY);
+            p.strokeWeight(TUBE_WALL_THICKNESS);
+            
+            p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeBottomY, centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY);
+            p.line(centerX - TUBE_BEND_RADIUS, tubeBottomY, centerX - TUBE_BEND_RADIUS, tubeCapY);
+            p.line(centerX - TUBE_BEND_RADIUS - TUBE_WIDTH, tubeCapY, centerX - TUBE_BEND_RADIUS, tubeCapY);
+            
+            p.line(centerX + TUBE_BEND_RADIUS, tubeBottomY, centerX + TUBE_BEND_RADIUS, 10);
+            p.line(centerX + TUBE_BEND_RADIUS + TUBE_WIDTH, tubeBottomY, centerX + TUBE_BEND_RADIUS + TUBE_WIDTH, 10);
+            
+            p.noFill();
+            p.strokeWeight(TUBE_WALL_THICKNESS);
+            p.arc(centerX, tubeBottomY, TUBE_BEND_RADIUS * 2, TUBE_BEND_RADIUS * 2, 0, p.PI, p.OPEN);
+            p.arc(centerX, tubeBottomY, TUBE_BEND_RADIUS * 2 + TUBE_WIDTH * 2, TUBE_BEND_RADIUS * 2 + TUBE_WIDTH * 2, 0, p.PI, p.OPEN);
 
             p.noStroke();
             p.fill(0);
-            p.textSize(15);
-            p.textAlign(p.LEFT, p.CENTER);
-            p.text(`h = ${h_in_mmHg} mmHg`, hLineX + 8, (leftMercuryTopY + rightMercuryTopY) / 2);
-        }
-      };
-    };
+            
+            p.textSize(18);
+            p.textAlign(p.CENTER, p.CENTER);
+            p.text('V', centerX - TUBE_BEND_RADIUS - (TUBE_WIDTH/2), tubeCapY + (currentGasHeight / 2));
+            
+            const pressureTextX = centerX + TUBE_BEND_RADIUS + (TUBE_WIDTH / 2);
+            const pressureTextY = rightMercuryTopY - 5;
+            p.textSize(18);
+            p.textAlign(p.CENTER, p.BOTTOM);
+            p.text(pressure.toFixed(1), pressureTextX, pressureTextY);
+            p.textAlign(p.LEFT, p.BOTTOM);
+            p.text('atm', pressureTextX + (innerTubeWidth/2) + 5, pressureTextY);
 
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+            if (pressure > 1.0) {
+                const hLineX = centerX + TUBE_BEND_RADIUS + TUBE_WIDTH + 20;
+                const h_in_mmHg = ((pressure - 1) * 760).toFixed(0);
+
+                p.stroke(0);
+                p.strokeWeight(1);
+                p.line(hLineX, leftMercuryTopY, hLineX, rightMercuryTopY);
+                p.line(hLineX - 3, leftMercuryTopY, hLineX + 3, leftMercuryTopY);
+                p.line(hLineX - 3, rightMercuryTopY, hLineX + 3, rightMercuryTopY);
+
+                p.noStroke();
+                p.fill(0);
+                p.textSize(15);
+                p.textAlign(p.LEFT, p.CENTER);
+                p.text(`h = ${h_in_mmHg} mmHg`, hLineX + 8, (leftMercuryTopY + rightMercuryTopY) / 2);
+            }
+          };
+        };
+
+        p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    });
 
     return () => {
       p5InstanceRef.current?.remove();

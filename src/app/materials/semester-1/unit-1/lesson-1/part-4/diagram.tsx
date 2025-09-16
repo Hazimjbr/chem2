@@ -2,9 +2,9 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import p5 from 'p5';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import type p5 from 'p5';
 
 // --- Types ---
 type Environment = 'ice' | 'hot';
@@ -37,72 +37,74 @@ export default function Diagram() {
 
   useEffect(() => {
     if (width <= 0 || !sketchRef.current) return;
-
     p5InstanceRef.current?.remove();
+    
+    import('p5').then(p5Module => {
+      const p5 = p5Module.default;
+      const sketch = (p: p5) => {
+        let currentRadius = INITIAL_RADIUS;
+        let targetRadius: number;
 
-    const sketch = (p: p5) => {
-      let currentRadius = INITIAL_RADIUS;
-      let targetRadius: number;
+        p.setup = () => {
+          p.createCanvas(width, CANVAS_HEIGHT);
+          p.noStroke();
+        };
 
-      p.setup = () => {
-        p.createCanvas(width, CANVAS_HEIGHT);
-        p.noStroke();
-      };
-
-      p.windowResized = () => {
-          if (sketchRef.current) {
-            setWidth(sketchRef.current.offsetWidth);
-            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
-          }
-      }
-
-      p.draw = () => {
-        if (environment === 'ice') {
-            targetRadius = INITIAL_RADIUS * 0.75;
-        } else {
-            targetRadius = INITIAL_RADIUS * 1.25;
+        p.windowResized = () => {
+            if (sketchRef.current) {
+              setWidth(sketchRef.current.offsetWidth);
+              p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            }
         }
 
-        p.background('hsl(var(--card))');
-        currentRadius = p.lerp(currentRadius, targetRadius, 0.05);
+        p.draw = () => {
+          if (environment === 'ice') {
+              targetRadius = INITIAL_RADIUS * 0.75;
+          } else {
+              targetRadius = INITIAL_RADIUS * 1.25;
+          }
 
-        const beakerWidth = width * 0.6;
-        const beakerHeight = CANVAS_HEIGHT * 0.8;
-        const beakerX = (width - beakerWidth) / 2;
-        const beakerY = CANVAS_HEIGHT - beakerHeight;
-        
-        p.stroke('hsl(var(--border))');
-        p.strokeWeight(3);
-        p.noFill();
-        p.beginShape();
-        p.vertex(beakerX, beakerY);
-        p.vertex(beakerX, beakerY + beakerHeight);
-        p.vertex(beakerX + beakerWidth, beakerY + beakerHeight);
-        p.vertex(beakerX + beakerWidth, beakerY);
-        p.endShape();
-        
-        const waterColor = environment === 'ice' ? p.color(173, 216, 230) : p.color(255, 165, 0);
-        p.fill(waterColor);
-        p.noStroke();
-        p.rect(beakerX + 2, beakerY + beakerHeight * 0.2, beakerWidth - 4, beakerHeight * 0.8 - 2);
+          p.background('hsl(var(--card))');
+          currentRadius = p.lerp(currentRadius, targetRadius, 0.05);
 
-        const balloonY = CANVAS_HEIGHT - currentRadius - 20;
-        p.fill(220, 50, 50);
-        p.stroke(150, 0, 0);
-        p.strokeWeight(2);
-        p.ellipse(width / 2, balloonY, currentRadius * 2, currentRadius * 2.2);
-        
-        p.noStroke();
-        p.fill(220, 50, 50);
-        p.triangle(
-            width/2 - 10, balloonY + currentRadius * 1.1,
-            width/2 + 10, balloonY + currentRadius * 1.1,
-            width/2, balloonY + currentRadius * 1.1 + 15
-        )
+          const beakerWidth = width * 0.6;
+          const beakerHeight = CANVAS_HEIGHT * 0.8;
+          const beakerX = (width - beakerWidth) / 2;
+          const beakerY = CANVAS_HEIGHT - beakerHeight;
+          
+          p.stroke('hsl(var(--border))');
+          p.strokeWeight(3);
+          p.noFill();
+          p.beginShape();
+          p.vertex(beakerX, beakerY);
+          p.vertex(beakerX, beakerY + beakerHeight);
+          p.vertex(beakerX + beakerWidth, beakerY + beakerHeight);
+          p.vertex(beakerX + beakerWidth, beakerY);
+          p.endShape();
+          
+          const waterColor = environment === 'ice' ? p.color(173, 216, 230) : p.color(255, 165, 0);
+          p.fill(waterColor);
+          p.noStroke();
+          p.rect(beakerX + 2, beakerY + beakerHeight * 0.2, beakerWidth - 4, beakerHeight * 0.8 - 2);
+
+          const balloonY = CANVAS_HEIGHT - currentRadius - 20;
+          p.fill(220, 50, 50);
+          p.stroke(150, 0, 0);
+          p.strokeWeight(2);
+          p.ellipse(width / 2, balloonY, currentRadius * 2, currentRadius * 2.2);
+          
+          p.noStroke();
+          p.fill(220, 50, 50);
+          p.triangle(
+              width/2 - 10, balloonY + currentRadius * 1.1,
+              width/2 + 10, balloonY + currentRadius * 1.1,
+              width/2, balloonY + currentRadius * 1.1 + 15
+          )
+        };
       };
-    };
 
-    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+      p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+    });
 
     return () => {
       p5InstanceRef.current?.remove();
