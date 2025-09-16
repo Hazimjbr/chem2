@@ -11,20 +11,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-const constructPath = (unitId: string, lesson: any, part: any) => {
-    const unitNum = unitId.replace('unit-', '');
-    let path = `/materials/semester-1/unit-${unitNum}`;
-    if (lesson.lessonNum) {
-        path += `/lesson-${lesson.lessonNum}`;
-    } else if (lesson.sectionNum) {
-        path += `/section-${lesson.sectionNum}`;
-    }
-    if (part.partNum) {
-        path += `/part-${part.partNum}`;
-    }
-    return path;
-}
-
 // Helper function to map lessonId (which is a URL path) to a human-readable title
 export const getLessonTitle = (lessonId: string): string => {
     // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
@@ -61,11 +47,91 @@ export const getLessonTitle = (lessonId: string): string => {
          if (section) {
             // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
             if (section.title.includes(unit.title.split(':')[0])) {
-                return `${unit.title.split(':')[0]} / ${section.title}`;
+                return section.title;
             }
-            return section.title;
+            return `${unit.title.split(':')[0]} / ${section.title}`;
         }
     }
 
     return unit.title; // Fallback to unit title
+}
+
+
+export interface NextStep {
+    type: 'next' | 'weak';
+    lessonTitle: string;
+    path: string;
+    // For 'next' type
+    completedParts?: number;
+    totalParts?: number;
+    // For 'weak' type
+    score?: number;
+}
+
+const constructPath = (unitId: string, lesson: any, part: any) => {
+    const unitNum = unitId.replace('unit-', '');
+    let path = `/materials/semester-1/unit-${unitNum}`;
+    if (lesson.lessonNum) {
+        path += `/lesson-${lesson.lessonNum}`;
+    } else if (lesson.sectionNum) {
+        path += `/section-${lesson.sectionNum}`;
+    }
+    if (part.partNum) {
+        path += `/part-${part.partNum}`;
+    }
+    return path;
+}
+
+export function calculateNextStep(progressData: DocumentData | null): NextStep | null {
+    if (!progressData) return null;
+
+    const completedLessons: Set<string> = new Set(progressData.completedLessons || []);
+    const quizHistory: QuizResult[] = progressData.quizHistory || [];
+
+    // 1. Find the weakest lesson from quiz history (difficulty > 0.5)
+    const studentQuizzes = quizHistory.filter(r => r.difficulty > 0.5);
+    if (studentQuizzes.length > 0) {
+        const weakestQuiz = studentQuizzes.reduce((min, current) => (current.score < min.score) ? current : min);
+        
+        // If the weakest score is below a threshold (e.g., 70%), recommend reviewing it.
+        if (weakestQuiz.score < 0.7) {
+            return {
+                type: 'weak',
+                lessonTitle: getLessonTitle(weakestQuiz.lessonId),
+                path: weakestQuiz.lessonId,
+                score: Math.round(weakestQuiz.score * 100),
+            };
+        }
+    }
+
+    // 2. If all scores are good, find the next uncompleted lesson
+    for (const unit of units) {
+        for (const lesson of unit.lessons) {
+            const totalParts = lesson.parts.length;
+            let completedPartsInThisLesson = 0;
+            let firstUncompletedPathInThisLesson = '';
+
+            for (const part of lesson.parts) {
+                const path = constructPath(unit.id, lesson, part);
+                if (completedLessons.has(path)) {
+                    completedPartsInThisLesson++;
+                } else if (!firstUncompletedPathInThisLesson) {
+                    firstUncompletedPathInThisLesson = path;
+                }
+            }
+
+            if (firstUncompletedPathInThisLesson) {
+                return {
+                    type: 'next',
+                    lessonTitle: lesson.title,
+                    path: firstUncompletedPathInThisLesson,
+                    completedParts: completedPartsInThisLesson,
+                    totalParts: totalParts,
+                };
+            }
+        }
+    }
+    
+    // 3. If everything is complete, return null
+    return null;
 }
