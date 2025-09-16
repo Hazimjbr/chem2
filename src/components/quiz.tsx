@@ -58,17 +58,27 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 // Helper function to shuffle an array and return the new index of the correct answer
 const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
-    // Avoid shuffling for specific simple option types that depend on order
-    if (question.options.every(opt => typeof opt === 'string' && (opt.length <= 3 || opt.startsWith("أقرب") || opt.startsWith("في منتصف")))) {
+    // التحقق من الخيارات التي لا ينبغي خلطها
+    const shouldNotShuffle = question.options.every(option => 
+        typeof option === 'string' && (option.length <= 3 || option.startsWith("أقرب") || option.startsWith("في منتصف"))
+    );
+    if (shouldNotShuffle) {
         return question;
     }
-    const correctAnswerValue = question.options[question.correctAnswerIndex];
-    const shuffledOptions = shuffleArray(question.options);
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(optValue => optValue === correctAnswerValue);
+
+    // حفظ الإجابة الصحيحة قبل خلط الخيارات
+    const correctAnswer = question.options[question.correctAnswerIndex];
+
+    // خلط الخيارات
+    const newOptions = shuffleArray(question.options);
+
+    // البحث عن الفهرس الجديد للإجابة الصحيحة
+    const newCorrectAnswerIndex = newOptions.findIndex(option => option === correctAnswer);
     
-    return { 
+    // إرجاع كائن السؤال الجديد بالخيارات المخلطة والفهرس الصحيح الجديد
+    return {
         ...question,
-        options: shuffledOptions,
+        options: newOptions,
         correctAnswerIndex: newCorrectAnswerIndex
     };
 };
