@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -146,7 +147,7 @@ export default function LessonPartPage() {
     
   return (
     <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
-        <LessonContent onCorrect={onCorrect} />
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }
