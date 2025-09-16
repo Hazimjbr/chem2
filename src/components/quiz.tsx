@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -66,7 +65,12 @@ const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     const correctAnswerValue = question.options[question.correctAnswerIndex];
     const shuffledOptions = shuffleArray(question.options);
     const newCorrectAnswerIndex = shuffledOptions.findIndex(optValue => optValue === correctAnswerValue);
-    return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
+    
+    return { 
+        ...question,
+        options: shuffledOptions,
+        correctAnswerIndex: newCorrectAnswerIndex
+    };
 };
 
 export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizProps) {
@@ -504,5 +508,3 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
-
-    
