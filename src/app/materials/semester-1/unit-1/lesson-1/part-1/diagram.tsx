@@ -68,11 +68,13 @@ export default function Diagram() {
     const sketch = (p: p5) => {
       let particles: Particle[] = [];
       
+      let localTemperature = temperature;
+      let localPressure = pressure;
       let boxHeight = CANVAS_HEIGHT;
-      let speedMultiplier = temperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-      let particleColor = temperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+      let speedMultiplier = localTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+      let particleColor = localTemperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
       
-      let pistonY = pressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
+      let pistonY = localPressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
       let topBoundary = pistonY + PISTON_THICKNESS;
       let bottomBoundary = boxHeight;
 
@@ -113,14 +115,15 @@ export default function Diagram() {
       }
       
       const reinitializeSketch = () => {
-        p.resizeCanvas(sketchRef.current!.offsetWidth, CANVAS_HEIGHT);
-        setWidth(sketchRef.current!.offsetWidth);
+        if (!sketchRef.current) return;
+        p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+        setWidth(sketchRef.current.offsetWidth);
         
         boxHeight = CANVAS_HEIGHT;
-        speedMultiplier = temperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-        particleColor = temperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+        speedMultiplier = localTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+        particleColor = localTemperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
         
-        pistonY = pressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
+        pistonY = localPressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
         topBoundary = pistonY + PISTON_THICKNESS;
         bottomBoundary = boxHeight;
 
@@ -162,8 +165,8 @@ export default function Diagram() {
       };
 
       (p as any).customPropsChange = (newTemp: Temperature, newPress: Pressure) => {
-          temperature = newTemp;
-          pressure = newPress;
+          localTemperature = newTemp;
+          localPressure = newPress;
           reinitializeSketch();
           p.loop();
       };
@@ -174,13 +177,7 @@ export default function Diagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
-
-  useEffect(() => {
-      if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
-        (p5InstanceRef.current as any).customPropsChange(temperature, pressure);
-      }
-  }, [temperature, pressure, width]);
+  }, [width, temperature, pressure]);
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
