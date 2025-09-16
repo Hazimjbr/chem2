@@ -38,17 +38,17 @@ const LessonContent = () => (
               >
                  <div className="space-y-3">
                     <p className="font-semibold text-sm">هو القوة المؤثرة عموديًا على وحدة المساحة.</p>
-                    <p className="text-xs text-muted-foreground">ينشأ ضغط الغاز عن تصادم جسيماته بجدار الوعاء الذي يحتويه. كلما زادت التصادمات، زاد الضغط.</p>
+                    <p className="text-sm text-muted-foreground">ينشأ ضغط الغاز عن تصادم جسيماته بجدار الوعاء الذي يحتويه. كلما زادت التصادمات، زاد الضغط.</p>
                     <div>
-                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
-                        <ul className="list-disc mr-4 text-xs space-y-1">
+                        <h4 className="font-semibold text-accent text-sm mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-sm space-y-1">
                             <li>باسكال (Pa)، وهي الوحدة الدولية (SI)</li>
                             <li>كيلوباسكال (kPa)</li>
                             <li>ضغظ جوي (atm)</li>
                             <li>مليمتر زئبق (mmHg)</li>
                         </ul>
                     </div>
-                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
+                     <p className='text-sm mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
                         1 atm = 760 mmHg = 101.3 kPa
                     </p>
                  </div>
@@ -60,16 +60,16 @@ const LessonContent = () => (
               >
                  <div className="space-y-3">
                     <p className="font-semibold text-sm">هو مقدار الحيز الذي تشغله جسيمات الغاز.</p>
-                    <p className="text-xs text-muted-foreground">حجم الغاز يساوي حجم الوعاء الذي يوجد فيه.</p>
+                    <p className="text-sm text-muted-foreground">حجم الغاز يساوي حجم الوعاء الذي يوجد فيه.</p>
                     <div>
-                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
-                        <ul className="list-disc mr-4 text-xs space-y-1">
+                        <h4 className="font-semibold text-accent text-sm mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-sm space-y-1">
                             <li>متر مكعب (m³)</li>
                             <li>لتر (L)</li>
                             <li>مليلتر (mL)</li>
                         </ul>
                     </div>
-                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
+                     <p className='text-sm mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
                         1 L = 1000 mL
                     </p>
                  </div>
@@ -81,15 +81,15 @@ const LessonContent = () => (
               >
                  <div className="space-y-3">
                     <p className="font-semibold text-sm">هي مقياس لمتوسط الطاقة الحركية لجسيمات الغاز.</p>
-                    <p className="text-xs text-muted-foreground">يجب استخدام درجة الحرارة المطلقة (بالكلفن) في جميع قوانين الغازات.</p>
+                    <p className="text-sm text-muted-foreground">يجب استخدام درجة الحرارة المطلقة (بالكلفن) في جميع قوانين الغازات.</p>
                     <div>
-                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
-                        <ul className="list-disc mr-4 text-xs space-y-1">
+                        <h4 className="font-semibold text-accent text-sm mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-sm space-y-1">
                             <li>كلفن (K)، وهي الوحدة المعتمدة</li>
                             <li>درجة مئوية (سيليزية) (°C)</li>
                         </ul>
                     </div>
-                     <p className='text-xs mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
+                     <p className='text-sm mt-2 text-muted-foreground italic border-t pt-2' dir="ltr">
                         T(K) = T(°C) + 273
                     </p>
                  </div>
@@ -101,14 +101,14 @@ const LessonContent = () => (
               >
                  <div className="space-y-3">
                     <p className="font-semibold text-sm">هي عدد جسيمات الغاز الموجودة في حجم معين.</p>
-                     <p className="text-xs text-muted-foreground">غالبًا ما يتم التعبير عن كمية الغاز بعدد المولات.</p>
+                     <p className="text-sm text-muted-foreground">غالبًا ما يتم التعبير عن كمية الغاز بعدد المولات.</p>
                     <div>
-                        <h4 className="font-semibold text-accent text-xs mb-1">وحدات القياس</h4>
-                        <ul className="list-disc mr-4 text-xs space-y-1">
+                        <h4 className="font-semibold text-accent text-sm mb-1">وحدات القياس</h4>
+                        <ul className="list-disc mr-4 text-sm space-y-1">
                             <li>مول (mol)، ويرمز له بالرمز n</li>
                         </ul>
                     </div>
-                     <div className='text-xs mt-2 text-muted-foreground italic border-t pt-2'>
+                     <div className='text-sm mt-2 text-muted-foreground italic border-t pt-2'>
                         <p>المول الواحد يحتوي على عدد أفوجادرو من الجسيمات:</p>
                         <p dir="ltr" className="text-center font-mono mt-1">6.022 × 10²³</p>
                     </div>
@@ -190,3 +190,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

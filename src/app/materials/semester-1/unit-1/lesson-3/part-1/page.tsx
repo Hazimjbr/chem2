@@ -50,21 +50,21 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                        <Boxes className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                        <div>
                             <strong className="font-semibold">شكل وحجم ثابتان</strong>
-                            <p className="text-xs mt-1">جسيماتها متقاربة جدًا وقوى التجاذب بينها قوية لذلك هي غير قابلة للانضغاط</p>
+                            <p className="text-sm mt-1">جسيماتها متقاربة جدًا وقوى التجاذب بينها قوية لذلك هي غير قابلة للانضغاط</p>
                        </div>
                     </li>
                      <li className="flex items-start gap-3">
                        <GitCommitHorizontal className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                        <div>
                             <strong className="font-semibold">غير قابلة للجريان</strong>
-                            <p className="text-xs mt-1">قوة التجاذب العالية تمنع جسيماتها من الانزلاق فوق بعضها البعض</p>
+                            <p className="text-sm mt-1">قوة التجاذب العالية تمنع جسيماتها من الانزلاق فوق بعضها البعض</p>
                        </div>
                     </li>
                      <li className="flex items-start gap-3">
                        <Move className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                        <div>
                             <strong className="font-semibold">حركة اهتزازية</strong>
-                            <p className="text-xs mt-1">جسيماتها تهتز في مكانها فقط ولا تنتقل من مكان لآخر</p>
+                            <p className="text-sm mt-1">جسيماتها تهتز في مكانها فقط ولا تنتقل من مكان لآخر</p>
                        </div>
                     </li>
                  </ul>
@@ -77,8 +77,8 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 <div className="space-y-3 text-sm">
                     <p className="font-semibold">درجة الانصهار هي درجة الحرارة التي تتحول عندها المادة من الحالة الصلبة إلى الحالة السائلة</p>
                     <div>
-                         <strong className="font-semibold text-accent text-xs">آلية الانصهار</strong>
-                         <p className="text-xs mt-1 text-muted-foreground">عند تسخين المادة الصلبة تزداد الطاقة الحركية لجسيماتها ويزداد اهتزازها فيضعف التجاذب بينها وعند درجة الانصهار تكون الطاقة كافية للتغلب على قوى التجاذب فتتحول المادة إلى سائل</p>
+                         <strong className="font-semibold text-accent text-sm">آلية الانصهار</strong>
+                         <p className="text-sm mt-1 text-muted-foreground">عند تسخين المادة الصلبة تزداد الطاقة الحركية لجسيماتها ويزداد اهتزازها فيضعف التجاذب بينها وعند درجة الانصهار تكون الطاقة كافية للتغلب على قوى التجاذب فتتحول المادة إلى سائل</p>
                     </div>
                 </div>
             </FlippableCard>
@@ -93,14 +93,14 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="p-3 bg-background rounded-lg border">
                         <h4 className="font-bold text-accent">مواد صلبة غير بلورية</h4>
-                        <p className="text-xs mt-1 text-muted-foreground">ذات أشكال غير منتظمة وترتيب عشوائي للجسيمات</p>
-                         <p className="text-xs mt-2">مثل البلاستيك والزجاج والأسفلت</p>
+                        <p className="text-sm mt-1 text-muted-foreground">ذات أشكال غير منتظمة وترتيب عشوائي للجسيمات</p>
+                         <p className="text-sm mt-2">مثل البلاستيك والزجاج والأسفلت</p>
                     </div>
                     <div className="p-3 bg-background rounded-lg border">
                          <h4 className="font-bold text-accent">مواد صلبة بلورية</h4>
-                         <p className="text-xs mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وترتيب متكرر للجسيمات</p>
-                         <p className="text-xs mt-1 text-muted-foreground">وتصنف بناء على خصائصها الفيزيائية (نوع جسيماتها وقوى الترابط)</p>
-                         <ul className="text-xs mt-2 space-y-1">
+                         <p className="text-sm mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وترتيب متكرر للجسيمات</p>
+                         <p className="text-sm mt-1 text-muted-foreground">وتصنف بناء على خصائصها الفيزيائية (نوع جسيماتها وقوى الترابط)</p>
+                         <ul className="text-sm mt-2 space-y-1">
                             <li>‌أ) جزيئية مثل السكر</li>
                             <li>‌ب) شبكية تساهمية مثل الماس</li>
                             <li>‌ج) فلزية مثل الحديد</li>
@@ -168,3 +168,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

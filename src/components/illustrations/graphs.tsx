@@ -46,3 +46,5 @@ export const GraphLineHorizontal = (props: Partial<SVGProps<SVGSVGElement>>) => 
 export const GraphLineVertical = (props: Partial<SVGProps<SVGSVGElement>>) => (
     <SvgWrapper path="M 55 80 L 55 15" {...props} />
 );
+
+    

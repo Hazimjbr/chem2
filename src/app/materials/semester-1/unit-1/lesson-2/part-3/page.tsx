@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -55,7 +56,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                 <FlippableCard cardTitle="تعريف وشروط التكاثف" cardIcon={<Droplets className="h-6 w-6" />}>
                     <div className="space-y-3">
                         <p className="font-semibold text-sm">التكاثف هو تحول المادة من الحالة الغازية إلى السائلة طارد للطاقة</p>
-                        <p className="text-xs font-bold text-accent">يحدث عن طريق خفض درجة الحرارة التبريد لتقليل طاقة الجزيئات وسرعتها وتقارب الجزيئات من بعضها وزيادة الضغط لزيادة تأثير قوى التجاذب بينها</p>
+                        <p className="text-sm font-bold text-accent">يحدث عن طريق خفض درجة الحرارة التبريد لتقليل طاقة الجزيئات وسرعتها وتقارب الجزيئات من بعضها وزيادة الضغط لزيادة تأثير قوى التجاذب بينها</p>
                     </div>
                 </FlippableCard>
 
@@ -70,12 +71,12 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                     <div className="my-2 text-center p-2 bg-muted rounded-lg" dir="ltr">
                         <BlockMath math="H_2O_{(g)} \rightleftharpoons H_2O_{(l)} + 40.7kJ/mol" />
                     </div>
-                    <p className="text-xs">تتساوى طاقة التكاثف المولية مع طاقة التبخر المولية في القيمة وتختلفان في الإشارة التكاثف طارد للطاقة والتبخر ماص للطاقة</p>
+                    <p className="text-sm">تتساوى طاقة التكاثف المولية مع طاقة التبخر المولية في القيمة وتختلفان في الإشارة التكاثف طارد للطاقة والتبخر ماص للطاقة</p>
                 </FlippableCard>
 
                 <FlippableCard cardTitle="تفسير علمي" cardIcon={<AlertTriangle className="h-6 w-6" />}>
                      <p className="text-sm font-semibold mb-2">لماذا تكون الحروق الناتجة عن بخار الماء أشد من الحروق الناتجة عن الماء الساخن عند نفس درجة الحرارة <span dir="ltr" className="inline-block">100°C</span>؟</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                         السبب هو أن بخار الماء يختزن كمية طاقة أكبر طاقة التبخر الكامنة عندما يلامس البخار الجلد فإنه يفقد هذه الطاقة الكبيرة طاقة التكاثف ليتحول أولاً إلى ماء سائل عند <span dir="ltr" className="inline-block">100°C</span> ثم يبدأ هذا الماء الساخن بنقل حرارته إلى الجلد مما يسبب حرقًا أشد
                     </p>
                 </FlippableCard>
@@ -170,5 +171,7 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
 
     

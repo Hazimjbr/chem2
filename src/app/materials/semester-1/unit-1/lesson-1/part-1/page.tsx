@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -82,7 +83,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                       <span className="font-bold text-primary text-lg mt-[-2px]">1</span>
                       <div>
                         <p className='font-semibold'>تصف سلوك جسيمات المادة وتفترض حركتها الدائمة المستمرة:</p>
-                         <ul className="mt-2 space-y-1 mr-4 text-xs">
+                         <ul className="mt-2 space-y-1 mr-4 text-sm">
                             <li><strong className="font-semibold text-accent/80">أ) الصلبة:</strong> حركة اهتزازية في مكانها</li>
                             <li><strong className="font-semibold text-accent/80">ب) السائلة والغازية:</strong> تتحرك عشوائيا في جميع الاتجاهات</li>
                         </ul>
@@ -92,7 +93,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                       <span className="font-bold text-primary text-lg mt-[-2px]">2</span>
                        <div>
                         <p className='font-semibold'>تفسر الخصائص الفيزيائية والسلوك الفيزيائي للمواد اعتمادا على:</p>
-                         <ul className="mt-2 space-y-1 mr-4 text-xs">
+                         <ul className="mt-2 space-y-1 mr-4 text-sm">
                             <li><strong className="font-semibold text-accent/80">أ) الطاقة الحركية للجسيمات</strong></li>
                             <li><strong className="font-semibold text-accent/80">ب) قوى التجاذب بين الجسيمات</strong></li>
                         </ul>
@@ -152,7 +153,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                           <p>لا يمكن إسالته مهما انخفضت درجة حرارته أو زاد الضغط عليه</p>
                       </li>
                   </ul>
-                  <p className='text-xs mt-4 text-muted-foreground italic border-t pt-3'>
+                  <p className='text-sm mt-4 text-muted-foreground italic border-t pt-3'>
                     يستخدم العلماء نموذج الغاز المثالي لتبسيط الحسابات وفهم سلوك الغازات الحقيقية في ظروف معينة (مثل الضغط المنخفض والحرارة المرتفعة)
                   </p>
               </FlippableCard>
@@ -193,7 +194,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                           <span className="font-bold text-primary text-lg mt-[-2px]">1</span>
                           <div>
                               <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
-                              <ul className="mt-2 space-y-2 mr-4 text-xs">
+                              <ul className="mt-2 space-y-2 mr-4 text-sm">
                                   <li><strong className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</strong> (هيدروجيني مثل HF {'>'} ثنائي قطب مثل NH3 {'>'} قوى لندن مثل Ne)</li>
                                   <li><strong className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</strong> (مثلًا Cl2 {'>'} F2) لأن زيادة الكتلة المولية تزيد من قوى لندن</li>
                               </ul>
@@ -208,7 +209,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                           <p className='font-semibold'>انخفضت درجة الحرارة</p>
                       </li>
                   </ul>
-                  <p className='text-xs mt-3 text-muted-foreground'>
+                  <p className='text-sm mt-3 text-muted-foreground'>
                       (ملاحظة: زيادة الحرارة تقلل من قوة الترابط بين الجسيمات وتزيد من طاقتها الحركية مما يجعلها تسلك سلوكًا أقرب للمثالي)
                   </p>
               </FlippableCard>
@@ -283,5 +284,7 @@ export default function LessonPartPage() {
         </LessonLayout>
     );
 }
+
+    
 
     

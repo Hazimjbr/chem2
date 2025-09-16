@@ -73,7 +73,7 @@ export default function LessonPartPage() {
                         <li>يمكن فصله بالترشيح أو الترسيب</li>
                         <li>بعضها يمتاز بظاهرة تندال</li>
                          <li className='border-t pt-2 mt-2'>
-                            <strong className='text-accent text-xs'>من أمثلتها</strong>
+                            <strong className='text-accent text-sm'>من أمثلتها</strong>
                              <ul className="list-disc mr-4 mt-2">
                                 <li>تراب + ماء (طبقتين منفصلتين صلب + سائل)</li>
                                 <li>عصير البرتقال الطبيعي (طبقتين منفصلتين صلب + سائل)</li>
@@ -92,7 +92,7 @@ export default function LessonPartPage() {
                         <li>تتحرك جسيماتها حركة عشوائية في جميع الاتجاهات (الحركة البراونية) ما يمنع ترسبها</li>
                         <li>تمتاز بظاهرة تندال وهي تشتيت الضوء المار من خلالها ويزداد التشتيت بزيادة حجم الجسيمات وتركيزها</li>
                         <li>تتدرج بالوصف من الشفافة حتى العكرة والمعتمة</li>
-                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-xs'>تصنف حسب حالة كل من الجسيمات المنتشرة ووسط الانتشار ومن أمثلتها</strong>
+                        <li className='border-t pt-2 mt-2'><strong className='text-accent text-sm'>تصنف حسب حالة كل من الجسيمات المنتشرة ووسط الانتشار ومن أمثلتها</strong>
                             <ul className="list-disc mr-4 mt-2">
                                 <li>الضباب والغيوم والرذاذ (سائل في غاز)</li>
                                 <li>الدخان والرماد والغبار (صلب في غاز)</li>
@@ -173,3 +173,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

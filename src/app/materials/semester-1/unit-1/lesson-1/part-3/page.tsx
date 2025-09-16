@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -60,7 +61,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                     <blockquote className="border-r-4 border-primary pr-4 text-base">
                     "يتناسب حجم الغاز المحصور عكسيًا مع الضغط الواقع عليه عند ثبات درجة الحرارة."
                     </blockquote>
-                    <p className="text-xs text-muted-foreground pt-2 border-t">اعتمد بويل في تجاربه على ملاحظة انكماش حجم الهواء المحصور في أنبوب على شكل حرف J عند إضافة الزئبق إليه، مما يزيد الضغط.</p>
+                    <p className="text-sm text-muted-foreground pt-2 border-t">اعتمد بويل في تجاربه على ملاحظة انكماش حجم الهواء المحصور في أنبوب على شكل حرف J عند إضافة الزئبق إليه، مما يزيد الضغط.</p>
                 </div>
             </FlippableCard>
 
@@ -103,7 +104,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                         <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><LineChart className="h-5 w-5 text-primary" /> V مقابل P</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-xs text-muted-foreground text-center mb-2">
+                        <p className="text-sm text-muted-foreground text-center mb-2">
                             يمثل المنحنى العلاقة العكسية بين الحجم والضغط.
                         </p>
                         <div className="flex justify-center items-center p-4">
@@ -135,7 +136,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-xs text-muted-foreground text-center mb-2">
+                            <p className="text-sm text-muted-foreground text-center mb-2">
                                 يمثل المنحنى العلاقة الطردية بين الحجم ومقلوب الضغط.
                             </p>
                             <div className="flex justify-center items-center p-4">
@@ -266,5 +267,7 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
 
     

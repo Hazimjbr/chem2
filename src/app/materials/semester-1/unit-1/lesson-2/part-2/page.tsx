@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -57,7 +58,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                      <p>
                         <strong>التبخر:</strong> هو تحول المادة من الحالة السائلة إلى الغازية، وهي عملية تحدث على <strong>سطح السائل فقط</strong> عند أي درجة حرارة.
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                         <strong>آلية الحدوث:</strong> لا تمتلك جميع جزيئات السائل نفس الطاقة الحركية. بعض الجزيئات على السطح تمتلك طاقة حركية عالية كافية للتغلب على قوى التجاذب مع الجزيئات المجاورة، فتتمكن من الإفلات والتحول إلى الحالة الغازية. هذه العملية ماصة للطاقة، ولذلك نشعر بالبرودة عند تبخر العرق عن جلدنا، حيث يسحب الحرارة من الجسم.
                     </p>
                 </div>
@@ -87,7 +88,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                     </div>
                     <div className="w-full md:w-1/2">
                         <p className="font-semibold mb-3">مخطط ماكسويل بولتزمان لطاقة الجزيئات الحركية حيث:</p>
-                        <ul className="space-y-2 text-xs">
+                        <ul className="space-y-2 text-sm">
                             <li><strong className="text-accent font-mono">ع:</strong> الحد الأدنى من الطاقة اللازمة للتبخر (طاقة التنشيط) وتعتمد على قوى التجاذب لا على درجة الحرارة</li>
                             <li><strong className="text-accent font-mono">ص:</strong> متوسط الطاقة الحركية للجزيئات</li>
                             <li><strong className="text-accent font-mono">س:</strong> الطاقة الحركية التي يمتلكها أكبر عدد من الجزيئات</li>
@@ -108,15 +109,15 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                            <Thermometer className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                            <div>
                                 <strong className="font-semibold">درجة الحرارة (علاقة طردية):</strong>
-                                <p className="text-xs mt-1">زيادة الحرارة تزيد متوسط الطاقة الحركية، فيزداد عدد الجزيئات التي تمتلك طاقة التبخر (Ea).</p>
+                                <p className="text-sm mt-1">زيادة الحرارة تزيد متوسط الطاقة الحركية، فيزداد عدد الجزيئات التي تمتلك طاقة التبخر (Ea).</p>
                            </div>
                         </li>
                          <li className="flex items-start gap-3">
                            <Wind className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                            <div>
                                 <strong className="font-semibold">قوى التجاذب (علاقة عكسية):</strong>
-                                <p className="text-xs mt-1">كلما كانت قوى التجاذب بين الجزيئات أقوى، احتاجت الجزيئات طاقة أعلى للتبخر، فقلّت سرعته.</p>
-                                <p className="text-xs mt-1 font-mono">هيدروجينية > ثنائي قطب > لندن</p>
+                                <p className="text-sm mt-1">كلما كانت قوى التجاذب بين الجزيئات أقوى، احتاجت الجزيئات طاقة أعلى للتبخر، فقلّت سرعته.</p>
+                                <p className="text-sm mt-1 font-mono">هيدروجينية > ثنائي قطب > لندن</p>
                            </div>
                         </li>
                      </ul>
@@ -126,7 +127,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                     <div className="my-4 text-center p-2 bg-muted rounded-lg" dir="ltr">
                         <BlockMath math="H_2O_{(l)} + 40.7 \text{ kJ/mol} \rightleftharpoons H_2O_{(g)}" />
                     </div>
-                    <p className="text-xs text-muted-foreground">تعتمد طاقة التبخر بشكل مباشر على قوة الترابط بين الجزيئات. كلما كانت القوى أقوى، زادت الطاقة اللازمة للتبخر.</p>
+                    <p className="text-sm text-muted-foreground">تعتمد طاقة التبخر بشكل مباشر على قوة الترابط بين الجزيئات. كلما كانت القوى أقوى، زادت الطاقة اللازمة للتبخر.</p>
                 </FlippableCard>
             </div>
         
@@ -186,5 +187,7 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
 
     

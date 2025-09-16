@@ -55,7 +55,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 <p className="text-sm">
                     هو الضغط الذي يسببه البخار على سطح السائل عند الاتزان عند درجة حرارة وضغط ثابتين
                 </p>
-                <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
+                <p className="text-sm text-muted-foreground mt-4 border-t pt-2">
                     ببساطة هو ضغط البخار فوق السائل في وعاء مغلق بعد فترة من الزمن
                 </p>
             </FlippableCard>
@@ -64,7 +64,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                  <p className="text-sm">
                     هي الحالة التي يتساوى فيها معدل سرعة تبخر السائل مع معدل سرعة تكاثف بخاره في وعاء مغلق
                 </p>
-                <p className="text-xs text-muted-foreground mt-4 border-t pt-2">
+                <p className="text-sm text-muted-foreground mt-4 border-t pt-2">
                     عند الاتزان لا تتوقف العمليتان بل تحدثان بنفس السرعة فيبقى عدد جزيئات البخار ثابتًا وبالتالي يثبت الضغط البخاري
                 </p>
             </FlippableCard>
@@ -91,7 +91,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                             <Thermometer className="h-5 w-5 text-primary flex-shrink-0" />
                             <strong className="font-semibold">درجة الحرارة (علاقة طردية)</strong>
                         </div>
-                        <p className="text-xs mt-1 text-muted-foreground mr-7">
+                        <p className="text-sm mt-1 text-muted-foreground mr-7">
                             بزيادة درجة الحرارة تزداد الطاقة الحركية للجزيئات فيزداد عدد الجزيئات القادرة على التبخر مما يزيد من الضغط البخاري
                         </p>
                     </li>
@@ -100,7 +100,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                             <Zap className="h-5 w-5 text-destructive flex-shrink-0" />
                             <strong className="font-semibold">قوة الترابط بين الجزيئات (علاقة عكسية)</strong>
                         </div>
-                        <p className="text-xs mt-1 text-muted-foreground mr-7">
+                        <p className="text-sm mt-1 text-muted-foreground mr-7">
                             كلما كانت قوى الترابط أقوى قل عدد الجزيئات القادرة على الإفلات من السطح وبالتالي يقل الضغط البخاري
                         </p>
                     </li>
@@ -164,3 +164,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

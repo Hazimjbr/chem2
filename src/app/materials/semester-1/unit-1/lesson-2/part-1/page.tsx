@@ -47,7 +47,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 cardIcon={<Atom className="h-6 w-6" />}
             >
                  <p className="font-semibold text-sm mb-2">ينشأ بفعل الاستقطاب اللحظي</p>
-                <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
+                <ul className="list-disc mr-4 text-sm space-y-1 text-muted-foreground">
                     <li>يوجد في ذرات العناصر الخاملة والجزيئات غير القطبية مثل CH₄ CO₂</li>
                     <li>تزداد قوته بازدياد الكتلة المولية وقلة تفرعات السلاسل</li>
                 </ul>
@@ -58,7 +58,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 cardIcon={<Binary className="h-6 w-6" />}
             >
                 <p className="font-semibold text-sm mb-2">ينشأ بين الجزيئات القطبية</p>
-                 <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
+                 <ul className="list-disc mr-4 text-sm space-y-1 text-muted-foreground">
                     <li>يحدث تجاذب بين الشحنات الجزئية المختلفة δ+ و δ-</li>
                     <li>مثال هاليد الألكيل الإيثر الألدهيد الكيتون</li>
                     <li>أقوى من قوى لندن للجزيئات المتقاربة في الكتلة المولية</li>
@@ -70,7 +70,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 cardIcon={<Waves className="h-6 w-6" />}
             >
                 <p className="font-semibold text-sm mb-2">أقوى أنواع الترابط بين الجزيئات</p>
-                 <ul className="list-disc mr-4 text-xs space-y-1 text-muted-foreground">
+                 <ul className="list-disc mr-4 text-sm space-y-1 text-muted-foreground">
                     <li>نوع خاص من ترابط ثنائي القطب</li>
                     <li>يحدث عندما ترتبط ذرة H بذرة ذات كهروسلبية عالية N O F</li>
                     <li>مثال الماء H₂O الكحول R-OH الأمونيا NH₃</li>
@@ -159,3 +159,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

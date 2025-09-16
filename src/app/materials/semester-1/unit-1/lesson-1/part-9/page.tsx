@@ -47,7 +47,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 <blockquote className="border-r-4 border-primary pr-4">
                     "الضغط الكلي لخليط من الغازات (غير المتفاعلة مع بعضها) يساوي مجموع الضغوط الجزئية لها."
                 </blockquote>
-                <p className="text-xs text-muted-foreground pt-2 border-t">الضغط الجزئي هو الضغط الذي سيمارسه غاز معين لو كان موجودًا بمفرده في نفس الوعاء وعند نفس درجة الحرارة.</p>
+                <p className="text-sm text-muted-foreground pt-2 border-t">الضغط الجزئي هو الضغط الذي سيمارسه غاز معين لو كان موجودًا بمفرده في نفس الوعاء وعند نفس درجة الحرارة.</p>
             </div>
         </FlippableCard>
 
@@ -121,3 +121,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

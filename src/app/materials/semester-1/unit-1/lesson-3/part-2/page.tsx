@@ -47,11 +47,11 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
              <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-3">
                     <span className="font-bold text-primary">1</span>
-                    <p>جسيماتها ذرات أو جزيئات تساهمية متعادلة الشحنة لذلك تكون غير موصلة للكهرباء</p>
+                    <p><strong>جسيماتها ذرات أو جزيئات تساهمية متعادلة الشحنة</strong> لذلك تكون غير موصلة للكهرباء</p>
                 </li>
                 <li className="flex items-start gap-3">
                      <span className="font-bold text-primary">2</span>
-                    <p>قوى الترابط بين جسيماتها ضعيفة لذلك تكون مواد هشة ودرجات انصهارها منخفضة</p>
+                    <p><strong>قوى الترابط بين جسيماتها ضعيفة</strong> لذلك تكون مواد هشة ودرجات انصهارها منخفضة</p>
                 </li>
              </ul>
         </FlippableCard>
@@ -72,7 +72,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             >
                 <div className="space-y-2">
                     <p className="font-semibold text-sm text-left" dir="ltr">H<span className="align-sub text-xs">2</span>O(s)</p>
-                    <p className="text-xs text-muted-foreground">الجليد يرتبط كل جزيء ماء بأربع جزيئات أخرى ويكون مركزا لرباعي الأوجه منتظم</p>
+                    <p className="text-sm text-muted-foreground">الجليد يرتبط كل جزيء ماء بأربع جزيئات أخرى ويكون مركزا لرباعي الأوجه منتظم</p>
                     <p className="font-semibold text-sm border-t pt-2">الأحماض الكربوكسيلية</p>
                     <p className="font-semibold text-sm text-left" dir="ltr">C<span className="align-sub text-xs">8</span>H<span className="align-sub text-xs">17</span>COOH</p>
                 </div>
@@ -84,9 +84,9 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             >
                 <div className="space-y-2">
                     <p className="font-semibold text-sm">ذرات الغازات النبيلة في الحالة الصلبة</p>
-                    <p className="font-mono text-xs text-left" dir="ltr">Ne , Ar</p>
+                    <p className="font-mono text-sm text-left" dir="ltr">Ne , Ar</p>
                     <p className="font-semibold text-sm border-t pt-2">جزيئات متعادلة</p>
-                    <p className="font-mono text-xs text-left" dir="ltr">I<span className="align-sub text-xs">2</span> , P<span className="align-sub text-xs">4</span> , S<span className="align-sub text-xs">8</span> , C<span className="align-sub text-xs">60</span> , SiF<span className="align-sub text-xs">4</span> , C<span className="align-sub text-xs">6</span>H<span className="align-sub text-xs">12</span>O<span className="align-sub text-xs">6</span></p>
+                    <p className="font-mono text-sm text-left" dir="ltr">I<span className="align-sub text-xs">2</span> , P<span className="align-sub text-xs">4</span> , S<span className="align-sub text-xs">8</span> , C<span className="align-sub text-xs">60</span> , SiF<span className="align-sub text-xs">4</span> , C<span className="align-sub text-xs">6</span>H<span className="align-sub text-xs">12</span>O<span className="align-sub text-xs">6</span></p>
                 </div>
             </FlippableCard>
         </div>
@@ -99,11 +99,11 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div className="p-3 bg-background rounded-lg border">
                     <h4 className="font-bold text-accent">الكبريت (S<span className="align-sub text-xs">8</span>)</h4>
-                    <p className="text-xs mt-1 text-muted-foreground">مادة صفراء ذات رائحة مميزة</p>
+                    <p className="text-sm mt-1 text-muted-foreground">مادة صفراء ذات رائحة مميزة</p>
                 </div>
                 <div className="p-3 bg-background rounded-lg border">
                      <h4 className="font-bold text-accent">بكمنسترفولرين أو كرات باكي (C<span className="align-sub text-xs">60</span>)</h4>
-                     <ul className="text-xs mt-2 space-y-1 text-muted-foreground">
+                     <ul className="text-sm mt-2 space-y-1 text-muted-foreground">
                         <li>‌أ) يتكون كل جزيء من ارتباط 60 ذرة كربون على شكل كرة مجوفة</li>
                         <li>‌ب) ترتبط كل ذرة كربون بثلاث ذرات أخرى بروابط تساهمية لتشكل حلقات خماسية وسداسية</li>
                         <li>‌ج) ترتبط الكرات (الجزيئات) مع بعضها بقوى لندن مكونة بلورات إبرية سوداء</li>
@@ -170,3 +170,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    

@@ -62,7 +62,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                         <Zap className="h-5 w-5 text-primary flex-shrink-0" />
                         <strong className="font-semibold">قوة الترابط بين الجزيئات (علاقة طردية)</strong>
                     </div>
-                    <p className="text-xs mt-1 text-muted-foreground mr-7">
+                    <p className="text-sm mt-1 text-muted-foreground mr-7">
                         كلما كانت قوى الترابط أقوى، احتاج السائل إلى درجة حرارة أعلى ليتساوى ضغطه البخاري مع الضغط الخارجي، فتزداد درجة الغليان.
                     </p>
                 </li>
@@ -71,7 +71,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                         <GitCompare className="h-5 w-5 text-primary flex-shrink-0" />
                         <strong className="font-semibold">الضغط الخارجي (علاقة طردية)</strong>
                     </div>
-                    <p className="text-xs mt-1 text-muted-foreground mr-7">
+                    <p className="text-sm mt-1 text-muted-foreground mr-7">
                         زيادة الضغط الخارجي (مثل الطبخ في طنجرة الضغط) تجبر السائل على الوصول لدرجة حرارة أعلى ليغلي. والعكس صحيح، حيث يغلي الماء عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span> على قمم الجبال بسبب انخفاض الضغط الجوي.
                     </p>
                 </li>
@@ -94,7 +94,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <div className="space-y-2 text-sm p-4">
                 <p className="font-semibold">تزداد درجة غليان هيدريدات عناصر المجموعات (15, 16, 17) بزيادة الكتلة المولية بسبب زيادة قوة قوى لندن.</p>
                 <p className="font-semibold text-destructive">الاستثناءات (الشذوذ):</p>
-                <p className="text-xs text-muted-foreground">تمتلك المركبات (NH₃, H₂O, HF) درجات غليان مرتفعة جدًا مقارنة ببقية عناصر مجموعاتها، وذلك بسبب قدرتها على تكوين روابط هيدروجينية قوية بين جزيئاتها، وهي أقوى بكثير من قوى لندن.</p>
+                <p className="text-sm text-muted-foreground">تمتلك المركبات (NH₃, H₂O, HF) درجات غليان مرتفعة جدًا مقارنة ببقية عناصر مجموعاتها، وذلك بسبب قدرتها على تكوين روابط هيدروجينية قوية بين جزيئاتها، وهي أقوى بكثير من قوى لندن.</p>
             </div>
         </FlippableCard>
 
@@ -155,3 +155,5 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
+
+    
