@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
@@ -78,14 +77,14 @@ export default function Diagram() {
         
         const sketch = (p: p5) => {
           let particles: Particle[] = [];
-          let currentTemperature = temp;
-          let currentPressure = press;
-          let boxHeight: number;
-          let speedMultiplier: number;
-          let particleColor: p5.Color;
-          let pistonY: number;
-          let topBoundary: number;
-          let bottomBoundary: number;
+          
+          const boxHeight = CANVAS_HEIGHT;
+          const speedMultiplier = temp === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+          const particleColor = temp === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+          
+          const pistonY = press === 'low' ? 0 : (boxHeight * (1/3));
+          const topBoundary = pistonY + PISTON_THICKNESS;
+          const bottomBoundary = boxHeight;
 
           class Particle {
             pos: p5.Vector;
@@ -123,33 +122,17 @@ export default function Diagram() {
             }
           }
           
-          const reinitializeSketch = () => {
-            if (!sketchRef.current) return;
-            
-            boxHeight = CANVAS_HEIGHT;
-            speedMultiplier = currentTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-            particleColor = currentTemperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
-            
-            pistonY = currentPressure === 'low' ? 0 : (boxHeight * (1/3));
-            topBoundary = pistonY + PISTON_THICKNESS;
-            bottomBoundary = boxHeight;
-
-            particles = [];
+          p.setup = () => {
+            p.createCanvas(width, CANVAS_HEIGHT);
             for (let i = 0; i < NUM_PARTICLES; i++) {
               particles.push(new Particle());
             }
-          };
-
-          p.setup = () => {
-            p.createCanvas(width, CANVAS_HEIGHT);
-            reinitializeSketch();
           };
           
           p.windowResized = () => {
             if (sketchRef.current) {
                 p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
                 setWidth(sketchRef.current.offsetWidth);
-                reinitializeSketch();
             }
           }
 
@@ -174,13 +157,6 @@ export default function Diagram() {
             p.fill(150);
             p.rect(width/2 - 20, pistonY - 5, 40, 5);
           };
-
-          (p as any).customPropsChange = (newTemp: Temperature, newPress: Pressure) => {
-              currentTemperature = newTemp;
-              currentPressure = newPress;
-              reinitializeSketch();
-              p.loop();
-          };
         };
 
         p5InstanceRef.current = new p5(sketch, sketchRef.current!);
@@ -189,13 +165,7 @@ export default function Diagram() {
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width]);
-
-  useEffect(() => {
-    if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
-      (p5InstanceRef.current as any).customPropsChange(temp, press);
-    }
-  }, [temp, press]);
+  }, [temp, press, width]);
 
 
   return (
