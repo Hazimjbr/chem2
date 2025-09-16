@@ -10,6 +10,20 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+const constructPath = (unitId: string, lesson: any, part: any) => {
+    const unitNum = unitId.replace('unit-', '');
+    let path = `/materials/semester-1/unit-${unitNum}`;
+    if (lesson.lessonNum) {
+        path += `/lesson-${lesson.lessonNum}`;
+    } else if (lesson.sectionNum) {
+        path += `/section-${lesson.sectionNum}`;
+    }
+    if (part.partNum) {
+        path += `/part-${part.partNum}`;
+    }
+    return path;
+}
+
 // Helper function to map lessonId (which is a URL path) to a human-readable title
 export const getLessonTitle = (lessonId: string): string => {
     // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
@@ -65,20 +79,6 @@ export interface NextStep {
     totalParts?: number;
     // For 'weak' type
     score?: number;
-}
-
-const constructPath = (unitId: string, lesson: any, part: any) => {
-    const unitNum = unitId.replace('unit-', '');
-    let path = `/materials/semester-1/unit-${unitNum}`;
-    if (lesson.lessonNum) {
-        path += `/lesson-${lesson.lessonNum}`;
-    } else if (lesson.sectionNum) {
-        path += `/section-${lesson.sectionNum}`;
-    }
-    if (part.partNum) {
-        path += `/part-${part.partNum}`;
-    }
-    return path;
 }
 
 
