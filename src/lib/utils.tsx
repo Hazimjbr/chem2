@@ -61,9 +61,9 @@ export const getLessonTitle = (lessonId: string): string => {
          if (section) {
             // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
             if (section.title.includes(unit.title.split(':')[0])) {
-                return `${unit.title.split(' ')[0]} / ${section.title}`;
+                return `${unit.title.split(':')[0]} / ${section.title}`;
             }
-            return `${unit.title.split(':')[0]} / ${section.title}`;
+            return section.title;
         }
     }
 
