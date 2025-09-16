@@ -92,7 +92,7 @@ export default function LessonPartPage() {
                         </ul>
                     </div>
                      <div className="flex justify-center my-2">
-                        <Image src="https://i.ibb.co/Sw69HrHr/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border" data-ai-hint="Henry's law graph" />
+                        <Image src="https://i.ibb.co/DfVsvpZv/image.jpg" alt="قانون هنري" width={300} height={200} className="rounded-lg border" data-ai-hint="Henry's law graph" />
                     </div>
                 </div>
             </FlippableCard>
