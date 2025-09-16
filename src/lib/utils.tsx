@@ -142,3 +142,5 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     // 3. If everything is complete, return null
     return null;
 }
+
+    
