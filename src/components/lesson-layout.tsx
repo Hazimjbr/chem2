@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, X, ArrowRight } from 'lucide-react';
-import Quiz from '@/components/quiz';
 import React, { useEffect } from 'react';
 import type { QuizQuestion } from '@/components/quiz';
 
@@ -24,6 +23,7 @@ interface LessonLayoutProps {
     previousLessonTitle?: string;
     nextLessonTitle?: string;
     children?: React.ReactNode;
+    completedInteractiveCount?: number; // Keep this for future use if needed
 }
 
 export default function LessonLayout({
@@ -31,7 +31,6 @@ export default function LessonLayout({
     lessonSubtitle,
     mainIdea,
     learningOutcomes,
-    staticQuizzes,
     lessonId,
     previousLesson,
     nextLesson,
@@ -40,7 +39,6 @@ export default function LessonLayout({
     children,
 }: LessonLayoutProps) {
     useEffect(() => {
-        // Save to local storage for guest/quick access
         localStorage.setItem('lastVisitedLesson', lessonId);
     }, [lessonId]);
 
@@ -85,17 +83,6 @@ export default function LessonLayout({
 
                 {children}
 
-                <Card>
-                    <CardHeader>
-                        <CardTitle>اختبر فهمك</CardTitle>
-                        <CardDescription>
-                            بعد أن تعرفت على محتوى الدرس اختبر فهمك له من خلال هذا الاختبار القصير
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <Quiz lessonContent={mainIdea} staticQuizzes={staticQuizzes} lessonId={lessonId} />
-                    </CardContent>
-                </Card>
             </main>
 
             <footer className="mt-12 border-t pt-6">
