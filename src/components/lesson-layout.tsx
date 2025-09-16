@@ -17,7 +17,6 @@ interface LessonLayoutProps {
     lessonSubtitle: string;
     mainIdea: string;
     learningOutcomes: string[];
-    lessonContent: string;
     staticQuizzes: {
         lvl1: QuizQuestion[];
         lvl2: QuizQuestion[];
@@ -37,7 +36,6 @@ export default function LessonLayout({
     lessonSubtitle,
     mainIdea,
     learningOutcomes,
-    lessonContent,
     staticQuizzes,
     lessonId,
     previousLesson,
@@ -100,11 +98,6 @@ export default function LessonLayout({
                     </CardContent>
                 </Card>
 
-                <article
-                    className="prose prose-lg max-w-none text-foreground"
-                    dangerouslySetInnerHTML={{ __html: lessonContent }}
-                />
-
                 {children}
 
                 <Card>
@@ -115,7 +108,7 @@ export default function LessonLayout({
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Quiz lessonContent={lessonContent} staticQuizzes={staticQuizzes} lessonId={lessonId} />
+                        <Quiz lessonContent={mainIdea} staticQuizzes={staticQuizzes} lessonId={lessonId} />
                     </CardContent>
                 </Card>
             </main>

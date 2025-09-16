@@ -20,7 +20,6 @@ const lessonInfo = {
         "أحدد المتغيرات الأربعة (الضغط، الحجم، الحرارة، كمية الغاز) التي تصف سلوك الغاز.",
         "أصف المقصود بكل متغير، وأذكر وحدات القياس الشائعة له."
     ],
-    lessonContent: `<p>لفهم سلوك الغازات بشكل دقيق، نحتاج إلى دراسة العوامل التي تؤثر فيها. هذه العوامل هي متغيرات يمكن قياسها وتغييرها، وهي تحدد حالة الغاز. في هذا الجزء، سنتعرف على هذه المتغيرات الأربعة الأساسية التي ستكون حجر الزاوية في جميع قوانين الغازات التي سندرسها لاحقًا.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-2",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-1",
@@ -29,11 +28,9 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: قانون بويل"
 }
 
-export default function LessonPartPage() {
-
-  return (
-    <LessonLayout {...lessonInfo}>
-          <h3 className="text-2xl font-bold text-center">المتغيرات الأربعة لوصف الغاز المحصور</h3>
+const LessonContent = () => (
+    <>
+        <h3 className="text-2xl font-bold text-center">المتغيرات الأربعة لوصف الغاز المحصور</h3>
           <div className="grid md:grid-cols-2 gap-6">
               <FlippableCard
                 cardTitle="1. الضغط (P)"
@@ -183,6 +180,13 @@ export default function LessonPartPage() {
                 />
             </div>
           </div>
+    </>
+);
+
+export default function LessonPartPage() {
+  return (
+    <LessonLayout {...lessonInfo}>
+        <LessonContent />
     </LessonLayout>
   );
 }

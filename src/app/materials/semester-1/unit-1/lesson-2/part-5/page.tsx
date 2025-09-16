@@ -21,7 +21,6 @@ const lessonInfo = {
         "أصف عملية غليان السائل.",
         "أفسر العوامل المؤثرة في درجة الغليان."
     ],
-    lessonContent: `<p>نصل إلى آخر خصائص السوائل وهي الغليان، وهي الظاهرة التي نراها عند تسخين الماء لتحضير الشاي. الغليان ليس مجرد تبخر سريع، بل هو عملية مميزة لها شروطها الخاصة التي سنكتشفها في هذا الدرس.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-2/part-5",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-2/part-4",
@@ -30,80 +29,76 @@ const lessonInfo = {
     nextLessonTitle: "الدرس التالي: مقدمة المواد الصلبة"
 };
 
-export default function LessonPartPage() {
-    
-  return (
-    <LessonLayout {...lessonInfo}>
-        <div className="space-y-8">
-             <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                        عند تسخين سائل، تزداد الطاقة الحركية لجزيئاته ويزداد ضغطه البخاري. الغليان هو نقطة التحول الحرجة التي تصبح فيها طاقة الجزيئات عالية بما يكفي لتكوين فقاعات من البخار داخل السائل نفسه، وليس فقط على السطح. هذه العملية لا تحدث إلا عندما يتغلب ضغط البخار الداخلي على الضغط الجوي الخارجي.
-                    </p>
-                </CardContent>
-            </Card>
-
-            <FlippableCard
-                cardTitle="تعريف الغليان"
-                cardIcon={<BookCopy className="h-6 w-6" />}
-            >
-                <div className="space-y-2 text-sm p-4">
-                    <p className="font-semibold">الغليان: تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه.</p>
-                    <ul className="list-disc mr-4 space-y-2 text-muted-foreground">
-                        <li>يحدث الغليان للسائل النقي عند درجة حرارة ثابتة تسمى درجة الغليان.</li>
-                        <li>على عكس التبخر الذي يحدث على السطح فقط، يحدث الغليان في جميع أجزاء السائل.</li>
-                    </ul>
-                </div>
-            </FlippableCard>
-
-            <FlippableCard cardTitle="العوامل المؤثرة في درجة الغليان" cardIcon={<Zap className="h-6 w-6" />}>
-                <ul className="space-y-4 text-sm p-4">
-                    <li className="flex flex-col items-start gap-1">
-                        <div className="flex items-center gap-2">
-                            <Zap className="h-5 w-5 text-primary flex-shrink-0" />
-                            <strong className="font-semibold">قوة الترابط بين الجزيئات (علاقة طردية)</strong>
-                        </div>
-                        <p className="text-xs mt-1 text-muted-foreground mr-7">
-                            كلما كانت قوى الترابط أقوى، احتاج السائل إلى درجة حرارة أعلى ليتساوى ضغطه البخاري مع الضغط الخارجي، فتزداد درجة الغليان.
-                        </p>
-                    </li>
-                    <li className="flex flex-col items-start gap-1">
-                        <div className="flex items-center gap-2">
-                            <GitCompare className="h-5 w-5 text-primary flex-shrink-0" />
-                            <strong className="font-semibold">الضغط الخارجي (علاقة طردية)</strong>
-                        </div>
-                        <p className="text-xs mt-1 text-muted-foreground mr-7">
-                            زيادة الضغط الخارجي (مثل الطبخ في طنجرة الضغط) تجبر السائل على الوصول لدرجة حرارة أعلى ليغلي. والعكس صحيح، حيث يغلي الماء عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span> على قمم الجبال بسبب انخفاض الضغط الجوي.
-                        </p>
-                    </li>
-                </ul>
-            </FlippableCard>
-
-            <FlippableCard
-                cardTitle="درجة الغليان المعيارية"
-                cardIcon={<Thermometer className="h-6 w-6" />}
-            >
-                <p className="text-sm p-4">
-                    هي درجة الحرارة التي يغلي عندها السائل عندما يكون الضغط الخارجي الواقع عليه يساوي 1 ضغط جوي (1atm أو 760mmHg). وهي القيمة التي نستخدمها عادةً للمقارنة بين السوائل.
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
+    <div className="space-y-8">
+         <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p>
+                    عند تسخين سائل، تزداد الطاقة الحركية لجزيئاته ويزداد ضغطه البخاري. الغليان هو نقطة التحول الحرجة التي تصبح فيها طاقة الجزيئات عالية بما يكفي لتكوين فقاعات من البخار داخل السائل نفسه، وليس فقط على السطح. هذه العملية لا تحدث إلا عندما يتغلب ضغط البخار الداخلي على الضغط الجوي الخارجي.
                 </p>
-            </FlippableCard>
+            </CardContent>
+        </Card>
 
-            <FlippableCard
-                cardTitle="اتجاهات درجة الغليان في الجدول الدوري"
-                cardIcon={<BarChart3 className="h-6 w-6" />}
-            >
-                <div className="space-y-2 text-sm p-4">
-                    <p className="font-semibold">تزداد درجة غليان هيدريدات عناصر المجموعات (15, 16, 17) بزيادة الكتلة المولية بسبب زيادة قوة قوى لندن.</p>
-                    <p className="font-semibold text-destructive">الاستثناءات (الشذوذ):</p>
-                    <p className="text-xs text-muted-foreground">تمتلك المركبات (NH₃, H₂O, HF) درجات غليان مرتفعة جدًا مقارنة ببقية عناصر مجموعاتها، وذلك بسبب قدرتها على تكوين روابط هيدروجينية قوية بين جزيئاتها، وهي أقوى بكثير من قوى لندن.</p>
-                </div>
-            </FlippableCard>
+        <FlippableCard
+            cardTitle="تعريف الغليان"
+            cardIcon={<BookCopy className="h-6 w-6" />}
+        >
+            <div className="space-y-2 text-sm p-4">
+                <p className="font-semibold">الغليان: تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه.</p>
+                <ul className="list-disc mr-4 space-y-2 text-muted-foreground">
+                    <li>يحدث الغليان للسائل النقي عند درجة حرارة ثابتة تسمى درجة الغليان.</li>
+                    <li>على عكس التبخر الذي يحدث على السطح فقط، يحدث الغليان في جميع أجزاء السائل.</li>
+                </ul>
+            </div>
+        </FlippableCard>
 
-        </div>
-        
+        <FlippableCard cardTitle="العوامل المؤثرة في درجة الغليان" cardIcon={<Zap className="h-6 w-6" />}>
+            <ul className="space-y-4 text-sm p-4">
+                <li className="flex flex-col items-start gap-1">
+                    <div className="flex items-center gap-2">
+                        <Zap className="h-5 w-5 text-primary flex-shrink-0" />
+                        <strong className="font-semibold">قوة الترابط بين الجزيئات (علاقة طردية)</strong>
+                    </div>
+                    <p className="text-xs mt-1 text-muted-foreground mr-7">
+                        كلما كانت قوى الترابط أقوى، احتاج السائل إلى درجة حرارة أعلى ليتساوى ضغطه البخاري مع الضغط الخارجي، فتزداد درجة الغليان.
+                    </p>
+                </li>
+                <li className="flex flex-col items-start gap-1">
+                    <div className="flex items-center gap-2">
+                        <GitCompare className="h-5 w-5 text-primary flex-shrink-0" />
+                        <strong className="font-semibold">الضغط الخارجي (علاقة طردية)</strong>
+                    </div>
+                    <p className="text-xs mt-1 text-muted-foreground mr-7">
+                        زيادة الضغط الخارجي (مثل الطبخ في طنجرة الضغط) تجبر السائل على الوصول لدرجة حرارة أعلى ليغلي. والعكس صحيح، حيث يغلي الماء عند درجة حرارة أقل من <span dir="ltr" className="inline-block">100°C</span> على قمم الجبال بسبب انخفاض الضغط الجوي.
+                    </p>
+                </li>
+            </ul>
+        </FlippableCard>
+
+        <FlippableCard
+            cardTitle="درجة الغليان المعيارية"
+            cardIcon={<Thermometer className="h-6 w-6" />}
+        >
+            <p className="text-sm p-4">
+                هي درجة الحرارة التي يغلي عندها السائل عندما يكون الضغط الخارجي الواقع عليه يساوي 1 ضغط جوي (1atm أو 760mmHg). وهي القيمة التي نستخدمها عادةً للمقارنة بين السوائل.
+            </p>
+        </FlippableCard>
+
+        <FlippableCard
+            cardTitle="اتجاهات درجة الغليان في الجدول الدوري"
+            cardIcon={<BarChart3 className="h-6 w-6" />}
+        >
+            <div className="space-y-2 text-sm p-4">
+                <p className="font-semibold">تزداد درجة غليان هيدريدات عناصر المجموعات (15, 16, 17) بزيادة الكتلة المولية بسبب زيادة قوة قوى لندن.</p>
+                <p className="font-semibold text-destructive">الاستثناءات (الشذوذ):</p>
+                <p className="text-xs text-muted-foreground">تمتلك المركبات (NH₃, H₂O, HF) درجات غليان مرتفعة جدًا مقارنة ببقية عناصر مجموعاتها، وذلك بسبب قدرتها على تكوين روابط هيدروجينية قوية بين جزيئاتها، وهي أقوى بكثير من قوى لندن.</p>
+            </div>
+        </FlippableCard>
+
+    
         <div className="space-y-4 mt-8">
           <div className="flex items-center gap-3">
             <Lightbulb className="h-7 w-7 text-yellow-400" />
@@ -116,7 +111,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question="ما الفرق الجوهري بين التبخر والغليان؟"
                   options={[
                       "التبخر طارد للطاقة والغليان ماص",
@@ -130,7 +125,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question={<><span>لماذا درجة غليان الماء (<InlineMath math="H_2O"/>) أعلى بكثير من درجة غليان كبريتيد الهيدروجين (<InlineMath math="H_2S"/>) على الرغم من أن H₂S له كتلة مولية أكبر؟</span></>}
                   options={[
                       "لأن الماء أكثر تطايرًا",
@@ -143,6 +138,20 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+    </div>
+);
+
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+    
+  return (
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }

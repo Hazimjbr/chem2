@@ -19,7 +19,6 @@ const lessonInfo = {
         "أصف الرابطة الفلزية",
         "أفسر خصائص المواد الصلبة الفلزية",
     ],
-    lessonContent: `<p>بعد أن تعرفنا على المواد الصلبة الشبكية التساهمية، ننتقل إلى نوع آخر مهم جدًا وهو المواد الصلبة الفلزية، والتي تشكل معظم العناصر في الجدول الدوري. تتميز هذه المواد بخصائص فريدة تجعلها أساسية في حياتنا اليومية، من أسلاك الكهرباء إلى هياكل السيارات.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-4",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-3",
@@ -28,56 +27,52 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: المواد الصلبة البلورية الأيونية"
 };
 
-export default function LessonPartPage() {
-
-  return (
-    <LessonLayout {...lessonInfo}>
-        <div className="space-y-8">
-             <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                        تمتلك الفلزات عددًا قليلًا من إلكترونات التكافؤ وطاقة تأين منخفضة، مما يسهل فقدانها لهذه الإلكترونات. في الحالة الصلبة، تتجمع ذرات الفلز معًا وتتحرر إلكترونات التكافؤ من ذراتها لتكون "بحرًا" من الإلكترونات حرة الحركة يحيط بالأيونات الموجبة للفلز. هذا النموذج هو أساس فهم خصائص الفلزات.
-                    </p>
-                </CardContent>
-            </Card>
-            
-            <FlippableCard
-                cardTitle="الرابطة الفلزية"
-                cardIcon={<Atom className="h-6 w-6" />}
-                imageContent={
-                    <Image
-                        src="https://i.ibb.co/DPXZq5v8/image.jpg"
-                        alt="الرابطة الفلزية"
-                        width={200}
-                        height={200}
-                        className="rounded-lg object-contain h-48 w-auto"
-                        data-ai-hint="metallic bond sea of electrons"
-                    />
-                }
-            >
-                <div className="flex flex-col items-center justify-center p-2 text-center h-full">
-                    <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
-                    
-                </div>
-            </FlippableCard>
-
-            <FlippableCard
-                cardTitle="خصائص المواد الصلبة الفلزية"
-                cardIcon={<Layers className="h-6 w-6" />}
-            >
-                 <ul className="space-y-3 text-sm">
-                    <li>جسيماتها ذرات الفلزات التي تتجاذب بروابط فلزية قوية لذلك تكون صلبة جدا ودرجات انصهارها مرتفعة غالبا (باستثناء عناصر المجموعة الأولى والزئبق)</li>
-                    <li>توصل الكهرباء في الحالتين الصلبة والسائلة بسبب الإلكترونات حرة الحركة</li>
-                    <li>قابلة للطرق والسحب (تشكيل صفائح، أسلاك وقضبان) لأن صفوف الأيونات الموجبة تنزلق عند الطرق عليها وتبقى مترابطة بفعل تجاذبها مع الإلكترونات حرة الحركة</li>
-                    <li>قساوة عالية، درجات انصهار مرتفعة بسبب الغلاف الأخير للفلزات ضعيفة الارتباط بأنويتها</li>
-                    <li>لامعة</li>
-                 </ul>
-            </FlippableCard>
-        </div>
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
+    <div className="space-y-8">
+         <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p>
+                    تمتلك الفلزات عددًا قليلًا من إلكترونات التكافؤ وطاقة تأين منخفضة، مما يسهل فقدانها لهذه الإلكترونات. في الحالة الصلبة، تتجمع ذرات الفلز معًا وتتحرر إلكترونات التكافؤ من ذراتها لتكون "بحرًا" من الإلكترونات حرة الحركة يحيط بالأيونات الموجبة للفلز. هذا النموذج هو أساس فهم خصائص الفلزات.
+                </p>
+            </CardContent>
+        </Card>
         
+        <FlippableCard
+            cardTitle="الرابطة الفلزية"
+            cardIcon={<Atom className="h-6 w-6" />}
+            imageContent={
+                <Image
+                    src="https://i.ibb.co/DPXZq5v8/image.jpg"
+                    alt="الرابطة الفلزية"
+                    width={200}
+                    height={200}
+                    className="rounded-lg object-contain h-48 w-auto"
+                    data-ai-hint="metallic bond sea of electrons"
+                />
+            }
+        >
+            <div className="flex flex-col items-center justify-center p-2 text-center h-full">
+                <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
+                
+            </div>
+        </FlippableCard>
+
+        <FlippableCard
+            cardTitle="خصائص المواد الصلبة الفلزية"
+            cardIcon={<Layers className="h-6 w-6" />}
+        >
+             <ul className="space-y-3 text-sm">
+                <li>جسيماتها ذرات الفلزات التي تتجاذب بروابط فلزية قوية لذلك تكون صلبة جدا ودرجات انصهارها مرتفعة غالبا (باستثناء عناصر المجموعة الأولى والزئبق)</li>
+                <li>توصل الكهرباء في الحالتين الصلبة والسائلة بسبب الإلكترونات حرة الحركة</li>
+                <li>قابلة للطرق والسحب (تشكيل صفائح، أسلاك وقضبان) لأن صفوف الأيونات الموجبة تنزلق عند الطرق عليها وتبقى مترابطة بفعل تجاذبها مع الإلكترونات حرة الحركة</li>
+                <li>قساوة عالية، درجات انصهار مرتفعة بسبب الغلاف الأخير للفلزات ضعيفة الارتباط بأنويتها</li>
+                <li>لامعة</li>
+             </ul>
+        </FlippableCard>
+    
         <div className="space-y-4 mt-8">
           <div className="flex items-center gap-3">
             <Lightbulb className="h-7 w-7 text-yellow-400" />
@@ -90,7 +85,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question="لماذا تعتبر الفلزات موصلة جيدة للكهرباء؟"
                   options={[
                       "لأنها صلبة جدًا",
@@ -104,7 +99,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question="ما الذي يفسر قابلية الفلزات للطرق والسحب؟"
                   options={[
                       "ضعف الروابط بين ذراتها",
@@ -117,6 +112,20 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+    </div>
+);
+
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+    
+  return (
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }

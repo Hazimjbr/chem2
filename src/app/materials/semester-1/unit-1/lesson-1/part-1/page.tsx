@@ -32,7 +32,6 @@ const lessonInfo = {
   learningOutcomes: [
     "أصف الخصائص الفيزيائية للغازات وأفسرها باستخدام نظرية الحركة الجزيئية"
   ],
-  lessonContent: `<p>هل تساءلت يومًا كيف يملأ الهواء إطار السيارة أو كيف تنتشر رائحة العطر في أرجاء الغرفة؟ كل هذا يمكن تفسيره من خلال فهم سلوك الجزيئات في الحالة الغازية في هذا الدرس سنغوص في أعماق نظرية الحركة الجزيئية لنكتشف أسرار عالم الغازات</p>`,
   lessonId: "/materials/semester-1/unit-1/lesson-1/part-1",
   staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
   previousLesson: null,
@@ -193,8 +192,8 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       <div>
                           <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
                           <ul className="mt-2 space-y-2 mr-4 text-xs">
-                              <li><span className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</span> (هيدروجيني مثل HF {'>'} ثنائي قطب مثل NH3 {'>'} قوى لندن مثل Ne)</li>
-                              <li><span className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</span> (مثلًا Cl2 {'>'} F2) لأن زيادة الكتلة المولية تزيد من قوى لندن</li>
+                              <li><strong className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</strong> (هيدروجيني مثل HF {'>'} ثنائي قطب مثل NH3 {'>'} قوى لندن مثل Ne)</li>
+                              <li><strong className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</strong> (مثلًا Cl2 {'>'} F2) لأن زيادة الكتلة المولية تزيد من قوى لندن</li>
                           </ul>
                       </div>
                   </li>

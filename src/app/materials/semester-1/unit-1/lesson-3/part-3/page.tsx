@@ -19,7 +19,6 @@ const lessonInfo = {
         "أصف خصائص المواد الصلبة الشبكية التساهمية",
         "أقارن بين الألماس والجرافيت من حيث البنية والخصائص"
     ],
-    lessonContent: `<p>ننتقل الآن إلى أقوى أنواع المواد الصلبة على الإطلاق وهي المواد الصلبة الشبكية التساهمية التي تتميز بصلابتها الشديدة ودرجات انصهارها الخيالية فما سر هذه القوة دعنا نكتشف ذلك</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-3",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-2",
@@ -28,130 +27,126 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: المواد الصلبة البلورية الفلزية"
 };
 
-export default function LessonPartPage() {
-    
-  return (
-    <LessonLayout {...lessonInfo}>
-        <div className="space-y-8">
-             <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                        على عكس المواد الصلبة الجزيئية التي ترتبط جزيئاتها بقوى ضعيفة تتكون المواد الصلبة الشبكية التساهمية من شبكة عملاقة من الذرات المترابطة بروابط تساهمية قوية جدًا لا يوجد هنا جزيئات منفصلة بل البلورة كلها تعتبر جزيئًا واحدًا ضخمًا وهذا هو سر قوتها وصلابتها الاستثنائية
-                    </p>
-                </CardContent>
-            </Card>
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
+    <div className="space-y-8">
+         <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p>
+                    على عكس المواد الصلبة الجزيئية التي ترتبط جزيئاتها بقوى ضعيفة تتكون المواد الصلبة الشبكية التساهمية من شبكة عملاقة من الذرات المترابطة بروابط تساهمية قوية جدًا لا يوجد هنا جزيئات منفصلة بل البلورة كلها تعتبر جزيئًا واحدًا ضخمًا وهذا هو سر قوتها وصلابتها الاستثنائية
+                </p>
+            </CardContent>
+        </Card>
 
+        <FlippableCard
+            cardTitle="خصائص المواد الصلبة الشبكية التساهمية"
+            cardIcon={<Layers className="h-6 w-6" />}
+        >
+             <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-3">
+                    <span className="font-bold text-primary">1</span>
+                    <p><strong>جسيماتها ذرات</strong> ترتبط بروابط تساهمية قوية جدًا</p>
+                </li>
+                <li className="flex items-start gap-3">
+                     <span className="font-bold text-primary">2</span>
+                    <p><strong>شديدة الصلابة</strong> بسبب قوة الروابط التساهمية التي تشكل شبكة ثلاثية الأبعاد</p>
+                </li>
+                 <li className="flex items-start gap-3">
+                     <span className="font-bold text-primary">3</span>
+                    <p><strong>درجات انصهارها وغليانها مرتفعة جدًا</strong> وتحتاج طاقة هائلة للتغلب على الروابط</p>
+                </li>
+                 <li className="flex items-start gap-3">
+                     <span className="font-bold text-primary">4</span>
+                    <p><strong>غير موصلة للكهرباء</strong> بشكل عام لعدم وجود إلكترونات حرة (باستثناء الجرافيت)</p>
+                </li>
+                <li>
+                    <p>ظاهرة التآصل: وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين</p>
+                </li>
+             </ul>
+        </FlippableCard>
+
+        <div className="grid md:grid-cols-2 gap-6">
             <FlippableCard
-                cardTitle="خصائص المواد الصلبة الشبكية التساهمية"
-                cardIcon={<Layers className="h-6 w-6" />}
-            >
-                 <ul className="space-y-3 text-sm">
-                    <li className="flex items-start gap-3">
-                        <span className="font-bold text-primary">1</span>
-                        <p><strong>جسيماتها ذرات</strong> ترتبط بروابط تساهمية قوية جدًا</p>
-                    </li>
-                    <li className="flex items-start gap-3">
-                         <span className="font-bold text-primary">2</span>
-                        <p><strong>شديدة الصلابة</strong> بسبب قوة الروابط التساهمية التي تشكل شبكة ثلاثية الأبعاد</p>
-                    </li>
-                     <li className="flex items-start gap-3">
-                         <span className="font-bold text-primary">3</span>
-                        <p><strong>درجات انصهارها وغليانها مرتفعة جدًا</strong> وتحتاج طاقة هائلة للتغلب على الروابط</p>
-                    </li>
-                     <li className="flex items-start gap-3">
-                         <span className="font-bold text-primary">4</span>
-                        <p><strong>غير موصلة للكهرباء</strong> بشكل عام لعدم وجود إلكترونات حرة (باستثناء الجرافيت)</p>
-                    </li>
-                    <li>
-                        <p>ظاهرة التآصل: وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين</p>
-                    </li>
-                 </ul>
+                cardTitle="متآصلات الكربون: الألماس"
+                cardIcon={<Diamond className="h-6 w-6" />}
+                imageContent={
+                    <Image
+                        src="https://i.ibb.co/YTDHLDq9/image.jpg"
+                        alt="بنية الألماس"
+                        width={180}
+                        height={180}
+                        className="rounded-lg border bg-white object-contain"
+                        data-ai-hint="diamond crystal lattice"
+                    />
+                }
+             >
+                <ul className="space-y-2 text-sm">
+                    <li>‌أ) ترتبط كل ذرة كربون تساهميا بأربع ذرات كربون أخرى في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
+                    <li>‌ب) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
+                    <li>‌ج) أقسى المواد الطبيعية لذلك يستخدم في صناعة أدوات القطع والقص</li>
+                </ul>
             </FlippableCard>
 
-            <div className="grid md:grid-cols-2 gap-6">
-                <FlippableCard
-                    cardTitle="متآصلات الكربون: الألماس"
-                    cardIcon={<Diamond className="h-6 w-6" />}
-                    imageContent={
-                        <Image
-                            src="https://i.ibb.co/YTDHLDq9/image.jpg"
-                            alt="بنية الألماس"
-                            width={180}
-                            height={180}
-                            className="rounded-lg border bg-white object-contain"
-                            data-ai-hint="diamond crystal lattice"
-                        />
-                    }
-                 >
-                    <ul className="space-y-2 text-sm">
-                        <li>‌أ) ترتبط كل ذرة كربون تساهميا بأربع ذرات كربون أخرى في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
-                        <li>‌ب) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
-                        <li>‌ج) أقسى المواد الطبيعية لذلك يستخدم في صناعة أدوات القطع والقص</li>
-                    </ul>
-                </FlippableCard>
-
-                <FlippableCard
-                    cardTitle="متآصلات الكربون: الجرافيت"
-                    cardIcon={<Diamond className="h-6 w-6" />}
-                     imageContent={
-                        <Image
-                            src="https://i.ibb.co/hxDpdff6/image.png"
-                            alt="بنية الجرافيت"
-                            width={200}
-                            height={200}
-                            className="rounded-lg border bg-white object-contain"
-                            data-ai-hint="graphite layers structure"
-                        />
-                    }
-                >
-                    <div className="space-y-3 text-sm">
-                        <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة</p>
-                        <div className="text-sm">
-                             <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
-                             <ol className="list-decimal mr-6 mt-2 space-y-1 text-sm">
-                                <li>موصلا للكهرباء فيستخدم كأقطاب في الخلايا الغلفانية والتحليل الكهربائي</li>
-                                <li>سهل الانزلاق (انزلاق الطبقات فوق بعضها) فيستخدم في صناعة أقلام الرصاص</li>
-                                <li>هشا جدا</li>
-                            </ol>
-                        </div>
-                    </div>
-                </FlippableCard>
-            </div>
-            
-             <FlippableCard
-                cardTitle="الكوارتز"
-                cardIcon={<Cpu className="h-6 w-6" />}
-                imageContent={
-                     <Image
-                        src="https://i.ibb.co/4gWnRHKQ/image.png"
-                        alt="بنية ثاني أكسيد السيليكون"
+            <FlippableCard
+                cardTitle="متآصلات الكربون: الجرافيت"
+                cardIcon={<Diamond className="h-6 w-6" />}
+                 imageContent={
+                    <Image
+                        src="https://i.ibb.co/hxDpdff6/image.png"
+                        alt="بنية الجرافيت"
                         width={200}
                         height={200}
                         className="rounded-lg border bg-white object-contain"
-                        data-ai-hint="silicon dioxide lattice"
+                        data-ai-hint="graphite layers structure"
                     />
                 }
             >
-               <CardContent className="p-4">
-                  <div>
-                    <h4 className="font-semibold text-accent">الكوارتز (SiO2) السيليكا أو ثاني أكسيد السيليكون مركب شفاف</h4>
-                     <ul className="space-y-1 text-sm mt-1">
-                        <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
-                        <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
-                        <li>‌ج) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
-                        <li>‌د) قاس جدا (أقل من الماس)</li>
-                    </ul>
-                  </div>
-                  <div className="border-t pt-2 mt-2">
-                     <p className="text-sm font-semibold">أمثلة إضافية: السيلكون Si / كبريتيد السيلكون SiC</p>
-                  </div>
-               </CardContent>
+                <div className="space-y-3 text-sm">
+                    <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة</p>
+                    <div className="text-sm">
+                         <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
+                         <ol className="list-decimal mr-6 mt-2 space-y-1 text-sm">
+                            <li>موصلا للكهرباء فيستخدم كأقطاب في الخلايا الغلفانية والتحليل الكهربائي</li>
+                            <li>سهل الانزلاق (انزلاق الطبقات فوق بعضها) فيستخدم في صناعة أقلام الرصاص</li>
+                            <li>هشا جدا</li>
+                        </ol>
+                    </div>
+                </div>
             </FlippableCard>
         </div>
         
+         <FlippableCard
+            cardTitle="الكوارتز"
+            cardIcon={<Cpu className="h-6 w-6" />}
+            imageContent={
+                 <Image
+                    src="https://i.ibb.co/4gWnRHKQ/image.png"
+                    alt="بنية ثاني أكسيد السيليكون"
+                    width={200}
+                    height={200}
+                    className="rounded-lg border bg-white object-contain"
+                    data-ai-hint="silicon dioxide lattice"
+                />
+            }
+        >
+           <CardContent className="p-4">
+              <div>
+                <h4 className="font-semibold text-accent">الكوارتز (SiO2) السيليكا أو ثاني أكسيد السيليكون مركب شفاف</h4>
+                 <ul className="space-y-1 text-sm mt-1">
+                    <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
+                    <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
+                    <li>‌ج) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
+                    <li>‌د) قاس جدا (أقل من الماس)</li>
+                </ul>
+              </div>
+              <div className="border-t pt-2 mt-2">
+                 <p className="text-sm font-semibold">أمثلة إضافية: السيلكون Si / كبريتيد السيلكون SiC</p>
+              </div>
+           </CardContent>
+        </FlippableCard>
+    
         <div className="space-y-4 mt-8">
           <div className="flex items-center gap-3">
             <Lightbulb className="h-7 w-7 text-yellow-400" />
@@ -164,7 +159,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question="لماذا يعتبر الألماس شديد الصلابة بينما الجرافيت هش"
                   options={[
                       "لأن الألماس يتكون من ذرات أكبر",
@@ -178,7 +173,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question="ما هو السبب الرئيسي لكون الجرافيت موصلًا للكهرباء بينما الألماس عازل"
                   options={[
                       "لأن الجرافيت أسود اللون",
@@ -191,6 +186,20 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+    </div>
+);
+
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+    
+  return (
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }

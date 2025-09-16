@@ -20,7 +20,6 @@ const lessonInfo = {
         "أصف العلاقة بين حجم الغاز وعدد مولاته.",
         "أستخدم مبدأ أفوجادرو في الحسابات الكيميائية المتعلقة بالغازات."
     ],
-    lessonContent: `<p>يُعَدُّ هذا القانون من أهم قوانين الغازات، حيث يربط بين كمية الغاز (التي يصعب قياسها مباشرة) وحجمه (الذي يسهل قياسه). اكتشف هذا المبدأ العالم الإيطالي أميديو أفوجادرو.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-7",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-6",
@@ -29,156 +28,151 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: قانون الغاز المثالي"
 };
 
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
+    <div className="space-y-8">
+        <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p>
+                    القوانين السابقة (بويل، شارل، جاي-لوساك) تعاملت مع كمية ثابتة من الغاز. لكن ماذا يحدث إذا تغيرت كمية الغاز نفسها، كما في حالة نفخ بالون أو تسرب الهواء من إطار السيارة؟ هنا يأتي دور قانون أفوجادرو الذي يربط بين حجم الغاز وكميته.
+                </p>
+            </CardContent>
+        </Card>
 
-export default function LessonPartPage() {
-
-  return (
-    <LessonLayout {...lessonInfo}>
-        <div className="space-y-8">
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                        القوانين السابقة (بويل، شارل، جاي-لوساك) تعاملت مع كمية ثابتة من الغاز. لكن ماذا يحدث إذا تغيرت كمية الغاز نفسها، كما في حالة نفخ بالون أو تسرب الهواء من إطار السيارة؟ هنا يأتي دور قانون أفوجادرو الذي يربط بين حجم الغاز وكميته.
-                    </p>
-                </CardContent>
-            </Card>
-
-             <div className="grid md:grid-cols-2 gap-6">
-                <FlippableCard
-                    cardTitle="نص قانون أفوجادرو"
-                    cardIcon={<BookCopy className="h-6 w-6" />}
-                >
-                    <div className="space-y-3 text-sm">
-                        <p>يمكن التعبير عن قانون أفوجادرو بعدة طرق مترابطة:</p>
-                        <ul className="list-disc mr-4 space-y-2">
-                        <li>"تحتوي الحجوم المتساوية من الغازات المختلفة على نفس العدد من الجزيئات عند نفس الظروف من الضغط ودرجة الحرارة."</li>
-                        <li>"يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الضغط والحرارة."</li>
-                        <li>"يتناسب ضغط الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الحجم والحرارة."</li>
-                        </ul>
-                    </div>
-                </FlippableCard>
-
-                <FlippableCard
-                    cardTitle="العلاقة الرياضية"
-                    cardIcon={<Cpu className="h-6 w-6" />}
-                >
-                <div className="space-y-4">
-                    <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي:</p>
-                    <div className="text-left" dir="ltr"><BlockMath math="V \propto n" /></div>
-                    <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k) لتصبح المعادلة:</p>
-                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V}{n} = k" /></div>
-                    <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
-                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
-                    <p className="text-sm text-muted-foreground">
-                        <span>حيث </span>
-                        <span dir="ltr" className="inline-block"><InlineMath math="V_1, n_1" /></span>
-                        <span> هما الحجم وعدد المولات الابتدائيان، و </span>
-                        <span dir="ltr" className="inline-block"><InlineMath math="V_2, n_2" /></span>
-                        <span> هما الحجم وعدد المولات النهائيان.</span>
-                    </p>
+         <div className="grid md:grid-cols-2 gap-6">
+            <FlippableCard
+                cardTitle="نص قانون أفوجادرو"
+                cardIcon={<BookCopy className="h-6 w-6" />}
+            >
+                <div className="space-y-3 text-sm">
+                    <p>يمكن التعبير عن قانون أفوجادرو بعدة طرق مترابطة:</p>
+                    <ul className="list-disc mr-4 space-y-2">
+                    <li>"تحتوي الحجوم المتساوية من الغازات المختلفة على نفس العدد من الجزيئات عند نفس الظروف من الضغط ودرجة الحرارة."</li>
+                    <li>"يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الضغط والحرارة."</li>
+                    <li>"يتناسب ضغط الغاز تناسبًا طرديًا مع عدد مولاته عند ثبات الحجم والحرارة."</li>
+                    </ul>
                 </div>
-                </FlippableCard>
-            </div>
-            
-             <Card>
-                <CardHeader>
-                    <CardTitle>مثال محلول</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="mb-4">
-                        <span>عينة من غاز النيتروجين (</span>
-                        <span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>
-                        <span>) حجمها </span>
-                        <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span>
-                        <span> تحتوي على </span>
-                        <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
-                        <span>. ما حجم العينة إذا أضيف إليها </span>
-                        <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
-                        <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
-                    </p>
-                    <div className="bg-muted/50 p-4 rounded-lg space-y-3">
-                        <div>
-                            <p><strong className="text-accent">المعطيات:</strong></p>
-                            <div className='grid grid-cols-2 gap-x-4 text-sm text-left' dir="ltr">
-                                <p><InlineMath math="V_1 = 5.0L" /></p>
-                                <p><InlineMath math="V_2 = ?" /></p>
-                                <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
-                                <p><InlineMath math="n_2 = ?" /></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p><strong className="text-accent">الحل:</strong></p>
-                            <ol className="list-decimal mr-6 text-sm space-y-2">
-                                <li>
-                                    <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>):</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
-                                </li>
-                                <li>
-                                    <span>نكتب قانون أفوجادرو.</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
-                                </li>
-                                <li>
-                                    <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span>.
-                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
-                                </li>
-                                <li>
-                                    <span>نعوض القيم.</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
-                                </li>
-                                <li>
-                                    <span>نحسب الناتج.</span>
-                                    <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
+            </FlippableCard>
 
-            <div className="grid md:grid-cols-2 gap-6 items-start">
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                       <p className="text-sm">
-                            <span>من أهم تطبيقات قانون أفوجادرو هو مفهوم </span>
-                            <strong className="font-bold">الحجم المولي</strong>
-                            <span>، وهو الحجم الذي يشغله </span>
-                            <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{ mol}" /></span>
-                            <span> من أي غاز في الظروف المعيارية (</span>
-                            <span dir="ltr" style={{display: "inline-block"}}>STP: 0°C</span>
-                            <span> و </span>
-                            <span dir="ltr" style={{display: "inline-block"}}>1 atm</span>
-                            <span>).</span>
-                        </p>
-                        <div className="text-center bg-primary/10 p-4 rounded-lg">
-                            <p className="font-bold text-lg">
-                                <span>حجم </span>
-                                <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{ mol}" /></span>
-                                <span> من أي غاز عند </span>
-                                <span dir="ltr" style={{display: "inline-block"}}>STP</span>
-                            </p>
-                            <p className="text-4xl font-mono font-bold text-primary my-2" dir="ltr">22.4 L</p>
-                        </div>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
-                            <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل n)
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <Diagram />
-                    </CardContent>
-                </Card>
+            <FlippableCard
+                cardTitle="العلاقة الرياضية"
+                cardIcon={<Cpu className="h-6 w-6" />}
+            >
+            <div className="space-y-4">
+                <p>يمكن التعبير عن العلاقة الطردية بين الحجم (V) وعدد المولات (n) رياضيًا كالتالي:</p>
+                <div className="text-left" dir="ltr"><BlockMath math="V \propto n" /></div>
+                <p>لتحويل التناسب إلى مساواة، نستخدم ثابتًا (k) لتصبح المعادلة:</p>
+                <div className="text-left" dir="ltr"><BlockMath math="\frac{V}{n} = k" /></div>
+                <p>ويمكن استخدام هذه العلاقة لمقارنة حالتين مختلفتين للغاز:</p>
+                <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
+                <p className="text-sm text-muted-foreground">
+                    <span>حيث </span>
+                    <span dir="ltr" className="inline-block"><InlineMath math="V_1, n_1" /></span>
+                    <span> هما الحجم وعدد المولات الابتدائيان، و </span>
+                    <span dir="ltr" className="inline-block"><InlineMath math="V_2, n_2" /></span>
+                    <span> هما الحجم وعدد المولات النهائيان.</span>
+                </p>
             </div>
+            </FlippableCard>
         </div>
         
+         <Card>
+            <CardHeader>
+                <CardTitle>مثال محلول</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="mb-4">
+                    <span>عينة من غاز النيتروجين (</span>
+                    <span dir="ltr" className="inline-block"><InlineMath math="N_2" /></span>
+                    <span>) حجمها </span>
+                    <span dir="ltr" className="inline-block"><InlineMath math="5.0L" /></span>
+                    <span> تحتوي على </span>
+                    <span dir="ltr" className="inline-block"><InlineMath math="0.5\text{mol}" /></span>
+                    <span>. ما حجم العينة إذا أضيف إليها </span>
+                    <span dir="ltr" className="inline-block"><InlineMath math="0.25\text{mol}" /></span>
+                    <span> من الغاز عند نفس الظروف من الحرارة والضغط؟</span>
+                </p>
+                <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                    <div>
+                        <p><strong className="text-accent">المعطيات:</strong></p>
+                        <div className='grid grid-cols-2 gap-x-4 text-sm text-left' dir="ltr">
+                            <p><InlineMath math="V_1 = 5.0L" /></p>
+                            <p><InlineMath math="V_2 = ?" /></p>
+                            <p><InlineMath math="n_1 = 0.5\text{mol}" /></p>
+                            <p><InlineMath math="n_2 = ?" /></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p><strong className="text-accent">الحل:</strong></p>
+                        <ol className="list-decimal mr-6 text-sm space-y-2">
+                            <li>
+                                <span>نحسب عدد المولات النهائي (</span><span dir="ltr"><InlineMath math="n_2" /></span><span>):</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="n_2 = n_1 + n_{\text{added}} = 0.5\text{mol} + 0.25\text{mol} = 0.75\text{mol}" /></div>
+                            </li>
+                            <li>
+                                <span>نكتب قانون أفوجادرو.</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="\frac{V_1}{n_1} = \frac{V_2}{n_2}" /></div>
+                            </li>
+                            <li>
+                                <span>نعيد ترتيب المعادلة لحل </span><span dir="ltr"><InlineMath math="V_2" /></span>.
+                                <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{V_1 n_2}{n_1}" /></div>
+                            </li>
+                            <li>
+                                <span>نعوض القيم.</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="V_2 = \frac{(5.0\text{L}) \cdot (0.75\text{mol})}{0.5\text{mol}}" /></div>
+                            </li>
+                            <li>
+                                <span>نحسب الناتج.</span>
+                                <div className="text-left" dir="ltr"><BlockMath math="V_2 = 7.5\text{L}" /></div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+
+        <div className="grid md:grid-cols-2 gap-6 items-start">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold"><Pipette className="h-5 w-5 text-primary" /> الحجم المولي للغازات</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                   <p className="text-sm">
+                        <span>من أهم تطبيقات قانون أفوجادرو هو مفهوم </span>
+                        <strong className="font-bold">الحجم المولي</strong>
+                        <span>، وهو الحجم الذي يشغله </span>
+                        <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{ mol}" /></span>
+                        <span> من أي غاز في الظروف المعيارية (</span>
+                        <span dir="ltr" style={{display: "inline-block"}}>STP: 0°C</span>
+                        <span> و </span>
+                        <span dir="ltr" style={{display: "inline-block"}}>1 atm</span>
+                        <span>).</span>
+                    </p>
+                    <div className="text-center bg-primary/10 p-4 rounded-lg">
+                        <p className="font-bold text-lg">
+                            <span>حجم </span>
+                            <span dir="ltr" style={{display: "inline-block"}}><InlineMath math="1\text{ mol}" /></span>
+                            <span> من أي غاز عند </span>
+                            <span dir="ltr" style={{display: "inline-block"}}>STP</span>
+                        </p>
+                        <p className="text-4xl font-mono font-bold text-primary my-2" dir="ltr">22.4 L</p>
+                    </div>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center justify-center gap-2 text-base font-semibold">
+                        <LineChart className="h-5 w-5 text-primary" /> العلاقة البيانية (V مقابل n)
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Diagram />
+                </CardContent>
+            </Card>
+        </div>
+    
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Lightbulb className="h-7 w-7 text-yellow-400" />
@@ -191,7 +185,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question={<>
                     <span>عينة من الغاز A حجمها</span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
@@ -213,7 +207,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question={<>
                     <span>عينة من الغاز A حجمها</span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
@@ -234,6 +228,20 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+    </div>
+);
+
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+
+  return (
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }

@@ -18,7 +18,6 @@ const lessonInfo = {
         "أشتق قانون الغاز المثالي من قوانين الغازات الأخرى.",
         "أحل مسائل حسابية باستخدام قانون الغاز المثالي."
     ],
-    lessonContent: `<p>يُعتبر قانون الغاز المثالي تتويجًا لقوانين الغازات التي درسناها (بويل، شارل، أفوجادرو)، حيث يربط جميع المتغيرات الأربعة (الضغط، الحجم، الحرارة، وكمية الغاز) في معادلة واحدة شاملة.</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-1/part-8",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-1/part-7",
@@ -27,58 +26,54 @@ const lessonInfo = {
     nextLessonTitle: "الجزء التالي: قانون دالتون"
 };
 
-export default function LessonPartPage() {
-    
-  return (
-    <LessonLayout {...lessonInfo}>
-        <div className="space-y-8">
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                        بعد أن درسنا كل متغير من متغيرات الغازات على حدة، يجمع قانون الغاز المثالي بين القوانين السابقة في علاقة واحدة شاملة تربط بين الحجم (V)، الضغط (P)، درجة الحرارة (T)، وعدد المولات (n). هذا القانون هو حجر الزاوية في كيمياء الغازات، حيث يسمح بحساب أي متغير من المتغيرات الأربعة إذا عُرفت المتغيرات الثلاثة الأخرى.
-                    </p>
-                </CardContent>
-            </Card>
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
+    <div className="space-y-8">
+        <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p>
+                    بعد أن درسنا كل متغير من متغيرات الغازات على حدة، يجمع قانون الغاز المثالي بين القوانين السابقة في علاقة واحدة شاملة تربط بين الحجم (V)، الضغط (P)، درجة الحرارة (T)، وعدد المولات (n). هذا القانون هو حجر الزاوية في كيمياء الغازات، حيث يسمح بحساب أي متغير من المتغيرات الأربعة إذا عُرفت المتغيرات الثلاثة الأخرى.
+                </p>
+            </CardContent>
+        </Card>
 
-             <FlippableCard
-                cardTitle="قانون الغاز المثالي"
-                cardIcon={<BookCopy className="h-6 w-6" />}
-            >
-                 <div className="space-y-3">
-                    <p className='text-sm'>يطبق على الغاز المثالي، وعلى الغاز الحقيقي بفرض أنه يسلك سلوك الغاز المثالي.</p>
-                    <p className='text-sm'>العلاقة الرياضية تربط المتغيرات الأربعة بثابت يسمى ثابت الغاز العام (R).</p>
-                    <div className='text-center p-2 bg-muted/50 rounded-lg'>
-                        <p className="font-bold text-accent">قيمة ثابت الغاز العام (R)</p>
-                        <p dir="ltr" className="font-mono text-lg">R = 0.082 L·atm/mol·K</p>
-                    </div>
+         <FlippableCard
+            cardTitle="قانون الغاز المثالي"
+            cardIcon={<BookCopy className="h-6 w-6" />}
+        >
+             <div className="space-y-3">
+                <p className='text-sm'>يطبق على الغاز المثالي، وعلى الغاز الحقيقي بفرض أنه يسلك سلوك الغاز المثالي.</p>
+                <p className='text-sm'>العلاقة الرياضية تربط المتغيرات الأربعة بثابت يسمى ثابت الغاز العام (R).</p>
+                <div className='text-center p-2 bg-muted/50 rounded-lg'>
+                    <p className="font-bold text-accent">قيمة ثابت الغاز العام (R)</p>
+                    <p dir="ltr" className="font-mono text-lg">R = 0.082 L·atm/mol·K</p>
                 </div>
-            </FlippableCard>
+            </div>
+        </FlippableCard>
 
-             <FlippableCard
-                cardTitle="العلاقة الرياضية والصيغ المشتقة"
-                cardIcon={<Cpu className="h-6 w-6" />}
-            >
-               <div className="space-y-4 text-center">
-                  <p>الصيغة الأساسية لقانون الغاز المثالي:</p>
-                  <div dir="ltr"><BlockMath math="PV = nRT" /></div>
-                  <p>يمكن اشتقاق صيغ أخرى من هذه العلاقة:</p>
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" dir="ltr">
-                        <div className="p-2 bg-background rounded">
-                            <p>بدلالة الكتلة (m) والكتلة المولية (Mr)</p>
-                            <BlockMath math="PV = \frac{m}{Mr}RT" />
-                        </div>
-                        <div className="p-2 bg-background rounded">
-                             <p>بدلالة الكثافة (d)</p>
-                             <BlockMath math="P \cdot Mr = dRT" />
-                        </div>
-                   </div>
-              </div>
-            </FlippableCard>
-        </div>
-        
+         <FlippableCard
+            cardTitle="العلاقة الرياضية والصيغ المشتقة"
+            cardIcon={<Cpu className="h-6 w-6" />}
+        >
+           <div className="space-y-4 text-center">
+              <p>الصيغة الأساسية لقانون الغاز المثالي:</p>
+              <div dir="ltr"><BlockMath math="PV = nRT" /></div>
+              <p>يمكن اشتقاق صيغ أخرى من هذه العلاقة:</p>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" dir="ltr">
+                    <div className="p-2 bg-background rounded">
+                        <p>بدلالة الكتلة (m) والكتلة المولية (Mr)</p>
+                        <BlockMath math="PV = \frac{m}{Mr}RT" />
+                    </div>
+                    <div className="p-2 bg-background rounded">
+                         <p>بدلالة الكثافة (d)</p>
+                         <BlockMath math="P \cdot Mr = dRT" />
+                    </div>
+               </div>
+          </div>
+        </FlippableCard>
+    
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Lightbulb className="h-7 w-7 text-yellow-400" />
@@ -91,7 +86,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question={<><span>عينة من غاز تحتوي </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2\text{mol}"/></span><span>، حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="2000\text{ml}"/></span><span>، حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20^\circ\text{C}"/></span><span>، فإن ضغطها يساوي:</span></>}
                   options={[
                       "24atm",
@@ -105,7 +100,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question={<><span>عينة من غاز الهيليوم كتلتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="20\text{g}"/></span><span>، حجمها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="3\text{L}"/></span><span>، حرارتها </span><span dir="ltr" className='inline-block mx-1'><InlineMath math="27^\circ\text{C}"/></span><span>، فإن ضغطها يساوي:</span></>}
                   options={[
                       "41atm",
@@ -118,6 +113,20 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+    </div>
+);
+
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+    
+  return (
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }

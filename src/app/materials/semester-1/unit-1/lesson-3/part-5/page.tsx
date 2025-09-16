@@ -19,7 +19,6 @@ const lessonInfo = {
         "أصف الرابطة الأيونية وخصائص المواد الصلبة الأيونية",
         "أفسر سبب هشاشة المواد الأيونية وقدرة مصاهيرها ومحاليلها على توصيل الكهرباء"
     ],
-    lessonContent: `<p>نصل الآن إلى نوع آخر من المواد الصلبة البلورية وهي المواد الأيونية تتشكل هذه المواد عادة من تفاعل الفلزات مع اللافلزات حيث تنتقل الإلكترونات لتكوين أيونات موجبة وسالبة ترتبط بقوى تجاذب كهربائي قوية جدًا</p>`,
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-5",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
     previousLesson: "/materials/semester-1/unit-1/lesson-3/part-4",
@@ -28,60 +27,56 @@ const lessonInfo = {
     nextLessonTitle: "الإثراء والتوسع"
 };
 
-export default function LessonPartPage() {
-    
-  return (
-    <LessonLayout {...lessonInfo}>
-        <div className="space-y-8">
-             <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                       تنشأ المواد الأيونية من قوة التجاذب الكهروستاتيكي الكبيرة بين الأيونات ذات الشحنات المختلفة هذا التجاذب القوي ينظم الأيونات في بنية بلورية ثلاثية الأبعاد ومنتظمة حيث يكون كل أيون موجب محاطًا بأيونات سالبة والعكس صحيح هذه البنية المتراصة والقوية هي المسؤولة عن الخصائص المميزة للمواد الأيونية
-                    </p>
-                </CardContent>
-            </Card>
-            
-            <FlippableCard
-                cardTitle="الرابطة الأيونية"
-                cardIcon={<Atom className="h-6 w-6" />}
-                imageContent={
-                    <Image
-                        src="https://i.ibb.co/rGJN0yG8/1.jpg"
-                        alt="الرابطة الأيونية"
-                        width={200}
-                        height={133}
-                        className="rounded-lg object-contain h-48 w-auto"
-                        data-ai-hint="ionic bond NaCl"
-                    />
-                }
-            >
-                <div className="flex flex-col items-center justify-center p-2 text-center h-full">
-                    <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات مختلفة الشحنة</p>
-                    <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl, CaO</p>
-                </div>
-            </FlippableCard>
-
-            <FlippableCard
-                cardTitle="خصائص المواد الصلبة الأيونية"
-                cardIcon={<Layers className="h-6 w-6" />}
-                imageContent={
-                    <Image src="https://i.ibb.co/4wYqgx2v/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-full w-auto object-contain p-2" />
-                }
-            >
-                 <ul className="space-y-3 text-sm p-4">
-                    <li><strong className="text-accent">صلبة جدا</strong> بسبب قوة الرابطة الأيونية</li>
-                    <li><strong className="text-accent">درجات انصهارها مرتفعة</strong> تتطلب طاقة عالية للتغلب على قوى التجاذب في الشبكة البلورية</li>
-                    <li><strong className="text-accent">هشة</strong> تتكسر عند الطرق بسبب انزلاق الطبقات وتنافر الأيونات المتشابهة</li>
-                    <li><strong className="text-accent">لا توصل الكهرباء (صلبة)</strong> لأن أيوناتها مقيدة الحركة</li>
-                    <li><strong className="text-accent">توصل الكهرباء (محلول/مصهور)</strong> لأن أيوناتها تصبح حرة الحركة</li>
-                    <li className="border-t pt-2"><strong className="text-primary">تزداد قوة الرابطة الأيونية بازدياد شحنة الأيونات وعددها</strong></li>
-                 </ul>
-            </FlippableCard>
-        </div>
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
+    <div className="space-y-8">
+         <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p>
+                   تنشأ المواد الأيونية من قوة التجاذب الكهروستاتيكي الكبيرة بين الأيونات ذات الشحنات المختلفة هذا التجاذب القوي ينظم الأيونات في بنية بلورية ثلاثية الأبعاد ومنتظمة حيث يكون كل أيون موجب محاطًا بأيونات سالبة والعكس صحيح هذه البنية المتراصة والقوية هي المسؤولة عن الخصائص المميزة للمواد الأيونية
+                </p>
+            </CardContent>
+        </Card>
         
+        <FlippableCard
+            cardTitle="الرابطة الأيونية"
+            cardIcon={<Atom className="h-6 w-6" />}
+            imageContent={
+                <Image
+                    src="https://i.ibb.co/rGJN0yG8/1.jpg"
+                    alt="الرابطة الأيونية"
+                    width={200}
+                    height={133}
+                    className="rounded-lg object-contain h-48 w-auto"
+                    data-ai-hint="ionic bond NaCl"
+                />
+            }
+        >
+            <div className="flex flex-col items-center justify-center p-2 text-center h-full">
+                <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات مختلفة الشحنة</p>
+                <p className="text-foreground text-sm">تنشأ من تفاعل فلز مع لافلز مثل: KCl, CaO</p>
+            </div>
+        </FlippableCard>
+
+        <FlippableCard
+            cardTitle="خصائص المواد الصلبة الأيونية"
+            cardIcon={<Layers className="h-6 w-6" />}
+            imageContent={
+                <Image src="https://i.ibb.co/4wYqgx2v/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-full w-auto object-contain p-2" />
+            }
+        >
+             <ul className="space-y-3 text-sm p-4">
+                <li><strong className="text-accent">صلبة جدا</strong> بسبب قوة الرابطة الأيونية</li>
+                <li><strong className="text-accent">درجات انصهارها مرتفعة</strong> تتطلب طاقة عالية للتغلب على قوى التجاذب في الشبكة البلورية</li>
+                <li><strong className="text-accent">هشة</strong> تتكسر عند الطرق بسبب انزلاق الطبقات وتنافر الأيونات المتشابهة</li>
+                <li><strong className="text-accent">لا توصل الكهرباء (صلبة)</strong> لأن أيوناتها مقيدة الحركة</li>
+                <li><strong className="text-accent">توصل الكهرباء (محلول/مصهور)</strong> لأن أيوناتها تصبح حرة الحركة</li>
+                <li className="border-t pt-2"><strong className="text-primary">تزداد قوة الرابطة الأيونية بازدياد شحنة الأيونات وعددها</strong></li>
+             </ul>
+        </FlippableCard>
+    
         <div className="space-y-4 mt-8">
           <div className="flex items-center gap-3">
             <Lightbulb className="h-7 w-7 text-yellow-400" />
@@ -94,7 +89,7 @@ export default function LessonPartPage() {
               <InteractiveQuestionCard 
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question="لماذا لا توصل بلورة ملح الطعام (NaCl) الكهرباء في حالتها الصلبة"
                   options={[
                       "لأنها لا تحتوي على أيونات",
@@ -108,7 +103,7 @@ export default function LessonPartPage() {
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
-                  onCorrect={() => {}}
+                  onCorrect={onCorrect}
                   question={<><span>أي المركبين التاليين له درجة انصهار أعلى: KCl أم CaO</span></>}
                   options={[
                       "KCl",
@@ -121,6 +116,20 @@ export default function LessonPartPage() {
               />
           </div>
         </div>
+    </div>
+);
+
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+    
+  return (
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }
