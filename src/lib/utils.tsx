@@ -13,12 +13,13 @@ export function cn(...inputs: ClassValue[]) {
 
 // Helper function to map lessonId (which is a URL path) to a human-readable title
 export const getLessonTitle = (lessonId: string): string => {
+    // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
     if (!lessonId) return "درس غير معروف";
     
-    const pathParts = lessonId.split('/').filter(p => p); 
+    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
 
     const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
-    if (!unitIdentifier) return lessonId; 
+    if (!unitIdentifier) return lessonId; // Return raw path if no unit found
 
     const unit = units.find(u => u.id === unitIdentifier);
     if (!unit) return lessonId;
@@ -44,6 +45,7 @@ export const getLessonTitle = (lessonId: string): string => {
         const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
         const section = unit.lessons.find(l => l.sectionNum === sectionNum);
          if (section) {
+            // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
             if (section.title.includes(unit.title.split(':')[0])) {
                 return section.title;
             }
@@ -51,7 +53,7 @@ export const getLessonTitle = (lessonId: string): string => {
         }
     }
 
-    return unit.title;
+    return unit.title; // Fallback to unit title
 }
 
 
@@ -135,3 +137,5 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
     
     return null;
 }
+
+    

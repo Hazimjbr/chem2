@@ -65,7 +65,7 @@ const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
     }
     const correctAnswerValue = question.options[question.correctAnswerIndex];
     const shuffledOptions = shuffleArray(question.options);
-    const newCorrectAnswerIndex = shuffledOptions.findIndex(opt => opt === correctAnswerValue);
+    const newCorrectAnswerIndex = shuffledOptions.findIndex(optValue => optValue === correctAnswerValue);
     return { ...question, options: shuffledOptions, correctAnswerIndex: newCorrectAnswerIndex };
 };
 
@@ -504,7 +504,5 @@ export default function Quiz({ lessonContent, staticQuizzes, lessonId }: QuizPro
     </Card>
   );
 }
-
-    
 
     
