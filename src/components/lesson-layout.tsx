@@ -29,6 +29,7 @@ interface LessonLayoutProps {
     previousLessonTitle?: string;
     nextLessonTitle?: string;
     children?: React.ReactNode;
+    completedInteractiveCount?: number;
 }
 
 export default function LessonLayout({
@@ -43,10 +44,10 @@ export default function LessonLayout({
     nextLesson,
     previousLessonTitle = 'الجزء السابق',
     nextLessonTitle = 'الجزء التالي',
-    children
+    children,
+    completedInteractiveCount
 }: LessonLayoutProps) {
     const { currentUser } = useApp();
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         // Save to local storage for guest/quick access
@@ -55,41 +56,10 @@ export default function LessonLayout({
     
     // Effect to mark lesson as complete when 2 interactive questions are answered correctly
     useEffect(() => {
-        if (currentUser && completedInteractive.size >= 2) {
+        if (currentUser && completedInteractiveCount && completedInteractiveCount >= 2) {
             markLessonAsComplete(currentUser.uid, lessonId);
         }
-    }, [completedInteractive, currentUser, lessonId]);
-    
-    const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => new Set(prev).add(questionId));
-    };
-
-    // Recursive function to find and clone InteractiveQuestionCard with the correct prop
-    const childrenWithProps = (children: React.ReactNode): React.ReactNode => {
-      return React.Children.map(children, child => {
-        if (!React.isValidElement(child)) {
-          return child;
-        }
-
-        // Direct match
-        // @ts-ignore
-        if (child.type.name === 'InteractiveQuestionCard' || child.props.mdxType === 'InteractiveQuestionCard') {
-             // @ts-ignore
-           return React.cloneElement(child, { onCorrect: handleCorrectAnswer });
-        }
-
-        // Recursive search in children
-        if (child.props.children) {
-          return React.cloneElement(child, {
-            ...child.props,
-            children: childrenWithProps(child.props.children)
-          });
-        }
-        
-        return child;
-      });
-    };
-
+    }, [completedInteractiveCount, currentUser, lessonId]);
 
     return (
         <div className="p-4 md:p-8 relative">
@@ -135,7 +105,7 @@ export default function LessonLayout({
                     dangerouslySetInnerHTML={{ __html: lessonContent }}
                 />
 
-                {childrenWithProps(children)}
+                {children}
 
                 <Card>
                     <CardHeader>
