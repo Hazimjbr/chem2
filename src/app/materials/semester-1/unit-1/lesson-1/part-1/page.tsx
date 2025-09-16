@@ -9,6 +9,7 @@ import FlippableCard from './flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
+import React from 'react';
 
 const Diagram = dynamic(() => import('./diagram'), {
   ssr: false,
