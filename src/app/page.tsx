@@ -18,56 +18,38 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    // If a curriculum is already selected, redirect to the dashboard.
-    if (isSelected) {
+    if (!isLoading && isSelected) {
       router.push('/dashboard');
     }
-  }, [isSelected, router]);
+  }, [isSelected, isLoading, router]);
 
   const handleTawjihiCardClick = () => {
-    // If admin is logged in, select curriculum and redirect.
     if (currentUser?.role === 'admin') {
       selectCurriculum('tawjihi');
       router.push('/dashboard');
     } else {
-      // For students, open the login dialog.
       setAuthOpen(true);
     }
   };
 
   const handleAdminLoginSuccess = () => {
-    // Admin is now logged in. We just close the dialog.
-    // The UI will update based on the new `currentUser` state.
     setAdminLoginOpen(false);
   };
 
   const handleStudentAuthSuccess = () => {
-    // This is for students, automatically select curriculum after login.
     selectCurriculum('tawjihi');
     setAuthOpen(false);
-    // The useEffect will handle the redirect to /dashboard
   };
   
-  if (isLoading) {
+  if (isLoading || isSelected) {
     return (
         <div className="flex justify-center items-center min-h-screen">
             <Loader2 className="h-16 w-16 animate-spin text-primary" />
+             {isSelected && <p className="mr-4">جاري التوجيه...</p>}
         </div>
     )
   }
 
-  // If already selected, this will be briefly rendered before redirect.
-  // We can show a loader or nothing.
-  if (isSelected) {
-     return (
-        <div className="flex justify-center items-center min-h-screen">
-            <Loader2 className="h-16 w-16 animate-spin text-primary" />
-            <p className="mr-4">جاري التوجيه...</p>
-        </div>
-    )
-  }
-
-  // Default view for guests or for an admin who has just logged in but hasn't selected a course to preview.
   return (
     <>
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} onAuthSuccess={handleStudentAuthSuccess} />

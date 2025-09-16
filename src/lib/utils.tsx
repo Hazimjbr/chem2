@@ -1,3 +1,4 @@
+
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import React from "react";
@@ -12,13 +13,12 @@ export function cn(...inputs: ClassValue[]) {
 
 // Helper function to map lessonId (which is a URL path) to a human-readable title
 export const getLessonTitle = (lessonId: string): string => {
-    // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
     if (!lessonId) return "درس غير معروف";
     
-    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
+    const pathParts = lessonId.split('/').filter(p => p); 
 
     const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
-    if (!unitIdentifier) return lessonId; // Return raw path if no unit found
+    if (!unitIdentifier) return lessonId; 
 
     const unit = units.find(u => u.id === unitIdentifier);
     if (!unit) return lessonId;
@@ -44,7 +44,6 @@ export const getLessonTitle = (lessonId: string): string => {
         const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
         const section = unit.lessons.find(l => l.sectionNum === sectionNum);
          if (section) {
-            // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
             if (section.title.includes(unit.title.split(':')[0])) {
                 return section.title;
             }
@@ -52,7 +51,7 @@ export const getLessonTitle = (lessonId: string): string => {
         }
     }
 
-    return unit.title; // Fallback to unit title
+    return unit.title;
 }
 
 
@@ -60,11 +59,9 @@ export interface NextStep {
     type: 'next' | 'weak';
     lessonTitle: string;
     path: string;
-    // For 'next' type
     completedParts?: number;
     totalParts?: number;
-    nextPartPath?: string; // Add this to directly link to the next part
-    // For 'weak' type
+    nextPartPath?: string;
     score?: number;
 }
 
@@ -87,11 +84,12 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
 
     const completedLessons: Set<string> = new Set(progressData.completedLessons || []);
     const quizHistory: QuizResult[] = progressData.quizHistory || [];
-
-    // 1. Find the weakest lesson from quiz history (difficulty > 0.5)
+    
     const studentQuizzes = quizHistory.filter(result => result.difficulty > 0.5);
     if (studentQuizzes.length > 0) {
-        const weakestQuiz = studentQuizzes.reduce((minResult, currentResult) => (currentResult.score < minResult.score) ? currentResult : minResult);
+        const weakestQuiz = studentQuizzes.reduce((minResult, currentResult) => 
+            (currentResult.score < minResult.score) ? currentResult : minResult
+        );
         
         if (weakestQuiz.score < 0.7) {
             return {
@@ -103,10 +101,8 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
         }
     }
 
-    // 2. If all scores are good, find the next uncompleted lesson part
     for (const unit of units) {
         for (const lesson of unit.lessons) {
-            // Skip lessons that don't have structured parts (like review sections)
             if (!lesson.parts || lesson.parts.length === 0 || !lesson.parts[0].partNum) {
                 continue;
             }
@@ -124,13 +120,12 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
                 }
             }
 
-            // If we found an uncompleted part in this lesson, recommend it.
             if (firstUncompletedPath) {
                 return {
                     type: 'next',
                     lessonTitle: lesson.title,
-                    path: firstUncompletedPath, // This is the path to the lesson's main page or first part
-                    nextPartPath: firstUncompletedPath, // Direct link to the next part
+                    path: firstUncompletedPath,
+                    nextPartPath: firstUncompletedPath,
                     completedParts: completedPartsInThisLesson,
                     totalParts: totalParts,
                 };
@@ -138,8 +133,5 @@ export function calculateNextStep(progressData: DocumentData | null): NextStep |
         }
     }
     
-    // 3. If everything is complete, return null
     return null;
 }
-
-    
