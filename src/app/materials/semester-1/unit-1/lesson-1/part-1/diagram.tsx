@@ -67,16 +67,14 @@ export default function Diagram() {
 
     const sketch = (p: p5) => {
       let particles: Particle[] = [];
-      
       let localTemperature = temperature;
       let localPressure = pressure;
-      let boxHeight = CANVAS_HEIGHT;
-      let speedMultiplier = localTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-      let particleColor = localTemperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
-      
-      let pistonY = localPressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
-      let topBoundary = pistonY + PISTON_THICKNESS;
-      let bottomBoundary = boxHeight;
+      let boxHeight: number;
+      let speedMultiplier: number;
+      let particleColor: p5.Color;
+      let pistonY: number;
+      let topBoundary: number;
+      let bottomBoundary: number;
 
       class Particle {
         pos: p5.Vector;
@@ -116,8 +114,6 @@ export default function Diagram() {
       
       const reinitializeSketch = () => {
         if (!sketchRef.current) return;
-        p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
-        setWidth(sketchRef.current.offsetWidth);
         
         boxHeight = CANVAS_HEIGHT;
         speedMultiplier = localTemperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
@@ -139,7 +135,11 @@ export default function Diagram() {
       };
       
       p.windowResized = () => {
-        reinitializeSketch();
+        if (sketchRef.current) {
+            setWidth(sketchRef.current.offsetWidth);
+            p.resizeCanvas(sketchRef.current.offsetWidth, CANVAS_HEIGHT);
+            reinitializeSketch();
+        }
       }
 
       p.draw = () => {
