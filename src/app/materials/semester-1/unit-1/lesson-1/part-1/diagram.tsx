@@ -54,7 +54,9 @@ const sketch = (p: p5) => {
         radius: number = PARTICLE_RADIUS;
         particleColor: p5.Color;
 
-        constructor(topBoundary: number) {
+        constructor() {
+          const pistonY = ((p as any).press || 'low') === 'low' ? 0 : (CANVAS_HEIGHT * (1/3));
+          const topBoundary = pistonY + PISTON_THICKNESS;
           this.pos = p.createVector(
             p.random(this.radius, canvasWidth - this.radius),
             p.random(topBoundary + this.radius, CANVAS_HEIGHT - this.radius)
@@ -96,7 +98,7 @@ const sketch = (p: p5) => {
       const parent = p.canvas.parentElement;
       canvasWidth = parent?.clientWidth || 400;
       p.createCanvas(canvasWidth, CANVAS_HEIGHT);
-      particles = Array.from({ length: NUM_PARTICLES }, () => new Particle(0));
+      particles = Array.from({ length: NUM_PARTICLES }, () => new Particle());
     };
     
     (p as any).updateWithProps = (props: any) => {
@@ -112,7 +114,11 @@ const sketch = (p: p5) => {
                   particle.updateSpeedAndColor();
               });
             }
-             p.loop();
+            if (p.isLooping()) {
+                p.redraw();
+            } else {
+                p.loop();
+            }
         }
     };
 
@@ -140,10 +146,6 @@ const sketch = (p: p5) => {
         p.rect(1, pistonY, canvasWidth-2, PISTON_THICKNESS);
         p.fill(150);
         p.rect(canvasWidth/2 - 20, pistonY - 5, 40, 5);
-        
-        if (!p.isLooping()) {
-            p.noLoop();
-        }
     };
 };
 
