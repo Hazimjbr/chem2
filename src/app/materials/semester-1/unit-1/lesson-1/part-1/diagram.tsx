@@ -46,7 +46,7 @@ const explanations: Record<Pressure, Record<Temperature, { title: string; text: 
 
 const sketch = (p: p5) => {
     let particles: any[] = [];
-    let canvasWidth = 0;
+    let canvasWidth = 400;
     
     class Particle {
         pos: p5.Vector;
@@ -59,9 +59,14 @@ const sketch = (p: p5) => {
             p.random(this.radius, canvasWidth - this.radius),
             p.random(topBoundary + this.radius, CANVAS_HEIGHT - this.radius)
           );
-          const speedMultiplier = (p as any).temp === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-          this.vel = p5.Vector.random2D().mult(speedMultiplier);
-          this.particleColor = (p as any).temp === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+          this.updateSpeedAndColor();
+        }
+
+        updateSpeedAndColor() {
+            const temp = (p as any).temp || 'low';
+            const speedMultiplier = temp === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+            this.vel = p5.Vector.random2D().mult(speedMultiplier);
+            this.particleColor = temp === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
         }
 
         update(topBoundary: number) {
@@ -91,23 +96,31 @@ const sketch = (p: p5) => {
       const parent = p.canvas.parentElement;
       canvasWidth = parent?.clientWidth || 400;
       p.createCanvas(canvasWidth, CANVAS_HEIGHT);
-      
-      p.updateWithProps = (props: any) => {
-        if(props.width) {
+      particles = Array.from({ length: NUM_PARTICLES }, () => new Particle(0));
+    };
+    
+    (p as any).updateWithProps = (props: any) => {
+        if(props.width && props.width !== canvasWidth) {
             canvasWidth = props.width;
             p.resizeCanvas(props.width, CANVAS_HEIGHT);
         }
-        
-        const pistonY = props.press === 'low' ? 0 : (CANVAS_HEIGHT * (1/3));
-        const topBoundary = pistonY + PISTON_THICKNESS;
-        particles = Array.from({ length: NUM_PARTICLES }, () => new Particle(topBoundary));
-      };
+        if (props.press || props.temp) {
+            (p as any).press = props.press;
+            (p as any).temp = props.temp;
+            if (particles.length > 0) {
+              particles.forEach(particle => {
+                  particle.updateSpeedAndColor();
+              });
+            }
+             p.loop();
+        }
     };
 
     p.draw = () => {
-        p.background(255); // White background
+        const press = (p as any).press || 'low';
+        p.background(255);
         
-        const pistonY = (p as any).press === 'low' ? 0 : (CANVAS_HEIGHT * (1/3));
+        const pistonY = press === 'low' ? 0 : (CANVAS_HEIGHT * (1/3));
         const topBoundary = pistonY + PISTON_THICKNESS;
         
         p.stroke('hsl(var(--border))');
@@ -127,6 +140,10 @@ const sketch = (p: p5) => {
         p.rect(1, pistonY, canvasWidth-2, PISTON_THICKNESS);
         p.fill(150);
         p.rect(canvasWidth/2 - 20, pistonY - 5, 40, 5);
+        
+        if (!p.isLooping()) {
+            p.noLoop();
+        }
     };
 };
 
