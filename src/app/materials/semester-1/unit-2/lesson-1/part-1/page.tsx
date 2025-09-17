@@ -24,8 +24,7 @@ const lessonInfo = {
     previousLesson: "/materials/semester-1/unit-1/section-5",
     nextLesson: "/materials/semester-1/unit-2/lesson-1/part-2",
     previousLessonTitle: "مراجعة الوحدة الأولى",
-    nextLessonTitle: "الجزء التالي تكون المحاليل",
-    lessonContent: "تصنيف المواد: مواد نقية (عناصر، مركبات) ومخاليط (متجانسة، غير متجانسة). المخلوط المعلق: جسيمات > 1000nm، يمكن فصله بالترشيح. المخلوط الغروي: جسيمات 1-1000nm، لا يمكن فصله بالترشيح، يشتت الضوء (ظاهرة تندال). المحلول (المخلوط المتجانس): جسيمات < 1nm، لا يشتت الضوء."
+    nextLessonTitle: "الجزء التالي تكون المحاليل"
 };
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
@@ -178,7 +177,7 @@ export default function LessonPartPage() {
     };
     
   return (
-    <LessonLayout {...lessonInfo}>
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );

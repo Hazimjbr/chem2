@@ -34,24 +34,24 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             cardIcon={<Workflow className="h-6 w-6" />}
         >
             <div className="space-y-4">
-                <p className="font-semibold text-sm">تقسم المواد حسب تركيبها إلى</p>
+                <p className="font-semibold">تقسم المواد حسب تركيبها إلى</p>
                 <div className='p-3 bg-muted/50 rounded-lg'>
-                    <h4 className='font-bold text-accent mb-2 text-sm'>المواد النقية</h4>
+                    <h4 className='font-bold text-accent mb-2'>المواد النقية</h4>
                     <p className='text-sm text-muted-foreground'>تتكون من نوع واحد من الجسيمات ذات تركيب ثابت ومنتظم وتقسم إلى</p>
                      <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                         <h5 className='font-semibold text-accent/80 text-sm'>أ) عناصر</h5>
-                        <p className='text-muted-foreground text-sm'>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
-                        <p className='font-mono text-left text-sm' dir="ltr">Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
+                        <p className='text-muted-foreground' style={{fontSize: '14px'}}>أبسط أشكال المادة النقية لا يمكن تحليلها إلى مواد أبسط</p>
+                        <p className='font-mono text-left' dir="ltr" style={{fontSize: '14px'}}>Cu(s) Ag(s) Au(s) H₂(g) N₂(g) O₂(g) F₂(g) Cl₂(g) Br₂(l) I₂(s) P₄(s) S₈(s)</p>
                     </div>
                     <div className='p-3 bg-background/70 rounded-lg mt-2 space-y-2'>
                         <h5 className='font-semibold text-accent/80 text-sm'>ب) مركبات</h5>
-                        <p className='text-muted-foreground text-sm'>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
+                        <p className='text-muted-foreground' style={{fontSize: '14px'}}>ناتجة من اتحاد عنصرين أو أكثر مثل الماء H₂O أكسيد الحديد (الصدأ) Fe₂O₃·2H₂O</p>
                     </div>
                 </div>
                  <div className='p-3 bg-muted/50 rounded-lg'>
-                    <h4 className='font-bold text-accent mb-2 text-sm'>المخاليط</h4>
-                    <p className='text-muted-foreground text-sm'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
-                    <p className='text-muted-foreground text-sm'>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
+                    <h4 className='font-bold text-accent mb-2'>المخاليط</h4>
+                    <p className='text-muted-foreground'>مزيج من مادتين نقيتين أو أكثر تبقى كل منهما محتفظة بخصائصها الكيميائية (لا تتفاعل)</p>
+                    <p className='text-muted-foreground' style={{fontSize: '14px'}}>تختلف المخاليط باختلاف نسب مكوناتها وكيفية توزيع هذه المكونات</p>
                 </div>
             </div>
         </FlippableCard>
@@ -110,14 +110,14 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 <li>يتراوح قطر الجزيئات بين (0.1-1)nm فلا ترى بالعين أو المجهر ولا يمكن فصلها بالترشيح أو الترسيب</li>
                 <li className="font-semibold text-accent">يصنف حسب نسبة المذاب في المذيب (حالة الإشباع) إلى</li>
                 <ul className="list-decimal mr-4">
-                    <li className="text-sm">غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
-                    <li className="text-sm">مشبعة لا يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
-                    <li className="text-sm">فوق مشبعة تحتوي كمية إضافية من المذاب أكثر مما يمكن أن تستوعبها عند ظروف معينة</li>
+                    <li style={{fontSize: '14px'}}>غير مشبعة يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                    <li style={{fontSize: '14px'}}>مشبعة لا يمكن أن تستوعب كمية إضافية من المذاب عند نفس درجة الحرارة</li>
+                    <li style={{fontSize: '14px'}}>فوق مشبعة تحتوي كمية إضافية من المذاب أكثر مما يمكن أن تستوعبها عند ظروف معينة</li>
                 </ul>
                  <li className="font-semibold text-accent">يصنف حسب قابلية التوصيل الكهربائي إلى</li>
                  <ul className="list-decimal mr-4">
-                    <li className="text-sm">كهرلية (قوية أو ضعيفة) توصل التيار الكهربائي لاحتوائها على أيونات حرة الحركة</li>
-                    <li className="text-sm">لا كهرلية لا توصل التيار الكهربائي لعدم احتوائها على أيونات حرة الحركة</li>
+                    <li style={{fontSize: '14px'}}>كهرلية (قوية أو ضعيفة) توصل التيار الكهربائي لاحتوائها على أيونات حرة الحركة</li>
+                    <li style={{fontSize: '14px'}}>لا كهرلية لا توصل التيار الكهربائي لعدم احتوائها على أيونات حرة الحركة</li>
                 </ul>
                  <li className="font-semibold text-accent">يصنف حسب حالة المذيب الفيزيائية إلى</li>
                  <li className="flex justify-center">
@@ -125,46 +125,46 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 </li>
             </ul>
         </FlippableCard>
-    </div>
     
-    <div className="space-y-4 mt-8">
-      <div className="flex items-center gap-3">
-        <Lightbulb className="h-7 w-7 text-yellow-400" />
-        <div>
-          <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-          <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+        <div className="space-y-4 mt-8">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  questionId="q1"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={onCorrect}
+                  question="أي من الخيارات التالية يمثل مادة نقية"
+                  options={[
+                      "عصير البرتقال",
+                      "الهواء",
+                      "الذهب (Au)",
+                      "الحليب"
+                  ]}
+                  correctAnswerIndex={2}
+                  explanation="الذهب (Au) هو عنصر والعناصر تعتبر مواد نقية الخيارات الأخرى هي مخاليط"
+              />
+               <InteractiveQuestionCard 
+                  questionId="q2"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={onCorrect}
+                  question="ما هي الخاصية التي تسمح بالتمييز بين محلول حقيقي ومخلوط غروي شفاف"
+                  options={[
+                      "اللون",
+                      "الكثافة",
+                      "القدرة على الترشيح",
+                      "ظاهرة تندال (تشتيت الضوء)"
+                  ]}
+                  correctAnswerIndex={3}
+                  explanation="المخلوط الغروي يشتت الضوء المار من خلاله (ظاهرة تندال) بينما المحلول الحقيقي لا يشتت الضوء"
+              />
+          </div>
         </div>
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
-          <InteractiveQuestionCard 
-              questionId="q1"
-              lessonId={lessonInfo.lessonId}
-              onCorrect={() => {}}
-              question="أي من الخيارات التالية يمثل مادة نقية"
-              options={[
-                  "عصير البرتقال",
-                  "الهواء",
-                  "الذهب (Au)",
-                  "الحليب"
-              ]}
-              correctAnswerIndex={2}
-              explanation="الذهب (Au) هو عنصر والعناصر تعتبر مواد نقية الخيارات الأخرى هي مخاليط"
-          />
-           <InteractiveQuestionCard 
-              questionId="q2"
-              lessonId={lessonInfo.lessonId}
-              onCorrect={() => {}}
-              question="ما هي الخاصية التي تسمح بالتمييز بين محلول حقيقي ومخلوط غروي شفاف"
-              options={[
-                  "اللون",
-                  "الكثافة",
-                  "القدرة على الترشيح",
-                  "ظاهرة تندال (تشتيت الضوء)"
-              ]}
-              correctAnswerIndex={3}
-              explanation="المخلوط الغروي يشتت الضوء المار من خلاله (ظاهرة تندال) بينما المحلول الحقيقي لا يشتت الضوء"
-          />
-      </div>
     </div>
 );
 
@@ -177,7 +177,7 @@ export default function LessonPartPage() {
     };
     
   return (
-    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+    <LessonLayout {...lessonInfo}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );

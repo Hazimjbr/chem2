@@ -4,7 +4,7 @@
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, CheckCircle, Lightbulb, X, BookCopy, Cpu, Thermometer, Zap, BarChart3, Droplets } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Lightbulb, X, BookCopy, Cpu, Thermometer, Zap, BarChart3, Droplets, AlertTriangle, GitCompare, Scale } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -13,6 +13,7 @@ import React, { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import Link from 'next/link';
 import Quiz from '@/components/quiz';
+import LessonLayout from '@/components/lesson-layout';
 
 const lessonInfo = {
     lessonTitle: "الدرس الثاني: الحالة السائلة",
@@ -160,107 +161,16 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
     );
 }
 
-
 export default function LessonPartPage() {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
-    useEffect(() => {
-        // This effect is for client-side logic after component mounts.
-        // For example, marking the lesson as visited.
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('lastVisitedLesson', lessonInfo.lessonId);
-        }
-    }, []);
-
     const handleCorrectAnswer = (questionId: string) => {
-        setCompletedInteractive(prev => {
-            const newSet = new Set(prev);
-            newSet.add(questionId);
-            if (newSet.size >= 2) { // Mark lesson complete after 2 correct answers
-                 if (typeof window !== 'undefined') {
-                    try {
-                        const savedProgress = localStorage.getItem('completedLessons') || '[]';
-                        const completedLessons = new Set(JSON.parse(savedProgress));
-                        completedLessons.add(lessonInfo.lessonId);
-                        localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-                    } catch (error) {
-                        console.error("Failed to save lesson progress:", error);
-                    }
-                 }
-            }
-            return newSet;
-        });
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
     };
     
   return (
-    <div className="p-4 md:p-8 relative">
-        <Link href="/materials/semester-1" passHref>
-            <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-                <X className="h-6 w-6" />
-                <span className="sr-only">إغلاق</span>
-            </Button>
-        </Link>
-        <header className="mb-10 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">{lessonInfo.lessonTitle}</h1>
-            <p className="text-base md:text-lg text-muted-foreground">{lessonInfo.lessonSubtitle}</p>
-        </header>
-
-        <main className="space-y-8">
-            <Card>
-                <CardHeader>
-                    <CardTitle>{lessonInfo.mainIdea}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <ul className="space-y-3">
-                        {lessonInfo.learningOutcomes.map((outcome, index) => (
-                            <li key={index} className="flex items-start">
-                                <CheckCircle className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                                <span>{outcome}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
-
-            <LessonContent onCorrect={handleCorrectAnswer} />
-
-            <Card>
-                <CardHeader>
-                    <CardTitle>اختبر فهمك</CardTitle>
-                    <CardDescription>
-                       اختر مستوى الصعوبة المناسب لك. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Quiz 
-                        lessonContent={lessonInfo.lessonContent || ''} 
-                        staticQuizzes={lessonInfo.staticQuizzes} 
-                        lessonId={lessonInfo.lessonId}
-                    />
-                </CardContent>
-            </Card>
-        </main>
-        <footer className="mt-12 border-t pt-6">
-            <div className="flex justify-between">
-                {lessonInfo.previousLesson ? (
-                    <Link href={lessonInfo.previousLesson} passHref>
-                        <Button size="lg" variant="outline">
-                            <ArrowLeft className="ml-2 h-5 w-5" />
-                            {lessonInfo.previousLessonTitle}
-                        </Button>
-                    </Link>
-                ) : <div />}
-                {lessonInfo.nextLesson && (
-                     <Link href={lessonInfo.nextLesson} passHref>
-                        <Button size="lg">
-                            {lessonInfo.nextLessonTitle}
-                            <ArrowLeft className="mr-2 h-5 w-5" />
-                        </Button>
-                    </Link>
-                )}
-            </div>
-        </footer>
-    </div>
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+        <LessonContent onCorrect={handleCorrectAnswer} />
+    </LessonLayout>
   );
 }
-

@@ -256,18 +256,15 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
 }
 
 export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
+  const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
     const handleCorrectAnswer = (questionId: string) => {
         setCompletedInteractive(prev => new Set(prev).add(questionId));
     };
+
   return (
     <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }
-
-    
-
-    

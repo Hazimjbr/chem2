@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -67,7 +68,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2"><Box className="h-6 w-6 text-primary" /> محاكاة التجربة</CardTitle>
-                        <CardDescription>اختر بين الحمام الثلجي والحمام الساخن، ولاحظ تأثير درجة الحرارة على حجم البالون.</CardDescription>
+                        <CardDescription>اختر بين الحمام الثلجي والحمام الساخن ولاحظ تأثير درجة الحرارة على حجم البالون.</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Diagram />
@@ -212,7 +213,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                           "3.2"
                       ]}
                       correctAnswerIndex={2}
-                      explanation="أولاً نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K. الضغط ثابت، لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L."
+                      explanation="أولاً، نحول الحرارة إلى كلفن: T₁=200+273=473K, T₂=250+273=523K. الضغط ثابت، لذا نستخدم قانون شارل: V₂ = V₁T₂/T₁ = (4L * 523K) / 473K ≈ 4.4L."
                   />
                    <InteractiveQuestionCard 
                       questionId="q2"
@@ -247,5 +248,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

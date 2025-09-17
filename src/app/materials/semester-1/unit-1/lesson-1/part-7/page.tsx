@@ -15,7 +15,7 @@ import React, { useState, useEffect } from 'react';
 const lessonInfo = {
     lessonTitle: "الدرس الأول: الحالة الغازية",
     lessonSubtitle: "قانون أفوجادرو",
-    mainIdea: "عند ثبات الضغط والحرارة، يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته. أي أن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجسيمات.",
+    mainIdea: "لكمية ثابتة من الغاز عند ضغط وحرارة ثابتين، يتناسب حجم الغاز تناسبًا طرديًا مع عدد مولاته. أي أن الحجوم المتساوية من الغازات المختلفة عند نفس الظروف تحتوي على نفس العدد من الجسيمات.",
     learningOutcomes: [
         "أصف العلاقة بين حجم الغاز وعدد مولاته.",
         "أستخدم مبدأ أفوجادرو في الحسابات الكيميائية المتعلقة بالغازات."
@@ -27,6 +27,7 @@ const lessonInfo = {
     previousLessonTitle: "الجزء السابق: القانون الجامع",
     nextLessonTitle: "الجزء التالي: قانون الغاز المثالي"
 };
+
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
     <div className="space-y-8">
@@ -178,7 +179,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <Lightbulb className="h-7 w-7 text-yellow-400" />
             <div>
               <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -191,7 +192,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
                     <span> تحتوي على </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
-                    <span>. أضيف لها كمية من الغاز B ليصبح حجمها </span>
+                    <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
                     <span>. بفرض ثبات الضغط والحرارة، فإن عدد مولات العينة بعد الإضافة أصبح:</span>
                   </>}
@@ -213,7 +214,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="3.2\text{L}"/></span>
                     <span> تحتوي على </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.2\text{mol}"/></span>
-                    <span>. أضيف لها كمية من الغاز B ليصبح حجمها </span>
+                    <span>، أضيف لها كمية من الغاز B ليصبح حجمها </span>
                     <span dir="ltr" className="inline-block mx-1"><InlineMath math="4\text{L}"/></span>
                     <span>. بفرض ثبات الضغط والحرارة، فإن عدد مولات الغاز B المضافة يساوي:</span>
                   </>}
@@ -245,5 +246,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

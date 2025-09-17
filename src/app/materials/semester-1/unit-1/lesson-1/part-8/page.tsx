@@ -34,7 +34,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </CardHeader>
             <CardContent>
                 <p>
-                    بعد أن درسنا كل متغير من متغيرات الغازات على حدة، يجمع قانون الغاز المثالي بين القوانين السابقة في علاقة واحدة شاملة تربط بين الحجم (V)، الضغط (P)، درجة الحرارة (T)، وعدد المولات (n). هذا القانون هو حجر الزاوية في كيمياء الغازات، حيث يسمح بحساب أي متغير من المتغيرات الأربعة إذا عُرفت المتغيرات الثلاثة الأخرى.
+                    بعد أن درسنا كل متغير من متغيرات الغازات على حدة، يجمع قانون الغاز المثالي بين القوانين السابقة في علاقة واحدة شاملة، تربط بين الحجم (V)، الضغط (P)، درجة الحرارة (T)، وعدد المولات (n). هذا القانون هو حجر الزاوية في كيمياء الغازات، حيث يسمح بحساب أي متغير من المتغيرات الأربعة إذا عُرفت المتغيرات الثلاثة الأخرى.
                 </p>
             </CardContent>
         </Card>
@@ -123,12 +123,10 @@ export default function LessonPartPage() {
     const handleCorrectAnswer = (questionId: string) => {
         setCompletedInteractive(prev => new Set(prev).add(questionId));
     };
-    
+
   return (
     <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );
 }
-
-    

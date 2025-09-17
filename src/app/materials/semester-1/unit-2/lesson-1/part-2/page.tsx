@@ -14,7 +14,7 @@ import { InlineMath } from 'react-katex';
 const lessonInfo = {
     lessonTitle: "الدرس الأول: تصنيف المحاليل",
     lessonSubtitle: "تكون المحاليل",
-    mainIdea: "تعتمد عملية الإذابة على مبدأ 'الشبيه يذيب شبيهه'، حيث تتغلب قوى التجاذب بين المذيب والمذاب على القوى بين جسيمات المذاب نفسه، مما يؤدي إلى تكون محلول متجانس",
+    mainIdea: "تعتمد عملية الإذابة على مبدأ 'الشبيه يذيب شبيهه'، حيث تتغلب قوى التجاذب بين المذيب والمذاب على القوى بين جسيمات المذاب نفسه، مما يؤدي إلى تكون محلول متجانس.",
     learningOutcomes: [
         "أصف عملية الإذابة",
         "أفسر آلية الإذابة في المركبات الأيونية والتساهمية",
@@ -126,7 +126,7 @@ export default function LessonPartPage() {
     };
     
   return (
-    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+    <LessonLayout {...lessonInfo}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );

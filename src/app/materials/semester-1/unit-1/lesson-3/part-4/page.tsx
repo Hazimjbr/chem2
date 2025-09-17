@@ -14,9 +14,9 @@ import { InlineMath } from 'react-katex';
 const lessonInfo = {
     lessonTitle: "الدرس الثالث: الحالة الصلبة",
     lessonSubtitle: "المواد الصلبة البلورية الفلزية",
-    mainIdea: "تتميز المواد الصلبة الفلزية بوجود بحر من الإلكترونات حرة الحركة التي تحيط بالأيونات الموجبة، مما يكسبها خصائص فريدة مثل التوصيل الكهربائي والحراري، واللمعان، وقابليتها للطرق والسحب",
+    mainIdea: "تتميز المواد الصلبة الفلزية بوجود بحر من الإلكترونات حرة الحركة التي تحيط بالأيونات الموجبة، مما يكسبها خصائص فريدة مثل التوصيل الكهربائي والحراري، واللمعان، وقابليتها للطرق والسحب.",
     learningOutcomes: [
-        "أصف الرابطة الفلزية",
+        "أصف الرابطة الفلزية.",
         "أفسر خصائص المواد الصلبة الفلزية",
     ],
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-4",
@@ -63,8 +63,11 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard
             cardTitle="خصائص المواد الصلبة الفلزية"
             cardIcon={<Layers className="h-6 w-6" />}
+            imageContent={
+                <Image src="https://i.ibb.co/4wYqgx2v/image.jpg" alt="خصائص المواد الصلبة الأيونية" width={200} height={150} className="mx-auto h-full w-auto object-contain p-2" />
+            }
         >
-             <ul className="space-y-3 text-sm">
+             <ul className="space-y-3 text-sm p-4">
                 <li>جسيماتها ذرات الفلزات التي تتجاذب بروابط فلزية قوية لذلك تكون صلبة جدا ودرجات انصهارها مرتفعة غالبا (باستثناء عناصر المجموعة الأولى والزئبق)</li>
                 <li>توصل الكهرباء في الحالتين الصلبة والسائلة بسبب الإلكترونات حرة الحركة</li>
                 <li>قابلة للطرق والسحب (تشكيل صفائح، أسلاك وقضبان) لأن صفوف الأيونات الموجبة تنزلق عند الطرق عليها وتبقى مترابطة بفعل تجاذبها مع الإلكترونات حرة الحركة</li>
@@ -129,5 +132,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

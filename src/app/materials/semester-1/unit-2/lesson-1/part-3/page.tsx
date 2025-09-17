@@ -6,13 +6,14 @@ import { BookCopy, Lightbulb, Cpu, Layers, Thermometer, GitCompare, Zap, FlaskCo
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Quiz from '@/components/quiz';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import LessonLayout from '@/components/lesson-layout';
 
 const lessonInfo = {
     lessonTitle: "الدرس الأول تصنيف المحاليل",
@@ -150,72 +151,8 @@ export default function LessonPartPage() {
     };
     
     return (
-        <div className="p-4 md:p-8 relative">
-            <Link href="/materials/semester-1" passHref>
-                <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-                    <X className="h-6 w-6" />
-                    <span className="sr-only">إغلاق</span>
-                </Button>
-            </Link>
-            <header className="mb-10 text-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">{lessonInfo.lessonTitle}</h1>
-                <p className="text-base md:text-lg text-muted-foreground">{lessonInfo.lessonSubtitle}</p>
-            </header>
-            <main className="space-y-8">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>{lessonInfo.mainIdea}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <ul className="space-y-3">
-                            {lessonInfo.learningOutcomes.map((outcome, index) => (
-                                <li key={index} className="flex items-start">
-                                    <CheckCircle className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                                    <span>{outcome}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </CardContent>
-                </Card>
-
-                <LessonContent onCorrect={handleCorrectAnswer} />
-
-                <Card>
-                    <CardHeader>
-                        <CardTitle>اختبر فهمك</CardTitle>
-                        <CardDescription>
-                           اختر مستوى الصعوبة المناسب لك. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <Quiz 
-                            lessonContent={lessonInfo.lessonContent} 
-                            staticQuizzes={lessonInfo.staticQuizzes} 
-                            lessonId={lessonInfo.lessonId}
-                        />
-                    </CardContent>
-                </Card>
-            </main>
-            <footer className="mt-12 border-t pt-6">
-                <div className="flex justify-between">
-                    {lessonInfo.previousLesson ? (
-                        <Link href={lessonInfo.previousLesson} passHref>
-                            <Button size="lg" variant="outline">
-                                <ArrowLeft className="ml-2 h-5 w-5" />
-                                {lessonInfo.previousLessonTitle}
-                            </Button>
-                        </Link>
-                    ) : <div />}
-                    {lessonInfo.nextLesson && (
-                         <Link href={lessonInfo.nextLesson} passHref>
-                            <Button size="lg">
-                                {lessonInfo.nextLessonTitle}
-                                <ArrowLeft className="mr-2 h-5 w-5" />
-                            </Button>
-                        </Link>
-                    )}
-                </div>
-            </footer>
-        </div>
+        <LessonLayout {...lessonInfo}>
+            <LessonContent onCorrect={handleCorrectAnswer} />
+        </LessonLayout>
     );
 }

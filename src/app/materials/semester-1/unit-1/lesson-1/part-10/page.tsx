@@ -85,7 +85,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <Lightbulb className="h-7 w-7 text-yellow-400" />
         <div>
           <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-          <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+          <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم.</p>
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
@@ -101,7 +101,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                   "لا يمكن التحديد"
               ]}
               correctAnswerIndex={0}
-              explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol بينما لـ HCl ≈ 36.5g/mol. بما أن الأمونيا أخف (كتلتها المولية أقل)، فهي الأسرع انتشارًا وفقًا لقانون جراهام."
+              explanation="الكتلة المولية لـ NH₃ ≈ 17g/mol، بينما لـ HCl ≈ 36.5g/mol. بما أن الأمونيا أخف (كتلتها المولية أقل)، فهي الأسرع انتشارًا وفقًا لقانون جراهام."
           />
            <InteractiveQuestionCard 
               questionId="q2"
@@ -129,6 +129,7 @@ export default function LessonPartPage() {
     const handleCorrectAnswer = (questionId: string) => {
         setCompletedInteractive(prev => new Set(prev).add(questionId));
     };
+
   return (
     <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
         <LessonContent onCorrect={handleCorrectAnswer} />
