@@ -53,6 +53,12 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  webpack: (config) => {
+    config.externals.push({
+      'p5': 'p5',
+    });
+    return config;
+  }
 };
 
 export default nextConfig;

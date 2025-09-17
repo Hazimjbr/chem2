@@ -7,6 +7,7 @@ import FloatingActions from '@/components/floating-actions';
 import { Toaster } from '@/components/ui/toaster';
 import 'katex/dist/katex.min.css';
 import { AppProvider } from '@/context/CurriculumContext';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
             <FloatingActions />
             <Toaster />
         </AppProvider>
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js" strategy="beforeInteractive" />
       </body>
     </html>
   );

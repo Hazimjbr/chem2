@@ -14,6 +14,7 @@ import { markLessonAsComplete } from '@/lib/firebase/progress.actions';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Quiz from '@/components/quiz';
+import LessonLayout from '@/components/lesson-layout';
 
 
 const lessonInfo = {
@@ -47,46 +48,9 @@ const Diagram = dynamic(() => import('./diagram'), {
   ),
 });
 
-
-export default function LessonPartPage() {
-    const [completedInteractive, setCompletedInteractive] = React.useState<Set<string>>(new Set());
-
-    const handleCorrectAnswer = (questionId: string) => {
-        const newSet = new Set(completedInteractive).add(questionId);
-        setCompletedInteractive(newSet);
-    };
-  
-    return (
-        <div className="p-4 md:p-8 relative">
-            <Link href="/materials/semester-1" passHref>
-                <Button variant="ghost" size="icon" className="absolute top-4 left-4">
-                    <X className="h-6 w-6" />
-                    <span className="sr-only">إغلاق</span>
-                </Button>
-            </Link>
-            <header className="mb-10 text-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">{lessonInfo.lessonTitle}</h1>
-                <p className="text-base md:text-lg text-muted-foreground">{lessonInfo.lessonSubtitle}</p>
-            </header>
-
-            <main className="space-y-8">
-                 <Card>
-                    <CardHeader>
-                        <CardTitle>{lessonInfo.mainIdea}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <ul className="space-y-3">
-                            {lessonInfo.learningOutcomes.map((outcome, index) => (
-                                <li key={index} className="flex items-start">
-                                    <Check className="h-6 w-6 text-green-500 ml-2 flex-shrink-0" />
-                                    <span>{outcome}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </CardContent>
-                </Card>
-
-                <Card>
+const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void; }) => (
+    <div className="space-y-8">
+        <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2"><BookOpen className="h-6 w-6 text-primary" /> مصطلحات أساسية</CardTitle>
             </CardHeader>
@@ -278,7 +242,7 @@ export default function LessonPartPage() {
                 <InteractiveQuestionCard 
                     questionId="q1"
                     lessonId={lessonInfo.lessonId}
-                    onCorrect={handleCorrectAnswer}
+                    onCorrect={onCorrect}
                     question="الغاز A محصور في وعاء عند درجة حرارة ثابتة فإن العبارة الخاطئة:"
                     options={[
                         "حركة جسيمات الغاز مستمرة وعشوائية وفي خط مستقيم",
@@ -292,7 +256,7 @@ export default function LessonPartPage() {
                  <InteractiveQuestionCard 
                     questionId="q2"
                     lessonId={lessonInfo.lessonId}
-                    onCorrect={handleCorrectAnswer}
+                    onCorrect={onCorrect}
                     question="أحد الغازات الآتية لا يمكن إسالته على جميع قيم الضغط ودرجات الحرارة:"
                     options={[
                         "الغاز المثالي",
@@ -305,47 +269,20 @@ export default function LessonPartPage() {
                 />
             </div>
           </div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>اختبر فهمك</CardTitle>
-                        <CardDescription>
-                           اختر مستوى الصعوبة المناسب لك. تزداد الصعوبة تلقائيًا عند تحقيق نتيجة 80% أو أعلى.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <Quiz 
-                            lessonContent={lessonInfo.lessonContent} 
-                            staticQuizzes={lessonInfo.staticQuizzes} 
-                            lessonId={lessonInfo.lessonId}
-                        />
-                    </CardContent>
-                </Card>
-            </main>
+    </div>
+);
 
-            <footer className="mt-12 border-t pt-6">
-                <div className="flex justify-between">
-                    {lessonInfo.previousLesson ? (
-                        <Link href={lessonInfo.previousLesson} passHref>
-                            <Button size="lg" variant="outline">
-                                <ArrowRight className="ml-2 h-5 w-5" />
-                                {lessonInfo.previousLessonTitle}
-                            </Button>
-                        </Link>
-                    ) : <div />}
-                    {lessonInfo.nextLesson && (
-                         <Link href={lessonInfo.nextLesson} passHref>
-                            <Button size="lg">
-                                {lessonInfo.nextLessonTitle}
-                                <ArrowLeft className="mr-2 h-5 w-5" />
-                            </Button>
-                        </Link>
-                    )}
-                </div>
-            </footer>
-        </div>
+
+export default function LessonPartPage() {
+    const [completedInteractive, setCompletedInteractive] = React.useState<Set<string>>(new Set());
+
+    const handleCorrectAnswer = (questionId: string) => {
+        setCompletedInteractive(prev => new Set(prev).add(questionId));
+    };
+  
+    return (
+        <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
+            <LessonContent onCorrect={handleCorrectAnswer} />
+        </LessonLayout>
     );
 }
-
-
-
-    
