@@ -6,7 +6,7 @@ import { BookCopy, Lightbulb, FlaskConical, Stethoscope, Cloud, CookingPot, Zap,
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import Image from 'next/image';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
@@ -46,7 +46,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         >
             <CardContent className="space-y-4 p-4">
                 <p>
-                    هي خليط غازي لأيونات الغاز الموجبة وإلكتروناتها حرة الحركة المنفصلة عنها تتكون بسبب درجات الحرارة العالية جدا في النجوم أو بفعل البرق في الهواء الجوي أو صناعيا في المختبرات
+                    هي خليط غازي لأيونات الغاز الموجبة وإلكتروناتها حرة الحركة المنفصلة عنها. تتكون بسبب درجات الحرارة العالية جدا في النجوم أو بفعل البرق في الهواء الجوي أو صناعيا في المختبرات.
                 </p>
                 <div>
                     <h4 className="font-semibold text-accent mb-2">تمتاز البلازما بالآتي</h4>
@@ -60,28 +60,28 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         </FlippableCard>
 
          <FlippableCard
-            cardTitle="تطبيق محول النفايات البلازمي"
+            cardTitle="تطبيق: محول النفايات البلازمي"
             cardIcon={<Recycle className="h-6 w-6 text-primary" />}
         >
             <CardContent className="p-4">
-                <CardDescription className="mb-4">أحد الاستخدامات الواعدة للبلازما هو معالجة النفايات</CardDescription>
+                <CardDescription className="mb-4">أحد الاستخدامات الواعدة للبلازما هو معالجة النفايات.</CardDescription>
                 <h4 className="font-semibold text-accent mb-2">آلية العمل</h4>
                 <ul className="list-decimal mr-6 space-y-3">
                     <li>
-                       تعمل الطاقة الهائلة المختزنة في البلازما على تكسير روابط جميع أنواع النفايات وتفكيكها إلى عناصرها الأولية
+                       تعمل الطاقة الهائلة المختزنة في البلازما على تكسير روابط جميع أنواع النفايات وتفكيكها إلى عناصرها الأولية.
                     </li>
                      <li>
-                        <strong>النواتج النهائية (تعتمد على نوع النفايات)</strong>
+                        <strong>النواتج النهائية (تعتمد على نوع النفايات):</strong>
                         <ul className="list-disc mr-6 mt-2 space-y-1 text-sm">
-                            <li><strong>النفايات العضوية</strong> تخرج على شكل غاز غني بالهيدروجين (غاز التصنيع) والذي يمكن استخدامه كوقود نظيف</li>
-                            <li><strong>النفايات غير العضوية</strong> تخرج على شكل مادة صلبة زجاجية (خبث) والتي يمكن استخدامها في صناعة الأسفلت والإسمنت (الكونكريت)</li>
+                            <li><strong>النفايات العضوية:</strong> تخرج على شكل غاز غني بالهيدروجين (غاز التصنيع) والذي يمكن استخدامه كوقود نظيف.</li>
+                            <li><strong>النفايات غير العضوية:</strong> تخرج على شكل مادة صلبة زجاجية (خبث) والتي يمكن استخدامها في صناعة الأسفلت والإسمنت (الكونكريت).</li>
                         </ul>
                     </li>
                      <li>
-                        <strong>الميزات والسلبيات</strong>
+                        <strong>الميزات والسلبيات:</strong>
                          <ul className="list-disc mr-6 mt-2 space-y-1 text-sm">
-                            <li><strong className="text-green-600">الميزات</strong> لا تحتاج إلى مساحات واسعة (مكبات) لطمر النفايات وكمية غازات الدفيئة والملوثات الناتجة عنها أقل بكثير من طرق الحرق التقليدية</li>
-                            <li><strong className="text-destructive">السلبيات</strong> أهم سلبياتها هي ارتفاع تكلفة الإنشاء الأولية للمحولات</li>
+                            <li><strong className="text-green-600">الميزات:</strong> لا تحتاج إلى مساحات واسعة (مكبات) لطمر النفايات، وكمية غازات الدفيئة والملوثات الناتجة عنها أقل بكثير من طرق الحرق التقليدية.</li>
+                            <li><strong className="text-destructive">السلبيات:</strong> أهم سلبياتها هي ارتفاع تكلفة الإنشاء الأولية للمحولات.</li>
                         </ul>
                     </li>
                 </ul>
@@ -104,7 +104,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
               question={staticQuizLvl1[0].question}
               options={staticQuizLvl1[0].options as string[]}
               correctAnswerIndex={staticQuizLvl1[0].correctAnswerIndex}
-              explanation={staticQuizLvl1[0].explanation as string}
+              explanation={staticQuizLvl1[0].explanation}
           />
            <InteractiveQuestionCard 
               questionId="q2"

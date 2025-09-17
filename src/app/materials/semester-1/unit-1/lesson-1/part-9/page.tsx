@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Cpu, Lightbulb, Layers } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -34,7 +34,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </CardHeader>
             <CardContent>
                 <p>
-                    لاحظ العالم جون دالتون أن الغازات تختلط ببعضها البعض بسبب الحركة العشوائية لجسيماتها. واستنتج أن كل غاز في الخليط يمارس ضغطًا كما لو كان موجودًا بمفرده، وأن الضغط الكلي هو ببساطة مجموع هذه الضغوط الفردية.
+                    حتى الآن، تعاملنا مع غاز واحد في كل مرة. لكن الهواء الذي نتنفسه هو خليط من غازات متعددة. قانون دالتون للضغوط الجزئية يشرح كيف يتصرف خليط من الغازات وكيف يساهم كل غاز في الضغط الكلي.
                 </p>
             </CardContent>
         </Card>
@@ -47,7 +47,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 <blockquote className="border-r-4 border-primary pr-4">
                     "الضغط الكلي لخليط من الغازات (غير المتفاعلة مع بعضها) يساوي مجموع الضغوط الجزئية لها."
                 </blockquote>
-                <p className="text-sm text-muted-foreground pt-2 border-t">الضغط الجزئي هو الضغط الذي سيمارسه غاز معين لو كان موجودًا بمفرده في نفس الوعاء وعند نفس درجة الحرارة.</p>
+                <p className="text-xs text-muted-foreground pt-2 border-t">الضغط الجزئي هو الضغط الذي سيمارسه غاز معين لو كان موجودًا بمفرده في نفس الوعاء وعند نفس درجة الحرارة.</p>
             </div>
         </FlippableCard>
 

@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Pipette, Scale, GitCompare, Thermometer, Box, Lightbulb, ArrowLeft, X, CheckCircle } from 'lucide-react';
 import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import { CalculationTriangles } from '@/components/illustrations/calculation-triangles';

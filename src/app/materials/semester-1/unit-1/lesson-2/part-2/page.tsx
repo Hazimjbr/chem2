@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3 } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -158,7 +158,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                       questionId="q2"
                       lessonId={lessonInfo.lessonId}
                       onCorrect={onCorrect}
-                      question="أي السوائل التالية هو الأسرع تبخرًا عند نفس درجة الحرارة؟"
+                      question={<><span>أي السوائل التالية هو الأسرع تبخرًا عند نفس درجة الحرارة؟</span></>}
                       options={[
                           "الماء (روابط هيدروجينية)",
                           "الأسيتون (ثنائي القطب)",
@@ -187,7 +187,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
-
-    

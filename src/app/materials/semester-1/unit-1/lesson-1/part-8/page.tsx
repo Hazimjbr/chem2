@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -95,7 +95,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "1.62atm"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="V=2L, T=293K, n=2mol. P = nRT/V = (2 * 0.082 * 293) / 2 ≈ 24atm."
+                  explanation="V=2L, T=293K, n=2mol. P = nRT/V = (2 * 0.082 * 293) / 2 ≈ 24atm"
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -109,7 +109,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "82atm"
                   ]}
                   correctAnswerIndex={0}
-                  explanation="Mr(He)=4g/mol. n=m/Mr=20/4=5mol. V=3L, T=300K. P = nRT/V = (5 * 0.082 * 300) / 3 = 41atm."
+                  explanation="Mr(He)=4g/mol. n=m/Mr=20/4=5mol. V=3L, T=300K. P = nRT/V = (5 * 0.082 * 300) / 3 = 41atm"
               />
           </div>
         </div>

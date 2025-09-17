@@ -6,7 +6,7 @@ import { BookCopy, Lightbulb, FlaskConical, Stethoscope, Cloud, CookingPot } fro
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 
@@ -79,7 +79,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
               question={staticQuizLvl1[0].question}
               options={staticQuizLvl1[0].options as string[]}
               correctAnswerIndex={staticQuizLvl1[0].correctAnswerIndex}
-              explanation={staticQuizLvl1[0].explanation as string}
+              explanation={staticQuizLvl1[0].explanation}
           />
            <InteractiveQuestionCard 
               questionId="q2"
@@ -104,7 +104,7 @@ export default function LessonPartPage() {
     };
      
   return (
-    <LessonLayout {...lessonInfo}>
+    <LessonLayout {...lessonInfo} completedInteractiveCount={completedInteractive.size}>
         <LessonContent onCorrect={handleCorrectAnswer} />
     </LessonLayout>
   );

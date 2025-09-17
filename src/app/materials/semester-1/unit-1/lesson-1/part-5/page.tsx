@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { BookCopy, Box, Lightbulb, GitCompare, Cpu, LineChart } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -206,7 +206,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                           "2.4"
                       ]}
                       correctAnswerIndex={3}
-                      explanation="T₁=200+273=473K, T₂= (200+100)+273=573K, P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm"
+                      explanation="T₁=200+273=473K. T₂= (200+100)+273=573K. P₁=2atm. باستخدام قانون جاي-لوساك، P₂ = P₁T₂/T₁ = (2*573)/473 ≈ 2.4atm"
                   />
                    <InteractiveQuestionCard 
                       questionId="q2"

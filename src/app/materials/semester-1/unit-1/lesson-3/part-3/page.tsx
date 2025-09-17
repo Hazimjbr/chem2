@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Wind, HelpCircle, GitCommitHorizontal, CheckCircle, Boxes, Move, Thermometer, Diamond } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
@@ -14,10 +14,10 @@ import { InlineMath } from 'react-katex';
 const lessonInfo = {
     lessonTitle: "الدرس الثالث: الحالة الصلبة",
     lessonSubtitle: "المواد الصلبة البلورية الشبكية التساهمية",
-    mainIdea: "تتكون المواد الصلبة الشبكية التساهمية من ذرات ترتبط ببعضها بروابط تساهمية قوية جدًا تمتد في جميع الاتجاهات لتشكل شبكة بلورية ثلاثية الأبعاد مما يكسبها صلابة استثنائية ودرجات انصهار وغليان هي الأعلى على الإطلاق",
+    mainIdea: "تتكون المواد الصلبة الشبكية التساهمية من ذرات ترتبط ببعضها بروابط تساهمية قوية جدًا تمتد في جميع الاتجاهات لتشكل شبكة بلورية ثلاثية الأبعاد، مما يكسبها صلابة استثنائية ودرجات انصهار وغليان هي الأعلى على الإطلاق.",
     learningOutcomes: [
-        "أصف خصائص المواد الصلبة الشبكية التساهمية",
-        "أقارن بين الألماس والجرافيت من حيث البنية والخصائص"
+        "أصف خصائص المواد الصلبة الشبكية التساهمية.",
+        "أقارن بين الألماس والجرافيت من حيث البنية والخصائص."
     ],
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-3",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
@@ -35,7 +35,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </CardHeader>
             <CardContent>
                 <p>
-                    على عكس المواد الصلبة الجزيئية التي ترتبط جزيئاتها بقوى ضعيفة تتكون المواد الصلبة الشبكية التساهمية من شبكة عملاقة من الذرات المترابطة بروابط تساهمية قوية جدًا لا يوجد هنا جزيئات منفصلة بل البلورة كلها تعتبر جزيئًا واحدًا ضخمًا وهذا هو سر قوتها وصلابتها الاستثنائية
+                    على عكس المواد الصلبة الجزيئية التي ترتبط جزيئاتها بقوى ضعيفة، تتكون المواد الصلبة الشبكية التساهمية من شبكة عملاقة من الذرات المترابطة بروابط تساهمية قوية جدًا. لا يوجد هنا جزيئات منفصلة، بل البلورة كلها تعتبر جزيئًا واحدًا ضخمًا، وهذا هو سر قوتها وصلابتها الاستثنائية.
                 </p>
             </CardContent>
         </Card>
@@ -47,22 +47,22 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
              <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-3">
                     <span className="font-bold text-primary">1</span>
-                    <p><strong>جسيماتها ذرات</strong> ترتبط بروابط تساهمية قوية جدًا</p>
+                    <p><strong>جسيماتها ذرات،</strong> ترتبط بروابط تساهمية قوية جدًا.</p>
                 </li>
                 <li className="flex items-start gap-3">
                      <span className="font-bold text-primary">2</span>
-                    <p><strong>شديدة الصلابة</strong> بسبب قوة الروابط التساهمية التي تشكل شبكة ثلاثية الأبعاد</p>
+                    <p><strong>شديدة الصلابة</strong> بسبب قوة الروابط التساهمية التي تشكل شبكة ثلاثية الأبعاد.</p>
                 </li>
                  <li className="flex items-start gap-3">
                      <span className="font-bold text-primary">3</span>
-                    <p><strong>درجات انصهارها وغليانها مرتفعة جدًا</strong> وتحتاج طاقة هائلة للتغلب على الروابط</p>
+                    <p><strong>درجات انصهارها وغليانها مرتفعة جدًا،</strong> وتحتاج طاقة هائلة للتغلب على الروابط.</p>
                 </li>
                  <li className="flex items-start gap-3">
                      <span className="font-bold text-primary">4</span>
-                    <p><strong>غير موصلة للكهرباء</strong> بشكل عام لعدم وجود إلكترونات حرة (باستثناء الجرافيت)</p>
+                    <p><strong>غير موصلة للكهرباء</strong> بشكل عام لعدم وجود إلكترونات حرة (باستثناء الجرافيت).</p>
                 </li>
                 <li>
-                    <p>ظاهرة التآصل: وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين</p>
+                    <p>ظاهرة التآصل: وجود أكثر من شكل بلوري للعنصر الواحد في نفس الحالة الفيزيائية مثل الماس والجرافيت والبكمنسترفولرين.</p>
                 </li>
              </ul>
         </FlippableCard>
@@ -83,9 +83,9 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 }
              >
                 <ul className="space-y-2 text-sm">
-                    <li>‌أ) ترتبط كل ذرة كربون تساهميا بأربع ذرات كربون أخرى في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
-                    <li>‌ب) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
-                    <li>‌ج) أقسى المواد الطبيعية لذلك يستخدم في صناعة أدوات القطع والقص</li>
+                    <li>‌أ) ترتبط كل ذرة كربون تساهميا بأربع ذرات كربون أخرى في بناء شبكي، وتكون مركزا لرباعي أوجه منتظم.</li>
+                    <li>‌ب) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة.</li>
+                    <li>‌ج) أقسى المواد الطبيعية، لذلك يستخدم في صناعة أدوات القطع والقص.</li>
                 </ul>
             </FlippableCard>
 
@@ -104,13 +104,13 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 }
             >
                 <div className="space-y-3 text-sm">
-                    <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة</p>
+                    <p>‌أ) ترتبط كل ذرة كربون تساهميا بثلاث ذرات كربون مكونة حلقات سداسية في طبقات رقيقة.</p>
                     <div className="text-sm">
-                         <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة لذلك يكون:</p>
+                         <p className="font-semibold">‌ب) ترتبط الطبقات فيما بينها بقوى لندن الضعيفة (روابط π) على شكل إلكترونات حرة الحركة، لذلك يكون:</p>
                          <ol className="list-decimal mr-6 mt-2 space-y-1 text-sm">
-                            <li>موصلا للكهرباء فيستخدم كأقطاب في الخلايا الغلفانية والتحليل الكهربائي</li>
-                            <li>سهل الانزلاق (انزلاق الطبقات فوق بعضها) فيستخدم في صناعة أقلام الرصاص</li>
-                            <li>هشا جدا</li>
+                            <li>موصلا للكهرباء، فيستخدم كأقطاب في الخلايا الغلفانية والتحليل الكهربائي.</li>
+                            <li>سهل الانزلاق (انزلاق الطبقات فوق بعضها)، فيستخدم في صناعة أقلام الرصاص.</li>
+                            <li>هشا جدا.</li>
                         </ol>
                     </div>
                 </div>
@@ -133,12 +133,12 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         >
            <CardContent className="p-4">
               <div>
-                <h4 className="font-semibold text-accent">الكوارتز (SiO2) السيليكا أو ثاني أكسيد السيليكون مركب شفاف</h4>
+                <h4 className="font-semibold text-accent">الكوارتز (SiO₂) السيليكا أو ثاني أكسيد السيليكون مركب شفاف</h4>
                  <ul className="space-y-1 text-sm mt-1">
-                    <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم</li>
-                    <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون</li>
-                    <li>‌ج) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة</li>
-                    <li>‌د) قاس جدا (أقل من الماس)</li>
+                    <li>‌أ) ترتبط كل ذرة سيليكون تساهميا بأربع ذرات أكسجين في بناء شبكي وتكون مركزا لرباعي أوجه منتظم.</li>
+                    <li>‌ب) ترتبط كل ذرة أكسجين تساهميا بذرتي سيليكون.</li>
+                    <li>‌ج) لا يوصل الكهرباء لأنه لا يحتوي على إلكترونات حرة الحركة.</li>
+                    <li>‌د) قاس جدا (أقل من الماس).</li>
                 </ul>
               </div>
               <div className="border-t pt-2 mt-2">
@@ -160,7 +160,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                   questionId="q1"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={onCorrect}
-                  question="لماذا يعتبر الألماس شديد الصلابة بينما الجرافيت هش"
+                  question="لماذا يعتبر الألماس شديد الصلابة بينما الجرافيت هش؟"
                   options={[
                       "لأن الألماس يتكون من ذرات أكبر",
                       "لأن الروابط في الألماس أيونية",
@@ -168,13 +168,13 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "لأن الجرافيت موصل للكهرباء"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="الروابط في الألماس تمتد في ثلاثة أبعاد مكونة شبكة متماسكة وقوية جدًا أما في الجرافيت فتوجد طبقات قوية لكن الروابط بين هذه الطبقات ضعيفة مما يسمح لها بالانزلاق بسهولة"
+                  explanation="الروابط في الألماس تمتد في ثلاثة أبعاد مكونة شبكة متماسكة وقوية جدًا. أما في الجرافيت فتوجد طبقات قوية لكن الروابط بين هذه الطبقات ضعيفة مما يسمح لها بالانزلاق بسهولة."
               />
                <InteractiveQuestionCard 
                   questionId="q2"
                   lessonId={lessonInfo.lessonId}
                   onCorrect={onCorrect}
-                  question="ما هو السبب الرئيسي لكون الجرافيت موصلًا للكهرباء بينما الألماس عازل"
+                  question="ما هو السبب الرئيسي لكون الجرافيت موصلًا للكهرباء بينما الألماس عازل؟"
                   options={[
                       "لأن الجرافيت أسود اللون",
                       "لأن الألماس أكثر كثافة",
@@ -182,7 +182,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "لأن الجرافيت يستخدم في البطاريات"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="في الجرافيت ترتبط كل ذرة كربون بثلاث ذرات أخرى ويبقى لديها إلكترون تكافؤ واحد حر الحركة بين الطبقات وهذا الإلكترون هو المسؤول عن توصيل الكهرباء أما في الألماس فجميع إلكترونات التكافؤ الأربعة تشارك في روابط تساهمية قوية ولا توجد إلكترونات حرة"
+                  explanation="في الجرافيت، ترتبط كل ذرة كربون بثلاث ذرات أخرى ويبقى لديها إلكترون تكافؤ واحد حر الحركة بين الطبقات، وهذا الإلكترون هو المسؤول عن توصيل الكهرباء. أما في الألماس، فجميع إلكترونات التكافؤ الأربعة تشارك في روابط تساهمية قوية ولا توجد إلكترونات حرة."
               />
           </div>
         </div>
@@ -203,5 +203,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

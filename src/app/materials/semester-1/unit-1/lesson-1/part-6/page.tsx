@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu } from 'lucide-react';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
@@ -117,45 +117,45 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         </Card>
 
     
-    <div className="space-y-4">
-      <div className="flex items-center gap-3">
-        <Lightbulb className="h-7 w-7 text-yellow-400" />
-        <div>
-          <h3 className="text-xl font-bold">تحقق من فهمك</h3>
-          <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Lightbulb className="h-7 w-7 text-yellow-400" />
+            <div>
+              <h3 className="text-xl font-bold">تحقق من فهمك</h3>
+              <p className="text-muted-foreground">أجب عن الأسئلة السريعة التالية لترسيخ المفاهيم</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+              <InteractiveQuestionCard 
+                  questionId="q1"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={onCorrect}
+                  question="عينة من غاز حجمها 5L وضغطها 1.8atm عند درجة حرارة 25°C، فإذا انخفضت درجة حرارتها بمقدار 10 درجات وأصبح ضغطها 0.8atm، فإن حجمها بوحدة L يساوي:"
+                  options={[
+                      "10.9",
+                      "10.7",
+                      "6.8",
+                      "4.5"
+                  ]}
+                  correctAnswerIndex={0}
+                  explanation="T₁=25+273=298K, T₂=(25-10)+273=288K, P₁=1.8atm, V₁=5L, P₂=0.8atm. نطبق القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1.8 * 5 * 288) / (0.8 * 298) ≈ 10.9L."
+              />
+               <InteractiveQuestionCard 
+                  questionId="q2"
+                  lessonId={lessonInfo.lessonId}
+                  onCorrect={onCorrect}
+                  question="عينة من الهواء حجمها 4L وضغطها 202.6kPa عند درجة حرارة 20°C، فإذا أصبحت حرارتها 278K وحجمها 2500ml، فإن ضغطها بوحدة atm يساوي:"
+                  options={[
+                      "200",
+                      "1",
+                      "3",
+                      "4"
+                  ]}
+                  correctAnswerIndex={2}
+                  explanation="نوحد الوحدات: V₁=4L, P₁=202.6/101.3=2atm, T₁=20+273=293K. V₂=2.5L, T₂=278K. نطبق القانون الجامع: P₂=(P₁V₁T₂)/(T₁V₂) = (2*4*278)/(293*2.5) ≈ 3.03atm. أقرب إجابة هي 3atm."
+              />
+          </div>
         </div>
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
-          <InteractiveQuestionCard 
-              questionId="q1"
-              lessonId={lessonInfo.lessonId}
-              onCorrect={onCorrect}
-              question="عينة من غاز حجمها 5L وضغطها 1.8atm عند درجة حرارة 25°C، فإذا انخفضت درجة حرارتها بمقدار 10 درجات وأصبح ضغطها 0.8atm، فإن حجمها بوحدة L يساوي:"
-              options={[
-                  "10.9",
-                  "10.7",
-                  "6.8",
-                  "4.5"
-              ]}
-              correctAnswerIndex={0}
-              explanation="T₁=25+273=298K, T₂=(25-10)+273=288K, P₁=1.8atm, V₁=5L, P₂=0.8atm. نطبق القانون الجامع: V₂ = (P₁V₁T₂)/(P₂T₁) = (1.8 * 5 * 288) / (0.8 * 298) ≈ 10.9L."
-          />
-           <InteractiveQuestionCard 
-              questionId="q2"
-              lessonId={lessonInfo.lessonId}
-              onCorrect={onCorrect}
-              question="عينة من الهواء حجمها 4L وضغطها 202.6kPa عند درجة حرارة 20°C، فإذا أصبحت حرارتها 278K وحجمها 2500ml، فإن ضغطها بوحدة atm يساوي:"
-              options={[
-                  "200",
-                  "1",
-                  "3",
-                  "4"
-              ]}
-              correctAnswerIndex={2}
-              explanation="نوحد الوحدات: V₁=4L, P₁=202.6/101.3=2atm, T₁=20+273=293K. V₂=2.5L, T₂=278K. نطبق القانون الجامع: P₂=(P₁V₁T₂)/(T₁V₂) = (2*4*278)/(293*2.5) ≈ 3.03atm. أقرب إجابة هي 3atm."
-          />
-      </div>
-    </div>
     </div>
 );
 

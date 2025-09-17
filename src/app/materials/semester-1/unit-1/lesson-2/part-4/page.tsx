@@ -1,16 +1,14 @@
 
 'use client';
 
-import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3, Droplets, AlertTriangle, GitCompare, Scale } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
 import { VaporPressureDiagram, VaporPressureCurves } from './diagram';
 
 const lessonInfo = {
@@ -143,7 +141,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "البنتان (C₅H₁₂)"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="أعلى ضغط بخاري يعني أضعف قوى ترابط البنتان هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) بينما المركبات الأخرى تمتلك قوى ثنائي القطب أو روابط هيدروجينية أقوى"
+                  explanation="أعلى ضغط بخاري يعني أضعف قوى ترابط البنتان هو جزيء غير قطبي يمتلك أضعف قوى ترابط (قوى لندن فقط) لذا فهو يحتاج طاقة أقل للتبخر وهو الأسرع تبخرًا"
               />
           </div>
         </div>
@@ -164,5 +162,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

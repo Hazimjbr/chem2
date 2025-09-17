@@ -22,7 +22,7 @@ export default function Unit1ReviewPage() {
         }
     }, []);
 
-    const lessonContentForQuiz = "تم تصميم هذا الاختبار ليغطي جميع المفاهيم الأساسية في وحدة حالات المادة بما في ذلك قوانين الغازات المختلفة وخصائص السوائل والمواد الصلبة";
+    const lessonContentForQuiz = "تم تصميم هذا الاختبار ليغطي جميع المفاهيم الأساسية في وحدة حالات المادة، بما في ذلك قوانين الغازات المختلفة وخصائص السوائل والمواد الصلبة.";
 
     return (
         <div className="p-4 md:p-8 relative">
@@ -33,8 +33,8 @@ export default function Unit1ReviewPage() {
                 </Button>
             </Link>
             <header className="mb-10 text-center">
-                <h1 className="text-4xl font-bold text-primary mb-2">مراجعة الوحدة الأولى حالات المادة</h1>
-                <p className="text-lg text-muted-foreground">اختبر فهمك الشامل لجميع دروس الوحدة</p>
+                <h1 className="text-4xl font-bold text-primary mb-2">مراجعة الوحدة الأولى: حالات المادة</h1>
+                <p className="text-lg text-muted-foreground">اختبر فهمك الشامل لجميع دروس الوحدة.</p>
             </header>
 
             <main className="space-y-8">
@@ -42,7 +42,7 @@ export default function Unit1ReviewPage() {
                     <CardHeader>
                         <CardTitle>اختبار شامل</CardTitle>
                         <CardDescription>
-                            هذا الاختبار الشامل سيقيم مدى استيعابك للمفاهيم التي تمت دراستها في هذه الوحدة يمكنك إنشاء اختبار بمستويات صعوبة مختلفة بالتوفيق
+                            هذا الاختبار الشامل سيقيم مدى استيعابك للمفاهيم التي تمت دراستها في هذه الوحدة. يمكنك إنشاء اختبار بمستويات صعوبة مختلفة. بالتوفيق!
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -69,7 +69,7 @@ export default function Unit1ReviewPage() {
                     </Link>
                     <Link href="/materials/semester-1/unit-2/lesson-1/part-1" passHref>
                         <Button size="lg" variant="default" disabled>
-                            الوحدة التالية المحاليل (قريبا)
+                            الوحدة التالية: المحاليل (قريبا)
                         </Button>
                     </Link>
                 </div>

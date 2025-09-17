@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Wind, HelpCircle, GitCommitHorizontal, CheckCircle, Boxes, Move, Thermometer, Diamond } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
@@ -14,10 +14,10 @@ import { InlineMath } from 'react-katex';
 const lessonInfo = {
     lessonTitle: "الدرس الثالث: الحالة الصلبة",
     lessonSubtitle: "مقدمة عن المواد الصلبة",
-    mainIdea: "تمتاز المواد الصلبة بجسيماتها المتقاربة وحركتها الاهتزازية المحدودة مما يمنحها شكلاً وحجمًا ثابتين ودرجات انصهار وغليان مرتفعة",
+    mainIdea: "تمتاز المواد الصلبة بجسيماتها المتقاربة وحركتها الاهتزازية المحدودة مما يمنحها شكلاً وحجمًا ثابتين ودرجات انصهار وغليان مرتفعة.",
     learningOutcomes: [
-        "أصف الخصائص العامة للمواد الصلبة",
-        "أقارن بين المواد الصلبة البلورية وغير البلورية"
+        "أصف الخصائص العامة للمواد الصلبة.",
+        "أقارن بين المواد الصلبة البلورية وغير البلورية."
     ],
     lessonId: "/materials/semester-1/unit-1/lesson-3/part-1",
     staticQuizzes: { lvl1: staticQuizLvl1, lvl2: staticQuizLvl2, lvl3: staticQuizLvl3 },
@@ -35,7 +35,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </CardHeader>
             <CardContent>
                 <p>
-                    تتميز المواد الصلبة بأن جسيماتها (ذرات أو أيونات أو جزيئات) متراصة بشكل متقارب جدًا وقوى التجاذب بينها قوية جدًا هذه القوة في الترابط تحد من حركة الجسيمات وتجعلها تهتز في مواضع ثابتة فقط مما يعطي المواد الصلبة خصائصها الفريدة من شكل وحجم ثابتين
+                    تتميز المواد الصلبة بأن جسيماتها (ذرات أو أيونات أو جزيئات) متراصة بشكل متقارب جدًا وقوى التجاذب بينها قوية جدًا. هذه القوة في الترابط تحد من حركة الجسيمات وتجعلها تهتز في مواضع ثابتة فقط، مما يعطي المواد الصلبة خصائصها الفريدة من شكل وحجم ثابتين.
                 </p>
             </CardContent>
         </Card>
@@ -49,22 +49,22 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <li className="flex items-start gap-3">
                        <Boxes className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                        <div>
-                            <strong className="font-semibold">شكل وحجم ثابتان</strong>
-                            <p className="text-sm mt-1">جسيماتها متقاربة جدًا وقوى التجاذب بينها قوية لذلك هي غير قابلة للانضغاط</p>
+                            <strong className="font-semibold">شكل وحجم ثابتان:</strong>
+                            <p className="text-sm mt-1">جسيماتها متقاربة جدًا وقوى التجاذب بينها قوية، لذلك هي غير قابلة للانضغاط.</p>
                        </div>
                     </li>
                      <li className="flex items-start gap-3">
                        <GitCommitHorizontal className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                        <div>
-                            <strong className="font-semibold">غير قابلة للجريان</strong>
-                            <p className="text-sm mt-1">قوة التجاذب العالية تمنع جسيماتها من الانزلاق فوق بعضها البعض</p>
+                            <strong className="font-semibold">غير قابلة للجريان:</strong>
+                            <p className="text-sm mt-1">قوة التجاذب العالية تمنع جسيماتها من الانزلاق فوق بعضها البعض.</p>
                        </div>
                     </li>
                      <li className="flex items-start gap-3">
                        <Move className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                        <div>
-                            <strong className="font-semibold">حركة اهتزازية</strong>
-                            <p className="text-sm mt-1">جسيماتها تهتز في مكانها فقط ولا تنتقل من مكان لآخر</p>
+                            <strong className="font-semibold">حركة اهتزازية:</strong>
+                            <p className="text-sm mt-1">جسيماتها تهتز في مكانها فقط ولا تنتقل من مكان لآخر.</p>
                        </div>
                     </li>
                  </ul>
@@ -75,10 +75,10 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                 cardIcon={<Thermometer className="h-6 w-6" />}
             >
                 <div className="space-y-3 text-sm">
-                    <p className="font-semibold">درجة الانصهار هي درجة الحرارة التي تتحول عندها المادة من الحالة الصلبة إلى الحالة السائلة</p>
+                    <p className="font-semibold">درجة الانصهار هي درجة الحرارة التي تتحول عندها المادة من الحالة الصلبة إلى الحالة السائلة.</p>
                     <div>
-                         <strong className="font-semibold text-accent text-sm">آلية الانصهار</strong>
-                         <p className="text-sm mt-1 text-muted-foreground">عند تسخين المادة الصلبة تزداد الطاقة الحركية لجسيماتها ويزداد اهتزازها فيضعف التجاذب بينها وعند درجة الانصهار تكون الطاقة كافية للتغلب على قوى التجاذب فتتحول المادة إلى سائل</p>
+                         <strong className="font-semibold text-accent text-sm">آلية الانصهار:</strong>
+                         <p className="text-sm mt-1 text-muted-foreground">عند تسخين المادة الصلبة، تزداد الطاقة الحركية لجسيماتها ويزداد اهتزازها، فيضعف التجاذب بينها. وعند درجة الانصهار، تكون الطاقة كافية للتغلب على قوى التجاذب، فتتحول المادة إلى سائل.</p>
                     </div>
                 </div>
             </FlippableCard>
@@ -89,17 +89,17 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             cardIcon={<Cpu className="h-6 w-6" />}
         >
            <div className="space-y-4">
-              <p>تصنف المواد الصلبة بناءً على انتظام ترتيب جسيماتها إلى نوعين رئيسيين</p>
+              <p>تصنف المواد الصلبة بناءً على انتظام ترتيب جسيماتها إلى نوعين رئيسيين:</p>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="p-3 bg-background rounded-lg border">
                         <h4 className="font-bold text-accent">مواد صلبة غير بلورية</h4>
-                        <p className="text-sm mt-1 text-muted-foreground">ذات أشكال غير منتظمة وترتيب عشوائي للجسيمات</p>
-                         <p className="text-sm mt-2">مثل البلاستيك والزجاج والأسفلت</p>
+                        <p className="text-sm mt-1 text-muted-foreground">ذات أشكال غير منتظمة وترتيب عشوائي للجسيمات.</p>
+                         <p className="text-sm mt-2">مثل البلاستيك والزجاج والأسفلت.</p>
                     </div>
                     <div className="p-3 bg-background rounded-lg border">
                          <h4 className="font-bold text-accent">مواد صلبة بلورية</h4>
-                         <p className="text-sm mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وترتيب متكرر للجسيمات</p>
-                         <p className="text-sm mt-1 text-muted-foreground">وتصنف بناء على خصائصها الفيزيائية (نوع جسيماتها وقوى الترابط)</p>
+                         <p className="text-sm mt-1 text-muted-foreground">ذات أشكال هندسية منتظمة وترتيب متكرر للجسيمات.</p>
+                         <p className="text-sm mt-1 text-muted-foreground">وتصنف بناء على خصائصها الفيزيائية (نوع جسيماتها وقوى الترابط).</p>
                          <ul className="text-sm mt-2 space-y-1">
                             <li>‌أ) جزيئية مثل السكر</li>
                             <li>‌ب) شبكية تساهمية مثل الماس</li>
@@ -133,7 +133,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "قابلة للجريان بسهولة"
                   ]}
                   correctAnswerIndex={3}
-                  explanation="المواد الصلبة غير قابلة للجريان بسبب قوى التجاذب القوية التي تثبت جسيماتها في مكانها"
+                  explanation="المواد الصلبة غير قابلة للجريان بسبب قوى التجاذب القوية التي تثبت جسيماتها في مكانها."
               />
                <InteractiveQuestionCard 
                   questionId="q2"
@@ -147,7 +147,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "القوة"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="الفرق الجوهري هو أن المواد البلورية لها ترتيب هندسي منتظم ومتكرر للجسيمات بينما المواد غير البلورية ترتيبها عشوائي"
+                  explanation="الفرق الجوهري هو أن المواد البلورية لها ترتيب هندسي منتظم ومتكرر للجسيمات، بينما المواد غير البلورية ترتيبها عشوائي."
               />
           </div>
         </div>
@@ -168,5 +168,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    

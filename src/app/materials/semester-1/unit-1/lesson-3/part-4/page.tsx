@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu, Layers, Atom, Binary, Wind, HelpCircle, GitCommitHorizontal, CheckCircle, Boxes, Move, Thermometer, Diamond } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
 import React, { useState, useEffect } from 'react';
@@ -48,14 +48,14 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     src="https://i.ibb.co/DPXZq5v8/image.jpg"
                     alt="الرابطة الفلزية"
                     width={200}
-                    height={200}
+                    height={133}
                     className="rounded-lg object-contain h-48 w-auto"
                     data-ai-hint="metallic bond sea of electrons"
                 />
             }
         >
             <div className="flex flex-col items-center justify-center p-2 text-center h-full">
-                <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة</p>
+                <p className="font-semibold mb-2">قوة التجاذب الكبيرة بين الأيونات الموجبة وبحر الإلكترونات حرة الحركة.</p>
                 
             </div>
         </FlippableCard>
