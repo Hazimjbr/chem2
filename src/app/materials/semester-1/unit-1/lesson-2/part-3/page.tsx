@@ -3,7 +3,7 @@
 
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3, Droplets, AlertTriangle } from 'lucide-react';
+import { BookCopy, Lightbulb, Cpu, Thermometer, Wind, Zap, BarChart3, Droplets, AlertTriangle, GitCompare, Scale } from 'lucide-react';
 import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
 import InteractiveQuestionCard from '@/components/interactive-question-card';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -42,7 +42,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
 
     return (
         <div className="space-y-8">
-             <Card>
+            <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2"><BookCopy className="h-6 w-6 text-primary" /> الخلفية العلمية</CardTitle>
                 </CardHeader>
@@ -107,7 +107,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
                         <p className="text-sm mt-1">
                             الميل يعتمد على <strong className="text-primary">الحرارة النوعية</strong> للمادة في كل حالة (مقاومتها لفقدان الحرارة)
                             كلما كانت الحرارة النوعية أكبر كان التبريد أبطأ والميل أقل حدة (أكثر تسطحًا)
-                            ترتيب الحرارة النوعية للماء هو <strong className="text-secondary-foreground">سائل > صلب > غاز</strong>
+                            ترتيب الحرارة النوعية للماء هو <strong className="text-secondary-foreground">سائل &gt; صلب &gt; غاز</strong>
                             لذلك يكون منحنى تبريد <strong className="text-secondary-foreground">السائل هو الأكثر تسطحًا</strong> يليه الصلب ثم الغاز هو الأكثر انحدارًا
                         </p>
                     </div>
@@ -158,6 +158,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => {
     );
 }
 
+
 export default function LessonPartPage() {
     const [completedInteractive, setCompletedInteractive] = useState<Set<string>>(new Set());
 
@@ -171,7 +172,3 @@ export default function LessonPartPage() {
     </LessonLayout>
   );
 }
-
-    
-
-    
