@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Skeleton } from '@/components/ui/skeleton';
 import { Info, Beaker, GitCommitHorizontal, HelpCircle, Cloud, Lightbulb, Thermometer, Move, Boxes, RefreshCw, Ban, BookOpen, X, ArrowLeft, Check, ArrowRight } from 'lucide-react';
 import FlippableCard from './flippable-card';
-import InteractiveQuestionCard from '@/components/interactive-question-card';
+import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import React, { useState } from 'react';
 import { useApp } from '@/context/CurriculumContext';
