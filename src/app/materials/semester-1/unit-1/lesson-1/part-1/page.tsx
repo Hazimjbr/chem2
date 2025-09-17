@@ -242,9 +242,9 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void; }) => (
                           <div>
                               <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
                               <ul className="mt-2 space-y-2 mr-4 text-sm">
-                                  <li><strong className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</strong> (هيدروجيني مثل HF > ثنائي قطب مثل NH3 > قوى لندن مثل Ne)</li>
-                                  <li><strong className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</strong> (مثلًا Cl2 > F2) لأن زيادة الكتلة المولية تزيد من قوى لندن.</li>
-                              </ul>
+                                  <li><strong className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</strong> (هيدروجيني مثل HF &gt; ثنائي قطب مثل NH3 &gt; قوى لندن مثل Ne)</li>
+                                  <li><strong className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</strong> (مثلًا Cl2 &gt; F2) لأن زيادة الكتلة المولية تزيد من قوى لندن.</li>
+                               </ul>
                           </div>
                       </li>
                       <li className="flex items-start gap-3">
