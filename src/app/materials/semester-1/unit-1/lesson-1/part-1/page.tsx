@@ -15,7 +15,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Quiz from '@/components/quiz';
 import LessonLayout from '@/components/lesson-layout';
-
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 
 const lessonInfo = {
   lessonTitle: "الدرس الأول: الحالة الغازية",
@@ -33,20 +34,61 @@ const lessonInfo = {
   lessonContent: "بنود نظرية الحركة الجزيئية للغازات: يتكون الغاز من جسيمات صغيرة جدا (مهملة الحجم) ومتباعدة وقوى التجاذب بينها شبه معدومة. حركة الجسيمات: مستمرة عشوائية وسريعة في خطوط مستقيمة. التصادمات المرنة: لا تفقد فيها الطاقة الحركية الكلية. الطاقة والحرارة: متوسط الطاقة الحركية للجسيمات يتناسب طرديًا مع درجة الحرارة المطلقة. الغاز المثالي: غاز افتراضي حجم جسيماته وقوى التجاذب بينها تساوي صفر. الغاز الحقيقي: يسلك سلوكًا قريبًا من المثالي في الضغط المنخفض والحرارة المرتفعة."
 }
 
-// Dynamically import the Diagram component
-const Diagram = dynamic(() => import('./diagram'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex flex-col items-center gap-4">
-      <Skeleton className="h-[250px] w-full rounded-lg" />
-       <div className="w-full grid grid-cols-2 gap-4">
-        <Skeleton className="h-20 w-full" />
-        <Skeleton className="h-20 w-full" />
-      </div>
-      <Skeleton className="h-24 w-full" />
-    </div>
-  ),
-});
+type Temperature = 'low' | 'high';
+type Pressure = 'low' | 'high';
+
+const Simulation = () => {
+    const [temp, setTemp] = useState<Temperature>('low');
+    const [press, setPress] = useState<Pressure>('low');
+
+    const Diagram = dynamic(() => import('./diagram'), {
+      ssr: false,
+      loading: () => (
+        <div className="flex flex-col items-center gap-4">
+          <Skeleton className="h-[250px] w-full rounded-lg" />
+           <div className="w-full grid grid-cols-2 gap-4">
+            <Skeleton className="h-20 w-full" />
+            <Skeleton className="h-20 w-full" />
+          </div>
+          <Skeleton className="h-24 w-full" />
+        </div>
+      ),
+    });
+
+    return (
+        <div className="flex flex-col items-center gap-4 w-full">
+            <Diagram pressure={press} temperature={temp} />
+            <div className="w-full grid grid-cols-2 gap-4">
+                <Card className="p-3">
+                  <Label className="font-semibold text-sm">درجة الحرارة</Label>
+                  <RadioGroup dir="rtl" value={temp} onValueChange={(v) => setTemp(v as Temperature)} className="mt-2">
+                    <div className="flex items-center space-x-2 space-x-reverse">
+                      <RadioGroupItem value="low" id="t-low" />
+                      <Label htmlFor="t-low">منخفضة</Label>
+                    </div>
+                    <div className="flex items-center space-x-2 space-x-reverse">
+                      <RadioGroupItem value="high" id="t-high" />
+                      <Label htmlFor="t-high">مرتفعة</Label>
+                    </div>
+                  </RadioGroup>
+                </Card>
+                <Card className="p-3">
+                  <Label className="font-semibold text-sm">الضغط</Label>
+                  <RadioGroup dir="rtl" value={press} onValueChange={(v) => setPress(v as Pressure)} className="mt-2">
+                    <div className="flex items-center space-x-2 space-x-reverse">
+                      <RadioGroupItem value="low" id="p-low" />
+                      <Label htmlFor="p-low">منخفض</Label>
+                    </div>
+                    <div className="flex items-center space-x-2 space-x-reverse">
+                      <RadioGroupItem value="high" id="p-high" />
+                      <Label htmlFor="p-high">مرتفع</Label>
+                    </div>
+                  </RadioGroup>
+                </Card>
+            </div>
+        </div>
+    );
+};
 
 const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void; }) => (
     <div className="space-y-8">
@@ -200,8 +242,8 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void; }) => (
                           <div>
                               <p className='font-semibold'>ازدادت قوى التجاذب بين جسيمات الغاز:</p>
                               <ul className="mt-2 space-y-2 mr-4 text-sm">
-                                  <li><strong className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</strong> (هيدروجيني مثل HF {'>'} ثنائي قطب مثل NH3 {'>'} قوى لندن مثل Ne)</li>
-                                  <li><strong className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</strong> (مثلًا Cl2 {'>'} F2) لأن زيادة الكتلة المولية تزيد من قوى لندن.</li>
+                                  <li><strong className="font-semibold text-accent/80">أ) اختلاف نوع الترابط بين الجسيمات:</strong> (هيدروجيني مثل HF > ثنائي قطب مثل NH3 > قوى لندن مثل Ne)</li>
+                                  <li><strong className="font-semibold text-accent/80">ب) ازدياد الكتلة المولية:</strong> (مثلًا Cl2 > F2) لأن زيادة الكتلة المولية تزيد من قوى لندن.</li>
                               </ul>
                           </div>
                       </li>
@@ -225,7 +267,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void; }) => (
                        <CardDescription>تحكم في درجة الحرارة والضغط ولاحظ كيف يتغير سلوك الغاز بين المثالي والحقيقي.</CardDescription>
                   </CardHeader>
                   <CardContent>
-                      <Diagram />
+                      <Simulation />
                   </CardContent>
               </Card>
         </div>
