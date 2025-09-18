@@ -106,7 +106,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
     },
     {
     
-        questionText: "المادة التي تذوب في الماء من المواد الآتية:",
+        question: "المادة التي تذوب في الماء من المواد الآتية:",
         options: [
             'PbS',
             'Sr(OH)₂',
@@ -120,6 +120,18 @@ export const staticQuizLvl2: QuizQuestion[] = [
             </>
         ),
     },
-    
+    {
+            question: "المادة الأكثر ذائبية في البنزين C₆H₆:",
+        options: [
+        'CH₃OH',
+        'HCOOH',
+        'C₆H₁₄',
+        'CH₂OHCH₂OH'
+    ],
+    correctAnswerIndex: 2,
+    explanation: ("البنزين (C₆H₆) مذيب غير قطبي. ومبدأ الذائبية هو 'الشبيه يذيب شبيهه'. الهكسان (C₆H₁₄) هو المركب الوحيد غير القطبي بين الخيارات، حيث أن باقي المركبات قطبية وقادرة على تكوين روابط هيدروجينية، لذا فإن الهكسان هو الأكثر ذائبية في البنزين."
+),
+},
+
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];
