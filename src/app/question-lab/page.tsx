@@ -23,17 +23,17 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "المادة الأكثر ذائبية في البنزين C6H6:",
+    questionText: "أحد المخاليط الآتية متساوية التركيز تعتبر الأكثر توصيلا للتيار الكهربائي:",
     options: [
-        'CH3OH',
-        'HCOOH',
-        'C6H14',
-        'CH2OHCH2OH'
+        'CH3CH2OH',
+        'AgCl',
+        'Al(NO3)3',
+        'CH3COONa'
     ],
-    correctAnswerIndex: 2,
-    explanation: "البنزين (C₆H₆) مذيب غير قطبي. ومبدأ الذائبية هو 'الشبيه يذيب شبيهه'. الهكسان (C₆H₁₄) هو المركب الوحيد غير القطبي بين الخيارات، حيث أن باقي المركبات قطبية وقادرة على تكوين روابط هيدروجينية، لذا فإن الهكسان هو الأكثر ذائبية في البنزين.",
+    correctAnswerIndex: 3,
+    explanation: " ",
     level: 2,
-    source: "الوحدة 2 / الدرس 1 / الجزء 2"
+    source: "الوحدة 2 / الدرس 1 / الجزء 3"
 };
 
 
