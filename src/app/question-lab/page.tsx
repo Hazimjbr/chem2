@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "العبارة الصحيحة المتعلقة بأواني الضغط هي:",
-    options: [
-        <>ينضج الطعام بسرعة أكبر لأن درجة غليان الماء تصبح أقل من <span dir="ltr">100°C</span></>,
-        <>ينضج الطعام بسرعة أكبر لأن درجة غليان الماء تصبح أكثر من <span dir="ltr">100°C</span></>,
-        <>ينضج الطعام خلال زمن أطول لأن درجة غليان الماء تصبح أكثر من <span dir="ltr">100°C</span></>,
-        <>ينضج الطعام خلال زمن أقل لأن درجة غليان الماء تصبح أقل من <span dir="ltr">100°C</span></>
-    ],
-    correctAnswerIndex: 1,
-    explanation: <>في أواني الضغط يؤدي الضغط المرتفع إلى رفع درجة غليان الماء فوق <span dir="ltr">100°C</span> الطهي عند درجة حرارة أعلى يسرع من التفاعلات الكيميائية المسؤولة عن نضج الطعام مما يقلل من وقت الطهي بشكل ملحوظ</>,
-    level: 1,
-    source: "الوحدة 1 / الإثراء والتوسع / الربط"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
