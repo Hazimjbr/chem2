@@ -103,6 +103,23 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 <span>) تكون ذائبة بشكل عام.</span>
             </>
         ),
-    }
+    },
+    {
+    
+        questionText: "المادة التي تذوب في الماء من المواد الآتية:",
+        options: [
+            'PbS',
+            'Sr(OH)₂',
+            'AgBr',
+            'CaCO₃'
+        ],
+        correctAnswerIndex: 1,
+        explanation: (
+            <>
+                وفقًا لقواعد الذائبية، معظم أملاح الكبريتيد (<span dir="ltr" className="inline-block"><InlineMath math="S^{2-}" /></span>) والكربونات (<span dir="ltr" className="inline-block"><InlineMath math="CO_3^{2-}" /></span>) غير ذائبة. هاليدات الفضة (AgBr) هي أيضًا من الرواسب الشائعة. هيدروكسيد السترونشيوم Sr(OH)₂ يعتبر من القواعد القوية وهو قابل للذوبان في الماء.
+            </>
+        ),
+    },
+    
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];
