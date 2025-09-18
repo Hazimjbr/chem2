@@ -7,7 +7,7 @@ import { Library, CheckCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils.tsx';
 import { InlineMath } from 'react-katex';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -23,15 +23,15 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "لماذا تمتلك المواد الصلبة البلورية درجات انصهار محددة وحادة، بينما تنصهر المواد غير البلورية على مدى واسع من درجات الحرارة؟",
+    questionText: "مادة صلبة درجة انصهارها مرتفعة، وهي عازلة للكهرباء في حالتها الصلبة ولكنها توصل الكهرباء عند صهرها. أي نوع من المواد الصلبة تصف هذه الخصائص؟",
     options: [
-        "لأن المواد البلورية أقوى",
-        "لأن جميع الروابط في الشبكة البلورية متساوية في القوة وتتطلب نفس كمية الطاقة لتكسيرها",
-        "لأن المواد غير البلورية لا تنصهر أبدًا",
-        "لأن المواد البلورية تحتوي على شوائب"
+        "صلبة جزيئية",
+        "صلبة أيونية",
+        "صلبة فلزية",
+        "صلبة شبكية تساهمية"
     ],
     correctAnswerIndex: 1,
-    explanation: "في المادة البلورية، تكون جميع الجسيمات في بيئة متشابهة والروابط بينها متجانسة في القوة، لذلك تنكسر جميعها عند نفس درجة الحرارة. أما في المواد غير البلورية، فتوجد روابط بقوى متفاوتة، فتنكسر الروابط الأضعف أولاً ثم الأقوى تدريجيًا على مدى من الحرارة.",
+    explanation: "هذه هي الخصائص الكلاسيكية للمواد الأيونية. تكون أيوناتها مقيدة الحركة في الحالة الصلبة (عازلة)، ولكنها تصبح حرة الحركة عند صهرها (موصلة). درجة انصهارها المرتفعة ناتجة عن قوة الرابطة الأيونية.",
     level: 3,
     source: "الوحدة 1 / الدرس 3 / الجزء 1"
 };
