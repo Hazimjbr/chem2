@@ -31,7 +31,11 @@ const newQuestion: Question | null = {
         'CaCO₃'
     ],
     correctAnswerIndex: 1,
-    explanation: "وفقًا لقواعد الذائبية، معظم أملاح الكبريتيد (S²⁻) والكربونات (CO₃²⁻) غير ذائبة. هاليدات الفضة (AgBr) هي أيضًا من الرواسب الشائعة. هيدروكسيد السترونشيوم Sr(OH)₂ يعتبر من القواعد القوية وهو قابل للذوبان في الماء.",
+    explanation: (
+        <>
+            وفقًا لقواعد الذائبية، معظم أملاح الكبريتيد (<span dir="ltr" className="inline-block"><InlineMath math="S^{2-}" /></span>) والكربونات (<span dir="ltr" className="inline-block"><InlineMath math="CO_3^{2-}" /></span>) غير ذائبة. هاليدات الفضة (AgBr) هي أيضًا من الرواسب الشائعة. هيدروكسيد السترونشيوم Sr(OH)₂ يعتبر من القواعد القوية وهو قابل للذوبان في الماء.
+        </>
+    ),
     level: 2,
     source: "الوحدة 2 / الدرس 1 / الجزء 3"
 };
