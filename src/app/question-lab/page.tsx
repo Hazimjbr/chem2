@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -6,7 +7,7 @@ import { Library, CheckCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 import { InlineMath } from 'react-katex';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
