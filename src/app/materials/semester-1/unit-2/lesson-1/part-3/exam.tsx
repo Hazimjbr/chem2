@@ -69,5 +69,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
     }
 ];
 
-export const staticQuizLvl2: QuizQuestion[] = [];
+export const staticQuizLvl2: QuizQuestion[] = [
+    {
+        question: "تسمى المحاليل التي يكون فيها الماء هو المذيب بالمحاليل:",
+        options: [
+            "القطبية",
+            "المائية",
+            "الهيدروجينية",
+            "غير القطبية"
+        ],
+        correctAnswerIndex: 1,
+        explanation: "يطلق مصطلح 'المحاليل المائية' على أي محلول يكون فيه الماء هو المذيب.",
+    }
+];
 export const staticQuizLvl3: QuizQuestion[] = [];

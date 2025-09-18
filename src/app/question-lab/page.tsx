@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "تسمى المحاليل التي يكون فيها الماء هو المذيب بالمحاليل:",
-    options: [
-        "القطبية",
-        "المائية",
-        "الهيدروجينية",
-        "غير القطبية"
-    ],
-    correctAnswerIndex: 1,
-    explanation: "يطلق مصطلح 'المحاليل المائية' على أي محلول يكون فيه الماء هو المذيب.",
-    level: 1,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
