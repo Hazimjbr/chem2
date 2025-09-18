@@ -22,7 +22,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "المادة التي لا تذوب في الماء من المواد الآتية:",
+    options: [
+        <span><InlineMath math="Na_2S" /></span>,
+        <span><InlineMath math="Ca(NO_3)_2" /></span>,
+        <span><InlineMath math="MgBr_2" /></span>,
+        <span><InlineMath math="CaCO_3" /></span>
+    ],
+    correctAnswerIndex: 3,
+    explanation: "وفقًا لقواعد الذائبية، معظم الكربونات (CO₃²⁻) غير ذائبة في الماء، باستثناء كربونات الفلزات القلوية والأمونيوم. بينما أملاح النترات (NO₃⁻) والفلزات القلوية (Na⁺) والهاليدات (Br⁻) تكون ذائبة بشكل عام.",
+    level: 2,
+    source: "الوحدة 2 / الدرس 1 / الجزء 3"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
