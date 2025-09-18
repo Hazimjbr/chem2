@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -7,7 +6,7 @@ import { Library, CheckCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { cn } from '@/lib/utils.tsx';
+import { cn } from '@/lib/utils.ts';
 import { InlineMath } from 'react-katex';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -22,7 +21,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "لماذا تمتلك المواد الصلبة البلورية درجات انصهار محددة وحادة، بينما تنصهر المواد غير البلورية (مثل الزجاج) على مدى واسع من درجات الحرارة؟",
+    options: [
+        "لأن المواد البلورية أقوى",
+        "لأن جميع الروابط في الشبكة البلورية متساوية في القوة وتتطلب نفس كمية الطاقة لتكسيرها",
+        "لأن المواد غير البلورية لا تنصهر أبدًا",
+        "لأن المواد البلورية تحتوي على شوائب"
+    ],
+    correctAnswerIndex: 1,
+    explanation: "في المادة البلورية، تكون جميع الجسيمات في بيئة متشابهة والروابط بينها متجانسة في القوة، لذلك تنكسر جميعها عند نفس درجة الحرارة. أما في المواد غير البلورية، فتوجد روابط بقوى متفاوتة، فتنكسر الروابط الأضعف أولاً ثم الأقوى تدريجيًا على مدى من الحرارة.",
+    level: 3,
+    source: "الوحدة 1 / الدرس 3 / الجزء 1"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {

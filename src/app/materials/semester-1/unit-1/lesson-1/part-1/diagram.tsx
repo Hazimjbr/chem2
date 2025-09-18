@@ -137,7 +137,7 @@ export default function Diagram({ pressure, temperature }: DiagramProps) {
       p.draw = () => {
         p.background(255);
         
-        const pistonY = pressure === 'low' ? 0 : (CANVAS_HEIGHT * (1/3));
+        const pistonY = pressure === 'low' ? 0 : (CANVAS_HEIGHT * (1/1.3));
         const topBoundary = pistonY + PISTON_THICKNESS;
         
         p.stroke('hsl(var(--border))');
