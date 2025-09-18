@@ -23,15 +23,15 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "أحد المخاليط الآتية متساوية التركيز تعتبر الأكثر توصيلا للتيار الكهربائي:",
+    questionText: "أحد المخاليط الآتية متساوية التركيز يعتبر الأكثر توصيلا للتيار الكهربائي:",
     options: [
-        'CH3CH2OH',
-        'AgCl',
-        'Al(NO3)3',
-        'CH3COONa'
+        <InlineMath key="1" math="Al(NO_3)_3" />,
+        <InlineMath key="2" math="CH_3COONa" />,
+        <InlineMath key="3" math="AgCl" />,
+        <InlineMath key="4" math="CH_3CH_2OH" />
     ],
-    correctAnswerIndex: 3,
-    explanation: " ",
+    correctAnswerIndex: 0,
+    explanation: "تعتمد قدرة المحلول على توصيل الكهرباء على تركيز الأيونات الحرة فيه. محلول Al(NO₃)₃ يتفكك ليعطي 4 أيونات (Al³⁺ وثلاثة أيونات NO₃⁻)، وهو العدد الأكبر من الأيونات مقارنة بالخيارات الأخرى، لذا فهو الأكثر توصيلًا للكهرباء.",
     level: 2,
     source: "الوحدة 2 / الدرس 1 / الجزء 3"
 };
@@ -80,7 +80,7 @@ const QuestionCard = ({ question }: { question?: Question | null }) => {
                             disabled
                         >
                             <span className="font-sans font-bold ml-2">{["أ", "ب", "ج", "د"][index]}</span>
-                            <span className="flex-1 whitespace-normal" dir="rtl">{option}</span>
+                            <span className="flex-1 whitespace-normal" dir="ltr">{option}</span>
                             {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
                         </Button>
                     );
