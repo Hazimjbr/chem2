@@ -23,21 +23,17 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "المادة التي تذوب في الماء من المواد الآتية:",
+    questionText: "المادة الأكثر ذائبية في البنزين C6H6:",
     options: [
-        'PbS',
-        'Sr(OH)₂',
-        'AgBr',
-        'CaCO₃'
+        'CH3OH',
+        'HCOOH',
+        'C6H14',
+        'CH2OHCH2OH'
     ],
-    correctAnswerIndex: 1,
-    explanation: (
-        <>
-            وفقًا لقواعد الذائبية، معظم أملاح الكبريتيد (<span dir="ltr" className="inline-block"><InlineMath math="S^{2-}" /></span>) والكربونات (<span dir="ltr" className="inline-block"><InlineMath math="CO_3^{2-}" /></span>) غير ذائبة. هاليدات الفضة (AgBr) هي أيضًا من الرواسب الشائعة. هيدروكسيد السترونشيوم Sr(OH)₂ يعتبر من القواعد القوية وهو قابل للذوبان في الماء.
-        </>
-    ),
+    correctAnswerIndex: 2,
+    explanation: "البنزين (C₆H₆) مذيب غير قطبي. ومبدأ الذائبية هو 'الشبيه يذيب شبيهه'. الهكسان (C₆H₁₄) هو المركب الوحيد غير القطبي بين الخيارات، حيث أن باقي المركبات قطبية وقادرة على تكوين روابط هيدروجينية، لذا فإن الهكسان هو الأكثر ذائبية في البنزين.",
     level: 2,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
+    source: "الوحدة 2 / الدرس 1 / الجزء 2"
 };
 
 
