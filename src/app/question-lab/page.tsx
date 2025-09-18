@@ -22,31 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "المادة التي لا تذوب في الماء من المواد الآتية:",
-    options: [
-        <span dir="ltr"><InlineMath math="Na_2S" /></span>,
-        <span dir="ltr"><InlineMath math="Ca(NO_3)_2" /></span>,
-        <span dir="ltr"><InlineMath math="MgBr_2" /></span>,
-        <span dir="ltr"><InlineMath math="CaCO_3" /></span>
-    ],
-    correctAnswerIndex: 3,
-    explanation: (
-    <>
-        <span>وفقًا لقواعد الذائبية، معظم الكربونات (</span>
-        <span dir="ltr" className="inline-block"><InlineMath math="CO_3^{2-}" /></span>
-        <span>) غير ذائبة في الماء باستثناء كربونات الفلزات القلوية والأمونيوم، بينما أملاح النترات (</span>
-        <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>
-        <span>)، والفلزات القلوية (</span>
-        <span dir="ltr" className="inline-block"><InlineMath math="Na^{+}" /></span>
-        <span>)، والهاليدات (</span>
-        <span dir="ltr" className="inline-block"><InlineMath math="Br^{-}" /></span>
-        <span>) تكون ذائبة بشكل عام.</span>
-    </>
-    ),
-    level: 2,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
