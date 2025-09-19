@@ -22,7 +22,19 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: "سبب اختلاف طعم ماء الشرب عند تسخينه:",
+    options: [
+        "تقل كمية المواد الصلبة بارتفاع الحرارة",
+        "تزاد كمية المواد الصلبة الذائبة بارتفاع الحرارة",
+        "تقل كمية الأكسجين في الماء فيتغير طعمه",
+        "تزداد كمية الغازات في الماء بارتفاع الحرارة"
+    ],
+    correctAnswerIndex: 2,
+    explanation: "ذائبية الغازات (مثل الأكسجين) في الماء تقل مع ارتفاع درجة الحرارة. عند تسخين الماء، يخرج الأكسجين الذائب، وهذا التغير هو ما يسبب اختلاف الطعم.",
+    level: 3,
+    source: "الوحدة 2 / الدرس 1 / الجزء 3"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
