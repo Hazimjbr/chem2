@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
@@ -22,7 +22,39 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: (
+        <>
+            <span>إذا علمت أن ذائبية الغاز A في الماء عند درجة حرارة </span>
+            <span dir="ltr" className="inline-block"><InlineMath math="20^\circ C"/></span>
+            <span> وضغط </span>
+            <span dir="ltr" className="inline-block"><InlineMath math="0.5 \text{ atm}"/></span>
+            <span> هي </span>
+            <span dir="ltr" className="inline-block"><InlineMath math="0.65 \text{ g/L}"/></span>
+            <span>، فإن ذائبيته عند ضغط </span>
+            <span dir="ltr" className="inline-block"><InlineMath math="1.5 \text{ atm}"/></span>
+            <span> ونفس درجة الحرارة تساوي:</span>
+        </>
+    ),
+    options: [
+        "1.95",
+        "0.22",
+        "4.33",
+        "2.65"
+    ],
+    correctAnswerIndex: 0,
+    explanation: (
+        <>
+            <span>وفقًا لقانون هنري، الذائبية (S) تتناسب طرديًا مع الضغط (P). باستخدام العلاقة </span>
+            <span dir="ltr" className="inline-block"><InlineMath math="S_1/P_1 = S_2/P_2"/></span>
+            <span>، فإن </span>
+            <span dir="ltr" className="inline-block"><InlineMath math="S_2 = (S_1 \times P_2) / P_1 = (0.65 \times 1.5) / 0.5 = 1.95 \text{ g/L}"/></span>
+            <span>.</span>
+        </>
+    ),
+    level: 2,
+    source: "الوحدة 2 / الدرس 1 / الجزء 3"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
