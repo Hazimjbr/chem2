@@ -23,15 +23,15 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "المادة الأكثر ذائبية في البنزين C₆H₆ هي:",
+    questionText: "أحد المخاليط الآتية يمكن فصلها بالترشيح:",
     options: [
         <span dir="ltr" key="1"><InlineMath math="CH_3OH" /></span>,
-        <span dir="ltr" key="2"><InlineMath math="HCOOH" /></span>,
-        <span dir="ltr" key="3"><InlineMath math="C_6H_{14}" /></span>,
-        <span dir="ltr" key="4"><InlineMath math="CH_2OHCH_2OH" /></span>
+        <span dir="ltr" key="2"><InlineMath math="O_2" /></span>,
+        <span dir="ltr" key="3"><InlineMath math="BaSO_4" /></span>,
+        <span dir="ltr" key="4"><InlineMath math="CH_3COOH" /></span>
     ],
     correctAnswerIndex: 2,
-    explanation: "وفقًا لمبدأ 'الشبيه يذيب شبيهه'، فإن المذيبات غير القطبية تذيب المواد غير القطبية. البنزين (C₆H₆) مذيب غير قطبي. الهكسان (C₆H₁₄) هو أيضًا مركب هيدروكربوني غير قطبي، لذا سيكون الأكثر ذائبية فيه. بينما المركبات الأخرى (الميثانول، حمض الفورميك، والإيثيلين جلايكول) هي مركبات قطبية بسبب وجود مجموعات OH أو COOH.",
+    explanation: "",
     level: 2,
     source: "الوحدة 2 / الدرس 1 / الجزء 2"
 };
