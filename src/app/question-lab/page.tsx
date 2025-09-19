@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: <><span>إذا علمت أن ذائبية الغاز A في الماء عند درجة حرارة </span><span dir="ltr">20°C</span><span> وضغط </span><span dir="ltr">0.5atm</span><span> هي </span><span dir="ltr">0.65g/L</span><span> فإن ذائبيته عند ضغط </span><span dir="ltr">1.5atm</span><span> ودرجة حرارة </span><span dir="ltr">10°C</span><span> تساوي</span></>,
-    options: [
-        "1.95",
-        "0.22",
-        "1.80",
-        "2.15"
-    ],
-    correctAnswerIndex: 3,
-    explanation: "هذا السؤال يجمع بين تأثيرين 1 زيادة الضغط 3 مرات تزيد الذائبية 3 مرات (0.65 * 3 = 1.95) 2 انخفاض درجة الحرارة يزيد من ذائبية الغازات أيضًا لذلك يجب أن تكون الإجابة النهائية أعلى من 1.95 مما يجعل 2.15 هي الإجابة المنطقية الوحيدة",
-    level: 3,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
