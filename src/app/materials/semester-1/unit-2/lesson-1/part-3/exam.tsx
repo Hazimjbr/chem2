@@ -127,5 +127,17 @@ export const staticQuizLvl2: QuizQuestion[] = [
             </>
         ),
     }
+    {
+    question: "أحد المخاليط الآتية يمكن فصلها بالترشيح:",
+    options: [
+        <span dir="ltr" key="1"><InlineMath math="CH_3OH" /></span>,
+        <span dir="ltr" key="2"><InlineMath math="O_2" /></span>,
+        <span dir="ltr" key="3"><InlineMath math="BaSO_4" /></span>,
+        <span dir="ltr" key="4"><InlineMath math="CH_3COOH" /></span>
+    ],
+    correctAnswerIndex: 2,
+    explanation: "الترشيح هو عملية فصل مادة صلبة غير ذائبة عن سائل. كبريتات الباريوم (BaSO₄) هي ملح شحيح الذوبان في الماء، لذا تكوّن مخلوطًا معلقًا يمكن فصل جسيماته الصلبة بالترشيح. أما باقي المواد (الميثانول، الأكسجين، وحمض الخل) فتذوب في الماء مكونة محاليل متجانسة لا يمكن فصل مكوناتها بالترشيح.",
+},
+    
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];
