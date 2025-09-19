@@ -23,17 +23,17 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "أحد المخاليط الآتية يمكن فصلها بالترشيح:",
+    questionText: "أحد المخاليط الآتية مع الماء يمكن فصلها بالترسيب:",
     options: [
-        <span dir="ltr" key="1"><InlineMath math="CH_3OH" /></span>,
-        <span dir="ltr" key="2"><InlineMath math="O_2" /></span>,
-        <span dir="ltr" key="3"><InlineMath math="BaSO_4" /></span>,
-        <span dir="ltr" key="4"><InlineMath math="CH_3COOH" /></span>
+        <span dir="ltr" key="1"><InlineMath math="Na_2SO_4" /></span>,
+        <span dir="ltr" key="2"><InlineMath math="CH_3OH" /></span>,
+        <span dir="ltr" key="3"><InlineMath math="O_2" /></span>,
+        <span dir="ltr" key="4"><InlineMath math="C_{10}H_{22}" /></span>
     ],
-    correctAnswerIndex: 2,
-    explanation: "الترشيح هو عملية فصل مادة صلبة غير ذائبة عن سائل. كبريتات الباريوم (BaSO₄) هي ملح شحيح الذوبان في الماء، لذا تكوّن مخلوطًا معلقًا يمكن فصل جسيماته الصلبة بالترشيح. أما باقي المواد (الميثانول، الأكسجين، وحمض الخل) فتذوب في الماء مكونة محاليل متجانسة لا يمكن فصل مكوناتها بالترشيح.",
+    correctAnswerIndex: 3,
+    explanation: "الترسيب أو الفصل بالجاذبية يحدث في المخاليط غير المتجانسة. الديكان (C₁₀H₂₂) هو مركب هيدروكربوني غير قطبي لا يذوب في الماء (القطبي)، وسيُشكل طبقة منفصلة يمكن فصلها. أما كبريتات الصوديوم والميثانول والأكسجين فيذوبون في الماء بدرجات متفاوتة مكونين محاليل متجانسة.",
     level: 2,
-    source: "الوحدة 2 / الدرس 1 / الجزء 2"
+    source: "الوحدة 2 / الدرس 1 / الجزء 3"
 };
 
 
