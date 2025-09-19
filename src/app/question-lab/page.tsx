@@ -22,25 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: <><span>إذا أضيف <span dir="ltr">30g</span> من ملح كلوريد الصوديوم NaCl إلى <span dir="ltr">50g</span> ماء عند درجة حرارة <span dir="ltr">50°C</span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir="ltr">10g</span> فإن ذائبية الملح عند درجة حرارة <span dir="ltr">60°C</span> تساوي</span></>,
-    options: [
-        "40",
-        "50",
-        "10",
-        "20"
-    ],
-    correctAnswerIndex: 1,
-    explanation: (
-        <div className="space-y-2 text-right" dir="rtl">
-            <p>1 <strong>حساب الذائبية عند <span dir="ltr">50°C</span></strong> كمية الملح الذائبة = 30g - 10g = 20g هذه الكمية ذابت في 50g من الماء لحساب الذائبية لكل 100g ماء (20g / 50g) × 100g = 40g إذن الذائبية عند <span dir="ltr">50°C</span> هي 40</p>
-            <p>2 <strong>الاستنتاج عند <span dir="ltr">60°C</span></strong> ذائبية معظم الأملاح الصلبة تزداد مع زيادة درجة الحرارة</p>
-            <p>3 <strong>النتيجة</strong> بما أن الذائبية عند <span dir="ltr">50°C</span> هي 40 فلا بد أن تكون أعلى من 40 عند <span dir="ltr">60°C</span> الخيار الوحيد الصحيح الذي يحقق هذا الشرط هو 50</p>
-        </div>
-    ),
-    level: 3,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
