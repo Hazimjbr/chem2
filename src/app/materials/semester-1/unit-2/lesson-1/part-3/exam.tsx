@@ -84,10 +84,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: "المادة التي لا تذوب في الماء من المواد الآتية:",
         options: [
-            <span dir="ltr"><InlineMath math="Na_2S" /></span>,
-            <span dir="ltr"><InlineMath math="Ca(NO_3)_2" /></span>,
-            <span dir="ltr"><InlineMath math="MgBr_2" /></span>,
-            <span dir="ltr"><InlineMath math="CaCO_3" /></span>
+            <span dir="ltr" key="1"><InlineMath math="Na_2S" /></span>,
+            <span dir="ltr" key="2"><InlineMath math="Ca(NO_3)_2" /></span>,
+            <span dir="ltr" key="3"><InlineMath math="MgBr_2" /></span>,
+            <span dir="ltr" key="4"><InlineMath math="CaCO_3" /></span>
         ],
         correctAnswerIndex: 3,
         explanation: (
@@ -105,44 +105,38 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ),
     },
     {
-    
         question: "المادة التي تذوب في الماء من المواد الآتية:",
         options: [
-            'PbS',
-            'Sr(OH)₂',
-            'AgBr',
-            'CaCO₃'
+            <span dir="ltr" key="1"><InlineMath math="PbS"/></span>,
+            <span dir="ltr" key="2"><InlineMath math="Sr(OH)_2"/></span>,
+            <span dir="ltr" key="3"><InlineMath math="AgBr"/></span>,
+            <span dir="ltr" key="4"><InlineMath math="CaCO_3"/></span>
         ],
         correctAnswerIndex: 1,
         explanation: (
             <>
-                وفقًا لقواعد الذائبية، معظم أملاح الكبريتيد (<span dir="ltr" className="inline-block"><InlineMath math="S^{2-}" /></span>) والكربونات (<span dir="ltr" className="inline-block"><InlineMath math="CO_3^{2-}" /></span>) غير ذائبة. هاليدات الفضة (AgBr) هي أيضًا من الرواسب الشائعة. هيدروكسيد السترونشيوم Sr(OH)₂ يعتبر من القواعد القوية وهو قابل للذوبان في الماء.
+                <span>وفقًا لقواعد الذائبية، معظم أملاح الكبريتيد (</span>
+                <span dir="ltr" className="inline-block"><InlineMath math="S^{2-}"/></span>
+                <span>) والكربونات (</span>
+                <span dir="ltr" className="inline-block"><InlineMath math="CO_3^{2-}" /></span>
+                <span>) غير ذائبة. هاليدات الفضة (AgBr) هي أيضًا من الرواسب الشائعة. هيدروكسيد السترونشيوم Sr(OH)₂ يعتبر من القواعد القوية وهو قابل للذوبان في الماء.</span>
             </>
-        ),
+        )
     },
     {
-            question: "المادة الأكثر ذائبية في البنزين C₆H₆:",
+        question: "أحد المخاليط الآتية متساوية التركيز يعتبر الأكثر توصيلا للتيار الكهربائي:",
         options: [
-        'CH₃OH',
-        'HCOOH',
-        'C₆H₁₄',
-        'CH₂OHCH₂OH'
-    ],
-    correctAnswerIndex: 2,
-    explanation: ("البنزين (C₆H₆) مذيب غير قطبي. ومبدأ الذائبية هو 'الشبيه يذيب شبيهه'. الهكسان (C₆H₁₄) هو المركب الوحيد غير القطبي بين الخيارات، حيث أن باقي المركبات قطبية وقادرة على تكوين روابط هيدروجينية، لذا فإن الهكسان هو الأكثر ذائبية في البنزين."
-),
-},
-{
-    question: "أحد المخاليط الآتية متساوية التركيز يعتبر الأكثر توصيلا للتيار الكهربائي:",
-    options: [
-        <InlineMath key="1" math="Al(NO_3)_3" />,
-        <InlineMath key="2" math="CH_3COONa" />,
-        <InlineMath key="3" math="AgCl" />,
-        <InlineMath key="4" math="CH_3CH_2OH" />
-    ],
-    correctAnswerIndex: 0,
-    explanation: ("تعتمد قدرة المحلول على توصيل الكهرباء على تركيز الأيونات الحرة فيه. محلول Al(NO₃)₃ يتفكك ليعطي 4 أيونات (Al³⁺ وثلاثة أيونات NO₃⁻)، وهو العدد الأكبر من الأيونات مقارنة بالخيارات الأخرى، لذا فهو الأكثر توصيلًا للكهرباء."
-),
-},
+            <span dir="ltr" key="1"><InlineMath math="Al(NO_3)_3"/></span>,
+            <span dir="ltr" key="2"><InlineMath math="CH_3COONa"/></span>,
+            <span dir="ltr" key="3"><InlineMath math="AgCl"/></span>,
+            <span dir="ltr" key="4"><InlineMath math="CH_3CH_2OH"/></span>,
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                تعتمد قدرة المحلول على توصيل الكهرباء على تركيز الأيونات الحرة فيه. محلول <span dir="ltr" className="inline-block"><InlineMath math="Al(NO_3)_3"/></span> يتفكك ليعطي 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}"/></span> وثلاثة أيونات <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>)، وهو العدد الأكبر من الأيونات مقارنة بالخيارات الأخرى، لذا فهو الأكثر توصيلًا للكهرباء.
+            </>
+        ),
+    }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [];
