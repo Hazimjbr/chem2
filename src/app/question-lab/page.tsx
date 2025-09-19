@@ -23,7 +23,11 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C" /> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند هذه الدرجة تساوي:",
+    questionText: (
+        <span>
+            إذا أضيف <span dir="ltr">30g</span> من ملح كلوريد الصوديوم NaCl إلى <span dir="ltr">50g</span> ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C" /></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir="ltr">10g</span> فإن ذائبية الملح عند هذه الدرجة تساوي:
+        </span>
+    ),
     options: [
         "10",
         "20",
@@ -33,14 +37,14 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 2,
     explanation: (
         <div className="space-y-2 text-right" dir="rtl">
-            <p><strong>حساب كمية الملح الذائبة</strong> الكمية المضافة (30g) - الكمية المترسبة (10g) = 20g</p>
-            <p><strong>فهم الذائبية</strong> الذائبية هي الكتلة التي تذوب في 100g من الماء</p>
-            <p><strong>حساب النسبة والتناسب</strong> إذا كانت 20g تذوب في 50g من الماء فكم يذوب في 100g؟</p>
-            <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H₂O) * 100g H₂O = 40g NaCl" /></p>
+            <p>حساب كمية الملح الذائبة الكمية المضافة (<span dir="ltr">30g</span>) - الكمية المترسبة (<span dir="ltr">10g</span>) = <span dir="ltr">20g</span></p>
+            <p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir="ltr">100g</span> من الماء</p>
+            <p>حساب النسبة والتناسب إذا كانت <span dir="ltr">20g</span> تذوب في <span dir="ltr">50g</span> من الماء فكم يذوب في <span dir="ltr">100g</span></p>
+            <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H₂O) \times 100g H₂O = 40g NaCl" /></p>
             <p>إذًا الذائبية هي 40</p>
         </div>
     ),
-    level: 2,
+    level: 3,
     source: "الوحدة 2 / الدرس 1 / الجزء 3"
 };
 
