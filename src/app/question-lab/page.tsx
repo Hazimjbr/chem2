@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "• أحد المخاليط الآتية مع الهواء يمكن أن يشتت الضوء:",
-    options: [
-        <span>H₂O</span>,
-        <span>Na₂SO₄</span>,
-        <span>Cl₂</span>,
-        <span>CH₄</span>
-    ],
-    correctAnswerIndex: 0,
-    explanation: "لتشتيت الضوء (ظاهرة تندال)، يجب أن تكون الجسيمات كبيرة بما يكفي. الماء يمكن أن يوجد على شكل قطرات صغيرة جدًا في الهواء (مثل الضباب أو الغيوم) مكونًا مخلوطًا غرويًا يشتت الضوء. أما الغازات الأخرى (Cl₂ و CH₄) فتكوّن محاليل حقيقية لا تشتت الضوء، و Na₂SO₄ مادة صلبة لا تختلط بالهواء.",
-    level: 1,
-    source: "الوحدة 2 / الدرس 1 / الجزء 1"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
