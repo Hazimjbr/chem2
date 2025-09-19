@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "المادة التي لا تمتزج جسيماتها مع الماء:",
-    options: [
-        <span dir="ltr">C₆H₁₃Cl</span>,
-        <span dir="ltr">HCl</span>,
-        <span dir="ltr">CH₃Cl</span>,
-        <span dir="ltr">PbCl₂</span>
-    ],
-    correctAnswerIndex: 3,
-    explanation: "مركب كلوريد الرصاص (PbCl₂) هو مركب أيوني شحيح الذوبان جدًا في الماء (يعتبر راسبًا) وفقًا لقواعد الذائبية. المركبات الأخرى (HCl, CH₃Cl) قطبية وتذوب في الماء، بينما C₆H₁₃Cl يمتلك جزءًا غير قطبي كبير يجعله شحيح الذوبان أيضًا، لكن PbCl₂ هو المثال الأكثر وضوحًا على عدم الامتزاج لكونه راسبًا معروفًا.",
-    level: 2,
-    source: "الوحدة 2 / الدرس 1 / الجزء 2"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
