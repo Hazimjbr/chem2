@@ -31,9 +31,9 @@ const newQuestion: Question | null = {
             <span dir="ltr" className="inline-block"><InlineMath math="0.5 \text{ atm}"/></span>
             <span> هي </span>
             <span dir="ltr" className="inline-block"><InlineMath math="0.65 \text{ g/L}"/></span>
-            <span>، فإن ذائبيته عند ضغط </span>
+            <span> فإن ذائبيته عند ضغط </span>
             <span dir="ltr" className="inline-block"><InlineMath math="1.5 \text{ atm}"/></span>
-            <span> ونفس درجة الحرارة تساوي:</span>
+            <span> ونفس درجة الحرارة تساوي</span>
         </>
     ),
     options: [
@@ -45,11 +45,10 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 0,
     explanation: (
         <>
-            <span>وفقًا لقانون هنري، الذائبية (S) تتناسب طرديًا مع الضغط (P). باستخدام العلاقة </span>
+            <span>وفقًا لقانون هنري فإن الذائبية (S) تتناسب طرديًا مع الضغط (P) وباستخدام العلاقة </span>
             <span dir="ltr" className="inline-block"><InlineMath math="S_1/P_1 = S_2/P_2"/></span>
-            <span>، فإن </span>
+            <span> فإن </span>
             <span dir="ltr" className="inline-block"><InlineMath math="S_2 = (S_1 \times P_2) / P_1 = (0.65 \times 1.5) / 0.5 = 1.95 \text{ g/L}"/></span>
-            <span>.</span>
         </>
     ),
     level: 2,
