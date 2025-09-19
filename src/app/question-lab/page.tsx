@@ -23,7 +23,7 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "أحد المخاليط الآتية متساوية التركيز يعتبر الأكثر توصيلا للتيار الكهربائي:",
+    questionText: "أحد المخاليط الآتية متساوية التركيز يعتبر الأكثر توصيلا للتيar الكهربائي:",
     options: [
         <InlineMath key="1" math="Al(NO_3)_3" />,
         <InlineMath key="2" math="CH_3COONa" />,
@@ -31,7 +31,14 @@ const newQuestion: Question | null = {
         <InlineMath key="4" math="CH_3CH_2OH" />
     ],
     correctAnswerIndex: 0,
-    explanation: "تعتمد قدرة المحلول على توصيل الكهرباء على تركيز الأيونات الحرة فيه. محلول Al(NO₃)₃ يتفكك ليعطي 4 أيونات (Al³⁺ وثلاثة أيونات NO₃⁻)، وهو العدد الأكبر من الأيونات مقارنة بالخيارات الأخرى، لذا فهو الأكثر توصيلًا للكهرباء.",
+    explanation: (
+        <>
+            تعتمد قدرة المحلول على توصيل الكهرباء على تركيز الأيونات الحرة فيه. محلول 
+            <InlineMath math="Al(NO_3)_3" /> يتفكك ليعطي 4 أيونات (
+            <InlineMath math="Al^{3+}" /> وثلاثة أيونات <InlineMath math="NO_3^{-}" />
+            )، وهو العدد الأكبر من الأيونات مقارنة بالخيارات الأخرى، لذا فهو الأكثر توصيلًا للكهرباء.
+        </>
+    ),
     level: 2,
     source: "الوحدة 2 / الدرس 1 / الجزء 3"
 };
