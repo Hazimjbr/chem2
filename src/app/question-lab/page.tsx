@@ -25,7 +25,7 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <span>
-            إذا أضيف <span dir="ltr">30g</span> من ملح كلوريد الصوديوم NaCl إلى <span dir="ltr">50g</span> ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C" /></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir="ltr">10g</span> فإن ذائبية الملح عند هذه الدرجة تساوي:
+            إذا أضيف <span dir='ltr' className='inline-block'>30g</span> من ملح كلوريد الصوديوم NaCl إلى <span dir='ltr' className='inline-block'>50g</span> ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C"/></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء، تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir='ltr' className='inline-block'>10g</span> فإن ذائبية الملح عند هذه الدرجة تساوي:
         </span>
     ),
     options: [
@@ -37,7 +37,7 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 2,
     explanation: (
         <div className="space-y-2 text-right" dir="rtl">
-            <p>حساب كمية الملح الذائبة الكمية المضافة (<span dir="ltr">30g</span>) - الكمية المترسبة (<span dir="ltr">10g</span>) = <span dir="ltr">20g</span></p>
+            <p>حساب كمية الملح الذائبة الكمية المضافة (<span dir="ltr">30g</span>) - الكمية المترسبة (<span dir="tr">10g</span>) = <span dir="ltr">20g</span></p>
             <p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir="ltr">100g</span> من الماء</p>
             <p>حساب النسبة والتناسب إذا كانت <span dir="ltr">20g</span> تذوب في <span dir="ltr">50g</span> من الماء فكم يذوب في <span dir="ltr">100g</span></p>
             <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H₂O) \times 100g H₂O = 40g NaCl" /></p>
