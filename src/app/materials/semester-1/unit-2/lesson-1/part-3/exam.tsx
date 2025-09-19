@@ -46,6 +46,17 @@ export const staticQuizLvl1: QuizQuestion[] = [
         explanation: "الإيثانول والماء كلاهما مركبات قطبية وقادرة على تكوين روابط هيدروجينية، لذا يمتزجان تمامًا مع بعضهما البعض وفقًا لمبدأ 'الشبيه يذيب شبيهه'."
     },
     {
+        question: "ماذا تسمى المحاليل التي يكون فيها الماء هو المذيب؟",
+        options: [
+            "محاليل غير قطبية",
+            "محاليل عضوية",
+            "محاليل مائية",
+            "محاليل غازية"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "يطلق مصطلح 'المحاليل المائية' على أي محلول يكون فيه الماء هو المذيب."
+    },
+    {
         question: "عند خلط كميات متساوية من الهكسان (غير قطبي) والماء (قطبي)، ماذا تتوقع أن يحدث؟",
         options: [
             "يمتزجان تمامًا",
@@ -55,7 +66,10 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 3,
         explanation: "بسبب الاختلاف الكبير في القطبية، لا يذوب الهكسان في الماء. وبما أنهما سائلان، فإنهما سيشكلان طبقتين منفصلتين، ويكون الأقل كثافة (الهكسان) في الأعلى."
-    },
+    }
+];
+
+export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: "تسمى المحاليل التي يكون فيها الماء هو المذيب بالمحاليل:",
         options: [
@@ -67,10 +81,6 @@ export const staticQuizLvl1: QuizQuestion[] = [
         correctAnswerIndex: 1,
         explanation: "يطلق مصطلح 'المحاليل المائية' على أي محلول يكون فيه الماء هو المذيب.",
     },
-
-];
-
-export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: "المادة التي لا تذوب في الماء من المواد الآتية:",
         options: [
@@ -129,25 +139,31 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ),
     },
     {
-    question: "أحد المخاليط الآتية يمكن فصلها بالترشيح:",
+    question: "أحد المخاليط الآتية مع الماء يمكن فصلها بالترشيح:",
     options: [
-        <span dir="ltr" key="1"><InlineMath math="CH_3OH" /></span>,
-        <span dir="ltr" key="2"><InlineMath math="O_2" /></span>,
-        <span dir="ltr" key="3"><InlineMath math="BaSO_4" /></span>,
+        <span dir="ltr" key="1"><InlineMath math="BaSO_4" /></span>,
+        <span dir="ltr" key="2"><InlineMath math="CH_3OH" /></span>,
+        <span dir="ltr" key="3"><InlineMath math="O_2" /></span>,
         <span dir="ltr" key="4"><InlineMath math="CH_3COOH" /></span>
     ],
-    correctAnswerIndex: 2,
+    correctAnswerIndex: 0,
     explanation: "الترشيح هو عملية فصل مادة صلبة غير ذائبة عن سائل. كبريتات الباريوم (BaSO₄) هي ملح شحيح الذوبان في الماء، لذا تكوّن مخلوطًا معلقًا يمكن فصل جسيماته الصلبة بالترشيح. أما باقي المواد (الميثانول، الأكسجين، وحمض الخل) فتذوب في الماء مكونة محاليل متجانسة لا يمكن فصل مكوناتها بالترشيح.",
-},
-    
+    },
+    {
+        question: "ليس من العوامل الذي تعتمد عليه ذائبية الغازات في الماء:",
+        options: [
+            "درجة حرارة الماء",
+            "الضغط المؤثر على الغاز",
+            "الكتلة المولية للغاز",
+            "كتلة الماء"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "ذائبية الغازات تعتمد على درجة الحرارة (علاقة عكسية)، الضغط (علاقة طردية)، وطبيعة الغاز (الكتلة المولية وقوى الترابط). أما كتلة الماء فتحدد الكمية الكلية للغاز التي يمكن إذابتها، ولكنها لا تغير خاصية الذائبية نفسها (التي تُقاس لكمية ثابتة من المذيب)."
+    }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: (
-            <span>
-                إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى <span dir='ltr' className='inline-block'>50g</span> ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C"/></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء، تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir='ltr' className='inline-block'>10g</span> فإن ذائبية الملح عند هذه الدرجة تساوي:
-            </span>
-        ),
+        question: <span>إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C" /></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند هذه الدرجة تساوي:</span>,
         options: [
             "10",
             "20",
@@ -155,14 +171,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "50"
         ],
         correctAnswerIndex: 2,
-        explanation: (
-            <div className="space-y-2 text-right" dir="rtl">
-                <p>حساب كمية الملح الذائبة الكمية المضافة (<span dir="ltr">30g</span>) - الكمية المترسبة (<span dir="tr">10g</span>) = <span dir="ltr">20g</span></p>
-                <p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir="ltr">100g</span> من الماء</p>
-                <p>حساب النسبة والتناسب إذا كانت <span dir="ltr">20g</span> تذوب في <span dir="ltr">50g</span> من الماء فكم يذوب في <span dir="ltr">100g</span></p>
-                <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H₂O) \times 100g H₂O = 40g NaCl" /></p>
-                <p>إذًا الذائبية هي 40</p>
-            </div>
-        ),
-    },
+        explanation: <div className="space-y-2 text-right" dir="rtl"><p>حساب كمية الملح الذائبة الكمية المضافة (<span dir='ltr'>30g</span>) - الكمية المترسبة (<span dir='ltr'>10g</span>) = <span dir='ltr'>20g</span></p><p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir='ltr'>100g</span> من الماء</p><p>حساب النسبة والتناسب إذا كانت <span dir='ltr'>20g</span> تذوب في <span dir='ltr'>50g</span> من الماء فكم يذوب في <span dir='ltr'>100g</span></p><p className="text-center" dir="ltr"><InlineMath math="(20g \ NaCl / 50g \ H₂O) \times 100g \ H₂O = 40g \ NaCl" /></p><p>إذًا الذائبية هي 40</p></div>
+    }
 ];

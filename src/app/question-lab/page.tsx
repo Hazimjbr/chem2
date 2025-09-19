@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "ليس من العوامل الذي تعتمد عليه ذائبية الغازات في الماء:",
-    options: [
-        "درجة حرارة الماء",
-        "الضغط المؤثر على الغاز",
-        "الكتلة المولية للغاز",
-        "كتلة الماء"
-    ],
-    correctAnswerIndex: 3,
-    explanation: "ذائبية الغازات تعتمد على درجة الحرارة (علاقة عكسية)، الضغط (علاقة طردية)، وطبيعة الغاز (الكتلة المولية وقوى الترابط). أما كتلة الماء فتحدد الكمية الكلية للغاز التي يمكن إذابتها، ولكنها لا تغير خاصية الذائبية نفسها (التي تُقاس لكمية ثابتة من المذيب).",
-    level: 2,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
