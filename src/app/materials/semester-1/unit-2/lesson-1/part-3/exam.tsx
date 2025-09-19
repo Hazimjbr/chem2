@@ -141,4 +141,28 @@ export const staticQuizLvl2: QuizQuestion[] = [
 },
     
 ];
-export const staticQuizLvl3: QuizQuestion[] = [];
+export const staticQuizLvl3: QuizQuestion[] = [
+    {
+        question: (
+            <span>
+                إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى <span dir='ltr' className='inline-block'>50g</span> ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C"/></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء، تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir='ltr' className='inline-block'>10g</span> فإن ذائبية الملح عند هذه الدرجة تساوي:
+            </span>
+        ),
+        options: [
+            "10",
+            "20",
+            "40",
+            "50"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <div className="space-y-2 text-right" dir="rtl">
+                <p>حساب كمية الملح الذائبة الكمية المضافة (<span dir="ltr">30g</span>) - الكمية المترسبة (<span dir="tr">10g</span>) = <span dir="ltr">20g</span></p>
+                <p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir="ltr">100g</span> من الماء</p>
+                <p>حساب النسبة والتناسب إذا كانت <span dir="ltr">20g</span> تذوب في <span dir="ltr">50g</span> من الماء فكم يذوب في <span dir="ltr">100g</span></p>
+                <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H₂O) \times 100g H₂O = 40g NaCl" /></p>
+                <p>إذًا الذائبية هي 40</p>
+            </div>
+        ),
+    },
+];
