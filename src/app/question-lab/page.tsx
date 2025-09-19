@@ -22,7 +22,28 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = null;
+const newQuestion: Question | null = {
+    questionText: <><span>إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة 50°C وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند درجة حرارة 50°C تساوي:</span></>,
+    options: [
+        "40",
+        "50",
+        "10",
+        "20"
+    ],
+    correctAnswerIndex: 0,
+    explanation: (
+        <div className="space-y-2 text-right" dir="rtl">
+            <p><strong>ملاحظة:</strong> السؤال يطلب الذائبية عند 60°C لكنه يعطي بيانات عند 50°C فقط. الحل يفترض أن المطلوب هو الذائبية عند 50°C.</p>
+            <p>1. <strong>حساب كمية الملح الذائبة:</strong> الكمية المضافة (30g) - الكمية المترسبة (10g) = 20g</p>
+            <p>2. <strong>فهم الذائبية:</strong> الذائبية هي الكتلة التي تذوب في 100g من الماء.</p>
+            <p>3. <strong>حساب النسبة والتناسب:</strong> إذا كانت 20g تذوب في 50g من الماء، فكم يذوب في 100g؟</p>
+            <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H_2O) * 100g H_2O = 40g NaCl" /></p>
+            <p><strong>النتيجة:</strong> إذًا الذائبية هي 40.</p>
+        </div>
+    ),
+    level: 3,
+    source: "الوحدة 2 / الدرس 1 / الجزء 3"
+};
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
