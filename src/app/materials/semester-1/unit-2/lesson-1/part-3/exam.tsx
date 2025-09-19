@@ -148,17 +148,6 @@ export const staticQuizLvl2: QuizQuestion[] = [
     ],
     correctAnswerIndex: 0,
     explanation: "الترشيح هو عملية فصل مادة صلبة غير ذائبة عن سائل. كبريتات الباريوم (BaSO₄) هي ملح شحيح الذوبان في الماء، لذا تكوّن مخلوطًا معلقًا يمكن فصل جسيماته الصلبة بالترشيح. أما باقي المواد (الميثانول، الأكسجين، وحمض الخل) فتذوب في الماء مكونة محاليل متجانسة لا يمكن فصل مكوناتها بالترشيح.",
-    },
-    {
-        question: "ليس من العوامل الذي تعتمد عليه ذائبية الغازات في الماء:",
-        options: [
-            "درجة حرارة الماء",
-            "الضغط المؤثر على الغاز",
-            "الكتلة المولية للغاز",
-            "كتلة الماء"
-        ],
-        correctAnswerIndex: 3,
-        explanation: "ذائبية الغازات تعتمد على درجة الحرارة (علاقة عكسية)، الضغط (علاقة طردية)، وطبيعة الغاز (الكتلة المولية وقوى الترابط). أما كتلة الماء فتحدد الكمية الكلية للغاز التي يمكن إذابتها، ولكنها لا تغير خاصية الذائبية نفسها (التي تُقاس لكمية ثابتة من المذيب)."
     }
 ];
 export const staticQuizLvl3: QuizQuestion[] = [
@@ -174,14 +163,17 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: <div className="space-y-2 text-right" dir="rtl"><p>حساب كمية الملح الذائبة الكمية المضافة (<span dir='ltr'>30g</span>) - الكمية المترسبة (<span dir='ltr'>10g</span>) = <span dir='ltr'>20g</span></p><p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir='ltr'>100g</span> من الماء</p><p>حساب النسبة والتناسب إذا كانت <span dir='ltr'>20g</span> تذوب في <span dir='ltr'>50g</span> من الماء فكم يذوب في <span dir='ltr'>100g</span></p><p className="text-center" dir="ltr"><InlineMath math="(20g \ NaCl / 50g \ H₂O) \times 100g \ H₂O = 40g \ NaCl" /></p><p>إذًا الذائبية هي 40</p></div>
     },
     {
-        question: "سبب اختلاف طعم ماء الشرب عند تسخينه:",
+        question: <><span>إذا علمت أن ذائبية الغاز A في الماء عند درجة حرارة </span><span dir="ltr" className="inline-block"><InlineMath math="20^\circ C"/></span><span> وضغط </span><span dir="ltr" className="inline-block"><InlineMath math="0.5 \text{ atm}"/></span><span> هي </span><span dir="ltr" className="inline-block"><InlineMath math="0.65 \text{ g/L}"/></span><span> فإن ذائبيته عند ضغط </span><span dir="ltr" className="inline-block"><InlineMath math="1.5 \text{ atm}"/></span><span> ونفس درجة الحرارة تساوي</span></>,
         options: [
-            "تقل كمية المواد الصلبة بارتفاع الحرارة",
-            "تزداد كمية المواد الصلبة الذائبة بارتفاع الحرارة",
-            "تقل كمية الأكسجين في الماء فيتغير طعمه",
-            "تزداد كمية الغازات في الماء بارتفاع الحرارة"
+            "1.95",
+            "0.22",
+            "4.33",
+            "2.65"
         ],
-        correctAnswerIndex: 2,
-        explanation: "ذائبية الغازات (مثل الأكسجين) في الماء تقل مع ارتفاع درجة الحرارة. عند تسخين الماء، يخرج الأكسجين الذائب، وهذا التغير هو ما يسبب اختلاف الطعم."
+        correctAnswerIndex: 0,
+        explanation: <><span>وفقًا لقانون هنري فإن الذائبية (S) تتناسب طرديًا مع الضغط (P) وباستخدام العلاقة </span><span dir="ltr" className="inline-block"><InlineMath math="S_1/P_1 = S_2/P_2"/></span><span> فإن </span><span dir="ltr" className="inline-block"><InlineMath math="S_2 = (S_1 \times P_2) / P_1 = (0.65 \times 1.5) / 0.5 = 1.95 \text{ g/L}"/></span></>
     }
 ];
+
+
+    
