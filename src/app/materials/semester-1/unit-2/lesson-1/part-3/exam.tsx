@@ -163,7 +163,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
 ];
 export const staticQuizLvl3: QuizQuestion[] = [
     {
-        question: <span>إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C" /></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند هذه الدرجة تساوي:</span>,
+        question: <span>إذا أضيف <span dir="ltr" className="inline-block">30g</span> من ملح كلوريد الصوديوم NaCl إلى <span dir="ltr" className="inline-block">50g</span> ماء عند درجة حرارة <span dir="ltr" className="inline-block"><InlineMath math="50°C" /></span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir="ltr" className="inline-block">10g</span> فإن ذائبية الملح عند هذه الدرجة تساوي:</span>,
         options: [
             "10",
             "20",
@@ -172,5 +172,16 @@ export const staticQuizLvl3: QuizQuestion[] = [
         ],
         correctAnswerIndex: 2,
         explanation: <div className="space-y-2 text-right" dir="rtl"><p>حساب كمية الملح الذائبة الكمية المضافة (<span dir='ltr'>30g</span>) - الكمية المترسبة (<span dir='ltr'>10g</span>) = <span dir='ltr'>20g</span></p><p>فهم الذائبية الذائبية هي الكتلة التي تذوب في <span dir='ltr'>100g</span> من الماء</p><p>حساب النسبة والتناسب إذا كانت <span dir='ltr'>20g</span> تذوب في <span dir='ltr'>50g</span> من الماء فكم يذوب في <span dir='ltr'>100g</span></p><p className="text-center" dir="ltr"><InlineMath math="(20g \ NaCl / 50g \ H₂O) \times 100g \ H₂O = 40g \ NaCl" /></p><p>إذًا الذائبية هي 40</p></div>
+    },
+    {
+        question: "سبب اختلاف طعم ماء الشرب عند تسخينه:",
+        options: [
+            "تقل كمية المواد الصلبة بارتفاع الحرارة",
+            "تزداد كمية المواد الصلبة الذائبة بارتفاع الحرارة",
+            "تقل كمية الأكسجين في الماء فيتغير طعمه",
+            "تزداد كمية الغازات في الماء بارتفاع الحرارة"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "ذائبية الغازات (مثل الأكسجين) في الماء تقل مع ارتفاع درجة الحرارة. عند تسخين الماء، يخرج الأكسجين الذائب، وهذا التغير هو ما يسبب اختلاف الطعم."
     }
 ];
