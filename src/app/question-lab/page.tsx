@@ -23,22 +23,19 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: <><span>إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة <span dir="ltr">50°C</span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند درجة حرارة <span dir="ltr">60°C</span> تساوي:</span></>,
+    questionText: <><span>إذا أضيف <span dir="ltr">30g</span> من ملح كلوريد الصوديوم NaCl إلى <span dir="ltr">50g</span> ماء عند درجة حرارة <span dir="ltr">50°C</span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته <span dir="ltr">10g</span> فإن ذائبية الملح عند درجة حرارة <span dir="ltr">60°C</span> تساوي</span></>,
     options: [
         "40",
         "50",
         "10",
         "20"
     ],
-    correctAnswerIndex: 0,
+    correctAnswerIndex: 1,
     explanation: (
         <div className="space-y-2 text-right" dir="rtl">
-            <p><strong>ملاحظة</strong> السؤال يطلب الذائبية عند <span dir="ltr">60°C</span> لكنه يعطي بيانات عند <span dir="ltr">50°C</span> فقط الحل يفترض أن المطلوب هو الذائبية عند <span dir="ltr">50°C</span></p>
-            <p>1 <strong>حساب كمية الملح الذائبة</strong> الكمية المضافة (30g) - الكمية المترسبة (10g) = 20g</p>
-            <p>2 <strong>فهم الذائبية</strong> الذائبية هي الكتلة التي تذوب في 100g من الماء</p>
-            <p>3 <strong>حساب النسبة والتناسب</strong> إذا كانت 20g تذوب في 50g من الماء فكم يذوب في 100g؟</p>
-            <p className="text-center" dir="ltr"><InlineMath math="(20g \ NaCl / 50g \ H₂O) \times 100g \ H₂O = 40g \ NaCl" /></p>
-            <p><strong>النتيجة</strong> إذًا الذائبية هي 40</p>
+            <p>1 <strong>حساب الذائبية عند <span dir="ltr">50°C</span></strong> كمية الملح الذائبة = 30g - 10g = 20g هذه الكمية ذابت في 50g من الماء لحساب الذائبية لكل 100g ماء (20g / 50g) × 100g = 40g إذن الذائبية عند <span dir="ltr">50°C</span> هي 40</p>
+            <p>2 <strong>الاستنتاج عند <span dir="ltr">60°C</span></strong> ذائبية معظم الأملاح الصلبة تزداد مع زيادة درجة الحرارة</p>
+            <p>3 <strong>النتيجة</strong> بما أن الذائبية عند <span dir="ltr">50°C</span> هي 40 فلا بد أن تكون أعلى من 40 عند <span dir="ltr">60°C</span> الخيار الوحيد الصحيح الذي يحقق هذا الشرط هو 50</p>
         </div>
     ),
     level: 3,
