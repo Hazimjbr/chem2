@@ -22,19 +22,7 @@ interface Question {
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "أحد المخاليط الآتية مع الماء يمكن فصلها بالترسيب:",
-    options: [
-        <span dir="ltr" key="1"><InlineMath math="Na_2SO_4" /></span>,
-        <span dir="ltr" key="2"><InlineMath math="CH_3OH" /></span>,
-        <span dir="ltr" key="3"><InlineMath math="O_2" /></span>,
-        <span dir="ltr" key="4"><InlineMath math="C_{10}H_{22}" /></span>
-    ],
-    correctAnswerIndex: 3,
-    explanation: "الترسيب أو الفصل بالجاذبية يحدث في المخاليط غير المتجانسة. الديكان (C₁₀H₂₂) هو مركب هيدروكربوني غير قطبي لا يذوب في الماء (القطبي)، وسيُشكل طبقة منفصلة يمكن فصلها. أما كبريتات الصوديوم والميثانول والأكسجين فيذوبون في الماء بدرجات متفاوتة مكونين محاليل متجانسة.",
-    level: 3,
-    source: "الوحدة 2 / الدرس 1 / الجزء 2"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {
