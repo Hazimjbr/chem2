@@ -55,10 +55,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
         ],
         correctAnswerIndex: 3,
         explanation: "بسبب الاختلاف الكبير في القطبية، لا يذوب الهكسان في الماء. وبما أنهما سائلان، فإنهما سيشكلان طبقتين منفصلتين، ويكون الأقل كثافة (الهكسان) في الأعلى."
-    }
-];
-
-export const staticQuizLvl2: QuizQuestion[] = [
+    },
     {
         question: "تسمى المحاليل التي يكون فيها الماء هو المذيب بالمحاليل:",
         options: [
@@ -70,6 +67,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
         correctAnswerIndex: 1,
         explanation: "يطلق مصطلح 'المحاليل المائية' على أي محلول يكون فيه الماء هو المذيب.",
     },
+
+];
+
+export const staticQuizLvl2: QuizQuestion[] = [
     {
         question: "المادة التي لا تذوب في الماء من المواد الآتية:",
         options: [
