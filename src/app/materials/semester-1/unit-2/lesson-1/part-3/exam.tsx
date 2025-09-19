@@ -126,7 +126,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
                 تعتمد قدرة المحلول على توصيل الكهرباء على تركيز الأيونات الحرة فيه. محلول <span dir="ltr" className="inline-block"><InlineMath math="Al(NO_3)_3"/></span> يتفكك ليعطي 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}"/></span> وثلاثة أيونات <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>)، وهو العدد الأكبر من الأيونات مقارنة بالخيارات الأخرى، لذا فهو الأكثر توصيلًا للكهرباء.
             </>
         ),
-    }
+    },
     {
     question: "أحد المخاليط الآتية يمكن فصلها بالترشيح:",
     options: [
