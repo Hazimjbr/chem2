@@ -23,7 +23,7 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: <><span>إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة 50°C وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند درجة حرارة 50°C تساوي:</span></>,
+    questionText: <><span>إذا أضيف 30g من ملح كلوريد الصوديوم NaCl إلى 50g ماء عند درجة حرارة <span dir="ltr">50°C</span> وبعد تحريك المحلول جيدا ترسبت كمية من الملح في قاع الوعاء تم ترشيح المحلول وتجفيف الملح المترسب فكانت كتلته 10g فإن ذائبية الملح عند درجة حرارة <span dir="ltr">60°C</span> تساوي:</span></>,
     options: [
         "40",
         "50",
@@ -33,11 +33,11 @@ const newQuestion: Question | null = {
     correctAnswerIndex: 0,
     explanation: (
         <div className="space-y-2 text-right" dir="rtl">
-            <p><strong>ملاحظة:</strong> السؤال يطلب الذائبية عند 60°C لكنه يعطي بيانات عند 50°C فقط. الحل يفترض أن المطلوب هو الذائبية عند 50°C.</p>
+            <p><strong>ملاحظة:</strong> السؤال يطلب الذائبية عند <span dir="ltr">60°C</span> لكنه يعطي بيانات عند <span dir="ltr">50°C</span> فقط. الحل يفترض أن المطلوب هو الذائبية عند <span dir="ltr">50°C</span>.</p>
             <p>1. <strong>حساب كمية الملح الذائبة:</strong> الكمية المضافة (30g) - الكمية المترسبة (10g) = 20g</p>
             <p>2. <strong>فهم الذائبية:</strong> الذائبية هي الكتلة التي تذوب في 100g من الماء.</p>
             <p>3. <strong>حساب النسبة والتناسب:</strong> إذا كانت 20g تذوب في 50g من الماء، فكم يذوب في 100g؟</p>
-            <p className="text-center" dir="ltr"><InlineMath math="(20g NaCl / 50g H_2O) * 100g H_2O = 40g NaCl" /></p>
+            <p className="text-center" dir="ltr"><InlineMath math="(20g \ NaCl / 50g \ H₂O) \times 100g \ H₂O = 40g \ NaCl" /></p>
             <p><strong>النتيجة:</strong> إذًا الذائبية هي 40.</p>
         </div>
     ),
