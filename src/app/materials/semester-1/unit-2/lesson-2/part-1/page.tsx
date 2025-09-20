@@ -44,7 +44,8 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard
             cardTitle="مصطلحات أساسية"
             cardIcon={<Layers className="h-6 w-6" />}
-            imageContent={<Image src="https://i.ibb.co/VMybJdD/image.png" alt="Heating curve of water" width={400} height={200} className="rounded-lg object-contain" data-ai-hint="water heating curve" />}
+            imageContent={<Image src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg" alt="Heating-curve" layout="fill" className="rounded-lg object-contain" data-ai-hint="water heating curve" />}
+            hasImage={true}
         >
             <ul className="p-4 space-y-3 text-sm">
                 <li><strong className="text-accent">الغليان:</strong> تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه.</li>
@@ -74,7 +75,8 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
-                 imageContent={<Image src="https://i.ibb.co/4nYqLDct/molality.jpg" alt="Molality calculation triangle" width={800} height={600} className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
+                 imageContent={<Image src="https://i.ibb.co/4nYqLDct/molality.jpg" alt="molality" layout="fill" className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
+                 hasImage={true}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز، فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية.</p>
