@@ -58,21 +58,21 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             hasImage={true}
         >
             <ul className="p-4 space-y-3 text-sm">
-                <li><strong className="text-accent">الغليان:</strong> تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه</li>
-                <li><strong className="text-accent">المواد غير المتطايرة:</strong> مواد صلبة ذات درجات انصهار وغليان مرتفعة مثل الملح والسكر</li>
-                <li><strong className="text-accent">المواد المتطايرة:</strong> مواد سائلة ذات درجات غليان منخفضة (مثل الكحول)</li>
-                <li><strong className="text-accent">للسائل النقي:</strong> درجتي غليان وتجمد ثابتتين ومحددتين عند ثبات الضغط</li>
+                <li><strong className="text-accent">الغليان</strong> تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه</li>
+                <li><strong className="text-accent">المواد غير المتطايرة</strong> مواد صلبة ذات درجات انصهار وغليان مرتفعة مثل الملح والسكر</li>
+                <li><strong className="text-accent">المواد المتطايرة</strong> مواد سائلة ذات درجات غليان منخفضة (مثل الكحول)</li>
+                <li><strong className="text-accent">للسائل النقي</strong> درجتي غليان وتجمد ثابتتين ومحددتين عند ثبات الضغط</li>
             </ul>
         </FlippableCard>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="space-y-6">
             <FlippableCard
                 cardTitle="الخصائص الجامعة للمحاليل"
                 cardIcon={<SlidersHorizontal className="h-6 w-6" />}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p className="font-semibold">هي خصائص فيزيائية للمحاليل تتأثر بكمية جسيمات المذاب (تركيزها) وليس بنوعها أو طبيعتها</p>
-                    <p className="font-bold text-accent">تشمل أربع خصائص رئيسية:</p>
+                    <p className="font-bold text-accent">تشمل أربع خصائص رئيسية</p>
                     <ol className="list-decimal mr-4 space-y-1">
                         <li>الانخفاض في الضغط البخاري</li>
                         <li>الارتفاع في درجة الغليان</li>
