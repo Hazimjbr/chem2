@@ -41,31 +41,31 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </CardContent>
         </Card>
 
-        <FlippableCard
-            cardTitle="مصطلحات أساسية"
-            cardIcon={<Layers className="h-6 w-6" />}
-            imageContent={
-                <div className="relative w-full h-full">
-                    <Image 
-                        src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg" 
-                        alt="Heating-curve" 
-                        layout="fill" 
-                        className="rounded-lg object-contain"
-                        data-ai-hint="heating curve"
-                    />
-                </div>
-            }
-            hasImage={true}
-        >
-            <ul className="p-4 space-y-3 text-sm">
-                <li><strong className="text-accent">الغليان</strong> تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه</li>
-                <li><strong className="text-accent">المواد غير المتطايرة</strong> مواد صلبة ذات درجات انصهار وغليان مرتفعة مثل الملح والسكر</li>
-                <li><strong className="text-accent">المواد المتطايرة</strong> مواد سائلة ذات درجات غليان منخفضة (مثل الكحول)</li>
-                <li><strong className="text-accent">للسائل النقي</strong> درجتي غليان وتجمد ثابتتين ومحددتين عند ثبات الضغط</li>
-            </ul>
-        </FlippableCard>
-
         <div className="space-y-6">
+            <FlippableCard
+                cardTitle="مصطلحات أساسية"
+                cardIcon={<Layers className="h-6 w-6" />}
+                imageContent={
+                    <div className="relative w-full h-full">
+                        <Image 
+                            src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg" 
+                            alt="Heating-curve" 
+                            layout="fill" 
+                            className="rounded-lg object-contain"
+                            data-ai-hint="heating curve"
+                        />
+                    </div>
+                }
+                hasImage={true}
+            >
+                <ul className="p-4 space-y-3 text-sm">
+                    <li><strong className="text-accent">الغليان</strong> تحول المادة من الحالة السائلة إلى الغازية من جميع أنحاء السائل عندما يتساوى الضغط البخاري للسائل مع الضغط الواقع عليه</li>
+                    <li><strong className="text-accent">المواد غير المتطايرة</strong> مواد صلبة ذات درجات انصهار وغليان مرتفعة مثل الملح والسكر</li>
+                    <li><strong className="text-accent">المواد المتطايرة</strong> مواد سائلة ذات درجات غليان منخفضة (مثل الكحول)</li>
+                    <li><strong className="text-accent">للسائل النقي</strong> درجتي غليان وتجمد ثابتتين ومحددتين عند ثبات الضغط</li>
+                </ul>
+            </FlippableCard>
+
             <FlippableCard
                 cardTitle="الخصائص الجامعة للمحاليل"
                 cardIcon={<SlidersHorizontal className="h-6 w-6" />}
