@@ -44,8 +44,17 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard
             cardTitle="مصطلحات أساسية"
             cardIcon={<Layers className="h-6 w-6" />}
-            imageSrc="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg"
-            imageAlt="Heating-curve"
+            imageContent={
+                <div className="relative w-full h-full">
+                    <Image 
+                        src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg" 
+                        alt="Heating-curve" 
+                        layout="fill" 
+                        className="rounded-lg object-contain"
+                        data-ai-hint="heating curve"
+                    />
+                </div>
+            }
             hasImage={true}
         >
             <ul className="p-4 space-y-3 text-sm">
@@ -56,7 +65,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             </ul>
         </FlippableCard>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
             <FlippableCard
                 cardTitle="الخصائص الجامعة للمحاليل"
                 cardIcon={<SlidersHorizontal className="h-6 w-6" />}
@@ -76,9 +85,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
-                imageSrc="https://i.ibb.co/4nYqLDct/molality.jpg"
-                imageAlt="molality"
-                hasImage={true}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية</p>
@@ -86,6 +92,15 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <div className="text-center bg-muted p-2 rounded-lg" dir="ltr">
                         <BlockMath math="m = \frac{\text{n solute (mol)}}{\text{mass solvent (kg)}}" />
                     </div>
+                     <div className="relative w-full h-56 mt-4">
+                        <Image 
+                            src="https://i.ibb.co/4nYqLDct/molality.jpg" 
+                            alt="molality" 
+                            layout="fill" 
+                            className="rounded-lg object-contain" 
+                            data-ai-hint="molality calculation triangle"
+                        />
+                     </div>
                 </div>
             </FlippableCard>
         </div>
