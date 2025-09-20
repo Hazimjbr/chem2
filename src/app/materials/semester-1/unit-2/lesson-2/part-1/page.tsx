@@ -82,7 +82,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <div className="text-center bg-muted p-2 rounded-lg" dir="ltr">
                         <BlockMath math="m = \frac{\text{n solute (mol)}}{\text{mass solvent (kg)}}" />
                     </div>
-                     <div className="relative w-full h-40 mt-4">
+                     <div className="relative w-full h-56 mt-4">
                         <Image 
                             src="https://i.ibb.co/4nYqLDct/molality.jpg" 
                             alt="molality" 
