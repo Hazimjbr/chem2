@@ -75,8 +75,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
-                 imageContent={<Image src="https://i.ibb.co/4nYqLDct/molality.jpg" alt="molality" layout="fill" className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
-                 hasImage={true}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز، فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية.</p>
@@ -84,6 +82,15 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <div className="text-center bg-muted p-2 rounded-lg" dir="ltr">
                         <BlockMath math="m = \frac{\text{n solute (mol)}}{\text{mass solvent (kg)}}" />
                     </div>
+                     <div className="relative w-full h-40 mt-4">
+                        <Image 
+                            src="https://i.ibb.co/4nYqLDct/molality.jpg" 
+                            alt="molality" 
+                            layout="fill" 
+                            className="rounded-lg object-contain" 
+                            data-ai-hint="molality calculation triangle"
+                        />
+                     </div>
                 </div>
             </FlippableCard>
         </div>
