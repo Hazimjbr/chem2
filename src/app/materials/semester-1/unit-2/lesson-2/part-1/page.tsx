@@ -7,7 +7,7 @@ import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/fli
 import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { InlineMath, BlockMath } from 'react-katex';
 
@@ -74,7 +74,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
-                 imageContent={<Image src="https://i.ibb.co/BGS2w4q/image.png" alt="Molality triangle" width={200} height={150} className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
+                 imageContent={<Image src="https://i.ibb.co/4nYqLDct/molality.jpg" alt="Molality calculation triangle" width={200} height={150} className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز، فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية.</p>
