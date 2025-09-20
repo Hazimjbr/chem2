@@ -74,7 +74,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
-                 imageContent={<Image src="https://i.ibb.co/4nYqLDct/molality.jpg" alt="Molality calculation triangle" width={200} height={150} className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
+                 imageContent={<Image src="https://i.ibb.co/4nYqLDct/molality.jpg" alt="Molality calculation triangle" width={800} height={600} className="rounded-lg object-contain" data-ai-hint="molality calculation triangle" />}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز، فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية.</p>
