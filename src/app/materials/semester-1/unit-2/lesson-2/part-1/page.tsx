@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookCopy, Lightbulb, Cpu, Layers, Beaker, SlidersHorizontal, Scale } from 'lucide-react';
-import FlippableCard from '@/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card';
+import FlippableCard from '@/components/flippable-card';
 import InteractiveQuestionCard from '../../../../../../components/interactive-question-card';
 import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
 import LessonLayout from '@/components/lesson-layout';
@@ -44,7 +44,8 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
         <FlippableCard
             cardTitle="مصطلحات أساسية"
             cardIcon={<Layers className="h-6 w-6" />}
-            imageContent={<Image src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg" alt="Heating-curve" layout="fill" className="rounded-lg object-contain" data-ai-hint="water heating curve" />}
+            imageSrc="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg"
+            imageAlt="Heating-curve"
             hasImage={true}
         >
             <ul className="p-4 space-y-3 text-sm">
@@ -75,6 +76,9 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
+                imageSrc="https://i.ibb.co/4nYqLDct/molality.jpg"
+                imageAlt="molality"
+                hasImage={true}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية</p>
@@ -82,15 +86,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <div className="text-center bg-muted p-2 rounded-lg" dir="ltr">
                         <BlockMath math="m = \frac{\text{n solute (mol)}}{\text{mass solvent (kg)}}" />
                     </div>
-                     <div className="relative w-full h-56 mt-4">
-                        <Image 
-                            src="https://i.ibb.co/4nYqLDct/molality.jpg" 
-                            alt="molality" 
-                            layout="fill" 
-                            className="rounded-lg object-contain" 
-                            data-ai-hint="molality calculation triangle"
-                        />
-                     </div>
                 </div>
             </FlippableCard>
         </div>
