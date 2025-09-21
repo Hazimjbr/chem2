@@ -23,38 +23,17 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: (
-      <>
-        <span>إذا علمت أن ذائبية الغاز A في الماء عند درجة حرارة </span>
-        <span dir="ltr" className="inline-block mx-1">20°C</span>
-        <span> وضغط </span>
-        <span dir="ltr" className="inline-block mx-1">0.5 atm</span>
-        <span> هي </span>
-        <span dir="ltr" className="inline-block mx-1">0.65 g/L</span>
-        <span>، فإن ثابت الذائبية عند ضغط </span>
-        <span dir="ltr" className="inline-block mx-1">1.5 atm</span>
-        <span> ودرجة حرارة </span>
-        <span dir="ltr" className="inline-block mx-1">10°C</span>
-        <span> يساوي:</span>
-      </>
-    ),
+    questionText: "العبارة الصحيحة فيما يتعلق بالخصائص الجامعة للمحاليل هي:",
     options: [
-        "1.50",
-        "0.77",
-        "1.30",
-        "0.07"
+        "خصائص نوعية تتأثر بكمية المذاب",
+        "خصائص نوعية تتأثر بكمية المذيب",
+        "خصائص كمية تتأثر بكمية المذاب",
+        "محلول كمية تتأثر بكمية المذيب"
     ],
-    correctAnswerIndex: 0,
-    explanation: (
-        <div className="space-y-2 text-right" dir="rtl">
-            <p>1 <strong>حساب ثابت هنري (KH) عند 20°C:</strong> من قانون هنري S = KH * P فإن KH = S / P. إذن KH = 0.65 / 0.5 = 1.30 g/L.atm.</p>
-            <p>2 <strong>فهم تأثير الحرارة:</strong> ثابت هنري (KH) يعتمد على درجة الحرارة. ذائبية الغازات تزداد بانخفاض درجة الحرارة.</p>
-            <p>3 <strong>الاستنتاج:</strong> بما أن الحرارة انخفضت من 20°C إلى 10°C، فإن الذائبية ستزداد، وبالتالي قيمة ثابت هنري (KH) يجب أن تزداد أيضًا وتكون أعلى من 1.30.</p>
-            <p>4 <strong>اختيار الإجابة:</strong> الخيار الوحيد المتاح الذي هو أكبر من 1.30 هو 1.50.</p>
-        </div>
-    ),
-    level: 3,
-    source: "الوحدة 2 / الدرس 1 / الجزء 3"
+    correctAnswerIndex: 2,
+    explanation: "الخصائص الجامعة هي خصائص كمية (تعتمد على العدد) تتأثر بكمية جسيمات المذاب في المحلول، وليس بنوعها (نوعية).",
+    level: 1,
+    source: "الوحدة 2 / الدرس 2 / الجزء 1"
 };
 
 
