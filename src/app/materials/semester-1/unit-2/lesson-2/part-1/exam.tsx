@@ -8,7 +8,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -65,7 +65,7 @@ export const staticQuizLvl1: QuizQuestion[] = [
             "شمع البرافين"
         ],
         correctAnswerIndex: 2,
-        explanation: "الأسيتون هو سائل عضوي له درجة غليان منخفضة (<span dir=\"ltr\">56°C</span>) ويتبخر بسرعة في درجة حرارة الغرفة لذا فهو يعتبر مادة متطايرة"
+        explanation: <>الأسيتون هو سائل عضوي له درجة غليان منخفضة (<span dir="ltr">56°C</span>) ويتبخر بسرعة في درجة حرارة الغرفة لذا فهو يعتبر مادة متطايرة</>
     }
 ];
 
