@@ -45,17 +45,6 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="مصطلحات أساسية"
                 cardIcon={<Layers className="h-6 w-6" />}
-                imageContent={
-                    <div className="relative w-full h-full">
-                        <Image 
-                            src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg" 
-                            alt="Heating-curve" 
-                            layout="fill" 
-                            className="rounded-lg object-contain"
-                            data-ai-hint="heating curve"
-                        />
-                    </div>
-                }
                 hasImage={true}
             >
                 <ul className="p-4 space-y-3 text-sm">
@@ -63,6 +52,18 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                     <li><strong className="text-accent">المواد غير المتطايرة</strong> مواد صلبة ذات درجات انصهار وغليان مرتفعة مثل الملح والسكر</li>
                     <li><strong className="text-accent">المواد المتطايرة</strong> مواد سائلة ذات درجات غليان منخفضة (مثل الكحول)</li>
                     <li><strong className="text-accent">للسائل النقي</strong> درجتي غليان وتجمد ثابتتين ومحددتين عند ثبات الضغط</li>
+                    <li className="flex justify-center pt-2">
+                        <a href="https://ibb.co/6JrrtbDN" target="_blank" rel="noopener noreferrer">
+                             <Image
+                                src="https://i.ibb.co/TqYY0RPr/Heating-curve.jpg"
+                                alt="Heating-curve"
+                                width={250}
+                                height={150}
+                                className="rounded-lg object-contain"
+                                data-ai-hint="heating curve"
+                            />
+                        </a>
+                    </li>
                 </ul>
             </FlippableCard>
 
@@ -85,6 +86,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             <FlippableCard
                 cardTitle="التركيز المولالي (Molality)"
                 cardIcon={<Scale className="h-6 w-6" />}
+                hasImage={true}
             >
                 <div className="p-4 space-y-3 text-sm">
                     <p>نظرًا لأن الخصائص الجامعة تعتمد على التركيز فإننا نستخدم وحدة تركيز خاصة لا تتأثر بتغير درجة الحرارة وهي المولالية</p>

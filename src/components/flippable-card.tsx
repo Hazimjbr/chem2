@@ -2,25 +2,24 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils.tsx';
-import Image from 'next/image';
+import Image, { type ImageProps } from 'next/image';
 
 interface FlippableCardProps {
   cardTitle: string;
   cardIcon: React.ReactNode;
   children: React.ReactNode;
-  imageSrc?: string;
-  imageAlt?: string;
+  imageContent?: React.ReactNode;
+  imageCardClassName?: string;
   hasImage?: boolean;
 }
 
-export default function FlippableCard({ cardTitle, cardIcon, children, imageSrc, imageAlt, hasImage }: FlippableCardProps) {
+export default function FlippableCard({ cardTitle, cardIcon, children, imageContent, imageCardClassName, hasImage }: FlippableCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Set a dynamic height for the container to prevent layout shifts during flipping
-  const cardHeight = hasImage ? 'h-80' : 'h-[280px]';
+  const cardHeight = hasImage ? 'h-[320px]' : 'h-[280px]';
 
   return (
     <div className={cn("perspective-1000", cardHeight)} onMouseEnter={() => setIsFlipped(true)} onMouseLeave={() => setIsFlipped(false)}>
@@ -34,16 +33,13 @@ export default function FlippableCard({ cardTitle, cardIcon, children, imageSrc,
         <div
           className="absolute w-full h-full backface-hidden"
         >
-          <Card className="flex items-center justify-center w-full h-full border-primary/20 shadow-xl bg-card">
-             {imageSrc && imageAlt ? (
-                <div className="relative w-full h-full">
-                    <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        layout="fill"
-                        className="rounded-lg object-contain p-4"
-                        data-ai-hint="chemistry diagram"
-                    />
+          <Card className={cn(
+              "flex items-center justify-center w-full h-full border-primary/20 shadow-xl bg-card",
+              imageCardClassName
+          )}>
+             {imageContent ? (
+                <div className="relative w-4/5 h-4/5">
+                    {imageContent}
                 </div>
              ) : (
                 <CardHeader>
