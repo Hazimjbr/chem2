@@ -137,7 +137,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "0.2m"
         ],
         correctAnswerIndex: 2,
-        explanation: <>أولاً نحسب الكتلة المولية لـ NaOH = 23 + 16 + 1 = 40g/mol. ثانياً نحسب عدد المولات: n = 40g / 40g/mol = 1mol. ثالثاً نحول كتلة المذيب: 200g = 0.2kg. رابعاً نحسب المولالية: m = 1mol / 0.2kg = 5.0m.</>
+        explanation: <>أولاً نحسب الكتلة المولية لـ NaOH = 23 + 16 + 1 = 40g/mol ثانياً نحسب عدد المولات: n = 40g / 40g/mol = 1mol ثالثاً نحول كتلة المذيب: 200g = 0.2kg رابعاً نحسب المولالية: m = 1mol / 0.2kg = 5.0m</>
     },
     {
         question: "أي من المحاليل المائية التالية بتركيز 0.1m يمتلك أعلى درجة غليان؟",
@@ -148,7 +148,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "Al(NO₃)₃ (نترات الألومنيوم)"
         ],
         correctAnswerIndex: 3,
-        explanation: <>أعلى درجة غليان تعني أكبر تأثير على الخصائص الجامعة، وهو ما ينتج عن أكبر عدد من الجسيمات (الأيونات) في المحلول. Al(NO₃)₃ يتفكك إلى 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}" /></span> و 3 <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>)، بينما CaCl₂ يعطي 3 أيونات، و NaCl يعطي 2، والجلوكوز لا يتأين (جسيم واحد).</>
+        explanation: <>أعلى درجة غليان تعني أكبر تأثير على الخصائص الجامعة وهو ما ينتج عن أكبر عدد من الجسيمات (الأيونات) في المحلول. Al(NO₃)₃ يتفكك إلى 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}" /></span> و  <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>3) بينما CaCl₂ يعطي 3 أيونات و NaCl يعطي 2 والجلوكوز لا يتأين (جسيم واحد)</>
     },
     {
         question: "كم جرامًا من الماء تحتاج لإذابة 0.2mol من مذاب لتحضير محلول تركيزه 0.4m؟",
@@ -159,7 +159,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             "400g"
         ],
         correctAnswerIndex: 0,
-        explanation: "من قانون المولالية m = n/kg، يمكننا حساب كتلة المذيب بالكيلوغرام: kg = n / m = 0.2mol / 0.4m = 0.5kg. بالجرامات، الكتلة تساوي 0.5kg * 1000 g/kg = 500g."
+        explanation: "من قانون المولالية m = n/kg يمكننا حساب كتلة المذيب بالكيلوغرام: kg = n / m = 0.2mol / 0.4m = 0.5kg بالجرامات الكتلة تساوي 0.5kg * 1000 g/kg = 500g"
     },
     {
         question: "لماذا لا يعتبر مؤشر الانكسار (refractive index) خاصية جامعة؟",
@@ -173,7 +173,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "الخصائص الجامعة هي خصائص كمية (تعتمد على العدد). مؤشر الانكسار يعتمد بشكل كبير على الخصائص النوعية للمذاب مثل تركيبه الكيميائي وشكله الهندسي والتي تؤثر على كيفية تفاعله مع الضوء لذلك لا يمكن اعتباره خاصية جامعة."
     },
     {
-        question: "لديك محلولين، الأول 1m من NaCl والثاني 0.5m من CaCl₂. أي العبارات التالية صحيحة؟",
+        question: "لديك محلولين، الأول 1m من NaCl والثاني 0.5m من CaCl₂ أي العبارات التالية صحيحة؟",
         options: [
             "تأثيرهما على الخصائص الجامعة متساوٍ تقريبًا",
             "محلول NaCl له درجة غليان أعلى",
