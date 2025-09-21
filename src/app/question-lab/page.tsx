@@ -23,16 +23,39 @@ interface Question {
 }
 
 const newQuestion: Question | null = {
-    questionText: "العبارة الصحيحة فيما يتعلق بالخصائص الجامعة للمحاليل هي:",
+    questionText: (
+        <>
+            <span>ما هو التركيز المولالي (m) لمحلول تم تحضيره بإذابة </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="50g"/></span>
+            <span> من مذاب كتلته المولية </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="100g/mol"/></span>
+            <span> في </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="200mL"/></span>
+            <span> من مذيب كثافته </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.25g/mL"/></span>
+            <span>؟</span>
+        </>
+    ),
     options: [
-        "خصائص نوعية تتأثر بكمية المذاب",
-        "خصائص نوعية تتأثر بكمية المذيب",
-        "خصائص كمية تتأثر بكمية المذاب",
-        "محلول كمية تتأثر بكمية المذيب"
+        "1.0m",
+        "2.0m",
+        "2.5m",
+        "0.5m"
     ],
-    correctAnswerIndex: 2,
-    explanation: "الخصائص الجامعة هي خصائص كمية (تعتمد على العدد) تتأثر بكمية جسيمات المذاب في المحلول، وليس بنوعها (نوعية).",
-    level: 1,
+    correctAnswerIndex: 1,
+    explanation: (
+        <div className="space-y-2 text-right" dir="rtl">
+            <p>1. <strong>حساب عدد مولات المذاب (n):</strong></p>
+            <p className="text-center" dir="ltr"><InlineMath math="n = \frac{\text{mass}}{\text{Mr}} = \frac{50g}{100g/mol} = 0.5 \text{ mol}"/></p>
+            <p>2. <strong>حساب كتلة المذيب (m):</strong></p>
+            <p className="text-center" dir="ltr"><InlineMath math="m = d \times V = 1.25g/mL \times 200mL = 250g"/></p>
+            <p>3. <strong>تحويل كتلة المذيب إلى كيلوغرام:</strong></p>
+            <p className="text-center" dir="ltr"><InlineMath math="250g = 0.25kg"/></p>
+            <p>4. <strong>حساب المولالية (m):</strong></p>
+            <p className="text-center" dir="ltr"><InlineMath math="m = \frac{\text{moles of solute}}{\text{mass of solvent (kg)}} = \frac{0.5 \text{ mol}}{0.25 \text{ kg}} = 2.0m"/></p>
+        </div>
+    ),
+    level: 3,
     source: "الوحدة 2 / الدرس 2 / الجزء 1"
 };
 
