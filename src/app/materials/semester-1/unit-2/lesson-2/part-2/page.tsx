@@ -60,7 +60,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             cardIcon={<Cpu className="h-6 w-6" />}
              imageContent={
                 <Image 
-                    src="https://i.ibb.co/30Z3rXf/vapor-pressure-lowering.jpg"
+                    src="https://i.ibb.co/SwVrnnJc/image.jpg"
                     alt="انخفاض الضغط البخاري"
                     width={300}
                     height={200}
@@ -70,13 +70,13 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
             }
         >
             <div className="p-4 space-y-3 text-sm">
-                <p className="font-bold">هناك سببان رئيسيان لذلك:</p>
+                <p className="font-bold">هناك سببان رئيسيان لذلك</p>
                 <ol className="list-decimal mr-4 space-y-2">
                     <li>
-                        <strong>إعاقة السطح:</strong> تحتل جسيمات المذاب جزءًا من مساحة سطح المذيب مما يقلل من عدد جسيمات المذيب التي يمكنها الهروب والتبخر
+                        <strong>إعاقة السطح</strong> تحتل جسيمات المذاب جزءًا من مساحة سطح المذيب مما يقلل من عدد جسيمات المذيب التي يمكنها الهروب والتبخر
                     </li>
                     <li>
-                        <strong>قوى تجاذب جديدة:</strong> تنشأ قوى تجاذب بين جسيمات المذاب والمذيب هذه القوى الجديدة "تمسك" بجسيمات المذيب وتجعل إفلاتها من السطح أصعب فتحتاج طاقة أكبر للتغلب عليها
+                        <strong>قوى تجاذب جديدة</strong> تنشأ قوى تجاذب بين جسيمات المذاب والمذيب هذه القوى الجديدة "تمسك" بجسيمات المذيب وتجعل إفلاتها من السطح أصعب فتحتاج طاقة أكبر للتغلب عليها
                     </li>
                 </ol>
             </div>
@@ -136,7 +136,7 @@ const LessonContent = ({ onCorrect }: { onCorrect: (id: string) => void }) => (
                       "جميعها لها نفس الضغط البخاري"
                   ]}
                   correctAnswerIndex={2}
-                  explanation="أقل ضغط بخاري يعني أكبر انخفاض وهذا يحدث بوجود أكبر عدد من الجسيمات. MgCl₂ يتفكك إلى 3 أيونات (Mg²⁺ 2Cl⁻) وهو العدد الأكبر مقارنة بـ NaCl (أيونان) والجلوكوز (جزيء واحد)"
+                  explanation="أقل ضغط بخاري يعني أكبر انخفاض وهذا يحدث بوجود أكبر عدد من الجسيمات MgCl₂ يتفكك إلى 3 أيونات (Mg²⁺ 2Cl⁻) وهو العدد الأكبر مقارنة بـ NaCl (أيونان) والجلوكوز (جزيء واحد)"
               />
           </div>
         </div>
