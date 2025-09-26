@@ -8,7 +8,7 @@ export interface QuizQuestion {
     question: React.ReactNode;
     options: string[];
     correctAnswerIndex: number;
-    explanation: string;
+    explanation: string | React.ReactNode;
 }
 
 export const staticQuizLvl1: QuizQuestion[] = [
@@ -87,10 +87,10 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "0.1m من السكر",
             "0.1m من NaCl",
             "0.05m من CaCl₂",
-            "0.2m من السكر"
+            "0.25m من السكر"
         ],
         correctAnswerIndex: 3,
-        explanation: "أقل ضغط بخاري يعني أكبر انخفاض وهذا يحدث مع أعلى تركيز للجسيمات محلول 0.2m من السكر هو الأعلى تركيزًا (0.2m جسيمات) مقارنة بالخيارات الأخرى (0.1m للسكر و 0.2m لـ NaCl و 0.15m لـ CaCl₂)"
+        explanation: "أقل ضغط بخاري يعني أكبر انخفاض وهذا يحدث مع أعلى تركيز للجسيمات محلول 0.25m من السكر هو الأعلى تركيزًا (0.25m جسيمات) مقارنة بالخيارات الأخرى (0.1m للسكر و 0.2m لـ NaCl و 0.15m لـ CaCl₂)"
     },
     {
         question: "إذا كان الضغط البخاري للماء النقي عند 25°C هو 23.8mmHg فإن الضغط البخاري لمحلول ملحي عند نفس درجة الحرارة سيكون:",
@@ -123,7 +123,7 @@ export const staticQuizLvl2: QuizQuestion[] = [
             "يعتمد على حجم المحلول"
         ],
         correctAnswerIndex: 1,
-        explanation: "نحسب التركيز الفعلي للجسيمات: AlCl₃ يتفكك إلى 4 أيونات (1 Al³⁺ و 3 Cl⁻) لذا التركيز الفعلي للجسيمات هو 1mol * 4 = 4mol السكر لا يتفكك لذا تركيز الجسيمات هو 2mol بما أن محلول AlCl₃ يحتوي على عدد أكبر من الجسيمات فإنه يسبب انخفاضًا أكبر في الضغط البخاري"
+        explanation: <>نحسب التركيز الفعلي للجسيمات: AlCl₃ يتفكك إلى 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}" /></span> و 3 <span dir="ltr" className="inline-block"><InlineMath math="Cl^{-}" /></span>) لذا التركيز الفعلي للجسيمات هو 1mol * 4 = 4mol. السكر لا يتفكك لذا تركيز الجسيمات هو 2mol. بما أن محلول AlCl₃ يحتوي على عدد أكبر من الجسيمات، فإنه يسبب انخفاضًا أكبر في الضغط البخاري.</>
     },
     {
         question: "إذا كان لديك محلولان مائيان بنفس التركيز المولالي أحدهما من السكر (C₁₂H₂₂O₁₁) والآخر من كلوريد الصوديوم (NaCl) فأي العبارات التالية صحيحة",
@@ -149,10 +149,10 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 "Al(NO₃)₃ (نترات الألومنيوم)"
             ],
             correctAnswerIndex: 3,
-            explanation: <>أعلى درجة غليان تعني أكبر تأثير على الخصائص الجامعة وهو ما ينتج عن أكبر عدد من الجسيمات (الأيونات) في المحلول. Al(NO₃)₃ يتفكك إلى 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}" /></span> و 3 <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>) بينما CaCl₂ يعطي 3 أيونات و NaCl يعطي 2 والجلوكوز لا يتأين (جسيم واحد)</>
+            explanation: <>أعلى درجة غليان تعني أكبر تأثير على الخصائص الجامعة، وهو ما ينتج عن أكبر عدد من الجسيمات (الأيونات) في المحلول. Al(NO₃)₃ يتفكك إلى 4 أيونات (<span dir="ltr" className="inline-block"><InlineMath math="Al^{3+}" /></span> و 3 <span dir="ltr" className="inline-block"><InlineMath math="NO_3^{-}" /></span>)، بينما CaCl₂ يعطي 3 أيونات، و NaCl يعطي 2، والجلوكوز لا يتأين (جسيم واحد).</>
         },
         {
-            question: "لديك محلولين الأول 1m من NaCl والثاني 0.5m من CaCl₂ أي العبارات التالية صحيحة؟",
+            question: "لديك محلولين، الأول 1m من NaCl والثاني 0.5m من CaCl₂. أي العبارات التالية صحيحة؟",
             options: [
                 "تأثيرهما على الخصائص الجامعة متساوٍ تقريبًا",
                 "تأثير محلول CaCl₂ على درجة الغليان أكبر",
@@ -160,6 +160,6 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 "تأثير محلول CaCl₂ على درجة التجمد أقل"
             ],
             correctAnswerIndex: 1,
-            explanation: "يجب حساب التركيز الفعلي للجسيمات محلول NaCl: 1m * 2 أيونات = 2m من الجسيمات محلول CaCl₂: 0.5m * 3 أيونات = 1.5m من الجسيمات بما أن تركيز جسيمات NaCl (2m) أعلى من CaCl₂ (1.5m) فسيكون له تأثير أكبر (درجة غليان أعلى درجة تجمد أقل وضغط بخاري أقل)"
+            explanation: "يجب حساب التركيز الفعلي للجسيمات. محلول NaCl: 1m * 2 أيونات = 2m من الجسيمات. محلول CaCl₂: 0.5m * 3 أيونات = 1.5m من الجسيمات. بما أن تركيز جسيمات NaCl (2m) أعلى من CaCl₂ (1.5m) فسيكون له تأثير أكبر (درجة غليان أعلى، درجة تجمد أقل، وضغط بخاري أقل)."
         }
     ];
