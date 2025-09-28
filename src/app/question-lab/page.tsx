@@ -40,7 +40,7 @@ const newQuestion: Question | null = {
         <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا تساوي (g)</span>
       </>
     ),
-    options: ["1.76", "0.82", "0.41", "0.235"],
+    options: ["1.76", "0.82", "0.41", "0.24"],
     correctAnswerIndex: 3,
     explanation: (
         <div className="space-y-3 text-right" dir="rtl">
@@ -69,7 +69,7 @@ const newQuestion: Question | null = {
 
             <p>4 <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
             <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.0587 \text{ mol} \times 4 \text{ g/mol} \approx 0.235 \text{ g}" /></div>
-             <p>الإجابة الأقرب هي 0.235</p>
+             <p>الإجابة الأقرب هي 0.24</p>
         </div>
     ),
     level: 3,
