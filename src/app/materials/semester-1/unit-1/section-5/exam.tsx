@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils.tsx';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Image from 'next/image';
 
@@ -695,7 +695,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
     {
         question: <>
-            <p>ادرس الرسم المجاور والذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
+            <p>ادرس الرسم المجاور الذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
             <div className="flex justify-center my-2">
                 <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
             </div>
@@ -753,24 +753,319 @@ export const staticQuizLvl3: QuizQuestion[] = [
         correctAnswerIndex: 0,
         explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
     },
+    {
+            question: (
+              <>
+                <span>بالون حجمه </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1000\text{mL}" /></span>
+                <span> مملوء بغاز الهيليوم He (</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 4\text{g/mol}" /></span>
+                <span>) عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ\text{C}" /></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="2\text{atm}" /></span>
+                <span> وعند صعود البالون للأعلى انخفضت درجة الحرارة إلى </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="-3^\circ\text{C}" /></span>
+                <span> وأصبح الضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.5\text{atm}" /></span>
+                <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا تساوي (g)</span>
+              </>
+            ),
+            options: ["1.76", "0.82", "0.41", "0.24"],
+            correctAnswerIndex: 3,
+            explanation: (
+                <div className="space-y-3 text-right" dir="rtl">
+                    <p>1. <strong>حساب عدد المولات الابتدائي (n₁)</strong></p>
+                    <p className="text-xs">
+                        <span>نحول الوحدات: </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1000\text{mL} = 1.0\text{L}" /></span>
+                        <span>، </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="T_1 = 27 + 273 = 300\text{K}" /></span>
+                    </p>
+                    <div className="text-center" dir="ltr"><BlockMath math="n_1 = \frac{P_1V_1}{RT_1} = \frac{2 \times 1.0}{0.082 \times 300} \approx 0.0813 \text{ mol}" /></div>
+        
+                    <p>2. <strong>حساب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم</strong></p>
+                     <p className="text-xs">
+                        <span>الظروف النهائية: </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.0\text{L}" /></span>
+                        <span> (ثابت)، </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="P_2 = 0.5\text{atm}" /></span>
+                        <span>، </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="T_2 = -3 + 273 = 270\text{K}" /></span>
+                    </p>
+                    <div className="text-center" dir="ltr"><BlockMath math="n_2 = \frac{P_2V_2}{RT_2} = \frac{0.5 \times 1.0}{0.082 \times 270} \approx 0.0226 \text{ mol}" /></div>
+        
+                    <p>3. <strong>حساب عدد المولات التي يجب التخلص منها (Δn)</strong></p>
+                    <div className="text-center" dir="ltr"><BlockMath math="\Delta n = n_1 - n_2 = 0.0813 - 0.0226 = 0.0587 \text{ mol}" /></div>
+        
+                    <p>4. <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
+                    <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.0587 \text{ mol} \times 4 \text{ g/mol} \approx 0.235 \text{ g}" /></div>
+                     <p>الإجابة الأقرب هي 0.24</p>
+                </div>
+            )
+    }
 ];
 
+```
+- src/app/materials/semester-1/unit-1/section-5/page.tsx:
+```tsx
+
+'use client';
+
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Check, X } from 'lucide-react';
+import Link from 'next/link';
+import Quiz from '@/components/quiz';
+import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
+import React, { useEffect, useState } from 'react';
+
+
+export default function Unit1ReviewPage() {
     
+    const [lastLessonPath, setLastLessonPath] = useState('/materials/semester-1');
+
+    useEffect(() => {
+        // Future logic for completion tracking
+        const savedPath = localStorage.getItem('lastVisitedLesson');
+        if (savedPath) {
+            setLastLessonPath(savedPath);
+        }
+    }, []);
+
+    const lessonContentForQuiz = "تم تصميم هذا الاختبار ليغطي جميع المفاهيم الأساسية في وحدة حالات المادة، بما في ذلك قوانين الغازات المختلفة وخصائص السوائل والمواد الصلبة.";
+
+    return (
+        <div className="p-4 md:p-8 relative">
+            <Link href="/materials/semester-1" passHref>
+                <Button variant="ghost" size="icon" className="absolute top-4 left-4 z-10">
+                    <X className="h-6 w-6" />
+                    <span className="sr-only">إغلاق</span>
+                </Button>
+            </Link>
+            <header className="mb-10 text-center">
+                <h1 className="text-4xl font-bold text-primary mb-2">مراجعة الوحدة الأولى: حالات المادة</h1>
+                <p className="text-lg text-muted-foreground">اختبر فهمك الشامل لجميع دروس الوحدة.</p>
+            </header>
+
+            <main className="space-y-8">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>اختبار شامل</CardTitle>
+                        <CardDescription>
+                            هذا الاختبار الشامل سيقيم مدى استيعابك للمفاهيم التي تمت دراستها في هذه الوحدة. يمكنك إنشاء اختبار بمستويات صعوبة مختلفة. بالتوفيق!
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Quiz 
+                            lessonContent={lessonContentForQuiz} 
+                            staticQuizzes={{
+                                lvl1: staticQuizLvl1, 
+                                lvl2: staticQuizLvl2, 
+                                lvl3: staticQuizLvl3
+                            }} 
+                            lessonId="/materials/semester-1/unit-1/section-5" 
+                        />
+                    </CardContent>
+                </Card>
+            </main>
+
+             <footer className="mt-12 border-t pt-6">
+                <div className="flex justify-between">
+                     <Link href={lastLessonPath} passHref>
+                        <Button size="lg" variant="outline">
+                            <ArrowLeft className="ml-2 h-5 w-5" />
+                            العودة إلى آخر درس
+                        </Button>
+                    </Link>
+                    <Link href="/materials/semester-1/unit-2/lesson-1/part-1" passHref>
+                        <Button size="lg" variant="default" disabled>
+                            الوحدة التالية: المحاليل (قريبا)
+                        </Button>
+                    </Link>
+                </div>
+            </footer>
+        </div>
+    );
+}
+
+```
+- src/data/quizzes.ts:
+```ts
+// This file is intentionally left blank.
+
+```
+- src/lib/utils.tsx:
+```tsx
+
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+import React from "react";
+import { units } from "@/data/materials";
+import type { DocumentData } from 'firebase/firestore';
+import type { QuizResult } from "@/components/quiz";
 
 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
-
+// Helper function to map lessonId (which is a URL path) to a human-readable title
+export const getLessonTitle = (lessonId: string): string => {
+    // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
+    if (!lessonId) return "درس غير معروف";
     
+    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
 
+    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
+    if (!unitIdentifier) return lessonId; // Return raw path if no unit found
+
+    const unit = units.find(u => u.id === unitIdentifier);
+    if (!unit) return lessonId;
+
+    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
+    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
+
+    if (lessonIdentifier) {
+        const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
+        const lesson = unit.lessons.find(l => l.lessonNum === lessonNum);
+        if (!lesson) return unit.title;
+
+        const partIdentifier = pathParts.find(p => p.startsWith('part-'));
+        if (partIdentifier) {
+            const partNum = parseInt(partIdentifier.replace('part-', ''), 10);
+            const part = lesson.parts.find(p => p.partNum === partNum);
+            return part ? `${lesson.title} / ${part.title}` : lesson.title;
+        }
+        return lesson.title;
+    }
+
+    if (sectionIdentifier) {
+        const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
+        const section = unit.lessons.find(l => l.sectionNum === sectionNum);
+         if (section) {
+            // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
+            if (section.title.includes(unit.title.split(':')[0])) {
+                return section.title;
+            }
+            return `${unit.title.split(':')[0]} / ${section.title}`;
+        }
+    }
+
+    return unit.title; // Fallback to unit title
+}
+
+
+export interface NextStep {
+    type: 'next' | 'weak';
+    lessonTitle: string;
+    path: string;
+    completedParts?: number;
+    totalParts?: number;
+    nextPartPath?: string;
+    score?: number;
+}
+
+const constructPath = (unitId: string, lesson: any, part: any) => {
+    const unitNum = unitId.replace('unit-', '');
+    let path = `/materials/semester-1/unit-${unitNum}`;
+    if (lesson.lessonNum) {
+        path += `/lesson-${lesson.lessonNum}`;
+    } else if (lesson.sectionNum) {
+        path += `/section-${lesson.sectionNum}`;
+    }
+    if (part.partNum) {
+        path += `/part-${part.partNum}`;
+    }
+    return path;
+}
+
+export function calculateNextStep(progressData: DocumentData | null): NextStep | null {
+    if (!progressData) return null;
+
+    const completedLessons: Set<string> = new Set(progressData.completedLessons || []);
+    const quizHistory: QuizResult[] = progressData.quizHistory || [];
     
+    const studentQuizzes = quizHistory.filter(result => result.difficulty > 0.5);
+    if (studentQuizzes.length > 0) {
+        const weakestQuiz = studentQuizzes.reduce((minResult, currentResult) => 
+            (currentResult.score < minResult.score) ? currentResult : minResult
+        );
+        
+        if (weakestQuiz.score < 0.7) {
+            return {
+                type: 'weak',
+                lessonTitle: getLessonTitle(weakestQuiz.lessonId),
+                path: weakestQuiz.lessonId,
+                score: Math.round(weakestQuiz.score * 100),
+            };
+        }
+    }
 
+    for (const unit of units) {
+        for (const lesson of unit.lessons) {
+            if (!lesson.parts || lesson.parts.length === 0 || !lesson.parts[0].partNum) {
+                continue;
+            }
 
+            const totalParts = lesson.parts.length;
+            let completedPartsInThisLesson = 0;
+            let firstUncompletedPath = '';
 
+            for (const part of lesson.parts) {
+                const path = constructPath(unit.id, lesson, part);
+                if (completedLessons.has(path)) {
+                    completedPartsInThisLesson++;
+                } else if (!firstUncompletedPath) {
+                    firstUncompletedPath = path;
+                }
+            }
 
+            if (firstUncompletedPath) {
+                return {
+                    type: 'next',
+                    lessonTitle: lesson.title,
+                    path: firstUncompletedPath,
+                    nextPartPath: firstUncompletedPath,
+                    completedParts: completedPartsInThisLesson,
+                    totalParts: totalParts,
+                };
+            }
+        }
+    }
     
+    return null;
+}
 
-    
+```
+- tsconfig.json:
+```json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/admin/approve-devices-list.tsx", "src/components/admin/delete-student-dialog.tsx", "src/components/admin/edit-student-dialog.tsx", "src/components/admin/view-students-list.tsx", "src/components/auth-dialog.tsx", "src/components/auth-form.tsx", "src/components/periodic-table-container.tsx", "src/components/periodic-table-grid.tsx", "src/components/progress-card.tsx", "src/components/progress-vessel.tsx", "src/app/dashboard/page.tsx", "src/app/admin/dashboard/add-student/page.tsx", "src/app/admin/dashboard/page.tsx", "src/app/admin/dashboard/registered-devices/page.tsx", "src/app/admin/dashboard/students/page.tsx", "src/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card.tsx"],
+  "exclude": ["node_modules"]
+}
 
-    
-
-    
+```
