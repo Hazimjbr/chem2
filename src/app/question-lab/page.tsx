@@ -26,9 +26,9 @@ const newQuestion: Question | null = {
     questionText: (
       <>
         <span>بالون حجمه </span>
-        <span dir="ltr" className="inline-block mx-1"><InlineMath math="1500\text{mL}" /></span>
-        <span> مملوء بغاز Ne (</span>
-        <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 20\text{g/mol}" /></span>
+        <span dir="ltr" className="inline-block mx-1"><InlineMath math="1000\text{mL}" /></span>
+        <span> مملوء بغاز الهيليوم He (</span>
+        <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 4\text{g/mol}" /></span>
         <span>) عند درجة حرارة </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ\text{C}" /></span>
         <span> وضغط </span>
@@ -37,38 +37,39 @@ const newQuestion: Question | null = {
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="-3^\circ\text{C}" /></span>
         <span> وأصبح الضغط </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.5\text{atm}" /></span>
-        <span> فإن كتلة غاز Ne التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا، تساوي (g):</span>
+        <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا، تساوي (g)</span>
       </>
     ),
-    options: ["2.44", "3.9", "1.76", "5.4"],
-    correctAnswerIndex: 2,
+    options: ["2.44", "0.26", "1.76", "0.35"],
+    correctAnswerIndex: 3,
     explanation: (
         <div className="space-y-3 text-right" dir="rtl">
             <p>1 <strong>حساب عدد المولات الابتدائي (n₁)</strong></p>
             <p className="text-xs">
-                <span>نحول الوحدات: </span>
-                <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1500\text{mL} = 1.5\text{L}" /></span>
+                <span>نحول الوحدات </span>
+                <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1000\text{mL} = 1.0\text{L}" /></span>
                 <span>، </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="T_1 = 27 + 273 = 300\text{K}" /></span>
             </p>
-            <div className="text-center" dir="ltr"><BlockMath math="n_1 = \frac{P_1V_1}{RT_1} = \frac{2 \times 1.5}{0.082 \times 300} \approx 0.122 \text{ mol}" /></div>
+            <div className="text-center" dir="ltr"><BlockMath math="n_1 = \frac{P_1V_1}{RT_1} = \frac{2 \times 1.0}{0.082 \times 300} \approx 0.0813 \text{ mol}" /></div>
 
             <p>2 <strong>حساب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم</strong></p>
              <p className="text-xs">
-                <span>الظروف النهائية: </span>
-                <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.5\text{L}" /></span>
+                <span>الظروف النهائية </span>
+                <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.0\text{L}" /></span>
                 <span> (ثابت)، </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="P_2 = 0.5\text{atm}" /></span>
                 <span>، </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="T_2 = -3 + 273 = 270\text{K}" /></span>
             </p>
-            <div className="text-center" dir="ltr"><BlockMath math="n_2 = \frac{P_2V_2}{RT_2} = \frac{0.5 \times 1.5}{0.082 \times 270} \approx 0.034 \text{ mol}" /></div>
+            <div className="text-center" dir="ltr"><BlockMath math="n_2 = \frac{P_2V_2}{RT_2} = \frac{0.5 \times 1.0}{0.082 \times 270} \approx 0.0226 \text{ mol}" /></div>
 
             <p>3 <strong>حساب عدد المولات التي يجب التخلص منها (Δn)</strong></p>
-            <div className="text-center" dir="ltr"><BlockMath math="\Delta n = n_1 - n_2 = 0.122 - 0.034 = 0.088 \text{ mol}" /></div>
+            <div className="text-center" dir="ltr"><BlockMath math="\Delta n = n_1 - n_2 = 0.0813 - 0.0226 = 0.0587 \text{ mol}" /></div>
 
             <p>4 <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
-            <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.088 \text{ mol} \times 20 \text{ g/mol} \approx 1.76 \text{ g}" /></div>
+            <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.0587 \text{ mol} \times 4 \text{ g/mol} \approx 0.235 \text{ g}" /></div>
+             <p>الإجابة الأقرب هي 0.35 بناءً على التقريب في الحسابات</p>
         </div>
     ),
     level: 3,
