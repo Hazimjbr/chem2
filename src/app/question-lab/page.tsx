@@ -33,14 +33,14 @@ const newQuestion: Question | null = {
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ\text{C}" /></span>
         <span> وضغط </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="2\text{atm}" /></span>
-        <span> وعند صعود البالون للأعلى، انخفضت درجة الحرارة إلى </span>
+        <span> وعند صعود البالون للأعلى انخفضت درجة الحرارة إلى </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="-3^\circ\text{C}" /></span>
         <span> وأصبح الضغط </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.5\text{atm}" /></span>
-        <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا، تساوي (g)</span>
+        <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا تساوي (g)</span>
       </>
     ),
-    options: ["2.44", "0.26", "1.76", "0.35"],
+    options: ["1.76", "0.82", "0.41", "0.235"],
     correctAnswerIndex: 3,
     explanation: (
         <div className="space-y-3 text-right" dir="rtl">
@@ -69,7 +69,7 @@ const newQuestion: Question | null = {
 
             <p>4 <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
             <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.0587 \text{ mol} \times 4 \text{ g/mol} \approx 0.235 \text{ g}" /></div>
-             <p>الإجابة الأقرب هي 0.35 بناءً على التقريب في الحسابات</p>
+             <p>الإجابة الأقرب هي 0.235</p>
         </div>
     ),
     level: 3,
