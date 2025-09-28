@@ -33,28 +33,27 @@ const newQuestion: Question | null = {
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ\text{C}" /></span>
         <span> وضغط </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="2\text{atm}" /></span>
-        <span>. وعند صعود البالون للأعلى، انخفضت درجة الحرارة إلى </span>
+        <span> وعند صعود البالون للأعلى، انخفضت درجة الحرارة إلى </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="-3^\circ\text{C}" /></span>
         <span> وأصبح الضغط </span>
         <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.5\text{atm}" /></span>
-        <span>. فإن كتلة غاز Ne التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا، تساوي (g):</span>
+        <span> فإن كتلة غاز Ne التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا، تساوي (g):</span>
       </>
     ),
     options: ["2.44", "3.9", "1.76", "5.4"],
-    correctAnswerIndex: 3,
+    correctAnswerIndex: 2,
     explanation: (
         <div className="space-y-3 text-right" dir="rtl">
-            <p>1. <strong>نحسب عدد المولات الابتدائي (n₁):</strong></p>
+            <p>1 <strong>حساب عدد المولات الابتدائي (n₁)</strong></p>
             <p className="text-xs">
                 <span>نحول الوحدات: </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1500\text{mL} = 1.5\text{L}" /></span>
                 <span>، </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="T_1 = 27 + 273 = 300\text{K}" /></span>
-                <span>.</span>
             </p>
             <div className="text-center" dir="ltr"><BlockMath math="n_1 = \frac{P_1V_1}{RT_1} = \frac{2 \times 1.5}{0.082 \times 300} \approx 0.122 \text{ mol}" /></div>
 
-            <p>2. <strong>نحسب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم:</strong></p>
+            <p>2 <strong>حساب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم</strong></p>
              <p className="text-xs">
                 <span>الظروف النهائية: </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.5\text{L}" /></span>
@@ -62,14 +61,13 @@ const newQuestion: Question | null = {
                 <span dir="ltr" className="inline-block"><InlineMath math="P_2 = 0.5\text{atm}" /></span>
                 <span>، </span>
                 <span dir="ltr" className="inline-block"><InlineMath math="T_2 = -3 + 273 = 270\text{K}" /></span>
-                <span>.</span>
             </p>
             <div className="text-center" dir="ltr"><BlockMath math="n_2 = \frac{P_2V_2}{RT_2} = \frac{0.5 \times 1.5}{0.082 \times 270} \approx 0.034 \text{ mol}" /></div>
 
-            <p>3. <strong>نحسب عدد المولات التي يجب التخلص منها (Δn):</strong></p>
+            <p>3 <strong>حساب عدد المولات التي يجب التخلص منها (Δn)</strong></p>
             <div className="text-center" dir="ltr"><BlockMath math="\Delta n = n_1 - n_2 = 0.122 - 0.034 = 0.088 \text{ mol}" /></div>
 
-            <p>4. <strong>نحسب كتلة الغاز المتسرب (m):</strong></p>
+            <p>4 <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
             <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.088 \text{ mol} \times 20 \text{ g/mol} \approx 1.76 \text{ g}" /></div>
         </div>
     ),
