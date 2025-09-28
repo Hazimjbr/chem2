@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -754,6 +755,426 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
     },
     {
+        question: (
+            <>
+                <span>وعاء يحتوي على </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+                <span> من غاز الأكسجين عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
+                <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
+                <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
+            </>
+        ),
+        options: [
+            "5g",
+            "10g",
+            "10.7g",
+            "5.4g"
+        ],
+        correctAnswerIndex: 1,
+        explanation: (
+            <>
+                <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
+                <span> يجب تحويل الحرارة إلى كلفن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
+                <span> إذن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
+                <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
+                <span> لذا كتلته المولية </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
+                <span> الكتلة = </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
+                <span> وهي الأقرب إلى 10g</span>
+            </>
+        )
+    },
+    {
+        question: "خاصية يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت:",
+        options: [
+            "الشكل",
+            "القساوة",
+            "التوصيل الكهربائي",
+            "التآصل"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الألماس وثاني أكسيد السيليكون كلاهما مواد عازلة للكهرباء بسبب ارتباط جميع إلكترونات التكافؤ بقوة في روابط تساهمية أما الجرافيت فهو موصل جيد للكهرباء لوجود إلكترونات حرة الحركة بين طبقاته"
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+            </>
+        ),
+        options: [
+            "0.050/0.025",
+            "0.025/0.050",
+            "0.750/0.375",
+            "0.5/0.5"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <>
+                <span>نحسب عدد مولات كل غاز n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>نحسب العدد الكلي للمولات من قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>نحسب الضغط الجزئي لكل غاز P_gas = X_gas × P_total</span>
+                <br />
+                <span>P(CO₂) = (0.025/0.1) × 1.5atm = 0.375atm</span>
+                <br />
+                <span>P(O₂) = (0.05/0.1) × 1.5atm = 0.750atm</span>
+                <br />
+                <span>الترتيب المطلوب هو O₂ ثم CO₂ لذا الجواب هو 0.750 / 0.375</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            </>
+        ),
+        options: [
+            "0.7g",
+            "1.4g",
+            "0.35g",
+            "2.8g"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>إذا علمت أن كثافة الماس</span>
+                <span dir="ltr" className="inline-block mx-1">3.5g/ml</span>
+                <span>وكثافة الغرافيت</span>
+                <span dir="ltr" className="inline-block mx-1">2.3g/ml</span>
+                <span>فإن كثافة بكمنسترفولرين</span>
+            </>
+        ),
+        options: [
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في جزئياته",
+            "أقل لأنه يحتوي عدد ذرات C أقل في جزئياته",
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في بنائه الشبكي",
+            "أقل لأنه يحتوي فراغات أكبر بين جزيئاته الكروية"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "كثافة البكمنسترفولرين أقل من الماس والغرافيت لأن جزيئاته الكروية (C60) ترتبط بقوى لندن الضعيفة مما يؤدي إلى وجود فراغات أكبر بينها في البناء البلوري على عكس الألماس والغرافيت اللذين يمتلكان بنى شبكية تساهمية أكثر تراصا وقوة"
+    },
+    {
+        question: (
+            <>
+                <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
+                <div className="flex justify-center my-2">
+                    <Image src="https://i.ibb.co/Hpf0bLw3/3.jpg" alt="Connected Vessels" width={250} height={100} />
+                </div>
+            </>
+        ),
+        options: ["1.5", "0.5", "2", "3"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولاً نوحد وحدات الضغط إلى atm P(A) = 350kPa / 101.3kPa/atm ≈ 3.455atm P(W) = 350mmHg / 760mmHg/atm ≈ 0.46atm الحجم الكلي بعد الخلط V(total) = 1L + 2L = 3L ثانياً نستخدم قانون بويل لحساب الضغط الجزئي لكل غاز في الحجم الجديد P_final = (P_initial * V_initial) / V_total P_A_final = (3.455 * 1) / 3 ≈ 1.15atm P_W_final = (0.46 * 2) / 3 ≈ 0.31atm أخيراً نستخدم قانون دالتون P(total) = P_A_final + P_W_final = 1.15 + 0.31 ≈ 1.46atm أقرب إجابة هي 1.5</span>
+            </>
+        )
+    },
+    {
+        question: <>
+            <p>ادرس الرسم المجاور الذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
+            <div className="flex justify-center my-2">
+                <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
+            </div>
+        </>,
+        options: [
+            "بين C و D",
+            "على يسار A",
+            "لا يتغير",
+            "على يمين D"
+        ],
+        correctAnswerIndex: 2,
+        explanation: <>
+            <span>وفقًا لقانون جراهام تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
+            <span dir="ltr" className="inline-block"><InlineMath math="r_1/r_2 = \sqrt{Mr_2/Mr_1}"/></span>
+            <span>) هذه النسبة لا تعتمد على درجة الحرارة تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع</span>
+        </>
+    },
+    {
+        question: <><span>إذا علمت أن عنصر البورون شديد الصلابة ودرجة انصهاره </span><span dir="ltr">2300°C</span><span> ورديء التوصيل للكهرباء على درجة الحرارة العادية فإنه يصنف مادة صلبة بلورية</span></>,
+        options: [
+            "جزيئية",
+            "أيونية",
+            "شبكية تساهمية",
+            "فلزية"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد",
+    },
+    {
+        question: (
+            <>
+                <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة</p>
+                <div className="flex justify-center items-center gap-4 my-2">
+                     <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
+                </div>
+            </>
+        ),
+        options: [
+            "يشبه المتآصل (1) في تركيبه البنائي الغرافيت ويشبه المتآصل (2) الماس",
+            "يوصل المتآصل (1) التيار الكهربائي",
+            "المتآصل (2) عالي القساوة",
+            "يُصنَّف كُلٌّ من المتأصلين على أنه صلب جزيئي"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "العبارة غير الصحيحة هي (د) كلا الشكلين هما مواد صلبة شبكية تساهمية وليست جزيئية لأن الذرات ترتبط في شبكة ضخمة وممتدة (ملاحظة: العبارة ب أيضًا غير صحيحة لأن نيتريد البورون الشبيه بالغرافيت عازل)",
+    },
+    {
+        question: "المادة الصلبة التي لها أعلى درجة انصهار",
+        options: [
+            "AlF₃",
+            "SiF₄",
+            "NH₃",
+            "P₄"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
+    },
+    {
+        question: (
+            <>
+                <span>وعاء يحتوي على </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+                <span> من غاز الأكسجين عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
+                <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
+                <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
+            </>
+        ),
+        options: [
+            "5g",
+            "10g",
+            "10.7g",
+            "5.4g"
+        ],
+        correctAnswerIndex: 1,
+        explanation: (
+            <>
+                <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
+                <span> يجب تحويل الحرارة إلى كلفن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
+                <span> إذن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
+                <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
+                <span> لذا كتلته المولية </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
+                <span> الكتلة = </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
+                <span> وهي الأقرب إلى 10g</span>
+            </>
+        )
+    },
+    {
+        question: "خاصية يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت:",
+        options: [
+            "الشكل",
+            "القساوة",
+            "التوصيل الكهربائي",
+            "التآصل"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الألماس وثاني أكسيد السيليكون كلاهما مواد عازلة للكهرباء بسبب ارتباط جميع إلكترونات التكافؤ بقوة في روابط تساهمية أما الجرافيت فهو موصل جيد للكهرباء لوجود إلكترونات حرة الحركة بين طبقاته"
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+            </>
+        ),
+        options: [
+            "0.050/0.025",
+            "0.025/0.050",
+            "0.750/0.375",
+            "0.5/0.5"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <>
+                <span>نحسب عدد مولات كل غاز n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>نحسب العدد الكلي للمولات من قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>نحسب الضغط الجزئي لكل غاز P_gas = X_gas × P_total</span>
+                <br />
+                <span>P(CO₂) = (0.025/0.1) × 1.5atm = 0.375atm</span>
+                <br />
+                <span>P(O₂) = (0.05/0.1) × 1.5atm = 0.750atm</span>
+                <br />
+                <span>الترتيب المطلوب هو O₂ ثم CO₂ لذا الجواب هو 0.750 / 0.375</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            </>
+        ),
+        options: [
+            "0.7g",
+            "1.4g",
+            "0.35g",
+            "2.8g"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>إذا علمت أن كثافة الماس</span>
+                <span dir="ltr" className="inline-block mx-1">3.5g/ml</span>
+                <span>وكثافة الغرافيت</span>
+                <span dir="ltr" className="inline-block mx-1">2.3g/ml</span>
+                <span>فإن كثافة بكمنسترفولرين</span>
+            </>
+        ),
+        options: [
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في جزئياته",
+            "أقل لأنه يحتوي عدد ذرات C أقل في جزئياته",
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في بنائه الشبكي",
+            "أقل لأنه يحتوي فراغات أكبر بين جزيئاته الكروية"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "كثافة البكمنسترفولرين أقل من الماس والغرافيت لأن جزيئاته الكروية (C60) ترتبط بقوى لندن الضعيفة مما يؤدي إلى وجود فراغات أكبر بينها في البناء البلوري على عكس الألماس والغرافيت اللذين يمتلكان بنى شبكية تساهمية أكثر تراصا وقوة"
+    },
+    {
+        question: (
+            <>
+                <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
+                <div className="flex justify-center my-2">
+                    <Image src="https://i.ibb.co/Hpf0bLw3/3.jpg" alt="Connected Vessels" width={250} height={100} />
+                </div>
+            </>
+        ),
+        options: ["1.5", "0.5", "2", "3"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولاً نوحد وحدات الضغط إلى atm P(A) = 350kPa / 101.3kPa/atm ≈ 3.455atm P(W) = 350mmHg / 760mmHg/atm ≈ 0.46atm الحجم الكلي بعد الخلط V(total) = 1L + 2L = 3L ثانياً نستخدم قانون بويل لحساب الضغط الجزئي لكل غاز في الحجم الجديد P_final = (P_initial * V_initial) / V_total P_A_final = (3.455 * 1) / 3 ≈ 1.15atm P_W_final = (0.46 * 2) / 3 ≈ 0.31atm أخيراً نستخدم قانون دالتون P(total) = P_A_final + P_W_final = 1.15 + 0.31 ≈ 1.46atm أقرب إجابة هي 1.5</span>
+            </>
+        )
+    },
+    {
+        question: <>
+            <p>ادرس الرسم المجاور الذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
+            <div className="flex justify-center my-2">
+                <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
+            </div>
+        </>,
+        options: [
+            "بين C و D",
+            "على يسار A",
+            "لا يتغير",
+            "على يمين D"
+        ],
+        correctAnswerIndex: 2,
+        explanation: <>
+            <span>وفقًا لقانون جراهام تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
+            <span dir="ltr" className="inline-block"><InlineMath math="r_1/r_2 = \sqrt{Mr_2/Mr_1}"/></span>
+            <span>) هذه النسبة لا تعتمد على درجة الحرارة تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع</span>
+        </>
+    },
+    {
+        question: <><span>إذا علمت أن عنصر البورون شديد الصلابة ودرجة انصهاره </span><span dir="ltr">2300°C</span><span> ورديء التوصيل للكهرباء على درجة الحرارة العادية فإنه يصنف مادة صلبة بلورية</span></>,
+        options: [
+            "جزيئية",
+            "أيونية",
+            "شبكية تساهمية",
+            "فلزية"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد",
+    },
+    {
+        question: (
+            <>
+                <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة</p>
+                <div className="flex justify-center items-center gap-4 my-2">
+                     <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
+                </div>
+            </>
+        ),
+        options: [
+            "يشبه المتآصل (1) في تركيبه البنائي الغرافيت ويشبه المتآصل (2) الماس",
+            "يوصل المتآصل (1) التيار الكهربائي",
+            "المتآصل (2) عالي القساوة",
+            "يُصنَّف كُلٌّ من المتأصلين على أنه صلب جزيئي"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "العبارة غير الصحيحة هي (د) كلا الشكلين هما مواد صلبة شبكية تساهمية وليست جزيئية لأن الذرات ترتبط في شبكة ضخمة وممتدة (ملاحظة: العبارة ب أيضًا غير صحيحة لأن نيتريد البورون الشبيه بالغرافيت عازل)",
+    },
+    {
+        question: "المادة الصلبة التي لها أعلى درجة انصهار",
+        options: [
+            "AlF₃",
+            "SiF₄",
+            "NH₃",
+            "P₄"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
+    },
+    {
             question: (
               <>
                 <span>بالون حجمه </span>
@@ -777,7 +1198,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
                 <div className="space-y-3 text-right" dir="rtl">
                     <p>1. <strong>حساب عدد المولات الابتدائي (n₁)</strong></p>
                     <p className="text-xs">
-                        <span>نحول الوحدات: </span>
+                        <span>نحول الوحدات </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1000\text{mL} = 1.0\text{L}" /></span>
                         <span>، </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="T_1 = 27 + 273 = 300\text{K}" /></span>
@@ -786,7 +1207,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
         
                     <p>2. <strong>حساب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم</strong></p>
                      <p className="text-xs">
-                        <span>الظروف النهائية: </span>
+                        <span>الظروف النهائية </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.0\text{L}" /></span>
                         <span> (ثابت)، </span>
                         <span dir="ltr" className="inline-block"><InlineMath math="P_2 = 0.5\text{atm}" /></span>
@@ -806,266 +1227,4 @@ export const staticQuizLvl3: QuizQuestion[] = [
     }
 ];
 
-```
-- src/app/materials/semester-1/unit-1/section-5/page.tsx:
-```tsx
-
-'use client';
-
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Check, X } from 'lucide-react';
-import Link from 'next/link';
-import Quiz from '@/components/quiz';
-import { staticQuizLvl1, staticQuizLvl2, staticQuizLvl3 } from './exam';
-import React, { useEffect, useState } from 'react';
-
-
-export default function Unit1ReviewPage() {
     
-    const [lastLessonPath, setLastLessonPath] = useState('/materials/semester-1');
-
-    useEffect(() => {
-        // Future logic for completion tracking
-        const savedPath = localStorage.getItem('lastVisitedLesson');
-        if (savedPath) {
-            setLastLessonPath(savedPath);
-        }
-    }, []);
-
-    const lessonContentForQuiz = "تم تصميم هذا الاختبار ليغطي جميع المفاهيم الأساسية في وحدة حالات المادة، بما في ذلك قوانين الغازات المختلفة وخصائص السوائل والمواد الصلبة.";
-
-    return (
-        <div className="p-4 md:p-8 relative">
-            <Link href="/materials/semester-1" passHref>
-                <Button variant="ghost" size="icon" className="absolute top-4 left-4 z-10">
-                    <X className="h-6 w-6" />
-                    <span className="sr-only">إغلاق</span>
-                </Button>
-            </Link>
-            <header className="mb-10 text-center">
-                <h1 className="text-4xl font-bold text-primary mb-2">مراجعة الوحدة الأولى: حالات المادة</h1>
-                <p className="text-lg text-muted-foreground">اختبر فهمك الشامل لجميع دروس الوحدة.</p>
-            </header>
-
-            <main className="space-y-8">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>اختبار شامل</CardTitle>
-                        <CardDescription>
-                            هذا الاختبار الشامل سيقيم مدى استيعابك للمفاهيم التي تمت دراستها في هذه الوحدة. يمكنك إنشاء اختبار بمستويات صعوبة مختلفة. بالتوفيق!
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <Quiz 
-                            lessonContent={lessonContentForQuiz} 
-                            staticQuizzes={{
-                                lvl1: staticQuizLvl1, 
-                                lvl2: staticQuizLvl2, 
-                                lvl3: staticQuizLvl3
-                            }} 
-                            lessonId="/materials/semester-1/unit-1/section-5" 
-                        />
-                    </CardContent>
-                </Card>
-            </main>
-
-             <footer className="mt-12 border-t pt-6">
-                <div className="flex justify-between">
-                     <Link href={lastLessonPath} passHref>
-                        <Button size="lg" variant="outline">
-                            <ArrowLeft className="ml-2 h-5 w-5" />
-                            العودة إلى آخر درس
-                        </Button>
-                    </Link>
-                    <Link href="/materials/semester-1/unit-2/lesson-1/part-1" passHref>
-                        <Button size="lg" variant="default" disabled>
-                            الوحدة التالية: المحاليل (قريبا)
-                        </Button>
-                    </Link>
-                </div>
-            </footer>
-        </div>
-    );
-}
-
-```
-- src/data/quizzes.ts:
-```ts
-// This file is intentionally left blank.
-
-```
-- src/lib/utils.tsx:
-```tsx
-
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-import React from "react";
-import { units } from "@/data/materials";
-import type { DocumentData } from 'firebase/firestore';
-import type { QuizResult } from "@/components/quiz";
-
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
-// Helper function to map lessonId (which is a URL path) to a human-readable title
-export const getLessonTitle = (lessonId: string): string => {
-    // Example lessonId: "/materials/semester-1/unit-1/lesson-2/part-3" or "/materials/semester-1/unit-1/section-5"
-    if (!lessonId) return "درس غير معروف";
-    
-    const pathParts = lessonId.split('/').filter(p => p); // remove empty parts
-
-    const unitIdentifier = pathParts.find(p => p.startsWith('unit-'));
-    if (!unitIdentifier) return lessonId; // Return raw path if no unit found
-
-    const unit = units.find(u => u.id === unitIdentifier);
-    if (!unit) return lessonId;
-
-    const lessonIdentifier = pathParts.find(p => p.startsWith('lesson-'));
-    const sectionIdentifier = pathParts.find(p => p.startsWith('section-'));
-
-    if (lessonIdentifier) {
-        const lessonNum = parseInt(lessonIdentifier.replace('lesson-', ''), 10);
-        const lesson = unit.lessons.find(l => l.lessonNum === lessonNum);
-        if (!lesson) return unit.title;
-
-        const partIdentifier = pathParts.find(p => p.startsWith('part-'));
-        if (partIdentifier) {
-            const partNum = parseInt(partIdentifier.replace('part-', ''), 10);
-            const part = lesson.parts.find(p => p.partNum === partNum);
-            return part ? `${lesson.title} / ${part.title}` : lesson.title;
-        }
-        return lesson.title;
-    }
-
-    if (sectionIdentifier) {
-        const sectionNum = parseInt(sectionIdentifier.replace('section-', ''), 10);
-        const section = unit.lessons.find(l => l.sectionNum === sectionNum);
-         if (section) {
-            // Avoid repetition like "الوحدة 1: حالات المادة / مراجعة الوحدة"
-            if (section.title.includes(unit.title.split(':')[0])) {
-                return section.title;
-            }
-            return `${unit.title.split(':')[0]} / ${section.title}`;
-        }
-    }
-
-    return unit.title; // Fallback to unit title
-}
-
-
-export interface NextStep {
-    type: 'next' | 'weak';
-    lessonTitle: string;
-    path: string;
-    completedParts?: number;
-    totalParts?: number;
-    nextPartPath?: string;
-    score?: number;
-}
-
-const constructPath = (unitId: string, lesson: any, part: any) => {
-    const unitNum = unitId.replace('unit-', '');
-    let path = `/materials/semester-1/unit-${unitNum}`;
-    if (lesson.lessonNum) {
-        path += `/lesson-${lesson.lessonNum}`;
-    } else if (lesson.sectionNum) {
-        path += `/section-${lesson.sectionNum}`;
-    }
-    if (part.partNum) {
-        path += `/part-${part.partNum}`;
-    }
-    return path;
-}
-
-export function calculateNextStep(progressData: DocumentData | null): NextStep | null {
-    if (!progressData) return null;
-
-    const completedLessons: Set<string> = new Set(progressData.completedLessons || []);
-    const quizHistory: QuizResult[] = progressData.quizHistory || [];
-    
-    const studentQuizzes = quizHistory.filter(result => result.difficulty > 0.5);
-    if (studentQuizzes.length > 0) {
-        const weakestQuiz = studentQuizzes.reduce((minResult, currentResult) => 
-            (currentResult.score < minResult.score) ? currentResult : minResult
-        );
-        
-        if (weakestQuiz.score < 0.7) {
-            return {
-                type: 'weak',
-                lessonTitle: getLessonTitle(weakestQuiz.lessonId),
-                path: weakestQuiz.lessonId,
-                score: Math.round(weakestQuiz.score * 100),
-            };
-        }
-    }
-
-    for (const unit of units) {
-        for (const lesson of unit.lessons) {
-            if (!lesson.parts || lesson.parts.length === 0 || !lesson.parts[0].partNum) {
-                continue;
-            }
-
-            const totalParts = lesson.parts.length;
-            let completedPartsInThisLesson = 0;
-            let firstUncompletedPath = '';
-
-            for (const part of lesson.parts) {
-                const path = constructPath(unit.id, lesson, part);
-                if (completedLessons.has(path)) {
-                    completedPartsInThisLesson++;
-                } else if (!firstUncompletedPath) {
-                    firstUncompletedPath = path;
-                }
-            }
-
-            if (firstUncompletedPath) {
-                return {
-                    type: 'next',
-                    lessonTitle: lesson.title,
-                    path: firstUncompletedPath,
-                    nextPartPath: firstUncompletedPath,
-                    completedParts: completedPartsInThisLesson,
-                    totalParts: totalParts,
-                };
-            }
-        }
-    }
-    
-    return null;
-}
-
-```
-- tsconfig.json:
-```json
-{
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/admin/approve-devices-list.tsx", "src/components/admin/delete-student-dialog.tsx", "src/components/admin/edit-student-dialog.tsx", "src/components/admin/view-students-list.tsx", "src/components/auth-dialog.tsx", "src/components/auth-form.tsx", "src/components/periodic-table-container.tsx", "src/components/periodic-table-grid.tsx", "src/components/progress-card.tsx", "src/components/progress-vessel.tsx", "src/app/dashboard/page.tsx", "src/app/admin/dashboard/add-student/page.tsx", "src/app/admin/dashboard/page.tsx", "src/app/admin/dashboard/registered-devices/page.tsx", "src/app/admin/dashboard/students/page.tsx", "src/app/materials/semester-1/unit-1/lesson-1/part-1/flippable-card.tsx"],
-  "exclude": ["node_modules"]
-}
-
-```
