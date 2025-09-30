@@ -338,7 +338,36 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "سرعة التبخر تتناسب طرديًا مع الضغط البخاري وترتيب سرعة التبخر من الأبطأ إلى الأسرع هو D < B < C < A والعلاقة (أ) B < D غير صحيحة لأن الضغط البخاري لـ B (55) أكبر من D (40) مما يعني أن سرعة تبخر B أكبر من D"
-    }
+    },
+    {
+        question: (
+        <>
+            <p>اعتمادا على الشكل المجاور إذا علمت أن المسافة A تمثل الضغط الجوي في الظروف المعيارية فإن قيمة الضغط على سطح السائل المحصور عند A تساوي</p>
+            <div className="flex justify-center my-2">
+                <Image 
+                    src="https://i.ibb.co/zhsx01WH/image.jpg" 
+                    alt="image" 
+                    width={400}
+                    height={250}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="manometer gas pressure"
+                />
+            </div>
+        </>
+    ),
+    options: [
+        <span dir="ltr">101 kPa</span>,
+        <span dir="ltr">1.5 atm</span>,
+        <span dir="ltr">570 mmHg</span>,
+        <span dir="ltr">0.75 atm</span>
+    ],
+    correctAnswerIndex: 0,
+    explanation: (
+         <div className="space-y-3 text-right" dir="rtl">
+            <p>الضغط على سطح السائل المحصور عند النقطة A  ويساوي 1atm أو 760mmHg أو 101kPaهو الضغط الجوي بمقدار ارتفاع عمود الزئبق</p>
+        </div>
+    ),
+}
 ];
 
 export const staticQuizLvl3: QuizQuestion[] = [
