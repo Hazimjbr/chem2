@@ -54,9 +54,8 @@ const newQuestion: Question | null = {
             <div className="text-center" dir="ltr"><BlockMath math="(0.2)(1.2) = X(0.3)" /></div>
             <div className="text-center" dir="ltr"><BlockMath math="X = \frac{0.24}{0.3} = 0.8 \text{ atm}" /></div>
             <p>الإجابة ليست موجودة مباشرة في الخيارات لذا يجب تحويل الوحدات للتحقق</p>
-            <p>الخيار ب 608mmHg نحوله إلى atm بالقسمة على 760</p>
-            <div className="text-center" dir="ltr"><BlockMath math="\frac{608}{760} = 0.8 \text{ atm}" /></div>
-            <p>إذًا الخيار ب هو الإجابة الصحيحة</p>
+            <p> 608mmHg نحوله إلى mmHg بالضرب في 760 يصبح الجواب</p>
+            <div className="text-center" dir="ltr"><BlockMath math="{0.8}\times{760} = 608 \text{ atm}" /></div>
         </div>
     ),
     level: 2,

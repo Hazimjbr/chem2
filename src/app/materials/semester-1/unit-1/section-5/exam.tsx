@@ -584,15 +584,41 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     },
     {
-        question: "خاصية يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت:",
-        options: [
-            "الشكل",
-            "القساوة",
-            "التوصيل الكهربائي",
-            "التآصل"
-        ],
-        correctAnswerIndex: 2,
-        explanation: "الألماس وثاني أكسيد السيليكون كلاهما مواد عازلة للكهرباء بسبب ارتباط جميع إلكترونات التكافؤ بقوة في روابط تساهمية أما الجرافيت فهو موصل جيد للكهرباء لوجود إلكترونات حرة الحركة بين طبقاته"
+    question: (
+        <>
+            <p>اعتمادا على الشكل المجاور فإن قيمة X تساوي</p>
+            <div className="flex justify-center my-2">
+                <Image 
+                    src="https://i.ibb.co/9HYRwqWj/image.jpg"
+                    alt="Boyle's Law Graph" 
+                    width={200}
+                    height={150}
+                    className="rounded-lg border bg-white"
+                    data-ai-hint="Boyle's law graph"
+                />
+            </div>
+        </>
+    ),
+    options: [
+        <span dir="ltr">0.08 atm</span>,
+        <span dir="ltr">608 mmHg</span>,
+        <span dir="ltr">0.6 atm</span>,
+        <span dir="ltr">808 kPa</span>
+    ],
+    correctAnswerIndex: 1,
+    explanation: (
+         <div className="space-y-3 text-right" dir="rtl">
+            <p>يمثل الشكل العلاقة العكسية بين الضغط والحجم وفقا لقانون بويل</p>
+            <div className="text-center" dir="ltr"><BlockMath math="P_1V_1 = P_2V_2" /></div>
+            <p>من الشكل نجد أن النقطة الأولى هي P₁=02atm و V₁=12L والنقطة الثانية هي P₂=X و V₂=03L</p>
+            <p>بالتعويض في القانون</p>
+            <div className="text-center" dir="ltr"><BlockMath math="(0.2)(1.2) = X(0.3)" /></div>
+            <div className="text-center" dir="ltr"><BlockMath math="X = \frac{0.24}{0.3} = 0.8 \text{ atm}" /></div>
+            <p>الإجابة ليست موجودة مباشرة في الخيارات لذا يجب تحويل الوحدات للتحقق</p>
+            <p> 608mmHg نحوله إلى mmHg بالضرب في 760 يصبح الجواب</p>
+            <div className="text-center" dir="ltr"><BlockMath math="{0.8}\times{760} = 608 \text{ atm}" /></div>
+        </div>
+    )
     },
     {
         question: (
