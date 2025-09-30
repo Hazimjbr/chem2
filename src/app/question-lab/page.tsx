@@ -25,11 +25,11 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <p>اعتمادا على الشكل المجاور إذا علمت أن الضغط الجوي في الظروف المعيارية فإن قيمة الضغط على سطح السائل المحصور عند A تساوي</p>
+            <p>اعتمادا على الشكل المجاور إذا علمت أن المسافة A تمثل الضغط الجوي في الظروف المعيارية فإن قيمة الضغط على سطح السائل المحصور عند A تساوي</p>
             <div className="flex justify-center my-2">
                 <Image 
-                    src="https://i.ibb.co/zhsx01WH/image.jpg"
-                    alt="Manometer for Boyle's Law" 
+                    src="https://i.ibb.co/zhsx01WH/image.jpg" 
+                    alt="image" 
                     width={400}
                     height={250}
                     className="rounded-lg border bg-white"
@@ -46,17 +46,14 @@ const newQuestion: Question | null = {
     ],
     correctAnswerIndex: 1,
     explanation: (
-         <div className="space-y-3 text-right" dir="rtl">
+        <div className="space-y-3 text-right" dir="rtl">
             <p>يمثل الشكل تجربة لدراسة العلاقة بين ضغط الغاز وحجمه</p>
             <p>الضغط الكلي المؤثر على الغاز المحصور يساوي مجموع الضغط الجوي والضغط الناتج عن ارتفاع عمود الزئبق</p>
             <p>الضغط الجوي المعياري يساوي 760mmHg</p>
-            <p>ضغط عمود الزئبق يساوي 1140mmHg</p>
-            <p>لذا الضغط الكلي يساوي 760 زائد 1140 ويساوي 1900mmHg</p>
+            <p>ضغط عمود الزئبق عند النقطة A يساوي 380mmHg</p>
+            <p>لذا الضغط الكلي عند A يساوي 760 زائد 380 ويساوي 1140mmHg</p>
             <p>لتحويل الضغط من mmHg إلى atm نقسم على 760</p>
-            <p>الضغط بوحدة atm يساوي 1900 تقسيم 760 ويساوي 2.5atm وهذه قيمة الضغط عند النقطة B</p>
-            <p>بما أن المسافة A ضعف المسافة B فإن حجم الغاز عند A ضعف حجمه عند B ووفقا لقانون بويل فإن ضغط الغاز عند A يجب أن يكون نصف ضغطه عند B</p>
-            <p>إذن ضغط الغاز عند A يساوي 2.5 تقسيم 2 ويساوي 1.25atm</p>
-             <p>الخيار الأقرب للقيمة المحسوبة هو 1.5atm</p>
+            <p>الضغط بوحدة atm يساوي 1140 تقسيم 760 ويساوي 1.5atm</p>
         </div>
     ),
     level: 3,
