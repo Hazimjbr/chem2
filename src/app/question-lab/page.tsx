@@ -25,40 +25,41 @@ interface Question {
 const newQuestion: Question | null = {
     questionText: (
         <>
-            <p>اعتمادا على الشكل المجاور فإن قيمة X تساوي</p>
+            <p>اعتمادا على الشكل المجاور إذا علمت أن الضغط الجوي في الظروف المعيارية فإن قيمة الضغط على سطح السائل المحصور عند A تساوي</p>
             <div className="flex justify-center my-2">
                 <Image 
-                    src="https://i.ibb.co/9HYRwqWj/image.jpg"
-                    alt="Boyle's Law Graph" 
-                    width={200}
-                    height={150}
+                    src="https://i.ibb.co/zhsx01WH/image.jpg"
+                    alt="Manometer for Boyle's Law" 
+                    width={400}
+                    height={250}
                     className="rounded-lg border bg-white"
-                    data-ai-hint="Boyle's law graph"
+                    data-ai-hint="manometer gas pressure"
                 />
             </div>
         </>
     ),
     options: [
-        <span dir="ltr">0.08 atm</span>,
-        <span dir="ltr">608 mmHg</span>,
-        <span dir="ltr">0.6 atm</span>,
-        <span dir="ltr">808 kPa</span>
+        <span dir="ltr">101 kPa</span>,
+        <span dir="ltr">1.5 atm</span>,
+        <span dir="ltr">570 mmHg</span>,
+        <span dir="ltr">0.75 atm</span>
     ],
     correctAnswerIndex: 1,
     explanation: (
          <div className="space-y-3 text-right" dir="rtl">
-            <p>يمثل الشكل العلاقة العكسية بين الضغط والحجم وفقا لقانون بويل</p>
-            <div className="text-center" dir="ltr"><BlockMath math="P_1V_1 = P_2V_2" /></div>
-            <p>من الشكل نجد أن النقطة الأولى هي P₁=02atm و V₁=12L والنقطة الثانية هي P₂=X و V₂=03L</p>
-            <p>بالتعويض في القانون</p>
-            <div className="text-center" dir="ltr"><BlockMath math="(0.2)(1.2) = X(0.3)" /></div>
-            <div className="text-center" dir="ltr"><BlockMath math="X = \frac{0.24}{0.3} = 0.8 \text{ atm}" /></div>
-            <p>الإجابة ليست موجودة مباشرة في الخيارات لذا يجب تحويل الوحدات للتحقق</p>
-            <p> 608mmHg نحوله إلى mmHg بالضرب في 760 يصبح الجواب</p>
-            <div className="text-center" dir="ltr"><BlockMath math="{0.8}\times{760} = 608 \text{ atm}" /></div>
+            <p>يمثل الشكل تجربة لدراسة العلاقة بين ضغط الغاز وحجمه</p>
+            <p>الضغط الكلي المؤثر على الغاز المحصور يساوي مجموع الضغط الجوي والضغط الناتج عن ارتفاع عمود الزئبق</p>
+            <p>الضغط الجوي المعياري يساوي 760mmHg</p>
+            <p>ضغط عمود الزئبق يساوي 1140mmHg</p>
+            <p>لذا الضغط الكلي يساوي 760 زائد 1140 ويساوي 1900mmHg</p>
+            <p>لتحويل الضغط من mmHg إلى atm نقسم على 760</p>
+            <p>الضغط بوحدة atm يساوي 1900 تقسيم 760 ويساوي 2.5atm وهذه قيمة الضغط عند النقطة B</p>
+            <p>بما أن المسافة A ضعف المسافة B فإن حجم الغاز عند A ضعف حجمه عند B ووفقا لقانون بويل فإن ضغط الغاز عند A يجب أن يكون نصف ضغطه عند B</p>
+            <p>إذن ضغط الغاز عند A يساوي 2.5 تقسيم 2 ويساوي 1.25atm</p>
+             <p>الخيار الأقرب للقيمة المحسوبة هو 1.5atm</p>
         </div>
     ),
-    level: 2,
+    level: 3,
     source: "الوحدة 1 / الدرس 1 / قانون بويل"
 };
 
