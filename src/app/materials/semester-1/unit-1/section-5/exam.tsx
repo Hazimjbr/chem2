@@ -794,15 +794,30 @@ export const staticQuizLvl3: QuizQuestion[] = [
         )
     },
     {
-        question: "خاصية يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت:",
-        options: [
-            "الشكل",
-            "القساوة",
-            "التوصيل الكهربائي",
-            "التآصل"
-        ],
-        correctAnswerIndex: 2,
-        explanation: "الألماس وثاني أكسيد السيليكون كلاهما مواد عازلة للكهرباء بسبب ارتباط جميع إلكترونات التكافؤ بقوة في روابط تساهمية أما الجرافيت فهو موصل جيد للكهرباء لوجود إلكترونات حرة الحركة بين طبقاته"
+    question: (
+        <>
+            <span>غاز حجمه </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+            <span> عند درجة حرارة </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ C"/></span>
+            <span> وضغط ثابت إذا تم خفض درجة حرارته المئوية بنسبة 90% فإن حجمه الجديد بوحدة L يساوي:</span>
+        </>
+    ),
+    options: ["4.6", "5.0", "0.5", "50"],
+    correctAnswerIndex: 0,
+    explanation: (
+         <div className="space-y-3 text-right" dir="rtl">
+            <p>1. <strong>تحويل الحرارة الابتدائية إلى كلفن:</strong></p>
+            <div className="text-center" dir="ltr"><BlockMath math="T_1(K) = 27 + 273 = 300K" /></div>
+            <p>2. <strong>حساب الحرارة النهائية بالسيليزيوس:</strong> تم خفضها بنسبة 90% أي بقي منها 10%</p>
+            <div className="text-center" dir="ltr"><BlockMath math="T_2(^\circ C) = 27 \times (1 - 0.90) = 2.7^\circ C" /></div>
+            <p>3. <strong>تحويل الحرارة النهائية إلى كلفن:</strong></p>
+            <div className="text-center" dir="ltr"><BlockMath math="T_2(K) = 2.7 + 273 = 275.7K" /></div>
+            <p>4. <strong>تطبيق قانون شارل (V₁/T₁ = V₂/T₂):</strong></p>
+            <div className="text-center" dir="ltr"><BlockMath math="V_2 = \frac{V_1 \times T_2}{T_1} = \frac{5L \times 275.7K}{300K} \approx 4.6L" /></div>
+            <p>الإجابة الصحيحة هي 4.6L</p>
+        </div>
+    )
     },
     {
         question: (
