@@ -39,10 +39,10 @@ const newQuestion: Question | null = {
         </>
     ),
     options: [
-        <span>الضغط الكلي على B يساوي 1140 mmHg</span>,
+        <span>الضغط عند B يساوي 1140 mmHg</span>,
         <span>B = 0.4 A</span>,
         <span>حجم A يكافئ 1 atm</span>,
-        <span>حجم B يكافئ 2.5 atm</span>
+        <span>الضغط عند B يكافئ 2.5 atm</span>
     ],
     correctAnswerIndex: 3,
     explanation: (
