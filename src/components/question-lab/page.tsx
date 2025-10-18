@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -8,33 +7,21 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { cn } from '@/lib/utils.tsx';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 
 interface Question {
     questionText: React.ReactNode;
-    options: string[];
+    options: (string | React.ReactNode)[];
     correctAnswerIndex: number;
     explanation: React.ReactNode;
     level: number;
     source: string;
 }
 
-const newQuestion: Question | null = {
-    questionText: "أي المركبات التالية هو الأعلى ذائبية في الماء والأقل ذائبية في رابع كلوريد الكربون (CCl₄)؟",
-    options: [
-        "I₂ (اليود)",
-        "CH₃(CH₂)₆CH₃ (الأوكتان)",
-        "CH₃COOH (حمض الخل)",
-        "C₆H₆ (البنزين)"
-    ],
-    correctAnswerIndex: 2,
-    explanation: "الماء مذيب قطبي، ورابع كلوريد الكربون مذيب غير قطبي. نبحث عن المركب الأكثر قطبية ليكون الأعلى ذائبية في الماء والأقل في CCl₄. حمض الخل (CH₃COOH) قطبي ويستطيع تكوين روابط هيدروجينية قوية مع الماء، مما يجعله الأعلى ذائبية فيه. بينما المركبات الأخرى غير قطبية (اليود، الأوكتان، البنزين) وتذوب بشكل أفضل في المذيبات غير القطبية.",
-    level: 3,
-    source: "الوحدة 2 / الدرس 1 / الجزء 2"
-};
+const newQuestion: Question | null = null;
 
 
 const QuestionCard = ({ question }: { question?: Question | null }) => {

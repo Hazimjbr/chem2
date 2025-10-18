@@ -2,15 +2,17 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import p5 from 'p5';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { motion, AnimatePresence } from 'framer-motion';
-import type p5 from 'p5';
 
+// --- Types ---
 type Temperature = 'low' | 'high';
 type Pressure = 'low' | 'high';
 
+// --- Constants ---
 const CANVAS_HEIGHT = 250;
 const NUM_PARTICLES = 15;
 const PARTICLE_RADIUS = 4;
@@ -40,149 +42,189 @@ const explanations: Record<Pressure, Record<Temperature, { title: string; text: 
   }
 };
 
-interface DiagramProps {
-    pressure: Pressure;
-    temperature: Temperature;
-}
-
-export default function Diagram({ pressure, temperature }: DiagramProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+// --- React Component ---
+export default function Diagram() {
+  const sketchRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5 | null>(null);
+
+  const [temperature, setTemperature] = useState<Temperature>('low');
+  const [pressure, setPressure] = useState<Pressure>('low');
   const [width, setWidth] = useState(0);
 
   const explanation = explanations[pressure][temperature];
   const explanationKey = `${pressure}-${temperature}`;
 
   useLayoutEffect(() => {
-    if (containerRef.current) {
-      setWidth(containerRef.current.offsetWidth);
+    if (sketchRef.current) {
+      setWidth(sketchRef.current.clientWidth);
     }
-    const handleResize = () => {
-      if (containerRef.current) {
-        setWidth(containerRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !(window as any).p5 || !containerRef.current || width === 0) {
-      return;
-    }
+    if (width <= 0) return;
 
     p5InstanceRef.current?.remove();
 
-    let particles: any[] = [];
-
     const sketch = (p: p5) => {
+      let particles: Particle[] = [];
+      
+      const boxHeight = CANVAS_HEIGHT;
+      const speedMultiplier = temperature === 'low' ? BASE_SPEED : BASE_SPEED * 3;
+      const particleColor = temperature === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
+      
+      // Calculate piston position based on pressure
+      // High pressure -> piston moves down -> smaller volume
+      // Low pressure -> piston at the top -> larger volume
+      const pistonY = pressure === 'low' ? 0 : (boxHeight * (7/8)) - PISTON_THICKNESS;
+      const topBoundary = pistonY + PISTON_THICKNESS;
+      const bottomBoundary = boxHeight;
+
       class Particle {
         pos: p5.Vector;
         vel: p5.Vector;
         radius: number = PARTICLE_RADIUS;
-        particleColor: p5.Color;
 
-        constructor(initialTemp: Temperature, initialPress: Pressure) {
-          this.particleColor = p.color(0); // Placeholder
-          this.updateState(initialTemp, initialPress);
+        constructor() {
+          this.pos = p.createVector(
+            p.random(this.radius, width - this.radius),
+            p.random(topBoundary + this.radius, bottomBoundary - this.radius)
+          );
+          this.vel = p5.Vector.random2D().mult(speedMultiplier);
         }
 
-        updateState(newTemp: Temperature, newPress: Pressure) {
-            const speedMultiplier = newTemp === 'low' ? BASE_SPEED : BASE_SPEED * 3;
-            if (!this.vel) {
-               this.vel = p5.Vector.random2D().mult(speedMultiplier);
-            } else {
-               this.vel.setMag(speedMultiplier);
-            }
-            this.particleColor = newTemp === 'low' ? p.color(128, 128, 128) : p.color(255, 0, 0);
-
-            if (!this.pos) {
-              const pistonY = newPress === 'low' ? 0 : (CANVAS_HEIGHT * (1/3));
-              const topBoundary = pistonY + PISTON_THICKNESS;
-              this.pos = p.createVector(
-                p.random(this.radius, width - this.radius),
-                p.random(topBoundary + this.radius, CANVAS_HEIGHT - this.radius)
-              );
-            }
-        }
-
-        update(topBoundary: number) {
+        update() {
           this.pos.add(this.vel);
-          this.checkBoundaries(topBoundary);
+          this.checkBoundaries();
         }
 
-        checkBoundaries(topBoundary: number) {
+        checkBoundaries() {
           if (this.pos.x <= this.radius || this.pos.x >= width - this.radius) {
             this.vel.x *= -1;
             this.pos.x = p.constrain(this.pos.x, this.radius, width - this.radius);
           }
-          if (this.pos.y <= topBoundary + this.radius || this.pos.y >= CANVAS_HEIGHT - this.radius) {
+          if (this.pos.y <= topBoundary + this.radius || this.pos.y >= bottomBoundary - this.radius) {
             this.vel.y *= -1;
-            this.pos.y = p.constrain(this.pos.y, topBoundary + this.radius, CANVAS_HEIGHT - this.radius);
+            // Prevent particles from getting stuck in the piston
+            this.pos.y = p.constrain(this.pos.y, topBoundary + this.radius, bottomBoundary - this.radius);
           }
         }
 
         show() {
           p.noStroke();
-          p.fill(this.particleColor);
+          p.fill(particleColor);
           p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
         }
       }
 
       p.setup = () => {
         p.createCanvas(width, CANVAS_HEIGHT);
-        particles = Array.from({ length: NUM_PARTICLES }, () => new Particle(temperature, pressure));
+        particles = []; // Clear particles on setup
+        for (let i = 0; i < NUM_PARTICLES; i++) {
+          particles.push(new Particle());
+        }
       };
-      
+
       p.draw = () => {
-        p.background(255);
-        
-        const pistonY = pressure === 'low' ? 0 : (CANVAS_HEIGHT * (1/1.3));
-        const topBoundary = pistonY + PISTON_THICKNESS;
-        
+        p.background('hsl(var(--card))');
+
+        // Draw dashed border for the container
         p.stroke('hsl(var(--border))');
         p.strokeWeight(2);
         p.drawingContext.setLineDash([5, 5]);
         p.noFill();
         p.rect(1, 1, width-2, CANVAS_HEIGHT-2);
-        p.drawingContext.setLineDash([]);
+        p.drawingContext.setLineDash([]); // Reset line dash
 
+        // Draw particles
         for (const particle of particles) {
-          particle.update(topBoundary);
+          particle.update();
           particle.show();
         }
 
+        // Draw piston
         p.fill(200);
         p.noStroke();
         p.rect(1, pistonY, width-2, PISTON_THICKNESS);
+        // Piston handle
         p.fill(150);
         p.rect(width/2 - 20, pistonY - 5, 40, 5);
       };
-
-      (p as any).updateSketch = (newTemp: Temperature, newPress: Pressure) => {
-          particles.forEach(particle => particle.updateState(newTemp, newPress));
+      
+      // A custom function to be called when props change
+      (p as any).customPropsChange = (props: { temp: Temperature, press: Pressure }) => {
+          // Re-initialize particles when conditions change to avoid them getting stuck
+          particles = [];
+          for (let i = 0; i < NUM_PARTICLES; i++) {
+            particles.push(new Particle());
+          }
           p.loop();
       };
     };
 
-    p5InstanceRef.current = new (window as any).p5(sketch, containerRef.current);
+    p5InstanceRef.current = new p5(sketch, sketchRef.current!);
+
+    // This part is a bit of a hack to force re-creation of particles
+    // when the state changes, addressing the "stuck particles" issue.
+    if (p5InstanceRef.current && (p5InstanceRef.current as any).customPropsChange) {
+        (p5InstanceRef.current as any).customPropsChange({ temp: temperature, press: pressure });
+    }
 
     return () => {
       p5InstanceRef.current?.remove();
     };
-  }, [width, pressure, temperature]); // Re-run effect when any of these change
+  }, [temperature, pressure, width]);
 
   return (
-    <>
+    <div className="flex flex-col items-center gap-4 w-full">
       <div
-        ref={containerRef}
+        ref={sketchRef}
         className="rounded-lg border bg-muted w-full overflow-hidden"
         style={{ height: `${CANVAS_HEIGHT}px` }}
         data-ai-hint="gas particles piston simulation"
       >
-        {/* p5 canvas will be injected here */}
+        {/* p5 canvas is injected here */}
       </div>
-      <Card className="w-full bg-accent/10 border-accent/20 h-[100px] mt-4">
+
+      <div className="w-full grid grid-cols-2 gap-4">
+        <Card className="p-3">
+          <Label className="font-semibold text-sm">درجة الحرارة</Label>
+          <RadioGroup
+            dir="rtl"
+            value={temperature}
+            onValueChange={(value: string) => setTemperature(value as Temperature)}
+            className="mt-2"
+          >
+            <div className="flex items-center space-x-2 space-x-reverse">
+              <RadioGroupItem value="low" id="t-low" />
+              <Label htmlFor="t-low">منخفضة</Label>
+            </div>
+            <div className="flex items-center space-x-2 space-x-reverse">
+              <RadioGroupItem value="high" id="t-high" />
+              <Label htmlFor="t-high">مرتفعة</Label>
+            </div>
+          </RadioGroup>
+        </Card>
+        <Card className="p-3">
+          <Label className="font-semibold text-sm">الضغط</Label>
+          <RadioGroup
+            dir="rtl"
+            value={pressure}
+            onValueChange={(value: string) => setPressure(value as Pressure)}
+            className="mt-2"
+          >
+            <div className="flex items-center space-x-2 space-x-reverse">
+              <RadioGroupItem value="low" id="p-low" />
+              <Label htmlFor="p-low">منخفض</Label>
+            </div>
+            <div className="flex items-center space-x-2 space-x-reverse">
+              <RadioGroupItem value="high" id="p-high" />
+              <Label htmlFor="p-high">مرتفع</Label>
+            </div>
+          </RadioGroup>
+        </Card>
+      </div>
+      
+      <Card className="w-full bg-accent/10 border-accent/20 h-[100px]">
         <AnimatePresence mode="wait">
             <motion.div
                 key={explanationKey}
@@ -201,6 +243,6 @@ export default function Diagram({ pressure, temperature }: DiagramProps) {
             </motion.div>
         </AnimatePresence>
       </Card>
-    </>
+    </div>
   );
 }
