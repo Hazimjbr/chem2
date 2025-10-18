@@ -338,6 +338,35 @@ export const staticQuizLvl2: QuizQuestion[] = [
         ],
         correctAnswerIndex: 0,
         explanation: "سرعة التبخر تتناسب طرديًا مع الضغط البخاري وترتيب سرعة التبخر من الأبطأ إلى الأسرع هو D < B < C < A والعلاقة (أ) B < D غير صحيحة لأن الضغط البخاري لـ B (55) أكبر من D (40) مما يعني أن سرعة تبخر B أكبر من D"
+    },
+    {
+        question: (
+            <>
+                <p>اعتمادا على الشكل المجاور إذا علمت أن المسافة A تمثل الضغط الجوي في الظروف المعيارية فإن قيمة الضغط على سطح السائل المحصور عند A تساوي</p>
+                <div className="flex justify-center my-2">
+                    <Image 
+                        src="https://i.ibb.co/zhsx01WH/image.jpg" 
+                        alt="image" 
+                        width={400}
+                        height={250}
+                        className="rounded-lg border bg-white"
+                        data-ai-hint="manometer gas pressure"
+                    />
+                </div>
+            </>
+        ),
+        options: [
+            <span dir="ltr">101 kPa</span>,
+            <span dir="ltr">1.5 atm</span>,
+            <span dir="ltr">570 mmHg</span>,
+            <span dir="ltr">0.75 atm</span>
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+             <div className="space-y-3 text-right" dir="rtl">
+                <p>الضغط على سطح السائل المحصور عند النقطة A  ويساوي 1atm أو 760mmHg أو 101kPaهو الضغط الجوي بمقدار ارتفاع عمود الزئبق</p>
+            </div>
+        ),
     }
 ];
 
@@ -856,7 +885,71 @@ export const staticQuizLvl3: QuizQuestion[] = [
         </div>
     )
     },
-     {
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+            </>
+        ),
+        options: [
+            "0.050/0.025",
+            "0.025/0.050",
+            "0.750/0.375",
+            "0.5/0.5"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <>
+                <span>نحسب عدد مولات كل غاز n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>نحسب العدد الكلي للمولات من قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>نحسب الضغط الجزئي لكل غاز P_gas = X_gas × P_total</span>
+                <br />
+                <span>P(CO₂) = (0.025/0.1) × 1.5atm = 0.375atm</span>
+                <br />
+                <span>P(O₂) = (0.05/0.1) × 1.5atm = 0.750atm</span>
+                <br />
+                <span>الترتيب المطلوب هو O₂ ثم CO₂ لذا الجواب هو 0.750 / 0.375</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            </>
+        ),
+        options: [
+            "0.7g",
+            "1.4g",
+            "0.35g",
+            "2.8g"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            </>
+        )
+    },
+    {
         question: (
             <>
                 <p>اعتمادا على الشكل المجاور إذا علمت أن المسافة A تمثل الضغط الجوي في الظروف المعيارية فإن جميع العبارات الآتية صحيحة ما عدا</p>
@@ -883,8 +976,8 @@ export const staticQuizLvl3: QuizQuestion[] = [
              <div className="space-y-3 text-right" dir="rtl">
                 <p>العبارة الخاطئة هي أن حجم B يكافئ 2.5 atm لوجود خطأ مفاهيمي أساسي فيها حيث أنها تعطي قيمة للحجم بوحدة الضغط الجوي (atm) وهذا غير صحيح فالضغط والحجم كميتان فيزيائيتان مختلفتان ولكل منهما وحداته الخاصة</p>
             </div>
-        ),
-    }
+        )
+    },
 ];
 
     
