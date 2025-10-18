@@ -574,43 +574,43 @@ export const staticQuizLvl3: QuizQuestion[] = [
         explanation: "الحديد فلز، والفلزات تتميز بارتفاع درجات انصهارها وقدرتها على توصيل الكهرباء في الحالتين الصلبة والسائلة لوجود إلكترونات حرة. ملح الطعام (أيوني) لا يوصل وهو صلب. أكسيد السيليكون (شبكي تساهمي) و بكمنسترفولرين (جزيئي) مواد عازلة."
     },
     {
-            question: (
-                <>
-                    <span>وعاء يحتوي على </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
-                    <span> من غاز الأكسجين عند درجة حرارة </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
-                    <span> وضغط </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
-                    <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
-                    <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
-                </>
-            ),
-            options: [
-                "5g",
-                "10g",
-                "10.7g",
-                "5.4g"
-            ],
-            correctAnswerIndex: 1,
-            explanation: (
-                <>
-                    <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
-                    <span> يجب تحويل الحرارة إلى كلفن </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
-                    <span> إذن </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
-                    <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
-                    <span> لذا كتلته المولية </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
-                    <span> الكتلة = </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
-                    <span> وهي الأقرب إلى 10g</span>
-                </>
-            )
+        question: (
+            <>
+                <span>وعاء يحتوي على </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+                <span> من غاز الأكسجين عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
+                <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
+                <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
+            </>
+        ),
+        options: [
+            "5g",
+            "10g",
+            "10.7g",
+            "5.4g"
+        ],
+        correctAnswerIndex: 1,
+        explanation: (
+            <>
+                <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
+                <span> يجب تحويل الحرارة إلى كلفن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
+                <span> إذن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
+                <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
+                <span> لذا كتلته المولية </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
+                <span> الكتلة = </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
+                <span> وهي الأقرب إلى 10g</span>
+            </>
+        )
     },
     {
     question: (
@@ -618,7 +618,7 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <p>اعتمادا على الشكل المجاور فإن قيمة X تساوي</p>
             <div className="flex justify-center my-2">
                 <Image 
-                    src="https://i.ibb.co/9HYRwqWj/image.jpg" 
+                    src="https://i.ibb.co/9HYRwqWj/image.jpg"
                     alt="Boyle's Law Graph" 
                     width={200}
                     height={150}
@@ -648,6 +648,505 @@ export const staticQuizLvl3: QuizQuestion[] = [
             <div className="text-center" dir="ltr"><BlockMath math="{0.8}\times{760} = 608 \text{ atm}" /></div>
         </div>
     )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+            </>
+        ),
+        options: [
+            "0.050/0.025",
+            "0.025/0.050",
+            "0.750/0.375",
+            "0.5/0.5"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <>
+                <span>نحسب عدد مولات كل غاز n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>نحسب العدد الكلي للمولات من قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>نحسب الضغط الجزئي لكل غاز P_gas = X_gas × P_total</span>
+                <br />
+                <span>P(CO₂) = (0.025/0.1) × 1.5atm = 0.375atm</span>
+                <br />
+                <span>P(O₂) = (0.05/0.1) × 1.5atm = 0.750atm</span>
+                <br />
+                <span>الترتيب المطلوب هو O₂ ثم CO₂ لذا الجواب هو 0.750 / 0.375</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            </>
+        ),
+        options: [
+            "0.7g",
+            "1.4g",
+            "0.35g",
+            "2.8g"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>إذا علمت أن كثافة الماس</span>
+                <span dir="ltr" className="inline-block mx-1">3.5g/ml</span>
+                <span>وكثافة الغرافيت</span>
+                <span dir="ltr" className="inline-block mx-1">2.3g/ml</span>
+                <span>فإن كثافة بكمنسترفولرين</span>
+            </>
+        ),
+        options: [
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في جزئياته",
+            "أقل لأنه يحتوي عدد ذرات C أقل في جزئياته",
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في بنائه الشبكي",
+            "أقل لأنه يحتوي فراغات أكبر بين جزيئاته الكروية"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "كثافة البكمنسترفولرين أقل من الماس والغرافيت لأن جزيئاته الكروية (C60) ترتبط بقوى لندن الضعيفة مما يؤدي إلى وجود فراغات أكبر بينها في البناء البلوري على عكس الألماس والغرافيت اللذين يمتلكان بنى شبكية تساهمية أكثر تراصا وقوة"
+    },
+    {
+        question: (
+            <>
+                <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
+                <div className="flex justify-center my-2">
+                    <Image src="https://i.ibb.co/Hpf0bLw3/3.jpg" alt="Connected Vessels" width={250} height={100} />
+                </div>
+            </>
+        ),
+        options: ["1.5", "0.5", "2", "3"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولاً نوحد وحدات الضغط إلى atm P(A) = 350kPa / 101.3kPa/atm ≈ 3.455atm P(W) = 350mmHg / 760mmHg/atm ≈ 0.46atm الحجم الكلي بعد الخلط V(total) = 1L + 2L = 3L ثانياً نستخدم قانون بويل لحساب الضغط الجزئي لكل غاز في الحجم الجديد P_final = (P_initial * V_initial) / V_total P_A_final = (3.455 * 1) / 3 ≈ 1.15atm P_W_final = (0.46 * 2) / 3 ≈ 0.31atm أخيراً نستخدم قانون دالتون P(total) = P_A_final + P_W_final = 1.15 + 0.31 ≈ 1.46atm أقرب إجابة هي 1.5</span>
+            </>
+        )
+    },
+    {
+        question: <>
+            <p>ادرس الرسم المجاور الذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
+            <div className="flex justify-center my-2">
+                <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
+            </div>
+        </>,
+        options: [
+            "بين C و D",
+            "على يسار A",
+            "لا يتغير",
+            "على يمين D"
+        ],
+        correctAnswerIndex: 2,
+        explanation: <>
+            <span>وفقًا لقانون جراهام تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
+            <span dir="ltr" className="inline-block"><InlineMath math="r_1/r_2 = \sqrt{Mr_2/Mr_1}"/></span>
+            <span>) هذه النسبة لا تعتمد على درجة الحرارة تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع</span>
+        </>
+    },
+    {
+        question: <><span>إذا علمت أن عنصر البورون شديد الصلابة ودرجة انصهاره </span><span dir="ltr">2300°C</span><span> ورديء التوصيل للكهرباء على درجة الحرارة العادية فإنه يصنف مادة صلبة بلورية</span></>,
+        options: [
+            "جزيئية",
+            "أيونية",
+            "شبكية تساهمية",
+            "فلزية"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد",
+    },
+    {
+        question: (
+            <>
+                <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة</p>
+                <div className="flex justify-center items-center gap-4 my-2">
+                     <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
+                </div>
+            </>
+        ),
+        options: [
+            "يشبه المتآصل (1) في تركيبه البنائي الغرافيت ويشبه المتآصل (2) الماس",
+            "يوصل المتآصل (1) التيار الكهربائي",
+            "المتآصل (2) عالي القساوة",
+            "يُصنَّف كُلٌّ من المتأصلين على أنه صلب جزيئي"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "العبارة غير الصحيحة هي (د) كلا الشكلين هما مواد صلبة شبكية تساهمية وليست جزيئية لأن الذرات ترتبط في شبكة ضخمة وممتدة (ملاحظة: العبارة ب أيضًا غير صحيحة لأن نيتريد البورون الشبيه بالغرافيت عازل)",
+    },
+    {
+        question: "المادة الصلبة التي لها أعلى درجة انصهار",
+        options: [
+            "AlF₃",
+            "SiF₄",
+            "NH₃",
+            "P₄"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
+    },
+    {
+        question: (
+            <>
+                <span>وعاء يحتوي على </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+                <span> من غاز الأكسجين عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
+                <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
+                <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
+            </>
+        ),
+        options: [
+            "5g",
+            "10g",
+            "10.7g",
+            "5.4g"
+        ],
+        correctAnswerIndex: 1,
+        explanation: (
+            <>
+                <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
+                <span> يجب تحويل الحرارة إلى كلفن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
+                <span> إذن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
+                <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
+                <span> لذا كتلته المولية </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
+                <span> الكتلة = </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
+                <span> وهي الأقرب إلى 10g</span>
+            </>
+        )
+    },
+    {
+    question: (
+        <>
+            <span>غاز حجمه </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+            <span> عند درجة حرارة </span>
+            <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ C"/></span>
+            <span> وضغط ثابت إذا تم خفض درجة حرارته المئوية بنسبة 90% فإن حجمه الجديد بوحدة L يساوي:</span>
+        </>
+    ),
+    options: ["4.6", "5.0", "0.5", "50"],
+    correctAnswerIndex: 0,
+    explanation: (
+         <div className="space-y-3 text-right" dir="rtl">
+            <p>1. <strong>تحويل الحرارة الابتدائية إلى كلفن:</strong></p>
+            <div className="text-center" dir="ltr"><BlockMath math="T_1(K) = 27 + 273 = 300K" /></div>
+            <p>2. <strong>حساب الحرارة النهائية بالسيليزيوس:</strong> تم خفضها بنسبة 90% أي بقي منها 10%</p>
+            <div className="text-center" dir="ltr"><BlockMath math="T_2(^\circ C) = 27 \times (1 - 0.90) = 2.7^\circ C" /></div>
+            <p>3. <strong>تحويل الحرارة النهائية إلى كلفن:</strong></p>
+            <div className="text-center" dir="ltr"><BlockMath math="T_2(K) = 2.7 + 273 = 275.7K" /></div>
+            <p>4. <strong>تطبيق قانون شارل (V₁/T₁ = V₂/T₂):</strong></p>
+            <div className="text-center" dir="ltr"><BlockMath math="V_2 = \frac{V_1 \times T_2}{T_1} = \frac{5L \times 275.7K}{300K} \approx 4.6L" /></div>
+            <p>الإجابة الصحيحة هي 4.6L</p>
+        </div>
+    )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+            </>
+        ),
+        options: [
+            "0.050/0.025",
+            "0.025/0.050",
+            "0.750/0.375",
+            "0.5/0.5"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <>
+                <span>نحسب عدد مولات كل غاز n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>نحسب العدد الكلي للمولات من قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>نحسب الضغط الجزئي لكل غاز P_gas = X_gas × P_total</span>
+                <br />
+                <span>P(CO₂) = (0.025/0.1) × 1.5atm = 0.375atm</span>
+                <br />
+                <span>P(O₂) = (0.05/0.1) × 1.5atm = 0.750atm</span>
+                <br />
+                <span>الترتيب المطلوب هو O₂ ثم CO₂ لذا الجواب هو 0.750 / 0.375</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            </>
+        ),
+        options: [
+            "0.7g",
+            "1.4g",
+            "0.35g",
+            "2.8g"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>إذا علمت أن كثافة الماس</span>
+                <span dir="ltr" className="inline-block mx-1">3.5g/ml</span>
+                <span>وكثافة الغرافيت</span>
+                <span dir="ltr" className="inline-block mx-1">2.3g/ml</span>
+                <span>فإن كثافة بكمنسترفولرين</span>
+            </>
+        ),
+        options: [
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في جزئياته",
+            "أقل لأنه يحتوي عدد ذرات C أقل في جزئياته",
+            "أكبر لأنه يحتوي عدد ذرات C أكبر في بنائه الشبكي",
+            "أقل لأنه يحتوي فراغات أكبر بين جزيئاته الكروية"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "كثافة البكمنسترفولرين أقل من الماس والغرافيت لأن جزيئاته الكروية (C60) ترتبط بقوى لندن الضعيفة مما يؤدي إلى وجود فراغات أكبر بينها في البناء البلوري على عكس الألماس والغرافيت اللذين يمتلكان بنى شبكية تساهمية أكثر تراصا وقوة"
+    },
+    {
+        question: (
+            <>
+                <p>يمثل الشكل المجاور لحظة توصيل الوعاءين معا يحتوي الأول عينة من الغاز A في وعاء حجمه 1L وضغطها 350KPa والثاني عينة من الغاز W في وعاء حجمه 2L وضغطها 350mmHg فإن الضغط الكلي لمزيج الغازين بوحدة atm يساوي:</p>
+                <div className="flex justify-center my-2">
+                    <Image src="https://i.ibb.co/Hpf0bLw3/3.jpg" alt="Connected Vessels" width={250} height={100} />
+                </div>
+            </>
+        ),
+        options: ["1.5", "0.5", "2", "3"],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولاً نوحد وحدات الضغط إلى atm P(A) = 350kPa / 101.3kPa/atm ≈ 3.455atm P(W) = 350mmHg / 760mmHg/atm ≈ 0.46atm الحجم الكلي بعد الخلط V(total) = 1L + 2L = 3L ثانياً نستخدم قانون بويل لحساب الضغط الجزئي لكل غاز في الحجم الجديد P_final = (P_initial * V_initial) / V_total P_A_final = (3.455 * 1) / 3 ≈ 1.15atm P_W_final = (0.46 * 2) / 3 ≈ 0.31atm أخيراً نستخدم قانون دالتون P(total) = P_A_final + P_W_final = 1.15 + 0.31 ≈ 1.46atm أقرب إجابة هي 1.5</span>
+            </>
+        )
+    },
+    {
+        question: <>
+            <p>ادرس الرسم المجاور الذي يمثل التفاعل HCl(g) + NH₃(g) → NH₄Cl(s) علما بأن الكتل الذرية التقريبية H=1 N=14 Cl=35 إذا تم تسخين وعاء التفاعل قبل إجراء التجربة فإن موقع الغاز الأبيض الجديد سوف يكون</p>
+            <div className="flex justify-center my-2">
+                <Image src="https://i.ibb.co/1GcP6Svh/3.jpg" alt="Ammonia and HCl diffusion" width={400} height={100} className="rounded-lg border bg-white" data-ai-hint="ammonia HCl diffusion tube" />
+            </div>
+        </>,
+        options: [
+            "بين C و D",
+            "على يسار A",
+            "لا يتغير",
+            "على يمين D"
+        ],
+        correctAnswerIndex: 2,
+        explanation: <>
+            <span>وفقًا لقانون جراهام تعتمد نسبة سرعة انتشار غازين على الجذر التربيعي لكتلتيهما المولية (</span>
+            <span dir="ltr" className="inline-block"><InlineMath math="r_1/r_2 = \sqrt{Mr_2/Mr_1}"/></span>
+            <span>) هذه النسبة لا تعتمد على درجة الحرارة تسخين الوعاء يزيد من سرعة كلا الغازين بنفس النسبة لذا سيقطعان نفس المسافات النسبية ويلتقيان في نفس الموضع</span>
+        </>
+    },
+    {
+        question: <><span>إذا علمت أن عنصر البورون شديد الصلابة ودرجة انصهاره </span><span dir="ltr">2300°C</span><span> ورديء التوصيل للكهرباء على درجة الحرارة العادية فإنه يصنف مادة صلبة بلورية</span></>,
+        options: [
+            "جزيئية",
+            "أيونية",
+            "شبكية تساهمية",
+            "فلزية"
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الخصائص المذكورة (الصلابة الشديدة، درجة الانصهار المرتفعة جدًا، رداءة التوصيل الكهربائي) هي الخصائص المميزة للمواد الصلبة الشبكية التساهمية التي ترتبط ذراتها بروابط تساهمية قوية في شبكة ثلاثية الأبعاد",
+    },
+    {
+        question: (
+            <>
+                <p>يُكوّن البورون مع النيتروجين نيتريد البورون BN الذي يتواجد على شكلين متآصلين (1 ، 2) ويشبه هذان المتأصلان ما يُكوّنه الكربون من متأصلات أيُّ العبارات الآتية غير صحيحة</p>
+                <div className="flex justify-center items-center gap-4 my-2">
+                     <Image src="https://i.ibb.co/7xMGNH2c/3.jpg" alt="متآصلات نيتريد البورون" width={250} height={120} className="rounded border bg-white" data-ai-hint="boron nitride allotropes" />
+                </div>
+            </>
+        ),
+        options: [
+            "يشبه المتآصل (1) في تركيبه البنائي الغرافيت ويشبه المتآصل (2) الماس",
+            "يوصل المتآصل (1) التيار الكهربائي",
+            "المتآصل (2) عالي القساوة",
+            "يُصنَّف كُلٌّ من المتأصلين على أنه صلب جزيئي"
+        ],
+        correctAnswerIndex: 3,
+        explanation: "العبارة غير الصحيحة هي (د) كلا الشكلين هما مواد صلبة شبكية تساهمية وليست جزيئية لأن الذرات ترتبط في شبكة ضخمة وممتدة (ملاحظة: العبارة ب أيضًا غير صحيحة لأن نيتريد البورون الشبيه بالغرافيت عازل)",
+    },
+    {
+        question: "المادة الصلبة التي لها أعلى درجة انصهار",
+        options: [
+            "AlF₃",
+            "SiF₄",
+            "NH₃",
+            "P₄"
+        ],
+        correctAnswerIndex: 0,
+        explanation: "المركب AlF₃ هو مركب أيوني يمتلك روابط أيونية قوية جدًا في شبكته البلورية بينما المركبات الأخرى هي مواد جزيئية ترتبط بقوى بين جزيئية أضعف بكثير (روابط هيدروجينية وقوى لندن) لذلك يتطلب AlF₃ أعلى طاقة لصهره",
+    },
+    {
+        question: (
+            <>
+                <span>وعاء يحتوي على </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
+                <span> من غاز الأكسجين عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
+                <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
+                <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
+            </>
+        ),
+        options: [
+            "5g",
+            "10g",
+            "10.7g",
+            "5.4g"
+        ],
+        correctAnswerIndex: 1,
+        explanation: (
+            <>
+                <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
+                <span> يجب تحويل الحرارة إلى كلفن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
+                <span> إذن </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
+                <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
+                <span> لذا كتلته المولية </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
+                <span> الكتلة = </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
+                <span> وهي الأقرب إلى 10g</span>
+            </>
+        )
+    },
+    {
+        question: "جميع الخصائص الآتية هي خصائص يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت ما عدا:",
+        options: [
+            "الشكل",
+            "القساوة",
+            "التآصل",
+            "التوصيل الكهربائي",
+        ],
+        correctAnswerIndex: 2,
+        explanation: "الإجابة الصحيحة هي التآصل: لأن هذه الخاصية لا تنطبق بنفس الطريقة الألماس والجرافيت هما شكلان متآصلان لنفس العنصر (الكربون) بينما ثاني أكسيد السيليكون هو مركب كيميائي وليس عنصرًا أما الخصائص الأخرى فهي بالفعل نقاط تشابه بين الألماس و SiO₂ مقارنة بالجرافيت"
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن الضغوط الجزئية للغازات (O₂ / CO₂) على الترتيب</span>
+            </>
+        ),
+        options: [
+            "0.050/0.025",
+            "0.025/0.050",
+            "0.750/0.375",
+            "0.5/0.5"
+        ],
+        correctAnswerIndex: 2,
+        explanation: (
+            <>
+                <span>نحسب عدد مولات كل غاز n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>نحسب العدد الكلي للمولات من قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>نحسب الضغط الجزئي لكل غاز P_gas = X_gas × P_total</span>
+                <br />
+                <span>P(CO₂) = (0.025/0.1) × 1.5atm = 0.375atm</span>
+                <br />
+                <span>P(O₂) = (0.05/0.1) × 1.5atm = 0.750atm</span>
+                <br />
+                <span>الترتيب المطلوب هو O₂ ثم CO₂ لذا الجواب هو 0.750 / 0.375</span>
+            </>
+        )
+    },
+    {
+        question: (
+            <>
+                <span>وعاء حجمه 1.64L يحتوي على 1.1g CO₂ و 1.6g O₂ وكتلة مجهولة من N₂ عند درجة حرارة <span dir="ltr">27°C</span> وضغط 1.5atm إذا علمت أن الكتل المولية N=14 C=12 O=16 فإن كتلة غاز N₂ تساوي</span>
+            </>
+        ),
+        options: [
+            "0.7g",
+            "1.4g",
+            "0.35g",
+            "2.8g"
+        ],
+        correctAnswerIndex: 0,
+        explanation: (
+            <>
+                <span>أولا نحسب عدد المولات الكلي للخليط باستخدام قانون الغاز المثالي n_total = PV/RT = (1.5atm × 1.64L) / (0.082 × 300K) = 0.1mol</span>
+                <br />
+                <span>ثانيا نحسب عدد مولات الغازات المعلومة n=m/Mr</span>
+                <br />
+                <span>n(CO₂) = 1.1g/44g/mol = 0.025mol</span>
+                <br />
+                <span>n(O₂) = 1.6g/32g/mol = 0.05mol</span>
+                <br />
+                <span>ثالثا نحسب عدد مولات النيتروجين n(N₂) = n_total - (n(CO₂) + n(O₂)) = 0.1 - (0.025 + 0.05) = 0.025mol</span>
+                <br />
+                <span>أخيرا نحسب كتلة النيتروجين m(N₂) = n × Mr = 0.025mol × 28g/mol = 0.7g</span>
+            </>
+        )
     },
     {
         question: (
@@ -747,130 +1246,83 @@ export const staticQuizLvl3: QuizQuestion[] = [
     },
     {
             question: (
-                <>
-                    <span>وعاء يحتوي على </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
-                    <span> من غاز الأكسجين عند درجة حرارة </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="20^\circ C"/></span>
-                    <span> وضغط </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="1.5atm"/></span>
-                    <span> إذا علمت أن الكتلة المولية للأكسجين تساوي </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="16g/mol"/></span>
-                    <span> فإن كتلة الأكسجين في الوعاء تساوي</span>
-                </>
+              <>
+                <span>بالون حجمه </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="1000\text{mL}" /></span>
+                <span> مملوء بغاز الهيليوم He (</span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 4\text{g/mol}" /></span>
+                <span>) عند درجة حرارة </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ\text{C}" /></span>
+                <span> وضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="2\text{atm}" /></span>
+                <span> وعند صعود البالون للأعلى انخفضت درجة الحرارة إلى </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="-3^\circ\text{C}" /></span>
+                <span> وأصبح الضغط </span>
+                <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.5\text{atm}" /></span>
+                <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا تساوي (g)</span>
+              </>
             ),
-            options: [
-                "5g",
-                "10g",
-                "10.7g",
-                "5.4g"
-            ],
-            correctAnswerIndex: 1,
+            options: ["1.76", "0.82", "0.41", "0.24"],
+            correctAnswerIndex: 3,
             explanation: (
-                <>
-                    <span>أولاً نحسب عدد مولات الأكسجين باستخدام قانون الغاز المثالي </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="PV=nRT"/></span>
-                    <span> يجب تحويل الحرارة إلى كلفن </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="T = 20 + 273 = 293K"/></span>
-                    <span> إذن </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="n = \frac{PV}{RT} = \frac{1.5 \times 5}{0.0821 \times 293} \approx 0.312 \text{ mol}"/></span>
-                    <span> ثانياً نحسب الكتلة انتبه إلى أن غاز الأكسجين هو </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="O_2"/></span>
-                    <span> لذا كتلته المولية </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 2 \times 16 = 32 g/mol"/></span>
-                    <span> الكتلة = </span>
-                    <span dir="ltr" className="inline-block mx-1"><InlineMath math="n \times Mr = 0.312 \times 32 \approx 9.98g"/></span>
-                    <span> وهي الأقرب إلى 10g</span>
-                </>
+                <div className="space-y-3 text-right" dir="rtl">
+                    <p>1. <strong>حساب عدد المولات الابتدائي (n₁)</strong></p>
+                    <p className="text-xs">
+                        <span>نحول الوحدات </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1000\text{mL} = 1.0\text{L}" /></span>
+                        <span>، </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="T_1 = 27 + 273 = 300\text{K}" /></span>
+                    </p>
+                    <div className="text-center" dir="ltr"><BlockMath math="n_1 = \frac{P_1V_1}{RT_1} = \frac{2 \times 1.0}{0.082 \times 300} \approx 0.0813 \text{ mol}" /></div>
+        
+                    <p>2. <strong>حساب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم</strong></p>
+                     <p className="text-xs">
+                        <span>الظروف النهائية </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.0\text{L}" /></span>
+                        <span> (ثابت)، </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="P_2 = 0.5\text{atm}" /></span>
+                        <span>، </span>
+                        <span dir="ltr" className="inline-block"><InlineMath math="T_2 = -3 + 273 = 270\text{K}" /></span>
+                    </p>
+                    <div className="text-center" dir="ltr"><BlockMath math="n_2 = \frac{P_2V_2}{RT_2} = \frac{0.5 \times 1.0}{0.082 \times 270} \approx 0.0226 \text{ mol}" /></div>
+        
+                    <p>3. <strong>حساب عدد المولات التي يجب التخلص منها (Δn)</strong></p>
+                    <div className="text-center" dir="ltr"><BlockMath math="\Delta n = n_1 - n_2 = 0.0813 - 0.0226 = 0.0587 \text{ mol}" /></div>
+        
+                    <p>4. <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
+                    <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.0587 \text{ mol} \times 4 \text{ g/mol} \approx 0.235 \text{ g}" /></div>
+                     <p>الإجابة الأقرب هي 0.24</p>
+                </div>
             )
     },
     {
-    question: (
-        <>
-            <span>غاز حجمه </span>
-            <span dir="ltr" className="inline-block mx-1"><InlineMath math="5L"/></span>
-            <span> عند درجة حرارة </span>
-            <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ C"/></span>
-            <span> وضغط ثابت إذا تم خفض درجة حرارته المئوية بنسبة 90% فإن حجمه الجديد بوحدة L يساوي:</span>
-        </>
-    ),
-    options: ["4.6", "5.0", "0.5", "50"],
-    correctAnswerIndex: 0,
-    explanation: (
-         <div className="space-y-3 text-right" dir="rtl">
-            <p>1. <strong>تحويل الحرارة الابتدائية إلى كلفن:</strong></p>
-            <div className="text-center" dir="ltr"><BlockMath math="T_1(K) = 27 + 273 = 300K" /></div>
-            <p>2. <strong>حساب الحرارة النهائية بالسيليزيوس:</strong> تم خفضها بنسبة 90% أي بقي منها 10%</p>
-            <div className="text-center" dir="ltr"><BlockMath math="T_2(^\circ C) = 27 \times (1 - 0.90) = 2.7^\circ C" /></div>
-            <p>3. <strong>تحويل الحرارة النهائية إلى كلفن:</strong></p>
-            <div className="text-center" dir="ltr"><BlockMath math="T_2(K) = 2.7 + 273 = 275.7K" /></div>
-            <p>4. <strong>تطبيق قانون شارل (V₁/T₁ = V₂/T₂):</strong></p>
-            <div className="text-center" dir="ltr"><BlockMath math="V_2 = \frac{V_1 \times T_2}{T_1} = \frac{5L \times 275.7K}{300K} \approx 4.6L" /></div>
-            <p>الإجابة الصحيحة هي 4.6L</p>
-        </div>
-    )
-    },
-    {
-        question: (
-            <>
-              <span>بالون حجمه </span>
-              <span dir="ltr" className="inline-block mx-1"><InlineMath math="1000\text{mL}" /></span>
-              <span> مملوء بغاز الهيليوم He (</span>
-              <span dir="ltr" className="inline-block mx-1"><InlineMath math="Mr = 4\text{g/mol}" /></span>
-              <span>) عند درجة حرارة </span>
-              <span dir="ltr" className="inline-block mx-1"><InlineMath math="27^\circ\text{C}" /></span>
-              <span> وضغط </span>
-              <span dir="ltr" className="inline-block mx-1"><InlineMath math="2\text{atm}" /></span>
-              <span> وعند صعود البالون للأعلى انخفضت درجة الحرارة إلى </span>
-              <span dir="ltr" className="inline-block mx-1"><InlineMath math="-3^\circ\text{C}" /></span>
-              <span> وأصبح الضغط </span>
-              <span dir="ltr" className="inline-block mx-1"><InlineMath math="0.5\text{atm}" /></span>
-              <span> فإن كتلة غاز He التي يجب التخلص منها للإبقاء على حجم الغاز ثابتًا تساوي (g)</span>
-            </>
-        ),
-        options: ["1.76", "0.82", "0.41", "0.24"],
-        correctAnswerIndex: 3,
-        explanation: (
-            <div className="space-y-3 text-right" dir="rtl">
-                <p>1. <strong>حساب عدد المولات الابتدائي (n₁)</strong></p>
-                <p className="text-xs">
-                    <span>نحول الوحدات </span>
-                    <span dir="ltr" className="inline-block"><InlineMath math="V_1 = 1000\text{mL} = 1.0\text{L}" /></span>
-                    <span>، </span>
-                    <span dir="ltr" className="inline-block"><InlineMath math="T_1 = 27 + 273 = 300\text{K}" /></span>
-                </p>
-                <div className="text-center" dir="ltr"><BlockMath math="n_1 = \frac{P_1V_1}{RT_1} = \frac{2 \times 1.0}{0.082 \times 300} \approx 0.0813 \text{ mol}" /></div>
-    
-                <p>2. <strong>حساب عدد المولات النهائي (n₂) للحفاظ على نفس الحجم</strong></p>
-                 <p className="text-xs">
-                    <span>الظروف النهائية </span>
-                    <span dir="ltr" className="inline-block"><InlineMath math="V_2 = 1.0\text{L}" /></span>
-                    <span> (ثابت)، </span>
-                    <span dir="ltr" className="inline-block"><InlineMath math="P_2 = 0.5\text{atm}" /></span>
-                    <span>، </span>
-                    <span dir="ltr" className="inline-block"><InlineMath math="T_2 = -3 + 273 = 270\text{K}" /></span>
-                </p>
-                <div className="text-center" dir="ltr"><BlockMath math="n_2 = \frac{P_2V_2}{RT_2} = \frac{0.5 \times 1.0}{0.082 \times 270} \approx 0.0226 \text{ mol}" /></div>
-    
-                <p>3. <strong>حساب عدد المولات التي يجب التخلص منها (Δn)</strong></p>
-                <div className="text-center" dir="ltr"><BlockMath math="\Delta n = n_1 - n_2 = 0.0813 - 0.0226 = 0.0587 \text{ mol}" /></div>
-    
-                <p>4. <strong>حساب كتلة الغاز المتسرب (m)</strong></p>
-                <div className="text-center" dir="ltr"><BlockMath math="m = \Delta n \times Mr = 0.0587 \text{ mol} \times 4 \text{ g/mol} \approx 0.235 \text{ g}" /></div>
-                 <p>الإجابة الأقرب هي 0.24</p>
-            </div>
-        )
-    },
-    {
-        question: "جميع الخصائص الآتية هي خصائص يتشابه بها الألماس وثاني أكسيد السيليكون ويختلفان فيها عن الجرافيت ما عدا:",
-        options: [
-            "الشكل",
-            "القساوة",
-            "التآصل",
-            "التوصيل الكهربائي",
-        ],
-        correctAnswerIndex: 2,
-        explanation: "الإجابة الصحيحة هي التآصل: لأن هذه الخاصية لا تنطبق بنفس الطريقة الألماس والجرافيت هما شكلان متآصلان لنفس العنصر (الكربون) بينما ثاني أكسيد السيليكون هو مركب كيميائي وليس عنصرًا أما الخصائص الأخرى فهي بالفعل نقاط تشابه بين الألماس و SiO₂ مقارنة بالجرافيت"
+            question: (
+                <>
+                    <p>اعتمادا على الشكل المجاور إذا علمت أن المسافة A تمثل الضغط الجوي في الظروف المعيارية فإن جميع العبارات الآتية صحيحة ما عدا</p>
+                    <div className="flex justify-center my-2">
+                        <Image 
+                            src="https://i.ibb.co/zhsx01WH/image.jpg" 
+                            alt="image" 
+                            width={400}
+                            height={250}
+                            className="rounded-lg border bg-white"
+                            data-ai-hint="manometer gas pressure"
+                        />
+                    </div>
+                </>
+            ),
+            options: [
+                <span>الضغط عند B يساوي 1140 mmHg</span>,
+                <span>B = 0.4 A</span>,
+                <span>حجم A يكافئ 1 atm</span>,
+                <span>الضغط عند B يكافئ 2.5 atm</span>
+            ],
+            correctAnswerIndex: 3,
+            explanation: (
+                 <div className="space-y-3 text-right" dir="rtl">
+                    <p>العبارة الخاطئة هي أن حجم B يكافئ 2.5 atm لوجود خطأ مفاهيمي أساسي فيها حيث أنها تعطي قيمة للحجم بوحدة الضغط الجوي (atm) وهذا غير صحيح فالضغط والحجم كميتان فيزيائيتان مختلفتان ولكل منهما وحداته الخاصة</p>
+                </div>
+            ),
     },
 ];
 
